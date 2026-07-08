@@ -59,24 +59,30 @@
   .chipbtn{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
   .chipbtn.active{background:var(--accent);border-color:var(--accent);color:#fff}
 
-  .lane{margin-bottom:26px}
-  .lane h2{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:10px}
-  .lane h2::after{content:"";flex:1;height:1px;background:var(--border)}
-  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
-  .item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;transition:border-color .15s;box-shadow:var(--shadow)}
-  .item:hover{border-color:rgba(217,0,141,.45)}
-  .item .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-  .item h3{font-size:14.5px;font-weight:700;line-height:1.4}
-  .chip{border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0}
+  /* ── Roadmap sheet-style table ── */
+  .rtable-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow-x:auto}
+  .rtable{width:100%;border-collapse:collapse;min-width:860px;font-size:13.5px}
+  .rtable thead th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:700;padding:12px 14px;border-bottom:2px solid var(--border);background:var(--n100)}
+  .rtable td{padding:11px 14px;border-bottom:1px solid var(--n100);vertical-align:top}
+  .rtable tbody tr.rrow:hover{background:var(--pink100)}
+  .rtable tbody tr:last-child td{border-bottom:none}
+  .rgroup td{background:var(--n100);font-weight:800;font-size:13px;color:var(--secondary);cursor:pointer;user-select:none;border-bottom:1px solid var(--border);box-shadow:inset 3px 0 0 var(--accent)}
+  .rgroup td:hover{background:var(--pink100)}
+  .rgroup .chev{display:inline-block;width:16px;color:var(--accent);transition:transform .15s}
+  .rgroup .gcount{font-weight:600;color:var(--muted);font-size:12px;margin-left:8px}
+  .rtitle{font-weight:600;line-height:1.45}
+  .rnote{font-weight:400;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .rmuted{color:var(--muted)}
+  .rtarget{font-weight:700;white-space:nowrap;color:var(--secondary)}
+  .rlink{font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
+  .rlink:hover{text-decoration:underline}
+  .chip{border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;display:inline-block}
   .s-done{background:var(--green100);color:var(--green)}
   .s-progress{background:var(--pink100);color:var(--accent)}
   .s-planned{background:var(--purple100);color:var(--purple)}
   .s-blocked{background:var(--red100);color:var(--red)}
   .s-hold{background:var(--amber200);color:#8a4500}
   .s-other{background:var(--n100);color:var(--muted)}
-  .item .meta{display:flex;gap:14px;margin-top:10px;font-size:12px;color:var(--muted)}
-  .item .meta b{color:var(--secondary);font-weight:600}
-  .item .notes{margin-top:8px;font-size:12.5px;color:var(--muted);line-height:1.5}
 
   .doccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
   .doc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
@@ -267,7 +273,6 @@ function renderNotice(el){
 /* Field accessors — tolerate both the live sheet's headers and generic ones */
 const fTitle = r => r["Projects/Threads"] || r.Item || r.Project || "";
 const fLane  = r => r.Objective || r.Track || "Untracked";
-const fMetaChips = r => [r.Platform, r["Sub Bucket"]].filter(v => v && v !== "-");
 
 function renderRoadmap(){
   renderNotice('roadmap-notice');
@@ -288,23 +293,43 @@ function renderRoadmap(){
     `<button class="chipbtn ${f===activeFilter?'active':''}" onclick="setFilter('${esc(f)}')">${esc(f)}</button>`).join("");
 
   const rows = activeFilter === "All" ? data : data.filter(r => r.Status === activeFilter);
-  const lanes = [...new Set(rows.map(fLane))];
+  laneList = [...new Set(rows.map(fLane))];
+
+  // Sheet-style table: dynamic columns (only those with data), grouped by objective
+  const colDefs = [
+    {key:"__title", label:"Project / Thread", render:r=>`<div class="rtitle">${esc(fTitle(r))}</div>${r.Notes?`<div class="rnote">${esc(r.Notes)}</div>`:""}`},
+    {key:"Platform", label:"Platform", render:r=>`<span class="rmuted">${esc(r.Platform||"")}</span>`},
+    {key:"Sub Bucket", label:"Sub Bucket", render:r=>`<span class="rmuted">${esc(r["Sub Bucket"]==="-"?"":(r["Sub Bucket"]||""))}</span>`},
+    {key:"Owner", label:"Owner", render:r=>esc(r.Owner||"")},
+    {key:"Target", label:"Target", render:r=>`<span class="rtarget">${esc(r.Target||"")}</span>`},
+    {key:"Status", label:"Status", render:r=>`<span class="chip ${STATUS_CLASS(r.Status)}">${esc(r.Status||"—")}</span>`},
+    {key:"Link", label:"Link", render:r=>r.Link?`<a class="rlink" href="${esc(r.Link)}" target="_blank" rel="noopener">Open ↗</a>`:""},
+  ];
+  const cols = colDefs.filter(c => c.key==="__title" || c.key==="Status" ||
+    data.some(r => String(r[c.key]||"").trim() && String(r[c.key]).trim() !== "-"));
+
   document.getElementById('roadmap-lanes').innerHTML = rows.length === 0
     ? `<div class="empty">${loadError ? "" : "No items match this filter."}</div>`
-    : lanes.map(t => `
-      <div class="lane"><h2>${esc(t)}</h2><div class="cards">
-      ${rows.filter(r => fLane(r) === t).map(r => `
-        <div class="item">
-          <div class="top"><h3>${esc(fTitle(r))}</h3><span class="chip ${STATUS_CLASS(r.Status)}">${esc(r.Status||"—")}</span></div>
-          <div class="meta">
-            ${r.Target?`<span>🎯 <b>${esc(r.Target)}</b></span>`:""}
-            ${fMetaChips(r).map(v => `<span><b>${esc(v)}</b></span>`).join("")}
-            ${r.Owner?`<span>👤 <b>${esc(r.Owner)}</b></span>`:""}
-          </div>
-          ${r.Notes?`<div class="notes">${esc(r.Notes)}</div>`:""}
-          ${r.Link?`<a class="btn" style="margin-top:10px" href="${esc(r.Link)}" target="_blank" rel="noopener">Open Link ↗</a>`:""}
-        </div>`).join("")}
-      </div></div>`).join("");
+    : `<div class="rtable-wrap"><table class="rtable">
+        <thead><tr>${cols.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr></thead>
+        <tbody>
+        ${laneList.map((t,li) => {
+          const group = rows.filter(r => fLane(r) === t);
+          const closed = collapsedLanes.has(t);
+          return `<tr class="rgroup" onclick="toggleLane(${li})"><td colspan="${cols.length}">
+              <span class="chev" style="transform:rotate(${closed?0:90}deg)">▸</span>${esc(t)}
+              <span class="gcount">${group.length} item${group.length===1?"":"s"}</span></td></tr>` +
+            (closed ? "" : group.map(r =>
+              `<tr class="rrow">${cols.map(c=>`<td>${c.render(r)}</td>`).join("")}</tr>`).join(""));
+        }).join("")}
+        </tbody></table></div>`;
+}
+let laneList = [];
+const collapsedLanes = new Set();
+function toggleLane(i){
+  const t = laneList[i];
+  collapsedLanes.has(t) ? collapsedLanes.delete(t) : collapsedLanes.add(t);
+  renderRoadmap();
 }
 function setFilter(f){ activeFilter = f; renderRoadmap(); }
 
