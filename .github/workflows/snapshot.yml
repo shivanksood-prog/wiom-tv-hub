@@ -1,0 +1,38 @@
+name: snapshot-dashboard-data
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch wiom.tv analytics API
+        run: |
+          mkdir -p data
+          ts=$(date -u +%FT%TZ)
+          for p in 1h 24h 7d 30d; do
+            curl -sf --max-time 30 "https://wiom.tv/api/stats?period=$p" \
+              | jq --arg t "$ts" '{fetched_at:$t, data:.}' > "data/stats-$p.json"
+          done
+          curl -sf --max-time 30 "https://wiom.tv/api/cohorts?days=21" \
+            | jq --arg t "$ts" '{fetched_at:$t, data:.}' > data/cohorts.json
+      - name: Commit if changed
+        run: |
+          git config user.name "snapshot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "data snapshot"
+          git pull --rebase origin main
+          git push
