@@ -48,6 +48,7 @@
   .notice{background:var(--amber200);color:#5c2e00;border-radius:12px;padding:14px 18px;font-size:13.5px;line-height:1.55;margin-bottom:18px}
   .notice b{font-weight:700}
   .notice code{background:rgba(0,0,0,.08);padding:1px 6px;border-radius:5px;font-size:12px}
+  .hero{background:var(--pink100);color:#5E003D;border-radius:12px;padding:14px 18px;font-size:13.5px;font-weight:600;line-height:1.55;margin-bottom:18px}
 
   .summary{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
   .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 18px;min-width:110px;box-shadow:var(--shadow)}
@@ -143,7 +144,7 @@
   <!-- ══ ROADMAP ══ -->
   <section class="panel" id="panel-roadmap">
     <div class="subbar">
-      <span style="font-size:13px;color:var(--muted)">Grouped by track · edit in the sheet, changes appear on refresh</span>
+      <span style="font-size:13px;color:var(--muted)">Grouped by objective · edit in the sheet, changes appear on refresh</span>
       <div class="right">
         <span id="roadmap-updated"></span>
         <button class="btn" onclick="loadSheet(true)">Refresh</button>
@@ -152,6 +153,7 @@
     </div>
     <div class="page">
       <div id="roadmap-notice"></div>
+      <div id="roadmap-hero"></div>
       <div class="summary" id="roadmap-summary"></div>
       <div class="filters" id="roadmap-filters"></div>
       <div id="roadmap-lanes"></div>
@@ -200,38 +202,50 @@ const SHEET_ID = new URLSearchParams(location.search).get('sheet') || "1fo6jnUOm
 
 const STATUS_CLASS = s => {
   const k = (s||"").toLowerCase();
-  if (k.includes("done") || k.includes("complete") || k.includes("shipped")) return "s-done";
+  if (k.includes("done") || k.includes("complete") || k.includes("shipped") || k.includes("live")) return "s-done";
   if (k.includes("progress") || k.includes("doing") || k.includes("wip")) return "s-progress";
-  if (k.includes("plan") || k.includes("next") || k.includes("todo")) return "s-planned";
+  if (k.includes("plan") || k.includes("next") || k.includes("todo") || k.includes("pick")) return "s-planned";
   if (k.includes("block")) return "s-blocked";
   if (k.includes("hold") || k.includes("pause")) return "s-hold";
   return "s-other";
 };
 const esc = s => String(s??"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ── gviz fetch: works client-side on any sheet shared "anyone with link can view" ── */
+/* ── gviz fetch: works client-side on any sheet shared "anyone with link can view" ──
+   Layout-tolerant: banner rows (≤2 filled cells) above the header row become `banner`;
+   the header row is the first with ≥3 filled cells; unnamed date columns become "Target". */
 async function fetchTab(tab){
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=${encodeURIComponent(tab)}`;
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=0&sheet=${encodeURIComponent(tab)}`;
   const txt = await (await fetch(url)).text();
   const json = JSON.parse(txt.substring(txt.indexOf('{'), txt.lastIndexOf('}')+1));
   if (json.status === 'error') throw new Error(json.errors?.[0]?.detailed_message || 'gviz error');
-  const cols = json.table.cols.map(c => (c.label||'').trim());
-  return json.table.rows.map(r => {
-    const o = {};
-    r.c.forEach((cell,i) => { if(cols[i]) o[cols[i]] = cell ? (cell.f ?? cell.v ?? "") : ""; });
-    return o;
-  }).filter(o => Object.values(o).some(v => String(v).trim() !== ""));
+  const raw = json.table.rows.map(r => (r.c||[]).map(c => c ? String(c.f ?? c.v ?? "").trim() : ""));
+  const filled = row => row.filter(v => v !== "").length;
+  let hIdx = raw.findIndex(row => filled(row) >= 3);
+  if (hIdx === -1) hIdx = 0;
+  const banner = raw.slice(0, hIdx).flat().filter(Boolean).join(" · ");
+  const types = json.table.cols.map(c => c.type);
+  const headers = (raw[hIdx]||[]).map((h,i) => h || (types[i] === 'date' ? 'Target' : ''));
+  const rows = raw.slice(hIdx+1)
+    .filter(row => filled(row) > 0)
+    .map(row => {
+      const o = {};
+      row.forEach((v,i) => { if(headers[i]) o[headers[i]] = v; });
+      return o;
+    });
+  return { banner, rows };
 }
 
-let roadmapData = [], docsData = [], activeFilter = "All", loadError = false;
+let roadmapData = [], roadmapBanner = "", docsData = [], activeFilter = "All", loadError = false;
 
 async function loadSheet(manual){
   try{
     // Documents tab is optional — don't let its absence kill the roadmap
     const [rm, docs] = await Promise.allSettled([fetchTab("Roadmap"), fetchTab("Documents")]);
     if (rm.status === 'rejected') throw rm.reason;
-    roadmapData = rm.value;
-    docsData = docs.status === 'fulfilled' ? docs.value : [];
+    roadmapData = rm.value.rows;
+    roadmapBanner = rm.value.banner;
+    docsData = docs.status === 'fulfilled' ? docs.value.rows : [];
     loadError = false;
     document.getElementById('roadmap-updated').textContent = "Updated " + new Date().toLocaleTimeString();
   }catch(e){
@@ -250,32 +264,45 @@ function renderNotice(el){
     <a href="https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit" target="_blank" rel="noopener">Open the sheet ↗</a></div>`;
 }
 
+/* Field accessors — tolerate both the live sheet's headers and generic ones */
+const fTitle = r => r["Projects/Threads"] || r.Item || r.Project || "";
+const fLane  = r => r.Objective || r.Track || "Untracked";
+const fMetaChips = r => [r.Platform, r["Sub Bucket"]].filter(v => v && v !== "-");
+
 function renderRoadmap(){
   renderNotice('roadmap-notice');
   const data = roadmapData;
 
+  document.getElementById('roadmap-hero').innerHTML = roadmapBanner
+    ? `<div class="hero">${esc(roadmapBanner)}</div>` : "";
+
   const statuses = [...new Set(data.map(r => r.Status).filter(Boolean))];
   const counts = {};
   statuses.forEach(s => counts[s] = data.filter(r => r.Status === s).length);
-  document.getElementById('roadmap-summary').innerHTML =
+  document.getElementById('roadmap-summary').innerHTML = data.length === 0 ? "" :
     `<div class="stat"><div class="n">${data.length}</div><div class="l">Total items</div></div>` +
     statuses.map(s => `<div class="stat"><div class="n">${counts[s]}</div><div class="l">${esc(s)}</div></div>`).join("");
 
   const filters = ["All", ...statuses];
-  document.getElementById('roadmap-filters').innerHTML = filters.map(f =>
+  document.getElementById('roadmap-filters').innerHTML = data.length === 0 ? "" : filters.map(f =>
     `<button class="chipbtn ${f===activeFilter?'active':''}" onclick="setFilter('${esc(f)}')">${esc(f)}</button>`).join("");
 
   const rows = activeFilter === "All" ? data : data.filter(r => r.Status === activeFilter);
-  const tracks = [...new Set(rows.map(r => r.Track || "Untracked"))];
+  const lanes = [...new Set(rows.map(fLane))];
   document.getElementById('roadmap-lanes').innerHTML = rows.length === 0
-    ? `<div class="empty">No items match this filter.</div>`
-    : tracks.map(t => `
+    ? `<div class="empty">${loadError ? "" : "No items match this filter."}</div>`
+    : lanes.map(t => `
       <div class="lane"><h2>${esc(t)}</h2><div class="cards">
-      ${rows.filter(r => (r.Track||"Untracked") === t).map(r => `
+      ${rows.filter(r => fLane(r) === t).map(r => `
         <div class="item">
-          <div class="top"><h3>${esc(r.Item)}</h3><span class="chip ${STATUS_CLASS(r.Status)}">${esc(r.Status||"—")}</span></div>
-          <div class="meta">${r.Target?`<span>🎯 <b>${esc(r.Target)}</b></span>`:""}${r.Owner?`<span>👤 <b>${esc(r.Owner)}</b></span>`:""}</div>
+          <div class="top"><h3>${esc(fTitle(r))}</h3><span class="chip ${STATUS_CLASS(r.Status)}">${esc(r.Status||"—")}</span></div>
+          <div class="meta">
+            ${r.Target?`<span>🎯 <b>${esc(r.Target)}</b></span>`:""}
+            ${fMetaChips(r).map(v => `<span><b>${esc(v)}</b></span>`).join("")}
+            ${r.Owner?`<span>👤 <b>${esc(r.Owner)}</b></span>`:""}
+          </div>
           ${r.Notes?`<div class="notes">${esc(r.Notes)}</div>`:""}
+          ${r.Link?`<a class="btn" style="margin-top:10px" href="${esc(r.Link)}" target="_blank" rel="noopener">Open Link ↗</a>`:""}
         </div>`).join("")}
       </div></div>`).join("");
 }
