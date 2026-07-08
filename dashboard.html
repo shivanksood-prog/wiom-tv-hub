@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wiom TV Analytics · Hub Replica</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ── Wiom light (default) ── */
+:root{
+  --bg:#FAF9FC; --card:#FFFFFF; --card-border:#D7D3E0; --card-hover:rgba(217,0,141,.45);
+  --text:#161021; --muted:#665E75; --dim:#A7A1B2; --row-border:#F1EDF7;
+  --bar-track:#F1EDF7; --accent:#D9008D; --accent-500:#FF66C9;
+  --chart-grid:#F1EDF7; --chart-tick:#A7A1B2;
+  --good:#008043; --bad:#E01E00; --warn:#B85C00;
+}
+/* ── Dark = original wiom.tv/dashboard palette ── */
+body[data-theme="dark"]{
+  --bg:#0a0612; --card:#1a1128; --card-border:#2d2240; --card-hover:rgba(217,0,141,.3);
+  --text:#e0dce8; --muted:#665E75; --dim:#443152; --row-border:#1f1834;
+  --bar-track:#2d2240; --chart-grid:#1f1834; --chart-tick:#443152;
+}
+
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans','Segoe UI',system-ui,sans-serif;min-height:100vh;transition:background .2s}
+.header{background:linear-gradient(135deg,#5E003D,#443152);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header h1{font-size:22px;font-weight:700;color:#FFB2E4}
+.header h1 span{color:#D9008D}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn{background:#443152;color:#FFB2E4;border:1px solid rgba(217,0,141,.3);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn:hover{border-color:#D9008D;color:#fff}
+.btn.active{background:#D9008D;color:#fff;border-color:#D9008D}
+.live-badge{background:#00c853;color:#000;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px;animation:livePulse 2s infinite}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.7}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;padding:20px 24px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px;transition:border-color .2s;box-shadow:0 1px 3px rgba(22,16,33,.05)}
+.card:hover{border-color:var(--card-hover)}
+.card h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px}
+.big-num{font-size:42px;font-weight:800;color:var(--accent);line-height:1}
+.big-sub{font-size:14px;color:var(--muted);margin-top:4px}
+.card-wide{grid-column:1/-1}
+.card-half{grid-column:span 2}
+@media(max-width:768px){.card-half{grid-column:span 1}}
+.chart-container{position:relative;height:250px;width:100%}
+.table-wrap{max-height:400px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--card-border) transparent}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:8px 12px;border-bottom:1px solid var(--card-border);position:sticky;top:0;background:var(--card)}
+td{padding:10px 12px;font-size:14px;border-bottom:1px solid var(--row-border)}
+tr:hover{background:rgba(217,0,141,.05)}
+.rank{color:var(--accent);font-weight:800;min-width:28px;display:inline-block}
+.bar{height:6px;background:var(--bar-track);border-radius:3px;overflow:hidden;min-width:80px}
+.bar-fill{height:100%;background:linear-gradient(90deg,#D9008D,#FF66C9);border-radius:3px;transition:width .5s}
+.lang-badge{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}
+.lang-Hindi{background:rgba(217,0,141,.12);color:#D9008D}
+.lang-English{background:rgba(0,128,67,.12);color:#008043}
+.lang-Punjabi{background:rgba(255,128,0,.12);color:#c26100}
+.lang-Marathi{background:rgba(109,23,206,.12);color:#6D17CE}
+.lang-Urdu{background:rgba(0,128,200,.12);color:#0069a4}
+.lang-Bhojpuri{background:rgba(255,200,0,.15);color:#8a6d00}
+body[data-theme="dark"] .lang-Hindi{color:#FF66C9}
+body[data-theme="dark"] .lang-English{color:#00c853}
+body[data-theme="dark"] .lang-Punjabi{color:#ff8000}
+body[data-theme="dark"] .lang-Marathi{color:#a855f7}
+body[data-theme="dark"] .lang-Urdu{color:#0080c8}
+body[data-theme="dark"] .lang-Bhojpuri{color:#ffc800}
+.refresh-info{text-align:center;padding:12px;color:var(--dim);font-size:12px}
+.empty{text-align:center;padding:40px;color:var(--dim);font-size:16px}
+.cohort-cell{text-align:center;font-weight:600}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1><span>Wiom</span> TV Analytics</h1>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="live-badge" id="live-count">-- live</div>
+    <div class="controls">
+      <button class="btn" data-period="1h">1H</button>
+      <button class="btn active" data-period="24h">24H</button>
+      <button class="btn" data-period="7d">7D</button>
+      <button class="btn" data-period="30d">30D</button>
+      <button class="btn" id="theme-toggle" title="Toggle light/dark">🌙</button>
+    </div>
+  </div>
+</div>
+
+<div class="grid" id="content">
+  <div class="empty">Loading analytics...</div>
+</div>
+
+<div class="refresh-info">Auto-refreshes every 30 seconds · replica of wiom.tv/dashboard reading the same live data</div>
+
+<script>
+/* ════════ DATA SOURCE CONFIG ════════
+   The wiom.tv API doesn't send CORS headers, so this page can't call it directly
+   from another domain. Two data modes:
+   - PROXY mode (real-time): set PROXY_URL to any CORS proxy forwarding to
+     https://wiom.tv/api/… (called as PROXY_URL/api/stats?period=24h), or pass
+     ?proxy=<url> in the page URL. Empty PROXY_URL on wiom.tv itself also works.
+   - SNAPSHOT mode (default fallback): a GitHub Action in this repo fetches the
+     API every 10 min into ./data/*.json; the page reads those same-origin. */
+const PROXY_URL = new URLSearchParams(location.search).get('proxy') || "";
+const SNAPSHOT = !PROXY_URL && location.hostname !== 'wiom.tv';
+
+function apiUrl(path, params){ // path: "stats" | "cohorts"
+  const qs = new URLSearchParams(params);
+  if (PROXY_URL.includes('/exec')) { qs.set('path', path); return `${PROXY_URL}?${qs}`; }
+  if (PROXY_URL) return `${PROXY_URL.replace(/\/$/,'')}/api/${path}?${qs}`;
+  return `/api/${path}?${qs}`;
+}
+
+let snapshotAt = null; // Date of last snapshot, shown in footer
+async function getData(path, params){
+  if (!SNAPSHOT){
+    const r = await fetch(apiUrl(path, params));
+    return r.json();
+  }
+  const file = path === 'stats' ? `stats-${params.period}.json` : 'cohorts.json';
+  const r = await fetch(`data/${file}?t=${Date.now()}`);
+  const wrapped = await r.json();
+  snapshotAt = new Date(wrapped.fetched_at);
+  updateFooter();
+  return wrapped.data;
+}
+function updateFooter(){
+  const el = document.querySelector('.refresh-info');
+  if (!el || !snapshotAt) return;
+  const age = Math.max(0, Math.round((Date.now() - snapshotAt.getTime()) / 60000));
+  el.textContent = `Snapshot mode · data captured ${age} min ago (auto-updates every ~10 min) · replica of wiom.tv/dashboard`;
+}
+
+/* ════════ THEME ════════ */
+const themeBtn = document.getElementById('theme-toggle');
+function applyTheme(t){
+  document.body.dataset.theme = t;
+  themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('hub-dash-theme', t);
+}
+themeBtn.onclick = () => { applyTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark'); lastData && render(lastData); };
+applyTheme(localStorage.getItem('hub-dash-theme') || 'light');
+
+function chartColors(){
+  const s = getComputedStyle(document.body);
+  return { grid: s.getPropertyValue('--chart-grid').trim(), tick: s.getPropertyValue('--chart-tick').trim(), legend: s.getPropertyValue('--muted').trim() };
+}
+
+let currentPeriod = '24h';
+let trendChart = null, catChart = null, langChart = null, lastData = null;
+
+const BRAND = '#D9008D';
+const BRAND_500 = '#FF66C9';
+const COLORS = ['#D9008D','#FF66C9','#FFB2E4','#6D17CE','#a855f7','#00c853','#ff8000','#0080c8','#ffc800','#e01e00','#443152','#665E75'];
+
+document.querySelectorAll('.btn[data-period]').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.btn[data-period]').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    currentPeriod = b.dataset.period;
+    loadData();
+  };
+});
+
+async function loadData() {
+  try {
+    const data = await getData('stats', { period: currentPeriod });
+    lastData = data;
+    render(data);
+  } catch (e) {
+    document.getElementById('content').innerHTML = '<div class="empty">Failed to load data — snapshot not published yet or proxy unreachable.</div>';
+  }
+}
+
+function render(data) {
+  const { overview, liveNow, channelLeaderboard, categoryBreakdown, languageBreakdown, hourlyTrend, dailyTrend, deviceBreakdown,
+    funnel = { opens: 0, playback: 0, engaged: 0 }, retention = { new_users: 0, returning_users: 0 },
+    errorBoard = [], perf = {}, netBreakdown = [],
+    engagement = {}, survey = {} } = data;
+
+  const seScore = pct(survey.very || 0, survey.responses || 0);
+
+  document.getElementById('live-count').textContent = liveNow + ' live';
+
+  const periodLabel = currentPeriod === '1h' ? 'Last Hour' : currentPeriod === '24h' ? 'Last 24 Hours' : currentPeriod === '7d' ? 'Last 7 Days' : 'Last 30 Days';
+
+  document.getElementById('content').innerHTML = `
+    <!-- Overview Cards -->
+    <div class="card">
+      <h3>Unique Users</h3>
+      <div class="big-num">${(overview.unique_users || 0).toLocaleString()}</div>
+      <div class="big-sub">${periodLabel}</div>
+    </div>
+    <div class="card">
+      <h3>Channel Switches</h3>
+      <div class="big-num">${(overview.total_tunes || 0).toLocaleString()}</div>
+      <div class="big-sub">${periodLabel}</div>
+    </div>
+    <div class="card">
+      <h3>Total Watch Time</h3>
+      <div class="big-num">${formatMinutes(overview.total_watch_min || 0)}</div>
+      <div class="big-sub">${periodLabel}</div>
+    </div>
+    <div class="card">
+      <h3>Avg Session Duration</h3>
+      <div class="big-num">${formatDuration(overview.avg_duration_sec || 0)}</div>
+      <div class="big-sub">per channel switch</div>
+    </div>
+    <div class="card">
+      <h3>Returning Viewers</h3>
+      <div class="big-num">${(retention.returning_users || 0).toLocaleString()}</div>
+      <div class="big-sub">${(retention.new_users || 0).toLocaleString()} new &middot; ${periodLabel}</div>
+    </div>
+
+    <!-- Activation Funnel -->
+    <div class="card card-wide">
+      <h3>Activation Funnel &middot; ${periodLabel}</h3>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        ${funnelStage('Opened app', funnel.opens, funnel.opens)}
+        ${funnelStage('Started playback', funnel.playback, funnel.opens)}
+        ${funnelStage('Engaged · watched ≥60s', funnel.engaged, funnel.opens)}
+      </div>
+      <div class="big-sub" style="margin-top:12px">Activation rate: <b style="color:var(--accent)">${pct(funnel.engaged, funnel.opens)}%</b> of openers reach ≥60s of watching${funnel.opens < 20 ? ' &middot; <span style="color:var(--warn)">low sample — early data</span>' : ''}</div>
+    </div>
+
+    <!-- Channel Health / Errors -->
+    <div class="card card-half">
+      <h3>Channel Health — Playback Errors</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Channel</th><th>Errors</th><th>OK Plays</th><th>Fail %</th></tr>
+          ${errorBoard.length ? errorBoard.map(c => `
+            <tr>
+              <td>${c.ch} &middot; ${c.name || ''}<br><small style="color:var(--muted)">${c.cat || ''}</small></td>
+              <td style="color:var(--bad);font-weight:800">${c.errors}</td>
+              <td>${c.starts}</td>
+              <td>${pct(c.errors, c.errors + c.starts)}%</td>
+            </tr>
+          `).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--good);padding:24px">No playback errors recorded ✓</td></tr>'}
+        </table>
+      </div>
+    </div>
+
+    <!-- Load Speed -->
+    <div class="card">
+      <h3>Load Speed (Time to First Frame)</h3>
+      <div class="big-num">${perf.avg_ttff_ms ? (perf.avg_ttff_ms / 1000).toFixed(1) + 's' : '—'}</div>
+      <div class="big-sub">avg across ${(perf.samples || 0).toLocaleString()} plays</div>
+      <div style="margin-top:14px">
+        ${(netBreakdown || []).map(n => `
+          <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--row-border);font-size:13px">
+            <span>${n.net}</span>
+            <span style="color:var(--muted)">${n.avg_ttff_ms ? (n.avg_ttff_ms / 1000).toFixed(1) + 's' : '—'} &middot; ${n.starts} plays</span>
+          </div>`).join('') || '<div style="color:var(--dim);padding:12px;text-align:center">No data yet</div>'}
+      </div>
+    </div>
+
+    <!-- Product-Market Fit -->
+    <div class="card">
+      <h3>Product-Market Fit (Sean-Ellis)</h3>
+      <div class="big-num" style="color:${seScore >= 40 ? 'var(--good)' : 'var(--accent)'}">${survey.responses ? seScore + '%' : '—'}</div>
+      <div class="big-sub">"very disappointed" if it went away &middot; ${survey.responses || 0} responses</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--muted)">Target ≥40% &middot; ${survey.responses ? (seScore >= 40 ? '<b style="color:var(--good)">PMF signal ✓</b>' : 'below threshold') : 'awaiting responses'}</div>
+    </div>
+
+    <!-- Engagement Quality -->
+    <div class="card">
+      <h3>Engagement Quality</h3>
+      <div style="display:flex;flex-direction:column;gap:9px;font-size:14px;margin-top:4px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Avg session length</span><b>${formatDuration(engagement.avg_session_sec || 0)}</b></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Channels / session</span><b>${engagement.avg_channels || 0}</b></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Bounce (≤1 channel)</span><b style="color:${(engagement.bounce_pct || 0) > 50 ? 'var(--bad)' : 'var(--text)'}">${engagement.bounce_pct || 0}%</b></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Zap rate (&lt;5s dwell)</span><b style="color:${(engagement.zap_pct || 0) > 40 ? 'var(--warn)' : 'var(--text)'}">${engagement.zap_pct || 0}%</b></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">Sessions</span><b>${(engagement.sessions || 0).toLocaleString()}</b></div>
+      </div>
+    </div>
+
+    <!-- Retention Cohorts -->
+    <div class="card card-wide" id="cohort-card">
+      <h3>Retention Cohorts &middot; % of devices returning by day-since-first-visit</h3>
+      <div id="cohort-content" class="table-wrap"><div style="color:var(--dim);padding:20px;text-align:center">Loading cohorts…</div></div>
+    </div>
+
+    <!-- Trend Chart -->
+    <div class="card card-wide">
+      <h3>User Trend &middot; ${periodLabel}</h3>
+      <div class="chart-container"><canvas id="trendCanvas"></canvas></div>
+    </div>
+
+    <!-- Channel Leaderboard -->
+    <div class="card card-half">
+      <h3>Top Channels</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>#</th><th>Channel</th><th>Lang</th><th>Users</th><th>Watch Time</th><th></th></tr>
+          ${channelLeaderboard.length ? channelLeaderboard.map((c, i) => `
+            <tr>
+              <td><span class="rank">${i + 1}</span></td>
+              <td>${c.name || 'Ch ' + c.ch}<br><small style="color:var(--muted)">${c.cat || ''}</small></td>
+              <td><span class="lang-badge lang-${c.lang || ''}">${c.lang || '?'}</span></td>
+              <td>${c.unique_users}</td>
+              <td>${formatMinutes(c.watch_min)}</td>
+              <td><div class="bar"><div class="bar-fill" style="width:${channelLeaderboard[0].watch_min ? Math.round(c.watch_min / channelLeaderboard[0].watch_min * 100) : 0}%"></div></div></td>
+            </tr>
+          `).join('') : '<tr><td colspan="6" style="text-align:center;color:var(--dim)">No data yet</td></tr>'}
+        </table>
+      </div>
+    </div>
+
+    <!-- Category & Language -->
+    <div class="card">
+      <h3>By Category</h3>
+      <div class="chart-container"><canvas id="catCanvas"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>By Language</h3>
+      <div class="chart-container"><canvas id="langCanvas"></canvas></div>
+    </div>
+
+    <!-- Device Breakdown -->
+    <div class="card">
+      <h3>Devices</h3>
+      ${deviceBreakdown.length ? deviceBreakdown.map(d => `
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--row-border)">
+          <span>${capitalize(d.device || 'Unknown')}</span>
+          <span style="color:var(--accent);font-weight:700">${d.users}</span>
+        </div>
+      `).join('') : '<div style="color:var(--dim);padding:20px;text-align:center">No data yet</div>'}
+    </div>
+  `;
+
+  // Render charts
+  renderTrendChart(currentPeriod === '1h' || currentPeriod === '24h' ? hourlyTrend : dailyTrend);
+  renderCatChart(categoryBreakdown);
+  renderLangChart(languageBreakdown);
+  loadCohorts();
+}
+
+async function loadCohorts() {
+  const el = document.getElementById('cohort-content');
+  if (!el) return;
+  try {
+    const { offsets, grid } = await getData('cohorts', { days: 21 });
+    if (!grid || !grid.length) { el.innerHTML = '<div style="color:var(--dim);padding:20px;text-align:center">No cohort data yet — needs a few days of returning visitors</div>'; return; }
+    const dark = document.body.dataset.theme === 'dark';
+    el.innerHTML = `<table>
+      <tr><th>Cohort (first seen)</th><th>Devices</th>${offsets.map(o => `<th>D${o}</th>`).join('')}</tr>
+      ${grid.map(row => `<tr>
+        <td>${row.cohort}</td>
+        <td><b>${row.size}</b></td>
+        ${row.cells.map(c => {
+          const a = (c.pct / 100 * 0.85).toFixed(2);
+          const txt = c.pct > 55 && !dark ? '#fff' : 'inherit';
+          return `<td class="cohort-cell" style="background:rgba(217,0,141,${a});color:${txt}">${c.users ? c.pct + '%' : '·'}</td>`;
+        }).join('')}
+      </tr>`).join('')}
+    </table>
+    <div style="font-size:11px;color:var(--dim);padding:8px 4px">D0 is always 100% (first visit). The PMF signal is the later columns <b>flattening</b> instead of decaying to 0.</div>`;
+  } catch (e) {
+    el.innerHTML = '<div style="color:var(--dim);padding:20px;text-align:center">Cohorts unavailable</div>';
+  }
+}
+
+function renderTrendChart(trend) {
+  const ctx = document.getElementById('trendCanvas');
+  if (!ctx) return;
+  if (trendChart) trendChart.destroy();
+  const cc = chartColors();
+
+  const labels = trend.map(t => {
+    if (t.hour) {
+      const d = new Date(t.hour + ':00Z');
+      return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+    }
+    return t.day;
+  });
+
+  trendChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Users',
+        data: trend.map(t => t.users),
+        borderColor: BRAND,
+        backgroundColor: 'rgba(217,0,141,0.1)',
+        fill: true,
+        tension: 0.4,
+        pointRadius: 3,
+        pointBackgroundColor: BRAND
+      }, {
+        label: 'Channel Switches',
+        data: trend.map(t => t.tunes),
+        borderColor: BRAND_500,
+        backgroundColor: 'transparent',
+        borderDash: [5, 5],
+        tension: 0.4,
+        pointRadius: 2,
+        pointBackgroundColor: BRAND_500
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: cc.legend, font: { size: 11 } } } },
+      scales: {
+        x: { ticks: { color: cc.tick, maxRotation: 45, font: { size: 10 } }, grid: { color: cc.grid } },
+        y: { ticks: { color: cc.tick, font: { size: 10 } }, grid: { color: cc.grid }, beginAtZero: true }
+      }
+    }
+  });
+}
+
+function renderCatChart(cats) {
+  const ctx = document.getElementById('catCanvas');
+  if (!ctx || !cats.length) return;
+  if (catChart) catChart.destroy();
+  catChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: cats.map(c => c.cat),
+      datasets: [{ data: cats.map(c => c.watch_min), backgroundColor: COLORS.slice(0, cats.length), borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: chartColors().legend, font: { size: 11 }, padding: 8 } } }
+    }
+  });
+}
+
+function renderLangChart(langs) {
+  const ctx = document.getElementById('langCanvas');
+  if (!ctx || !langs.length) return;
+  if (langChart) langChart.destroy();
+  langChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: langs.map(l => l.lang),
+      datasets: [{ data: langs.map(l => l.watch_min), backgroundColor: COLORS.slice(0, langs.length), borderWidth: 0 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { color: chartColors().legend, font: { size: 11 }, padding: 8 } } }
+    }
+  });
+}
+
+function formatMinutes(min) {
+  if (min < 1) return Math.round(min * 60) + 's';
+  if (min < 60) return Math.round(min) + 'm';
+  return Math.round(min / 60 * 10) / 10 + 'h';
+}
+
+function formatDuration(sec) {
+  if (sec < 60) return Math.round(sec) + 's';
+  return Math.round(sec / 60) + 'm';
+}
+
+function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+
+function pct(a, b) { return b > 0 ? Math.round(a / b * 100) : 0; }
+
+function funnelStage(label, val, base) {
+  const p = pct(val, base);
+  return `<div style="flex:1;min-width:150px">
+    <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">${label}</div>
+    <div style="font-size:30px;font-weight:800;color:var(--accent);line-height:1.2">${(val || 0).toLocaleString()}</div>
+    <div class="bar" style="margin-top:6px"><div class="bar-fill" style="width:${p}%"></div></div>
+    <div style="font-size:12px;color:var(--muted);margin-top:4px">${p}% of openers</div>
+  </div>`;
+}
+
+// Initial load + auto-refresh
+loadData();
+setInterval(loadData, 30000);
+</script>
+</body>
+</html>
