@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install Banner (Add to Home Screen) — Wiom TV</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0;
+    --text:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D;
+    --s1:#D9008D; --s2:#6D17CE; --s3:#B08A1E;
+    --pass-fg:#008043; --pass-bg:#E1FAED;
+    --warn-fg:#B45B00; --warn-bg:#FFE6CC; --warn-line:#FF8000;
+    --info-fg:#6D17CE; --info-bg:#F1E5FF;
+    --grid:#E7E2EF;
+  }
+  :root[data-theme="dark"]{
+    --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152;
+    --text:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+    --s1:#F033AE; --s2:#9D5CFF; --s3:#A8821F;
+    --pass-fg:#4ADE97; --pass-bg:rgba(0,128,67,.22);
+    --warn-fg:#FFA64D; --warn-bg:rgba(255,128,0,.18); --warn-line:#FF8000;
+    --info-fg:#C9A2FF; --info-bg:rgba(109,23,206,.25);
+    --grid:#3E3550;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg); color:var(--text);
+    font-family:"Noto Sans", system-ui, sans-serif; line-height:1.5; padding:28px 20px 64px;}
+  .wrap{max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:20px;}
+  .topbar{display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;}
+  .topbar .grow{flex:1; min-width:260px;}
+  .eyebrow{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  h1{font-size:24px; margin:2px 0 0; text-wrap:balance; font-weight:800;}
+  h2{font-size:16px; margin:0; font-weight:700;}
+  .meta{font-size:13px; color:var(--muted); margin-top:6px;}
+  .meta b{color:var(--text); font-weight:600;}
+  .btn{background:var(--card); color:var(--accent); border:1px solid var(--border); border-radius:9px;
+       padding:6px 14px; font:inherit; font-size:13px; font-weight:600; cursor:pointer;}
+  .btn:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px;
+        box-shadow:0 1px 3px rgba(22,16,33,.06);}
+  .sub{font-size:13px; color:var(--muted); margin:0 0 14px;}
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px;}
+  .tile{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px;
+        box-shadow:0 1px 3px rgba(22,16,33,.06);}
+  .tile .n{font-size:24px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .tile .l{font-size:12px; color:var(--muted); margin-top:2px; line-height:1.45;}
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:760px){.two{grid-template-columns:1fr;}}
+  svg text{font-family:inherit;}
+  .chartbox{overflow-x:auto;}
+  .legend{display:flex; flex-wrap:wrap; gap:14px; font-size:13px; color:var(--muted); margin-bottom:10px;}
+  .legend .k{display:inline-flex; align-items:center; gap:7px;}
+  .swatch{width:11px; height:11px; border-radius:3px; display:inline-block;}
+  .funnel{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+  .frow{display:grid; grid-template-columns:180px 1fr 150px; gap:12px; align-items:center; font-size:13px;}
+  @media (max-width:600px){.frow{grid-template-columns:130px 1fr 120px;}}
+  .frow .lbl{color:var(--muted);}
+  .frow .bar{height:22px; border-radius:4px; background:var(--s1); min-width:2px;}
+  .frow .val{font-variant-numeric:tabular-nums;}
+  .tablebox{overflow-x:auto;}
+  table{border-collapse:collapse; width:100%; font-size:13.5px; font-variant-numeric:tabular-nums;}
+  th{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:600;
+     text-align:right; padding:8px 10px; border-bottom:2px solid var(--border); white-space:nowrap;}
+  th:first-child{text-align:left;}
+  td{padding:8px 10px; border-bottom:1px solid var(--grid); text-align:right; white-space:nowrap;}
+  td:first-child{text-align:left; color:var(--text); font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+  .best{font-weight:700;}
+  .chip{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600;
+        padding:5px 11px; border-radius:999px; background:var(--info-bg); color:var(--info-fg);}
+  .foot{font-size:12.5px; color:var(--muted); line-height:1.65;}
+  .foot b{color:var(--text);}
+  ol.foot{padding-left:18px; margin:6px 0 0;}
+  ol.foot li{margin-bottom:5px;}
+  #tip{position:fixed; pointer-events:none; background:var(--text); color:var(--bg);
+       font-size:12px; padding:6px 10px; border-radius:6px; opacity:0; transition:opacity .12s;
+       z-index:10; max-width:280px; font-variant-numeric:tabular-nums;}
+  @media (prefers-reduced-motion: reduce){ #tip{transition:none;} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="grow">
+      <div class="eyebrow">Wiom TV · PWA Install</div>
+      <h1>Install banner — Add to Home Screen</h1>
+      <div class="meta">Custom in-app banner shown after <b>60 s of watching</b>, gating the native install prompt · window <b>Jun 23 → Jul 8</b> (uid era) · snapshot 2026-07-08 12:49 UTC · Jul 8 is a partial day</div>
+    </div>
+    <button class="btn" id="themeToggle" aria-label="Toggle dark mode">◐ Theme</button>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><div class="n">1,175</div><div class="l">Users shown the banner — 76% of those who watched ≥60 s</div></div>
+    <div class="tile"><div class="n">12.8%</div><div class="l">Of shown users tapped Install and answered the native prompt (150 users)</div></div>
+    <div class="tile"><div class="n">98</div><div class="l">Confirmed installed users — launch the app standalone (269 launches)</div></div>
+    <div class="tile"><div class="n">2.1×</div><div class="l">Return rate of installed vs shown-not-installed (48.7% vs 23.5%)</div></div>
+  </div>
+
+  <section class="card">
+    <h2>Install funnel — per user</h2>
+    <p class="sub">“Answered prompt” is not “installed”: the accept/decline outcome is sent by the client but not stored server-side. Standalone launches are the honest install proof.</p>
+    <div class="funnel">
+      <div class="frow"><span class="lbl">Watched ≥60 s (eligible proxy)</span><div><div class="bar" style="width:100%"></div></div><span class="val">1,546 · 100%</span></div>
+      <div class="frow"><span class="lbl">Banner shown</span><div><div class="bar" style="width:76.0%; opacity:.85"></div></div><span class="val">1,175 · 76.0%</span></div>
+      <div class="frow"><span class="lbl">Answered native prompt</span><div><div class="bar" style="width:9.7%; opacity:.7"></div></div><span class="val">150 · 12.8% of shown</span></div>
+      <div class="frow"><span class="lbl">Confirmed use (standalone)</span><div><div class="bar" style="width:5.2%; opacity:.55"></div></div><span class="val">80 · 53.3% of answered</span></div>
+    </div>
+    <p class="foot" style="margin-top:12px;">Separately: <b>144 users (12.3% of shown) dismissed</b> the banner — dismissal snoozes it for 14 days. And <b>18 users launch standalone with no prompt event</b> (browser-menu installs / iOS Add to Home Screen, which the funnel can't see) — total confirmed installed users is 98.</p>
+  </section>
+
+  <section class="card">
+    <h2>Daily trend — IST days</h2>
+    <p class="sub">Banner impressions run steady ~80–110/day; prompt answers ~10/day; a stable ~13 users/day launch from the installed app</p>
+    <div class="legend">
+      <span class="k"><span class="swatch" style="background:var(--s1)"></span>Banner shown</span>
+      <span class="k"><span class="swatch" style="background:var(--s2)"></span>Answered prompt</span>
+      <span class="k"><span class="swatch" style="background:var(--s3)"></span>Standalone users</span>
+    </div>
+    <div class="chartbox">
+    <svg id="trend" viewBox="0 0 900 260" width="100%" role="img" aria-label="Daily banner shown, prompt answers and standalone launch users, June 23 to July 8"></svg>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Do installers behave differently?</h2>
+    <p class="sub">Correlation, not causation — installers self-select from already-engaged users. But the retention concentration is real.</p>
+    <div class="tablebox">
+    <table>
+      <thead>
+        <tr><th>Group</th><th>Users</th><th>Returned a later day</th><th>Sessions / user</th><th>Watch min / user</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Answered prompt (“installed”)</td>
+          <td>150</td><td class="best">48.7%</td><td class="best">4.4</td><td class="best">28.6</td>
+        </tr>
+        <tr>
+          <td>Shown, didn't install</td>
+          <td>1,027</td><td>23.5%</td><td>2.4</td><td>11.2</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="foot" style="margin-top:10px;">Sessions and watch minutes are all-time per user; “returned” counts activity on a later IST day than the shown/install event.</p>
+  </section>
+
+  <section class="card">
+    <h2>How the feature works &amp; what we can't see</h2>
+    <ol class="foot">
+      <li><b>Mechanics:</b> Android — browser fires <code>beforeinstallprompt</code>; our banner appears after 60 s of watching (30 s if the user previously dismissed the fullscreen prompt); suppressed if already standalone, dismissed &lt;14 days ago, or the guide/fullscreen prompt is open. Tapping Install opens the native prompt. iOS — banner shows manual Add-to-Home-Screen instructions; no install event is possible.</li>
+      <li><b>Accept vs decline is not persisted:</b> the client sends the native-prompt outcome but the server drops it (meta is NULL on all 168 events). The 150 are prompt-answerers, not confirmed installs. One-line server fix, deferred with the dashboard repair.</li>
+      <li><b>OS split is not persisted</b> either — the Android vs iOS funnel can't be separated.</li>
+      <li><b>No <code>appinstalled</code> listener:</b> browser-menu and iOS installs are invisible except via standalone launches.</li>
+      <li><b>Launches from the installed app ARE detectable</b> (<code>launch_mode='standalone'</code>), reliable since Jun 27 — this is the ground-truth install metric.</li>
+    </ol>
+  </section>
+
+  <footer class="foot" style="text-align:center;">Snapshot 2026-07-08 12:49 UTC · static page — ask for a refresh to regenerate · see also the Launch Surfaces tab: standalone-PWA users are the product's stickiest surface</footer>
+
+</div>
+
+<div id="tip" role="status"></div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var saved = localStorage.getItem('hub-page-theme');
+  if (saved) root.setAttribute('data-theme', saved);
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('hub-page-theme', next);
+    draw();
+  });
+
+  var days = [
+    {d:'23', shown:16, inst:2, sa:0},
+    {d:'24', shown:76, inst:14, sa:0},
+    {d:'25', shown:82, inst:13, sa:0},
+    {d:'26', shown:83, inst:8, sa:0},
+    {d:'27', shown:94, inst:11, sa:0},
+    {d:'28', shown:110, inst:21, sa:19},
+    {d:'29', shown:85, inst:8, sa:12},
+    {d:'30', shown:83, inst:10, sa:13},
+    {d:'1', shown:103, inst:9, sa:9},
+    {d:'2', shown:91, inst:8, sa:15},
+    {d:'3', shown:79, inst:11, sa:13},
+    {d:'4', shown:75, inst:8, sa:10},
+    {d:'5', shown:93, inst:12, sa:16},
+    {d:'6', shown:90, inst:10, sa:10},
+    {d:'7', shown:93, inst:8, sa:13},
+    {d:'8', shown:59, inst:1, sa:7, partial:true}
+  ];
+  var fullLabel = function(i){ return (i < 8 ? 'Jun ' : 'Jul ') + days[i].d; };
+
+  var tip = document.getElementById('tip');
+  function showTip(evt, html){
+    tip.innerHTML = html;
+    tip.style.opacity = 1;
+    var x = Math.min(evt.clientX + 14, window.innerWidth - 290);
+    tip.style.left = x + 'px';
+    tip.style.top = (evt.clientY + 14) + 'px';
+  }
+  function hideTip(){ tip.style.opacity = 0; }
+
+  function S(tag, attrs, parent){
+    var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (var a in attrs) el.setAttribute(a, attrs[a]);
+    parent.appendChild(el);
+    return el;
+  }
+
+  function draw(){
+    var css = getComputedStyle(root);
+    function tok(n){ return css.getPropertyValue(n).trim(); }
+    var svg = document.getElementById('trend');
+    svg.innerHTML = '';
+    var g = {left:40, right:14, top:14, bottom:32, w:900, h:260};
+    var ymax = 120;
+    function px(i){ return g.left + (g.w-g.left-g.right) * i/(days.length-1); }
+    function py(v){ return g.top + (g.h-g.top-g.bottom) * (1 - v/ymax); }
+    [0,30,60,90,120].forEach(function(v){
+      S('line', {x1:g.left, x2:g.w-g.right, y1:py(v), y2:py(v),
+        stroke: v===0 ? tok('--muted') : tok('--grid'), 'stroke-width':1}, svg);
+      S('text', {x:g.left-8, y:py(v)+4, 'text-anchor':'end', 'font-size':11,
+        fill:tok('--faint')}, svg).textContent = v;
+    });
+    days.forEach(function(d, i){
+      if (i % 2 === 0 || i === days.length-1){
+        S('text', {x:px(i), y:g.h-g.bottom+18, 'text-anchor':'middle', 'font-size':11,
+          fill:tok('--faint')}, svg).textContent = fullLabel(i);
+      }
+    });
+    var series = [
+      {key:'shown', color:'--s1', label:'Banner shown'},
+      {key:'inst',  color:'--s2', label:'Answered prompt'},
+      {key:'sa',    color:'--s3', label:'Standalone users'}
+    ];
+    series.forEach(function(s){
+      var dPath = days.map(function(d,i){ return (i?'L':'M')+px(i)+' '+py(d[s.key]); }).join(' ');
+      S('path', {d:dPath, fill:'none', stroke:tok(s.color), 'stroke-width':2,
+        'stroke-linejoin':'round', 'stroke-linecap':'round',
+        'stroke-dasharray': ''}, svg);
+      /* endpoint emphasis */
+      var last = days.length-1;
+      S('circle', {cx:px(last), cy:py(days[last][s.key]), r:3.5, fill:tok(s.color)}, svg);
+    });
+    /* crosshair + hover */
+    var cross = S('line', {x1:0, x2:0, y1:g.top, y2:g.h-g.bottom, stroke:tok('--muted'),
+      'stroke-width':1, 'stroke-dasharray':'3 3', opacity:0}, svg);
+    var dots = series.map(function(s){
+      return S('circle', {r:4.5, fill:tok(s.color), stroke:tok('--card'), 'stroke-width':2, opacity:0}, svg);
+    });
+    var hit = S('rect', {x:g.left, y:g.top, width:g.w-g.left-g.right, height:g.h-g.top-g.bottom,
+      fill:'transparent'}, svg);
+    hit.addEventListener('mousemove', function(evt){
+      var r = svg.getBoundingClientRect();
+      var mx = (evt.clientX - r.left) * (g.w / r.width);
+      var i = Math.round((mx - g.left) / ((g.w-g.left-g.right)/(days.length-1)));
+      i = Math.max(0, Math.min(days.length-1, i));
+      cross.setAttribute('x1', px(i)); cross.setAttribute('x2', px(i));
+      cross.setAttribute('opacity', 1);
+      series.forEach(function(s, k){
+        dots[k].setAttribute('cx', px(i));
+        dots[k].setAttribute('cy', py(days[i][s.key]));
+        dots[k].setAttribute('opacity', 1);
+      });
+      showTip(evt, '<b>'+fullLabel(i)+(days[i].partial?' (partial)':'')+'</b><br>'+
+        'Banner shown: '+days[i].shown+'<br>Answered prompt: '+days[i].inst+
+        '<br>Standalone users: '+(i<5 ? 'n/a (pre-instrumentation)' : days[i].sa));
+    });
+    hit.addEventListener('mouseleave', function(){
+      cross.setAttribute('opacity', 0);
+      dots.forEach(function(d){ d.setAttribute('opacity', 0); });
+      hideTip();
+    });
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

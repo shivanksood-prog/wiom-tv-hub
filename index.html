@@ -139,12 +139,16 @@
     <div class="subbar">
       <button class="subtab" data-sub="live">Dashboard</button>
       <button class="subtab" data-sub="experiment1">Experiment 1</button>
+      <button class="subtab" data-sub="a2hs">Add to Home Screen</button>
+      <button class="subtab" data-sub="surfaces">Launch Surfaces</button>
       <div class="right">
         <a class="btn" id="openSrc" href="dashboard.html" target="_blank" rel="noopener">Open Full Page ↗</a>
       </div>
     </div>
     <div class="framewrap" id="frame-live" data-src="dashboard.html"></div>
     <div class="framewrap" id="frame-experiment1" data-src="experiment1.html" style="display:none"></div>
+    <div class="framewrap" id="frame-a2hs" data-src="a2hs.html" style="display:none"></div>
+    <div class="framewrap" id="frame-surfaces" data-src="launch_surfaces.html" style="display:none"></div>
   </section>
 
   <!-- ══ ROADMAP ══ -->
@@ -405,11 +409,13 @@ function route(){
   document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-'+tab));
   if (tab === 'dashboards'){
-    const s = sub || 'live';
+    const SUBS = {live:'dashboard.html', experiment1:'experiment1.html', a2hs:'a2hs.html', surfaces:'launch_surfaces.html'};
+    const s = SUBS[sub] ? sub : 'live';
     document.querySelectorAll('.subtab').forEach(b => b.classList.toggle('active', b.dataset.sub === s));
-    document.getElementById('frame-live').style.display = s === 'live' ? '' : 'none';
-    document.getElementById('frame-experiment1').style.display = s === 'experiment1' ? '' : 'none';
-    document.getElementById('openSrc').href = s === 'live' ? 'dashboard.html' : 'experiment1.html';
+    Object.keys(SUBS).forEach(k => {
+      document.getElementById('frame-'+k).style.display = k === s ? '' : 'none';
+    });
+    document.getElementById('openSrc').href = SUBS[s];
     mountFrame(s);
   }
 }
