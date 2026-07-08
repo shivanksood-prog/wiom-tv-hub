@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-08T19:58:15Z",
+  "fetched_at": "2026-07-08T21:18:39Z",
   "data": {
     "period": "30d",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 10356,
-      "total_tunes": 39060,
-      "total_watch_min": 453429.3,
-      "avg_duration_sec": 632.9
+      "unique_users": 10367,
+      "total_tunes": 39078,
+      "total_watch_min": 453431.1,
+      "avg_duration_sec": 632.6
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 5741,
-        "unique_users": 4771,
-        "watch_min": 27167.9
+        "tunes": 5748,
+        "unique_users": 4778,
+        "watch_min": 27168.7
       },
       {
         "ch": 3,
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2052,
-        "unique_users": 1690,
-        "watch_min": 2587.5
+        "tunes": 2055,
+        "unique_users": 1693,
+        "watch_min": 2587.6
       },
       {
         "ch": 205,
@@ -51,8 +51,8 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 998,
-        "unique_users": 722,
+        "tunes": 999,
+        "unique_users": 723,
         "watch_min": 1367.3
       },
       {
@@ -60,9 +60,9 @@
         "name": "Goldmines 2",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 309,
-        "unique_users": 199,
-        "watch_min": 1096.3
+        "tunes": 310,
+        "unique_users": 200,
+        "watch_min": 1096.5
       },
       {
         "ch": 1,
@@ -78,9 +78,9 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1179,
-        "unique_users": 940,
-        "watch_min": 845.6
+        "tunes": 1181,
+        "unique_users": 942,
+        "watch_min": 845.8
       },
       {
         "ch": 7,
@@ -105,8 +105,8 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1480,
-        "unique_users": 1246,
+        "tunes": 1481,
+        "unique_users": 1247,
         "watch_min": 568.3
       },
       {
@@ -123,9 +123,9 @@
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 770,
-        "unique_users": 561,
-        "watch_min": 363.2
+        "tunes": 772,
+        "unique_users": 562,
+        "watch_min": 363.6
       },
       {
         "ch": 27,
@@ -150,9 +150,9 @@
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 618,
-        "unique_users": 431,
-        "watch_min": 289.8
+        "tunes": 619,
+        "unique_users": 432,
+        "watch_min": 289.9
       },
       {
         "ch": 24,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 21187,
-        "unique_users": 6813,
-        "watch_min": 36949.6
+        "tunes": 21204,
+        "unique_users": 6824,
+        "watch_min": 36951.3
       },
       {
         "cat": "Music",
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 3154,
-        "unique_users": 1020,
-        "watch_min": 2061.3
+        "tunes": 3155,
+        "unique_users": 1021,
+        "watch_min": 2061.4
       },
       {
         "cat": "Undefined",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 32662,
-        "unique_users": 7604,
-        "watch_min": 44258.3
+        "tunes": 32680,
+        "unique_users": 7615,
+        "watch_min": 44260.1
       },
       {
         "lang": "English",
@@ -2936,6 +2936,16 @@
         "hour": "2026-07-08 19:00",
         "users": 16,
         "tunes": 74
+      },
+      {
+        "hour": "2026-07-08 20:00",
+        "users": 8,
+        "tunes": 13
+      },
+      {
+        "hour": "2026-07-08 21:00",
+        "users": 3,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
@@ -3085,15 +3095,15 @@
       },
       {
         "day": "2026-07-08",
-        "users": 515,
-        "tunes": 2498,
-        "watch_min": 28530.4
+        "users": 526,
+        "tunes": 2516,
+        "watch_min": 28532.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 9864
+        "users": 9875
       },
       {
         "device": "desktop",
@@ -3101,12 +3111,12 @@
       }
     ],
     "funnel": {
-      "opens": 4545,
-      "playback": 3818,
+      "opens": 4552,
+      "playback": 3824,
       "engaged": 763
     },
     "retention": {
-      "new_users": 4569,
+      "new_users": 4576,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3164,7 +3174,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 268,
-        "starts": 4453
+        "starts": 4459
       },
       {
         "ch": 13,
@@ -3206,7 +3216,7 @@
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
         "errors": 88,
-        "starts": 359
+        "starts": 360
       },
       {
         "ch": 125,
@@ -3220,7 +3230,7 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "errors": 68,
-        "starts": 1872
+        "starts": 1875
       },
       {
         "ch": 4,
@@ -3262,7 +3272,7 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "errors": 46,
-        "starts": 915
+        "starts": 916
       },
       {
         "ch": 21,
@@ -3283,7 +3293,7 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "errors": 42,
-        "starts": 739
+        "starts": 740
       },
       {
         "ch": 6,
@@ -3321,18 +3331,18 @@
         "starts": 107
       },
       {
+        "ch": 118,
+        "name": "Goldmines",
+        "cat": "Movies",
+        "errors": 26,
+        "starts": 209
+      },
+      {
         "ch": 9,
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "errors": 26,
-        "starts": 551
-      },
-      {
-        "ch": 118,
-        "name": "Goldmines",
-        "cat": "Movies",
-        "errors": 25,
-        "starts": 209
+        "starts": 552
       },
       {
         "ch": 26,
@@ -3392,24 +3402,24 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8635,
-      "samples": 22315
+      "avg_ttff_ms": 8631,
+      "samples": 22329
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 18632,
-        "avg_ttff_ms": 8057
+        "starts": 18641,
+        "avg_ttff_ms": 8054
       },
       {
         "net": "3g",
-        "starts": 1685,
-        "avg_ttff_ms": 19977
+        "starts": 1686,
+        "avg_ttff_ms": 19966
       },
       {
         "net": "unknown",
-        "starts": 1595,
-        "avg_ttff_ms": 2303
+        "starts": 1599,
+        "avg_ttff_ms": 2299
       },
       {
         "net": "slow-2g",
@@ -3423,9 +3433,9 @@
       }
     ],
     "engagement": {
-      "sessions": 10356,
+      "sessions": 10367,
       "avg_channels": 3.1,
-      "avg_session_sec": 287,
+      "avg_session_sec": 286,
       "bounce_pct": 61.8,
       "zap_pct": 50.9
     },
