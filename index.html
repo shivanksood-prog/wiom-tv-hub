@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV · Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161021; --card:#352D42; --border:#443152; --text:#FAF9FC; --muted:#A7A1B2;
+    --n300:#D7D3E0; --n700:#665E75; --accent:#D9008D; --pink300:#FFB2E4; --pink100:#FFE5F6;
+    --green:#008043; --green100:#E1FAED; --red:#E01E00; --red100:#FFE9E5;
+    --amber:#FF8000; --amber200:#FFE6CC; --purple:#6D17CE; --purple100:#F1E5FF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+
+  /* ── Header ── */
+  header{background:linear-gradient(135deg,#5E003D,#443152);padding:14px 22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .brand{font-size:18px;font-weight:800;color:var(--pink300);white-space:nowrap}
+  .brand span{color:var(--accent)}
+  nav{display:flex;gap:6px;flex-wrap:wrap}
+  .tab{background:transparent;color:var(--pink300);border:1px solid transparent;border-radius:9px;padding:8px 18px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+  .tab:hover{border-color:rgba(217,0,141,.4);color:#fff}
+  .tab.active{background:var(--accent);color:#fff}
+
+  /* ── Sub-tabs ── */
+  .subbar{display:flex;gap:8px;align-items:center;padding:12px 22px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .subtab{background:var(--card);color:var(--n300);border:1px solid var(--border);border-radius:20px;padding:6px 16px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+  .subtab:hover{border-color:var(--accent);color:#fff}
+  .subtab.active{background:var(--pink100);color:#5E003D;border-color:var(--pink300)}
+  .subbar .right{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+  .btn{background:var(--card);color:var(--pink300);border:1px solid var(--border);border-radius:9px;padding:6px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{border-color:var(--accent);color:#fff}
+
+  /* ── Panels ── */
+  main{flex:1;min-height:0;display:flex;flex-direction:column}
+  .panel{display:none;flex:1;min-height:0;flex-direction:column}
+  .panel.active{display:flex}
+  .framewrap{flex:1;min-height:0}
+  .framewrap iframe{width:100%;height:100%;border:0;display:block;background:#0a0612}
+
+  /* ── Content pages (roadmap / documents) ── */
+  .page{flex:1;overflow-y:auto;padding:22px;max-width:1180px;margin:0 auto;width:100%}
+  .notice{background:var(--amber200);color:#5c2e00;border-radius:12px;padding:14px 18px;font-size:13.5px;line-height:1.55;margin-bottom:18px}
+  .notice b{font-weight:700}
+  .notice code{background:rgba(0,0,0,.08);padding:1px 6px;border-radius:5px;font-size:12px}
+
+  .summary{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 18px;min-width:110px}
+  .stat .n{font-size:26px;font-weight:800;line-height:1.1}
+  .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:2px}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .chipbtn{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer}
+  .chipbtn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .lane{margin-bottom:26px}
+  .lane h2{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--n700);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .lane h2::after{content:"";flex:1;height:1px;background:var(--border)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;transition:border-color .15s}
+  .item:hover{border-color:rgba(217,0,141,.45)}
+  .item .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .item h3{font-size:14.5px;font-weight:700;line-height:1.4}
+  .chip{border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0}
+  .s-done{background:var(--green100);color:var(--green)}
+  .s-progress{background:var(--pink100);color:var(--accent)}
+  .s-planned{background:var(--purple100);color:var(--purple)}
+  .s-blocked{background:var(--red100);color:var(--red)}
+  .s-hold{background:var(--amber200);color:#8a4500}
+  .s-other{background:var(--border);color:var(--n300)}
+  .item .meta{display:flex;gap:14px;margin-top:10px;font-size:12px;color:var(--muted)}
+  .item .meta b{color:var(--n300);font-weight:600}
+  .item .notes{margin-top:8px;font-size:12.5px;color:var(--muted);line-height:1.5}
+
+  .doccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .doc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+  .doc h3{font-size:14.5px;font-weight:700;line-height:1.4}
+  .doc .type{align-self:flex-start}
+  .doc .notes{font-size:12.5px;color:var(--muted);line-height:1.5;flex:1}
+  .doc a.open{align-self:flex-start;margin-top:4px}
+  .doc .nolink{font-size:12px;color:var(--n700);font-style:italic}
+
+  .empty{color:var(--muted);font-size:14px;padding:30px 0;text-align:center}
+  footer{padding:10px 22px;font-size:11.5px;color:var(--n700);border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Wiom <span>TV</span> · Hub</div>
+  <nav id="nav">
+    <button class="tab" data-tab="dashboards">Dashboards</button>
+    <button class="tab" data-tab="roadmap">Roadmap</button>
+    <button class="tab" data-tab="documents">Documents</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ══ DASHBOARDS ══ -->
+  <section class="panel" id="panel-dashboards">
+    <div class="subbar">
+      <button class="subtab" data-sub="live">Live Dashboard</button>
+      <button class="subtab" data-sub="experiment1">Experiment 1</button>
+      <div class="right">
+        <a class="btn" id="openSrc" href="https://wiom.tv/dashboard" target="_blank" rel="noopener">Open Full Page ↗</a>
+      </div>
+    </div>
+    <div class="framewrap" id="frame-live" data-src="https://wiom.tv/dashboard"></div>
+    <div class="framewrap" id="frame-experiment1" data-src="https://wiom.tv/experiment1" style="display:none"></div>
+  </section>
+
+  <!-- ══ ROADMAP ══ -->
+  <section class="panel" id="panel-roadmap">
+    <div class="subbar">
+      <span style="font-size:13px;color:var(--muted)">Grouped by track · edit in the sheet, changes appear on refresh</span>
+      <div class="right">
+        <span id="roadmap-updated"></span>
+        <button class="btn" onclick="loadSheet(true)">Refresh</button>
+        <a class="btn" id="editSheet" href="#" target="_blank" rel="noopener">Edit Sheet ↗</a>
+      </div>
+    </div>
+    <div class="page">
+      <div id="roadmap-notice"></div>
+      <div class="summary" id="roadmap-summary"></div>
+      <div class="filters" id="roadmap-filters"></div>
+      <div id="roadmap-lanes"></div>
+    </div>
+  </section>
+
+  <!-- ══ DOCUMENTS ══ -->
+  <section class="panel" id="panel-documents">
+    <div class="subbar">
+      <span style="font-size:13px;color:var(--muted)">Links to key docs · maintained in the "Documents" tab of the same sheet</span>
+      <div class="right">
+        <button class="btn" onclick="loadSheet(true)">Refresh</button>
+        <a class="btn" id="editSheet2" href="#" target="_blank" rel="noopener">Edit Sheet ↗</a>
+      </div>
+    </div>
+    <div class="page">
+      <div id="documents-notice"></div>
+      <div class="doccards" id="doccards"></div>
+    </div>
+  </section>
+</main>
+
+<footer>Wiom TV central hub · Dashboards are embedded live from wiom.tv · Roadmap &amp; Documents are driven by a Google Sheet</footer>
+
+<script>
+/* ════════ CONFIG ════════
+   Paste the Google Sheet ID between the quotes once the sheet exists.
+   The sheet must be shared "Anyone with the link → Viewer".
+   Tabs expected: "Roadmap" (Item|Track|Status|Target|Owner|Notes)
+                  "Documents" (Title|Type|Link|Owner|Notes)
+   You can also test any sheet without redeploying: append ?sheet=<ID> to the URL. */
+const SHEET_ID = new URLSearchParams(location.search).get('sheet') || "";
+
+/* Demo data shown until the sheet is connected */
+const DEMO = {
+  roadmap: [
+    {Item:"Central hub (dashboards + roadmap + docs)",Track:"Ops & Tooling",Status:"In Progress",Target:"Jul 2026",Owner:"Shivank",Notes:"This site — gsheet-driven roadmap"},
+    {Item:"fse_v1 first-session engagement experiment",Track:"Web App",Status:"In Progress",Target:"Jul 2026",Owner:"Shivank",Notes:"A/B/C live; readout when sample sufficient"},
+    {Item:"Play Store production app",Track:"Android App",Status:"In Progress",Target:"Aug 2026",Owner:"Shivank",Notes:"Signing key reset pending account owner"},
+    {Item:"Pilot household rollout (v1.0-pilot)",Track:"Android App",Status:"In Progress",Target:"Jul 2026",Owner:"Shivank",Notes:"On Mi TV; founder visual checks open"},
+    {Item:"Channel lineup expansion (54 staged)",Track:"Content",Status:"In Progress",Target:"Aug 2026",Owner:"Shivank",Notes:"iptv-org pipeline; ffprobe-validated HLS"},
+    {Item:"Wiom TV entry on payment-success page",Track:"Growth",Status:"Planned",Target:"Aug 2026",Owner:"Shivank",Notes:"Awareness-first banner; final design pending"},
+    {Item:"Customer-app entry on unserviceable screens",Track:"Growth",Status:"Planned",Target:"Aug 2026",Owner:"Shivank",Notes:"Prototype live; needs org repo write access"},
+    {Item:"Microdrama ₹10 paywall entry",Track:"Growth",Status:"Planned",Target:"Sep 2026",Owner:"Shivank",Notes:"Mockups ready"},
+    {Item:"TV installer (Remote v2, no-human APK)",Track:"Android App",Status:"On Hold",Target:"TBD",Owner:"Shivank",Notes:"Protocol unproven vs real TV"}
+  ],
+  documents: [
+    {Title:"Production plan (path to Play Store)",Type:"Plan",Link:"",Owner:"Shivank",Notes:"Add link in the sheet"},
+    {Title:"Zero-based app decision framework",Type:"Framework",Link:"",Owner:"Shivank",Notes:"Add link in the sheet"},
+    {Title:"Phase 0 inherited-work summary (Jira WT)",Type:"Research",Link:"",Owner:"Shivank",Notes:"Add link in the sheet"}
+  ]
+};
+
+const STATUS_CLASS = s => {
+  const k = (s||"").toLowerCase();
+  if (k.includes("done") || k.includes("complete") || k.includes("shipped")) return "s-done";
+  if (k.includes("progress") || k.includes("doing") || k.includes("wip")) return "s-progress";
+  if (k.includes("plan") || k.includes("next") || k.includes("todo")) return "s-planned";
+  if (k.includes("block")) return "s-blocked";
+  if (k.includes("hold") || k.includes("pause")) return "s-hold";
+  return "s-other";
+};
+const esc = s => String(s??"").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ── gviz fetch: works client-side on any sheet shared "anyone with link can view" ── */
+async function fetchTab(tab){
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=1&sheet=${encodeURIComponent(tab)}`;
+  const txt = await (await fetch(url)).text();
+  const json = JSON.parse(txt.substring(txt.indexOf('{'), txt.lastIndexOf('}')+1));
+  if (json.status === 'error') throw new Error(json.errors?.[0]?.detailed_message || 'gviz error');
+  const cols = json.table.cols.map(c => (c.label||'').trim());
+  return json.table.rows.map(r => {
+    const o = {};
+    r.c.forEach((cell,i) => { if(cols[i]) o[cols[i]] = cell ? (cell.f ?? cell.v ?? "") : ""; });
+    return o;
+  }).filter(o => Object.values(o).some(v => String(v).trim() !== ""));
+}
+
+let roadmapData = DEMO.roadmap, docsData = DEMO.documents, activeFilter = "All", usingDemo = true;
+
+async function loadSheet(manual){
+  if (!SHEET_ID){
+    renderAll();
+    return;
+  }
+  try{
+    const [rm, docs] = await Promise.all([fetchTab("Roadmap"), fetchTab("Documents")]);
+    roadmapData = rm; docsData = docs; usingDemo = false;
+    document.getElementById('roadmap-updated').textContent = "Updated " + new Date().toLocaleTimeString();
+  }catch(e){
+    usingDemo = true;
+    console.warn("Sheet fetch failed:", e);
+  }
+  renderAll();
+}
+
+function renderNotice(el){
+  const n = document.getElementById(el);
+  if (!usingDemo){ n.innerHTML = ""; return; }
+  n.innerHTML = `<div class="notice"><b>Showing demo data — sheet not connected yet.</b>
+    Create the Google Sheet (tabs <code>Roadmap</code> &amp; <code>Documents</code>), set sharing to
+    <b>Anyone with the link → Viewer</b>, then put its ID in <code>SHEET_ID</code> in index.html
+    (or test instantly with <code>?sheet=&lt;ID&gt;</code> in this page's URL).</div>`;
+}
+
+function renderRoadmap(){
+  renderNotice('roadmap-notice');
+  const data = roadmapData;
+
+  const statuses = [...new Set(data.map(r => r.Status).filter(Boolean))];
+  const counts = {};
+  statuses.forEach(s => counts[s] = data.filter(r => r.Status === s).length);
+  document.getElementById('roadmap-summary').innerHTML =
+    `<div class="stat"><div class="n">${data.length}</div><div class="l">Total items</div></div>` +
+    statuses.map(s => `<div class="stat"><div class="n">${counts[s]}</div><div class="l">${esc(s)}</div></div>`).join("");
+
+  const filters = ["All", ...statuses];
+  document.getElementById('roadmap-filters').innerHTML = filters.map(f =>
+    `<button class="chipbtn ${f===activeFilter?'active':''}" onclick="setFilter('${esc(f)}')">${esc(f)}</button>`).join("");
+
+  const rows = activeFilter === "All" ? data : data.filter(r => r.Status === activeFilter);
+  const tracks = [...new Set(rows.map(r => r.Track || "Untracked"))];
+  document.getElementById('roadmap-lanes').innerHTML = rows.length === 0
+    ? `<div class="empty">No items match this filter.</div>`
+    : tracks.map(t => `
+      <div class="lane"><h2>${esc(t)}</h2><div class="cards">
+      ${rows.filter(r => (r.Track||"Untracked") === t).map(r => `
+        <div class="item">
+          <div class="top"><h3>${esc(r.Item)}</h3><span class="chip ${STATUS_CLASS(r.Status)}">${esc(r.Status||"—")}</span></div>
+          <div class="meta">${r.Target?`<span>🎯 <b>${esc(r.Target)}</b></span>`:""}${r.Owner?`<span>👤 <b>${esc(r.Owner)}</b></span>`:""}</div>
+          ${r.Notes?`<div class="notes">${esc(r.Notes)}</div>`:""}
+        </div>`).join("")}
+      </div></div>`).join("");
+}
+function setFilter(f){ activeFilter = f; renderRoadmap(); }
+
+function renderDocs(){
+  renderNotice('documents-notice');
+  document.getElementById('doccards').innerHTML = docsData.length === 0
+    ? `<div class="empty">No documents yet — add rows in the sheet's Documents tab.</div>`
+    : docsData.map(d => `
+      <div class="doc">
+        <h3>${esc(d.Title)}</h3>
+        ${d.Type?`<span class="chip s-planned type">${esc(d.Type)}</span>`:""}
+        ${d.Notes?`<div class="notes">${esc(d.Notes)}</div>`:""}
+        ${d.Link?`<a class="btn open" href="${esc(d.Link)}" target="_blank" rel="noopener">Open Doc ↗</a>`
+                :`<span class="nolink">no link yet</span>`}
+      </div>`).join("");
+}
+
+function renderAll(){
+  const sheetUrl = SHEET_ID ? `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit` : "#";
+  document.getElementById('editSheet').href = sheetUrl;
+  document.getElementById('editSheet2').href = sheetUrl;
+  renderRoadmap(); renderDocs();
+}
+
+/* ── Tab + sub-tab routing via URL hash ── */
+function mountFrame(id){
+  const w = document.getElementById('frame-'+id);
+  if (w && !w.querySelector('iframe')){
+    const f = document.createElement('iframe');
+    f.src = w.dataset.src; f.loading = "eager";
+    w.appendChild(f);
+  }
+}
+function route(){
+  const [tab, sub] = (location.hash.replace('#','') || 'dashboards/live').split('/');
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-'+tab));
+  if (tab === 'dashboards'){
+    const s = sub || 'live';
+    document.querySelectorAll('.subtab').forEach(b => b.classList.toggle('active', b.dataset.sub === s));
+    document.getElementById('frame-live').style.display = s === 'live' ? '' : 'none';
+    document.getElementById('frame-experiment1').style.display = s === 'experiment1' ? '' : 'none';
+    document.getElementById('openSrc').href = s === 'live' ? 'https://wiom.tv/dashboard' : 'https://wiom.tv/experiment1';
+    mountFrame(s);
+  }
+}
+document.getElementById('nav').addEventListener('click', e => {
+  if (e.target.dataset.tab) location.hash = e.target.dataset.tab === 'dashboards' ? 'dashboards/live' : e.target.dataset.tab;
+});
+document.querySelector('#panel-dashboards .subbar').addEventListener('click', e => {
+  if (e.target.dataset.sub) location.hash = 'dashboards/' + e.target.dataset.sub;
+});
+window.addEventListener('hashchange', route);
+
+route();
+loadSheet();
+</script>
+</body>
+</html>
