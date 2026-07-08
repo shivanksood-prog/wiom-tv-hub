@@ -138,7 +138,7 @@
       </div>
     </div>
     <div class="framewrap" id="frame-live" data-src="dashboard.html"></div>
-    <div class="framewrap" id="frame-experiment1" data-src="https://wiom.tv/experiment1" style="display:none"></div>
+    <div class="framewrap" id="frame-experiment1" data-src="experiment1.html" style="display:none"></div>
   </section>
 
   <!-- ══ ROADMAP ══ -->
@@ -384,7 +384,7 @@ function route(){
     document.querySelectorAll('.subtab').forEach(b => b.classList.toggle('active', b.dataset.sub === s));
     document.getElementById('frame-live').style.display = s === 'live' ? '' : 'none';
     document.getElementById('frame-experiment1').style.display = s === 'experiment1' ? '' : 'none';
-    document.getElementById('openSrc').href = s === 'live' ? 'dashboard.html' : 'https://wiom.tv/experiment1';
+    document.getElementById('openSrc').href = s === 'live' ? 'dashboard.html' : 'experiment1.html';
     mountFrame(s);
   }
 }
