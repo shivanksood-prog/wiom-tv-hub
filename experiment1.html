@@ -49,7 +49,10 @@
         box-shadow:0 1px 3px rgba(22,16,33,.06);}
   .sub{font-size:13px; color:var(--muted); margin:0 0 14px;}
   .verdict{border-left:5px solid var(--warn-line); display:flex; flex-wrap:wrap; gap:16px 32px; align-items:baseline;}
-  .verdict .word{font-size:23px; font-weight:800; color:var(--warn-fg); letter-spacing:.01em;}
+  .verdict .word{font-size:23px; font-weight:800; letter-spacing:.01em;}
+  .verdict.v-warn{border-left-color:var(--warn-line);} .verdict.v-warn .word,.verdict.v-warn .eyebrow{color:var(--warn-fg);}
+  .verdict.v-pass{border-left-color:var(--pass-fg);} .verdict.v-pass .word,.verdict.v-pass .eyebrow{color:var(--pass-fg);}
+  .verdict.v-fail{border-left-color:var(--fail-fg);} .verdict.v-fail .word,.verdict.v-fail .eyebrow{color:var(--fail-fg);}
   .verdict .why{font-size:14px; color:var(--text); max-width:56ch;}
   .verdict .dates{font-size:13px; color:var(--muted);}
   .verdict .dates b{color:var(--text);}
@@ -58,6 +61,7 @@
         padding:5px 11px; border-radius:999px; background:var(--pass-bg); color:var(--pass-fg);}
   .chip .v{font-weight:400; opacity:.85;}
   .chip.info{background:var(--info-bg); color:var(--info-fg);}
+  .chip.fail{background:var(--fail-bg); color:var(--fail-fg);}
   .legend{display:flex; flex-wrap:wrap; gap:14px; font-size:13px; color:var(--muted); align-items:center;}
   .legend .k{display:inline-flex; align-items:center; gap:7px;}
   .swatch{width:11px; height:11px; border-radius:3px; display:inline-block;}
@@ -77,6 +81,7 @@
   .dot{display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:6px; vertical-align:baseline;}
   .p{font-size:12px; padding:2px 8px; border-radius:999px; background:var(--subtle); color:var(--muted); font-weight:600;}
   .p.near{background:var(--warn-bg); color:var(--warn-fg);}
+  .p.sig{background:var(--pass-bg); color:var(--pass-fg);}
   .best{font-weight:700;}
   .worst{color:var(--muted);}
   .funnel{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
@@ -106,7 +111,7 @@
     <div class="grow">
       <div class="eyebrow">Wiom TV · Experiment 1 · Verdict</div>
       <h1>fse_v1 first-session engagement — A/B/C</h1>
-      <div class="meta">Clean cohort only · <b>438 users</b> (A 145 · B 142 · C 151) · window <b>Jul 7 01:43 → Jul 8 12:10 UTC</b> (34.4 h) · snapshot 2026-07-08 12:11 UTC · 59 broken-era carryover users excluded</div>
+      <div class="meta">Clean cohort only · <b>673 users</b> (A 242 · B 212 · C 219) · window <b>Jul 7 01:43 → Jul 9 06:30 UTC</b> (52.8 h) · snapshot 2026-07-09 06:30 UTC · 80 broken-era carryover users excluded · auto-refreshed hourly</div>
     </div>
     <div style="display:flex; gap:8px;">
       <a class="btn" href="https://wiom.tv/experiment1" target="_blank" rel="noopener">Raw Live Dashboard ↗</a>
@@ -114,24 +119,24 @@
     </div>
   </header>
 
-  <section class="card verdict">
+  <section class="card verdict v-warn">
     <div>
-      <div class="eyebrow" style="color:var(--warn-fg)">Verdict</div>
+      <div class="eyebrow">Verdict</div>
       <div class="word">INCONCLUSIVE — underpowered</div>
     </div>
-    <div class="why">Arm B (channel reorder) leads activation by <b>+7.9pp (+59%)</b> at p=0.073, but with ~146 users/arm the experiment can only detect a ≥12.9pp swing. Integrity is clean — the answer is <b>keep running, don't restart</b>.</div>
-    <div class="dates">Readable <b>~Jul 10</b> if B's effect holds · ≥5pp sensitivity <b>~Jul 15</b></div>
+    <div class="why">Arm B (channel reorder) leads activation by <b>+4.1pp (+43%)</b> at p=0.185, but with ~224 users/arm the experiment can only detect a ≥7.8pp swing. Integrity is clean — the answer is <b>keep running, don't restart</b>.</div>
+    <div class="dates">Readable <b>~Jul 15</b> if B’s effect holds · ≥5pp sensitivity <b>~Jul 12</b></div>
   </section>
 
   <section class="card">
     <h2>Integrity gate — all checks pass</h2>
     <p class="sub">Run before any effect estimate. A lift on invalid data is worthless.</p>
     <div class="chips">
-      <span class="chip">✓ Sample ratio <span class="v">χ²=0.29, p=0.866</span></span>
+      <span class="chip">✓ Sample ratio <span class="v">χ²=2.20, p=0.334</span></span>
       <span class="chip">✓ Sticky assignment <span class="v">0 cross-arm users</span></span>
-      <span class="chip">✓ Hash recompute <span class="v">0 mismatches / 438</span></span>
+      <span class="chip">✓ Hash recompute <span class="v">0 mismatches / 673</span></span>
       <span class="chip">✓ Instrumentation <span class="v">all events, all arms</span></span>
-      <span class="chip info">ℹ Excluded <span class="v">59 carryover + 1,109 lost-era users (Jul 3–6 incident)</span></span>
+      <span class="chip info">ℹ Excluded <span class="v">80 carryover + 1,190 lost-era users (Jul 3–6 incident)</span></span>
     </div>
   </section>
 
@@ -146,7 +151,7 @@
       <h2>Primary metric — activation</h2>
       <p class="sub">% of users with ≥1 channel held ≥60 s in first session</p>
       <div class="chartbox">
-      <svg id="bars" viewBox="0 0 420 240" width="100%" role="img" aria-label="Activation rate by arm: C 13.3%, A 11.0%, B 21.1%">
+      <svg id="bars" viewBox="0 0 420 240" width="100%" role="img" aria-label="Activation rate by arm">
         <g id="grid"></g>
         <g id="barmarks"></g>
         <g id="barlabels"></g>
@@ -156,9 +161,9 @@
 
     <section class="card">
       <h2>Effect vs control, 95% CI</h2>
-      <p class="sub">Both CIs cross zero and sit inside the ±12.9pp detectable band</p>
+      <p class="sub">Both CIs cross zero and sit inside the ±7.8pp detectable band</p>
       <div class="chartbox">
-      <svg id="forest" viewBox="0 0 420 240" width="100%" role="img" aria-label="Forest plot: B +7.9pp CI −0.7 to +16.5; A −2.2pp CI −9.6 to +5.2; MDE ±12.9pp">
+      <svg id="forest" viewBox="0 0 420 240" width="100%" role="img" aria-label="Forest plot of effects vs control">
         <g id="fgrid"></g>
         <g id="fmarks"></g>
       </svg>
@@ -168,76 +173,27 @@
 
   <section class="card">
     <h2>All metrics by arm</h2>
-    <p class="sub">Per-user aggregation, clean cohort. p-values are treatment vs control; nothing clears α=0.05 yet.</p>
+    <p class="sub">Per-user aggregation, clean cohort. p-values are treatment vs control.</p>
     <div class="tablebox">
     <table>
       <thead>
         <tr>
           <th>Metric</th>
-          <th><span class="dot" style="background:var(--armC)"></span>C · n=151</th>
-          <th><span class="dot" style="background:var(--armA)"></span>A · n=145</th>
+          <th><span class="dot" style="background:var(--armC)"></span>C</th>
+          <th><span class="dot" style="background:var(--armA)"></span>A</th>
           <th>p (A vs C)</th>
-          <th><span class="dot" style="background:var(--armB)"></span>B · n=142</th>
+          <th><span class="dot" style="background:var(--armB)"></span>B</th>
           <th>p (B vs C)</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Activation ≥60 s <span class="note">primary · users / rate</span></td>
-          <td>20 · 13.3%</td>
-          <td class="worst">16 · 11.0%</td>
-          <td><span class="p">0.561</span></td>
-          <td class="best">30 · 21.1%</td>
-          <td><span class="p near">0.073</span></td>
-        </tr>
-        <tr>
-          <td>Unmute rate</td>
-          <td>49.0%</td>
-          <td>49.0%</td>
-          <td><span class="p">0.994</span></td>
-          <td class="best">52.8%</td>
-          <td><span class="p">0.514</span></td>
-        </tr>
-        <tr>
-          <td>D1 retention <span class="note">1-day cohort, tiny numerators (7 / 3 / 11 users)</span></td>
-          <td>6.5% <span class="note">of 107</span></td>
-          <td class="worst">3.4% <span class="note">of 89</span></td>
-          <td><span class="p">0.315</span></td>
-          <td class="best">13.4% <span class="note">of 82</span></td>
-          <td><span class="p near">0.111</span></td>
-        </tr>
-        <tr>
-          <td>Watch min / user <span class="note">median · p75 (means are whale-dominated)</span></td>
-          <td>0.35 · 1.06</td>
-          <td class="worst">0.32 · 0.95</td>
-          <td><span class="p">0.087</span></td>
-          <td class="best">0.45 · 1.58</td>
-          <td><span class="p">0.358</span></td>
-        </tr>
-        <tr>
-          <td>Switches / user <span class="note">median · mean</span></td>
-          <td>2 · 8.8</td>
-          <td>3 · 5.2</td>
-          <td></td>
-          <td>3 · 7.2</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Dwell / switch, sec <span class="note">median · mean</span></td>
-          <td>9.0 · 24.6</td>
-          <td class="worst">5.6 · 12.1</td>
-          <td></td>
-          <td>8.3 · 28.9</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Sessions</td>
-          <td>205</td>
-          <td>209</td>
-          <td></td>
-          <td>200</td>
-          <td></td>
-        </tr>
+        <tr><td>Activation ≥60 s <span class="note">primary · users / rate</span></td><td>21 · 9.6%</td><td class="worst">23 · 9.5%</td><td><span class="p">0.975</span></td><td class="best">29 · 13.7%</td><td><span class="p">0.185</span></td></tr>
+        <tr><td>Unmute rate <span class="note">first session</span></td><td>45.2%</td><td class="best">48.8%</td><td><span class="p">0.445</span></td><td>47.6%</td><td><span class="p">0.612</span></td></tr>
+        <tr><td>D1 retention <span class="note">1-day cohort (11 / 13 / 19 users returned)</span></td><td>5.8% <span class="note">of 190</span></td><td>6.6% <span class="note">of 196</span></td><td><span class="p">0.732</span></td><td class="best">10.3% <span class="note">of 184</span></td><td><span class="p near">0.106</span></td></tr>
+        <tr><td>Watch min / user <span class="note">median · p75 (means are whale-dominated)</span></td><td>0.37 · 1.16</td><td class="worst">0.33 · 1.03</td><td><span class="p">0.713</span></td><td class="best">0.39 · 1.27</td><td><span class="p">0.399</span></td></tr>
+        <tr><td>Switches / user <span class="note">median · mean</span></td><td>2 · 8.4</td><td>3 · 6.8</td><td></td><td>3 · 8.1</td><td></td></tr>
+        <tr><td>Dwell / switch, sec <span class="note">median · mean</span></td><td>8.0 · 25.1</td><td>6.1 · 22.5</td><td></td><td>8.0 · 24.7</td><td></td></tr>
+        <tr><td>Sessions</td><td>309</td><td>355</td><td></td><td>312</td><td></td></tr>
       </tbody>
     </table>
     </div>
@@ -246,46 +202,48 @@
   <div class="two">
     <section class="card">
       <h2>Arm A intro funnel</h2>
-      <p class="sub">Genre grid engagement among A's 145 users</p>
+      <p class="sub">Genre grid engagement among A’s 242 users</p>
       <div class="funnel">
-        <div class="frow"><span class="lbl">Intro shown</span><div><div class="bar" style="width:98.6%"></div></div><span class="val">143 · 98.6%</span></div>
-        <div class="frow"><span class="lbl">Genre picked</span><div><div class="bar" style="width:44.8%; opacity:.75"></div></div><span class="val">65 · 44.8%</span></div>
-        <div class="frow"><span class="lbl">Completed</span><div><div class="bar" style="width:51.0%; opacity:.55"></div></div><span class="val">74 · 51.0%</span></div>
+        <div class="frow"><span class="lbl">Intro shown</span><div><div class="bar" style="width:97.5%"></div></div><span class="val">236 · 97.5%</span></div>
+        <div class="frow"><span class="lbl">Genre picked</span><div><div class="bar" style="width:46.7%; opacity:.75"></div></div><span class="val">113 · 46.7%</span></div>
+        <div class="frow"><span class="lbl">Completed</span><div><div class="bar" style="width:53.3%; opacity:.55"></div></div><span class="val">129 · 53.3%</span></div>
       </div>
-      <p class="foot" style="margin-top:12px;">Completions exceed picks because “start watching” without choosing a genre also completes. Less than half of users engage with the grid — and the arm trails control on every downstream metric.</p>
+      <p class="foot" style="margin-top:12px;">Completions exceed picks because “start watching” without choosing a genre also completes.</p>
     </section>
 
     <section class="card">
       <h2>Power — when can we decide?</h2>
       <div class="power">
-        <div class="stat"><div class="n">12.9pp</div><div class="l">Minimum detectable effect at current n (~146/arm), 80% power, α=0.05</div></div>
+        <div class="stat"><div class="n">7.8pp</div><div class="l">Minimum detectable effect at current n (~224/arm), 80% power, α=0.05</div></div>
         <div class="stat"><div class="n">~102</div><div class="l">New clean users enrolled per arm per day</div></div>
-        <div class="stat"><div class="n">Jul 10</div><div class="l">356/arm — decides B's observed +7.9pp, if it holds</div></div>
-        <div class="stat"><div class="n">Jul 15</div><div class="l">829/arm — rules any ≥5pp effect in or out</div></div>
+        <div class="stat"><div class="n">Jul 15</div><div class="l">813/arm — decides B’s observed +4.1pp, if it holds</div></div>
+        <div class="stat"><div class="n">Jul 12</div><div class="l">544/arm — rules any ≥5pp effect in or out</div></div>
       </div>
-      <p class="foot" style="margin-top:12px;">Observed effects are inside the undetectable band — a p&lt;0.05 before ~Jul 10 would be a peeking artifact, not a result. Pre-commit to the window.</p>
+      <p class="foot" style="margin-top:12px;">Observed effects are inside the undetectable band — a p&lt;0.05 before ~Jul 15 would be a peeking artifact, not a result. Pre-commit to the window.</p>
     </section>
   </div>
 
   <section class="card">
     <h2>Reading notes</h2>
     <ol class="foot">
-      <li><b>Arm B is the story so far:</b> leads activation (+59% rel.), D1 (2.1× control), median watch time, and dwell-per-switch — users hunt less and land on keepers, consistent with the reorder doing its job. None of it is significant yet.</li>
-      <li><b>Arm A trends negative everywhere</b> including D1 (3.4% vs 6.5%). Part of the dwell deficit is mechanical (the intro eats first-session seconds), but that does not explain weaker day-1 return. If this persists at ~2× sample, consider stopping A for harm while B runs to power.</li>
-      <li><b>Watch-time means are untrustworthy at this n:</b> one control user watched 192 min (arm sd=17). Use medians. The raw live dashboard's 9.6 min/user for B is one 19.6 h broken-era carryover user — excluded here; dashboard fix pending.</li>
+      <li><b>Arm B is the story so far:</b> leads activation (+43% rel.), D1 (1.8× control), median watch 0.39 vs 0.37 min. None of it clears α=0.05 yet.</li>
+      <li><b>Watch-time means are whale-dominated:</b> one arm-A user watched 249 min. Use medians.</li>
       <li><b>Multiplicity:</b> two treatment-vs-control comparisons at α=0.05 each, per convention set before readout.</li>
-      <li>Lost era Jul 3–6 (server never reloaded): 1,109 enrolled users unattributable — the reason this is underpowered despite 5 days on the calendar.</li>
+      <li>Lost era Jul 3–6 (server never reloaded): 1,190 enrolled users unattributable — the reason power lags the calendar.</li>
     </ol>
   </section>
 
-  <footer class="foot" style="text-align:center;">Snapshot 2026-07-08 12:11 UTC · clean cohort filter <code>devices.first_seen ≥ 2026-07-07 01:43:18</code> · methodology: SRM → stickiness → per-user aggregation → two-proportion z + 95% CI → power/MDE</footer>
+  <footer class="foot" style="text-align:center;">Snapshot 2026-07-09 06:30 UTC · clean cohort filter <code>devices.first_seen ≥ 2026-07-07 01:43:18</code> · methodology: SRM → stickiness → per-user aggregation → two-proportion z + 95% CI → power/MDE · auto-generated by hub_exp1_refresh (hourly)</footer>
 
 </div>
 
 <div id="tip" role="status"></div>
 
+<script id="exp1-data" type="application/json">{"arms": [{"key": "C", "name": "C \u2014 Control", "rate": 9.59, "n": 219, "k": 21, "color": "--armC"}, {"key": "A", "name": "A \u2014 Genre grid", "rate": 9.5, "n": 242, "k": 23, "color": "--armA"}, {"key": "B", "name": "B \u2014 Reorder", "rate": 13.68, "n": 212, "k": 29, "color": "--armB"}], "effects": [{"name": "B vs C", "d": 4.09, "lo": -1.96, "hi": 10.14, "p": "0.185", "color": "--armB"}, {"name": "A vs C", "d": -0.08, "lo": -5.46, "hi": 5.29, "p": "0.975", "color": "--armA"}], "mde": 7.8, "bmax": 20, "fmin": -15, "fmax": 15}</script>
 <script>
 (function(){
+  var DATA = JSON.parse(document.getElementById('exp1-data').textContent);
+
   /* theme toggle */
   var root = document.documentElement;
   var saved = localStorage.getItem('exp1-theme');
@@ -314,15 +272,7 @@
     return el;
   }
 
-  var arms = [
-    {key:'C', name:'C — Control',    rate:13.25, n:151, k:20, color:'--armC'},
-    {key:'A', name:'A — Genre grid', rate:11.03, n:145, k:16, color:'--armA'},
-    {key:'B', name:'B — Reorder',    rate:21.13, n:142, k:30, color:'--armB'}
-  ];
-  var effects = [
-    {name:'B vs C', d:7.88, lo:-0.74, hi:16.50, p:'0.073', color:'--armB'},
-    {name:'A vs C', d:-2.21, lo:-9.64, hi:5.22, p:'0.561', color:'--armA'}
-  ];
+  var arms = DATA.arms, effects = DATA.effects, MDE = DATA.mde;
 
   function draw(){
     var css = getComputedStyle(root);
@@ -330,18 +280,19 @@
 
     /* bars */
     var bs = {left:44, right:12, top:16, bottom:36, w:420, h:240};
-    var bmax = 25;
+    var bmax = DATA.bmax;
     var grid = document.getElementById('grid'),
         marks = document.getElementById('barmarks'),
         blab = document.getElementById('barlabels');
     grid.innerHTML = ''; marks.innerHTML = ''; blab.innerHTML = '';
     function by(v){ return bs.top + (bs.h - bs.top - bs.bottom) * (1 - v/bmax); }
-    [0,5,10,15,20,25].forEach(function(v){
-      S('line', {x1:bs.left, x2:bs.w-bs.right, y1:by(v), y2:by(v),
-        stroke: v===0 ? tok('--muted') : tok('--grid'), 'stroke-width':1}, grid);
-      S('text', {x:bs.left-8, y:by(v)+4, 'text-anchor':'end', 'font-size':11,
-        fill:tok('--faint')}, grid).textContent = v + '%';
-    });
+    var bstep = bmax > 30 ? 10 : 5;
+    for (var gv = 0; gv <= bmax; gv += bstep){
+      S('line', {x1:bs.left, x2:bs.w-bs.right, y1:by(gv), y2:by(gv),
+        stroke: gv===0 ? tok('--muted') : tok('--grid'), 'stroke-width':1}, grid);
+      S('text', {x:bs.left-8, y:by(gv)+4, 'text-anchor':'end', 'font-size':11,
+        fill:tok('--faint')}, grid).textContent = gv + '%';
+    }
     var slotW = (bs.w - bs.left - bs.right) / arms.length;
     arms.forEach(function(a, i){
       var barW = 54;
@@ -367,28 +318,28 @@
 
     /* forest */
     var fs = {left:16, right:16, top:24, bottom:40, w:420, h:240};
-    var fmin=-16, fmax=20;
+    var fmin = DATA.fmin, fmax = DATA.fmax;
     var fgrid = document.getElementById('fgrid'),
         fmarks = document.getElementById('fmarks');
     fgrid.innerHTML = ''; fmarks.innerHTML = '';
     function fx(v){ return fs.left + (fs.w-fs.left-fs.right) * (v-fmin)/(fmax-fmin); }
-    [-15,-10,-5,0,5,10,15,20].forEach(function(v){
-      S('line', {x1:fx(v), x2:fx(v), y1:fs.top, y2:fs.h-fs.bottom,
-        stroke: v===0 ? tok('--muted') : tok('--grid'),
-        'stroke-width': v===0 ? 1.5 : 1}, fgrid);
-      S('text', {x:fx(v), y:fs.h-fs.bottom+16, 'text-anchor':'middle', 'font-size':11,
-        fill:tok('--faint')}, fgrid).textContent = (v>0?'+':'')+v;
-    });
+    var fstep = (fmax - fmin) > 50 ? 10 : 5;
+    for (var fv = Math.ceil(fmin/fstep)*fstep; fv <= fmax; fv += fstep){
+      S('line', {x1:fx(fv), x2:fx(fv), y1:fs.top, y2:fs.h-fs.bottom,
+        stroke: fv===0 ? tok('--muted') : tok('--grid'),
+        'stroke-width': fv===0 ? 1.5 : 1}, fgrid);
+      S('text', {x:fx(fv), y:fs.h-fs.bottom+16, 'text-anchor':'middle', 'font-size':11,
+        fill:tok('--faint')}, fgrid).textContent = (fv>0?'+':'')+fv;
+    }
     S('text', {x:(fs.left+fs.w-fs.right)/2, y:fs.h-6, 'text-anchor':'middle',
       'font-size':11, fill:tok('--muted')}, fgrid).textContent = 'difference in activation, percentage points';
-    [-12.9, 12.9].forEach(function(v){
+    [-MDE, MDE].forEach(function(v){
+      if (v < fmin || v > fmax) return;
       S('line', {x1:fx(v), x2:fx(v), y1:fs.top, y2:fs.h-fs.bottom,
         stroke:tok('--warn-line'), 'stroke-width':1.5, 'stroke-dasharray':'4 4'}, fgrid);
+      S('text', {x:fx(v), y:fs.top-8, 'text-anchor':'middle', 'font-size':10.5,
+        fill:tok('--warn-fg')}, fgrid).textContent = 'MDE ' + (v>0?'+':'−') + Math.abs(v);
     });
-    S('text', {x:fx(12.9), y:fs.top-8, 'text-anchor':'middle', 'font-size':10.5,
-      fill:tok('--warn-fg')}, fgrid).textContent = 'MDE +12.9';
-    S('text', {x:fx(-12.9), y:fs.top-8, 'text-anchor':'middle', 'font-size':10.5,
-      fill:tok('--warn-fg')}, fgrid).textContent = 'MDE −12.9';
 
     effects.forEach(function(e, i){
       var y = fs.top + 46 + i*72;
@@ -407,8 +358,8 @@
         fill:'transparent'}, fmarks);
       hit.addEventListener('mousemove', function(evt){
         showTip(evt, '<b>'+e.name+'</b><br>Δ '+(e.d>0?'+':'')+e.d.toFixed(2)+
-          'pp · 95% CI ['+e.lo.toFixed(1)+', +'+e.hi.toFixed(1)+']pp<br>p = '+e.p+
-          (Math.abs(e.d) < 12.9 ? '<br>Below the 12.9pp MDE — not yet detectable' : ''));
+          'pp · 95% CI ['+e.lo.toFixed(1)+', '+(e.hi>0?'+':'')+e.hi.toFixed(1)+']pp<br>p = '+e.p+
+          (Math.abs(e.d) < MDE ? '<br>Below the '+MDE+'pp MDE — not yet detectable' : ''));
       });
       hit.addEventListener('mouseleave', hideTip);
     });
