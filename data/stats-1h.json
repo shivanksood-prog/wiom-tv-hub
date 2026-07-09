@@ -1,106 +1,201 @@
 {
-  "fetched_at": "2026-07-09T22:39:40Z",
+  "fetched_at": "2026-07-09T23:50:16Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 1,
-      "total_tunes": 3,
-      "total_watch_min": 0.8,
-      "avg_duration_sec": 15.3
+      "unique_users": 2,
+      "total_tunes": 9,
+      "total_watch_min": 0.3,
+      "avg_duration_sec": 1.7
     },
     "channelLeaderboard": [
       {
-        "ch": 53,
-        "name": "AmarUjala",
-        "cat": "News",
+        "ch": 23,
+        "name": "B4U Kadak",
+        "cat": "Movies",
         "lang": "Hindi",
         "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.7
+        "unique_users": 2,
+        "watch_min": 0.1
       },
       {
-        "ch": 52,
-        "name": "Bharat24",
-        "cat": "News",
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "ch": 20,
+        "name": "Gangaur TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 19,
+        "name": "Filamchi Bhojpuri",
+        "cat": "Entertainment",
+        "lang": "Bhojpuri",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 14,
+        "name": "Mango TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 13,
+        "name": "Abzy Dhakad",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 10,
+        "name": "History TV18 HD",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 9,
+        "name": "Zee South Flix",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "News",
-        "tunes": 3,
+        "cat": "Entertainment",
+        "tunes": 7,
         "unique_users": 1,
-        "watch_min": 0.8
+        "watch_min": 0.2
+      },
+      {
+        "cat": "Movies",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 3,
+        "tunes": 8,
+        "unique_users": 2,
+        "watch_min": 0.2
+      },
+      {
+        "lang": "Bhojpuri",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.8
+        "watch_min": 0
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-09 21:00",
-        "users": 1,
-        "tunes": 3
+        "hour": "2026-07-09 23:00",
+        "users": 2,
+        "tunes": 9
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-09",
-        "users": 1,
-        "tunes": 3,
-        "watch_min": 0.8
+        "users": 2,
+        "tunes": 9,
+        "watch_min": 0.3
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1
+        "users": 2
       }
     ],
     "funnel": {
       "opens": 1,
-      "playback": 1,
+      "playback": 0,
       "engaged": 0
     },
     "retention": {
-      "new_users": 0,
-      "returning_users": 1
+      "new_users": 1,
+      "returning_users": 0
     },
     "errorBoard": [
       {
-        "ch": 52,
-        "name": "Bharat24",
-        "cat": "News",
+        "ch": 23,
+        "name": "B4U Kadak",
+        "cat": "Movies",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 10,
+        "name": "History TV18 HD",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 14,
+        "name": "Mango TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 15,
+        "name": "NDTV Good Times",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 16,
+        "name": "Travelxp HD",
+        "cat": "Entertainment",
         "errors": 1,
         "starts": 0
       }
     ],
     "perf": {
-      "avg_ttff_ms": 1324,
-      "samples": 1
+      "avg_ttff_ms": null,
+      "samples": 0
     },
-    "netBreakdown": [
-      {
-        "net": "4g",
-        "starts": 1,
-        "avg_ttff_ms": 1324
-      }
-    ],
+    "netBreakdown": [],
     "engagement": {
-      "sessions": 1,
-      "avg_channels": 2,
-      "avg_session_sec": 45,
-      "bounce_pct": 0,
-      "zap_pct": 33.3
+      "sessions": 2,
+      "avg_channels": 4.5,
+      "avg_session_sec": 11,
+      "bounce_pct": 50,
+      "zap_pct": 100
     },
     "survey": {
       "very": null,

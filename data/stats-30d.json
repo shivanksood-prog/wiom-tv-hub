@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-09T22:39:40Z",
+  "fetched_at": "2026-07-09T23:50:16Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 11013,
-      "total_tunes": 42255,
-      "total_watch_min": 607498.1,
-      "avg_duration_sec": 781.8
+      "unique_users": 11015,
+      "total_tunes": 42264,
+      "total_watch_min": 607498.3,
+      "avg_duration_sec": 781.7
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6159,
-        "unique_users": 5121,
-        "watch_min": 27324.8
+        "tunes": 6160,
+        "unique_users": 5122,
+        "watch_min": 27324.9
       },
       {
         "ch": 3,
@@ -123,8 +123,8 @@
         "name": "Mango TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 314,
-        "unique_users": 297,
+        "tunes": 315,
+        "unique_users": 298,
         "watch_min": 456.7
       },
       {
@@ -132,9 +132,9 @@
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 839,
-        "unique_users": 619,
-        "watch_min": 375
+        "tunes": 840,
+        "unique_users": 620,
+        "watch_min": 375.1
       },
       {
         "ch": 40,
@@ -240,8 +240,8 @@
         "name": "Gangaur TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 498,
-        "unique_users": 360,
+        "tunes": 499,
+        "unique_users": 361,
         "watch_min": 152.8
       },
       {
@@ -284,14 +284,14 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 22728,
-        "unique_users": 7274,
-        "watch_min": 37348.9
+        "tunes": 22735,
+        "unique_users": 7275,
+        "watch_min": 37349.1
       },
       {
         "cat": "Movies",
-        "tunes": 3449,
-        "unique_users": 1118,
+        "tunes": 3451,
+        "unique_users": 1120,
         "watch_min": 2351.1
       },
       {
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 35284,
-        "unique_users": 8142,
-        "watch_min": 45092.3
+        "tunes": 35292,
+        "unique_users": 8144,
+        "watch_min": 45092.5
       },
       {
         "lang": "English",
@@ -418,8 +418,8 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1639,
-        "unique_users": 919,
+        "tunes": 1640,
+        "unique_users": 920,
         "watch_min": 761.5
       },
       {
@@ -3066,6 +3066,11 @@
         "hour": "2026-07-09 21:00",
         "users": 7,
         "tunes": 9
+      },
+      {
+        "hour": "2026-07-09 23:00",
+        "users": 2,
+        "tunes": 9
       }
     ],
     "dailyTrend": [
@@ -3221,15 +3226,15 @@
       },
       {
         "day": "2026-07-09",
-        "users": 626,
-        "tunes": 3003,
-        "watch_min": 148415
+        "users": 628,
+        "tunes": 3012,
+        "watch_min": 148415.3
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 10496
+        "users": 10498
       },
       {
         "device": "desktop",
@@ -3237,12 +3242,12 @@
       }
     ],
     "funnel": {
-      "opens": 4889,
+      "opens": 4890,
       "playback": 4086,
       "engaged": 808
     },
     "retention": {
-      "new_users": 4915,
+      "new_users": 4916,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3250,35 +3255,35 @@
         "ch": 10,
         "name": "History TV18 HD",
         "cat": "Entertainment",
-        "errors": 717,
+        "errors": 718,
         "starts": 0
       },
       {
         "ch": 23,
         "name": "B4U Kadak",
         "cat": "Movies",
-        "errors": 644,
+        "errors": 646,
         "starts": 0
       },
       {
         "ch": 16,
         "name": "Travelxp HD",
         "cat": "Entertainment",
-        "errors": 579,
+        "errors": 580,
         "starts": 0
       },
       {
         "ch": 15,
         "name": "NDTV Good Times",
         "cat": "Entertainment",
-        "errors": 564,
+        "errors": 565,
         "starts": 0
       },
       {
         "ch": 14,
         "name": "Mango TV",
         "cat": "Entertainment",
-        "errors": 437,
+        "errors": 438,
         "starts": 0
       },
       {
@@ -3292,7 +3297,7 @@
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
-        "errors": 290,
+        "errors": 291,
         "starts": 4763
       },
       {
@@ -3559,7 +3564,7 @@
       }
     ],
     "engagement": {
-      "sessions": 11013,
+      "sessions": 11015,
       "avg_channels": 3.1,
       "avg_session_sec": 277,
       "bounce_pct": 60.8,
