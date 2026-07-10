@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-10T20:40:52Z",
+  "fetched_at": "2026-07-10T21:44:56Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 11525,
-      "total_tunes": 45069,
-      "total_watch_min": 640734.9,
-      "avg_duration_sec": 772.2
+      "unique_users": 11531,
+      "total_tunes": 45078,
+      "total_watch_min": 640770.3,
+      "avg_duration_sec": 772.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6467,
-        "unique_users": 5393,
-        "watch_min": 27398.9
+        "tunes": 6470,
+        "unique_users": 5396,
+        "watch_min": 27399.3
       },
       {
         "ch": 3,
@@ -150,9 +150,9 @@
         "name": "9XM",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 776,
+        "tunes": 777,
         "unique_users": 537,
-        "watch_min": 321.9
+        "watch_min": 356.2
       },
       {
         "ch": 17,
@@ -168,9 +168,9 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1063,
-        "unique_users": 862,
-        "watch_min": 314.3
+        "tunes": 1064,
+        "unique_users": 863,
+        "watch_min": 314.5
       },
       {
         "ch": 251,
@@ -186,9 +186,9 @@
         "name": "ZB Cinema",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 494,
-        "unique_users": 362,
-        "watch_min": 242.6
+        "tunes": 495,
+        "unique_users": 363,
+        "watch_min": 242.7
       },
       {
         "ch": 41,
@@ -249,18 +249,18 @@
         "name": "Shemaroo Marathi Bana",
         "cat": "Movies",
         "lang": "Marathi",
-        "tunes": 578,
-        "unique_users": 422,
-        "watch_min": 160.4
+        "tunes": 579,
+        "unique_users": 423,
+        "watch_min": 160.7
       },
       {
         "ch": 32,
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "lang": "Bhojpuri",
-        "tunes": 493,
-        "unique_users": 398,
-        "watch_min": 158.3
+        "tunes": 495,
+        "unique_users": 399,
+        "watch_min": 158.4
       },
       {
         "ch": 97,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 23917,
-        "unique_users": 7628,
-        "watch_min": 38101.5
+        "tunes": 23921,
+        "unique_users": 7632,
+        "watch_min": 38102.1
       },
       {
         "cat": "Movies",
-        "tunes": 3699,
-        "unique_users": 1210,
-        "watch_min": 2425.9
+        "tunes": 3701,
+        "unique_users": 1211,
+        "watch_min": 2426.3
       },
       {
         "cat": "News",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 5637,
-        "unique_users": 1582,
-        "watch_min": 2376.3
+        "tunes": 5640,
+        "unique_users": 1583,
+        "watch_min": 2410.7
       },
       {
         "cat": "Undefined",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 37546,
-        "unique_users": 8558,
-        "watch_min": 46244.8
+        "tunes": 37552,
+        "unique_users": 8562,
+        "watch_min": 46279.8
       },
       {
         "lang": "English",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1753,
-        "unique_users": 985,
-        "watch_min": 801.6
+        "tunes": 1755,
+        "unique_users": 986,
+        "watch_min": 801.7
       },
       {
         "lang": "Punjabi",
@@ -430,9 +430,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 985,
-        "unique_users": 571,
-        "watch_min": 256.3
+        "tunes": 986,
+        "unique_users": 572,
+        "watch_min": 256.6
       },
       {
         "lang": "Urdu",
@@ -3174,8 +3174,13 @@
       },
       {
         "hour": "2026-07-10 20:00",
-        "users": 11,
-        "tunes": 22
+        "users": 13,
+        "tunes": 27
+      },
+      {
+        "hour": "2026-07-10 21:00",
+        "users": 4,
+        "tunes": 4
       }
     ],
     "dailyTrend": [
@@ -3337,28 +3342,28 @@
       },
       {
         "day": "2026-07-10",
-        "users": 508,
-        "tunes": 2803,
-        "watch_min": 33236.5
+        "users": 514,
+        "tunes": 2812,
+        "watch_min": 33272
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 10978
+        "users": 10983
       },
       {
         "device": "desktop",
-        "users": 324
+        "users": 325
       }
     ],
     "funnel": {
-      "opens": 5154,
-      "playback": 4296,
-      "engaged": 855
+      "opens": 5157,
+      "playback": 4299,
+      "engaged": 856
     },
     "retention": {
-      "new_users": 5184,
+      "new_users": 5187,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3416,7 +3421,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 297,
-        "starts": 5003
+        "starts": 5006
       },
       {
         "ch": 13,
@@ -3493,7 +3498,7 @@
         "name": "ZB Cinema",
         "cat": "Movies",
         "errors": 55,
-        "starts": 212
+        "starts": 213
       },
       {
         "ch": 27,
@@ -3528,7 +3533,7 @@
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "errors": 47,
-        "starts": 230
+        "starts": 231
       },
       {
         "ch": 251,
@@ -3556,7 +3561,7 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "errors": 36,
-        "starts": 795
+        "starts": 796
       },
       {
         "ch": 47,
@@ -3591,7 +3596,7 @@
         "name": "Shemaroo Marathi Bana",
         "cat": "Movies",
         "errors": 29,
-        "starts": 284
+        "starts": 285
       },
       {
         "ch": 11,
@@ -3644,14 +3649,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8678,
-      "samples": 25400
+      "avg_ttff_ms": 8677,
+      "samples": 25407
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 21163,
-        "avg_ttff_ms": 7839
+        "starts": 21168,
+        "avg_ttff_ms": 7838
       },
       {
         "net": "3g",
@@ -3660,8 +3665,8 @@
       },
       {
         "net": "unknown",
-        "starts": 1849,
-        "avg_ttff_ms": 2227
+        "starts": 1851,
+        "avg_ttff_ms": 2226
       },
       {
         "net": "slow-2g",
@@ -3675,7 +3680,7 @@
       }
     ],
     "engagement": {
-      "sessions": 11525,
+      "sessions": 11531,
       "avg_channels": 3.2,
       "avg_session_sec": 272,
       "bounce_pct": 60.2,
