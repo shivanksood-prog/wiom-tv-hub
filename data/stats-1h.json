@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-10T22:44:09Z",
+  "fetched_at": "2026-07-10T23:42:21Z",
   "data": {
     "period": "1h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
       "unique_users": 3,
-      "total_tunes": 5,
-      "total_watch_min": 14.2,
-      "avg_duration_sec": 122
+      "total_tunes": 2,
+      "total_watch_min": 0.1,
+      "avg_duration_sec": 2
     },
     "channelLeaderboard": [
       {
@@ -15,45 +15,31 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 4,
-        "name": "Epic TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
         "tunes": 2,
-        "unique_users": 1,
+        "unique_users": 2,
         "watch_min": 0.1
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 5,
-        "unique_users": 3,
-        "watch_min": 0.5
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 3,
-        "watch_min": 0.5
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-10 21:00",
-        "users": 1,
-        "tunes": 3
-      },
-      {
         "hour": "2026-07-10 22:00",
-        "users": 2,
+        "users": 3,
         "tunes": 2
       }
     ],
@@ -61,48 +47,48 @@
       {
         "day": "2026-07-10",
         "users": 3,
-        "tunes": 5,
-        "watch_min": 14.2
+        "tunes": 2,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3
+        "users": 2
       }
     ],
     "funnel": {
-      "opens": 3,
+      "opens": 2,
       "playback": 3,
       "engaged": 0
     },
     "retention": {
-      "new_users": 2,
-      "returning_users": 1
+      "new_users": 1,
+      "returning_users": 2
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 3153,
-      "samples": 5
+      "avg_ttff_ms": 1968,
+      "samples": 3
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 3,
-        "avg_ttff_ms": 3440
+        "starts": 2,
+        "avg_ttff_ms": 1384
       },
       {
         "net": "unknown",
-        "starts": 2,
-        "avg_ttff_ms": 2722
+        "starts": 1,
+        "avg_ttff_ms": 3135
       }
     ],
     "engagement": {
       "sessions": 3,
-      "avg_channels": 1.3,
-      "avg_session_sec": 47,
-      "bounce_pct": 66.7,
-      "zap_pct": 40
+      "avg_channels": 0.7,
+      "avg_session_sec": 21,
+      "bounce_pct": 100,
+      "zap_pct": 100
     },
     "survey": {
       "very": null,

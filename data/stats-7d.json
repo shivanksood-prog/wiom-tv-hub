@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-07-10T22:44:09Z",
+  "fetched_at": "2026-07-10T23:42:21Z",
   "data": {
     "period": "7d",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 3835,
+      "unique_users": 3834,
       "total_tunes": 20306,
       "total_watch_min": 341683.5,
       "avg_duration_sec": 899.8
@@ -15,8 +15,8 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2581,
-        "unique_users": 2132,
+        "tunes": 2582,
+        "unique_users": 2133,
         "watch_min": 2165.6
       },
       {
@@ -96,8 +96,8 @@
         "name": "9XM",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 409,
-        "unique_users": 272,
+        "tunes": 408,
+        "unique_users": 271,
         "watch_min": 211.8
       },
       {
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 9945,
-        "unique_users": 2748,
-        "watch_min": 5244.2
+        "tunes": 9946,
+        "unique_users": 2749,
+        "watch_min": 5244.3
       },
       {
         "cat": "Movies",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 2607,
-        "unique_users": 658,
-        "watch_min": 712
+        "tunes": 2606,
+        "unique_users": 657,
+        "watch_min": 711.9
       },
       {
         "cat": "Family",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-03 23:00",
-        "users": 2,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-04 00:00",
         "users": 4,
@@ -1269,17 +1264,11 @@
       },
       {
         "hour": "2026-07-10 22:00",
-        "users": 2,
-        "tunes": 2
+        "users": 3,
+        "tunes": 3
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-03",
-        "users": 2,
-        "tunes": 1,
-        "watch_min": 0.1
-      },
       {
         "day": "2026-07-04",
         "users": 468,
@@ -1318,15 +1307,15 @@
       },
       {
         "day": "2026-07-10",
-        "users": 517,
-        "tunes": 2817,
-        "watch_min": 33286.2
+        "users": 518,
+        "tunes": 2818,
+        "watch_min": 33286.3
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3665
+        "users": 3664
       },
       {
         "device": "desktop",
@@ -1334,13 +1323,13 @@
       }
     ],
     "funnel": {
-      "opens": 2299,
-      "playback": 1830,
+      "opens": 2298,
+      "playback": 1831,
       "engaged": 339
     },
     "retention": {
       "new_users": 2075,
-      "returning_users": 245
+      "returning_users": 244
     },
     "errorBoard": [
       {
@@ -1383,7 +1372,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 125,
-        "starts": 1958
+        "starts": 1959
       },
       {
         "ch": 19,
@@ -1626,13 +1615,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 5657,
-      "samples": 10441
+      "samples": 10442
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8625,
-        "avg_ttff_ms": 4834
+        "starts": 8626,
+        "avg_ttff_ms": 4833
       },
       {
         "net": "3g",
@@ -1656,7 +1645,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3835,
+      "sessions": 3834,
       "avg_channels": 4.3,
       "avg_session_sec": 150,
       "bounce_pct": 45,
