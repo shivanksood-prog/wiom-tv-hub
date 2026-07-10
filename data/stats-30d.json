@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-10T21:44:56Z",
+  "fetched_at": "2026-07-10T22:44:09Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 11531,
-      "total_tunes": 45078,
-      "total_watch_min": 640770.3,
-      "avg_duration_sec": 772.1
+      "unique_users": 11534,
+      "total_tunes": 45083,
+      "total_watch_min": 640784.6,
+      "avg_duration_sec": 772
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6470,
-        "unique_users": 5396,
-        "watch_min": 27399.3
+        "tunes": 6473,
+        "unique_users": 5399,
+        "watch_min": 27399.6
       },
       {
         "ch": 3,
@@ -105,9 +105,9 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1624,
-        "unique_users": 1368,
-        "watch_min": 588.8
+        "tunes": 1626,
+        "unique_users": 1369,
+        "watch_min": 588.9
       },
       {
         "ch": 9,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 23921,
-        "unique_users": 7632,
-        "watch_min": 38102.1
+        "tunes": 23926,
+        "unique_users": 7635,
+        "watch_min": 38102.6
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 37552,
-        "unique_users": 8562,
-        "watch_min": 46279.8
+        "tunes": 37557,
+        "unique_users": 8565,
+        "watch_min": 46280.3
       },
       {
         "lang": "English",
@@ -3179,8 +3179,13 @@
       },
       {
         "hour": "2026-07-10 21:00",
-        "users": 4,
-        "tunes": 4
+        "users": 5,
+        "tunes": 7
+      },
+      {
+        "hour": "2026-07-10 22:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
@@ -3342,15 +3347,15 @@
       },
       {
         "day": "2026-07-10",
-        "users": 514,
-        "tunes": 2812,
-        "watch_min": 33272
+        "users": 517,
+        "tunes": 2817,
+        "watch_min": 33286.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 10983
+        "users": 10986
       },
       {
         "device": "desktop",
@@ -3358,12 +3363,12 @@
       }
     ],
     "funnel": {
-      "opens": 5157,
-      "playback": 4299,
+      "opens": 5159,
+      "playback": 4301,
       "engaged": 856
     },
     "retention": {
-      "new_users": 5187,
+      "new_users": 5189,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3421,7 +3426,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 297,
-        "starts": 5006
+        "starts": 5009
       },
       {
         "ch": 13,
@@ -3449,7 +3454,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 121,
-        "starts": 860
+        "starts": 861
       },
       {
         "ch": 22,
@@ -3484,7 +3489,7 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "errors": 66,
-        "starts": 878
+        "starts": 879
       },
       {
         "ch": 18,
@@ -3649,13 +3654,13 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8677,
-      "samples": 25407
+      "avg_ttff_ms": 8676,
+      "samples": 25412
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 21168,
+        "starts": 21171,
         "avg_ttff_ms": 7838
       },
       {
@@ -3665,8 +3670,8 @@
       },
       {
         "net": "unknown",
-        "starts": 1851,
-        "avg_ttff_ms": 2226
+        "starts": 1853,
+        "avg_ttff_ms": 2227
       },
       {
         "net": "slow-2g",
@@ -3680,7 +3685,7 @@
       }
     ],
     "engagement": {
-      "sessions": 11531,
+      "sessions": 11534,
       "avg_channels": 3.2,
       "avg_session_sec": 272,
       "bounce_pct": 60.2,

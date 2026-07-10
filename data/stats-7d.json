@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-10T21:44:56Z",
+  "fetched_at": "2026-07-10T22:44:09Z",
   "data": {
     "period": "7d",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 3838,
-      "total_tunes": 20317,
-      "total_watch_min": 341671.3,
-      "avg_duration_sec": 899.4
+      "unique_users": 3835,
+      "total_tunes": 20306,
+      "total_watch_min": 341683.5,
+      "avg_duration_sec": 899.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2585,
-        "unique_users": 2133,
-        "watch_min": 2166.4
+        "tunes": 2581,
+        "unique_users": 2132,
+        "watch_min": 2165.6
       },
       {
         "ch": 119,
@@ -33,9 +33,9 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 557,
-        "unique_users": 436,
-        "watch_min": 719.4
+        "tunes": 556,
+        "unique_users": 435,
+        "watch_min": 719.3
       },
       {
         "ch": 14,
@@ -51,9 +51,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 939,
-        "unique_users": 778,
-        "watch_min": 366.2
+        "tunes": 938,
+        "unique_users": 777,
+        "watch_min": 366.1
       },
       {
         "ch": 24,
@@ -87,9 +87,9 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 600,
-        "unique_users": 518,
-        "watch_min": 229.2
+        "tunes": 602,
+        "unique_users": 519,
+        "watch_min": 229.3
       },
       {
         "ch": 27,
@@ -141,8 +141,8 @@
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 385,
-        "unique_users": 275,
+        "tunes": 384,
+        "unique_users": 274,
         "watch_min": 140
       },
       {
@@ -204,9 +204,9 @@
         "name": "Hi Dost!",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 153,
-        "unique_users": 118,
-        "watch_min": 79
+        "tunes": 152,
+        "unique_users": 117,
+        "watch_min": 78.9
       },
       {
         "ch": 11,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 9951,
-        "unique_users": 2750,
-        "watch_min": 5245.2
+        "tunes": 9945,
+        "unique_users": 2748,
+        "watch_min": 5244.2
       },
       {
         "cat": "Movies",
@@ -296,9 +296,9 @@
       },
       {
         "cat": "News",
-        "tunes": 3202,
-        "unique_users": 602,
-        "watch_min": 1365.7
+        "tunes": 3200,
+        "unique_users": 601,
+        "watch_min": 1365.4
       },
       {
         "cat": "Music",
@@ -344,9 +344,9 @@
       },
       {
         "cat": "Education",
-        "tunes": 129,
-        "unique_users": 90,
-        "watch_min": 19.3
+        "tunes": 126,
+        "unique_users": 89,
+        "watch_min": 19.1
       },
       {
         "cat": "Weather",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 16591,
-        "unique_users": 3162,
-        "watch_min": 8445.6
+        "tunes": 16580,
+        "unique_users": 3160,
+        "watch_min": 8444.2
       },
       {
         "lang": "English",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-03 22:00",
-        "users": 6,
-        "tunes": 16
-      },
       {
         "hour": "2026-07-03 23:00",
         "users": 2,
@@ -1269,16 +1264,21 @@
       },
       {
         "hour": "2026-07-10 21:00",
-        "users": 4,
-        "tunes": 4
+        "users": 5,
+        "tunes": 7
+      },
+      {
+        "hour": "2026-07-10 22:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-03",
-        "users": 8,
-        "tunes": 17,
-        "watch_min": 2.1
+        "users": 2,
+        "tunes": 1,
+        "watch_min": 0.1
       },
       {
         "day": "2026-07-04",
@@ -1318,15 +1318,15 @@
       },
       {
         "day": "2026-07-10",
-        "users": 514,
-        "tunes": 2812,
-        "watch_min": 33272
+        "users": 517,
+        "tunes": 2817,
+        "watch_min": 33286.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3668
+        "users": 3665
       },
       {
         "device": "desktop",
@@ -1334,13 +1334,13 @@
       }
     ],
     "funnel": {
-      "opens": 2302,
-      "playback": 1832,
+      "opens": 2299,
+      "playback": 1830,
       "engaged": 339
     },
     "retention": {
-      "new_users": 2076,
-      "returning_users": 247
+      "new_users": 2075,
+      "returning_users": 245
     },
     "errorBoard": [
       {
@@ -1382,7 +1382,7 @@
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
-        "errors": 126,
+        "errors": 125,
         "starts": 1958
       },
       {
@@ -1431,8 +1431,8 @@
         "ch": 7,
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
-        "errors": 48,
-        "starts": 316
+        "errors": 47,
+        "starts": 317
       },
       {
         "ch": 17,
@@ -1488,7 +1488,7 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "errors": 21,
-        "starts": 271
+        "starts": 272
       },
       {
         "ch": 119,
@@ -1526,18 +1526,18 @@
         "starts": 53
       },
       {
-        "ch": 128,
-        "name": "Hi Dost!",
-        "cat": "Entertainment",
-        "errors": 16,
-        "starts": 59
-      },
-      {
         "ch": 8,
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "errors": 16,
         "starts": 313
+      },
+      {
+        "ch": 128,
+        "name": "Hi Dost!",
+        "cat": "Entertainment",
+        "errors": 15,
+        "starts": 59
       },
       {
         "ch": 118,
@@ -1625,23 +1625,23 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 5658,
-      "samples": 10440
+      "avg_ttff_ms": 5657,
+      "samples": 10441
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8624,
+        "starts": 8625,
         "avg_ttff_ms": 4834
       },
       {
         "net": "3g",
-        "starts": 859,
-        "avg_ttff_ms": 16736
+        "starts": 857,
+        "avg_ttff_ms": 16760
       },
       {
         "net": "unknown",
-        "starts": 693,
+        "starts": 695,
         "avg_ttff_ms": 2766
       },
       {
@@ -1656,10 +1656,10 @@
       }
     ],
     "engagement": {
-      "sessions": 3838,
+      "sessions": 3835,
       "avg_channels": 4.3,
       "avg_session_sec": 150,
-      "bounce_pct": 44.9,
+      "bounce_pct": 45,
       "zap_pct": 53.3
     },
     "survey": {

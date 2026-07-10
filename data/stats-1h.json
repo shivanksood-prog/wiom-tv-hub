@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-10T21:44:56Z",
+  "fetched_at": "2026-07-10T22:44:09Z",
   "data": {
     "period": "1h",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 6,
-      "total_tunes": 6,
-      "total_watch_min": 0.7,
-      "avg_duration_sec": 6.8
+      "unique_users": 3,
+      "total_tunes": 5,
+      "total_watch_min": 14.2,
+      "avg_duration_sec": 122
     },
     "channelLeaderboard": [
       {
@@ -17,22 +17,13 @@
         "lang": "Hindi",
         "tunes": 3,
         "unique_users": 3,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 6,
-        "name": "Zee Dil Se",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
         "watch_min": 0.3
       },
       {
-        "ch": 32,
-        "name": "B4U Bhojpuri",
-        "cat": "Music",
-        "lang": "Bhojpuri",
+        "ch": 4,
+        "name": "Epic TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
         "tunes": 2,
         "unique_users": 1,
         "watch_min": 0.1
@@ -41,88 +32,77 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 4,
-        "unique_users": 4,
-        "watch_min": 0.6
-      },
-      {
-        "cat": "Music",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "tunes": 5,
+        "unique_users": 3,
+        "watch_min": 0.5
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 4,
-        "watch_min": 0.6
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "tunes": 5,
+        "unique_users": 3,
+        "watch_min": 0.5
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-10 20:00",
-        "users": 2,
-        "tunes": 2
+        "hour": "2026-07-10 21:00",
+        "users": 1,
+        "tunes": 3
       },
       {
-        "hour": "2026-07-10 21:00",
-        "users": 4,
-        "tunes": 4
+        "hour": "2026-07-10 22:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-10",
-        "users": 6,
-        "tunes": 6,
-        "watch_min": 0.7
+        "users": 3,
+        "tunes": 5,
+        "watch_min": 14.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 5
-      },
-      {
-        "device": "desktop",
-        "users": 1
+        "users": 3
       }
     ],
     "funnel": {
-      "opens": 6,
-      "playback": 5,
+      "opens": 3,
+      "playback": 3,
       "engaged": 0
     },
     "retention": {
-      "new_users": 3,
-      "returning_users": 3
+      "new_users": 2,
+      "returning_users": 1
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 3574,
+      "avg_ttff_ms": 3153,
       "samples": 5
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 5,
-        "avg_ttff_ms": 3574
+        "starts": 3,
+        "avg_ttff_ms": 3440
+      },
+      {
+        "net": "unknown",
+        "starts": 2,
+        "avg_ttff_ms": 2722
       }
     ],
     "engagement": {
-      "sessions": 6,
-      "avg_channels": 0.8,
-      "avg_session_sec": 7,
-      "bounce_pct": 83.3,
-      "zap_pct": 50
+      "sessions": 3,
+      "avg_channels": 1.3,
+      "avg_session_sec": 47,
+      "bounce_pct": 66.7,
+      "zap_pct": 40
     },
     "survey": {
       "very": null,
