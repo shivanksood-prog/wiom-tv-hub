@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-11T21:30:39Z",
+  "fetched_at": "2026-07-11T22:29:13Z",
   "data": {
     "period": "24h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
       "unique_users": 504,
-      "total_tunes": 1998,
-      "total_watch_min": 18762.4,
-      "avg_duration_sec": 499
+      "total_tunes": 2026,
+      "total_watch_min": 18764.3,
+      "avg_duration_sec": 492.7
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 336,
-        "unique_users": 279,
-        "watch_min": 748.8
+        "tunes": 335,
+        "unique_users": 278,
+        "watch_min": 748.7
       },
       {
         "ch": 45,
@@ -42,9 +42,9 @@
         "name": "Travelxp 4K",
         "cat": "Entertainment",
         "lang": "English",
-        "tunes": 30,
-        "unique_users": 24,
-        "watch_min": 61.8
+        "tunes": 32,
+        "unique_users": 25,
+        "watch_min": 62
       },
       {
         "ch": 7,
@@ -69,9 +69,9 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 47,
-        "unique_users": 37,
-        "watch_min": 33.4
+        "tunes": 49,
+        "unique_users": 38,
+        "watch_min": 33.5
       },
       {
         "ch": 8,
@@ -132,9 +132,9 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 75,
-        "unique_users": 61,
-        "watch_min": 14.9
+        "tunes": 73,
+        "unique_users": 60,
+        "watch_min": 14.8
       },
       {
         "ch": 206,
@@ -168,9 +168,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 78,
-        "unique_users": 67,
-        "watch_min": 8.2
+        "tunes": 79,
+        "unique_users": 68,
+        "watch_min": 8.3
       },
       {
         "ch": 40,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 1167,
+        "tunes": 1172,
         "unique_users": 352,
-        "watch_min": 1017
+        "watch_min": 1017.6
       },
       {
         "cat": "News",
-        "tunes": 269,
-        "unique_users": 70,
-        "watch_min": 678.2
+        "tunes": 272,
+        "unique_users": 71,
+        "watch_min": 678.5
       },
       {
         "cat": "Devotional",
-        "tunes": 85,
-        "unique_users": 31,
-        "watch_min": 380
+        "tunes": 88,
+        "unique_users": 32,
+        "watch_min": 380.6
       },
       {
         "cat": "Music",
@@ -307,22 +307,22 @@
         "watch_min": 78
       },
       {
+        "cat": "Undefined",
+        "tunes": 19,
+        "unique_users": 8,
+        "watch_min": 26.2
+      },
+      {
         "cat": "DD",
         "tunes": 55,
         "unique_users": 19,
         "watch_min": 26.1
       },
       {
-        "cat": "Undefined",
-        "tunes": 14,
-        "unique_users": 7,
-        "watch_min": 24.3
-      },
-      {
         "cat": "Movies",
-        "tunes": 139,
-        "unique_users": 65,
-        "watch_min": 22
+        "tunes": 142,
+        "unique_users": 66,
+        "watch_min": 22.9
       },
       {
         "cat": "Education",
@@ -335,6 +335,12 @@
         "tunes": 11,
         "unique_users": 10,
         "watch_min": 1.9
+      },
+      {
+        "cat": "Family",
+        "tunes": 9,
+        "unique_users": 1,
+        "watch_min": 1.3
       },
       {
         "cat": "Sports",
@@ -394,15 +400,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1692,
+        "tunes": 1702,
         "unique_users": 417,
-        "watch_min": 2140.3
+        "watch_min": 2142.2
       },
       {
         "lang": "English",
-        "tunes": 112,
-        "unique_users": 58,
-        "watch_min": 69
+        "tunes": 123,
+        "unique_users": 59,
+        "watch_min": 70.4
       },
       {
         "lang": "Bhojpuri",
@@ -412,15 +418,15 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 84,
-        "unique_users": 36,
-        "watch_min": 9.2
+        "tunes": 87,
+        "unique_users": 37,
+        "watch_min": 9.7
       },
       {
         "lang": "Marathi",
-        "tunes": 26,
-        "unique_users": 17,
-        "watch_min": 3.3
+        "tunes": 30,
+        "unique_users": 18,
+        "watch_min": 4.9
       },
       {
         "lang": "Urdu",
@@ -430,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-10 21:00",
-        "users": 1,
-        "tunes": 3
-      },
       {
         "hour": "2026-07-10 22:00",
         "users": 3,
@@ -552,22 +553,22 @@
       },
       {
         "hour": "2026-07-11 21:00",
-        "users": 7,
-        "tunes": 45
+        "users": 8,
+        "tunes": 76
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-10",
-        "users": 7,
-        "tunes": 11,
-        "watch_min": 14.6
+        "users": 6,
+        "tunes": 8,
+        "watch_min": 5
       },
       {
         "day": "2026-07-11",
-        "users": 497,
-        "tunes": 1987,
-        "watch_min": 18747.8
+        "users": 498,
+        "tunes": 2018,
+        "watch_min": 18759.3
       }
     ],
     "deviceBreakdown": [
@@ -581,12 +582,12 @@
       }
     ],
     "funnel": {
-      "opens": 345,
-      "playback": 260,
-      "engaged": 41
+      "opens": 344,
+      "playback": 259,
+      "engaged": 42
     },
     "retention": {
-      "new_users": 275,
+      "new_users": 274,
       "returning_users": 77
     },
     "errorBoard": [
@@ -615,7 +616,7 @@
         "ch": 23,
         "name": "B4U Kadak",
         "cat": "Movies",
-        "errors": 16,
+        "errors": 17,
         "starts": 0
       },
       {
@@ -630,7 +631,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 12,
-        "starts": 252
+        "starts": 251
       },
       {
         "ch": 17,
@@ -847,7 +848,7 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "errors": 2,
-        "starts": 37
+        "starts": 36
       },
       {
         "ch": 5,
@@ -872,14 +873,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 24258,
-      "samples": 1026
+      "avg_ttff_ms": 24184,
+      "samples": 1030
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 817,
-        "avg_ttff_ms": 29493
+        "starts": 821,
+        "avg_ttff_ms": 29375
       },
       {
         "net": "3g",
@@ -907,7 +908,7 @@
       "avg_channels": 3.3,
       "avg_session_sec": 133,
       "bounce_pct": 48,
-      "zap_pct": 50.5
+      "zap_pct": 50.3
     },
     "survey": {
       "very": 0,
