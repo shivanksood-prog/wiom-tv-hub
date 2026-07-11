@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-10T23:42:21Z",
+  "fetched_at": "2026-07-11T01:12:38Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 11535,
-      "total_tunes": 45084,
-      "total_watch_min": 640784.6,
-      "avg_duration_sec": 772
+      "unique_users": 11542,
+      "total_tunes": 45091,
+      "total_watch_min": 640785,
+      "avg_duration_sec": 771.9
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6474,
-        "unique_users": 5400,
-        "watch_min": 27399.7
+        "tunes": 6479,
+        "unique_users": 5405,
+        "watch_min": 27399.9
       },
       {
         "ch": 3,
@@ -51,9 +51,9 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1160,
-        "unique_users": 848,
-        "watch_min": 1408.2
+        "tunes": 1161,
+        "unique_users": 849,
+        "watch_min": 1408.3
       },
       {
         "ch": 119,
@@ -168,8 +168,8 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1064,
-        "unique_users": 863,
+        "tunes": 1065,
+        "unique_users": 864,
         "watch_min": 314.5
       },
       {
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 23927,
-        "unique_users": 7636,
-        "watch_min": 38102.7
+        "tunes": 23934,
+        "unique_users": 7641,
+        "watch_min": 38103
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 37558,
-        "unique_users": 8566,
-        "watch_min": 46280.3
+        "tunes": 37565,
+        "unique_users": 8571,
+        "watch_min": 46280.7
       },
       {
         "lang": "English",
@@ -3186,6 +3186,16 @@
         "hour": "2026-07-10 22:00",
         "users": 3,
         "tunes": 3
+      },
+      {
+        "hour": "2026-07-10 23:00",
+        "users": 3,
+        "tunes": 5
+      },
+      {
+        "hour": "2026-07-11 00:00",
+        "users": 4,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
@@ -3347,15 +3357,21 @@
       },
       {
         "day": "2026-07-10",
-        "users": 518,
-        "tunes": 2818,
-        "watch_min": 33286.3
+        "users": 521,
+        "tunes": 2823,
+        "watch_min": 33286.6
+      },
+      {
+        "day": "2026-07-11",
+        "users": 4,
+        "tunes": 2,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 10987
+        "users": 10994
       },
       {
         "device": "desktop",
@@ -3363,12 +3379,12 @@
       }
     ],
     "funnel": {
-      "opens": 5160,
-      "playback": 4302,
+      "opens": 5165,
+      "playback": 4306,
       "engaged": 856
     },
     "retention": {
-      "new_users": 5190,
+      "new_users": 5195,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3426,7 +3442,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 297,
-        "starts": 5010
+        "starts": 5014
       },
       {
         "ch": 13,
@@ -3655,12 +3671,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 8675,
-      "samples": 25413
+      "samples": 25417
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 21172,
+        "starts": 21175,
         "avg_ttff_ms": 7837
       },
       {
@@ -3670,7 +3686,7 @@
       },
       {
         "net": "unknown",
-        "starts": 1853,
+        "starts": 1854,
         "avg_ttff_ms": 2227
       },
       {
@@ -3685,7 +3701,7 @@
       }
     ],
     "engagement": {
-      "sessions": 11535,
+      "sessions": 11542,
       "avg_channels": 3.2,
       "avg_session_sec": 272,
       "bounce_pct": 60.2,

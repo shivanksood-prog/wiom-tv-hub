@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-10T23:42:21Z",
+  "fetched_at": "2026-07-11T01:12:38Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
       "unique_users": 3,
-      "total_tunes": 2,
-      "total_watch_min": 0.1,
+      "total_tunes": 1,
+      "total_watch_min": 0,
       "avg_duration_sec": 2
     },
     "channelLeaderboard": [
@@ -15,78 +15,73 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-10 22:00",
+        "hour": "2026-07-11 00:00",
         "users": 3,
-        "tunes": 2
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-10",
+        "day": "2026-07-11",
         "users": 3,
-        "tunes": 2,
-        "watch_min": 0.1
+        "tunes": 1,
+        "watch_min": 0
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 2
+        "users": 3
       }
     ],
     "funnel": {
-      "opens": 2,
-      "playback": 3,
+      "opens": 3,
+      "playback": 1,
       "engaged": 0
     },
     "retention": {
-      "new_users": 1,
-      "returning_users": 2
+      "new_users": 2,
+      "returning_users": 1
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1968,
-      "samples": 3
+      "avg_ttff_ms": 4066,
+      "samples": 1
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 2,
-        "avg_ttff_ms": 1384
-      },
-      {
-        "net": "unknown",
         "starts": 1,
-        "avg_ttff_ms": 3135
+        "avg_ttff_ms": 4066
       }
     ],
     "engagement": {
       "sessions": 3,
-      "avg_channels": 0.7,
-      "avg_session_sec": 21,
+      "avg_channels": 0.3,
+      "avg_session_sec": 2,
       "bounce_pct": 100,
       "zap_pct": 100
     },
