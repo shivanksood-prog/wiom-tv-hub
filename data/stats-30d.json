@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-11T22:29:13Z",
+  "fetched_at": "2026-07-11T23:32:16Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 12034,
-      "total_tunes": 47107,
-      "total_watch_min": 659544.3,
-      "avg_duration_sec": 759.8
+      "unique_users": 12040,
+      "total_tunes": 47120,
+      "total_watch_min": 659546,
+      "avg_duration_sec": 759.6
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6806,
-        "unique_users": 5674,
-        "watch_min": 28148.1
+        "tunes": 6812,
+        "unique_users": 5680,
+        "watch_min": 28148.7
       },
       {
         "ch": 3,
@@ -195,9 +195,9 @@
         "name": "Zoom",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 579,
-        "unique_users": 473,
-        "watch_min": 275.6
+        "tunes": 580,
+        "unique_users": 474,
+        "watch_min": 275.7
       },
       {
         "ch": 25,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 25096,
-        "unique_users": 7984,
-        "watch_min": 39120
+        "tunes": 25102,
+        "unique_users": 7990,
+        "watch_min": 39120.6
       },
       {
         "cat": "News",
-        "tunes": 6865,
-        "unique_users": 1359,
-        "watch_min": 3097
+        "tunes": 6870,
+        "unique_users": 1360,
+        "watch_min": 3097.9
       },
       {
         "cat": "Music",
-        "tunes": 5839,
-        "unique_users": 1641,
-        "watch_min": 2488.7
+        "tunes": 5840,
+        "unique_users": 1642,
+        "watch_min": 2488.8
       },
       {
         "cat": "Movies",
@@ -338,8 +338,8 @@
       },
       {
         "cat": "Classic",
-        "tunes": 337,
-        "unique_users": 265,
+        "tunes": 338,
+        "unique_users": 266,
         "watch_min": 78.4
       },
       {
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 39257,
-        "unique_users": 8978,
-        "watch_min": 48422.3
+        "tunes": 39269,
+        "unique_users": 8984,
+        "watch_min": 48423.6
       },
       {
         "lang": "English",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 1999,
-        "unique_users": 857,
-        "watch_min": 434.9
+        "tunes": 2000,
+        "unique_users": 858,
+        "watch_min": 435.3
       },
       {
         "lang": "Marathi",
@@ -3301,6 +3301,16 @@
         "hour": "2026-07-11 21:00",
         "users": 8,
         "tunes": 76
+      },
+      {
+        "hour": "2026-07-11 22:00",
+        "users": 2,
+        "tunes": 2
+      },
+      {
+        "hour": "2026-07-11 23:00",
+        "users": 4,
+        "tunes": 11
       }
     ],
     "dailyTrend": [
@@ -3468,15 +3478,15 @@
       },
       {
         "day": "2026-07-11",
-        "users": 498,
-        "tunes": 2018,
-        "watch_min": 18759.3
+        "users": 504,
+        "tunes": 2031,
+        "watch_min": 18761
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 11462
+        "users": 11468
       },
       {
         "device": "desktop",
@@ -3484,12 +3494,12 @@
       }
     ],
     "funnel": {
-      "opens": 5430,
-      "playback": 4526,
+      "opens": 5436,
+      "playback": 4531,
       "engaged": 891
     },
     "retention": {
-      "new_users": 5462,
+      "new_users": 5468,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3547,7 +3557,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 309,
-        "starts": 5258
+        "starts": 5263
       },
       {
         "ch": 13,
@@ -3666,7 +3676,7 @@
         "name": "Zoom",
         "cat": "Music",
         "errors": 49,
-        "starts": 303
+        "starts": 304
       },
       {
         "ch": 119,
@@ -3714,7 +3724,7 @@
         "ch": 250,
         "name": "ZillarBarta News",
         "cat": "Classic",
-        "errors": 30,
+        "errors": 31,
         "starts": 121
       },
       {
@@ -3775,14 +3785,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 9281,
-      "samples": 26439
+      "avg_ttff_ms": 9278,
+      "samples": 26449
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 21991,
-        "avg_ttff_ms": 8642
+        "starts": 22000,
+        "avg_ttff_ms": 8639
       },
       {
         "net": "3g",
@@ -3791,7 +3801,7 @@
       },
       {
         "net": "unknown",
-        "starts": 1940,
+        "starts": 1941,
         "avg_ttff_ms": 2225
       },
       {
@@ -3806,7 +3816,7 @@
       }
     ],
     "engagement": {
-      "sessions": 12034,
+      "sessions": 12040,
       "avg_channels": 3.2,
       "avg_session_sec": 273,
       "bounce_pct": 59.7,

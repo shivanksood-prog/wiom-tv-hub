@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-11T22:29:13Z",
+  "fetched_at": "2026-07-11T23:32:16Z",
   "data": {
     "period": "24h",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 504,
-      "total_tunes": 2026,
-      "total_watch_min": 18764.3,
-      "avg_duration_sec": 492.7
+      "unique_users": 507,
+      "total_tunes": 2036,
+      "total_watch_min": 18761.3,
+      "avg_duration_sec": 490.7
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 335,
-        "unique_users": 278,
-        "watch_min": 748.7
+        "tunes": 338,
+        "unique_users": 281,
+        "watch_min": 749
       },
       {
         "ch": 45,
@@ -213,9 +213,9 @@
         "name": "Zoom",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 16,
-        "unique_users": 13,
-        "watch_min": 3.8
+        "tunes": 17,
+        "unique_users": 14,
+        "watch_min": 3.9
       },
       {
         "ch": 24,
@@ -276,23 +276,23 @@
         "name": "ZillarBarta News",
         "cat": "Classic",
         "lang": "Hindi",
-        "tunes": 11,
-        "unique_users": 10,
-        "watch_min": 1.9
+        "tunes": 12,
+        "unique_users": 11,
+        "watch_min": 2
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 1172,
-        "unique_users": 352,
-        "watch_min": 1017.6
+        "tunes": 1175,
+        "unique_users": 355,
+        "watch_min": 1017.9
       },
       {
         "cat": "News",
-        "tunes": 272,
-        "unique_users": 71,
-        "watch_min": 678.5
+        "tunes": 277,
+        "unique_users": 72,
+        "watch_min": 679.5
       },
       {
         "cat": "Devotional",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 199,
-        "unique_users": 58,
-        "watch_min": 78
+        "tunes": 200,
+        "unique_users": 59,
+        "watch_min": 78.1
       },
       {
         "cat": "Undefined",
@@ -332,9 +332,9 @@
       },
       {
         "cat": "Classic",
-        "tunes": 11,
-        "unique_users": 10,
-        "watch_min": 1.9
+        "tunes": 12,
+        "unique_users": 11,
+        "watch_min": 2
       },
       {
         "cat": "Family",
@@ -400,9 +400,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1702,
-        "unique_users": 417,
-        "watch_min": 2142.2
+        "tunes": 1711,
+        "unique_users": 420,
+        "watch_min": 2143.3
       },
       {
         "lang": "English",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 87,
-        "unique_users": 37,
-        "watch_min": 9.7
+        "tunes": 88,
+        "unique_users": 38,
+        "watch_min": 10.1
       },
       {
         "lang": "Marathi",
@@ -436,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-10 22:00",
-        "users": 3,
-        "tunes": 3
-      },
       {
         "hour": "2026-07-10 23:00",
         "users": 3,
@@ -555,26 +550,36 @@
         "hour": "2026-07-11 21:00",
         "users": 8,
         "tunes": 76
+      },
+      {
+        "hour": "2026-07-11 22:00",
+        "users": 2,
+        "tunes": 2
+      },
+      {
+        "hour": "2026-07-11 23:00",
+        "users": 4,
+        "tunes": 11
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-10",
-        "users": 6,
-        "tunes": 8,
-        "watch_min": 5
+        "users": 3,
+        "tunes": 5,
+        "watch_min": 0.3
       },
       {
         "day": "2026-07-11",
-        "users": 498,
-        "tunes": 2018,
-        "watch_min": 18759.3
+        "users": 504,
+        "tunes": 2031,
+        "watch_min": 18761
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 478
+        "users": 481
       },
       {
         "device": "desktop",
@@ -582,12 +587,12 @@
       }
     ],
     "funnel": {
-      "opens": 344,
-      "playback": 259,
+      "opens": 348,
+      "playback": 262,
       "engaged": 42
     },
     "retention": {
-      "new_users": 274,
+      "new_users": 278,
       "returning_users": 77
     },
     "errorBoard": [
@@ -631,7 +636,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 12,
-        "starts": 251
+        "starts": 253
       },
       {
         "ch": 17,
@@ -687,7 +692,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 4,
-        "starts": 39
+        "starts": 38
       },
       {
         "ch": 22,
@@ -816,6 +821,13 @@
         "starts": 3
       },
       {
+        "ch": 250,
+        "name": "ZillarBarta News",
+        "cat": "Classic",
+        "errors": 2,
+        "starts": 3
+      },
+      {
         "ch": 66,
         "name": "ZB Cartoon",
         "cat": "Kids",
@@ -827,7 +839,7 @@
         "name": "Zoom",
         "cat": "Music",
         "errors": 2,
-        "starts": 6
+        "starts": 7
       },
       {
         "ch": 32,
@@ -863,24 +875,17 @@
         "cat": "Entertainment",
         "errors": 1,
         "starts": 0
-      },
-      {
-        "ch": 33,
-        "name": "YRF Music",
-        "cat": "Music",
-        "errors": 1,
-        "starts": 0
       }
     ],
     "perf": {
-      "avg_ttff_ms": 24184,
-      "samples": 1030
+      "avg_ttff_ms": 24054,
+      "samples": 1036
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 821,
-        "avg_ttff_ms": 29375
+        "starts": 828,
+        "avg_ttff_ms": 29144
       },
       {
         "net": "3g",
@@ -889,8 +894,8 @@
       },
       {
         "net": "unknown",
-        "starts": 89,
-        "avg_ttff_ms": 2208
+        "starts": 88,
+        "avg_ttff_ms": 2187
       },
       {
         "net": "2g",
@@ -904,10 +909,10 @@
       }
     ],
     "engagement": {
-      "sessions": 504,
+      "sessions": 507,
       "avg_channels": 3.3,
       "avg_session_sec": 133,
-      "bounce_pct": 48,
+      "bounce_pct": 48.1,
       "zap_pct": 50.3
     },
     "survey": {
