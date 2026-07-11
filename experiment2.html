@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Experiment 2 — genre landing (fse_v2)</title><style>
+:root{--bg:#FAF9FC;--card:#FFFFFF;--subtle:#F1EDF7;--border:#D7D3E0;--grid:#E7E2EF;
+--text:#161021;--muted:#665E75;--faint:#A7A1B2;--accent:#D9008D;
+--le:#B08A1E;--ln:#3E6FA8;--lm:#D9008D;--lu:#6D17CE;
+--pass-fg:#008043;--pass-bg:#E1FAED;--fail-fg:#E01E00;--fail-bg:#FFE9E5;
+--warn-fg:#B45B00;--warn-bg:#FFE6CC;--info-fg:#6D17CE;--info-bg:#F1E5FF}
+@media (prefers-color-scheme: dark){:root{--bg:#161021;--card:#352D42;--subtle:#2A2336;--border:#443152;
+--grid:#3E3550;--text:#FAF9FC;--muted:#A7A1B2;--faint:#665E75;--accent:#F033AE;
+--le:#A8821F;--ln:#4E88C6;--lm:#F033AE;--lu:#9D5CFF;
+--pass-fg:#4ADE97;--pass-bg:rgba(0,128,67,.22);--fail-fg:#FF7A66;--fail-bg:rgba(224,30,0,.2);
+--warn-fg:#FFA64D;--warn-bg:rgba(255,128,0,.18);--info-fg:#C9A2FF;--info-bg:rgba(109,23,206,.25)}}
+body{background:var(--bg);color:var(--text);margin:0;padding:28px 18px 60px;line-height:1.5;
+font-family:"Noto Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:24px;margin:2px 0 0;font-weight:700}
+h2{font-size:15.5px;margin:0;font-weight:700}
+.meta{font-size:13px;color:var(--muted);margin-top:6px}.meta b{color:var(--text)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
+.sub{font-size:12.5px;color:var(--muted);margin:2px 0 12px}
+.verdict{border-left:5px solid var(--warn-fg);display:flex;flex-wrap:wrap;gap:14px 30px;align-items:baseline}
+.verdict.pass{border-left-color:var(--pass-fg)}.verdict.fail{border-left-color:var(--fail-fg)}
+.verdict .word{font-size:21px;font-weight:800}
+.verdict.warn .word{color:var(--warn-fg)}.verdict.pass .word{color:var(--pass-fg)}.verdict.fail .word{color:var(--fail-fg)}
+.verdict .why{font-size:13.5px;max-width:60ch}.verdict .dates{font-size:12.5px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 11px;
+border-radius:999px;background:var(--pass-bg);color:var(--pass-fg)}
+.chip.fail{background:var(--fail-bg);color:var(--fail-fg)}
+.chip.info{background:var(--info-bg);color:var(--info-fg)}
+.chip .v{font-weight:400;opacity:.85}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12.8px;font-variant-numeric:tabular-nums}
+th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;
+text-align:right;padding:7px 9px;border-bottom:2px solid var(--border);white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:7px 9px;border-bottom:1px solid var(--grid);text-align:right;white-space:nowrap}
+td:first-child{text-align:left;font-weight:600}
+td .note{display:block;font-weight:400;font-size:11px;color:var(--faint);white-space:normal;max-width:34ch}
+tr:last-child td{border-bottom:none}
+tr.blockhead td{background:var(--subtle);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+color:var(--muted);font-weight:700;text-align:left}
+.dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+.p{font-size:11.5px;padding:2px 7px;border-radius:999px;background:var(--subtle);color:var(--muted);font-weight:600}
+.p.near{background:var(--warn-bg);color:var(--warn-fg)}
+.p.sig{background:var(--pass-bg);color:var(--pass-fg)}
+.best{font-weight:700}.worst{color:var(--muted)}
+.power{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:8px}
+.stat{background:var(--subtle);border-radius:8px;padding:11px 13px}
+.stat .n{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.stat .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+.foot{font-size:12px;color:var(--muted);line-height:1.65}.foot b{color:var(--text)}
+ol.foot{padding-left:18px;margin:6px 0 0}ol.foot li{margin-bottom:5px}
+.await{text-align:center;padding:60px 20px}
+.await .big{font-size:40px}.await h2{font-size:20px;margin-top:10px}
+.await p{font-size:13.5px;color:var(--muted);max-width:56ch;margin:10px auto 0}
+</style></head><body>
+<div class="wrap">
+  <header><div class="eyebrow">Wiom TV · Experiment 2 · fse_v2 genre landing</div>
+  <h1>Experiment 2 — which genre should a first session land on?</h1>
+  <div class="meta">4 arms, all on the health-gated sort · landing differs on the first session only ·
+  LE Entertainment (baseline) · LN News · LM Movies · LU Music</div></header>
+  <section class="card await">
+    <div class="big">⏳</div>
+    <h2>Awaiting deploy</h2>
+    <p>This page goes live automatically once <code>fse_v2</code> is deployed (branch
+    <code>exp/fse-v2-landing</code> merged + <b>pm2 reload</b>) and the extractor's CUTOFF is set to the
+    deploy timestamp. Pre-registered primary: first-session activation, LN/LM/LU vs LE at Bonferroni
+    α=0.0167 · looks at day 7 (interim, no decision) and day 12 (decision, MDE ≈4.5pp).</p>
+    <p style="margin-top:14px">Snapshot 2026-07-11 10:30:48 UTC · refreshed hourly</p>
+  </section>
+</div></body></html>
