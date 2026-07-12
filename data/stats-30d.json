@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-12T21:23:36Z",
+  "fetched_at": "2026-07-12T22:24:15Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 12600,
-      "total_tunes": 50139,
-      "total_watch_min": 714248.7,
-      "avg_duration_sec": 771.5
+      "unique_users": 12603,
+      "total_tunes": 50151,
+      "total_watch_min": 715147.4,
+      "avg_duration_sec": 772.3
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 7172,
-        "unique_users": 5990,
-        "watch_min": 28217.8
+        "tunes": 7174,
+        "unique_users": 5991,
+        "watch_min": 28218.7
       },
       {
         "ch": 3,
@@ -195,9 +195,9 @@
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 857,
-        "unique_users": 621,
-        "watch_min": 341.6
+        "tunes": 859,
+        "unique_users": 622,
+        "watch_min": 343
       },
       {
         "ch": 118,
@@ -267,9 +267,9 @@
         "name": "Gangaur TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 615,
-        "unique_users": 439,
-        "watch_min": 194.5
+        "tunes": 618,
+        "unique_users": 441,
+        "watch_min": 196.5
       },
       {
         "ch": 41,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 26597,
-        "unique_users": 8394,
-        "watch_min": 39674.4
+        "tunes": 26608,
+        "unique_users": 8396,
+        "watch_min": 39681.8
       },
       {
         "cat": "News",
@@ -296,8 +296,8 @@
       },
       {
         "cat": "Music",
-        "tunes": 6222,
-        "unique_users": 1746,
+        "tunes": 6223,
+        "unique_users": 1747,
         "watch_min": 2791.7
       },
       {
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 41754,
-        "unique_users": 9450,
-        "watch_min": 50052.5
+        "tunes": 41764,
+        "unique_users": 9453,
+        "watch_min": 50058.8
       },
       {
         "lang": "English",
-        "tunes": 2926,
-        "unique_users": 1159,
-        "watch_min": 2535.1
+        "tunes": 2927,
+        "unique_users": 1160,
+        "watch_min": 2535.8
       },
       {
         "lang": "Bhojpuri",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 2179,
-        "unique_users": 950,
-        "watch_min": 461.2
+        "tunes": 2180,
+        "unique_users": 951,
+        "watch_min": 461.6
       },
       {
         "lang": "Marathi",
@@ -3369,8 +3369,8 @@
       },
       {
         "hour": "2026-07-12 21:00",
-        "users": 3,
-        "tunes": 9
+        "users": 6,
+        "tunes": 21
       }
     ],
     "dailyTrend": [
@@ -3538,15 +3538,15 @@
       },
       {
         "day": "2026-07-12",
-        "users": 597,
-        "tunes": 3170,
-        "watch_min": 54757.4
+        "users": 600,
+        "tunes": 3182,
+        "watch_min": 55656.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 12019
+        "users": 12022
       },
       {
         "device": "desktop",
@@ -3554,12 +3554,12 @@
       }
     ],
     "funnel": {
-      "opens": 5747,
-      "playback": 4783,
-      "engaged": 942
+      "opens": 5748,
+      "playback": 4784,
+      "engaged": 943
     },
     "retention": {
-      "new_users": 5782,
+      "new_users": 5783,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3610,7 +3610,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 334,
-        "starts": 5530
+        "starts": 5532
       },
       {
         "ch": 12,
@@ -3659,7 +3659,7 @@
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
         "errors": 112,
-        "starts": 474
+        "starts": 476
       },
       {
         "ch": 125,
@@ -3714,7 +3714,7 @@
         "ch": 21,
         "name": "Travelxp 4K",
         "cat": "Entertainment",
-        "errors": 55,
+        "errors": 56,
         "starts": 0
       },
       {
@@ -3846,18 +3846,18 @@
     ],
     "perf": {
       "avg_ttff_ms": 9168,
-      "samples": 27939
+      "samples": 27949
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 23246,
+        "starts": 23251,
         "avg_ttff_ms": 8566
       },
       {
         "net": "3g",
-        "starts": 2207,
-        "avg_ttff_ms": 21317
+        "starts": 2212,
+        "avg_ttff_ms": 21288
       },
       {
         "net": "unknown",
@@ -3876,7 +3876,7 @@
       }
     ],
     "engagement": {
-      "sessions": 12600,
+      "sessions": 12603,
       "avg_channels": 3.2,
       "avg_session_sec": 270,
       "bounce_pct": 58.9,
