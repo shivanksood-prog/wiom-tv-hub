@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-12T20:24:50Z",
+  "fetched_at": "2026-07-12T21:23:36Z",
   "data": {
     "period": "30d",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 12594,
-      "total_tunes": 50126,
-      "total_watch_min": 706801,
-      "avg_duration_sec": 763.7
+      "unique_users": 12600,
+      "total_tunes": 50139,
+      "total_watch_min": 714248.7,
+      "avg_duration_sec": 771.5
     },
     "channelLeaderboard": [
       {
@@ -15,17 +15,17 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 7167,
-        "unique_users": 5985,
-        "watch_min": 28217
+        "tunes": 7172,
+        "unique_users": 5990,
+        "watch_min": 28217.8
       },
       {
         "ch": 3,
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2468,
-        "unique_users": 2033,
+        "tunes": 2469,
+        "unique_users": 2034,
         "watch_min": 2877.1
       },
       {
@@ -51,8 +51,8 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1293,
-        "unique_users": 932,
+        "tunes": 1294,
+        "unique_users": 933,
         "watch_min": 1532.3
       },
       {
@@ -69,18 +69,18 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1360,
-        "unique_users": 1068,
-        "watch_min": 1062.3
+        "tunes": 1363,
+        "unique_users": 1070,
+        "watch_min": 1063.2
       },
       {
         "ch": 5,
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1517,
-        "unique_users": 1199,
-        "watch_min": 955.7
+        "tunes": 1518,
+        "unique_users": 1200,
+        "watch_min": 955.8
       },
       {
         "ch": 45,
@@ -186,9 +186,9 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1196,
-        "unique_users": 965,
-        "watch_min": 371.1
+        "tunes": 1197,
+        "unique_users": 966,
+        "watch_min": 371.2
       },
       {
         "ch": 17,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 26584,
-        "unique_users": 8388,
-        "watch_min": 39672.5
+        "tunes": 26597,
+        "unique_users": 8394,
+        "watch_min": 39674.4
       },
       {
         "cat": "News",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 41741,
-        "unique_users": 9444,
-        "watch_min": 50050.6
+        "tunes": 41754,
+        "unique_users": 9450,
+        "watch_min": 50052.5
       },
       {
         "lang": "English",
@@ -3364,8 +3364,13 @@
       },
       {
         "hour": "2026-07-12 20:00",
-        "users": 4,
-        "tunes": 10
+        "users": 7,
+        "tunes": 14
+      },
+      {
+        "hour": "2026-07-12 21:00",
+        "users": 3,
+        "tunes": 9
       }
     ],
     "dailyTrend": [
@@ -3533,15 +3538,15 @@
       },
       {
         "day": "2026-07-12",
-        "users": 591,
-        "tunes": 3157,
-        "watch_min": 47309.8
+        "users": 597,
+        "tunes": 3170,
+        "watch_min": 54757.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 12013
+        "users": 12019
       },
       {
         "device": "desktop",
@@ -3549,12 +3554,12 @@
       }
     ],
     "funnel": {
-      "opens": 5742,
-      "playback": 4778,
+      "opens": 5747,
+      "playback": 4783,
       "engaged": 942
     },
     "retention": {
-      "new_users": 5777,
+      "new_users": 5782,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3605,7 +3610,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 334,
-        "starts": 5526
+        "starts": 5530
       },
       {
         "ch": 12,
@@ -3640,7 +3645,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 135,
-        "starts": 942
+        "starts": 944
       },
       {
         "ch": 22,
@@ -3840,19 +3845,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 9169,
-      "samples": 27932
+      "avg_ttff_ms": 9168,
+      "samples": 27939
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 23240,
-        "avg_ttff_ms": 8567
+        "starts": 23246,
+        "avg_ttff_ms": 8566
       },
       {
         "net": "3g",
-        "starts": 2206,
-        "avg_ttff_ms": 21320
+        "starts": 2207,
+        "avg_ttff_ms": 21317
       },
       {
         "net": "unknown",
@@ -3871,7 +3876,7 @@
       }
     ],
     "engagement": {
-      "sessions": 12594,
+      "sessions": 12600,
       "avg_channels": 3.2,
       "avg_session_sec": 270,
       "bounce_pct": 58.9,

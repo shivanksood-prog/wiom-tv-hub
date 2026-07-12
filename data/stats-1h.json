@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-12T20:24:50Z",
+  "fetched_at": "2026-07-12T21:23:36Z",
   "data": {
     "period": "1h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 16,
-      "total_tunes": 39,
-      "total_watch_min": 43.1,
-      "avg_duration_sec": 60.2
+      "unique_users": 7,
+      "total_tunes": 14,
+      "total_watch_min": 7451.6,
+      "avg_duration_sec": 29806.2
     },
     "channelLeaderboard": [
       {
@@ -15,45 +15,9 @@
         "name": "PTC Chakde",
         "cat": "Music",
         "lang": "Punjabi",
-        "tunes": 5,
-        "unique_users": 2,
-        "watch_min": 8.9
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 1
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 8,
-        "unique_users": 7,
-        "watch_min": 0.9
-      },
-      {
-        "ch": 6,
-        "name": "Zee Dil Se",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 4,
-        "watch_min": 0.5
-      },
-      {
-        "ch": 21,
-        "name": "Travelxp 4K",
-        "cat": "Entertainment",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
+        "watch_min": 3.9
       },
       {
         "ch": 7,
@@ -62,16 +26,34 @@
         "lang": "Hindi",
         "tunes": 3,
         "unique_users": 2,
-        "watch_min": 0.3
+        "watch_min": 0.8
       },
       {
-        "ch": 118,
-        "name": "Goldmines",
-        "cat": "Movies",
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 5,
+        "unique_users": 5,
+        "watch_min": 0.8
+      },
+      {
+        "ch": 6,
+        "name": "Zee Dil Se",
+        "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
+        "watch_min": 0.1
+      },
+      {
+        "ch": 5,
+        "name": "Zee Comedy Nation",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       },
       {
         "ch": 18,
@@ -80,101 +62,20 @@
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
+        "watch_min": 0
       },
       {
-        "ch": 5,
-        "name": "Zee Comedy Nation",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 206,
-        "name": "Shemaroo TV",
+        "ch": 8,
+        "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 128,
-        "name": "Hi Dost!",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 119,
-        "name": "Goldmines 2",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 110,
-        "name": "DD Urdu",
-        "cat": "DD",
-        "lang": "Urdu",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 80,
-        "name": "Apna Punjab TV",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 4,
-        "name": "Epic TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0
       },
       {
         "ch": 3,
         "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 180,
-        "name": "PTC Punjabi Gold",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 149,
-        "name": "Maha Punjabi",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 11,
-        "name": "Shubh Cinema",
         "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
@@ -185,119 +86,89 @@
     "categoryBreakdown": [
       {
         "cat": "Music",
-        "tunes": 5,
-        "unique_users": 2,
-        "watch_min": 8.9
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 3.9
       },
       {
         "cat": "Entertainment",
-        "tunes": 29,
-        "unique_users": 10,
-        "watch_min": 3
-      },
-      {
-        "cat": "Movies",
-        "tunes": 4,
-        "unique_users": 1,
-        "watch_min": 1.3
-      },
-      {
-        "cat": "DD",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "tunes": 13,
+        "unique_users": 6,
+        "watch_min": 1.9
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Punjabi",
-        "tunes": 8,
-        "unique_users": 3,
-        "watch_min": 9.1
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 3.9
       },
       {
         "lang": "Hindi",
-        "tunes": 28,
-        "unique_users": 10,
-        "watch_min": 2.7
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 1
-      },
-      {
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "lang": "Urdu",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "tunes": 13,
+        "unique_users": 6,
+        "watch_min": 1.9
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-12 19:00",
-        "users": 12,
-        "tunes": 30
-      },
-      {
         "hour": "2026-07-12 20:00",
         "users": 4,
+        "tunes": 5
+      },
+      {
+        "hour": "2026-07-12 21:00",
+        "users": 3,
         "tunes": 9
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-12",
-        "users": 16,
-        "tunes": 39,
-        "watch_min": 43.1
+        "users": 7,
+        "tunes": 14,
+        "watch_min": 7451.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 16
+        "users": 6
       }
     ],
     "funnel": {
-      "opens": 14,
-      "playback": 11,
-      "engaged": 2
+      "opens": 5,
+      "playback": 6,
+      "engaged": 1
     },
     "retention": {
-      "new_users": 10,
-      "returning_users": 4
+      "new_users": 5,
+      "returning_users": 1
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2551,
-      "samples": 29
+      "avg_ttff_ms": 4569,
+      "samples": 7
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 28,
-        "avg_ttff_ms": 2611
+        "starts": 6,
+        "avg_ttff_ms": 2823
       },
       {
-        "net": "unknown",
+        "net": "3g",
         "starts": 1,
-        "avg_ttff_ms": 874
+        "avg_ttff_ms": 15046
       }
     ],
     "engagement": {
-      "sessions": 16,
-      "avg_channels": 2.1,
-      "avg_session_sec": 67,
-      "bounce_pct": 56.3,
-      "zap_pct": 35.9
+      "sessions": 7,
+      "avg_channels": 1.9,
+      "avg_session_sec": 18,
+      "bounce_pct": 57.1,
+      "zap_pct": 42.9
     },
     "survey": {
       "very": null,
