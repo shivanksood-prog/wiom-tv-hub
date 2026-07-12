@@ -1,50 +1,32 @@
 {
-  "fetched_at": "2026-07-12T22:24:15Z",
+  "fetched_at": "2026-07-12T23:27:29Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
       "unique_users": 3,
-      "total_tunes": 12,
-      "total_watch_min": 898.8,
-      "avg_duration_sec": 3370.3
+      "total_tunes": 6,
+      "total_watch_min": 0.5,
+      "avg_duration_sec": 5
     },
     "channelLeaderboard": [
-      {
-        "ch": 20,
-        "name": "Gangaur TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 2
-      },
-      {
-        "ch": 17,
-        "name": "Shemaroo Josh",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 1.4
-      },
-      {
-        "ch": 104,
-        "name": "DD National HD",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 1.3
-      },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 2,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 251,
+        "name": "Zoom",
+        "cat": "Music",
+        "lang": "Hindi",
         "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.9
+        "watch_min": 0.1
       },
       {
         "ch": 21,
@@ -53,46 +35,19 @@
         "lang": "English",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.8
-      },
-      {
-        "ch": 128,
-        "name": "Hi Dost!",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.7
-      },
-      {
-        "ch": 149,
-        "name": "Maha Punjabi",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 234,
-        "name": "Ultimate TV",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
         "watch_min": 0.1
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 11,
-        "unique_users": 2,
-        "watch_min": 7.4
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 0.3
       },
       {
         "cat": "Music",
-        "tunes": 1,
+        "tunes": 2,
         "unique_users": 1,
         "watch_min": 0.1
       }
@@ -100,36 +55,35 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 10,
-        "unique_users": 3,
-        "watch_min": 6.3
+        "tunes": 5,
+        "unique_users": 2,
+        "watch_min": 0.5
       },
       {
         "lang": "English",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.8
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.4
+        "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-12 21:00",
-        "users": 3,
-        "tunes": 12
+        "hour": "2026-07-12 22:00",
+        "users": 2,
+        "tunes": 4
+      },
+      {
+        "hour": "2026-07-12 23:00",
+        "users": 1,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-12",
         "users": 3,
-        "tunes": 12,
-        "watch_min": 898.8
+        "tunes": 6,
+        "watch_min": 0.5
       }
     ],
     "deviceBreakdown": [
@@ -139,52 +93,45 @@
       }
     ],
     "funnel": {
-      "opens": 2,
-      "playback": 1,
-      "engaged": 1
+      "opens": 3,
+      "playback": 2,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 1,
+      "new_users": 2,
       "returning_users": 1
     },
     "errorBoard": [
       {
-        "ch": 21,
-        "name": "Travelxp 4K",
-        "cat": "Entertainment",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 234,
-        "name": "Ultimate TV",
+        "ch": 251,
+        "name": "Zoom",
         "cat": "Music",
         "errors": 1,
         "starts": 0
       }
     ],
     "perf": {
-      "avg_ttff_ms": 9391,
-      "samples": 10
+      "avg_ttff_ms": 3685,
+      "samples": 2
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 5,
-        "avg_ttff_ms": 10182
+        "starts": 1,
+        "avg_ttff_ms": 4643
       },
       {
-        "net": "3g",
-        "starts": 5,
-        "avg_ttff_ms": 8599
+        "net": "unknown",
+        "starts": 1,
+        "avg_ttff_ms": 2726
       }
     ],
     "engagement": {
       "sessions": 3,
-      "avg_channels": 3,
-      "avg_session_sec": 148,
+      "avg_channels": 1.3,
+      "avg_session_sec": 8,
       "bounce_pct": 33.3,
-      "zap_pct": 8.3
+      "zap_pct": 33.3
     },
     "survey": {
       "very": null,

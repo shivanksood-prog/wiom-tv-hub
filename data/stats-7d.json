@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-12T22:24:15Z",
+  "fetched_at": "2026-07-12T23:27:29Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3856,
-      "total_tunes": 20017,
-      "total_watch_min": 362424.8,
-      "avg_duration_sec": 970.5
+      "unique_users": 3860,
+      "total_tunes": 20025,
+      "total_watch_min": 362425.7,
+      "avg_duration_sec": 970.2
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2543,
-        "unique_users": 2115,
-        "watch_min": 2703
+        "tunes": 2546,
+        "unique_users": 2117,
+        "watch_min": 2703.3
       },
       {
         "ch": 45,
@@ -222,9 +222,9 @@
         "name": "Travelxp 4K",
         "cat": "Entertainment",
         "lang": "English",
-        "tunes": 259,
-        "unique_users": 200,
-        "watch_min": 90.1
+        "tunes": 262,
+        "unique_users": 202,
+        "watch_min": 90.5
       },
       {
         "ch": 41,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 9860,
-        "unique_users": 2736,
-        "watch_min": 5400.4
+        "tunes": 9866,
+        "unique_users": 2740,
+        "watch_min": 5401.2
       },
       {
         "cat": "News",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 2469,
-        "unique_users": 623,
-        "watch_min": 927.1
+        "tunes": 2471,
+        "unique_users": 624,
+        "watch_min": 927.3
       },
       {
         "cat": "Devotional",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 16390,
-        "unique_users": 3183,
-        "watch_min": 9652
+        "tunes": 16395,
+        "unique_users": 3185,
+        "watch_min": 9652.5
       },
       {
         "lang": "English",
-        "tunes": 1294,
-        "unique_users": 511,
-        "watch_min": 622
+        "tunes": 1297,
+        "unique_users": 513,
+        "watch_min": 622.5
       },
       {
         "lang": "Bhojpuri",
@@ -1266,6 +1266,16 @@
         "hour": "2026-07-12 21:00",
         "users": 6,
         "tunes": 21
+      },
+      {
+        "hour": "2026-07-12 22:00",
+        "users": 3,
+        "tunes": 6
+      },
+      {
+        "hour": "2026-07-12 23:00",
+        "users": 1,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
@@ -1313,15 +1323,15 @@
       },
       {
         "day": "2026-07-12",
-        "users": 600,
-        "tunes": 3182,
-        "watch_min": 55656.2
+        "users": 604,
+        "tunes": 3190,
+        "watch_min": 55657.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3679
+        "users": 3683
       },
       {
         "device": "desktop",
@@ -1329,13 +1339,13 @@
       }
     ],
     "funnel": {
-      "opens": 2313,
-      "playback": 1841,
+      "opens": 2316,
+      "playback": 1843,
       "engaged": 340
     },
     "retention": {
-      "new_users": 2066,
-      "returning_users": 267
+      "new_users": 2068,
+      "returning_users": 268
     },
     "errorBoard": [
       {
@@ -1371,7 +1381,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 128,
-        "starts": 1931
+        "starts": 1933
       },
       {
         "ch": 19,
@@ -1584,6 +1594,13 @@
         "starts": 23
       },
       {
+        "ch": 251,
+        "name": "Zoom",
+        "cat": "Music",
+        "errors": 11,
+        "starts": 76
+      },
+      {
         "ch": 26,
         "name": "Shemaroo Marathi Bana",
         "cat": "Movies",
@@ -1605,13 +1622,6 @@
         "starts": 2
       },
       {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "errors": 10,
-        "starts": 76
-      },
-      {
         "ch": 211,
         "name": "Stingray DJAZZ",
         "cat": "Music",
@@ -1621,13 +1631,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 7906,
-      "samples": 10136
+      "samples": 10138
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8411,
-        "avg_ttff_ms": 7492
+        "starts": 8412,
+        "avg_ttff_ms": 7491
       },
       {
         "net": "3g",
@@ -1636,8 +1646,8 @@
       },
       {
         "net": "unknown",
-        "starts": 614,
-        "avg_ttff_ms": 2053
+        "starts": 615,
+        "avg_ttff_ms": 2054
       },
       {
         "net": "slow-2g",
@@ -1651,11 +1661,11 @@
       }
     ],
     "engagement": {
-      "sessions": 3856,
+      "sessions": 3860,
       "avg_channels": 4.2,
       "avg_session_sec": 188,
       "bounce_pct": 45,
-      "zap_pct": 52.4
+      "zap_pct": 52.3
     },
     "survey": {
       "very": 27,
