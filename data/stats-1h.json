@@ -1,15 +1,159 @@
 {
-  "fetched_at": "2026-07-13T20:58:36Z",
+  "fetched_at": "2026-07-13T22:03:08Z",
   "data": {
     "period": "1h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 2,
-      "total_tunes": 1,
-      "total_watch_min": 0.2,
-      "avg_duration_sec": 13
+      "unique_users": 6,
+      "total_tunes": 58,
+      "total_watch_min": 2987.7,
+      "avg_duration_sec": 2455.6
     },
     "channelLeaderboard": [
+      {
+        "ch": 154,
+        "name": "MNTV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 26,
+        "unique_users": 3,
+        "watch_min": 13.2
+      },
+      {
+        "ch": 160,
+        "name": "NDTV Rajasthan",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 6,
+        "unique_users": 1,
+        "watch_min": 2.6
+      },
+      {
+        "ch": 29,
+        "name": "9X Jhakaas",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 2.1
+      },
+      {
+        "ch": 152,
+        "name": "Metro TV",
+        "cat": "DD",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 1.8
+      },
+      {
+        "ch": 155,
+        "name": "Mr. Bean Animated",
+        "cat": "Animation",
+        "lang": "English",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 77,
+        "name": "Ananda Barta",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 12,
+        "name": "Abzy Movies",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 2,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 216,
+        "name": "Studio One +",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 159,
+        "name": "NDTV Profit",
+        "cat": "Business",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 134,
+        "name": "India Today",
+        "cat": "News",
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 128,
+        "name": "Hi Dost!",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 119,
+        "name": "Goldmines 2",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 118,
+        "name": "Goldmines",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 70,
+        "name": "Aaseervatham TV",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 66,
+        "name": "ZB Cartoon",
+        "cat": "Kids",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
       {
         "ch": 24,
         "name": "Bhojpuri Cinema",
@@ -17,73 +161,207 @@
         "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
+        "watch_min": 0
+      },
+      {
+        "ch": 14,
+        "name": "Mango TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 9,
+        "name": "Zee South Flix",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 8,
+        "name": "Zee Cine Classic",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 7,
+        "name": "Zee Horror Nights",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 6,
+        "name": "Zee Dil Se",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "Movies",
+        "cat": "Entertainment",
+        "tunes": 37,
+        "unique_users": 5,
+        "watch_min": 13.8
+      },
+      {
+        "cat": "News",
+        "tunes": 8,
+        "unique_users": 2,
+        "watch_min": 3
+      },
+      {
+        "cat": "Music",
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 2.1
+      },
+      {
+        "cat": "DD",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
+        "watch_min": 1.8
+      },
+      {
+        "cat": "Movies",
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.4
+      },
+      {
+        "cat": "Animation",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "cat": "Kids",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "cat": "Devotional",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "cat": "Business",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
+        "lang": "Hindi",
+        "tunes": 54,
+        "unique_users": 6,
+        "watch_min": 21.3
+      },
+      {
+        "lang": "English",
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
         "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
+        "watch_min": 0
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-13 20:00",
-        "users": 2,
-        "tunes": 1
+        "hour": "2026-07-13 21:00",
+        "users": 6,
+        "tunes": 58
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-13",
-        "users": 2,
-        "tunes": 1,
-        "watch_min": 0.2
+        "users": 6,
+        "tunes": 58,
+        "watch_min": 2987.7
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 2
+        "users": 5
       }
     ],
     "funnel": {
-      "opens": 2,
-      "playback": 2,
-      "engaged": 0
+      "opens": 3,
+      "playback": 3,
+      "engaged": 2
     },
     "retention": {
-      "new_users": 1,
+      "new_users": 2,
       "returning_users": 1
     },
-    "errorBoard": [],
+    "errorBoard": [
+      {
+        "ch": 12,
+        "name": "Abzy Movies",
+        "cat": "Entertainment",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 4,
+        "name": "Epic TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 14,
+        "name": "Mango TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 15,
+        "name": "NDTV Good Times",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      }
+    ],
     "perf": {
-      "avg_ttff_ms": 3434,
-      "samples": 2
+      "avg_ttff_ms": 8465,
+      "samples": 19
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 2,
-        "avg_ttff_ms": 3434
+        "starts": 19,
+        "avg_ttff_ms": 8465
       }
     ],
     "engagement": {
-      "sessions": 2,
-      "avg_channels": 0.5,
-      "avg_session_sec": 8,
-      "bounce_pct": 100,
-      "zap_pct": 0
+      "sessions": 6,
+      "avg_channels": 4.2,
+      "avg_session_sec": 207,
+      "bounce_pct": 0,
+      "zap_pct": 27.6
     },
     "survey": {
       "very": null,
