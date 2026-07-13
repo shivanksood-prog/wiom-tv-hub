@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-12T23:27:29Z",
+  "fetched_at": "2026-07-13T01:07:14Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3,
-      "total_tunes": 6,
-      "total_watch_min": 0.5,
-      "avg_duration_sec": 5
+      "unique_users": 2,
+      "total_tunes": 4,
+      "total_watch_min": 0.3,
+      "avg_duration_sec": 3.8
     },
     "channelLeaderboard": [
       {
@@ -15,123 +15,98 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "lang": "Hindi",
         "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "unique_users": 2,
+        "watch_min": 0.2
       },
       {
-        "ch": 21,
-        "name": "Travelxp 4K",
+        "ch": 18,
+        "name": "Desi Channel",
         "cat": "Entertainment",
-        "lang": "English",
+        "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
         "tunes": 4,
-        "unique_users": 3,
+        "unique_users": 2,
         "watch_min": 0.3
-      },
-      {
-        "cat": "Music",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 5,
+        "tunes": 4,
         "unique_users": 2,
-        "watch_min": 0.5
-      },
-      {
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.3
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-12 22:00",
-        "users": 2,
-        "tunes": 4
+        "hour": "2026-07-13 00:00",
+        "users": 1,
+        "tunes": 2
       },
       {
-        "hour": "2026-07-12 23:00",
+        "hour": "2026-07-13 01:00",
         "users": 1,
         "tunes": 2
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-12",
-        "users": 3,
-        "tunes": 6,
-        "watch_min": 0.5
+        "day": "2026-07-13",
+        "users": 2,
+        "tunes": 4,
+        "watch_min": 0.3
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3
+        "users": 2
       }
     ],
     "funnel": {
-      "opens": 3,
+      "opens": 2,
       "playback": 2,
       "engaged": 0
     },
     "retention": {
       "new_users": 2,
-      "returning_users": 1
+      "returning_users": 0
     },
-    "errorBoard": [
-      {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "errors": 1,
-        "starts": 0
-      }
-    ],
+    "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 3685,
-      "samples": 2
+      "avg_ttff_ms": 2032,
+      "samples": 3
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1,
-        "avg_ttff_ms": 4643
-      },
-      {
-        "net": "unknown",
-        "starts": 1,
-        "avg_ttff_ms": 2726
+        "starts": 3,
+        "avg_ttff_ms": 2032
       }
     ],
     "engagement": {
-      "sessions": 3,
-      "avg_channels": 1.3,
+      "sessions": 2,
+      "avg_channels": 2,
       "avg_session_sec": 8,
-      "bounce_pct": 33.3,
-      "zap_pct": 33.3
+      "bounce_pct": 0,
+      "zap_pct": 75
     },
     "survey": {
       "very": null,
