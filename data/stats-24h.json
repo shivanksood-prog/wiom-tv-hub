@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-13T19:53:25Z",
+  "fetched_at": "2026-07-13T20:58:36Z",
   "data": {
     "period": "24h",
     "liveNow": 1,
     "overview": {
-      "unique_users": 454,
-      "total_tunes": 2445,
-      "total_watch_min": 25462.3,
-      "avg_duration_sec": 556.1
+      "unique_users": 448,
+      "total_tunes": 2433,
+      "total_watch_min": 18003.9,
+      "avg_duration_sec": 395.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 260,
-        "unique_users": 216,
-        "watch_min": 915.4
+        "tunes": 255,
+        "unique_users": 211,
+        "watch_min": 914.6
       },
       {
         "ch": 7,
@@ -51,26 +51,26 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 70,
-        "unique_users": 50,
-        "watch_min": 26.1
-      },
-      {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 89,
-        "unique_users": 70,
-        "watch_min": 18.5
+        "tunes": 69,
+        "unique_users": 49,
+        "watch_min": 25.9
       },
       {
         "ch": 24,
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 60,
-        "unique_users": 38,
+        "tunes": 61,
+        "unique_users": 39,
+        "watch_min": 18.6
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 88,
+        "unique_users": 69,
         "watch_min": 18.4
       },
       {
@@ -90,15 +90,6 @@
         "tunes": 23,
         "unique_users": 22,
         "watch_min": 13
-      },
-      {
-        "ch": 177,
-        "name": "PTC Chakde",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 10,
-        "unique_users": 6,
-        "watch_min": 12.4
       },
       {
         "ch": 30,
@@ -222,8 +213,8 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 62,
-        "unique_users": 50,
+        "tunes": 61,
+        "unique_users": 49,
         "watch_min": 4
       },
       {
@@ -279,14 +270,23 @@
         "tunes": 31,
         "unique_users": 23,
         "watch_min": 2.9
+      },
+      {
+        "ch": 119,
+        "name": "Goldmines 2",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 19,
+        "unique_users": 16,
+        "watch_min": 2.7
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 1094,
-        "unique_users": 304,
-        "watch_min": 1132.5
+        "tunes": 1086,
+        "unique_users": 300,
+        "watch_min": 1131.5
       },
       {
         "cat": "News",
@@ -296,15 +296,15 @@
       },
       {
         "cat": "Music",
-        "tunes": 369,
-        "unique_users": 80,
-        "watch_min": 74.9
+        "tunes": 364,
+        "unique_users": 79,
+        "watch_min": 63
       },
       {
         "cat": "Movies",
-        "tunes": 229,
-        "unique_users": 79,
-        "watch_min": 38.4
+        "tunes": 230,
+        "unique_users": 80,
+        "watch_min": 38.6
       },
       {
         "cat": "Devotional",
@@ -406,27 +406,27 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1979,
-        "unique_users": 367,
-        "watch_min": 1291.6
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 138,
-        "unique_users": 64,
-        "watch_min": 26.4
+        "tunes": 1970,
+        "unique_users": 362,
+        "watch_min": 1290.5
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 88,
-        "unique_users": 51,
-        "watch_min": 22.5
+        "tunes": 89,
+        "unique_users": 52,
+        "watch_min": 22.7
       },
       {
         "lang": "English",
         "tunes": 172,
         "unique_users": 67,
         "watch_min": 17.1
+      },
+      {
+        "lang": "Punjabi",
+        "tunes": 134,
+        "unique_users": 64,
+        "watch_min": 14.6
       },
       {
         "lang": "Marathi",
@@ -442,16 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-12 19:00",
-        "users": 1,
-        "tunes": 0
-      },
-      {
-        "hour": "2026-07-12 20:00",
-        "users": 7,
-        "tunes": 14
-      },
       {
         "hour": "2026-07-12 21:00",
         "users": 6,
@@ -566,26 +556,31 @@
         "hour": "2026-07-13 19:00",
         "users": 21,
         "tunes": 184
+      },
+      {
+        "hour": "2026-07-13 20:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-12",
-        "users": 18,
-        "tunes": 43,
-        "watch_min": 8359.7
+        "users": 10,
+        "tunes": 29,
+        "watch_min": 900.9
       },
       {
         "day": "2026-07-13",
-        "users": 436,
-        "tunes": 2402,
-        "watch_min": 17102.6
+        "users": 438,
+        "tunes": 2404,
+        "watch_min": 17103
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 436
+        "users": 430
       },
       {
         "device": "desktop",
@@ -593,13 +588,13 @@
       }
     ],
     "funnel": {
-      "opens": 330,
-      "playback": 245,
-      "engaged": 39
+      "opens": 323,
+      "playback": 239,
+      "engaged": 38
     },
     "retention": {
-      "new_users": 252,
-      "returning_users": 83
+      "new_users": 247,
+      "returning_users": 81
     },
     "errorBoard": [
       {
@@ -656,7 +651,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 13,
-        "starts": 195
+        "starts": 189
       },
       {
         "ch": 16,
@@ -838,7 +833,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 2,
-        "starts": 43
+        "starts": 44
       },
       {
         "ch": 40,
@@ -884,13 +879,13 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 5645,
-      "samples": 1327
+      "avg_ttff_ms": 5665,
+      "samples": 1319
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1124,
+        "starts": 1116,
         "avg_ttff_ms": 2248
       },
       {
@@ -910,11 +905,11 @@
       }
     ],
     "engagement": {
-      "sessions": 454,
+      "sessions": 448,
       "avg_channels": 4.4,
-      "avg_session_sec": 86,
+      "avg_session_sec": 85,
       "bounce_pct": 43.8,
-      "zap_pct": 54.2
+      "zap_pct": 54.3
     },
     "survey": {
       "very": 5,
