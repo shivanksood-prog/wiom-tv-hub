@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-13T23:10:13Z",
+  "fetched_at": "2026-07-14T00:10:21Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
       "unique_users": 13053,
-      "total_tunes": 52638,
-      "total_watch_min": 735240.8,
-      "avg_duration_sec": 755.9
+      "total_tunes": 52642,
+      "total_watch_min": 735781.4,
+      "avg_duration_sec": 756.4
     },
     "channelLeaderboard": [
       {
@@ -74,6 +74,15 @@
         "watch_min": 1125
       },
       {
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 902,
+        "unique_users": 619,
+        "watch_min": 1002
+      },
+      {
         "ch": 5,
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
@@ -128,22 +137,13 @@
         "watch_min": 640.3
       },
       {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 900,
-        "unique_users": 619,
-        "watch_min": 586.8
-      },
-      {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 499,
-        "unique_users": 373,
-        "watch_min": 527.6
+        "tunes": 500,
+        "unique_users": 374,
+        "watch_min": 527.7
       },
       {
         "ch": 14,
@@ -290,21 +290,21 @@
       },
       {
         "cat": "News",
-        "tunes": 7806,
-        "unique_users": 1564,
-        "watch_min": 3771.3
-      },
-      {
-        "cat": "Music",
-        "tunes": 6596,
-        "unique_users": 1827,
-        "watch_min": 2857.5
+        "tunes": 7807,
+        "unique_users": 1565,
+        "watch_min": 3771.4
       },
       {
         "cat": "Movies",
-        "tunes": 4424,
+        "tunes": 4426,
         "unique_users": 1476,
-        "watch_min": 2691.8
+        "watch_min": 3107.1
+      },
+      {
+        "cat": "Music",
+        "tunes": 6597,
+        "unique_users": 1827,
+        "watch_min": 2982.8
       },
       {
         "cat": "Undefined",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 43781,
+        "tunes": 43782,
         "unique_users": 9817,
-        "watch_min": 51364.2
+        "watch_min": 51364.3
       },
       {
         "lang": "English",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 2048,
+        "tunes": 2050,
         "unique_users": 1144,
-        "watch_min": 862.5
+        "watch_min": 1277.8
       },
       {
         "lang": "Punjabi",
@@ -430,9 +430,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 1124,
-        "unique_users": 651,
-        "watch_min": 273.3
+        "tunes": 1125,
+        "unique_users": 652,
+        "watch_min": 398.5
       },
       {
         "lang": "Urdu",
@@ -3496,6 +3496,11 @@
         "hour": "2026-07-13 22:00",
         "users": 4,
         "tunes": 17
+      },
+      {
+        "hour": "2026-07-13 23:00",
+        "users": 2,
+        "tunes": 4
       }
     ],
     "dailyTrend": [
@@ -3670,8 +3675,8 @@
       {
         "day": "2026-07-13",
         "users": 447,
-        "tunes": 2479,
-        "watch_min": 20092.5
+        "tunes": 2483,
+        "watch_min": 20633.1
       }
     ],
     "deviceBreakdown": [
@@ -3687,7 +3692,7 @@
     "funnel": {
       "opens": 5994,
       "playback": 4984,
-      "engaged": 976
+      "engaged": 977
     },
     "retention": {
       "new_users": 6030,
@@ -3958,7 +3963,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 25,
-        "starts": 456
+        "starts": 457
       },
       {
         "ch": 38,
@@ -3977,13 +3982,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 9008,
-      "samples": 29282
+      "samples": 29284
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 24386,
-        "avg_ttff_ms": 8275
+        "starts": 24388,
+        "avg_ttff_ms": 8274
       },
       {
         "net": "3g",
@@ -4009,7 +4014,7 @@
     "engagement": {
       "sessions": 13053,
       "avg_channels": 3.3,
-      "avg_session_sec": 267,
+      "avg_session_sec": 269,
       "bounce_pct": 58.3,
       "zap_pct": 51
     },

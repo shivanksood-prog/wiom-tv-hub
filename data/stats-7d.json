@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-13T23:10:13Z",
+  "fetched_at": "2026-07-14T00:10:21Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3803,
-      "total_tunes": 19363,
-      "total_watch_min": 367387.9,
-      "avg_duration_sec": 1012.7
+      "unique_users": 3801,
+      "total_tunes": 19365,
+      "total_watch_min": 367927.9,
+      "avg_duration_sec": 1014.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2438,
-        "unique_users": 2037,
-        "watch_min": 3517.5
+        "tunes": 2436,
+        "unique_users": 2035,
+        "watch_min": 3516.9
       },
       {
         "ch": 45,
@@ -27,6 +27,15 @@
         "tunes": 88,
         "unique_users": 70,
         "watch_min": 932.2
+      },
+      {
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 331,
+        "unique_users": 218,
+        "watch_min": 741
       },
       {
         "ch": 7,
@@ -65,22 +74,13 @@
         "watch_min": 348.4
       },
       {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 329,
-        "unique_users": 218,
-        "watch_min": 325.7
-      },
-      {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 222,
-        "unique_users": 168,
-        "watch_min": 302.5
+        "tunes": 223,
+        "unique_users": 169,
+        "watch_min": 302.6
       },
       {
         "ch": 47,
@@ -182,6 +182,15 @@
         "watch_min": 152.6
       },
       {
+        "ch": 194,
+        "name": "Sangeet Marathi",
+        "cat": "Music",
+        "lang": "Marathi",
+        "tunes": 41,
+        "unique_users": 30,
+        "watch_min": 151.6
+      },
+      {
         "ch": 17,
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
@@ -270,41 +279,32 @@
         "tunes": 64,
         "unique_users": 53,
         "watch_min": 55.9
-      },
-      {
-        "ch": 206,
-        "name": "Shemaroo TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 158,
-        "unique_users": 128,
-        "watch_min": 54.3
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 9561,
-        "unique_users": 2668,
-        "watch_min": 6173.3
+        "tunes": 9559,
+        "unique_users": 2666,
+        "watch_min": 6172.7
       },
       {
         "cat": "News",
-        "tunes": 3177,
-        "unique_users": 653,
-        "watch_min": 2331.8
+        "tunes": 3178,
+        "unique_users": 654,
+        "watch_min": 2331.9
       },
       {
         "cat": "Movies",
-        "tunes": 1763,
+        "tunes": 1765,
         "unique_users": 619,
-        "watch_min": 1101.7
+        "watch_min": 1517
       },
       {
         "cat": "Music",
-        "tunes": 2410,
+        "tunes": 2411,
         "unique_users": 603,
-        "watch_min": 913
+        "watch_min": 1038.3
       },
       {
         "cat": "Devotional",
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 15887,
-        "unique_users": 3124,
-        "watch_min": 10308.6
+        "tunes": 15886,
+        "unique_users": 3122,
+        "watch_min": 10308.1
+      },
+      {
+        "lang": "Bhojpuri",
+        "tunes": 724,
+        "unique_users": 402,
+        "watch_min": 801.7
       },
       {
         "lang": "English",
         "tunes": 1232,
         "unique_users": 506,
         "watch_min": 569.3
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 722,
-        "unique_users": 402,
-        "watch_min": 386.4
       },
       {
         "lang": "Punjabi",
@@ -430,9 +430,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 359,
-        "unique_users": 211,
-        "watch_min": 66.1
+        "tunes": 360,
+        "unique_users": 212,
+        "watch_min": 191.3
       },
       {
         "lang": "Urdu",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-06 23:00",
-        "users": 2,
-        "tunes": 2
-      },
       {
         "hour": "2026-07-07 00:00",
         "users": 1,
@@ -1276,15 +1271,14 @@
         "hour": "2026-07-13 22:00",
         "users": 4,
         "tunes": 17
+      },
+      {
+        "hour": "2026-07-13 23:00",
+        "users": 2,
+        "tunes": 4
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-06",
-        "users": 2,
-        "tunes": 2,
-        "watch_min": 0.6
-      },
       {
         "day": "2026-07-07",
         "users": 549,
@@ -1324,8 +1318,8 @@
       {
         "day": "2026-07-13",
         "users": 447,
-        "tunes": 2479,
-        "watch_min": 20092.5
+        "tunes": 2483,
+        "watch_min": 20633.1
       }
     ],
     "deviceBreakdown": [
@@ -1335,16 +1329,16 @@
       },
       {
         "device": "desktop",
-        "users": 56
+        "users": 54
       }
     ],
     "funnel": {
-      "opens": 2296,
-      "playback": 1815,
-      "engaged": 339
+      "opens": 2295,
+      "playback": 1814,
+      "engaged": 340
     },
     "retention": {
-      "new_users": 2047,
+      "new_users": 2046,
       "returning_users": 270
     },
     "errorBoard": [
@@ -1381,7 +1375,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 129,
-        "starts": 1824
+        "starts": 1822
       },
       {
         "ch": 19,
@@ -1591,7 +1585,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 13,
-        "starts": 169
+        "starts": 170
       },
       {
         "ch": 25,
@@ -1661,9 +1655,9 @@
       }
     ],
     "engagement": {
-      "sessions": 3803,
+      "sessions": 3801,
       "avg_channels": 4.1,
-      "avg_session_sec": 177,
+      "avg_session_sec": 184,
       "bounce_pct": 44.6,
       "zap_pct": 52
     },
