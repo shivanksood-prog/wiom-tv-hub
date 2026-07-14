@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-14T22:26:25Z",
+  "fetched_at": "2026-07-14T23:26:33Z",
   "data": {
     "period": "7d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
       "unique_users": 3717,
-      "total_tunes": 18569,
-      "total_watch_min": 356592.2,
-      "avg_duration_sec": 1021.7
+      "total_tunes": 18572,
+      "total_watch_min": 356737.2,
+      "avg_duration_sec": 1022
     },
     "channelLeaderboard": [
       {
@@ -33,9 +33,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 423,
+        "tunes": 425,
         "unique_users": 280,
-        "watch_min": 760.3
+        "watch_min": 905.2
       },
       {
         "ch": 7,
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 1840,
+        "tunes": 1843,
         "unique_users": 665,
-        "watch_min": 1508.5
+        "watch_min": 1653.5
       },
       {
         "cat": "Music",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 15046,
-        "unique_users": 3002,
+        "tunes": 15047,
+        "unique_users": 3003,
         "watch_min": 8953.2
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 784,
+        "tunes": 786,
         "unique_users": 444,
-        "watch_min": 811.5
+        "watch_min": 956.4
       },
       {
         "lang": "English",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-07 22:00",
-        "users": 1,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-07 23:00",
         "users": 1,
@@ -1281,14 +1276,19 @@
         "hour": "2026-07-14 22:00",
         "users": 3,
         "tunes": 28
+      },
+      {
+        "hour": "2026-07-14 23:00",
+        "users": 2,
+        "tunes": 4
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-07",
-        "users": 2,
-        "tunes": 2,
-        "watch_min": 0.5
+        "users": 1,
+        "tunes": 1,
+        "watch_min": 0
       },
       {
         "day": "2026-07-08",
@@ -1328,9 +1328,9 @@
       },
       {
         "day": "2026-07-14",
-        "users": 463,
-        "tunes": 2326,
-        "watch_min": 45588.1
+        "users": 464,
+        "tunes": 2330,
+        "watch_min": 45733.5
       }
     ],
     "deviceBreakdown": [
@@ -1346,11 +1346,11 @@
     "funnel": {
       "opens": 2275,
       "playback": 1785,
-      "engaged": 315
+      "engaged": 316
     },
     "retention": {
-      "new_users": 1998,
-      "returning_users": 298
+      "new_users": 1999,
+      "returning_users": 297
     },
     "errorBoard": [
       {
@@ -1635,14 +1635,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8447,
-      "samples": 9631
+      "avg_ttff_ms": 8446,
+      "samples": 9632
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 7894,
-        "avg_ttff_ms": 7571
+        "starts": 7893,
+        "avg_ttff_ms": 7572
       },
       {
         "net": "3g",
@@ -1651,8 +1651,8 @@
       },
       {
         "net": "unknown",
-        "starts": 717,
-        "avg_ttff_ms": 2076
+        "starts": 719,
+        "avg_ttff_ms": 2073
       },
       {
         "net": "2g",
@@ -1668,7 +1668,7 @@
     "engagement": {
       "sessions": 3717,
       "avg_channels": 4.1,
-      "avg_session_sec": 185,
+      "avg_session_sec": 187,
       "bounce_pct": 45.3,
       "zap_pct": 51.5
     },

@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-14T22:26:25Z",
+  "fetched_at": "2026-07-14T23:26:33Z",
   "data": {
     "period": "24h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
       "unique_users": 466,
-      "total_tunes": 2331,
-      "total_watch_min": 46128.8,
-      "avg_duration_sec": 1048
+      "total_tunes": 2334,
+      "total_watch_min": 46274.1,
+      "avg_duration_sec": 1050.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 129,
-        "unique_users": 88,
-        "watch_min": 442.2
+        "tunes": 132,
+        "unique_users": 89,
+        "watch_min": 587.6
       },
       {
         "ch": 194,
@@ -276,17 +276,17 @@
         "name": "Alankar TV",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 40,
-        "unique_users": 35,
-        "watch_min": 3.7
+        "tunes": 41,
+        "unique_users": 36,
+        "watch_min": 3.8
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Movies",
-        "tunes": 318,
-        "unique_users": 123,
-        "watch_min": 581.6
+        "tunes": 322,
+        "unique_users": 124,
+        "watch_min": 727
       },
       {
         "cat": "Music",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 160,
-        "unique_users": 41,
-        "watch_min": 12.3
+        "tunes": 159,
+        "unique_users": 40,
+        "watch_min": 12.2
       },
       {
         "cat": "DD",
@@ -402,13 +402,13 @@
         "lang": "Hindi",
         "tunes": 1762,
         "unique_users": 335,
-        "watch_min": 785.3
+        "watch_min": 785.2
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 152,
-        "unique_users": 98,
-        "watch_min": 443.6
+        "tunes": 155,
+        "unique_users": 99,
+        "watch_min": 589
       },
       {
         "lang": "Marathi",
@@ -436,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-13 22:00",
-        "users": 1,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-13 23:00",
         "users": 2,
@@ -560,20 +555,25 @@
         "hour": "2026-07-14 22:00",
         "users": 3,
         "tunes": 28
+      },
+      {
+        "hour": "2026-07-14 23:00",
+        "users": 2,
+        "tunes": 4
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-13",
-        "users": 3,
-        "tunes": 5,
-        "watch_min": 540.7
+        "users": 2,
+        "tunes": 4,
+        "watch_min": 540.6
       },
       {
         "day": "2026-07-14",
-        "users": 463,
-        "tunes": 2326,
-        "watch_min": 45588.1
+        "users": 464,
+        "tunes": 2330,
+        "watch_min": 45733.5
       }
     ],
     "deviceBreakdown": [
@@ -588,12 +588,12 @@
     ],
     "funnel": {
       "opens": 335,
-      "playback": 253,
-      "engaged": 33
+      "playback": 254,
+      "engaged": 34
     },
     "retention": {
-      "new_users": 258,
-      "returning_users": 84
+      "new_users": 259,
+      "returning_users": 83
     },
     "errorBoard": [
       {
@@ -685,7 +685,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 4,
-        "starts": 97
+        "starts": 98
       },
       {
         "ch": 19,
@@ -878,8 +878,8 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 2837,
-      "samples": 1423
+      "avg_ttff_ms": 2835,
+      "samples": 1425
     },
     "netBreakdown": [
       {
@@ -894,8 +894,8 @@
       },
       {
         "net": "unknown",
-        "starts": 95,
-        "avg_ttff_ms": 2306
+        "starts": 97,
+        "avg_ttff_ms": 2279
       },
       {
         "net": "slow-2g",
@@ -910,10 +910,10 @@
     ],
     "engagement": {
       "sessions": 466,
-      "avg_channels": 4.1,
-      "avg_session_sec": 123,
-      "bounce_pct": 48.1,
-      "zap_pct": 52.8
+      "avg_channels": 4.2,
+      "avg_session_sec": 142,
+      "bounce_pct": 47.9,
+      "zap_pct": 52.7
     },
     "survey": {
       "very": 3,
