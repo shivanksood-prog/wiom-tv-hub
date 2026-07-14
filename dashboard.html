@@ -26,6 +26,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans','Segoe UI',s
 .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn{background:#443152;color:#FFB2E4;border:1px solid rgba(217,0,141,.3);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none}
 .btn:hover{border-color:#D9008D;color:#fff}
+.btn.active{background:#D9008D;color:#fff;border-color:#D9008D}
 .live-badge{background:#00c853;color:#000;font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:20px 24px}
 .card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(22,16,33,.05)}
@@ -61,10 +62,13 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 <div class="header">
   <div>
     <h1><span>Wiom</span> TV · Users Dashboard</h1>
-    <div class="sub">Last 15 full IST days (2026-06-29 → 2026-07-13) + today so far · generated 2026-07-14 11:52:26 UTC · refreshes hourly</div>
+    <div class="sub">All data since 2026-06-23 (uid era) · 21 full IST days + today so far · generated 2026-07-14 12:46:15 UTC · refreshes hourly</div>
   </div>
   <div class="controls">
     <div class="live-badge" id="live-badge">-- on site now</div>
+    <button class="btn" data-range="7">7D</button>
+    <button class="btn" data-range="14">14D</button>
+    <button class="btn" data-range="all">All</button>
     <a class="btn" href="dashboard_replica.html">Raw Replica</a>
     <a class="btn" href="https://wiom.tv/dashboard" target="_blank" rel="noopener">wiom.tv ↗</a>
     <button class="btn" id="theme-toggle" title="Toggle light/dark">🌙</button>
@@ -81,6 +85,11 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
       <span class="chip" style="background:var(--chip-new-bg)"><span class="dot" id="dot-new"></span><span id="hero-new"></span></span>
       <span class="chip" style="background:var(--chip-rep-bg)"><span class="dot" id="dot-rep"></span><span id="hero-rep"></span></span>
     </div>
+  </div>
+  <div class="card">
+    <h3>Activation · ≥60s</h3>
+    <div class="big-num" id="hero-act"></div>
+    <div class="big-sub">held a channel ≥60s · new <b id="hero-act-new"></b> · repeating <b id="hero-act-rep"></b></div>
   </div>
   <div class="card">
     <h3>Sessions per User</h3>
@@ -107,6 +116,12 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   <div class="card card-wide">
     <h3>Users Coming per Day · New vs Repeating</h3>
     <div class="chart-container"><canvas id="chartUsers"></canvas></div>
+  </div>
+
+  <!-- activation -->
+  <div class="card card-wide">
+    <h3>Activation Rate per Day · % of users who held a channel ≥60s</h3>
+    <div class="chart-container chart-sm"><canvas id="chartActivation"></canvas></div>
   </div>
 
   <!-- sessions -->
@@ -157,7 +172,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 <div class="footer-note" id="footer-note"></div>
 
 <script>
-const DATA = {"generated_utc":"2026-07-14 11:52:26","today_ist":"2026-07-14","live_now":3,"watch_cap_min":240.0,"surface_order":["phone-link","pwa","direct","search","other-ref"],"surface_label":{"phone-link":"Wiom phone-link (i2e1 ?phone=)","pwa":"Installed PWA","direct":"Direct / saved link","search":"Search engines","other-ref":"Other referrers"},"eras":[{"date":"2026-07-03","label":"unmute client change"},{"date":"2026-07-07","label":"clean fse_v1 era starts"},{"date":"2026-07-13","label":"PR#8: genre landing \u00b7 5 dead channels removed \u00b7 gesture unmute"}],"days":[{"day":"2026-06-29","partial":false,"dau":364,"new":288,"rep":76,"sessions":480,"visits":406,"spu":1.32,"vpu":1.12,"watch":{"all":{"n":364,"avg":4.4,"avgc":3.7,"med":0.3,"p90":3.9,"max":435.2},"new":{"n":288,"avg":2.3,"avgc":2.3,"med":0.3,"p90":2.8,"max":123.2},"rep":{"n":76,"avg":12.3,"avgc":9.2,"med":0.1,"p90":10.3,"max":435.2}},"surfaces":{"new":{"direct":6,"other-ref":2,"phone-link":277,"pwa":1},"repeating":{"direct":2,"other-ref":15,"phone-link":49,"pwa":4,"search":1}}},{"day":"2026-06-30","partial":false,"dau":363,"new":302,"rep":61,"sessions":570,"visits":444,"spu":1.57,"vpu":1.22,"watch":{"all":{"n":363,"avg":4.3,"avgc":4.1,"med":0.3,"p90":3.8,"max":304.5},"new":{"n":302,"avg":3.9,"avgc":3.9,"med":0.3,"p90":4.6,"max":193.9},"rep":{"n":61,"avg":5.9,"avgc":4.9,"med":0.2,"p90":2.9,"max":304.5}},"surfaces":{"new":{"direct":9,"other-ref":1,"phone-link":290},"repeating":{"direct":2,"other-ref":5,"phone-link":51,"pwa":3}}},{"day":"2026-07-01","partial":false,"dau":359,"new":282,"rep":77,"sessions":507,"visits":419,"spu":1.41,"vpu":1.17,"watch":{"all":{"n":359,"avg":9.9,"avgc":6.4,"med":0.3,"p90":5.6,"max":935.2},"new":{"n":282,"avg":5.6,"avgc":5.0,"med":0.4,"p90":5.1,"max":362.7},"rep":{"n":77,"avg":25.6,"avgc":11.4,"med":0.2,"p90":8.8,"max":935.2}},"surfaces":{"new":{"direct":11,"other-ref":1,"phone-link":266,"search":1},"repeating":{"direct":4,"other-ref":6,"phone-link":60,"pwa":1}}},{"day":"2026-07-02","partial":false,"dau":368,"new":281,"rep":87,"sessions":507,"visits":426,"spu":1.38,"vpu":1.16,"watch":{"all":{"n":368,"avg":8.5,"avgc":3.5,"med":0.3,"p90":4.0,"max":1469.1},"new":{"n":281,"avg":1.8,"avgc":1.8,"med":0.4,"p90":2.7,"max":132.9},"rep":{"n":87,"avg":30.2,"avgc":8.7,"med":0.1,"p90":10.6,"max":1469.1}},"surfaces":{"new":{"direct":2,"phone-link":278},"repeating":{"direct":2,"other-ref":9,"phone-link":66,"pwa":6}}},{"day":"2026-07-03","partial":false,"dau":353,"new":275,"rep":78,"sessions":477,"visits":391,"spu":1.35,"vpu":1.11,"watch":{"all":{"n":353,"avg":2.8,"avgc":2.8,"med":0.2,"p90":3.9,"max":127.2},"new":{"n":275,"avg":2.6,"avgc":2.6,"med":0.3,"p90":3.5,"max":127.2},"rep":{"n":78,"avg":3.7,"avgc":3.7,"med":0.1,"p90":4.2,"max":76.4}},"surfaces":{"new":{"direct":3,"phone-link":270,"pwa":1},"repeating":{"direct":2,"other-ref":6,"phone-link":61,"pwa":7}}},{"day":"2026-07-04","partial":false,"dau":339,"new":261,"rep":78,"sessions":469,"visits":379,"spu":1.38,"vpu":1.12,"watch":{"all":{"n":339,"avg":6.0,"avgc":3.8,"med":0.3,"p90":4.0,"max":774.6},"new":{"n":261,"avg":4.4,"avgc":3.5,"med":0.3,"p90":3.8,"max":361.9},"rep":{"n":78,"avg":11.6,"avgc":4.8,"med":0.1,"p90":4.1,"max":774.6}},"surfaces":{"new":{"direct":4,"phone-link":252,"pwa":1,"search":1},"repeating":{"direct":2,"other-ref":5,"phone-link":62,"pwa":5}}},{"day":"2026-07-05","partial":false,"dau":406,"new":331,"rep":75,"sessions":595,"visits":463,"spu":1.47,"vpu":1.14,"watch":{"all":{"n":406,"avg":1.8,"avgc":1.8,"med":0.3,"p90":3.5,"max":56.1},"new":{"n":331,"avg":1.9,"avgc":1.9,"med":0.3,"p90":3.2,"max":56.1},"rep":{"n":75,"avg":1.4,"avgc":1.4,"med":0.2,"p90":5.2,"max":17.1}},"surfaces":{"new":{"direct":3,"other-ref":1,"phone-link":323,"pwa":2},"repeating":{"direct":1,"other-ref":2,"phone-link":62,"pwa":7}}},{"day":"2026-07-06","partial":false,"dau":365,"new":282,"rep":83,"sessions":527,"visits":414,"spu":1.44,"vpu":1.13,"watch":{"all":{"n":365,"avg":2.4,"avgc":2.4,"med":0.3,"p90":3.9,"max":76.0},"new":{"n":282,"avg":2.3,"avgc":2.3,"med":0.3,"p90":3.2,"max":76.0},"rep":{"n":83,"avg":2.6,"avgc":2.6,"med":0.2,"p90":5.9,"max":66.4}},"surfaces":{"new":{"direct":5,"phone-link":274},"repeating":{"direct":2,"other-ref":2,"phone-link":77,"pwa":2}}},{"day":"2026-07-07","partial":false,"dau":385,"new":305,"rep":80,"sessions":548,"visits":433,"spu":1.42,"vpu":1.12,"watch":{"all":{"n":385,"avg":5.9,"avgc":3.4,"med":0.4,"p90":4.0,"max":1176.3},"new":{"n":305,"avg":2.0,"avgc":2.0,"med":0.4,"p90":3.4,"max":58.8},"rep":{"n":80,"avg":20.6,"avgc":8.9,"med":0.2,"p90":16.0,"max":1176.3}},"surfaces":{"new":{"direct":3,"phone-link":295,"pwa":2,"search":2},"repeating":{"direct":3,"other-ref":4,"phone-link":63,"pwa":7}}},{"day":"2026-07-08","partial":false,"dau":386,"new":293,"rep":93,"sessions":540,"visits":444,"spu":1.4,"vpu":1.15,"watch":{"all":{"n":386,"avg":3.1,"avgc":3.1,"med":0.3,"p90":4.5,"max":247.9},"new":{"n":293,"avg":2.8,"avgc":2.8,"med":0.4,"p90":4.7,"max":247.9},"rep":{"n":93,"avg":4.1,"avgc":4.1,"med":0.2,"p90":3.6,"max":188.3}},"surfaces":{"new":{"direct":5,"phone-link":284,"pwa":2,"search":1},"repeating":{"other-ref":2,"phone-link":84,"pwa":5}}},{"day":"2026-07-09","partial":false,"dau":447,"new":329,"rep":118,"sessions":642,"visits":509,"spu":1.44,"vpu":1.14,"watch":{"all":{"n":447,"avg":2.6,"avgc":2.6,"med":0.3,"p90":3.5,"max":232.3},"new":{"n":329,"avg":2.5,"avgc":2.5,"med":0.3,"p90":2.4,"max":232.3},"rep":{"n":118,"avg":2.7,"avgc":2.7,"med":0.4,"p90":6.8,"max":66.2}},"surfaces":{"new":{"direct":7,"phone-link":318,"pwa":1,"search":1},"repeating":{"direct":1,"other-ref":4,"phone-link":99,"pwa":9}}},{"day":"2026-07-10","partial":false,"dau":371,"new":273,"rep":98,"sessions":515,"visits":423,"spu":1.39,"vpu":1.14,"watch":{"all":{"n":371,"avg":3.5,"avgc":3.5,"med":0.2,"p90":3.9,"max":188.7},"new":{"n":273,"avg":2.9,"avgc":2.9,"med":0.3,"p90":3.5,"max":188.7},"rep":{"n":98,"avg":5.3,"avgc":5.3,"med":0.2,"p90":4.0,"max":116.1}},"surfaces":{"new":{"direct":6,"other-ref":2,"phone-link":259,"pwa":3},"repeating":{"direct":2,"other-ref":1,"phone-link":86,"pwa":7}}},{"day":"2026-07-11","partial":false,"dau":351,"new":272,"rep":79,"sessions":491,"visits":389,"spu":1.4,"vpu":1.11,"watch":{"all":{"n":351,"avg":6.5,"avgc":3.2,"med":0.3,"p90":2.8,"max":1035.5},"new":{"n":272,"avg":3.3,"avgc":2.0,"med":0.3,"p90":2.1,"max":600.2},"rep":{"n":79,"avg":17.4,"avgc":7.4,"med":0.2,"p90":5.5,"max":1035.5}},"surfaces":{"new":{"direct":4,"phone-link":265},"repeating":{"direct":2,"phone-link":66,"pwa":7}}},{"day":"2026-07-12","partial":false,"dau":402,"new":312,"rep":90,"sessions":612,"visits":460,"spu":1.52,"vpu":1.14,"watch":{"all":{"n":402,"avg":5.0,"avgc":4.2,"med":0.3,"p90":5.1,"max":542.8},"new":{"n":312,"avg":4.9,"avgc":3.9,"med":0.4,"p90":4.8,"max":542.8},"rep":{"n":90,"avg":5.2,"avgc":5.2,"med":0.2,"p90":8.6,"max":123.4}},"surfaces":{"new":{"direct":3,"phone-link":304,"pwa":2},"repeating":{"phone-link":80,"pwa":4}}},{"day":"2026-07-13","partial":false,"dau":347,"new":264,"rep":83,"sessions":470,"visits":385,"spu":1.35,"vpu":1.11,"watch":{"all":{"n":347,"avg":3.8,"avgc":2.2,"med":0.3,"p90":3.5,"max":779.0},"new":{"n":264,"avg":1.5,"avgc":1.5,"med":0.3,"p90":3.5,"max":83.3},"rep":{"n":83,"avg":10.9,"avgc":4.4,"med":0.2,"p90":4.3,"max":779.0}},"surfaces":{"new":{"direct":7,"phone-link":253,"pwa":2},"repeating":{"direct":2,"other-ref":1,"phone-link":70,"pwa":8}}},{"day":"2026-07-14","partial":true,"dau":186,"new":145,"rep":41,"sessions":261,"visits":208,"spu":1.4,"vpu":1.12,"watch":{"all":{"n":186,"avg":5.1,"avgc":4.1,"med":0.3,"p90":3.7,"max":415.3},"new":{"n":145,"avg":2.8,"avgc":2.8,"med":0.3,"p90":3.5,"max":128.0},"rep":{"n":41,"avg":13.1,"avgc":8.8,"med":0.1,"p90":6.3,"max":415.3}},"surfaces":{"new":{"other-ref":1,"phone-link":141},"repeating":{"phone-link":34,"pwa":2}}}],"hero_day":"2026-07-13"};
+const DATA = {"generated_utc":"2026-07-14 12:46:15","today_ist":"2026-07-14","live_now":0,"watch_cap_min":240.0,"surface_order":["phone-link","pwa","direct","search","other-ref"],"surface_label":{"phone-link":"Wiom portal (i2e1 / ?phone=)","pwa":"Installed PWA","direct":"Direct / saved link","search":"Search engines","other-ref":"Other referrers"},"eras":[{"date":"2026-06-27","label":"dwell + launch instrumentation fixed"},{"date":"2026-07-03","label":"unmute client change"},{"date":"2026-07-07","label":"clean fse_v1 era starts"},{"date":"2026-07-13","label":"PR#8: genre landing \u00b7 5 dead channels removed \u00b7 gesture unmute"}],"days":[{"day":"2026-06-23","partial":false,"dau":84,"new":84,"rep":0,"sessions":110,"visits":88,"spu":1.31,"vpu":1.05,"watch":{"all":{"n":84,"avg":1.7,"avgc":1.7,"med":0.4,"p90":2.5,"max":26.5,"act":20,"act_pct":23.8},"new":{"n":84,"avg":1.7,"avgc":1.7,"med":0.4,"p90":2.5,"max":26.5,"act":20,"act_pct":23.8},"rep":{"n":0,"avg":0,"avgc":0,"med":0,"p90":0,"max":0,"act":0,"act_pct":0}},"surfaces":{"new":{"direct":[3,1],"other-ref":[2,0],"phone-link":[79,19]},"repeating":{}}},{"day":"2026-06-24","partial":false,"dau":327,"new":317,"rep":10,"sessions":439,"visits":363,"spu":1.34,"vpu":1.11,"watch":{"all":{"n":327,"avg":2.7,"avgc":2.7,"med":0.2,"p90":3.3,"max":133.1,"act":62,"act_pct":19.0},"new":{"n":317,"avg":2.8,"avgc":2.8,"med":0.2,"p90":3.3,"max":133.1,"act":61,"act_pct":19.2},"rep":{"n":10,"avg":0.7,"avgc":0.7,"med":0.2,"p90":0.5,"max":5.2,"act":1,"act_pct":10.0}},"surfaces":{"new":{"direct":[15,3],"other-ref":[4,0],"phone-link":[297,58]},"repeating":{"phone-link":[9,1]}}},{"day":"2026-06-25","partial":false,"dau":330,"new":300,"rep":30,"sessions":437,"visits":365,"spu":1.32,"vpu":1.11,"watch":{"all":{"n":330,"avg":2.5,"avgc":2.5,"med":0.3,"p90":4.7,"max":143.7,"act":77,"act_pct":23.3},"new":{"n":300,"avg":2.4,"avgc":2.4,"med":0.4,"p90":4.2,"max":143.7,"act":68,"act_pct":22.7},"rep":{"n":30,"avg":3.4,"avgc":3.4,"med":0.1,"p90":7.3,"max":50.1,"act":9,"act_pct":30.0}},"surfaces":{"new":{"direct":[20,6],"other-ref":[2,1],"phone-link":[276,61]},"repeating":{"direct":[2,2],"phone-link":[28,7]}}},{"day":"2026-06-26","partial":false,"dau":376,"new":336,"rep":40,"sessions":551,"visits":431,"spu":1.47,"vpu":1.15,"watch":{"all":{"n":376,"avg":2.5,"avgc":2.5,"med":0.3,"p90":4.0,"max":75.5,"act":77,"act_pct":20.5},"new":{"n":336,"avg":2.0,"avgc":2.0,"med":0.3,"p90":2.9,"max":75.5,"act":61,"act_pct":18.2},"rep":{"n":40,"avg":6.1,"avgc":6.1,"med":0.6,"p90":24.8,"max":59.0,"act":16,"act_pct":40.0}},"surfaces":{"new":{"direct":[26,2],"other-ref":[2,1],"phone-link":[304,56],"search":[1,0]},"repeating":{"direct":[5,2],"other-ref":[1,1],"phone-link":[33,13]}}},{"day":"2026-06-27","partial":false,"dau":325,"new":269,"rep":56,"sessions":459,"visits":372,"spu":1.41,"vpu":1.14,"watch":{"all":{"n":325,"avg":4.1,"avgc":3.1,"med":0.4,"p90":3.3,"max":538.8,"act":63,"act_pct":19.4},"new":{"n":269,"avg":2.4,"avgc":2.4,"med":0.4,"p90":2.6,"max":119.7,"act":47,"act_pct":17.5},"rep":{"n":56,"avg":11.8,"avgc":6.5,"med":0.2,"p90":6.5,"max":538.8,"act":16,"act_pct":28.6}},"surfaces":{"new":{"direct":[8,0],"phone-link":[260,47]},"repeating":{"direct":[4,3],"phone-link":[50,12]}}},{"day":"2026-06-28","partial":false,"dau":424,"new":352,"rep":72,"sessions":637,"visits":494,"spu":1.5,"vpu":1.17,"watch":{"all":{"n":424,"avg":3.0,"avgc":3.0,"med":0.4,"p90":4.8,"max":194.7,"act":71,"act_pct":16.7},"new":{"n":352,"avg":2.4,"avgc":2.4,"med":0.4,"p90":4.7,"max":129.3,"act":53,"act_pct":15.1},"rep":{"n":72,"avg":5.7,"avgc":5.7,"med":0.3,"p90":6.2,"max":194.7,"act":18,"act_pct":25.0}},"surfaces":{"new":{"direct":[6,2],"other-ref":[3,0],"phone-link":[336,45],"pwa":[3,2],"search":[2,2]},"repeating":{"direct":[6,4],"phone-link":[61,12],"pwa":[2,2]}}},{"day":"2026-06-29","partial":false,"dau":364,"new":288,"rep":76,"sessions":480,"visits":406,"spu":1.32,"vpu":1.12,"watch":{"all":{"n":364,"avg":4.4,"avgc":3.7,"med":0.3,"p90":3.9,"max":435.2,"act":48,"act_pct":13.2},"new":{"n":288,"avg":2.3,"avgc":2.3,"med":0.3,"p90":2.8,"max":123.2,"act":34,"act_pct":11.8},"rep":{"n":76,"avg":12.3,"avgc":9.2,"med":0.1,"p90":10.3,"max":435.2,"act":14,"act_pct":18.4}},"surfaces":{"new":{"direct":[6,2],"other-ref":[2,0],"phone-link":[277,30],"pwa":[1,1]},"repeating":{"direct":[2,1],"other-ref":[1,0],"phone-link":[63,6],"pwa":[4,4],"search":[1,1]}}},{"day":"2026-06-30","partial":false,"dau":363,"new":302,"rep":61,"sessions":570,"visits":444,"spu":1.57,"vpu":1.22,"watch":{"all":{"n":363,"avg":4.3,"avgc":4.1,"med":0.3,"p90":3.8,"max":304.5,"act":44,"act_pct":12.1},"new":{"n":302,"avg":3.9,"avgc":3.9,"med":0.3,"p90":4.6,"max":193.9,"act":38,"act_pct":12.6},"rep":{"n":61,"avg":5.9,"avgc":4.9,"med":0.2,"p90":2.9,"max":304.5,"act":6,"act_pct":9.8}},"surfaces":{"new":{"direct":[9,4],"other-ref":[1,0],"phone-link":[290,34]},"repeating":{"direct":[2,1],"phone-link":[56,3],"pwa":[3,2]}}},{"day":"2026-07-01","partial":false,"dau":359,"new":282,"rep":77,"sessions":507,"visits":419,"spu":1.41,"vpu":1.17,"watch":{"all":{"n":359,"avg":9.9,"avgc":6.4,"med":0.3,"p90":5.6,"max":935.2,"act":61,"act_pct":17.0},"new":{"n":282,"avg":5.6,"avgc":5.0,"med":0.4,"p90":5.1,"max":362.7,"act":41,"act_pct":14.5},"rep":{"n":77,"avg":25.6,"avgc":11.4,"med":0.2,"p90":8.8,"max":935.2,"act":20,"act_pct":26.0}},"surfaces":{"new":{"direct":[11,1],"other-ref":[1,0],"phone-link":[266,39],"search":[1,1]},"repeating":{"direct":[4,2],"other-ref":[1,1],"phone-link":[65,14],"pwa":[1,1]}}},{"day":"2026-07-02","partial":false,"dau":368,"new":281,"rep":87,"sessions":507,"visits":426,"spu":1.38,"vpu":1.16,"watch":{"all":{"n":368,"avg":8.5,"avgc":3.5,"med":0.3,"p90":4.0,"max":1469.1,"act":45,"act_pct":12.2},"new":{"n":281,"avg":1.8,"avgc":1.8,"med":0.4,"p90":2.7,"max":132.9,"act":25,"act_pct":8.9},"rep":{"n":87,"avg":30.2,"avgc":8.7,"med":0.1,"p90":10.6,"max":1469.1,"act":20,"act_pct":23.0}},"surfaces":{"new":{"direct":[2,0],"phone-link":[278,25]},"repeating":{"direct":[2,1],"phone-link":[75,15],"pwa":[6,3]}}},{"day":"2026-07-03","partial":false,"dau":353,"new":275,"rep":78,"sessions":477,"visits":391,"spu":1.35,"vpu":1.11,"watch":{"all":{"n":353,"avg":2.8,"avgc":2.8,"med":0.2,"p90":3.9,"max":127.2,"act":37,"act_pct":10.5},"new":{"n":275,"avg":2.6,"avgc":2.6,"med":0.3,"p90":3.5,"max":127.2,"act":27,"act_pct":9.8},"rep":{"n":78,"avg":3.7,"avgc":3.7,"med":0.1,"p90":4.2,"max":76.4,"act":10,"act_pct":12.8}},"surfaces":{"new":{"direct":[3,0],"phone-link":[270,26],"pwa":[1,1]},"repeating":{"direct":[2,0],"other-ref":[1,0],"phone-link":[66,7],"pwa":[7,2]}}},{"day":"2026-07-04","partial":false,"dau":339,"new":261,"rep":78,"sessions":469,"visits":379,"spu":1.38,"vpu":1.12,"watch":{"all":{"n":339,"avg":6.0,"avgc":3.8,"med":0.3,"p90":4.0,"max":774.6,"act":43,"act_pct":12.7},"new":{"n":261,"avg":4.4,"avgc":3.5,"med":0.3,"p90":3.8,"max":361.9,"act":32,"act_pct":12.3},"rep":{"n":78,"avg":11.6,"avgc":4.8,"med":0.1,"p90":4.1,"max":774.6,"act":11,"act_pct":14.1}},"surfaces":{"new":{"direct":[4,1],"phone-link":[252,28],"pwa":[1,1],"search":[1,1]},"repeating":{"direct":[2,0],"other-ref":[1,0],"phone-link":[66,8],"pwa":[5,2]}}},{"day":"2026-07-05","partial":false,"dau":406,"new":331,"rep":75,"sessions":595,"visits":463,"spu":1.47,"vpu":1.14,"watch":{"all":{"n":406,"avg":1.8,"avgc":1.8,"med":0.3,"p90":3.5,"max":56.1,"act":52,"act_pct":12.8},"new":{"n":331,"avg":1.9,"avgc":1.9,"med":0.3,"p90":3.2,"max":56.1,"act":42,"act_pct":12.7},"rep":{"n":75,"avg":1.4,"avgc":1.4,"med":0.2,"p90":5.2,"max":17.1,"act":10,"act_pct":13.3}},"surfaces":{"new":{"direct":[3,0],"other-ref":[1,0],"phone-link":[323,40],"pwa":[2,1]},"repeating":{"direct":[1,0],"phone-link":[64,8],"pwa":[7,2]}}},{"day":"2026-07-06","partial":false,"dau":365,"new":282,"rep":83,"sessions":527,"visits":414,"spu":1.44,"vpu":1.13,"watch":{"all":{"n":365,"avg":2.4,"avgc":2.4,"med":0.3,"p90":3.9,"max":76.0,"act":44,"act_pct":12.1},"new":{"n":282,"avg":2.3,"avgc":2.3,"med":0.3,"p90":3.2,"max":76.0,"act":27,"act_pct":9.6},"rep":{"n":83,"avg":2.6,"avgc":2.6,"med":0.2,"p90":5.9,"max":66.4,"act":17,"act_pct":20.5}},"surfaces":{"new":{"direct":[5,0],"phone-link":[274,26]},"repeating":{"direct":[2,0],"phone-link":[79,16],"pwa":[2,1]}}},{"day":"2026-07-07","partial":false,"dau":385,"new":305,"rep":80,"sessions":548,"visits":433,"spu":1.42,"vpu":1.12,"watch":{"all":{"n":385,"avg":5.9,"avgc":3.4,"med":0.4,"p90":4.0,"max":1176.3,"act":60,"act_pct":15.6},"new":{"n":305,"avg":2.0,"avgc":2.0,"med":0.4,"p90":3.4,"max":58.8,"act":43,"act_pct":14.1},"rep":{"n":80,"avg":20.6,"avgc":8.9,"med":0.2,"p90":16.0,"max":1176.3,"act":17,"act_pct":21.2}},"surfaces":{"new":{"direct":[3,0],"phone-link":[295,41],"pwa":[2,2],"search":[2,0]},"repeating":{"direct":[3,1],"phone-link":[67,11],"pwa":[7,2]}}},{"day":"2026-07-08","partial":false,"dau":386,"new":293,"rep":93,"sessions":540,"visits":444,"spu":1.4,"vpu":1.15,"watch":{"all":{"n":386,"avg":3.1,"avgc":3.1,"med":0.3,"p90":4.5,"max":247.9,"act":57,"act_pct":14.8},"new":{"n":293,"avg":2.8,"avgc":2.8,"med":0.4,"p90":4.7,"max":247.9,"act":44,"act_pct":15.0},"rep":{"n":93,"avg":4.1,"avgc":4.1,"med":0.2,"p90":3.6,"max":188.3,"act":13,"act_pct":14.0}},"surfaces":{"new":{"direct":[5,0],"phone-link":[284,43],"pwa":[2,0],"search":[1,1]},"repeating":{"phone-link":[86,9],"pwa":[5,3]}}},{"day":"2026-07-09","partial":false,"dau":447,"new":329,"rep":118,"sessions":642,"visits":509,"spu":1.44,"vpu":1.14,"watch":{"all":{"n":447,"avg":2.6,"avgc":2.6,"med":0.3,"p90":3.5,"max":232.3,"act":54,"act_pct":12.1},"new":{"n":329,"avg":2.5,"avgc":2.5,"med":0.3,"p90":2.4,"max":232.3,"act":32,"act_pct":9.7},"rep":{"n":118,"avg":2.7,"avgc":2.7,"med":0.4,"p90":6.8,"max":66.2,"act":22,"act_pct":18.6}},"surfaces":{"new":{"direct":[7,1],"phone-link":[318,30],"pwa":[1,0],"search":[1,0]},"repeating":{"direct":[1,0],"phone-link":[103,15],"pwa":[9,3]}}},{"day":"2026-07-10","partial":false,"dau":371,"new":273,"rep":98,"sessions":515,"visits":423,"spu":1.39,"vpu":1.14,"watch":{"all":{"n":371,"avg":3.5,"avgc":3.5,"med":0.2,"p90":3.9,"max":188.7,"act":52,"act_pct":14.0},"new":{"n":273,"avg":2.9,"avgc":2.9,"med":0.3,"p90":3.5,"max":188.7,"act":39,"act_pct":14.3},"rep":{"n":98,"avg":5.3,"avgc":5.3,"med":0.2,"p90":4.0,"max":116.1,"act":13,"act_pct":13.3}},"surfaces":{"new":{"direct":[6,1],"other-ref":[2,0],"phone-link":[259,36],"pwa":[3,2]},"repeating":{"direct":[2,0],"phone-link":[87,9],"pwa":[7,2]}}},{"day":"2026-07-11","partial":false,"dau":351,"new":272,"rep":79,"sessions":491,"visits":389,"spu":1.4,"vpu":1.11,"watch":{"all":{"n":351,"avg":6.5,"avgc":3.2,"med":0.3,"p90":2.8,"max":1035.5,"act":37,"act_pct":10.5},"new":{"n":272,"avg":3.3,"avgc":2.0,"med":0.3,"p90":2.1,"max":600.2,"act":25,"act_pct":9.2},"rep":{"n":79,"avg":17.4,"avgc":7.4,"med":0.2,"p90":5.5,"max":1035.5,"act":12,"act_pct":15.2}},"surfaces":{"new":{"direct":[4,0],"phone-link":[265,25]},"repeating":{"direct":[2,1],"phone-link":[66,8],"pwa":[7,2]}}},{"day":"2026-07-12","partial":false,"dau":402,"new":312,"rep":90,"sessions":612,"visits":460,"spu":1.52,"vpu":1.14,"watch":{"all":{"n":402,"avg":5.0,"avgc":4.2,"med":0.3,"p90":5.1,"max":542.8,"act":64,"act_pct":15.9},"new":{"n":312,"avg":4.9,"avgc":3.9,"med":0.4,"p90":4.8,"max":542.8,"act":43,"act_pct":13.8},"rep":{"n":90,"avg":5.2,"avgc":5.2,"med":0.2,"p90":8.6,"max":123.4,"act":21,"act_pct":23.3}},"surfaces":{"new":{"direct":[3,0],"phone-link":[304,42],"pwa":[2,1]},"repeating":{"phone-link":[80,16],"pwa":[4,3]}}},{"day":"2026-07-13","partial":false,"dau":347,"new":264,"rep":83,"sessions":470,"visits":385,"spu":1.35,"vpu":1.11,"watch":{"all":{"n":347,"avg":3.8,"avgc":2.2,"med":0.3,"p90":3.5,"max":779.0,"act":41,"act_pct":11.8},"new":{"n":264,"avg":1.5,"avgc":1.5,"med":0.3,"p90":3.5,"max":83.3,"act":31,"act_pct":11.7},"rep":{"n":83,"avg":10.9,"avgc":4.4,"med":0.2,"p90":4.3,"max":779.0,"act":10,"act_pct":12.0}},"surfaces":{"new":{"direct":[7,1],"phone-link":[253,29],"pwa":[2,1]},"repeating":{"direct":[2,1],"phone-link":[71,3],"pwa":[8,5]}}},{"day":"2026-07-14","partial":true,"dau":193,"new":147,"rep":46,"sessions":269,"visits":216,"spu":1.39,"vpu":1.12,"watch":{"all":{"n":193,"avg":5.0,"avgc":4.1,"med":0.3,"p90":4.5,"max":415.3,"act":22,"act_pct":11.4},"new":{"n":147,"avg":2.8,"avgc":2.8,"med":0.3,"p90":3.2,"max":128.0,"act":15,"act_pct":10.2},"rep":{"n":46,"avg":12.3,"avgc":8.5,"med":0.2,"p90":6.3,"max":415.3,"act":7,"act_pct":15.2}},"surfaces":{"new":{"other-ref":[1,0],"phone-link":[143,15]},"repeating":{"direct":[1,1],"phone-link":[38,4],"pwa":[2,0]}}}],"hero_day":"2026-07-13"};
 
 /* ── theme ── */
 const PAL = {
@@ -184,10 +199,28 @@ function cssVar(n){ return getComputedStyle(document.body).getPropertyValue(n).t
 const days = DATA.days;
 const fullDays = days.filter(d => !d.partial);
 const hero = fullDays[fullDays.length - 1];
-const labels = days.map(d => {
-  const dt = new Date(d.day + 'T00:00:00');
-  const l = dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
-  return d.partial ? l + ' (today)' : l;
+
+/* range filter: last 7 / 14 full days (+ today partial) or the whole uid era */
+let rangeView = new URLSearchParams(location.search).get('range')
+  || localStorage.getItem('hub-users-range') || '14';
+if (!['7', '14', 'all'].includes(rangeView)) rangeView = '14';
+let vdays = [], labels = [];
+function computeRange(){
+  const partial = days.length && days[days.length - 1].partial ? 1 : 0;
+  vdays = rangeView === 'all' ? days
+        : days.slice(Math.max(0, days.length - (parseInt(rangeView) + partial)));
+  labels = vdays.map(d => {
+    const dt = new Date(d.day + 'T00:00:00');
+    const l = dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    return d.partial ? l + ' (today)' : l;
+  });
+  document.querySelectorAll('.btn[data-range]').forEach(b =>
+    b.classList.toggle('active', b.dataset.range === rangeView));
+}
+document.querySelectorAll('.btn[data-range]').forEach(b => b.onclick = () => {
+  rangeView = b.dataset.range;
+  localStorage.setItem('hub-users-range', rangeView);
+  renderAll();
 });
 function fade(hex, a){
   const n = parseInt(hex.slice(1), 16);
@@ -201,7 +234,7 @@ const eraPlugin = {
   afterDraw(chart){
     const xs = chart.scales.x, ys = chart.scales.y, ctx = chart.ctx;
     DATA.eras.forEach((e, i) => {
-      const idx = days.findIndex(d => d.day === e.date);
+      const idx = vdays.findIndex(d => d.day === e.date);
       if (idx < 0) return;
       const x = xs.getPixelForValue(idx) - (xs.getPixelForValue(1) - xs.getPixelForValue(0)) / 2;
       if (!isFinite(x) || x < xs.left) return;
@@ -229,7 +262,7 @@ function baseOpts(){
   };
 }
 function partialNote(items){
-  const d = days[items[0].dataIndex];
+  const d = vdays[items[0].dataIndex];
   return d.partial ? '⚠ partial day — today in progress' : '';
 }
 
@@ -244,6 +277,9 @@ document.getElementById('hero-vpu').textContent = hero.vpu;
 document.getElementById('hero-med').textContent = hero.watch.all.med + 'm';
 document.getElementById('hero-p90').textContent = hero.watch.all.p90 + 'm';
 document.getElementById('hero-max').textContent = hero.watch.all.max;
+document.getElementById('hero-act').textContent = hero.watch.all.act_pct + '%';
+document.getElementById('hero-act-new').textContent = hero.watch.new.act_pct + '%';
+document.getElementById('hero-act-rep').textContent = hero.watch.rep.act_pct + '%';
 document.getElementById('watch-title-day').textContent = hero.day;
 
 const todayRow = days[days.length - 1];
@@ -252,6 +288,7 @@ document.getElementById('today-strip').innerHTML = todayRow.partial ? `
   <span><b>${todayRow.new}</b> new</span>
   <span><b>${todayRow.rep}</b> repeating</span>
   <span><b>${todayRow.spu}</b> sessions/user</span>
+  <span><b>${todayRow.watch.all.act_pct}%</b> activated</span>
   <span><b>${todayRow.watch.all.med}m</b> median watch</span>
   <span style="color:var(--dim)">IST day in progress — not comparable to full days</span>`
   : '<span style="color:var(--dim)">no partial-day data</span>';
@@ -264,15 +301,33 @@ function renderUsers(){
   const p = pal(), o = baseOpts();
   o.scales.x.stacked = o.scales.y.stacked = true;
   o.plugins.tooltip = { callbacks: {
-    footer: items => `Total ${days[items[0].dataIndex].dau}` + (days[items[0].dataIndex].partial ? '\n⚠ partial day' : '')
+    footer: items => `Total ${vdays[items[0].dataIndex].dau}` + (vdays[items[0].dataIndex].partial ? '\n⚠ partial day' : '')
   }};
   mk('chartUsers', { type: 'bar', data: { labels, datasets: [
-    { label: 'New users', data: days.map(d => d.new),
-      backgroundColor: days.map(d => fade(p.newC, d.partial ? .45 : 1)),
+    { label: 'New users', data: vdays.map(d => d.new),
+      backgroundColor: vdays.map(d => fade(p.newC, d.partial ? .45 : 1)),
       borderColor: cssVar('--card'), borderWidth: 1.5, borderRadius: 4, barPercentage: .72 },
-    { label: 'Repeating users', data: days.map(d => d.rep),
-      backgroundColor: days.map(d => fade(p.repC, d.partial ? .45 : 1)),
+    { label: 'Repeating users', data: vdays.map(d => d.rep),
+      backgroundColor: vdays.map(d => fade(p.repC, d.partial ? .45 : 1)),
       borderColor: cssVar('--card'), borderWidth: 1.5, borderRadius: 4, barPercentage: .72 }
+  ]}, options: o });
+}
+
+function renderActivation(){
+  const p = pal(), o = baseOpts();
+  o.scales.y.ticks.callback = v => v + '%';
+  o.plugins.tooltip = { callbacks: {
+    label: c => `${c.dataset.label}: ${c.parsed.y}% (${vdays[c.dataIndex].watch[c.dataset.label.startsWith('New') ? 'new' : 'rep'].act} users)`,
+    footer: items => {
+      const d = vdays[items[0].dataIndex];
+      return `All users: ${d.watch.all.act_pct}% (${d.watch.all.act} of ${d.dau})` + (d.partial ? '\n⚠ partial day' : '');
+    }
+  }};
+  mk('chartActivation', { type: 'line', data: { labels, datasets: [
+    { label: 'New users activated %', data: vdays.map(d => d.watch.new.act_pct), borderColor: p.newC,
+      backgroundColor: p.newC, borderWidth: 2, pointRadius: 3, tension: .35 },
+    { label: 'Repeating users activated %', data: vdays.map(d => d.watch.rep.act_pct), borderColor: p.repC,
+      backgroundColor: p.repC, borderWidth: 2, pointRadius: 3, borderDash: [6, 4], tension: .35 }
   ]}, options: o });
 }
 
@@ -280,9 +335,9 @@ function renderSessions(){
   const p = pal(), o = baseOpts();
   o.plugins.tooltip = { callbacks: { footer: partialNote } };
   mk('chartSessions', { type: 'line', data: { labels, datasets: [
-    { label: 'Page loads / user', data: days.map(d => d.spu), borderColor: p.newC,
+    { label: 'Page loads / user', data: vdays.map(d => d.spu), borderColor: p.newC,
       backgroundColor: p.newC, borderWidth: 2, pointRadius: 3, tension: .35 },
-    { label: 'Real visits / user (30-min gap)', data: days.map(d => d.vpu), borderColor: p.repC,
+    { label: 'Real visits / user (30-min gap)', data: vdays.map(d => d.vpu), borderColor: p.repC,
       backgroundColor: p.repC, borderWidth: 2, pointRadius: 3, borderDash: [6, 4], tension: .35 }
   ]}, options: o });
 }
@@ -292,27 +347,30 @@ function renderSurfaces(){
   const p = pal(), o = baseOpts();
   o.scales.x.stacked = o.scales.y.stacked = true;
   o.plugins.tooltip = { callbacks: { footer: partialNote } };
+  // surface cell = [users, activated]
+  const cell = (d, cls, s) => d.surfaces[cls][s] || [0, 0];
   const cnt = (d, s) => (surfView === 'all')
-    ? (d.surfaces.new[s] || 0) + (d.surfaces.repeating[s] || 0)
-    : (d.surfaces[surfView][s] || 0);
+    ? cell(d, 'new', s)[0] + cell(d, 'repeating', s)[0]
+    : cell(d, surfView, s)[0];
   mk('chartSurfaces', { type: 'bar', data: { labels, datasets:
     DATA.surface_order.map((s, i) => ({
-      label: DATA.surface_label[s], data: days.map(d => cnt(d, s)),
-      backgroundColor: days.map(d => fade(p.surf[i], d.partial ? .45 : 1)),
+      label: DATA.surface_label[s], data: vdays.map(d => cnt(d, s)),
+      backgroundColor: vdays.map(d => fade(p.surf[i], d.partial ? .45 : 1)),
       borderColor: cssVar('--card'), borderWidth: 1.5, borderRadius: 4, barPercentage: .72
     }))
   }, options: o });
 
   // yesterday's surface table (always shows both classes side by side)
-  const hs = hero.surfaces;
-  const tot = DATA.surface_order.reduce((a, s) => a + (hs.new[s] || 0) + (hs.repeating[s] || 0), 0);
+  const tot = DATA.surface_order.reduce((a, s) => a + cell(hero, 'new', s)[0] + cell(hero, 'repeating', s)[0], 0);
   document.getElementById('surf-table').innerHTML =
-    `<tr><th>Surface · ${hero.day}</th><th class="num">New</th><th class="num">Repeating</th><th class="num">Total</th><th class="num">Share</th></tr>` +
+    `<tr><th>Surface · ${hero.day}</th><th class="num">New</th><th class="num">Repeating</th><th class="num">Total</th><th class="num">Share</th><th class="num">Activated ≥60s</th></tr>` +
     DATA.surface_order.map((s, i) => {
-      const n = hs.new[s] || 0, r = hs.repeating[s] || 0;
+      const [n, na] = cell(hero, 'new', s), [r, ra] = cell(hero, 'repeating', s);
+      const t = n + r, ta = na + ra;
       return `<tr><td><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${p.surf[i]};margin-right:8px"></span>${DATA.surface_label[s]}</td>
-        <td class="num">${n}</td><td class="num">${r}</td><td class="num"><b>${n + r}</b></td>
-        <td class="num">${tot ? Math.round((n + r) / tot * 100) : 0}%</td></tr>`;
+        <td class="num">${n}</td><td class="num">${r}</td><td class="num"><b>${t}</b></td>
+        <td class="num">${tot ? Math.round(t / tot * 100) : 0}%</td>
+        <td class="num">${t ? Math.round(ta / t * 100) + '%' : '—'}</td></tr>`;
     }).join('');
   document.getElementById('surf-note').textContent =
     `${tot} of ${hero.dau} users had a recorded launch on ${hero.day}; users whose day started without a session_start beacon aren't bucketed.`;
@@ -324,9 +382,9 @@ function renderWatch(){
   o.plugins.tooltip = { callbacks: { footer: partialNote } };
   const g = d => d.watch[watchView];
   mk('chartWatch', { type: 'line', data: { labels, datasets: [
-    { label: 'Median watch min / user', data: days.map(d => g(d).med), borderColor: p.newC,
+    { label: 'Median watch min / user', data: vdays.map(d => g(d).med), borderColor: p.newC,
       backgroundColor: p.newC, borderWidth: 2, pointRadius: 3, tension: .35 },
-    { label: 'P90 watch min / user', data: days.map(d => g(d).p90), borderColor: p.repC,
+    { label: 'P90 watch min / user', data: vdays.map(d => g(d).p90), borderColor: p.repC,
       backgroundColor: p.repC, borderWidth: 2, pointRadius: 3, borderDash: [6, 4], tension: .35 }
   ]}, options: o });
   const hw = hero.watch[watchView];
@@ -347,29 +405,35 @@ document.querySelectorAll('#seg-watch button').forEach(b => b.onclick = () => {
 });
 
 /* ── daily table ── */
-document.getElementById('daily-table').innerHTML =
-  `<tr><th>IST day</th><th class="num">Users</th><th class="num">New</th><th class="num">Repeating</th>
-   <th class="num">Sess/user</th><th class="num">Visits/user</th>
-   <th class="num">Watch avg*</th><th class="num">Median</th><th class="num">P90</th><th class="num">Max</th></tr>` +
-  [...days].reverse().map(d => {
-    const w = d.watch.all;
-    return `<tr${d.partial ? ' style="color:var(--dim)"' : ''}>
-      <td>${d.day}${d.partial ? ' <small>(today, partial)</small>' : ''}</td>
-      <td class="num"><b>${d.dau}</b></td><td class="num">${d.new}</td><td class="num">${d.rep}</td>
-      <td class="num">${d.spu}</td><td class="num">${d.vpu}</td>
-      <td class="num">${w.avgc}m</td><td class="num">${w.med}m</td><td class="num">${w.p90}m</td><td class="num">${w.max}m</td></tr>`;
-  }).join('');
+function renderTable(){
+  document.getElementById('daily-table').innerHTML =
+    `<tr><th>IST day</th><th class="num">Users</th><th class="num">New</th><th class="num">Repeating</th>
+     <th class="num">Act%</th><th class="num">Act% new</th><th class="num">Act% rep</th>
+     <th class="num">Sess/user</th><th class="num">Visits/user</th>
+     <th class="num">Watch avg*</th><th class="num">Median</th><th class="num">P90</th><th class="num">Max</th></tr>` +
+    [...vdays].reverse().map(d => {
+      const w = d.watch.all;
+      return `<tr${d.partial ? ' style="color:var(--dim)"' : ''}>
+        <td>${d.day}${d.partial ? ' <small>(today, partial)</small>' : ''}</td>
+        <td class="num"><b>${d.dau}</b></td><td class="num">${d.new}</td><td class="num">${d.rep}</td>
+        <td class="num">${w.act_pct}%</td><td class="num">${d.watch.new.act_pct}%</td><td class="num">${d.watch.rep.act_pct}%</td>
+        <td class="num">${d.spu}</td><td class="num">${d.vpu}</td>
+        <td class="num">${w.avgc}m</td><td class="num">${w.med}m</td><td class="num">${w.p90}m</td><td class="num">${w.max}m</td></tr>`;
+    }).join('');
+}
 
 /* ── footer ── */
 document.getElementById('footer-note').innerHTML =
   `<b>Definitions.</b> User = persistent device id (localStorage uid) — cleared storage / incognito / second browser counts as a new user, so New is somewhat overstated.
    Day = IST. New = device first seen that IST day (from the devices ledger, not MIN of events). Repeating = seen on an earlier day.
    Sessions/user = page-load session_ids per user (reloads inflate ~25% vs real visits); Visits/user = 30-min-inactivity-gap sessions.
-   Watch = tune dwell only (stall/heartbeat events excluded — a known ms-unit bug inflates the raw replica ~15×). Watch avg* is winsorized at ${DATA.watch_cap_min / 60}h/user/day; "most" is shown as P90 plus the single top watcher.<br>
+   Watch = tune dwell only (stall/heartbeat events excluded — a known ms-unit bug inflates the raw replica ~15×). Watch avg* is winsorized at ${DATA.watch_cap_min / 60}h/user/day; "most" is shown as P90 plus the single top watcher.
+   Activation = held a single channel ≥60s that IST day (same standard as the experiment readouts, not cumulative dwell).
+   The 7D/14D/All buttons re-window every chart and the table; All = full uid era (since 2026-06-23).<br>
    <b>Era markers:</b> ${DATA.eras.map((e, i) => `<span class="era-chip"><b>E${i + 1}</b> ${e.date} — ${e.label}</span>`).join('')}<br>
    Numbers computed directly from analytics.db (hourly), not from /api/stats — the <a href="dashboard_replica.html" style="color:var(--accent)">raw replica</a> keeps the original API view with its known bugs.`;
 
-function renderAll(){ renderUsers(); renderSessions(); renderSurfaces(); renderWatch(); }
+function renderAll(){ computeRange(); renderUsers(); renderActivation(); renderSessions(); renderSurfaces(); renderWatch(); renderTable(); }
 renderAll();
 </script>
 </body>
