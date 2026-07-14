@@ -142,6 +142,7 @@
       <button class="subtab" data-sub="experiment2">Experiment 2</button>
       <button class="subtab" data-sub="a2hs">Add to Home Screen</button>
       <button class="subtab" data-sub="surfaces">Launch Surfaces</button>
+      <button class="subtab" data-sub="replica">Raw Replica</button>
       <div class="right">
         <a class="btn" id="openSrc" href="dashboard.html" target="_blank" rel="noopener">Open Full Page ↗</a>
       </div>
@@ -151,6 +152,7 @@
     <div class="framewrap" id="frame-experiment2" data-src="experiment2.html" style="display:none"></div>
     <div class="framewrap" id="frame-a2hs" data-src="a2hs.html" style="display:none"></div>
     <div class="framewrap" id="frame-surfaces" data-src="launch_surfaces.html" style="display:none"></div>
+    <div class="framewrap" id="frame-replica" data-src="dashboard_replica.html" style="display:none"></div>
   </section>
 
   <!-- ══ ROADMAP ══ -->
@@ -411,7 +413,7 @@ function route(){
   document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-'+tab));
   if (tab === 'dashboards'){
-    const SUBS = {live:'dashboard.html', experiment1:'experiment1.html', experiment2:'experiment2.html', a2hs:'a2hs.html', surfaces:'launch_surfaces.html'};
+    const SUBS = {live:'dashboard.html', experiment1:'experiment1.html', experiment2:'experiment2.html', a2hs:'a2hs.html', surfaces:'launch_surfaces.html', replica:'dashboard_replica.html'};
     const s = SUBS[sub] ? sub : 'live';
     document.querySelectorAll('.subtab').forEach(b => b.classList.toggle('active', b.dataset.sub === s));
     Object.keys(SUBS).forEach(k => {
