@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-15T22:43:16Z",
+  "fetched_at": "2026-07-15T23:43:59Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 452,
-      "total_tunes": 1867,
-      "total_watch_min": 95311.8,
-      "avg_duration_sec": 2657.4
+      "unique_users": 450,
+      "total_tunes": 1863,
+      "total_watch_min": 95166.4,
+      "avg_duration_sec": 2658.3
     },
     "channelLeaderboard": [
       {
@@ -18,15 +18,6 @@
         "tunes": 29,
         "unique_users": 24,
         "watch_min": 1005.6
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 118,
-        "unique_users": 85,
-        "watch_min": 201.9
       },
       {
         "ch": 17,
@@ -45,6 +36,15 @@
         "tunes": 19,
         "unique_users": 17,
         "watch_min": 79.2
+      },
+      {
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 115,
+        "unique_users": 83,
+        "watch_min": 56.5
       },
       {
         "ch": 40,
@@ -191,15 +191,6 @@
         "watch_min": 6.5
       },
       {
-        "ch": 75,
-        "name": "Alankar TV",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 42,
-        "unique_users": 37,
-        "watch_min": 6.2
-      },
-      {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
@@ -215,6 +206,15 @@
         "lang": "Hindi",
         "tunes": 12,
         "unique_users": 8,
+        "watch_min": 6.1
+      },
+      {
+        "ch": 75,
+        "name": "Alankar TV",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 41,
+        "unique_users": 36,
         "watch_min": 6.1
       },
       {
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 312,
-        "unique_users": 120,
-        "watch_min": 240.6
+        "tunes": 308,
+        "unique_users": 118,
+        "watch_min": 95.2
       },
       {
         "cat": "Music",
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1433,
-        "unique_users": 317,
-        "watch_min": 1526.3
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 142,
-        "unique_users": 99,
-        "watch_min": 208.2
+        "tunes": 1432,
+        "unique_users": 316,
+        "watch_min": 1526.2
       },
       {
         "lang": "English",
         "tunes": 134,
         "unique_users": 56,
         "watch_min": 152.4
+      },
+      {
+        "lang": "Bhojpuri",
+        "tunes": 139,
+        "unique_users": 97,
+        "watch_min": 62.8
       },
       {
         "lang": "Punjabi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-14 23:00",
-        "users": 2,
-        "tunes": 4
-      },
       {
         "hour": "2026-07-15 00:00",
         "users": 2,
@@ -565,12 +560,6 @@
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-14",
-        "users": 2,
-        "tunes": 4,
-        "watch_min": 145.4
-      },
-      {
         "day": "2026-07-15",
         "users": 450,
         "tunes": 1863,
@@ -580,7 +569,7 @@
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 419
+        "users": 418
       },
       {
         "device": "desktop",
@@ -588,12 +577,12 @@
       }
     ],
     "funnel": {
-      "opens": 324,
-      "playback": 251,
-      "engaged": 40
+      "opens": 323,
+      "playback": 250,
+      "engaged": 39
     },
     "retention": {
-      "new_users": 246,
+      "new_users": 245,
       "returning_users": 87
     },
     "errorBoard": [
@@ -651,7 +640,7 @@
         "name": "Alankar TV",
         "cat": "Movies",
         "errors": 6,
-        "starts": 26
+        "starts": 25
       },
       {
         "ch": 40,
@@ -812,7 +801,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 2,
-        "starts": 87
+        "starts": 86
       },
       {
         "ch": 36,
@@ -879,8 +868,8 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 4704,
-      "samples": 1072
+      "avg_ttff_ms": 4711,
+      "samples": 1070
     },
     "netBreakdown": [
       {
@@ -890,8 +879,8 @@
       },
       {
         "net": "unknown",
-        "starts": 136,
-        "avg_ttff_ms": 2210
+        "starts": 134,
+        "avg_ttff_ms": 2228
       },
       {
         "net": "3g",
@@ -910,10 +899,10 @@
       }
     ],
     "engagement": {
-      "sessions": 452,
+      "sessions": 450,
       "avg_channels": 3.4,
       "avg_session_sec": 135,
-      "bounce_pct": 53.1,
+      "bounce_pct": 53.3,
       "zap_pct": 49
     },
     "survey": {

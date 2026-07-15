@@ -1,257 +1,41 @@
 {
-  "fetched_at": "2026-07-15T22:43:16Z",
+  "fetched_at": "2026-07-15T23:43:59Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 2,
-      "total_tunes": 24,
-      "total_watch_min": 8.1,
-      "avg_duration_sec": 15.1
+      "unique_users": 0,
+      "total_tunes": 0,
+      "total_watch_min": 0,
+      "avg_duration_sec": 0
     },
-    "channelLeaderboard": [
-      {
-        "ch": 118,
-        "name": "Goldmines",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 5.5
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 25,
-        "name": "ZB Cinema",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 223,
-        "name": "The Movie Club",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 148,
-        "name": "Maha Movie",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 114,
-        "name": "Dheeran TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 250,
-        "name": "ZillarBarta News",
-        "cat": "Classic",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 245,
-        "name": "Zee Delhi NCR Haryana",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 234,
-        "name": "Ultimate TV",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 224,
-        "name": "The Movie Club +2",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 51,
-        "name": "RT India",
-        "cat": "News",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      }
-    ],
-    "categoryBreakdown": [
-      {
-        "cat": "Movies",
-        "tunes": 10,
-        "unique_users": 1,
-        "watch_min": 6.3
-      },
-      {
-        "cat": "News",
-        "tunes": 8,
-        "unique_users": 1,
-        "watch_min": 0.6
-      },
-      {
-        "cat": "Devotional",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "cat": "Music",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "cat": "Entertainment",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
-        "cat": "Classic",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      }
-    ],
-    "languageBreakdown": [
-      {
-        "lang": "Hindi",
-        "tunes": 22,
-        "unique_users": 2,
-        "watch_min": 7.3
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      }
-    ],
-    "hourlyTrend": [
-      {
-        "hour": "2026-07-15 22:00",
-        "users": 2,
-        "tunes": 24
-      }
-    ],
-    "dailyTrend": [
-      {
-        "day": "2026-07-15",
-        "users": 2,
-        "tunes": 24,
-        "watch_min": 8.1
-      }
-    ],
-    "deviceBreakdown": [
-      {
-        "device": "mobile",
-        "users": 2
-      }
-    ],
+    "channelLeaderboard": [],
+    "categoryBreakdown": [],
+    "languageBreakdown": [],
+    "hourlyTrend": [],
+    "dailyTrend": [],
+    "deviceBreakdown": [],
     "funnel": {
-      "opens": 2,
-      "playback": 2,
-      "engaged": 1
+      "opens": 0,
+      "playback": 0,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 2,
+      "new_users": 0,
       "returning_users": 0
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2068,
-      "samples": 19
+      "avg_ttff_ms": null,
+      "samples": 0
     },
-    "netBreakdown": [
-      {
-        "net": "4g",
-        "starts": 19,
-        "avg_ttff_ms": 2068
-      }
-    ],
+    "netBreakdown": [],
     "engagement": {
-      "sessions": 2,
-      "avg_channels": 8,
-      "avg_session_sec": 222,
-      "bounce_pct": 50,
-      "zap_pct": 50
+      "sessions": 0,
+      "avg_channels": null,
+      "avg_session_sec": null,
+      "bounce_pct": null,
+      "zap_pct": 0
     },
     "survey": {
       "very": null,
