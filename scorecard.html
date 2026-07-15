@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wiom TV · Scorecard</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAF9FC; --card:#FFFFFF; --card-border:#D7D3E0; --text:#161021; --muted:#665E75;
+  --dim:#A7A1B2; --row-border:#F1EDF7; --accent:#D9008D; --chart-grid:#F1EDF7;
+  --chart-tick:#8A8496; --up:#008043; --down:#E01E00; --flat:#665E75;
+  --newC:#D9008D; --repC:#6D17CE; --allC:#8A8496;
+}
+body[data-theme="dark"]{
+  --bg:#0a0612; --card:#1a1128; --card-border:#2d2240; --text:#e0dce8; --muted:#A7A1B2;
+  --dim:#665E75; --row-border:#1f1834; --chart-grid:#1f1834; --chart-tick:#665E75;
+  --up:#4ADE97; --down:#FF7A66; --flat:#A7A1B2;
+  --newC:#E0339F; --repC:#A855F7; --allC:#8A8496;
+}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans','Segoe UI',system-ui,sans-serif;min-height:100vh}
+.header{background:linear-gradient(135deg,#5E003D,#443152);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header h1{font-size:22px;font-weight:700;color:#FFB2E4}
+.header h1 span{color:#D9008D}
+.header .sub{font-size:12px;color:#C9B7D6;margin-top:4px}
+.btn{background:#443152;color:#FFB2E4;border:1px solid rgba(217,0,141,.3);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none}
+.btn:hover{border-color:#D9008D;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;padding:20px 24px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(22,16,33,.05)}
+.card h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px}
+.card .why{font-size:12.5px;color:var(--muted);margin:-6px 0 12px;line-height:1.5}
+.card-wide{grid-column:1/-1}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;padding:20px 24px 0}
+.kpi{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(22,16,33,.05)}
+.kpi .v{font-size:24px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.kpi .k{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:2px;line-height:1.4}
+.kpi .d{font-size:12px;font-weight:700;margin-top:5px}
+.d.up{color:var(--up)} .d.down{color:var(--down)} .d.flat{color:var(--flat)}
+.chart-container{position:relative;height:250px;width:100%}
+.seg{display:inline-flex;border:1px solid var(--card-border);border-radius:8px;overflow:hidden}
+.seg button{background:transparent;color:var(--muted);border:0;padding:5px 13px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.seg button.on{background:var(--accent);color:#fff}
+.hrow{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.hrow h3{margin-bottom:0}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:8px 9px;border-bottom:1px solid var(--card-border);white-space:nowrap}
+td{padding:8px 9px;font-size:13.5px;border-bottom:1px solid var(--row-border);white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.table-wrap{overflow-x:auto}
+.footer-note{padding:6px 24px 26px;color:var(--dim);font-size:12px;line-height:1.7;max-width:1150px}
+.footer-note b{color:var(--muted)}
+.era-chip{display:inline-block;margin-right:14px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1><span>Wiom</span> TV · Scorecard</h1>
+    <div class="sub" id="hdr-sub"></div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <a class="btn" href="dashboard.html">Users Dashboard</a>
+    <a class="btn" href="a2hs.html">A2HS Deep-Dive</a>
+    <button class="btn" id="theme-toggle" title="Toggle light/dark">🌙</button>
+  </div>
+</div>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="grid">
+  <div class="card card-wide">
+    <h3>Total Watch Hours per Day · New vs Repeating share</h3>
+    <div class="why">Total watch = DAU × sessions/user × watch-min/session. DAU and sessions/user live on the Users Dashboard; this card and the next complete the decomposition. Repeating users carry roughly half the hours with a quarter of the users.</div>
+    <div class="chart-container"><canvas id="chWatch"></canvas></div>
+  </div>
+
+  <div class="card card-wide">
+    <h3>Watch Minutes per Session</h3>
+    <div class="why">Third factor of the decomposition. Means are whale-sensitive — a single left-on device moves the repeating line by minutes.</div>
+    <div class="chart-container"><canvas id="chWmps"></canvas></div>
+  </div>
+
+  <div class="card card-wide">
+    <div class="hrow">
+      <h3>Watch per Active User-Day · P75 &amp; P90 minutes</h3>
+      <span class="seg" id="seg-pct">
+        <button data-v="" class="on">All</button><button data-v="New">New</button><button data-v="Rep">Repeating</button>
+      </span>
+    </div>
+    <div class="why">Tune-dwell summed per user per IST day; only users with ≥1 tune that day count. The Users Dashboard shows median &amp; P90 — P75 is added here.</div>
+    <div class="chart-container"><canvas id="chPct"></canvas></div>
+  </div>
+
+  <div class="card card-wide">
+    <h3>Retention by First-Seen Cohort · D1 and D15</h3>
+    <div class="why">D1 = returned the very next IST day. D15 = returned on any IST day ≥15 after first seen (unbounded) — plotted only for cohorts old enough to have a full 15-day window. New-user metrics by definition, so no new/repeat cut.</div>
+    <div class="chart-container"><canvas id="chRet"></canvas></div>
+  </div>
+
+  <div class="card card-wide">
+    <h3>Add to Home Screen · % of New Users Installing in Their First Session</h3>
+    <div class="why">"Install" = answered the native prompt (pwa_install); accept vs decline isn't persisted server-side, and iOS installs are invisible — treat as an upper-bound leading indicator. New-user metric by definition.</div>
+    <div class="chart-container"><canvas id="chA2hs"></canvas></div>
+  </div>
+
+  <div class="card card-wide">
+    <h3>Playback Errors per 100 Tunes</h3>
+    <div class="why">playback_error events over tune attempts. E4 (Jul 13, PR#8) removed 5 dead channels — the drop after it is channel cleanup, not user behaviour.</div>
+    <div class="chart-container"><canvas id="chErr"></canvas></div>
+  </div>
+
+  <div class="card card-wide">
+    <h3>Daily Numbers</h3>
+    <div class="table-wrap"><table id="tbl"></table></div>
+  </div>
+</div>
+
+<div class="footer-note" id="foot"></div>
+
+<script>
+const DATA = {"generated_utc":"2026-07-15 19:21:12","today_ist":"2026-07-16","last_full":"2026-07-15","days":[{"day":"2026-06-23","partial":false,"dau":84,"new":84,"rep":0,"sess":110,"sessNew":110,"sessRep":0,"spu":1.31,"watchHrs":2.3,"watchHrsNew":2.3,"watchHrsRep":0,"wmps":1.28,"wmpsNew":1.28,"wmpsRep":0,"p75":1.4,"p90":4.1,"p75New":1.4,"p90New":4.1,"p75Rep":0,"p90Rep":0,"tunes":289,"errs":119,"ept":41.18,"eptNew":41.18,"eptRep":0,"coh":84,"d1":11.9,"d15":4.8,"a2hs":2.4,"a2hsN":2,"a2hsShown":14},{"day":"2026-06-24","partial":false,"dau":327,"new":317,"rep":10,"sess":439,"sessNew":426,"sessRep":13,"spu":1.34,"watchHrs":14.9,"watchHrsNew":14.7,"watchHrsRep":0.1,"wmps":2.03,"wmpsNew":2.08,"wmpsRep":0.52,"p75":1.1,"p90":4.3,"p75New":1.2,"p90New":4,"p75Rep":0.5,"p90Rep":5.2,"tunes":628,"errs":628,"ept":100,"eptNew":102.46,"eptRep":16.67,"coh":317,"d1":7.9,"d15":4.4,"a2hs":3.5,"a2hsN":11,"a2hsShown":60},{"day":"2026-06-25","partial":false,"dau":330,"new":300,"rep":30,"sess":437,"sessNew":386,"sessRep":51,"spu":1.32,"watchHrs":13.9,"watchHrsNew":12.2,"watchHrsRep":1.7,"wmps":1.91,"wmpsNew":1.9,"wmpsRep":1.98,"p75":1.5,"p90":7,"p75New":1.5,"p90New":5.5,"p75Rep":4.1,"p90Rep":10.4,"tunes":932,"errs":454,"ept":48.71,"eptNew":47.95,"eptRep":54.9,"coh":300,"d1":7,"d15":3,"a2hs":3.3,"a2hsN":10,"a2hsShown":57},{"day":"2026-06-26","partial":false,"dau":376,"new":336,"rep":40,"sess":551,"sessNew":478,"sessRep":73,"spu":1.47,"watchHrs":15.4,"watchHrsNew":11.3,"watchHrsRep":4.1,"wmps":1.67,"wmpsNew":1.42,"wmpsRep":3.37,"p75":1.4,"p90":5.2,"p75New":1.1,"p90New":3.8,"p75Rep":6.2,"p90Rep":25.1,"tunes":875,"errs":457,"ept":52.23,"eptNew":47.46,"eptRep":86.79,"coh":336,"d1":8.3,"d15":2.7,"a2hs":1.5,"a2hsN":5,"a2hsShown":51},{"day":"2026-06-27","partial":false,"dau":325,"new":269,"rep":56,"sess":459,"sessNew":379,"sessRep":80,"spu":1.41,"watchHrs":21.9,"watchHrsNew":10.9,"watchHrsRep":11,"wmps":2.87,"wmpsNew":1.73,"wmpsRep":8.27,"p75":1.4,"p90":3.7,"p75New":1.3,"p90New":3.2,"p75Rep":3.2,"p90Rep":7.6,"tunes":1161,"errs":390,"ept":33.59,"eptNew":33.33,"eptRep":34.72,"coh":269,"d1":10.4,"d15":1.9,"a2hs":2.6,"a2hsN":7,"a2hsShown":56},{"day":"2026-06-28","partial":false,"dau":424,"new":352,"rep":72,"sess":637,"sessNew":518,"sessRep":119,"spu":1.5,"watchHrs":20.9,"watchHrsNew":14,"watchHrsRep":6.8,"wmps":1.97,"wmpsNew":1.63,"wmpsRep":3.45,"p75":1.9,"p90":5.5,"p75New":1.8,"p90New":4.8,"p75Rep":3.5,"p90Rep":9,"tunes":3981,"errs":650,"ept":16.33,"eptNew":15.41,"eptRep":23.5,"coh":352,"d1":7.1,"d15":1.1,"a2hs":4.5,"a2hsN":16,"a2hsShown":76},{"day":"2026-06-29","partial":false,"dau":364,"new":288,"rep":76,"sess":480,"sessNew":377,"sessRep":103,"spu":1.32,"watchHrs":26.6,"watchHrsNew":11,"watchHrsRep":15.6,"wmps":3.33,"wmpsNew":1.75,"wmpsRep":9.11,"p75":1.5,"p90":5.9,"p75New":1.3,"p90New":3.5,"p75Rep":4.5,"p90Rep":18.2,"tunes":2774,"errs":447,"ept":16.11,"eptNew":16.25,"eptRep":15.73,"coh":288,"d1":8.3,"d15":0.3,"a2hs":2.4,"a2hsN":7,"a2hsShown":58},{"day":"2026-06-30","partial":false,"dau":363,"new":302,"rep":61,"sess":570,"sessNew":474,"sessRep":96,"spu":1.57,"watchHrs":25.8,"watchHrsNew":19.8,"watchHrsRep":6,"wmps":2.72,"wmpsNew":2.5,"wmpsRep":3.76,"p75":1.3,"p90":4.7,"p75New":1.3,"p90New":5,"p75Rep":1.1,"p90Rep":3.3,"tunes":3115,"errs":364,"ept":11.69,"eptNew":11.97,"eptRep":9.78,"coh":302,"d1":10.9,"d15":0.7,"a2hs":1.7,"a2hsN":5,"a2hsShown":53},{"day":"2026-07-01","partial":false,"dau":359,"new":282,"rep":77,"sess":507,"sessNew":404,"sessRep":103,"spu":1.41,"watchHrs":59.3,"watchHrsNew":26.5,"watchHrsRep":32.8,"wmps":7.02,"wmpsNew":3.94,"wmpsRep":19.11,"p75":1.4,"p90":6.8,"p75New":1.3,"p90New":6.2,"p75Rep":4.7,"p90Rep":18.1,"tunes":2617,"errs":410,"ept":15.67,"eptNew":15.29,"eptRep":17.69,"coh":282,"d1":9.9,"d15":null,"a2hs":1.1,"a2hsN":3,"a2hsShown":64},{"day":"2026-07-02","partial":false,"dau":368,"new":281,"rep":87,"sess":507,"sessNew":370,"sessRep":137,"spu":1.38,"watchHrs":52.3,"watchHrsNew":8.6,"watchHrsRep":43.7,"wmps":6.19,"wmpsNew":1.4,"wmpsRep":19.15,"p75":1.2,"p90":5.1,"p75New":1.1,"p90New":3,"p75Rep":2.7,"p90Rep":15.7,"tunes":2387,"errs":359,"ept":15.04,"eptNew":12.68,"eptRep":23.73,"coh":281,"d1":8.2,"d15":null,"a2hs":1.8,"a2hsN":5,"a2hsShown":59},{"day":"2026-07-03","partial":false,"dau":353,"new":275,"rep":78,"sess":477,"sessNew":377,"sessRep":100,"spu":1.35,"watchHrs":16.6,"watchHrsNew":11.8,"watchHrsRep":4.8,"wmps":2.09,"wmpsNew":1.88,"wmpsRep":2.88,"p75":1.1,"p90":5,"p75New":1,"p90New":4.8,"p75Rep":1.2,"p90Rep":14.6,"tunes":2818,"errs":366,"ept":12.99,"eptNew":14.25,"eptRep":8.59,"coh":275,"d1":8.4,"d15":null,"a2hs":1.8,"a2hsN":5,"a2hsShown":47},{"day":"2026-07-04","partial":false,"dau":339,"new":261,"rep":78,"sess":469,"sessNew":372,"sessRep":97,"spu":1.38,"watchHrs":34.2,"watchHrsNew":19,"watchHrsRep":15.1,"wmps":4.37,"wmpsNew":3.07,"wmpsRep":9.36,"p75":1.5,"p90":4.9,"p75New":1.4,"p90New":4.3,"p75Rep":1.8,"p90Rep":10.1,"tunes":2240,"errs":358,"ept":15.98,"eptNew":16.49,"eptRep":13.86,"coh":261,"d1":6.9,"d15":null,"a2hs":1.9,"a2hsN":5,"a2hsShown":40},{"day":"2026-07-05","partial":false,"dau":406,"new":331,"rep":75,"sess":595,"sessNew":480,"sessRep":115,"spu":1.47,"watchHrs":12.5,"watchHrsNew":10.7,"watchHrsRep":1.8,"wmps":1.26,"wmpsNew":1.34,"wmpsRep":0.92,"p75":1.4,"p90":4.5,"p75New":1.3,"p90New":3.5,"p75Rep":1.9,"p90Rep":6.2,"tunes":3090,"errs":455,"ept":14.72,"eptNew":13.42,"eptRep":20.57,"coh":331,"d1":8.8,"d15":null,"a2hs":2.4,"a2hsN":8,"a2hsShown":56},{"day":"2026-07-06","partial":false,"dau":365,"new":282,"rep":83,"sess":527,"sessNew":404,"sessRep":123,"spu":1.44,"watchHrs":14.3,"watchHrsNew":10.7,"watchHrsRep":3.6,"wmps":1.63,"wmpsNew":1.59,"wmpsRep":1.75,"p75":1.3,"p90":4.8,"p75New":1.2,"p90New":3.4,"p75Rep":2.8,"p90Rep":7.2,"tunes":3068,"errs":434,"ept":14.15,"eptNew":13.05,"eptRep":19.47,"coh":282,"d1":9.6,"d15":null,"a2hs":1.8,"a2hsN":5,"a2hsShown":53},{"day":"2026-07-07","partial":false,"dau":385,"new":305,"rep":80,"sess":548,"sessNew":421,"sessRep":127,"spu":1.42,"watchHrs":37.7,"watchHrsNew":10.2,"watchHrsRep":27.5,"wmps":4.13,"wmpsNew":1.45,"wmpsRep":13,"p75":1.5,"p90":5,"p75New":1.4,"p90New":3.9,"p75Rep":3.8,"p90Rep":21.4,"tunes":3278,"errs":374,"ept":11.41,"eptNew":11.91,"eptRep":10.12,"coh":305,"d1":8.2,"d15":null,"a2hs":1.6,"a2hsN":5,"a2hsShown":51},{"day":"2026-07-08","partial":false,"dau":386,"new":293,"rep":93,"sess":540,"sessNew":395,"sessRep":145,"spu":1.4,"watchHrs":20.1,"watchHrsNew":13.7,"watchHrsRep":6.4,"wmps":2.24,"wmpsNew":2.08,"wmpsRep":2.65,"p75":1.4,"p90":5.2,"p75New":1.3,"p90New":4.8,"p75Rep":1.6,"p90Rep":6.4,"tunes":2713,"errs":354,"ept":13.05,"eptNew":12.22,"eptRep":15.97,"coh":293,"d1":10.9,"d15":null,"a2hs":2.4,"a2hsN":7,"a2hsShown":65},{"day":"2026-07-09","partial":false,"dau":447,"new":329,"rep":118,"sess":642,"sessNew":466,"sessRep":176,"spu":1.44,"watchHrs":19.1,"watchHrsNew":13.7,"watchHrsRep":5.3,"wmps":1.78,"wmpsNew":1.77,"wmpsRep":1.82,"p75":1.2,"p90":4.8,"p75New":0.9,"p90New":3,"p75Rep":1.9,"p90Rep":8.2,"tunes":3198,"errs":411,"ept":12.85,"eptNew":12.52,"eptRep":13.6,"coh":329,"d1":7.3,"d15":null,"a2hs":1.5,"a2hsN":5,"a2hsShown":42},{"day":"2026-07-10","partial":false,"dau":371,"new":273,"rep":98,"sess":515,"sessNew":366,"sessRep":149,"spu":1.39,"watchHrs":21.8,"watchHrsNew":13.1,"watchHrsRep":8.7,"wmps":2.54,"wmpsNew":2.15,"wmpsRep":3.49,"p75":1.4,"p90":5,"p75New":1.1,"p90New":5,"p75Rep":1.7,"p90Rep":22.8,"tunes":2744,"errs":266,"ept":9.69,"eptNew":8.94,"eptRep":11.1,"coh":273,"d1":6.6,"d15":null,"a2hs":0.4,"a2hsN":1,"a2hsShown":51},{"day":"2026-07-11","partial":false,"dau":351,"new":272,"rep":79,"sess":491,"sessNew":364,"sessRep":127,"spu":1.4,"watchHrs":37.9,"watchHrsNew":14.9,"watchHrsRep":22.9,"wmps":4.63,"wmpsNew":2.46,"wmpsRep":10.84,"p75":1.1,"p90":3.5,"p75New":1,"p90New":2.4,"p75Rep":1.2,"p90Rep":9.6,"tunes":1943,"errs":255,"ept":13.12,"eptNew":12.79,"eptRep":14.09,"coh":272,"d1":8.5,"d15":null,"a2hs":2.6,"a2hsN":7,"a2hsShown":45},{"day":"2026-07-12","partial":false,"dau":402,"new":312,"rep":90,"sess":612,"sessNew":463,"sessRep":149,"spu":1.52,"watchHrs":33.3,"watchHrsNew":25.5,"watchHrsRep":7.8,"wmps":3.26,"wmpsNew":3.3,"wmpsRep":3.13,"p75":1.8,"p90":5.4,"p75New":1.5,"p90New":5,"p75Rep":2.2,"p90Rep":11.2,"tunes":3240,"errs":462,"ept":14.26,"eptNew":14.91,"eptRep":12.04,"coh":312,"d1":7.7,"d15":null,"a2hs":1.6,"a2hsN":5,"a2hsShown":52},{"day":"2026-07-13","partial":false,"dau":347,"new":264,"rep":83,"sess":470,"sessNew":362,"sessRep":108,"spu":1.35,"watchHrs":21.8,"watchHrsNew":6.7,"watchHrsRep":15.1,"wmps":2.78,"wmpsNew":1.12,"wmpsRep":8.37,"p75":1.3,"p90":4.3,"p75New":1.2,"p90New":3.7,"p75Rep":1.8,"p90Rep":7,"tunes":2419,"errs":280,"ept":11.58,"eptNew":10.8,"eptRep":14.42,"coh":264,"d1":8.7,"d15":null,"a2hs":2.7,"a2hsN":7,"a2hsShown":41},{"day":"2026-07-14","partial":false,"dau":339,"new":256,"rep":83,"sess":459,"sessNew":342,"sessRep":117,"spu":1.35,"watchHrs":24.9,"watchHrsNew":12.3,"watchHrsRep":12.6,"wmps":3.26,"wmpsNew":2.16,"wmpsRep":6.47,"p75":1.3,"p90":4.5,"p75New":1.2,"p90New":3.5,"p75Rep":1.4,"p90Rep":17.6,"tunes":2466,"errs":264,"ept":10.71,"eptNew":9.78,"eptRep":13.92,"coh":256,"d1":8.6,"d15":null,"a2hs":2,"a2hsN":5,"a2hsShown":57},{"day":"2026-07-15","partial":false,"dau":332,"new":245,"rep":87,"sess":449,"sessNew":324,"sessRep":125,"spu":1.35,"watchHrs":32.4,"watchHrsNew":13.2,"watchHrsRep":19.2,"wmps":4.33,"wmpsNew":2.44,"wmpsRep":9.22,"p75":1.1,"p90":5.3,"p75New":1.1,"p90New":4.1,"p75Rep":1,"p90Rep":6.7,"tunes":1847,"errs":202,"ept":10.94,"eptNew":10.63,"eptRep":11.74,"coh":245,"d1":null,"d15":null,"a2hs":0.4,"a2hsN":1,"a2hsShown":45},{"day":"2026-07-16","partial":true,"dau":19,"new":13,"rep":6,"sess":21,"sessNew":13,"sessRep":8,"spu":1.11,"watchHrs":0.1,"watchHrsNew":0.1,"watchHrsRep":0,"wmps":0.41,"wmpsNew":0.58,"wmpsRep":0.13,"p75":0.4,"p90":2,"p75New":1.7,"p90New":2,"p75Rep":0.4,"p90Rep":0.4,"tunes":59,"errs":8,"ept":13.56,"eptNew":15.38,"eptRep":0,"coh":13,"d1":null,"d15":null,"a2hs":0,"a2hsN":0,"a2hsShown":3}]};
+const ERAS = [
+  {date:'2026-06-27', label:'dwell + launch instrumentation fixed'},
+  {date:'2026-07-03', label:'unmute client change / reload incident'},
+  {date:'2026-07-07', label:'clean fse_v1 era starts'},
+  {date:'2026-07-13', label:'PR#8: genre landing · 5 dead channels removed · gesture unmute'}
+];
+const WATCH_START = '2026-06-27'; // tune-dwell trustworthy from the dwell fix
+
+/* ── theme ── */
+const themeBtn = document.getElementById('theme-toggle');
+function theme(){ return document.body.dataset.theme === 'dark' ? 'dark' : 'light'; }
+function applyTheme(t){ document.body.dataset.theme = t; themeBtn.textContent = t==='dark'?'☀️':'🌙'; localStorage.setItem('hub-scorecard-theme', t); }
+themeBtn.onclick = () => { applyTheme(theme()==='dark'?'light':'dark'); renderAll(); };
+applyTheme(localStorage.getItem('hub-scorecard-theme') || 'light');
+function cssVar(n){ return getComputedStyle(document.body).getPropertyValue(n).trim(); }
+function fade(hex,a){ const n=parseInt(hex.slice(1),16); return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`; }
+
+/* ── data windows ── */
+const days = DATA.days;
+const full = days.filter(d => !d.partial);
+const lbl = d => { const dt=new Date(d.day+'T00:00:00'); const l=dt.toLocaleDateString('en-IN',{day:'numeric',month:'short'}); return d.partial?l+' (today)':l; };
+document.getElementById('hdr-sub').textContent =
+  `Gap-fill metrics not on the Users Dashboard · uid era since 2026-06-23 · IST days · snapshot ${DATA.generated_utc} UTC · static page — ask for a refresh`;
+
+/* ── KPI row: last 7 full days vs prior 7 ── */
+const w1 = full.slice(-7), w0 = full.slice(-14,-7);
+const sum = (a,k)=>a.reduce((s,d)=>s+d[k],0), avg=(a,k)=>sum(a,k)/a.length;
+function delta(cur,prev,invert){
+  if(!prev) return {t:'—',c:'flat'};
+  const p=(cur-prev)/prev*100, good=invert? p<0 : p>0;
+  if(Math.abs(p)<1) return {t:'≈ flat',c:'flat'};
+  return {t:(p>0?'▲ +':'▼ ')+p.toFixed(1)+'% WoW', c: good?'up':'down'};
+}
+const d1c = w1.filter(d=>d.d1!==null), d1p = w0.filter(d=>d.d1!==null);
+const d1cur = d1c.length? sum(d1c,'coh')?d1c.reduce((s,d)=>s+d.d1*d.coh,0)/sum(d1c,'coh'):0 :0;
+const d1prev = d1p.length? sum(d1p,'coh')?d1p.reduce((s,d)=>s+d.d1*d.coh,0)/sum(d1p,'coh'):0 :0;
+const d15rows = full.filter(d=>d.d15!==null);
+const d15all = d15rows.length? d15rows.reduce((s,d)=>s+d.d15*d.coh,0)/sum(d15rows,'coh') : 0;
+const a2cur = 100*sum(w1,'a2hsN')/sum(w1,'new'), a2prev = 100*sum(w0,'a2hsN')/sum(w0,'new');
+const eptCur = 100*sum(w1,'errs')/sum(w1,'tunes'), eptPrev = 100*sum(w0,'errs')/sum(w0,'tunes');
+const wmCur = sum(w1,'watchHrs')*60/sum(w1,'sess'), wmPrev = sum(w0,'watchHrs')*60/sum(w0,'sess');
+const KPIS = [
+  {v:(sum(w1,'watchHrs')/7).toFixed(1)+'h', k:'Watch hours / day', d:delta(sum(w1,'watchHrs'),sum(w0,'watchHrs'))},
+  {v:Math.round(avg(w1,'dau')), k:'Users / day (DAU)', d:delta(avg(w1,'dau'),avg(w0,'dau'))},
+  {v:(sum(w1,'sess')/sum(w1,'dau')).toFixed(2), k:'Sessions / user / day', d:delta(sum(w1,'sess')/sum(w1,'dau'),sum(w0,'sess')/sum(w0,'dau'))},
+  {v:wmCur.toFixed(2)+'m', k:'Watch min / session', d:delta(wmCur,wmPrev)},
+  {v:d1cur.toFixed(1)+'%', k:'D1 retention', d:delta(d1cur,d1prev)},
+  {v:d15all.toFixed(1)+'%', k:'D15 retention (all eligible cohorts)', d:{t:'cohorts ≤ '+(d15rows.length?d15rows[d15rows.length-1].day.slice(5):''),c:'flat'}},
+  {v:a2cur.toFixed(1)+'%', k:'A2HS in first session (new users)', d:delta(a2cur,a2prev)},
+  {v:eptCur.toFixed(1), k:'Errors per 100 tunes', d:delta(eptCur,eptPrev,true)}
+];
+document.getElementById('kpis').innerHTML = KPIS.map(x =>
+  `<div class="kpi"><div class="v">${x.v}</div><div class="k">${x.k}</div><div class="d ${x.d.c}">${x.d.t}</div></div>`).join('');
+
+/* ── era marker plugin ── */
+function eraPlugin(vd){
+  return { id:'eras', afterDraw(chart){
+    const xs=chart.scales.x, ys=chart.scales.y, ctx=chart.ctx;
+    ERAS.forEach((e,i)=>{
+      const idx=vd.findIndex(d=>d.day===e.date);
+      if(idx<=0) return;
+      const step = vd.length>1 ? xs.getPixelForValue(1)-xs.getPixelForValue(0) : 0;
+      const x=xs.getPixelForValue(idx)-step/2;
+      if(!isFinite(x)||x<xs.left) return;
+      ctx.save(); ctx.strokeStyle=cssVar('--dim'); ctx.setLineDash([4,4]); ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(x,ys.top); ctx.lineTo(x,ys.bottom); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle=cssVar('--muted'); ctx.font='600 10px Noto Sans'; ctx.fillText('E'+(i+1),x+3,ys.top+10);
+      ctx.restore();
+    });
+  }};
+}
+function baseOpts(){
+  return { responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{labels:{color:cssVar('--muted'),font:{size:11},boxWidth:12}}},
+    scales:{ x:{ticks:{color:cssVar('--chart-tick'),font:{size:10},maxRotation:45},grid:{display:false}},
+             y:{ticks:{color:cssVar('--chart-tick'),font:{size:10}},grid:{color:cssVar('--chart-grid')},beginAtZero:true}}};
+}
+let charts={};
+function mk(id,cfg,vd){ if(charts[id])charts[id].destroy(); cfg.plugins=[eraPlugin(vd)]; charts[id]=new Chart(document.getElementById(id),cfg); }
+const line=(label,data,color,dash)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:2,pointRadius:3,tension:.35,...(dash?{borderDash:[6,4]}:{}),spanGaps:false});
+const pnote=vd=>items=>vd[items[0].dataIndex]&&vd[items[0].dataIndex].partial?'⚠ partial day — today in progress':'';
+
+/* charts */
+function renderWatchHrs(){
+  const vd=days.filter(d=>d.day>=WATCH_START), L=vd.map(lbl), o=baseOpts();
+  o.scales.x.stacked=o.scales.y.stacked=true;
+  o.plugins.tooltip={callbacks:{footer:items=>{const d=vd[items[0].dataIndex];return `Total ${d.watchHrs}h`+(d.partial?'\n⚠ partial day':'');}}};
+  mk('chWatch',{type:'bar',data:{labels:L,datasets:[
+    {label:'New users',data:vd.map(d=>d.watchHrsNew),backgroundColor:vd.map(d=>fade(cssVar('--newC'),d.partial?.45:1)),borderColor:cssVar('--card'),borderWidth:1.5,borderRadius:4,barPercentage:.72},
+    {label:'Repeating users',data:vd.map(d=>d.watchHrsRep),backgroundColor:vd.map(d=>fade(cssVar('--repC'),d.partial?.45:1)),borderColor:cssVar('--card'),borderWidth:1.5,borderRadius:4,barPercentage:.72}
+  ]},options:o},vd);
+}
+function renderWmps(){
+  const vd=days.filter(d=>d.day>=WATCH_START), L=vd.map(lbl), o=baseOpts();
+  o.plugins.tooltip={callbacks:{footer:pnote(vd)}};
+  mk('chWmps',{type:'line',data:{labels:L,datasets:[
+    line('New users (min/session)',vd.map(d=>d.wmpsNew),cssVar('--newC')),
+    line('Repeating users',vd.map(d=>d.wmpsRep),cssVar('--repC'),true),
+    line('All',vd.map(d=>d.wmps),cssVar('--allC'),true)
+  ]},options:o},vd);
+}
+let pctView='';
+function renderPct(){
+  const vd=days.filter(d=>d.day>=WATCH_START), L=vd.map(lbl), o=baseOpts();
+  o.plugins.tooltip={callbacks:{footer:pnote(vd)}};
+  mk('chPct',{type:'line',data:{labels:L,datasets:[
+    line('P75 watch min / user-day',vd.map(d=>d['p75'+pctView]),cssVar('--newC')),
+    line('P90 watch min / user-day',vd.map(d=>d['p90'+pctView]),cssVar('--repC'),true)
+  ]},options:o},vd);
+}
+function renderRet(){
+  const vd=full, L=vd.map(lbl), o=baseOpts();
+  o.scales.y.ticks.callback=v=>v+'%';
+  o.plugins.tooltip={callbacks:{
+    label:c=>`${c.dataset.label}: ${c.parsed.y===null?'n/a':c.parsed.y+'%'} (cohort ${vd[c.dataIndex].coh} new users)`}};
+  mk('chRet',{type:'line',data:{labels:L,datasets:[
+    line('D1 — returned next day',vd.map(d=>d.d1),cssVar('--newC')),
+    line('D15 — returned on/after day 15',vd.map(d=>d.d15),cssVar('--repC'),true)
+  ]},options:o},vd);
+}
+function renderA2hs(){
+  const vd=full, L=vd.map(lbl), o=baseOpts();
+  o.scales.y.ticks.callback=v=>v+'%';
+  o.plugins.tooltip={callbacks:{
+    label:c=>{const d=vd[c.dataIndex];return `${c.parsed.y}% — ${d.a2hsN} of ${d.new} new users (banner shown to ${d.a2hsShown})`;}}};
+  mk('chA2hs',{type:'line',data:{labels:L,datasets:[
+    line('A2HS in first session · % of new users',vd.map(d=>d.a2hs),cssVar('--newC'))
+  ]},options:o},vd);
+}
+function renderErr(){
+  const vd=days, L=vd.map(lbl), o=baseOpts();
+  o.plugins.tooltip={callbacks:{
+    footer:items=>{const d=vd[items[0].dataIndex];return `${d.errs} errors / ${d.tunes} tunes`+(d.partial?'\n⚠ partial day':'');}}};
+  mk('chErr',{type:'line',data:{labels:L,datasets:[
+    line('New users · errors per 100 tunes',vd.map(d=>d.eptNew),cssVar('--newC')),
+    line('Repeating users',vd.map(d=>d.eptRep),cssVar('--repC'),true),
+    line('All',vd.map(d=>d.ept),cssVar('--allC'),true)
+  ]},options:o},vd);
+}
+document.querySelectorAll('#seg-pct button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#seg-pct button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); pctView=b.dataset.v; renderPct();
+});
+
+/* table */
+document.getElementById('tbl').innerHTML =
+  `<tr><th>IST day</th><th class="num">Users</th><th class="num">New</th><th class="num">Watch hrs</th>
+   <th class="num">Min/session</th><th class="num">P75</th><th class="num">P90</th>
+   <th class="num">D1%</th><th class="num">D15%</th><th class="num">A2HS%</th><th class="num">Err/100 tunes</th></tr>` +
+  [...days].reverse().map(d=>`<tr${d.partial?' style="color:var(--dim)"':''}>
+    <td>${d.day}${d.partial?' <small>(partial)</small>':''}</td>
+    <td class="num"><b>${d.dau}</b></td><td class="num">${d.new}</td>
+    <td class="num">${d.day>=WATCH_START?d.watchHrs:'·'}</td>
+    <td class="num">${d.day>=WATCH_START?d.wmps+'m':'·'}</td>
+    <td class="num">${d.day>=WATCH_START?d.p75+'m':'·'}</td><td class="num">${d.day>=WATCH_START?d.p90+'m':'·'}</td>
+    <td class="num">${d.d1===null?'·':d.d1+'%'}</td><td class="num">${d.d15===null?'·':d.d15+'%'}</td>
+    <td class="num">${d.a2hs===null?'·':d.a2hs+'%'}</td><td class="num">${d.ept}</td></tr>`).join('');
+
+/* footer */
+document.getElementById('foot').innerHTML =
+  `<b>Definitions & caveats.</b> Day = IST. User = persistent device id (localStorage uid); cleared storage / incognito counts as new.
+   Watch time = tune-dwell (duration_sec on tune events) only — session_end dwell is known-broken and unused. Watch charts start ${WATCH_START} (E1 dwell fix); earlier dwell is untrusted.
+   Watch means are whale-dominated: the top 3 devices carry ~a quarter of all hours — trust P75/P90 over means.
+   Min/session per class assigns a session to New if its user was first seen that day.
+   D1 = any event on first-seen-day +1 (needs a complete next day). D15 = any event on/after day 15 (unbounded return) — only cohorts with 15 days of air are plotted, and churned-looking devices that cleared storage deflate both.
+   A2HS: pwa_install = user answered the native install prompt in their first session; accept/decline isn't persisted and iOS installs are invisible (see the A2HS deep-dive tab).
+   Errors: playback_error events / tune attempts; one dying stream can fire many errors, so this overweights dead channels vs user pain — the level matters less than the trend.<br>
+   <b>Era markers:</b> ${ERAS.map((e,i)=>`<span class="era-chip"><b>E${i+1}</b> ${e.date} — ${e.label}</span>`).join('')}<br>
+   Static snapshot computed directly from analytics.db (${DATA.generated_utc} UTC) — this page does not auto-refresh; ask the analyst agent to regenerate.`;
+
+function renderAll(){ renderWatchHrs(); renderWmps(); renderPct(); renderRet(); renderA2hs(); renderErr(); }
+renderAll();
+</script>
+</body>
+</html>
