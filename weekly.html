@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wiom TV · Weekly Scorecard</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAF9FC; --card:#FFFFFF; --card-border:#D7D3E0; --text:#161021; --muted:#665E75;
+  --dim:#A7A1B2; --row-border:#F1EDF7; --accent:#D9008D; --chart-grid:#F1EDF7; --chart-tick:#8A8496;
+  --up:#008043; --up-bg:#E1FAED; --down:#E01E00; --down-bg:#FFE9E5; --flat:#665E75; --flat-bg:#F1EDF7;
+  --warn:#B45B00; --warn-bg:#FFE6CC; --newC:#D9008D; --repC:#6D17CE;
+}
+body[data-theme="dark"]{
+  --bg:#0a0612; --card:#1a1128; --card-border:#2d2240; --text:#e0dce8; --muted:#A7A1B2;
+  --dim:#665E75; --row-border:#1f1834; --chart-grid:#1f1834; --chart-tick:#665E75;
+  --up:#4ADE97; --up-bg:rgba(0,128,67,.22); --down:#FF7A66; --down-bg:rgba(224,30,0,.18);
+  --flat:#A7A1B2; --flat-bg:#241c33; --warn:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+  --newC:#E0339F; --repC:#A855F7;
+}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans','Segoe UI',system-ui,sans-serif;min-height:100vh}
+.header{background:linear-gradient(135deg,#5E003D,#443152);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header h1{font-size:22px;font-weight:700;color:#FFB2E4}
+.header h1 span{color:#D9008D}
+.header .sub{font-size:12px;color:#C9B7D6;margin-top:4px}
+.btn{background:#443152;color:#FFB2E4;border:1px solid rgba(217,0,141,.3);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none}
+.btn:hover{border-color:#D9008D;color:#fff}
+.wrap{max-width:1150px;margin:0 auto;padding:20px 24px}
+.heroes{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(22,16,33,.05)}
+.card h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px}
+.hero-num{font-size:34px;font-weight:800;color:var(--accent);line-height:1.1}
+.hero-num .arrow{font-size:22px;color:var(--muted);font-weight:600}
+.hero-sub{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.55}
+.spark{position:relative;height:110px;margin-top:12px}
+.chip{display:inline-block;border-radius:20px;padding:3px 11px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.c-up{background:var(--up-bg);color:var(--up)} .c-down{background:var(--down-bg);color:var(--down)}
+.c-flat{background:var(--flat-bg);color:var(--flat)} .c-warn{background:var(--warn-bg);color:var(--warn)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{text-align:right;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:10px;border-bottom:2px solid var(--card-border);white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:10px;font-size:14px;border-bottom:1px solid var(--row-border);text-align:right;white-space:nowrap}
+td:first-child{text-align:left;font-weight:600}
+td .note{display:block;font-weight:400;font-size:11.5px;color:var(--muted);margin-top:2px;white-space:normal}
+tr.sect td{background:var(--row-border);font-size:11.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:700;text-align:left;padding:7px 10px}
+td.dim{color:var(--dim)}
+.footer-note{padding:14px 0 30px;color:var(--dim);font-size:12px;line-height:1.75;max-width:1150px}
+.footer-note b{color:var(--muted)}
+.era-chip{display:inline-block;margin-right:14px}
+@media(max-width:768px){.hero-num{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1><span>Wiom</span> TV · Weekly Scorecard</h1>
+    <div class="sub">Wed→Tue weeks since Jul 1 (IST) · the Wednesday-meeting rollup · snapshot 2026-07-15 19:28 UTC · static page — ask for a refresh</div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <a class="btn" href="scorecard.html">Daily Scorecard</a>
+    <a class="btn" href="dashboard.html">Users Dashboard</a>
+    <button class="btn" id="theme-toggle" title="Toggle light/dark">🌙</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="heroes">
+    <div class="card">
+      <h3>The one real trend · Errors per 100 tunes</h3>
+      <div class="hero-num">14.1 <span class="arrow">→</span> 12.2 <span class="arrow">→</span> 10.9</div>
+      <div class="hero-sub"><span class="chip c-up">SIGNAL · improving every week</span> &nbsp;−13% WoW then another −11% so far this week. Part behaviour-independent: E4 (Jul 13, PR#8) removed 5 dead channels — the tail of the drop is channel cleanup, not user experience alone.</div>
+      <div class="spark"><canvas id="sparkErr"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Watch time · hours per week (excl. tunes &gt;4h)</h3>
+      <div class="hero-num">102.4 <span class="arrow">→</span> 115.0</div>
+      <div class="hero-sub"><span class="chip c-up">+12.3% WoW</span> <span class="chip c-warn">sensitive to outlier handling</span><br>
+      Typical-viewer watch time grew with flat users: same DAU, +10% watch-min/session. But the +12% only exists when the ~1-2 left-on-TV whale tunes per day are <i>excluded</i>; winsorized at 4h/tune it is 150.4 → 150.9 (flat). Directional, not confirmed.</div>
+      <div class="spark"><canvas id="sparkWatch"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Week-on-Week · all metrics</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Metric</th>
+        <th>Wk1 · Jul 1–7</th>
+        <th>Wk2 · Jul 8–14</th>
+        <th>Δ Wk2 vs Wk1</th>
+        <th>Wk3 · Jul 15–21 <span style="font-weight:400">(1 of 7 days)</span></th>
+      </tr></thead>
+      <tbody>
+        <tr class="sect"><td colspan="5">Scale · total watch = DAU × sessions/user × watch-min/session</td></tr>
+        <tr>
+          <td>Watch hours / week <span class="note">tune dwell, excl. tunes &gt;4h (primary) · raw &amp; capped variants in footnote 1</span></td>
+          <td>102.4</td><td><b>115.0</b></td><td><span class="chip c-up">▲ +12.3%</span><span class="note">directional — see footnote 1</span></td><td class="dim">15.7 <span class="note">15.7/day vs Wk2 16.4/day</span></td>
+        </tr>
+        <tr>
+          <td>Users / day (DAU)</td>
+          <td>368</td><td>378</td><td><span class="chip c-flat">≈ +2.7% · noise</span></td><td class="dim">332</td>
+        </tr>
+        <tr>
+          <td>Sessions / user / day <span class="note">session_start events; reloads inflate ~25% vs real visits</span></td>
+          <td>1.37</td><td>1.37</td><td><span class="chip c-flat">flat</span></td><td class="dim">1.31</td>
+        </tr>
+        <tr>
+          <td>Watch min / session <span class="note">excl. tunes &gt;4h, consistent with primary watch row</span></td>
+          <td>1.74</td><td>1.91</td><td><span class="chip c-up">▲ +9.9%</span><span class="note">same outlier sensitivity as watch hours</span></td><td class="dim">2.17</td>
+        </tr>
+        <tr>
+          <td>New uids / week</td>
+          <td>2,017</td><td>1,999</td><td><span class="chip c-flat">≈ −0.9% · noise</span></td><td class="dim">245</td>
+        </tr>
+        <tr class="sect"><td colspan="5">Depth · per-user distribution (uid-days with ≥1 tune)</td></tr>
+        <tr>
+          <td>P75 watch min / uid-day</td>
+          <td>1.4</td><td>1.3</td><td><span class="chip c-flat">≈ flat · noise</span></td><td class="dim">1.1</td>
+        </tr>
+        <tr>
+          <td>P90 watch min / uid-day</td>
+          <td>5.0</td><td>4.9</td><td><span class="chip c-flat">≈ flat · noise</span></td><td class="dim">5.3</td>
+        </tr>
+        <tr class="sect"><td colspan="5">Commitment</td></tr>
+        <tr>
+          <td>D1 retention <span class="note">returned next IST day · complete windows only</span></td>
+          <td>8.6% <span class="note">173 of 2,017</span></td><td>8.3% <span class="note">166 of 1,999</span></td><td><span class="chip c-flat">−0.3pp · noise (±1.7pp)</span></td><td class="dim">n/a <span class="note">no complete D1 windows yet</span></td>
+        </tr>
+        <tr>
+          <td>D15 retention <span class="note">returned on/after day 15 (unbounded)</span></td>
+          <td class="dim">not measurable <span class="note">first cohort day readable Jul 17; full week Jul 23</span></td>
+          <td class="dim">not measurable <span class="note">readable from Jul 24</span></td>
+          <td><span class="chip c-flat">—</span></td>
+          <td class="dim">not measurable <span class="note">readable from Jul 31</span></td>
+        </tr>
+        <tr>
+          <td>Add-to-Home in first session <span class="note">% of new uids · pwa_install = answered native prompt (upper bound)</span></td>
+          <td>1.8% <span class="note">36 users</span></td><td>1.9% <span class="note">37 users</span></td><td><span class="chip c-flat">+0.1pp · noise</span></td><td class="dim">0.4% <span class="note">1 user · partial</span></td>
+        </tr>
+        <tr class="sect"><td colspan="5">Reliability</td></tr>
+        <tr>
+          <td>Errors per 100 tunes <span class="note">playback_error / tune attempts</span></td>
+          <td>14.1 <span class="note">2,756 / 19,500</span></td><td><b>12.2</b> <span class="note">2,292 / 18,723</span></td><td><span class="chip c-up">▼ −13% · SIGNAL</span></td><td>10.9 <span class="note">202 / 1,847 · post-E4</span></td>
+        </tr>
+        <tr>
+          <td>Errors per 100 playback_starts</td>
+          <td>27.2</td><td>23.6</td><td><span class="chip c-up">▼ −13% · SIGNAL</span></td><td>18.3</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="footer-note" id="foot">
+    <b>Footnote 1 — watch-time outlier sensitivity.</b> Raw SUM(tune dwell): Wk1 <b>545.6h</b> → Wk2 <b>178.9h</b> — Wk1 raw is polluted by a single 13.3-day (319h) null-uid tune row on Jul 1 plus 11 other &gt;4h tunes (443h of the 546). Three treatments: <b>excluded &gt;4h</b> (primary above): 102.4 → 115.0 (+12.3%); <b>winsorized at 4h/tune</b>: 150.4 → 150.9 (flat); raw: meaningless. The WoW verdict flips between "flat" and "+12%" on whether 12-vs-9 whale tunes count 4h each — so treat +12% as directional until a third week confirms.<br>
+    <b>Noise labels:</b> D1 ±1.7pp and A2HS ±0.9pp are the ~95% noise bands at these cohort sizes (two-proportion); DAU day-to-day variance makes ±3% WoW unremarkable. The error-rate delta is ~5× its standard error — real, though one dying stream fires many errors, so per-tune error counts overweight dead channels (the per-playback_start row agrees, which is why both are shown).<br>
+    <b>Definitions:</b> Day = IST; weeks are Wed→Tue. Watch = tune-dwell only (session_end dwell known-broken, unused). User = device uid (localStorage). D1/D15 use the devices first-seen ledger; storage-clearing devices deflate both. Wk3 column shows totals for 1 complete day (Jul 15) — rates are loosely comparable, totals are not.<br>
+    <b>Era markers in this window:</b> <span class="era-chip"><b>E2</b> 2026-07-03 — unmute client change / reload incident</span> <span class="era-chip"><b>E3</b> 2026-07-07 — clean fse_v1 era</span> <span class="era-chip"><b>E4</b> 2026-07-13 — PR#8: 5 dead channels removed · gesture unmute · fse_v2 live</span><br>
+    Computed read-only from analytics.db (snapshot 2026-07-15 19:28 UTC) · methodology and re-runnable query preserved with the analyst agent (wow2.js pattern).
+  </div>
+</div>
+
+<script>
+/* theme */
+const themeBtn = document.getElementById('theme-toggle');
+function theme(){ return document.body.dataset.theme === 'dark' ? 'dark' : 'light'; }
+function applyTheme(t){ document.body.dataset.theme = t; themeBtn.textContent = t==='dark'?'☀️':'🌙'; localStorage.setItem('hub-weekly-theme', t); }
+themeBtn.onclick = () => { applyTheme(theme()==='dark'?'light':'dark'); render(); };
+applyTheme(localStorage.getItem('hub-weekly-theme') || 'light');
+function cssVar(n){ return getComputedStyle(document.body).getPropertyValue(n).trim(); }
+
+/* sparklines */
+const EPT = [
+  {d:'2026-07-01',v:15.7},{d:'2026-07-02',v:15.0},{d:'2026-07-03',v:13.0},{d:'2026-07-04',v:16.0},
+  {d:'2026-07-05',v:14.7},{d:'2026-07-06',v:14.1},{d:'2026-07-07',v:11.4},{d:'2026-07-08',v:13.0},
+  {d:'2026-07-09',v:12.9},{d:'2026-07-10',v:9.7},{d:'2026-07-11',v:13.1},{d:'2026-07-12',v:14.3},
+  {d:'2026-07-13',v:11.6},{d:'2026-07-14',v:10.7},{d:'2026-07-15',v:10.9}
+];
+// weekly watch hours (excl >4h tunes): wk1, wk2 + wk3 partial normalized per-day for context
+const WATCH = [{l:'Wk1 Jul 1–7',v:102.4},{l:'Wk2 Jul 8–14',v:115.0}];
+const ERAS = [{date:'2026-07-03',l:'E2'},{date:'2026-07-07',l:'E3'},{date:'2026-07-13',l:'E4'}];
+
+let charts = {};
+function mk(id,cfg){ if(charts[id])charts[id].destroy(); charts[id]=new Chart(document.getElementById(id),cfg); }
+function render(){
+  const tick = {color:cssVar('--chart-tick'),font:{size:9}};
+  mk('sparkErr',{type:'line',
+    data:{labels:EPT.map(r=>r.d.slice(8)),datasets:[{label:'errors/100 tunes',
+      data:EPT.map(r=>r.v),borderColor:cssVar('--newC'),backgroundColor:cssVar('--newC'),
+      borderWidth:2,pointRadius:2,tension:.35}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{title:i=>'Jul '+EPT[i[0].dataIndex].d.slice(8)}}},
+      scales:{x:{ticks:tick,grid:{display:false}},y:{ticks:tick,grid:{color:cssVar('--chart-grid')},beginAtZero:true}}},
+    plugins:[{id:'eras',afterDraw(c){
+      const xs=c.scales.x,ys=c.scales.y,ctx=c.ctx;
+      ERAS.forEach(e=>{ const i=EPT.findIndex(r=>r.d===e.date); if(i<0)return;
+        const x=xs.getPixelForValue(i);
+        ctx.save();ctx.strokeStyle=cssVar('--dim');ctx.setLineDash([3,3]);ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(x,ys.top);ctx.lineTo(x,ys.bottom);ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle=cssVar('--muted');ctx.font='600 9px Noto Sans';ctx.fillText(e.l,x+2,ys.top+9);ctx.restore();});
+    }}]});
+  mk('sparkWatch',{type:'bar',
+    data:{labels:WATCH.map(r=>r.l),datasets:[{label:'watch hours (excl >4h tunes)',
+      data:WATCH.map(r=>r.v),backgroundColor:[cssVar('--repC'),cssVar('--newC')],
+      borderColor:cssVar('--card'),borderWidth:1.5,borderRadius:4,barPercentage:.55}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:tick,grid:{color:cssVar('--chart-grid')},beginAtZero:true},
+              y:{ticks:{color:cssVar('--chart-tick'),font:{size:10}},grid:{display:false}}}}});
+}
+render();
+</script>
+</body>
+</html>
