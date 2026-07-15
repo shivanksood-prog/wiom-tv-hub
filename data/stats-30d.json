@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-15T21:42:52Z",
+  "fetched_at": "2026-07-15T22:43:16Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 13960,
-      "total_tunes": 56793,
-      "total_watch_min": 876671.8,
-      "avg_duration_sec": 833.5
+      "unique_users": 13962,
+      "total_tunes": 56817,
+      "total_watch_min": 876679.9,
+      "avg_duration_sec": 833.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 7598,
-        "unique_users": 6342,
-        "watch_min": 29186.7
+        "tunes": 7600,
+        "unique_users": 6344,
+        "watch_min": 29186.8
       },
       {
         "ch": 3,
@@ -150,9 +150,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 689,
-        "unique_users": 535,
-        "watch_min": 609.5
+        "tunes": 692,
+        "unique_users": 536,
+        "watch_min": 609.7
       },
       {
         "ch": 17,
@@ -177,9 +177,9 @@
         "name": "Goldmines",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 623,
-        "unique_users": 457,
-        "watch_min": 448.7
+        "tunes": 626,
+        "unique_users": 458,
+        "watch_min": 454.2
       },
       {
         "ch": 6,
@@ -258,9 +258,9 @@
         "name": "ZB Cinema",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 572,
-        "unique_users": 423,
-        "watch_min": 259.5
+        "tunes": 573,
+        "unique_users": 424,
+        "watch_min": 259.8
       },
       {
         "ch": 11,
@@ -284,27 +284,27 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 28660,
-        "unique_users": 8981,
-        "watch_min": 41319.9
+        "tunes": 28662,
+        "unique_users": 8983,
+        "watch_min": 41320
       },
       {
         "cat": "News",
-        "tunes": 8844,
-        "unique_users": 1818,
-        "watch_min": 5332.5
+        "tunes": 8852,
+        "unique_users": 1819,
+        "watch_min": 5333.1
       },
       {
         "cat": "Movies",
-        "tunes": 5041,
-        "unique_users": 1715,
-        "watch_min": 3507.4
+        "tunes": 5051,
+        "unique_users": 1716,
+        "watch_min": 3513.7
       },
       {
         "cat": "Music",
-        "tunes": 7568,
-        "unique_users": 2101,
-        "watch_min": 3270.4
+        "tunes": 7570,
+        "unique_users": 2102,
+        "watch_min": 3270.6
       },
       {
         "cat": "Undefined",
@@ -320,9 +320,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 3026,
-        "unique_users": 867,
-        "watch_min": 930.1
+        "tunes": 3027,
+        "unique_users": 868,
+        "watch_min": 930.4
       },
       {
         "cat": "DD",
@@ -338,9 +338,9 @@
       },
       {
         "cat": "Classic",
-        "tunes": 376,
-        "unique_users": 291,
-        "watch_min": 82.5
+        "tunes": 377,
+        "unique_users": 292,
+        "watch_min": 82.6
       },
       {
         "cat": "Animation",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 46937,
-        "unique_users": 10461,
-        "watch_min": 53667.3
+        "tunes": 46959,
+        "unique_users": 10463,
+        "watch_min": 53674.5
       },
       {
         "lang": "English",
-        "tunes": 3425,
-        "unique_users": 1357,
-        "watch_min": 2781.5
+        "tunes": 3426,
+        "unique_users": 1358,
+        "watch_min": 2781.6
       },
       {
         "lang": "Bhojpuri",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 2544,
-        "unique_users": 1135,
-        "watch_min": 506.3
+        "tunes": 2545,
+        "unique_users": 1136,
+        "watch_min": 506.4
       },
       {
         "lang": "Marathi",
@@ -3721,6 +3721,11 @@
         "hour": "2026-07-15 21:00",
         "users": 1,
         "tunes": 0
+      },
+      {
+        "hour": "2026-07-15 22:00",
+        "users": 2,
+        "tunes": 24
       }
     ],
     "dailyTrend": [
@@ -3900,15 +3905,15 @@
       },
       {
         "day": "2026-07-15",
-        "users": 448,
-        "tunes": 1839,
-        "watch_min": 95158.3
+        "users": 450,
+        "tunes": 1863,
+        "watch_min": 95166.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 13315
+        "users": 13317
       },
       {
         "device": "desktop",
@@ -3916,12 +3921,12 @@
       }
     ],
     "funnel": {
-      "opens": 6489,
-      "playback": 5390,
-      "engaged": 1038
+      "opens": 6491,
+      "playback": 5392,
+      "engaged": 1039
     },
     "retention": {
-      "new_users": 6532,
+      "new_users": 6534,
       "returning_users": 0
     },
     "errorBoard": [
@@ -3972,7 +3977,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 354,
-        "starts": 5857
+        "starts": 5859
       },
       {
         "ch": 19,
@@ -4070,7 +4075,7 @@
         "name": "ZB Cinema",
         "cat": "Movies",
         "errors": 62,
-        "starts": 253
+        "starts": 254
       },
       {
         "ch": 21,
@@ -4105,7 +4110,7 @@
         "name": "Goldmines",
         "cat": "Movies",
         "errors": 46,
-        "starts": 416
+        "starts": 418
       },
       {
         "ch": 42,
@@ -4161,7 +4166,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 36,
-        "starts": 617
+        "starts": 620
       },
       {
         "ch": 24,
@@ -4207,14 +4212,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8590,
-      "samples": 31758
+      "avg_ttff_ms": 8587,
+      "samples": 31777
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 26334,
-        "avg_ttff_ms": 7874
+        "starts": 26353,
+        "avg_ttff_ms": 7869
       },
       {
         "net": "3g",
@@ -4238,7 +4243,7 @@
       }
     ],
     "engagement": {
-      "sessions": 13960,
+      "sessions": 13962,
       "avg_channels": 3.3,
       "avg_session_sec": 265,
       "bounce_pct": 57.8,
