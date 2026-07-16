@@ -1,41 +1,110 @@
 {
-  "fetched_at": "2026-07-15T23:43:59Z",
+  "fetched_at": "2026-07-16T01:10:56Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 0,
-      "total_tunes": 0,
-      "total_watch_min": 0,
-      "avg_duration_sec": 0
+      "unique_users": 2,
+      "total_tunes": 3,
+      "total_watch_min": 291.2,
+      "avg_duration_sec": 4368.3
     },
-    "channelLeaderboard": [],
-    "categoryBreakdown": [],
-    "languageBreakdown": [],
-    "hourlyTrend": [],
-    "dailyTrend": [],
-    "deviceBreakdown": [],
+    "channelLeaderboard": [
+      {
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.5
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      }
+    ],
+    "categoryBreakdown": [
+      {
+        "cat": "Movies",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.5
+      },
+      {
+        "cat": "Entertainment",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      }
+    ],
+    "languageBreakdown": [
+      {
+        "lang": "Bhojpuri",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.5
+      },
+      {
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      }
+    ],
+    "hourlyTrend": [
+      {
+        "hour": "2026-07-16 00:00",
+        "users": 2,
+        "tunes": 3
+      }
+    ],
+    "dailyTrend": [
+      {
+        "day": "2026-07-16",
+        "users": 2,
+        "tunes": 3,
+        "watch_min": 291.2
+      }
+    ],
+    "deviceBreakdown": [
+      {
+        "device": "mobile",
+        "users": 2
+      }
+    ],
     "funnel": {
-      "opens": 0,
-      "playback": 0,
+      "opens": 1,
+      "playback": 1,
       "engaged": 0
     },
     "retention": {
-      "new_users": 0,
+      "new_users": 1,
       "returning_users": 0
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": null,
-      "samples": 0
+      "avg_ttff_ms": 6335,
+      "samples": 1
     },
-    "netBreakdown": [],
+    "netBreakdown": [
+      {
+        "net": "4g",
+        "starts": 1,
+        "avg_ttff_ms": 6335
+      }
+    ],
     "engagement": {
-      "sessions": 0,
-      "avg_channels": null,
-      "avg_session_sec": null,
-      "bounce_pct": null,
-      "zap_pct": 0
+      "sessions": 2,
+      "avg_channels": 1,
+      "avg_session_sec": 26,
+      "bounce_pct": 50,
+      "zap_pct": 33.3
     },
     "survey": {
       "very": null,
