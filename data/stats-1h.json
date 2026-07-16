@@ -1,59 +1,59 @@
 {
-  "fetched_at": "2026-07-16T22:31:44Z",
+  "fetched_at": "2026-07-16T23:35:13Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
       "unique_users": 3,
-      "total_tunes": 2,
-      "total_watch_min": 10.5,
-      "avg_duration_sec": 314.5
+      "total_tunes": 1,
+      "total_watch_min": 0.1,
+      "avg_duration_sec": 3
     },
     "channelLeaderboard": [
       {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 10.5
+        "watch_min": 0.1
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "News",
-        "tunes": 2,
+        "cat": "Movies",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 10.5
+        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
-        "lang": "Hindi",
-        "tunes": 2,
+        "lang": "Bhojpuri",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 10.5
+        "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-16 21:00",
-        "users": 3,
+        "hour": "2026-07-16 22:00",
+        "users": 2,
         "tunes": 1
       },
       {
-        "hour": "2026-07-16 22:00",
+        "hour": "2026-07-16 23:00",
         "users": 1,
-        "tunes": 1
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-16",
         "users": 3,
-        "tunes": 2,
-        "watch_min": 10.5
+        "tunes": 1,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
@@ -64,31 +64,36 @@
     ],
     "funnel": {
       "opens": 2,
-      "playback": 1,
-      "engaged": 1
+      "playback": 2,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 0,
-      "returning_users": 2
+      "new_users": 1,
+      "returning_users": 1
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 3139,
-      "samples": 1
+      "avg_ttff_ms": 3326,
+      "samples": 2
     },
     "netBreakdown": [
       {
         "net": "4g",
         "starts": 1,
-        "avg_ttff_ms": 3139
+        "avg_ttff_ms": 4274
+      },
+      {
+        "net": "unknown",
+        "starts": 1,
+        "avg_ttff_ms": 2377
       }
     ],
     "engagement": {
       "sessions": 3,
       "avg_channels": 0.3,
-      "avg_session_sec": 210,
-      "bounce_pct": 66.7,
-      "zap_pct": 50
+      "avg_session_sec": 2,
+      "bounce_pct": 100,
+      "zap_pct": 100
     },
     "survey": {
       "very": null,

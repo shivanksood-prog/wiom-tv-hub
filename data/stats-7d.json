@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-16T22:31:44Z",
+  "fetched_at": "2026-07-16T23:35:13Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3427,
-      "total_tunes": 16866,
-      "total_watch_min": 297084.9,
-      "avg_duration_sec": 933.3
+      "unique_users": 3428,
+      "total_tunes": 16858,
+      "total_watch_min": 297084.7,
+      "avg_duration_sec": 933.7
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1550,
-        "unique_users": 1321,
-        "watch_min": 1890.2
+        "tunes": 1549,
+        "unique_users": 1320,
+        "watch_min": 1890.1
       },
       {
         "ch": 226,
@@ -42,9 +42,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 523,
-        "unique_users": 364,
-        "watch_min": 725.8
+        "tunes": 524,
+        "unique_users": 365,
+        "watch_min": 725.9
       },
       {
         "ch": 82,
@@ -69,8 +69,8 @@
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 235,
-        "unique_users": 189,
+        "tunes": 234,
+        "unique_users": 188,
         "watch_min": 333.6
       },
       {
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 6596,
-        "unique_users": 1895,
-        "watch_min": 4148.1
+        "tunes": 6589,
+        "unique_users": 1894,
+        "watch_min": 4147.9
       },
       {
         "cat": "News",
@@ -296,8 +296,8 @@
       },
       {
         "cat": "Movies",
-        "tunes": 1864,
-        "unique_users": 703,
+        "tunes": 1863,
+        "unique_users": 702,
         "watch_min": 1244.8
       },
       {
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13455,
-        "unique_users": 2665,
-        "watch_min": 9096.5
+        "tunes": 13447,
+        "unique_users": 2663,
+        "watch_min": 9096.3
       },
       {
         "lang": "Bhojpuri",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-07-09 23:00",
-        "users": 4,
-        "tunes": 11
+        "users": 2,
+        "tunes": 2
       },
       {
         "hour": "2026-07-10 00:00",
@@ -1274,16 +1274,21 @@
       },
       {
         "hour": "2026-07-16 22:00",
+        "users": 3,
+        "tunes": 2
+      },
+      {
+        "hour": "2026-07-16 23:00",
         "users": 1,
-        "tunes": 1
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-09",
-        "users": 4,
-        "tunes": 11,
-        "watch_min": 0.3
+        "users": 2,
+        "tunes": 2,
+        "watch_min": 0.1
       },
       {
         "day": "2026-07-10",
@@ -1323,15 +1328,15 @@
       },
       {
         "day": "2026-07-16",
-        "users": 434,
-        "tunes": 2125,
-        "watch_min": 27780.5
+        "users": 437,
+        "tunes": 2126,
+        "watch_min": 27780.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3248
+        "users": 3249
       },
       {
         "device": "desktop",
@@ -1340,7 +1345,7 @@
     ],
     "funnel": {
       "opens": 2111,
-      "playback": 1659,
+      "playback": 1660,
       "engaged": 278
     },
     "retention": {
@@ -1352,28 +1357,28 @@
         "ch": 10,
         "name": "History TV18 HD",
         "cat": "Entertainment",
-        "errors": 138,
+        "errors": 137,
         "starts": 0
       },
       {
         "ch": 16,
         "name": "Travelxp HD",
         "cat": "Entertainment",
-        "errors": 131,
+        "errors": 130,
         "starts": 0
       },
       {
         "ch": 15,
         "name": "NDTV Good Times",
         "cat": "Entertainment",
-        "errors": 126,
+        "errors": 125,
         "starts": 0
       },
       {
         "ch": 23,
         "name": "B4U Kadak",
         "cat": "Movies",
-        "errors": 94,
+        "errors": 92,
         "starts": 0
       },
       {
@@ -1387,7 +1392,7 @@
         "ch": 14,
         "name": "Mango TV",
         "cat": "Entertainment",
-        "errors": 80,
+        "errors": 79,
         "starts": 0
       },
       {
@@ -1398,18 +1403,18 @@
         "starts": 0
       },
       {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "errors": 67,
-        "starts": 1182
-      },
-      {
         "ch": 13,
         "name": "Abzy Dhakad",
         "cat": "Entertainment",
         "errors": 66,
         "starts": 0
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "errors": 66,
+        "starts": 1182
       },
       {
         "ch": 19,
@@ -1514,7 +1519,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 16,
-        "starts": 394
+        "starts": 395
       },
       {
         "ch": 21,
@@ -1630,18 +1635,18 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 7918,
-      "samples": 8998
+      "avg_ttff_ms": 7917,
+      "samples": 9000
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 7265,
+        "starts": 7266,
         "avg_ttff_ms": 7625
       },
       {
         "net": "unknown",
-        "starts": 862,
+        "starts": 863,
         "avg_ttff_ms": 2128
       },
       {
@@ -1661,7 +1666,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3427,
+      "sessions": 3428,
       "avg_channels": 4,
       "avg_session_sec": 202,
       "bounce_pct": 47.8,

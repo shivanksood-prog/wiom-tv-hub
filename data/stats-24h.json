@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-16T22:31:44Z",
+  "fetched_at": "2026-07-16T23:35:13Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 435,
+      "unique_users": 437,
       "total_tunes": 2126,
-      "total_watch_min": 27785.6,
-      "avg_duration_sec": 692.9
+      "total_watch_min": 27780.6,
+      "avg_duration_sec": 692.8
     },
     "channelLeaderboard": [
       {
@@ -24,9 +24,9 @@
         "name": "Goldmines",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 58,
-        "unique_users": 47,
-        "watch_min": 43.8
+        "tunes": 57,
+        "unique_users": 46,
+        "watch_min": 38.7
       },
       {
         "ch": 2,
@@ -51,8 +51,8 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 86,
-        "unique_users": 68,
+        "tunes": 87,
+        "unique_users": 69,
         "watch_min": 19.3
       },
       {
@@ -304,7 +304,7 @@
         "cat": "Movies",
         "tunes": 252,
         "unique_users": 101,
-        "watch_min": 85.2
+        "watch_min": 80.2
       },
       {
         "cat": "DD",
@@ -394,15 +394,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1634,
-        "unique_users": 313,
-        "watch_min": 441.4
+        "tunes": 1633,
+        "unique_users": 312,
+        "watch_min": 436.4
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 108,
-        "unique_users": 76,
-        "watch_min": 23.3
+        "tunes": 109,
+        "unique_users": 77,
+        "watch_min": 23.4
       },
       {
         "lang": "English",
@@ -430,11 +430,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-15 22:00",
-        "users": 1,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-16 00:00",
         "users": 4,
@@ -547,28 +542,27 @@
       },
       {
         "hour": "2026-07-16 22:00",
+        "users": 3,
+        "tunes": 2
+      },
+      {
+        "hour": "2026-07-16 23:00",
         "users": 1,
-        "tunes": 1
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-15",
-        "users": 1,
-        "tunes": 1,
-        "watch_min": 5.1
-      },
-      {
         "day": "2026-07-16",
-        "users": 434,
-        "tunes": 2125,
-        "watch_min": 27780.5
+        "users": 437,
+        "tunes": 2126,
+        "watch_min": 27780.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 404
+        "users": 407
       },
       {
         "device": "desktop",
@@ -576,12 +570,12 @@
       }
     ],
     "funnel": {
-      "opens": 308,
-      "playback": 236,
-      "engaged": 35
+      "opens": 310,
+      "playback": 238,
+      "engaged": 34
     },
     "retention": {
-      "new_users": 231,
+      "new_users": 232,
       "returning_users": 84
     },
     "errorBoard": [
@@ -723,7 +717,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 3,
-        "starts": 71
+        "starts": 72
       },
       {
         "ch": 2,
@@ -868,13 +862,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 3341,
-      "samples": 1050
+      "samples": 1052
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 793,
-        "avg_ttff_ms": 3329
+        "starts": 794,
+        "avg_ttff_ms": 3330
       },
       {
         "net": "3g",
@@ -883,8 +877,8 @@
       },
       {
         "net": "unknown",
-        "starts": 120,
-        "avg_ttff_ms": 1910
+        "starts": 121,
+        "avg_ttff_ms": 1914
       },
       {
         "net": "2g",
@@ -898,11 +892,11 @@
       }
     ],
     "engagement": {
-      "sessions": 435,
+      "sessions": 437,
       "avg_channels": 3.9,
       "avg_session_sec": 76,
-      "bounce_pct": 53.8,
-      "zap_pct": 50.9
+      "bounce_pct": 54,
+      "zap_pct": 51
     },
     "survey": {
       "very": 3,
