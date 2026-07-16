@@ -1,288 +1,94 @@
 {
-  "fetched_at": "2026-07-16T21:27:54Z",
+  "fetched_at": "2026-07-16T22:31:44Z",
   "data": {
     "period": "1h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 13,
-      "total_tunes": 22,
-      "total_watch_min": 2.4,
-      "avg_duration_sec": 6.5
+      "unique_users": 3,
+      "total_tunes": 2,
+      "total_watch_min": 10.5,
+      "avg_duration_sec": 314.5
     },
     "channelLeaderboard": [
       {
-        "ch": 26,
-        "name": "Shemaroo Marathi Bana",
-        "cat": "Movies",
-        "lang": "Marathi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.7
-      },
-      {
-        "ch": 35,
-        "name": "Pitaara",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 30,
-        "name": "9X Tashan",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 118,
-        "name": "Goldmines",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 84,
-        "name": "B4U Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 39,
-        "name": "Steelbird Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 29,
-        "name": "9X Jhakaas",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 18,
-        "name": "Desi Channel",
-        "cat": "Entertainment",
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
         "lang": "Hindi",
         "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 17,
-        "name": "Shemaroo Josh",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 16,
-        "name": "Travelxp HD",
-        "cat": "Entertainment",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 15,
-        "name": "NDTV Good Times",
-        "cat": "Entertainment",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 14,
-        "name": "Mango TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
+        "watch_min": 10.5
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "Movies",
-        "tunes": 5,
-        "unique_users": 3,
-        "watch_min": 1.1
-      },
-      {
-        "cat": "Music",
-        "tunes": 9,
-        "unique_users": 5,
-        "watch_min": 0.9
-      },
-      {
-        "cat": "Entertainment",
-        "tunes": 8,
-        "unique_users": 3,
-        "watch_min": 0.4
+        "cat": "News",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 10.5
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 14,
-        "unique_users": 8,
-        "watch_min": 0.9
-      },
-      {
-        "lang": "Marathi",
         "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.7
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "lang": "English",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 10.5
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-16 20:00",
-        "users": 8,
-        "tunes": 14
+        "hour": "2026-07-16 21:00",
+        "users": 3,
+        "tunes": 1
       },
       {
-        "hour": "2026-07-16 21:00",
-        "users": 5,
-        "tunes": 8
+        "hour": "2026-07-16 22:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-16",
-        "users": 13,
-        "tunes": 22,
-        "watch_min": 2.4
+        "users": 3,
+        "tunes": 2,
+        "watch_min": 10.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 13
+        "users": 3
       }
     ],
     "funnel": {
-      "opens": 10,
-      "playback": 6,
-      "engaged": 0
+      "opens": 2,
+      "playback": 1,
+      "engaged": 1
     },
     "retention": {
-      "new_users": 6,
-      "returning_users": 4
+      "new_users": 0,
+      "returning_users": 2
     },
-    "errorBoard": [
-      {
-        "ch": 14,
-        "name": "Mango TV",
-        "cat": "Entertainment",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 15,
-        "name": "NDTV Good Times",
-        "cat": "Entertainment",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 16,
-        "name": "Travelxp HD",
-        "cat": "Entertainment",
-        "errors": 1,
-        "starts": 0
-      }
-    ],
+    "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2988,
-      "samples": 13
+      "avg_ttff_ms": 3139,
+      "samples": 1
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 9,
-        "avg_ttff_ms": 3306
-      },
-      {
-        "net": "unknown",
-        "starts": 3,
-        "avg_ttff_ms": 2190
-      },
-      {
-        "net": "3g",
         "starts": 1,
-        "avg_ttff_ms": 2515
+        "avg_ttff_ms": 3139
       }
     ],
     "engagement": {
-      "sessions": 13,
-      "avg_channels": 1.5,
-      "avg_session_sec": 14,
-      "bounce_pct": 53.8,
-      "zap_pct": 54.5
+      "sessions": 3,
+      "avg_channels": 0.3,
+      "avg_session_sec": 210,
+      "bounce_pct": 66.7,
+      "zap_pct": 50
     },
     "survey": {
       "very": null,

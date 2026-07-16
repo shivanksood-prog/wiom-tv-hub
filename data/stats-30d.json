@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-16T21:27:54Z",
+  "fetched_at": "2026-07-16T22:31:44Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 14371,
-      "total_tunes": 58892,
-      "total_watch_min": 904295.2,
+      "unique_users": 14374,
+      "total_tunes": 58894,
+      "total_watch_min": 904305.7,
       "avg_duration_sec": 828.5
     },
     "channelLeaderboard": [
@@ -141,9 +141,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 719,
-        "unique_users": 559,
-        "watch_min": 649.5
+        "tunes": 721,
+        "unique_users": 560,
+        "watch_min": 659.9
       },
       {
         "ch": 4,
@@ -290,9 +290,9 @@
       },
       {
         "cat": "News",
-        "tunes": 9386,
-        "unique_users": 1930,
-        "watch_min": 5450.5
+        "tunes": 9388,
+        "unique_users": 1931,
+        "watch_min": 5461
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 48545,
-        "unique_users": 10759,
-        "watch_min": 53946
+        "tunes": 48547,
+        "unique_users": 10760,
+        "watch_min": 53956.5
       },
       {
         "lang": "English",
@@ -3799,8 +3799,13 @@
       },
       {
         "hour": "2026-07-16 21:00",
-        "users": 5,
-        "tunes": 8
+        "users": 8,
+        "tunes": 9
+      },
+      {
+        "hour": "2026-07-16 22:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
@@ -3980,15 +3985,15 @@
       },
       {
         "day": "2026-07-16",
-        "users": 431,
-        "tunes": 2123,
-        "watch_min": 27770
+        "users": 434,
+        "tunes": 2125,
+        "watch_min": 27780.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 13710
+        "users": 13713
       },
       {
         "device": "desktop",
@@ -3998,7 +4003,7 @@
     "funnel": {
       "opens": 6718,
       "playback": 5581,
-      "engaged": 1067
+      "engaged": 1068
     },
     "retention": {
       "new_users": 6765,
@@ -4234,7 +4239,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 38,
-        "starts": 638
+        "starts": 639
       },
       {
         "ch": 24,
@@ -4288,12 +4293,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 8419,
-      "samples": 32826
+      "samples": 32827
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 27145,
+        "starts": 27146,
         "avg_ttff_ms": 7737
       },
       {
@@ -4318,7 +4323,7 @@
       }
     ],
     "engagement": {
-      "sessions": 14371,
+      "sessions": 14374,
       "avg_channels": 3.3,
       "avg_session_sec": 259,
       "bounce_pct": 57.7,
