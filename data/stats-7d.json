@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-17T20:15:43Z",
+  "fetched_at": "2026-07-17T21:11:06Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3343,
-      "total_tunes": 15982,
-      "total_watch_min": 302123.8,
-      "avg_duration_sec": 999
+      "unique_users": 3339,
+      "total_tunes": 15973,
+      "total_watch_min": 302126.4,
+      "avg_duration_sec": 999.5
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1326,
-        "unique_users": 1120,
-        "watch_min": 1844.1
+        "tunes": 1322,
+        "unique_users": 1117,
+        "watch_min": 1843.6
       },
       {
         "ch": 29,
@@ -51,9 +51,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 602,
-        "unique_users": 415,
-        "watch_min": 805.8
+        "tunes": 603,
+        "unique_users": 416,
+        "watch_min": 805.9
       },
       {
         "ch": 82,
@@ -177,27 +177,18 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 304,
-        "unique_users": 239,
-        "watch_min": 112.7
+        "tunes": 303,
+        "unique_users": 238,
+        "watch_min": 112.4
       },
       {
         "ch": 3,
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 384,
-        "unique_users": 307,
-        "watch_min": 102
-      },
-      {
-        "ch": 27,
-        "name": "9XM",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 192,
-        "unique_users": 139,
-        "watch_min": 92
+        "tunes": 382,
+        "unique_users": 305,
+        "watch_min": 101.8
       },
       {
         "ch": 154,
@@ -245,6 +236,15 @@
         "watch_min": 72.3
       },
       {
+        "ch": 44,
+        "name": "NDTV India",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 326,
+        "unique_users": 261,
+        "watch_min": 70.6
+      },
+      {
         "ch": 39,
         "name": "Steelbird Music",
         "cat": "Music",
@@ -252,15 +252,6 @@
         "tunes": 251,
         "unique_users": 190,
         "watch_min": 69
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 325,
-        "unique_users": 260,
-        "watch_min": 68.1
       },
       {
         "ch": 104,
@@ -279,32 +270,41 @@
         "tunes": 207,
         "unique_users": 174,
         "watch_min": 63.3
+      },
+      {
+        "ch": 27,
+        "name": "9XM",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 191,
+        "unique_users": 138,
+        "watch_min": 57.7
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 5873,
-        "unique_users": 1675,
-        "watch_min": 3479.8
+        "tunes": 5867,
+        "unique_users": 1671,
+        "watch_min": 3478.9
       },
       {
         "cat": "News",
-        "tunes": 3311,
-        "unique_users": 773,
-        "watch_min": 3350.3
+        "tunes": 3312,
+        "unique_users": 774,
+        "watch_min": 3352.8
       },
       {
         "cat": "Music",
-        "tunes": 2903,
-        "unique_users": 781,
-        "watch_min": 2767.7
+        "tunes": 2900,
+        "unique_users": 779,
+        "watch_min": 2733.3
       },
       {
         "cat": "Movies",
-        "tunes": 1907,
+        "tunes": 1906,
         "unique_users": 725,
-        "watch_min": 1307.1
+        "watch_min": 1306.8
       },
       {
         "cat": "Devotional",
@@ -406,13 +406,13 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 12625,
-        "unique_users": 2565,
-        "watch_min": 10005.4
+        "tunes": 12616,
+        "unique_users": 2560,
+        "watch_min": 9972.5
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 857,
+        "tunes": 856,
         "unique_users": 531,
         "watch_min": 848.7
       },
@@ -424,15 +424,15 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 406,
-        "unique_users": 255,
-        "watch_min": 179
+        "tunes": 405,
+        "unique_users": 254,
+        "watch_min": 178.7
       },
       {
         "lang": "Punjabi",
-        "tunes": 919,
-        "unique_users": 461,
-        "watch_min": 165.1
+        "tunes": 921,
+        "unique_users": 462,
+        "watch_min": 165.2
       },
       {
         "lang": "Urdu",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-10 20:00",
-        "users": 6,
-        "tunes": 11
-      },
-      {
         "hour": "2026-07-10 21:00",
-        "users": 5,
-        "tunes": 7
+        "users": 4,
+        "tunes": 5
       },
       {
         "hour": "2026-07-10 22:00",
@@ -1279,16 +1274,16 @@
       },
       {
         "hour": "2026-07-17 20:00",
-        "users": 1,
-        "tunes": 4
+        "users": 4,
+        "tunes": 8
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-10",
-        "users": 17,
-        "tunes": 26,
-        "watch_min": 50.5
+        "users": 10,
+        "tunes": 13,
+        "watch_min": 14.7
       },
       {
         "day": "2026-07-11",
@@ -1328,15 +1323,15 @@
       },
       {
         "day": "2026-07-17",
-        "users": 419,
-        "tunes": 1920,
-        "watch_min": 38275
+        "users": 422,
+        "tunes": 1924,
+        "watch_min": 38313.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3158
+        "users": 3155
       },
       {
         "device": "desktop",
@@ -1344,13 +1339,13 @@
       }
     ],
     "funnel": {
-      "opens": 2065,
-      "playback": 1642,
+      "opens": 2062,
+      "playback": 1638,
       "engaged": 276
     },
     "retention": {
       "new_users": 1810,
-      "returning_users": 284
+      "returning_users": 280
     },
     "errorBoard": [
       {
@@ -1379,7 +1374,7 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "errors": 103,
-        "starts": 102
+        "starts": 101
       },
       {
         "ch": 12,
@@ -1414,7 +1409,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 65,
-        "starts": 1011
+        "starts": 1008
       },
       {
         "ch": 19,
@@ -1449,7 +1444,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 25,
-        "starts": 447
+        "starts": 448
       },
       {
         "ch": 28,
@@ -1512,7 +1507,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 16,
-        "starts": 253
+        "starts": 254
       },
       {
         "ch": 5,
@@ -1568,7 +1563,7 @@
         "name": "Shemaroo Marathi Bana",
         "cat": "Movies",
         "errors": 14,
-        "starts": 103
+        "starts": 102
       },
       {
         "ch": 36,
@@ -1610,7 +1605,7 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "errors": 11,
-        "starts": 269
+        "starts": 267
       },
       {
         "ch": 250,
@@ -1635,24 +1630,24 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 7030,
-      "samples": 8454
+      "avg_ttff_ms": 7044,
+      "samples": 8447
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 6848,
-        "avg_ttff_ms": 6867
+        "starts": 6841,
+        "avg_ttff_ms": 6871
       },
       {
         "net": "3g",
-        "starts": 832,
-        "avg_ttff_ms": 12308
+        "starts": 834,
+        "avg_ttff_ms": 12384
       },
       {
         "net": "unknown",
-        "starts": 741,
-        "avg_ttff_ms": 2187
+        "starts": 739,
+        "avg_ttff_ms": 2190
       },
       {
         "net": "2g",
@@ -1666,7 +1661,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3343,
+      "sessions": 3339,
       "avg_channels": 3.9,
       "avg_session_sec": 182,
       "bounce_pct": 48,
