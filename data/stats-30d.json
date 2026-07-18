@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-07-17T23:07:42Z",
+  "fetched_at": "2026-07-18T00:08:22Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 14795,
-      "total_tunes": 60821,
+      "unique_users": 14798,
+      "total_tunes": 60823,
       "total_watch_min": 942708.1,
       "avg_duration_sec": 835.4
     },
@@ -96,8 +96,8 @@
         "name": "Goldmines 2",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 514,
-        "unique_users": 355,
+        "tunes": 515,
+        "unique_users": 356,
         "watch_min": 1163
       },
       {
@@ -222,9 +222,9 @@
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 956,
-        "unique_users": 721,
-        "watch_min": 366.9
+        "tunes": 957,
+        "unique_users": 722,
+        "watch_min": 367
       },
       {
         "ch": 41,
@@ -296,14 +296,14 @@
       },
       {
         "cat": "Music",
-        "tunes": 8511,
-        "unique_users": 2359,
-        "watch_min": 5158.2
+        "tunes": 8512,
+        "unique_users": 2360,
+        "watch_min": 5158.3
       },
       {
         "cat": "Movies",
-        "tunes": 5598,
-        "unique_users": 1932,
+        "tunes": 5599,
+        "unique_users": 1933,
         "watch_min": 3731.5
       },
       {
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 49967,
-        "unique_users": 11069,
-        "watch_min": 56011.4
+        "tunes": 49969,
+        "unique_users": 11071,
+        "watch_min": 56011.5
       },
       {
         "lang": "English",
@@ -3886,6 +3886,11 @@
         "hour": "2026-07-17 22:00",
         "users": 7,
         "tunes": 32
+      },
+      {
+        "hour": "2026-07-17 23:00",
+        "users": 3,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
@@ -4065,15 +4070,15 @@
       },
       {
         "day": "2026-07-17",
-        "users": 433,
-        "tunes": 1963,
+        "users": 436,
+        "tunes": 1965,
         "watch_min": 38415.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14109
+        "users": 14112
       },
       {
         "device": "desktop",
@@ -4081,12 +4086,12 @@
       }
     ],
     "funnel": {
-      "opens": 6951,
+      "opens": 6953,
       "playback": 5777,
       "engaged": 1108
     },
     "retention": {
-      "new_users": 7000,
+      "new_users": 7002,
       "returning_users": 0
     },
     "errorBoard": [
@@ -4291,7 +4296,7 @@
         "name": "Goldmines 2",
         "cat": "Movies",
         "errors": 45,
-        "starts": 312
+        "starts": 313
       },
       {
         "ch": 6,
@@ -4373,12 +4378,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 8265,
-      "samples": 33878
+      "samples": 33879
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 28033,
+        "starts": 28034,
         "avg_ttff_ms": 7598
       },
       {
@@ -4403,7 +4408,7 @@
       }
     ],
     "engagement": {
-      "sessions": 14795,
+      "sessions": 14798,
       "avg_channels": 3.3,
       "avg_session_sec": 258,
       "bounce_pct": 57.4,
