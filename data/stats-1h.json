@@ -1,20 +1,218 @@
 {
-  "fetched_at": "2026-07-18T00:08:22Z",
+  "fetched_at": "2026-07-18T03:30:21Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3,
-      "total_tunes": 2,
-      "total_watch_min": 0.1,
-      "avg_duration_sec": 1.5
+      "unique_users": 10,
+      "total_tunes": 40,
+      "total_watch_min": 5.5,
+      "avg_duration_sec": 7.5
     },
     "channelLeaderboard": [
       {
-        "ch": 119,
-        "name": "Goldmines 2",
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 6,
+        "unique_users": 3,
+        "watch_min": 1
+      },
+      {
+        "ch": 118,
+        "name": "Goldmines",
         "cat": "Movies",
         "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 1,
+        "watch_min": 0.8
+      },
+      {
+        "ch": 204,
+        "name": "Shalom",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 106,
+        "name": "DD News HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 44,
+        "name": "NDTV India",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 39,
+        "name": "Steelbird Music",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 3,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 63,
+        "name": "ABP Asmita",
+        "cat": "News",
+        "lang": "Marathi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 251,
+        "name": "Zoom",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 249,
+        "name": "Zee Uttar Pradesh/Uttarakhand",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 208,
+        "name": "South Station",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 84,
+        "name": "B4U Music",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 73,
+        "name": "ABP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 65,
+        "name": "NDTV Marathi",
+        "cat": "News",
+        "lang": "Marathi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 54,
+        "name": "TOI Global",
+        "cat": "News",
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 45,
+        "name": "Zee Bharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 37,
+        "name": "Punjabi Hits",
+        "cat": "Music",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 29,
+        "name": "9X Jhakaas",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 221,
+        "name": "Tabbar Hits",
+        "cat": "Music",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 71,
+        "name": "Aastha Bhajan",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 62,
+        "name": "ABP Ganga",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 53,
+        "name": "AmarUjala",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 34,
+        "name": "PTC Music",
+        "cat": "Music",
+        "lang": "Punjabi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
@@ -27,84 +225,183 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
+      },
+      {
+        "ch": 8,
+        "name": "Zee Cine Classic",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "Music",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
+        "cat": "Movies",
+        "tunes": 11,
+        "unique_users": 3,
+        "watch_min": 1.9
       },
       {
-        "cat": "Movies",
-        "tunes": 1,
+        "cat": "News",
+        "tunes": 14,
         "unique_users": 1,
-        "watch_min": 0
+        "watch_min": 1.3
+      },
+      {
+        "cat": "Music",
+        "tunes": 8,
+        "unique_users": 3,
+        "watch_min": 0.9
+      },
+      {
+        "cat": "Entertainment",
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 0.3
+      },
+      {
+        "cat": "Devotional",
+        "tunes": 3,
+        "unique_users": 2,
+        "watch_min": 0.3
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 2,
+        "tunes": 27,
+        "unique_users": 5,
+        "watch_min": 3.2
+      },
+      {
+        "lang": "Bhojpuri",
+        "tunes": 6,
+        "unique_users": 3,
+        "watch_min": 1
+      },
+      {
+        "lang": "Marathi",
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "lang": "Punjabi",
+        "tunes": 3,
         "unique_users": 2,
+        "watch_min": 0.2
+      },
+      {
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
         "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-17 23:00",
-        "users": 3,
-        "tunes": 2
+        "hour": "2026-07-18 02:00",
+        "users": 2,
+        "tunes": 3
+      },
+      {
+        "hour": "2026-07-18 03:00",
+        "users": 8,
+        "tunes": 37
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-17",
-        "users": 3,
-        "tunes": 2,
-        "watch_min": 0.1
+        "day": "2026-07-18",
+        "users": 10,
+        "tunes": 40,
+        "watch_min": 5.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3
+        "users": 10
       }
     ],
     "funnel": {
-      "opens": 3,
-      "playback": 1,
+      "opens": 8,
+      "playback": 5,
       "engaged": 0
     },
     "retention": {
-      "new_users": 2,
-      "returning_users": 1
+      "new_users": 5,
+      "returning_users": 3
     },
-    "errorBoard": [],
+    "errorBoard": [
+      {
+        "ch": 29,
+        "name": "9X Jhakaas",
+        "cat": "Music",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 37,
+        "name": "Punjabi Hits",
+        "cat": "Music",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 45,
+        "name": "Zee Bharat",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 63,
+        "name": "ABP Asmita",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 84,
+        "name": "B4U Music",
+        "cat": "Music",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 208,
+        "name": "South Station",
+        "cat": "Movies",
+        "errors": 1,
+        "starts": 0
+      }
+    ],
     "perf": {
-      "avg_ttff_ms": 1660,
-      "samples": 1
+      "avg_ttff_ms": 1369,
+      "samples": 6
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1,
-        "avg_ttff_ms": 1660
+        "starts": 6,
+        "avg_ttff_ms": 1369
       }
     ],
     "engagement": {
-      "sessions": 3,
-      "avg_channels": 0.7,
-      "avg_session_sec": 1,
-      "bounce_pct": 100,
-      "zap_pct": 100
+      "sessions": 10,
+      "avg_channels": 3,
+      "avg_session_sec": 30,
+      "bounce_pct": 60,
+      "zap_pct": 40
     },
     "survey": {
-      "very": null,
-      "somewhat": null,
-      "not_disappointed": null,
-      "responses": 0
+      "very": 1,
+      "somewhat": 0,
+      "not_disappointed": 0,
+      "responses": 1
     }
   }
 }
