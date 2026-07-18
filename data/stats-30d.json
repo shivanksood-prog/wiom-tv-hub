@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-18T22:29:43Z",
+  "fetched_at": "2026-07-18T23:31:51Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 15218,
-      "total_tunes": 62839,
-      "total_watch_min": 956823.4,
-      "avg_duration_sec": 820.6
+      "unique_users": 15220,
+      "total_tunes": 62846,
+      "total_watch_min": 956824.2,
+      "avg_duration_sec": 820.5
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 7856,
-        "unique_users": 6568,
-        "watch_min": 29324.1
+        "tunes": 7857,
+        "unique_users": 6569,
+        "watch_min": 29324.3
       },
       {
         "ch": 3,
@@ -105,9 +105,9 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1739,
-        "unique_users": 1371,
-        "watch_min": 1044.6
+        "tunes": 1740,
+        "unique_users": 1372,
+        "watch_min": 1044.7
       },
       {
         "ch": 45,
@@ -159,9 +159,9 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1933,
-        "unique_users": 1612,
-        "watch_min": 643.6
+        "tunes": 1934,
+        "unique_users": 1613,
+        "watch_min": 643.7
       },
       {
         "ch": 118,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 30220,
-        "unique_users": 9393,
-        "watch_min": 41750.4
+        "tunes": 30223,
+        "unique_users": 9394,
+        "watch_min": 41750.8
       },
       {
         "cat": "News",
-        "tunes": 10399,
-        "unique_users": 2174,
-        "watch_min": 5896.7
+        "tunes": 10403,
+        "unique_users": 2175,
+        "watch_min": 5897.1
       },
       {
         "cat": "Music",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 51499,
-        "unique_users": 11370,
-        "watch_min": 56762.3
+        "tunes": 51505,
+        "unique_users": 11372,
+        "watch_min": 56763.1
       },
       {
         "lang": "English",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 2980,
-        "unique_users": 1358,
-        "watch_min": 582.5
+        "tunes": 2981,
+        "unique_users": 1359,
+        "watch_min": 582.6
       },
       {
         "lang": "Marathi",
@@ -3984,8 +3984,13 @@
       },
       {
         "hour": "2026-07-18 22:00",
-        "users": 5,
-        "tunes": 11
+        "users": 6,
+        "tunes": 15
+      },
+      {
+        "hour": "2026-07-18 23:00",
+        "users": 1,
+        "tunes": 3
       }
     ],
     "dailyTrend": [
@@ -4165,15 +4170,15 @@
       },
       {
         "day": "2026-07-18",
-        "users": 429,
-        "tunes": 2042,
-        "watch_min": 14124.8
+        "users": 431,
+        "tunes": 2049,
+        "watch_min": 14125.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14518
+        "users": 14520
       },
       {
         "device": "desktop",
@@ -4181,12 +4186,12 @@
       }
     ],
     "funnel": {
-      "opens": 7189,
-      "playback": 5968,
+      "opens": 7191,
+      "playback": 5970,
       "engaged": 1144
     },
     "retention": {
-      "new_users": 7239,
+      "new_users": 7241,
       "returning_users": 0
     },
     "errorBoard": [
@@ -4237,7 +4242,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 368,
-        "starts": 6079
+        "starts": 6080
       },
       {
         "ch": 19,
@@ -4264,7 +4269,7 @@
         "ch": 4,
         "name": "Epic TV",
         "cat": "Entertainment",
-        "errors": 187,
+        "errors": 188,
         "starts": 979
       },
       {
@@ -4473,18 +4478,18 @@
     ],
     "perf": {
       "avg_ttff_ms": 8872,
-      "samples": 34959
+      "samples": 34962
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 28936,
+        "starts": 28938,
         "avg_ttff_ms": 8380
       },
       {
         "net": "3g",
-        "starts": 2871,
-        "avg_ttff_ms": 19411
+        "starts": 2872,
+        "avg_ttff_ms": 19406
       },
       {
         "net": "unknown",
@@ -4503,7 +4508,7 @@
       }
     ],
     "engagement": {
-      "sessions": 15218,
+      "sessions": 15220,
       "avg_channels": 3.4,
       "avg_session_sec": 179,
       "bounce_pct": 57.2,

@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-18T22:29:43Z",
+  "fetched_at": "2026-07-18T23:31:51Z",
   "data": {
     "period": "24h",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 434,
-      "total_tunes": 2047,
-      "total_watch_min": 14125.1,
-      "avg_duration_sec": 370.6
+      "unique_users": 432,
+      "total_tunes": 2050,
+      "total_watch_min": 14125.6,
+      "avg_duration_sec": 370.1
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 94,
-        "unique_users": 71,
-        "watch_min": 313.8
+        "tunes": 92,
+        "unique_users": 69,
+        "watch_min": 313.6
       },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 75,
-        "unique_users": 68,
-        "watch_min": 106.4
+        "tunes": 76,
+        "unique_users": 69,
+        "watch_min": 106.7
       },
       {
         "ch": 134,
@@ -87,9 +87,18 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 41,
-        "unique_users": 28,
-        "watch_min": 20.7
+        "tunes": 42,
+        "unique_users": 29,
+        "watch_min": 20.8
+      },
+      {
+        "ch": 44,
+        "name": "NDTV India",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 62,
+        "unique_users": 51,
+        "watch_min": 15.6
       },
       {
         "ch": 178,
@@ -98,15 +107,6 @@
         "lang": "Punjabi",
         "tunes": 5,
         "unique_users": 4,
-        "watch_min": 15.3
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 61,
-        "unique_users": 50,
         "watch_min": 15.3
       },
       {
@@ -168,9 +168,9 @@
         "name": "NDTV Rajasthan",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 24,
-        "unique_users": 22,
-        "watch_min": 6
+        "tunes": 26,
+        "unique_users": 23,
+        "watch_min": 6.1
       },
       {
         "ch": 40,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "Music",
-        "tunes": 402,
-        "unique_users": 116,
-        "watch_min": 356.6
+        "tunes": 400,
+        "unique_users": 114,
+        "watch_min": 356.4
       },
       {
         "cat": "Entertainment",
-        "tunes": 538,
-        "unique_users": 134,
-        "watch_min": 238.3
+        "tunes": 541,
+        "unique_users": 135,
+        "watch_min": 238.7
       },
       {
         "cat": "News",
-        "tunes": 553,
+        "tunes": 556,
         "unique_users": 127,
-        "watch_min": 174.3
+        "watch_min": 174.7
       },
       {
         "cat": "Movies",
@@ -350,8 +350,8 @@
       },
       {
         "cat": "Culture",
-        "tunes": 11,
-        "unique_users": 8,
+        "tunes": 10,
+        "unique_users": 7,
         "watch_min": 1.1
       },
       {
@@ -400,20 +400,20 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1557,
-        "unique_users": 309,
-        "watch_min": 757.4
+        "tunes": 1560,
+        "unique_users": 308,
+        "watch_min": 758
       },
       {
         "lang": "English",
-        "tunes": 139,
-        "unique_users": 62,
-        "watch_min": 78.8
+        "tunes": 138,
+        "unique_users": 61,
+        "watch_min": 78.7
       },
       {
         "lang": "Punjabi",
-        "tunes": 161,
-        "unique_users": 83,
+        "tunes": 162,
+        "unique_users": 84,
         "watch_min": 30.1
       },
       {
@@ -437,14 +437,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-17 22:00",
-        "users": 3,
-        "tunes": 3
-      },
-      {
         "hour": "2026-07-17 23:00",
-        "users": 3,
-        "tunes": 2
+        "users": 2,
+        "tunes": 1
       },
       {
         "hour": "2026-07-18 00:00",
@@ -558,28 +553,33 @@
       },
       {
         "hour": "2026-07-18 22:00",
-        "users": 5,
-        "tunes": 11
+        "users": 6,
+        "tunes": 15
+      },
+      {
+        "hour": "2026-07-18 23:00",
+        "users": 1,
+        "tunes": 3
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-17",
-        "users": 6,
-        "tunes": 5,
-        "watch_min": 0.3
+        "users": 2,
+        "tunes": 1,
+        "watch_min": 0
       },
       {
         "day": "2026-07-18",
-        "users": 429,
-        "tunes": 2042,
-        "watch_min": 14124.8
+        "users": 431,
+        "tunes": 2049,
+        "watch_min": 14125.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 412
+        "users": 410
       },
       {
         "device": "desktop",
@@ -588,7 +588,7 @@
     ],
     "funnel": {
       "opens": 318,
-      "playback": 235,
+      "playback": 236,
       "engaged": 43
     },
     "retention": {
@@ -607,7 +607,7 @@
         "ch": 4,
         "name": "Epic TV",
         "cat": "Entertainment",
-        "errors": 18,
+        "errors": 19,
         "starts": 0
       },
       {
@@ -650,7 +650,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 6,
-        "starts": 63
+        "starts": 64
       },
       {
         "ch": 118,
@@ -671,7 +671,7 @@
         "name": "9X Tashan",
         "cat": "Music",
         "errors": 5,
-        "starts": 63
+        "starts": 62
       },
       {
         "ch": 29,
@@ -713,7 +713,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 3,
-        "starts": 44
+        "starts": 45
       },
       {
         "ch": 52,
@@ -878,19 +878,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 27848,
-      "samples": 1083
+      "avg_ttff_ms": 27825,
+      "samples": 1084
     },
     "netBreakdown": [
       {
         "net": "4g",
         "starts": 905,
-        "avg_ttff_ms": 32600
+        "avg_ttff_ms": 32598
       },
       {
         "net": "3g",
-        "starts": 92,
-        "avg_ttff_ms": 4341
+        "starts": 93,
+        "avg_ttff_ms": 4336
       },
       {
         "net": "unknown",
@@ -909,10 +909,10 @@
       }
     ],
     "engagement": {
-      "sessions": 434,
-      "avg_channels": 3.9,
+      "sessions": 432,
+      "avg_channels": 4,
       "avg_session_sec": 132,
-      "bounce_pct": 52.3,
+      "bounce_pct": 51.6,
       "zap_pct": 53
     },
     "survey": {
