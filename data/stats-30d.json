@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-20T21:32:38Z",
+  "fetched_at": "2026-07-20T22:35:29Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 15348,
-      "total_tunes": 68324,
-      "total_watch_min": 1800698.4,
-      "avg_duration_sec": 1416.5
+      "unique_users": 15345,
+      "total_tunes": 68328,
+      "total_watch_min": 1800717,
+      "avg_duration_sec": 1416.4
     },
     "channelLeaderboard": [
       {
@@ -15,8 +15,8 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8054,
-        "unique_users": 6719,
+        "tunes": 8055,
+        "unique_users": 6720,
         "watch_min": 29232.2
       },
       {
@@ -123,9 +123,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 920,
-        "unique_users": 700,
-        "watch_min": 814.8
+        "tunes": 921,
+        "unique_users": 701,
+        "watch_min": 815
       },
       {
         "ch": 235,
@@ -177,9 +177,9 @@
         "name": "&TV International",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 466,
-        "unique_users": 447,
-        "watch_min": 560.4
+        "tunes": 464,
+        "unique_users": 445,
+        "watch_min": 558.8
       },
       {
         "ch": 17,
@@ -285,20 +285,20 @@
       {
         "cat": "Entertainment",
         "tunes": 31164,
-        "unique_users": 9270,
-        "watch_min": 41502.8
+        "unique_users": 9269,
+        "watch_min": 41501.3
       },
       {
         "cat": "News",
-        "tunes": 12191,
-        "unique_users": 2515,
-        "watch_min": 6715.8
+        "tunes": 12192,
+        "unique_users": 2516,
+        "watch_min": 6715.9
       },
       {
         "cat": "Music",
-        "tunes": 10133,
-        "unique_users": 2774,
-        "watch_min": 5887.1
+        "tunes": 10136,
+        "unique_users": 2775,
+        "watch_min": 5907.1
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 55410,
-        "unique_users": 11666,
-        "watch_min": 58454.5
+        "tunes": 55413,
+        "unique_users": 11667,
+        "watch_min": 58473.1
       },
       {
         "lang": "English",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 3579,
-        "unique_users": 1604,
-        "watch_min": 728.6
+        "tunes": 3580,
+        "unique_users": 1605,
+        "watch_min": 728.7
       },
       {
         "lang": "Marathi",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-06-20 21:00",
-        "users": 2,
-        "tunes": 0
-      },
-      {
         "hour": "2026-06-20 22:00",
-        "users": 6,
-        "tunes": 2
+        "users": 1,
+        "tunes": 0
       },
       {
         "hour": "2026-06-20 23:00",
@@ -4029,16 +4024,21 @@
       },
       {
         "hour": "2026-07-20 21:00",
+        "users": 5,
+        "tunes": 3
+      },
+      {
+        "hour": "2026-07-20 22:00",
         "users": 3,
-        "tunes": 1
+        "tunes": 4
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-06-20",
-        "users": 13,
-        "tunes": 3,
-        "watch_min": 1.8
+        "users": 6,
+        "tunes": 1,
+        "watch_min": 0.2
       },
       {
         "day": "2026-06-21",
@@ -4216,28 +4216,28 @@
       },
       {
         "day": "2026-07-20",
-        "users": 469,
-        "tunes": 3241,
-        "watch_min": 809228.2
+        "users": 473,
+        "tunes": 3247,
+        "watch_min": 809248.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14607
+        "users": 14605
       },
       {
         "device": "desktop",
-        "users": 372
+        "users": 371
       }
     ],
     "funnel": {
-      "opens": 7733,
-      "playback": 6415,
-      "engaged": 1239
+      "opens": 7735,
+      "playback": 6416,
+      "engaged": 1240
     },
     "retention": {
-      "new_users": 7791,
+      "new_users": 7793,
       "returning_users": 0
     },
     "errorBoard": [
@@ -4295,7 +4295,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 382,
-        "starts": 6264
+        "starts": 6265
       },
       {
         "ch": 19,
@@ -4484,7 +4484,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 43,
-        "starts": 794
+        "starts": 795
       },
       {
         "ch": 250,
@@ -4524,12 +4524,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 8338,
-      "samples": 38781
+      "samples": 38785
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 32282,
+        "starts": 32284,
         "avg_ttff_ms": 7829
       },
       {
@@ -4539,8 +4539,8 @@
       },
       {
         "net": "unknown",
-        "starts": 2877,
-        "avg_ttff_ms": 2507
+        "starts": 2879,
+        "avg_ttff_ms": 2506
       },
       {
         "net": "slow-2g",
@@ -4554,9 +4554,9 @@
       }
     ],
     "engagement": {
-      "sessions": 15348,
+      "sessions": 15345,
       "avg_channels": 3.6,
-      "avg_session_sec": 189,
+      "avg_session_sec": 190,
       "bounce_pct": 54.2,
       "zap_pct": 51.5
     },
