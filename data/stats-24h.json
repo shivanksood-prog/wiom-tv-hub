@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-20T22:35:29Z",
+  "fetched_at": "2026-07-20T23:37:08Z",
   "data": {
     "period": "24h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 477,
-      "total_tunes": 3252,
-      "total_watch_min": 809248.7,
-      "avg_duration_sec": 13321
+      "unique_users": 482,
+      "total_tunes": 3269,
+      "total_watch_min": 809256.7,
+      "avg_duration_sec": 13252
     },
     "channelLeaderboard": [
       {
@@ -78,8 +78,8 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 95,
-        "unique_users": 70,
+        "tunes": 93,
+        "unique_users": 68,
         "watch_min": 50.5
       },
       {
@@ -132,18 +132,27 @@
         "name": "Punjabi Hits",
         "cat": "Music",
         "lang": "Punjabi",
-        "tunes": 76,
-        "unique_users": 51,
-        "watch_min": 35.2
+        "tunes": 78,
+        "unique_users": 52,
+        "watch_min": 35.3
       },
       {
         "ch": 8,
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 37,
-        "unique_users": 24,
-        "watch_min": 31
+        "tunes": 40,
+        "unique_users": 25,
+        "watch_min": 31.6
+      },
+      {
+        "ch": 34,
+        "name": "PTC Music",
+        "cat": "Music",
+        "lang": "Punjabi",
+        "tunes": 84,
+        "unique_users": 61,
+        "watch_min": 28.9
       },
       {
         "ch": 246,
@@ -164,22 +173,13 @@
         "watch_min": 25.4
       },
       {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 83,
-        "unique_users": 60,
-        "watch_min": 23.7
-      },
-      {
         "ch": 30,
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 119,
-        "unique_users": 87,
-        "watch_min": 22.4
+        "tunes": 120,
+        "unique_users": 88,
+        "watch_min": 22.6
       },
       {
         "ch": 41,
@@ -195,9 +195,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 109,
-        "unique_users": 93,
-        "watch_min": 19.8
+        "tunes": 113,
+        "unique_users": 96,
+        "watch_min": 20.8
       },
       {
         "ch": 152,
@@ -263,21 +263,21 @@
         "watch_min": 11.6
       },
       {
+        "ch": 9,
+        "name": "Zee South Flix",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 32,
+        "unique_users": 22,
+        "watch_min": 11.2
+      },
+      {
         "ch": 17,
         "name": "Shemaroo Josh",
         "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 57,
         "unique_users": 27,
-        "watch_min": 11.1
-      },
-      {
-        "ch": 9,
-        "name": "Zee South Flix",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 30,
-        "unique_users": 21,
         "watch_min": 11.1
       }
     ],
@@ -290,21 +290,21 @@
       },
       {
         "cat": "News",
-        "tunes": 1059,
-        "unique_users": 172,
-        "watch_min": 701.5
+        "tunes": 1057,
+        "unique_users": 170,
+        "watch_min": 701.4
       },
       {
         "cat": "Music",
-        "tunes": 658,
-        "unique_users": 149,
-        "watch_min": 250.4
+        "tunes": 663,
+        "unique_users": 152,
+        "watch_min": 256
       },
       {
         "cat": "Entertainment",
-        "tunes": 782,
-        "unique_users": 164,
-        "watch_min": 179.3
+        "tunes": 796,
+        "unique_users": 168,
+        "watch_min": 181.4
       },
       {
         "cat": "Movies",
@@ -400,9 +400,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 2409,
-        "unique_users": 352,
-        "watch_min": 1767.2
+        "tunes": 2422,
+        "unique_users": 355,
+        "watch_min": 1769.4
       },
       {
         "lang": "English",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 292,
-        "unique_users": 125,
-        "watch_min": 76.2
+        "tunes": 296,
+        "unique_users": 126,
+        "watch_min": 81.6
       },
       {
         "lang": "Marathi",
@@ -436,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-19 22:00",
-        "users": 2,
-        "tunes": 2
-      },
       {
         "hour": "2026-07-19 23:00",
         "users": 2,
@@ -558,42 +553,47 @@
       },
       {
         "hour": "2026-07-20 22:00",
-        "users": 3,
-        "tunes": 4
+        "users": 8,
+        "tunes": 22
+      },
+      {
+        "hour": "2026-07-20 23:00",
+        "users": 2,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-19",
-        "users": 4,
-        "tunes": 5,
-        "watch_min": 0.3
+        "users": 2,
+        "tunes": 3,
+        "watch_min": 0.2
       },
       {
         "day": "2026-07-20",
-        "users": 473,
-        "tunes": 3247,
-        "watch_min": 809248.4
+        "users": 480,
+        "tunes": 3266,
+        "watch_min": 809256.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 445
+        "users": 449
       },
       {
         "device": "desktop",
-        "users": 18
+        "users": 19
       }
     ],
     "funnel": {
-      "opens": 334,
-      "playback": 252,
-      "engaged": 60
+      "opens": 340,
+      "playback": 256,
+      "engaged": 61
     },
     "retention": {
-      "new_users": 256,
-      "returning_users": 86
+      "new_users": 260,
+      "returning_users": 88
     },
     "errorBoard": [
       {
@@ -646,6 +646,13 @@
         "starts": 0
       },
       {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "errors": 7,
+        "starts": 88
+      },
+      {
         "ch": 19,
         "name": "Filamchi Bhojpuri",
         "cat": "Entertainment",
@@ -671,7 +678,7 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "errors": 6,
-        "starts": 60
+        "starts": 58
       },
       {
         "ch": 34,
@@ -679,13 +686,6 @@
         "cat": "Music",
         "errors": 6,
         "starts": 66
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "errors": 6,
-        "starts": 85
       },
       {
         "ch": 33,
@@ -874,23 +874,23 @@
         "name": "Punjabi Hits",
         "cat": "Music",
         "errors": 2,
-        "starts": 50
+        "starts": 51
       }
     ],
     "perf": {
-      "avg_ttff_ms": 4046,
-      "samples": 1909
+      "avg_ttff_ms": 4030,
+      "samples": 1921
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1687,
-        "avg_ttff_ms": 3527
+        "starts": 1700,
+        "avg_ttff_ms": 3512
       },
       {
         "net": "unknown",
-        "starts": 125,
-        "avg_ttff_ms": 9182
+        "starts": 124,
+        "avg_ttff_ms": 9238
       },
       {
         "net": "3g",
@@ -899,10 +899,10 @@
       }
     ],
     "engagement": {
-      "sessions": 477,
+      "sessions": 482,
       "avg_channels": 5.2,
       "avg_session_sec": 195,
-      "bounce_pct": 42.1,
+      "bounce_pct": 42.3,
       "zap_pct": 51.8
     },
     "survey": {
