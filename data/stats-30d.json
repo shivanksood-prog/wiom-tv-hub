@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-21T19:48:17Z",
+  "fetched_at": "2026-07-21T20:54:26Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 15173,
-      "total_tunes": 69635,
-      "total_watch_min": 2750189.7,
-      "avg_duration_sec": 2119.4
+      "unique_users": 15166,
+      "total_tunes": 69651,
+      "total_watch_min": 2750190.1,
+      "avg_duration_sec": 2119
     },
     "channelLeaderboard": [
       {
@@ -26,7 +26,7 @@
         "lang": "Hindi",
         "tunes": 2693,
         "unique_users": 2199,
-        "watch_min": 2914.8
+        "watch_min": 2914.5
       },
       {
         "ch": 29,
@@ -69,18 +69,18 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 1759,
-        "unique_users": 1248,
-        "watch_min": 1587.1
+        "tunes": 1762,
+        "unique_users": 1251,
+        "watch_min": 1587.3
       },
       {
         "ch": 226,
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 458,
-        "unique_users": 362,
-        "watch_min": 1295.1
+        "tunes": 459,
+        "unique_users": 363,
+        "watch_min": 1295.2
       },
       {
         "ch": 119,
@@ -96,8 +96,8 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1559,
-        "unique_users": 1209,
+        "tunes": 1560,
+        "unique_users": 1210,
         "watch_min": 1167.8
       },
       {
@@ -105,9 +105,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1011,
-        "unique_users": 769,
-        "watch_min": 1086.7
+        "tunes": 1014,
+        "unique_users": 772,
+        "watch_min": 1087.4
       },
       {
         "ch": 5,
@@ -159,9 +159,9 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1939,
-        "unique_users": 1617,
-        "watch_min": 629
+        "tunes": 1938,
+        "unique_users": 1616,
+        "watch_min": 628.9
       },
       {
         "ch": 118,
@@ -213,9 +213,9 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1478,
-        "unique_users": 1179,
-        "watch_min": 424.6
+        "tunes": 1479,
+        "unique_users": 1180,
+        "watch_min": 424.8
       },
       {
         "ch": 47,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 31343,
-        "unique_users": 9136,
-        "watch_min": 41037.8
+        "tunes": 31350,
+        "unique_users": 9131,
+        "watch_min": 41037.2
       },
       {
         "cat": "News",
-        "tunes": 12643,
-        "unique_users": 2612,
-        "watch_min": 7101.3
+        "tunes": 12647,
+        "unique_users": 2616,
+        "watch_min": 7102
       },
       {
         "cat": "Music",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 6738,
-        "unique_users": 2395,
-        "watch_min": 4162.3
+        "tunes": 6743,
+        "unique_users": 2398,
+        "watch_min": 4162.7
       },
       {
         "cat": "Devotional",
@@ -406,33 +406,33 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 56298,
+        "tunes": 56306,
         "unique_users": 11682,
-        "watch_min": 59095.2
+        "watch_min": 59095.1
       },
       {
         "lang": "English",
-        "tunes": 4353,
-        "unique_users": 1763,
-        "watch_min": 3181
+        "tunes": 4355,
+        "unique_users": 1764,
+        "watch_min": 3181.1
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 3222,
-        "unique_users": 1917,
-        "watch_min": 1945.6
+        "tunes": 3225,
+        "unique_users": 1920,
+        "watch_min": 1945.8
       },
       {
         "lang": "Punjabi",
-        "tunes": 3723,
-        "unique_users": 1675,
-        "watch_min": 1209.7
+        "tunes": 3725,
+        "unique_users": 1676,
+        "watch_min": 1209.8
       },
       {
         "lang": "Marathi",
-        "tunes": 1663,
-        "unique_users": 991,
-        "watch_min": 450.4
+        "tunes": 1664,
+        "unique_users": 992,
+        "watch_min": 450.5
       },
       {
         "lang": "Urdu",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-06-21 19:00",
-        "users": 8,
-        "tunes": 3
-      },
-      {
         "hour": "2026-06-21 20:00",
-        "users": 8,
-        "tunes": 4
+        "users": 1,
+        "tunes": 1
       },
       {
         "hour": "2026-06-21 21:00",
@@ -4029,16 +4024,21 @@
       },
       {
         "hour": "2026-07-21 19:00",
-        "users": 29,
-        "tunes": 41
+        "users": 32,
+        "tunes": 44
+      },
+      {
+        "hour": "2026-07-21 20:00",
+        "users": 5,
+        "tunes": 19
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-06-21",
-        "users": 35,
-        "tunes": 28,
-        "watch_min": 15.1
+        "users": 20,
+        "tunes": 22,
+        "watch_min": 13.8
       },
       {
         "day": "2026-06-22",
@@ -4216,28 +4216,28 @@
       },
       {
         "day": "2026-07-21",
-        "users": 442,
-        "tunes": 1880,
-        "watch_min": 950113.5
+        "users": 450,
+        "tunes": 1902,
+        "watch_min": 950115.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14431
+        "users": 14426
       },
       {
         "device": "desktop",
-        "users": 365
+        "users": 364
       }
     ],
     "funnel": {
-      "opens": 7987,
-      "playback": 6617,
+      "opens": 7991,
+      "playback": 6620,
       "engaged": 1276
     },
     "retention": {
-      "new_users": 8047,
+      "new_users": 8051,
       "returning_users": 0
     },
     "errorBoard": [
@@ -4245,21 +4245,21 @@
         "ch": 10,
         "name": "History TV18 HD",
         "cat": "Entertainment",
-        "errors": 956,
+        "errors": 957,
         "starts": 0
       },
       {
         "ch": 16,
         "name": "Travelxp HD",
         "cat": "Entertainment",
-        "errors": 826,
+        "errors": 827,
         "starts": 0
       },
       {
         "ch": 15,
         "name": "NDTV Good Times",
         "cat": "Entertainment",
-        "errors": 797,
+        "errors": 798,
         "starts": 0
       },
       {
@@ -4280,7 +4280,7 @@
         "ch": 12,
         "name": "Abzy Movies",
         "cat": "Entertainment",
-        "errors": 445,
+        "errors": 446,
         "starts": 0
       },
       {
@@ -4295,7 +4295,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 389,
-        "starts": 6362
+        "starts": 6363
       },
       {
         "ch": 19,
@@ -4308,7 +4308,7 @@
         "ch": 4,
         "name": "Epic TV",
         "cat": "Entertainment",
-        "errors": 265,
+        "errors": 266,
         "starts": 979
       },
       {
@@ -4330,7 +4330,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 143,
-        "starts": 1084
+        "starts": 1085
       },
       {
         "ch": 17,
@@ -4358,7 +4358,7 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "errors": 92,
-        "starts": 2374
+        "starts": 2375
       },
       {
         "ch": 18,
@@ -4421,7 +4421,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 67,
-        "starts": 1452
+        "starts": 1454
       },
       {
         "ch": 30,
@@ -4463,7 +4463,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 47,
-        "starts": 872
+        "starts": 875
       },
       {
         "ch": 29,
@@ -4484,7 +4484,7 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "errors": 45,
-        "starts": 1124
+        "starts": 1125
       },
       {
         "ch": 47,
@@ -4523,29 +4523,29 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8526,
-      "samples": 39878
+      "avg_ttff_ms": 8523,
+      "samples": 39892
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 33175,
+        "starts": 33178,
         "avg_ttff_ms": 8099
       },
       {
         "net": "3g",
-        "starts": 3223,
-        "avg_ttff_ms": 17895
+        "starts": 3224,
+        "avg_ttff_ms": 17891
       },
       {
         "net": "unknown",
-        "starts": 2954,
-        "avg_ttff_ms": 2478
+        "starts": 2963,
+        "avg_ttff_ms": 2473
       },
       {
         "net": "slow-2g",
-        "starts": 318,
-        "avg_ttff_ms": 15471
+        "starts": 319,
+        "avg_ttff_ms": 15428
       },
       {
         "net": "2g",
@@ -4554,10 +4554,10 @@
       }
     ],
     "engagement": {
-      "sessions": 15173,
+      "sessions": 15166,
       "avg_channels": 3.7,
       "avg_session_sec": 200,
-      "bounce_pct": 52.7,
+      "bounce_pct": 52.6,
       "zap_pct": 51.7
     },
     "survey": {
