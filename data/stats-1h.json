@@ -1,213 +1,89 @@
 {
-  "fetched_at": "2026-07-20T23:37:08Z",
+  "fetched_at": "2026-07-21T01:07:09Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 8,
-      "total_tunes": 19,
-      "total_watch_min": 8.1,
-      "avg_duration_sec": 23
+      "unique_users": 1,
+      "total_tunes": 1,
+      "total_watch_min": 0.5,
+      "avg_duration_sec": 27
     },
     "channelLeaderboard": [
-      {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 5.2
-      },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 1.1
-      },
-      {
-        "ch": 8,
-        "name": "Zee Cine Classic",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 0.6
-      },
-      {
-        "ch": 30,
-        "name": "9X Tashan",
-        "cat": "Music",
-        "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 5,
-        "name": "Zee Comedy Nation",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 122,
-        "name": "GTC Punjabi",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 37,
-        "name": "Punjabi Hits",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 9,
-        "name": "Zee South Flix",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 6,
-        "name": "Zee Dil Se",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 104,
-        "name": "DD National HD",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
+        "watch_min": 0.5
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "Music",
-        "tunes": 5,
-        "unique_users": 3,
-        "watch_min": 5.6
-      },
-      {
         "cat": "Entertainment",
-        "tunes": 14,
-        "unique_users": 4,
-        "watch_min": 2.1
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.5
       }
     ],
     "languageBreakdown": [
       {
-        "lang": "Punjabi",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 5.4
-      },
-      {
         "lang": "Hindi",
-        "tunes": 15,
-        "unique_users": 5,
-        "watch_min": 2.3
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.5
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-20 22:00",
-        "users": 6,
-        "tunes": 18
-      },
-      {
-        "hour": "2026-07-20 23:00",
-        "users": 2,
+        "hour": "2026-07-21 00:00",
+        "users": 1,
         "tunes": 1
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-20",
-        "users": 8,
-        "tunes": 19,
-        "watch_min": 8.1
+        "day": "2026-07-21",
+        "users": 1,
+        "tunes": 1,
+        "watch_min": 0.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 6
-      },
-      {
-        "device": "desktop",
         "users": 1
       }
     ],
     "funnel": {
-      "opens": 7,
-      "playback": 6,
-      "engaged": 1
+      "opens": 1,
+      "playback": 1,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 5,
-      "returning_users": 3
+      "new_users": 0,
+      "returning_users": 1
     },
-    "errorBoard": [
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "errors": 1,
-        "starts": 3
-      }
-    ],
+    "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1457,
-      "samples": 14
+      "avg_ttff_ms": 2909,
+      "samples": 1
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 13,
-        "avg_ttff_ms": 1517
-      },
-      {
-        "net": "unknown",
         "starts": 1,
-        "avg_ttff_ms": 680
+        "avg_ttff_ms": 2909
       }
     ],
     "engagement": {
-      "sessions": 8,
-      "avg_channels": 1.6,
-      "avg_session_sec": 20,
-      "bounce_pct": 62.5,
-      "zap_pct": 42.1
+      "sessions": 1,
+      "avg_channels": 1,
+      "avg_session_sec": 62,
+      "bounce_pct": 100,
+      "zap_pct": 0
     },
     "survey": {
       "very": null,
