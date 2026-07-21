@@ -11,10 +11,14 @@ const WEEKS = {
   wk1: { from: '2026-07-01', to: '2026-07-07' },
   wk2: { from: '2026-07-08', to: '2026-07-14' },
   wk3: { from: '2026-07-15', to: '2026-07-21' },
+  wk4: { from: '2026-07-22', to: '2026-07-28' },
 };
 for (const w of Object.values(WEEKS)) {
   w.toObserved = w.to < lastFull ? w.to : lastFull; // complete days only
-  w.days = Math.round((new Date(w.toObserved) - new Date(w.from)) / 86400000) + 1;
+  w.started = w.from <= lastFull;                   // future weeks have no observed days yet
+  w.days = w.started
+    ? Math.round((new Date(w.toObserved) - new Date(w.from)) / 86400000) + 1
+    : 0;
 }
 
 // A. per-IST-day base aggregates (capped + raw watch)
@@ -94,7 +98,8 @@ for (const [k, w] of Object.entries(WEEKS)) {
     const s = fsMap.get(r.uid); if (s && pwaSet.has(r.uid + '|' + s)) pwaN++;
   }
   out.weeks[k] = {
-    from: w.from, to: w.to, days: w.days, complete: w.toObserved === w.to,
+    from: w.from, to: w.to, days: w.days, started: w.started,
+    complete: w.started && w.toObserved === w.to,
     watch_hrs_cap: +(watchCap / 3600).toFixed(1), watch_hrs_raw: +(watchRaw / 3600).toFixed(1),
     watch_hrs_per_day_cap: +(watchCap / 3600 / (w.days || 1)).toFixed(1),
     dau_avg: +dauAvg.toFixed(0), sessions, tunes, errs, pstarts,
