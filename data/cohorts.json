@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-21T01:07:09Z",
+  "fetched_at": "2026-07-21T04:30:24Z",
   "data": {
     "offsets": [
       0,
@@ -12,6 +12,47 @@
     ],
     "grid": [
       {
+        "cohort": "2026-07-21",
+        "size": 25,
+        "cells": [
+          {
+            "day": 0,
+            "users": 25,
+            "pct": 100
+          },
+          {
+            "day": 1,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 2,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 3,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 7,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 14,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 30,
+            "users": 0,
+            "pct": 0
+          }
+        ]
+      },
+      {
         "cohort": "2026-07-20",
         "size": 259,
         "cells": [
@@ -22,8 +63,8 @@
           },
           {
             "day": 1,
-            "users": 1,
-            "pct": 0
+            "users": 6,
+            "pct": 2
           },
           {
             "day": 2,
@@ -68,8 +109,8 @@
           },
           {
             "day": 2,
-            "users": 0,
-            "pct": 0
+            "users": 2,
+            "pct": 1
           },
           {
             "day": 3,
