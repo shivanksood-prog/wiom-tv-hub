@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV · Partnerships</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --sunk:#F1EDF7; --border:#D7D3E0; --line2:#E7E3EE;
+    --text:#161021; --muted:#665E75; --dim:#A7A1B2;
+    --accent:#D9008D; --secondary:#443152; --pink300:#FFB2E4; --pink100:#FFE5F6;
+    --green:#008043; --green100:#E1FAED; --red:#E01E00; --red100:#FFE9E5;
+    --amber:#FF8000; --amber200:#FFE6CC; --purple:#6D17CE; --purple100:#F1E5FF;
+    --shadow:0 1px 3px rgba(22,16,33,.06); --lift:0 1px 2px rgba(22,16,33,.05),0 10px 30px -14px rgba(22,16,33,.22);
+  }
+  body[data-theme="dark"]{
+    --bg:#161021; --card:#241C31; --sunk:#1D1629; --border:#443152; --line2:#332944;
+    --text:#FAF9FC; --muted:#A7A1B2; --dim:#7C7489;
+    --accent:#FF3FAF; --secondary:#FFB2E4; --pink300:#FFB2E4; --pink100:#3A1030;
+    --green:#4BD48D; --green100:#0E2E20; --red:#FF7A61; --red100:#331612;
+    --amber:#FFA34D; --amber200:#33220E; --purple:#B98CFF; --purple100:#251437;
+    --shadow:0 1px 3px rgba(0,0,0,.4); --lift:0 1px 2px rgba(0,0,0,.4),0 14px 36px -18px rgba(0,0,0,.75);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+  a{color:var(--accent)}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 26px 90px}
+
+  /* ── masthead ── */
+  .top{padding:34px 0 20px}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:800}
+  h1{margin-top:12px;font-size:clamp(26px,3.6vw,38px);line-height:1.1;letter-spacing:-.025em;font-weight:800;text-wrap:balance}
+  .lede{margin-top:14px;max-width:66ch;font-size:16.5px;color:var(--muted)}
+  .srcline{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--dim)}
+  .srcline a{font-weight:700;text-decoration:none}
+  .srcline a:hover{text-decoration:underline}
+
+  /* ── sub nav ── */
+  .subnav{display:flex;gap:7px;flex-wrap:wrap;margin:26px 0 0;border-bottom:1px solid var(--border);padding-bottom:0}
+  .snav{appearance:none;background:transparent;border:0;border-bottom:2.5px solid transparent;color:var(--muted);
+        font:inherit;font-size:14.5px;font-weight:700;padding:10px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+  .snav:hover{color:var(--text)}
+  .snav.on{color:var(--accent);border-bottom-color:var(--accent)}
+  .snav .pip{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:var(--sunk);color:var(--dim);border:1px solid var(--border)}
+  .snav .pip.int{background:var(--amber200);color:var(--amber);border-color:transparent}
+  .snav .pip.dft{background:var(--purple100);color:var(--purple);border-color:transparent}
+  .view{display:none;padding-top:30px}
+  .view.on{display:block}
+
+  /* ── shared bits ── */
+  h2.sec{font-size:19px;letter-spacing:-.015em;font-weight:800;margin:44px 0 4px}
+  h2.sec:first-child{margin-top:0}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:74ch}
+  .note{background:var(--sunk);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:14px 18px;font-size:13.5px;color:var(--muted);margin:16px 0}
+  .note b{color:var(--text)}
+  .banner{display:flex;gap:13px;align-items:flex-start;border-radius:12px;padding:15px 18px;font-size:13.5px;margin-bottom:26px;line-height:1.55}
+  .banner.warn{background:var(--amber200);color:var(--text);border:1px solid rgba(255,128,0,.35)}
+  .banner.info{background:var(--purple100);color:var(--text);border:1px solid rgba(109,23,206,.28)}
+  .banner .ic{font-size:17px;line-height:1.2}
+  .banner b{font-weight:800}
+
+  /* ── offer cards ── */
+  .offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  @media (max-width:1000px){.offers{grid-template-columns:1fr}}
+  .offer{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+  .offer > .hd{padding:20px 22px 16px;border-bottom:1px solid var(--line2);background:linear-gradient(160deg,var(--pink100),transparent 70%)}
+  .onum{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;font-size:13px;margin-bottom:11px}
+  .offer h3{font-size:17.5px;font-weight:800;letter-spacing:-.015em;line-height:1.25}
+  .offer .desc{margin-top:8px;font-size:13.5px;color:var(--muted)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
+  .chip{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--card);border:1px solid var(--border);color:var(--muted)}
+  .chip.tv{background:var(--purple100);color:var(--purple);border-color:transparent}
+  .chip.mob{background:var(--green100);color:var(--green);border-color:transparent}
+  .rows{padding:6px 22px 20px;flex:1;display:flex;flex-direction:column}
+  .row{padding:14px 0;border-bottom:1px solid var(--line2)}
+  .row:last-child{border-bottom:0;margin-top:auto}
+  .row .k{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);font-weight:800;margin-bottom:5px}
+  .row .v{font-size:14px;color:var(--text)}
+  .row .v ul{margin:0;padding-left:17px}
+  .row .v li{margin:3px 0}
+  .row .v .empty{color:var(--dim);font-style:italic}
+  .demo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:13.5px;
+        background:var(--accent);color:#fff;padding:8px 14px;border-radius:9px}
+  .demo:hover{filter:brightness(1.08)}
+  .demo.ghost{background:var(--sunk);color:var(--muted);border:1px solid var(--border)}
+  .demolbl{display:block;font-size:11.5px;color:var(--dim);margin-top:7px}
+
+  /* ── shared-terms band ── */
+  .band{margin-top:22px;background:var(--secondary);color:#FAF9FC;border-radius:14px;padding:22px 26px;
+        display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+  body[data-theme="dark"] .band{background:#2E2340;border:1px solid var(--border)}
+  .band .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink300);font-weight:800;margin-bottom:6px}
+  .band .v{font-size:15px;font-weight:600;line-height:1.45}
+  .band .v small{display:block;font-weight:400;font-size:12.5px;color:rgba(250,249,252,.62);margin-top:5px}
+
+  /* ── table ── */
+  .scroll{overflow-x:auto;border:1px solid var(--border);border-radius:13px;background:var(--card);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:780px;font-size:13.5px}
+  th,td{text-align:left;padding:13px 17px;border-bottom:1px solid var(--line2);vertical-align:top}
+  thead th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:var(--sunk);font-weight:800;white-space:nowrap}
+  tbody tr:last-child td{border-bottom:0}
+  td:first-child,th:first-child{font-weight:700;white-space:nowrap;color:var(--text)}
+  td .em{color:var(--dim)}
+
+  /* ── gate ── */
+  .gate{max-width:520px;margin:40px auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 34px;box-shadow:var(--lift);text-align:center}
+  .gate .lk{font-size:30px}
+  .gate h3{margin-top:12px;font-size:20px;font-weight:800;letter-spacing:-.015em}
+  .gate p{margin-top:10px;font-size:13.5px;color:var(--muted)}
+  .gate form{margin-top:22px;display:flex;gap:9px}
+  .gate input{flex:1;font:inherit;font-size:14.5px;padding:11px 14px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
+  .gate input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+  .gate button{font:inherit;font-weight:700;font-size:14.5px;padding:11px 20px;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+  .gate button:disabled{opacity:.55;cursor:default}
+  .gate .err{margin-top:14px;font-size:13px;color:var(--red);font-weight:700;min-height:1.2em}
+  .gate .fine{margin-top:20px;padding-top:16px;border-top:1px solid var(--line2);font-size:11.5px;color:var(--dim);line-height:1.55;text-align:left}
+
+  /* ── revenue cards ── */
+  .rev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  @media (max-width:1000px){.rev{grid-template-columns:1fr}}
+  .rcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .rcard .rn{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);font-weight:800}
+  .rcard h3{margin-top:7px;font-size:16px;font-weight:800;line-height:1.3;letter-spacing:-.01em}
+  .big{margin:18px 0 4px;font-size:44px;font-weight:800;letter-spacing:-.035em;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+  .big small{font-size:15px;font-weight:700;color:var(--muted);letter-spacing:0;margin-left:4px}
+  .bar{height:9px;border-radius:99px;background:var(--sunk);overflow:hidden;margin:14px 0 8px;display:flex}
+  .bar i{display:block;height:100%;background:var(--accent)}
+  .bar u{display:block;height:100%;background:var(--purple);opacity:.4}
+  .split{display:flex;justify-content:space-between;font-size:11.5px;font-weight:700;color:var(--muted)}
+  .rlines{margin-top:18px;border-top:1px solid var(--line2);padding-top:6px}
+  .rline{padding:11px 0;border-bottom:1px solid var(--line2)}
+  .rline:last-child{border-bottom:0}
+  .rline .k{font-size:12.5px;color:var(--muted);font-weight:600}
+  .rline .v{font-size:14px;font-weight:700;margin-top:2px}
+  .rline .n{font-size:12px;color:var(--dim);margin-top:3px}
+  .why{margin-top:16px;background:var(--sunk);border-radius:10px;padding:13px 15px;font-size:12.5px;color:var(--muted);line-height:1.55}
+  .verb{margin-top:auto;padding-top:14px;font-size:11.5px;color:var(--dim);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-line;word-break:break-word}
+
+  .tgt{background:var(--secondary);color:#FAF9FC;border-radius:14px;padding:20px 24px;margin-bottom:8px}
+  body[data-theme="dark"] .tgt{background:#2E2340;border:1px solid var(--border)}
+  .tgt .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink300);font-weight:800}
+  .tgt .v{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:6px}
+  .tgt p{margin-top:6px;font-size:12.5px;color:rgba(250,249,252,.66);max-width:74ch}
+
+  .watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+  .wcard{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 12px 12px 0;padding:16px 18px}
+  .wcard h4{font-size:14px;font-weight:800;letter-spacing:-.01em}
+  .wcard p{margin-top:7px;font-size:13px;color:var(--muted);line-height:1.55}
+
+  /* ── tech ── */
+  .tstack{display:flex;flex-direction:column;gap:16px}
+  .tblock{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .tblock > summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:13px;font-weight:800;font-size:16px;letter-spacing:-.01em}
+  .tblock > summary::-webkit-details-marker{display:none}
+  .tblock > summary .caret{margin-left:auto;color:var(--dim);font-size:13px;font-weight:700;transition:transform .18s}
+  .tblock[open] > summary .caret{transform:rotate(90deg)}
+  .tblock > summary .onum{margin-bottom:0}
+  .tblock > summary .cnt{font-size:11.5px;font-weight:700;color:var(--dim)}
+  .tbody{padding:0 22px 20px;border-top:1px solid var(--line2)}
+  .tgrp{margin-top:18px}
+  .tgrp h4{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);font-weight:800;margin-bottom:9px}
+  .tgrp ul{margin:0;padding-left:18px}
+  .tgrp li{margin:6px 0;font-size:13.5px;color:var(--muted)}
+  .tgrp li b{color:var(--text);font-weight:700}
+  footer{padding:26px 0 0;margin-top:50px;border-top:1px solid var(--border);font-size:12px;color:var(--dim);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Wiom TV · Partnerships</div>
+  <h1>Three ways a content partner can earn on Wiom</h1>
+  <p class="lede">
+    One rail — a ₹10 sachet — pointed at three different places: our TV screen, our mobile store,
+    and the partner's own app. What changes between them is who supplies the stack, and therefore who keeps what.
+  </p>
+  <div class="srcline">
+    <span>Source of record ·</span>
+    <a href="https://docs.google.com/spreadsheets/d/1lKkXgLhSF70J9E5zu84Be6czyHlmeIonJ22W3pjwj4I/edit" target="_blank" rel="noopener">Partnership : Types and Expectations ↗</a>
+    <span>· synced <b id="synced">21 Jul 2026</b></span>
+    <span>· partner-facing URL <b>wiom.tv/partnerships</b></span>
+  </div>
+</header>
+
+<nav class="subnav" id="subnav">
+  <button class="snav on" data-v="offer">Partnerships <span class="pip">Partner-facing</span></button>
+  <button class="snav" data-v="revenue">Revenue Expectations <span class="pip int">Internal</span></button>
+  <button class="snav" data-v="tech">Tech Expectations <span class="pip dft">Draft</span></button>
+</nav>
+
+<!-- ═════════════ 1 · PARTNERSHIPS ═════════════ -->
+<section class="view on" id="v-offer">
+
+  <div class="offers">
+
+    <article class="offer">
+      <div class="hd">
+        <span class="onum">1</span>
+        <h3>Distribute on a newer screen</h3>
+        <p class="desc">Get your content live on the Wiom TV app — Android, Samsung, LG.</p>
+        <div class="chips"><span class="chip tv">TV</span><span class="chip">Stream</span><span class="chip">You host</span></div>
+      </div>
+      <div class="rows">
+        <div class="row"><div class="k">What you provide</div><div class="v">A hosted live stream. You host it; Wiom showcases the channel on the TV screen.</div></div>
+        <div class="row"><div class="k">Pricing model</div><div class="v">Sachet per X hours. Only ≤ ₹10 price points.</div></div>
+        <div class="row"><div class="k">Revenue terms</div><div class="v">Revenue share on every sachet sold.</div></div>
+        <div class="row"><div class="k">Conditions</div><div class="v">Stream to be hosted by the partner.</div></div>
+        <div class="row">
+          <div class="k">Demo</div>
+          <div class="v">
+            <a class="demo" href="demos/tv_sachet.html" target="_blank" rel="noopener">Paid channel on TV ↗</a>
+            <span class="demolbl">End-to-end flow in the real Wiom TV app UI — tune in, free look, ₹10 sachet, keep watching.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="offer">
+      <div class="hd">
+        <span class="onum">2</span>
+        <h3>Sell on the Sachet Store</h3>
+        <p class="desc">Sell your content on the Sachet Store, on the Wiom TV mobile surface.</p>
+        <div class="chips"><span class="chip mob">Mobile</span><span class="chip">Wiom TV mobile surface</span><span class="chip">Stays on Wiom</span></div>
+      </div>
+      <div class="rows">
+        <div class="row"><div class="k">What you provide</div><div class="v">A content stream for on-demand viewing. Wiom is the shelf, the player and the checkout.</div></div>
+        <div class="row"><div class="k">Pricing model</div><div class="v">Sachet per X hours. Only ≤ ₹10 price points.</div></div>
+        <div class="row"><div class="k">Revenue terms</div><div class="v">Revenue share on every sachet sold.</div></div>
+        <div class="row"><div class="k">Conditions</div><div class="v"><span class="empty">None stated in the sheet.</span></div></div>
+        <div class="row">
+          <div class="k">Demo</div>
+          <div class="v">
+            <a class="demo" href="demos/store_wiom.html" target="_blank" rel="noopener">Sachet Store ↗</a>
+            <span class="demolbl">Mobile prototype — ₹10 to keep watching, no auto-renewal. The viewer never leaves Wiom.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="offer">
+      <div class="hd">
+        <span class="onum">3</span>
+        <h3>Sell into your own platform</h3>
+        <p class="desc">Same store, but the customer lands on the partner's own platform — and Wiom keeps sending them back.</p>
+        <div class="chips"><span class="chip mob">Mobile</span><span class="chip">On your platform</span><span class="chip">Wiom sends demand</span></div>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="k">What you provide</div>
+          <div class="v">Seamless transition of an authenticated user from the Wiom platform to yours — plus repeat sachet purchase.</div>
+        </div>
+        <div class="row"><div class="k">Pricing model</div><div class="v">Sachet per X hours. Only ≤ ₹10 price points.</div></div>
+        <div class="row">
+          <div class="k">Revenue terms</div>
+          <div class="v"><ul>
+            <li>Revenue share on every sachet sold</li>
+            <li>Revenue for each app install given</li>
+            <li>Revenue share on each purchase made on the partner platform</li>
+          </ul></div>
+        </div>
+        <div class="row"><div class="k">Conditions</div><div class="v">Customers can keep buying sachets on the Wiom TV mobile surface even after installing the partner platform.</div></div>
+        <div class="row">
+          <div class="k">Demo</div>
+          <div class="v">
+            <a class="demo" href="https://shivanksood-prog.github.io/wiom-tv-microdrama-demo/store.html" target="_blank" rel="noopener">Handoff to your platform ↗</a>
+            <span class="demolbl">Mobile prototype — sachet bought on Wiom, viewing continues on the partner platform. Public link, shareable.</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <h2 class="sec">Side by side</h2>
+  <p class="sub">The same six questions asked of each offer.</p>
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>&nbsp;</th><th>1 · Newer screen</th><th>2 · Sachet Store</th><th>3 · Your own platform</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Surface</td><td>TV</td><td>Mobile</td><td>Mobile</td></tr>
+        <tr><td>Option</td><td>Stream</td><td>Wiom TV mobile surface</td><td>On your platform</td></tr>
+        <tr><td>What you provide</td><td>Hosted live stream</td><td>On-demand content stream</td><td>Authenticated handoff + repeat purchase</td></tr>
+        <tr><td>Where the customer ends up</td><td>Wiom TV app</td><td>Wiom TV mobile surface</td><td>Your platform</td></tr>
+        <tr><td>How you earn</td><td>Sachet share</td><td>Sachet share</td><td>Sachet share + revenue per install + share of purchases on your platform</td></tr>
+        <tr><td>Prototype</td><td>Yes — TV flow</td><td>Yes — stays on Wiom</td><td>Yes — handoff flow</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <b>Reading note.</b> Offer 1 is named in the sheet; offers 2 and 3 are labelled here from their
+    <i>Surface</i> and <i>Options</i> rows — the sheet gives them no headline of their own. One line still needs
+    correcting upstream: the sheet reads <i>"Stream to be hosted by Platform"</i>, which has been read here as the
+    <b>partner</b> hosting, since Wiom showcases a partner-hosted channel rather than hosting it.
+  </div>
+
+</section>
+
+<!-- ═════════════ 2 · REVENUE (INTERNAL) ═════════════ -->
+<section class="view" id="v-revenue">
+
+  <div id="gate" class="gate">
+    <div class="lk">🔒</div>
+    <h3>Internal — revenue expectations</h3>
+    <p>Take-rate targets for all three offers. Encrypted in the page; enter the passphrase to read.</p>
+    <form id="gateform" autocomplete="off">
+      <input type="password" id="pw" placeholder="Passphrase" autocomplete="off" spellcheck="false">
+      <button type="submit" id="gobtn">Unlock</button>
+    </form>
+    <div class="err" id="gerr"></div>
+    <div class="fine">
+      <b>This is a lock, not a wall.</b> The hub is a public site, so the encrypted block is downloadable by
+      anyone with the URL and can be attacked offline. It stops a partner reading your negotiating position by
+      accident — it does not stop one who is trying. Keep genuinely sensitive terms in the sheet.
+    </div>
+  </div>
+
+  <!-- Encrypted internal block — written by scripts/hub_partnerships_encrypt.py. Do not hand-edit. -->
+  <script id="encblob" type="application/json">{"v": 1, "kdf": "PBKDF2-SHA256", "iter": 300000, "salt": "ignuIm+rfJyC9afwDrh0lQ==", "iv": "iWewUScuecRLTD3p", "ct": "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"}</script>
+
+  <div id="revbody" style="display:none">
+    <div class="banner warn">
+      <span class="ic">⚠</span>
+      <div><b>Internal only.</b> Nothing on this view goes to a partner, a deck, or an email.
+      The partner-facing wording lives on the Partnerships tab.</div>
+    </div>
+    <div id="revcards"></div>
+  </div>
+
+</section>
+
+<!-- ═════════════ 3 · TECH EXPECTATIONS ═════════════ -->
+<section class="view" id="v-tech">
+
+  <div class="banner info">
+    <span class="ic">✎</span>
+    <div><b>Draft — not from the sheet.</b> The <i>Wiom tv tech asks for partnerships</i> tab is still empty apart from its
+    heading. What follows is a first pass at what each offer actually requires from a partner's tech team,
+    written to be cut down rather than added to. Nothing here has been agreed with anyone.</div>
+  </div>
+
+  <div class="tstack">
+
+    <details class="tblock" open>
+      <summary><span class="onum">1</span> Distribute on a newer screen <span class="cnt">TV · stream hosted by the partner</span><span class="caret">›</span></summary>
+      <div class="tbody">
+        <div class="tgrp">
+          <h4>Stream delivery</h4>
+          <ul>
+            <li><b>HLS</b> (TS or fMP4), CDN-fronted, 24×7 origin with a stated uptime commitment. <b>The partner hosts</b> — Wiom pulls and showcases the channel, it does not take delivery of the feed.</li>
+            <li><b>At least three ABR renditions</b> — 1080p / 720p / 480p. Our floor is a cheap Android TV box on a shared connection, so the low rung matters more than the top one.</li>
+            <li><b>H.264 + AAC-LC.</b> HEVC-only feeds will not decode reliably on the boxes we actually reach.</li>
+            <li><b>No IP allowlisting</b>, or an allowlist that accepts our egress range. Signed URLs are fine if the TTL clears a full sachet.</li>
+            <li><b>Notice period</b> before any origin or URL change.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Rights &amp; protection</h4>
+          <ul>
+            <li>Written confirmation of <b>India distribution rights</b> for CTV / connected-TV apps.</li>
+            <li><b>Clear HLS preferred for v1.</b> If DRM is mandatory: Widevine L3, licence URL and token spec up front — it changes our build cost materially.</li>
+            <li><b>Geo-fencing and blackout windows</b>, if any, with the mechanism to enforce them.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Metadata &amp; EPG</h4>
+          <ul>
+            <li><b>Now / next at minimum</b>; 24h forward schedule preferred. XMLTV or JSON.</li>
+            <li><b>Channel logo</b> — transparent PNG or SVG, 512px or better.</li>
+            <li><b>Channel name in Hindi and English</b>, plus genre and audio language.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Reporting</h4>
+          <ul>
+            <li>Wiom reports monthly: <b>minutes watched and sachet units per channel</b>. No entitlement API needed — the sachet unlock happens in the Wiom TV app, so the gate is ours even though the stream is yours.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="tblock">
+      <summary><span class="onum">2</span> Sell on the Sachet Store <span class="cnt">Mobile · Wiom TV mobile surface</span><span class="caret">›</span></summary>
+      <div class="tbody">
+        <div class="tgrp">
+          <h4>Catalogue feed</h4>
+          <ul>
+            <li><b>Machine-readable catalogue</b> (JSON or CSV): title, episode, duration, language, maturity rating, availability window.</li>
+            <li><b>Artwork in both ratios</b> — 2:3 portrait and 16:9 landscape — because the store and the player need different crops.</li>
+            <li><b>Refresh cadence</b> agreed up front: full replace or delta, and how fast a takedown propagates.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Playback</h4>
+          <ul>
+            <li><b>A content stream for on-demand viewing</b> — per-title HLS or MP4, mobile-web playable, same codec floor as offer 1.</li>
+            <li>If content stays on the partner origin: a <b>signed-URL or token endpoint</b> whose TTL outlives the sachet the customer bought.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Commercial plumbing</h4>
+          <ul>
+            <li><b>Wiom is merchant of record.</b> The partner needs no billing integration at all.</li>
+            <li><b>Title-level reporting</b> monthly: plays, sachet units, revenue statement, with a stated dispute window.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="tblock">
+      <summary><span class="onum">3</span> Sell into your own platform <span class="cnt">Mobile · on the partner's platform</span><span class="caret">›</span></summary>
+      <div class="tbody">
+        <div class="banner info" style="margin:18px 0 0">
+          <span class="ic">→</span>
+          <div>This is the only offer with real two-way integration. Everything below exists because money moves on
+          events the partner controls, so the events have to be defined before the rates are.</div>
+        </div>
+        <div class="tgrp">
+          <h4>Handoff</h4>
+          <ul>
+            <li><b>Seamless authenticated handoff</b> — a deep link from Wiom into the partner platform carrying a Wiom-signed token, so the user arrives already recognised and never logs in twice.</li>
+            <li><b>Unlock API</b> — a sachet bought on Wiom must open the content on the partner platform without a second payment or a second login, and repeat sachet purchase must keep working.</li>
+            <li><b>Graceful no-app path</b>: what the link does when the partner app is not installed.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Attribution — this is what the install revenue is paid on</h4>
+          <ul>
+            <li><b>One written definition of "install"</b>: store install, first open, or first authenticated session. The three give very different numbers.</li>
+            <li><b>Install Referrer or an agreed attribution SDK</b>, plus the attribution window in days.</li>
+            <li><b>Server-to-server postback</b> for purchases made on the partner platform by Wiom-referred users — signed payload, retry policy, idempotency key.</li>
+            <li><b>Fraud controls and an agreed ceiling</b> — standard on any per-install commercial, and it protects the payout on both sides.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Reconciliation</h4>
+          <ul>
+            <li><b>An explicit dedupe rule.</b> Customers may keep buying sachets on the Wiom TV mobile surface after installing the partner platform, so the same user can otherwise be claimed on both sides.</li>
+            <li><b>Shared monthly file</b>, matching keys agreed in advance, dispute window stated.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="tblock">
+      <summary><span class="onum" style="background:var(--secondary)">·</span> Applies to all three <span class="cnt">Cross-cutting</span><span class="caret">›</span></summary>
+      <div class="tbody">
+        <div class="tgrp">
+          <h4>Before signature</h4>
+          <ul>
+            <li><b>Sandbox credentials and test content</b> — we will not integrate against production first.</li>
+            <li><b>A named technical contact</b> and a response-time expectation for stream-down incidents.</li>
+            <li><b>Brand assets and usage guidelines</b>, so the store and the guide can render the partner correctly.</li>
+            <li><b>Data and PII posture</b>: what we log, what we pass on, what neither side may retain.</li>
+          </ul>
+        </div>
+        <div class="tgrp">
+          <h4>Open on our side — resolve before a partner asks</h4>
+          <ul>
+            <li><b>Play billing policy.</b> Whether in-app digital content on Android can be sold over UPI at all, or must route through Google Play, changes every revenue-share number downstream.</li>
+            <li><b>UPI wait, 20–40 seconds.</b> Every prototype has to cover it without stopping the picture — a product constraint that becomes a partner-facing quality claim.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<footer>
+  Generated from <b>Partnership : Types and Expectations</b> (Google Sheets) · Wiom TV Hub ·
+  re-sync with <code>python3 scripts/hub_partnerships_sync.py</code>
+</footer>
+
+</div>
+
+<script>
+/* ── theme ── */
+(function(){
+  var q = new URLSearchParams(location.search).get('theme');
+  var dark = q === 'dark' || (!q && matchMedia('(prefers-color-scheme: dark)').matches);
+  if (dark) document.body.dataset.theme = 'dark';
+})();
+
+/* ── sub-nav ── */
+(function(){
+  var nav = document.getElementById('subnav');
+  function show(v){
+    document.querySelectorAll('.snav').forEach(function(b){ b.classList.toggle('on', b.dataset.v === v); });
+    document.querySelectorAll('.view').forEach(function(s){ s.classList.toggle('on', s.id === 'v-' + v); });
+    if (history.replaceState) history.replaceState(null, '', '#' + v);
+  }
+  nav.addEventListener('click', function(e){
+    var b = e.target.closest('.snav');
+    if (b) show(b.dataset.v);
+  });
+  var h = location.hash.replace('#','');
+  if (['offer','revenue','tech'].indexOf(h) > -1) show(h);
+})();
+
+/* ── internal block: PBKDF2-SHA256 + AES-GCM, decrypted in-browser only ── */
+(function(){
+  var form = document.getElementById('gateform'),
+      pw   = document.getElementById('pw'),
+      btn  = document.getElementById('gobtn'),
+      err  = document.getElementById('gerr');
+
+  var b64 = function(s){ return Uint8Array.from(atob(s), function(c){ return c.charCodeAt(0); }); };
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    err.textContent = ''; btn.disabled = true; btn.textContent = 'Unlocking…';
+    try {
+      var blob = JSON.parse(document.getElementById('encblob').textContent);
+      var mat  = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw.value), 'PBKDF2', false, ['deriveKey']);
+      var key  = await crypto.subtle.deriveKey(
+        { name:'PBKDF2', salt:b64(blob.salt), iterations:blob.iter, hash:'SHA-256' },
+        mat, { name:'AES-GCM', length:256 }, false, ['decrypt']);
+      var plain = await crypto.subtle.decrypt({ name:'AES-GCM', iv:b64(blob.iv) }, key, b64(blob.ct));
+      render(JSON.parse(new TextDecoder().decode(plain)));
+    } catch (ex) {
+      err.textContent = 'Wrong passphrase.';
+      btn.disabled = false; btn.textContent = 'Unlock';
+      pw.select();
+    }
+  });
+
+  function esc(s){ return String(s).replace(/[&<>]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]; }); }
+
+  function render(d){
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('revbody').style.display = '';
+
+    var html = '';
+    if (d.target){
+      html += '<div class="tgt"><div class="k">Target expectation</div>' +
+              '<div class="v">' + esc(d.target.headline) + '</div>' +
+              '<p>' + esc(d.target.note) + '</p></div>';
+    }
+    html += '<h2 class="sec">Target revenue expectation</h2>' +
+      '<p class="sub">Wiom\'s share of a ₹' + d.sachet + ' sachet on each offer. Verbatim from ' + esc(d.source) + '.</p><div class="rev">';
+
+    d.offers.forEach(function(o){
+      var wiom = (d.sachet * o.wiomPct / 100).toFixed(2),
+          part = (d.sachet - d.sachet * o.wiomPct / 100).toFixed(2);
+      html += '<article class="rcard">' +
+        '<div class="rn">Offer ' + o.n + '</div>' +
+        '<h3>' + esc(o.name) + '</h3>' +
+        '<div class="big">' + o.wiomPct + '<small>% to Wiom</small></div>' +
+        '<div class="bar"><i style="width:' + o.wiomPct + '%"></i><u style="width:' + (100 - o.wiomPct) + '%"></u></div>' +
+        '<div class="split"><span>Wiom ₹' + wiom + '</span><span>Partner ₹' + part + '</span></div>' +
+        '<div class="rlines">' +
+          o.lines.map(function(l){
+            return '<div class="rline"><div class="k">' + esc(l.k) + '</div><div class="v">' + esc(l.v) + '</div>' +
+                   (l.note ? '<div class="n">' + esc(l.note) + '</div>' : '') + '</div>';
+          }).join('') +
+        '</div>' +
+        '<div class="why">' + esc(o.why) + '</div>' +
+        '<div class="verb">' + esc(o.verbatim) + '</div>' +
+        '</article>';
+    });
+
+    html += '</div>';
+    html += '<div class="note"><b>The logic of the ladder.</b> ' + esc(d.ladder) + '</div>';
+    html += '<h2 class="sec">Fix before this reaches a partner</h2>' +
+            '<p class="sub">Four places where the numbers are not yet safe to quote.</p><div class="watch">' +
+      d.watchouts.map(function(w){
+        return '<div class="wcard"><h4>' + esc(w.t) + '</h4><p>' + esc(w.d) + '</p></div>';
+      }).join('') + '</div>';
+
+    document.getElementById('revcards').innerHTML = html;
+  }
+})();
+</script>
+</body>
+</html>

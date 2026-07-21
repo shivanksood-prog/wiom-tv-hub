@@ -129,6 +129,7 @@
   <nav id="nav">
     <button class="tab" data-tab="dashboards">Dashboards</button>
     <button class="tab" data-tab="roadmap">Roadmap</button>
+    <button class="tab" data-tab="partnerships">Partnerships</button>
     <button class="tab" data-tab="documents">Documents</button>
   </nav>
 </header>
@@ -176,6 +177,18 @@
       <div class="filters" id="roadmap-filters"></div>
       <div id="roadmap-lanes"></div>
     </div>
+  </section>
+
+  <!-- ══ PARTNERSHIPS ══ -->
+  <section class="panel" id="panel-partnerships">
+    <div class="subbar">
+      <span style="font-size:13px;color:var(--muted)">Offering, revenue expectations and tech asks · source sheet "Partnership : Types and Expectations"</span>
+      <div class="right">
+        <a class="btn" href="https://docs.google.com/spreadsheets/d/1lKkXgLhSF70J9E5zu84Be6czyHlmeIonJ22W3pjwj4I/edit" target="_blank" rel="noopener">Edit Sheet ↗</a>
+        <a class="btn" href="partnerships.html" target="_blank" rel="noopener">Open Full Page ↗</a>
+      </div>
+    </div>
+    <div class="framewrap" id="frame-partnerships" data-src="partnerships.html"></div>
   </section>
 
   <!-- ══ DOCUMENTS ══ -->
@@ -426,6 +439,7 @@ function route(){
     document.getElementById('openSrc').href = SUBS[s];
     mountFrame(s);
   }
+  if (tab === 'partnerships') mountFrame('partnerships');
 }
 document.getElementById('nav').addEventListener('click', e => {
   if (e.target.dataset.tab) location.hash = e.target.dataset.tab === 'dashboards' ? 'dashboards/live' : e.target.dataset.tab;
