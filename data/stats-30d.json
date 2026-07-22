@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-07-22T21:53:19Z",
+  "fetched_at": "2026-07-22T22:46:16Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 15242,
+      "unique_users": 15238,
       "total_tunes": 72127,
       "total_watch_min": 2809887,
       "avg_duration_sec": 2087.6
@@ -443,13 +443,8 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-06-22 21:00",
-        "users": 1,
-        "tunes": 0
-      },
-      {
         "hour": "2026-06-22 22:00",
-        "users": 4,
+        "users": 1,
         "tunes": 0
       },
       {
@@ -4036,7 +4031,7 @@
     "dailyTrend": [
       {
         "day": "2026-06-22",
-        "users": 8,
+        "users": 4,
         "tunes": 2,
         "watch_min": 0.5
       },
@@ -4224,11 +4219,11 @@
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14469
+        "users": 14467
       },
       {
         "device": "desktop",
-        "users": 377
+        "users": 375
       }
     ],
     "funnel": {
@@ -4554,7 +4549,7 @@
       }
     ],
     "engagement": {
-      "sessions": 15242,
+      "sessions": 15238,
       "avg_channels": 3.8,
       "avg_session_sec": 194,
       "bounce_pct": 51.3,

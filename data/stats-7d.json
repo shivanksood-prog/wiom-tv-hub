@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-22T21:53:19Z",
+  "fetched_at": "2026-07-22T22:46:16Z",
   "data": {
     "period": "7d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 3377,
-      "total_tunes": 17785,
-      "total_watch_min": 1935391.3,
-      "avg_duration_sec": 5775
+      "unique_users": 3375,
+      "total_tunes": 17761,
+      "total_watch_min": 1935383.3,
+      "avg_duration_sec": 5784.2
     },
     "channelLeaderboard": [
       {
@@ -24,9 +24,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 480,
-        "unique_users": 358,
-        "watch_min": 919.7
+        "tunes": 477,
+        "unique_users": 357,
+        "watch_min": 919.4
       },
       {
         "ch": 235,
@@ -78,18 +78,18 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 761,
-        "unique_users": 636,
-        "watch_min": 304.8
+        "tunes": 759,
+        "unique_users": 634,
+        "watch_min": 304.7
       },
       {
         "ch": 44,
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 381,
-        "unique_users": 297,
-        "watch_min": 225.8
+        "tunes": 379,
+        "unique_users": 296,
+        "watch_min": 225.7
       },
       {
         "ch": 204,
@@ -105,9 +105,9 @@
         "name": "Goldmines",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 285,
-        "unique_users": 211,
-        "watch_min": 196.4
+        "tunes": 282,
+        "unique_users": 210,
+        "watch_min": 190.9
       },
       {
         "ch": 226,
@@ -159,9 +159,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 200,
-        "unique_users": 163,
-        "watch_min": 111.3
+        "tunes": 199,
+        "unique_users": 162,
+        "watch_min": 111.2
       },
       {
         "ch": 50,
@@ -231,8 +231,8 @@
         "name": "PTC Music",
         "cat": "Music",
         "lang": "Punjabi",
-        "tunes": 297,
-        "unique_users": 240,
+        "tunes": 296,
+        "unique_users": 239,
         "watch_min": 81.8
       },
       {
@@ -284,33 +284,33 @@
     "categoryBreakdown": [
       {
         "cat": "Music",
-        "tunes": 3608,
-        "unique_users": 1006,
-        "watch_min": 2875.5
+        "tunes": 3606,
+        "unique_users": 1005,
+        "watch_min": 2875.4
       },
       {
         "cat": "News",
-        "tunes": 4922,
-        "unique_users": 1048,
-        "watch_min": 2695.7
+        "tunes": 4914,
+        "unique_users": 1047,
+        "watch_min": 2695.1
       },
       {
         "cat": "Devotional",
-        "tunes": 1184,
-        "unique_users": 313,
-        "watch_min": 2066.4
+        "tunes": 1183,
+        "unique_users": 312,
+        "watch_min": 2066.1
       },
       {
         "cat": "Entertainment",
-        "tunes": 4807,
-        "unique_users": 1161,
-        "watch_min": 1234.5
+        "tunes": 4805,
+        "unique_users": 1159,
+        "watch_min": 1234.4
       },
       {
         "cat": "Movies",
-        "tunes": 2099,
-        "unique_users": 846,
-        "watch_min": 827.4
+        "tunes": 2089,
+        "unique_users": 845,
+        "watch_min": 821.1
       },
       {
         "cat": "Undefined",
@@ -362,8 +362,8 @@
       },
       {
         "cat": "Classic",
-        "tunes": 78,
-        "unique_users": 54,
+        "tunes": 77,
+        "unique_users": 53,
         "watch_min": 9
       },
       {
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13317,
-        "unique_users": 2497,
-        "watch_min": 8266.1
+        "tunes": 13295,
+        "unique_users": 2495,
+        "watch_min": 8258.8
       },
       {
         "lang": "Punjabi",
-        "tunes": 1482,
-        "unique_users": 683,
-        "watch_min": 750.7
+        "tunes": 1481,
+        "unique_users": 682,
+        "watch_min": 750.6
       },
       {
         "lang": "Bhojpuri",
@@ -424,8 +424,8 @@
       },
       {
         "lang": "English",
-        "tunes": 1174,
-        "unique_users": 523,
+        "tunes": 1173,
+        "unique_users": 522,
         "watch_min": 438.7
       },
       {
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-15 22:00",
-        "users": 2,
-        "tunes": 24
-      },
       {
         "hour": "2026-07-16 00:00",
         "users": 4,
@@ -1280,12 +1275,6 @@
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-15",
-        "users": 2,
-        "tunes": 24,
-        "watch_min": 8.1
-      },
-      {
         "day": "2026-07-16",
         "users": 438,
         "tunes": 2129,
@@ -1331,7 +1320,7 @@
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3147
+        "users": 3145
       },
       {
         "device": "desktop",
@@ -1339,13 +1328,13 @@
       }
     ],
     "funnel": {
-      "opens": 2052,
-      "playback": 1634,
-      "engaged": 314
+      "opens": 2051,
+      "playback": 1633,
+      "engaged": 313
     },
     "retention": {
-      "new_users": 1768,
-      "returning_users": 308
+      "new_users": 1766,
+      "returning_users": 309
     },
     "errorBoard": [
       {
@@ -1402,7 +1391,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 40,
-        "starts": 592
+        "starts": 590
       },
       {
         "ch": 24,
@@ -1451,7 +1440,7 @@
         "name": "Goldmines",
         "cat": "Movies",
         "errors": 22,
-        "starts": 141
+        "starts": 139
       },
       {
         "ch": 26,
@@ -1465,7 +1454,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 22,
-        "starts": 285
+        "starts": 284
       },
       {
         "ch": 23,
@@ -1486,14 +1475,14 @@
         "name": "India TV",
         "cat": "News",
         "errors": 20,
-        "starts": 115
+        "starts": 114
       },
       {
         "ch": 34,
         "name": "PTC Music",
         "cat": "Music",
         "errors": 19,
-        "starts": 220
+        "starts": 219
       },
       {
         "ch": 27,
@@ -1507,7 +1496,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 18,
-        "starts": 371
+        "starts": 368
       },
       {
         "ch": 18,
@@ -1570,7 +1559,7 @@
         "name": "ZB Cinema",
         "cat": "Movies",
         "errors": 13,
-        "starts": 37
+        "starts": 36
       },
       {
         "ch": 8,
@@ -1619,7 +1608,7 @@
         "name": "Maha Movie",
         "cat": "Movies",
         "errors": 11,
-        "starts": 72
+        "starts": 70
       },
       {
         "ch": 45,
@@ -1630,14 +1619,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 7833,
-      "samples": 9849
+      "avg_ttff_ms": 7844,
+      "samples": 9830
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8317,
-        "avg_ttff_ms": 7767
+        "starts": 8298,
+        "avg_ttff_ms": 7780
       },
       {
         "net": "3g",
@@ -1661,7 +1650,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3377,
+      "sessions": 3375,
       "avg_channels": 4.2,
       "avg_session_sec": 199,
       "bounce_pct": 47.9,
