@@ -58,7 +58,7 @@ td.dim{color:var(--dim)}
 <div class="header">
   <div>
     <h1><span>Wiom</span> TV · Weekly Scorecard</h1>
-    <div class="sub">Wed→Tue weeks since 1 Jul (IST) · the Wednesday-meeting rollup · data through 21 Jul · refreshed 2026-07-22 07:36:38 UTC · auto-refreshes hourly</div>
+    <div class="sub">Wed→Tue weeks since 1 Jul (IST) · the Wednesday-meeting rollup · data through 21 Jul · refreshed 2026-07-22 07:44:49 UTC · auto-refreshes hourly</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
     <a class="btn" href="scorecard.html">Daily Scorecard</a>
@@ -72,19 +72,19 @@ td.dim{color:var(--dim)}
     <div class="card">
       <h3>Reliability · Errors per 100 tunes</h3>
       <div class="hero-num">14.1 <span class="arrow">→</span> 12.2 <span class="arrow">→</span> 11.8</div>
-      <div class="hero-sub"><span class="chip c-warn" title="The numbers on this page have refreshed since this note was written">written 20 Jul · numbers now through 21 Jul</span><br>Wk1→Wk2 was a real −13%. Wk2→Wk3 is a further small step — check the σ on the delta chip before calling it a trend. The quality story has been moving elsewhere: a rising share of tunes reach a <b>playback_start</b> at all, so errors per successful start keep dropping.</div>
+      <div class="hero-sub"><span class="chip c-flat">note written 20 Jul · numbers through 21 Jul</span><br>Wk1→Wk2 was a real −13%. Wk2→Wk3 is a further small step — check the σ on the delta chip before calling it a trend. The quality story has been moving elsewhere: a rising share of tunes reach a <b>playback_start</b> at all, so errors per successful start keep dropping.</div>
       <div class="spark"><canvas id="sparkErr"></canvas></div>
     </div>
     <div class="card">
       <h3>Watch time · hours per day (excl. tunes &gt;4h)</h3>
       <div class="hero-num">14.6 <span class="arrow">→</span> 16.4 <span class="arrow">→</span> 14.8</div>
-      <div class="hero-sub"><span class="chip c-warn" title="The numbers on this page have refreshed since this note was written">written 20 Jul · numbers now through 21 Jul</span><br>Depth per session has been roughly flat, so week-on-week moves in total watch have been volume, not engagement: they track DAU and new uids rather than watch-min/session.</div>
+      <div class="hero-sub"><span class="chip c-flat">note written 20 Jul · numbers through 21 Jul</span><br>Depth per session has been roughly flat, so week-on-week moves in total watch have been volume, not engagement: they track DAU and new uids rather than watch-min/session.</div>
       <div class="spark"><canvas id="sparkWatch"></canvas></div>
     </div>
     <div class="card">
       <h3>D15 retention · Wk1 cohort</h3>
       <div class="hero-num">1.9%</div>
-      <div class="hero-sub"><span class="chip c-warn" title="The numbers on this page have refreshed since this note was written">written 20 Jul · numbers now through 21 Jul</span><br>Set against ~8–9% D1, this is the shape of the funnel: most first sessions never return, and of those that do, four in five are gone within a fortnight. Each week's D15 becomes readable 16 days after it opens.</div>
+      <div class="hero-sub"><span class="chip c-flat">note written 20 Jul · numbers through 21 Jul</span><br>Set against ~8–9% D1, this is the shape of the funnel: most first sessions never return, and of those that do, four in five are gone within a fortnight. Each week's D15 becomes readable 16 days after it opens.</div>
       <div class="spark"><canvas id="sparkRet"></canvas></div>
     </div>
   </div>
@@ -132,7 +132,7 @@ td.dim{color:var(--dim)}
         </tr>
         <tr>
           <td>D15 retention <span class="note">returned on/after day 15 (unbounded)</span></td>
-          <td>1.9%<span class="note">32 of 1,712 eligible</span></td><td class="dim">—<span class="note">not measurable · readable 24 Jul</span></td><td class="dim">—<span class="note">not measurable · readable 31 Jul</span></td><td class="dim">—<span class="note">first read 7 Aug</span></td><td><span class="chip c-flat">— <span style="font-weight:400">no comparison yet</span></span></td>
+          <td>1.9%<span class="note">33 of 1,712 eligible</span></td><td class="dim">—<span class="note">not measurable · readable 24 Jul</span></td><td class="dim">—<span class="note">not measurable · readable 31 Jul</span></td><td class="dim">—<span class="note">first read 7 Aug</span></td><td><span class="chip c-flat">— <span style="font-weight:400">no comparison yet</span></span></td>
         </tr>
         <tr>
           <td>Add-to-Home in first session <span class="note">% of new uids · pwa_install = answered the native prompt (upper bound)</span></td>
@@ -163,12 +163,12 @@ td.dim{color:var(--dim)}
     <b>How the chips are decided:</b> rates backed by counts (retention, A2HS, error rates) use a two-proportion z-test; per-day counts and ratios (DAU, watch hours, sessions/user, watch-min/session) use Welch's t across the daily series, because day-to-day spread is much wider than a pooled proportion test would admit; percentiles are compared by bootstrap 95% CI overlap and never given a σ. |z| ≥ 3 = SIGNAL, 2–3 = borderline, &lt; 2 = noise.<br>
     <b>Definitions:</b> Day = IST; weeks are Wed→Tue, numbered from 1 Jul. Watch = tune-dwell only (session_end dwell known-broken, unused; playback_stall writes ms into duration_sec and is never summed). User = device uid (localStorage). D1/D15 use the devices first-seen ledger; storage-clearing devices deflate both. Part-weeks are labelled — per-day and rate figures stay comparable, weekly totals do not.<br>
     <b>Era markers in this window:</b> <span class="era-chip"><b>E2</b> 2026-07-03 — unmute client change / reload incident</span> <span class="era-chip"><b>E3</b> 2026-07-07 — clean fse_v1 era</span> <span class="era-chip"><b>E4</b> 2026-07-13 — PR#8: 5 dead channels removed · gesture unmute · fse_v2 live</span><br>
-    Computed read-only from analytics.db (2026-07-22 07:36:38 UTC) · auto-refreshed hourly by <code>hub_weekly_refresh.sh</code>; prose lives in <code>hub_weekly_notes.json</code>. Do not hand-edit this page.
+    Computed read-only from analytics.db (2026-07-22 07:44:49 UTC) · auto-refreshed hourly by <code>hub_weekly_refresh.sh</code>; prose lives in <code>hub_weekly_notes.json</code>. Do not hand-edit this page.
   </div>
 </div>
 
 <script>
-const DATA = {"generated_utc":"2026-07-22 07:36:38","last_full":"2026-07-21","daily_ept":[{"d":"2026-07-01","ept":15.7},{"d":"2026-07-02","ept":15},{"d":"2026-07-03","ept":13},{"d":"2026-07-04","ept":16},{"d":"2026-07-05","ept":14.7},{"d":"2026-07-06","ept":14.1},{"d":"2026-07-07","ept":11.4},{"d":"2026-07-08","ept":13},{"d":"2026-07-09","ept":12.9},{"d":"2026-07-10","ept":9.7},{"d":"2026-07-11","ept":13.1},{"d":"2026-07-12","ept":14.3},{"d":"2026-07-13","ept":11.6},{"d":"2026-07-14","ept":10.7},{"d":"2026-07-15","ept":10.9},{"d":"2026-07-16","ept":11.6},{"d":"2026-07-17","ept":13.9},{"d":"2026-07-18","ept":11},{"d":"2026-07-19","ept":13},{"d":"2026-07-20","ept":10.4},{"d":"2026-07-21","ept":12.6}],"watch_spark":[{"l":"Wk1 Jul 1–7","v":14.6},{"l":"Wk2 Jul 8–14","v":16.4},{"l":"Wk3 Jul 15–21","v":14.8}],"ret_spark":[{"l":"D1","v":8.6},{"l":"D15","v":1.9}],"eras":[{"date":"2026-07-03","l":"E2"},{"date":"2026-07-07","l":"E3"},{"date":"2026-07-13","l":"E4"}]};
+const DATA = {"generated_utc":"2026-07-22 07:44:49","last_full":"2026-07-21","daily_ept":[{"d":"2026-07-01","ept":15.7},{"d":"2026-07-02","ept":15},{"d":"2026-07-03","ept":13},{"d":"2026-07-04","ept":16},{"d":"2026-07-05","ept":14.7},{"d":"2026-07-06","ept":14.1},{"d":"2026-07-07","ept":11.4},{"d":"2026-07-08","ept":13},{"d":"2026-07-09","ept":12.9},{"d":"2026-07-10","ept":9.7},{"d":"2026-07-11","ept":13.1},{"d":"2026-07-12","ept":14.3},{"d":"2026-07-13","ept":11.6},{"d":"2026-07-14","ept":10.7},{"d":"2026-07-15","ept":10.9},{"d":"2026-07-16","ept":11.6},{"d":"2026-07-17","ept":13.9},{"d":"2026-07-18","ept":11},{"d":"2026-07-19","ept":13},{"d":"2026-07-20","ept":10.4},{"d":"2026-07-21","ept":12.6}],"watch_spark":[{"l":"Wk1 Jul 1–7","v":14.6},{"l":"Wk2 Jul 8–14","v":16.4},{"l":"Wk3 Jul 15–21","v":14.8}],"ret_spark":[{"l":"D1","v":8.6},{"l":"D15","v":1.9}],"eras":[{"date":"2026-07-03","l":"E2"},{"date":"2026-07-07","l":"E3"},{"date":"2026-07-13","l":"E4"}]};
 
 /* theme */
 const themeBtn = document.getElementById('theme-toggle');
