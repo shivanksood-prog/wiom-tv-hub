@@ -143,7 +143,7 @@ const days = DATA.days;
 const full = days.filter(d => !d.partial);
 const lbl = d => { const dt=new Date(d.day+'T00:00:00'); const l=dt.toLocaleDateString('en-IN',{day:'numeric',month:'short'}); return d.partial?l+' (today)':l; };
 document.getElementById('hdr-sub').textContent =
-  `Gap-fill metrics not on the Users Dashboard · uid era since 2026-06-23 · IST days · snapshot ${DATA.generated_utc} UTC · static page — ask for a refresh`;
+  `Gap-fill metrics not on the Users Dashboard · uid era since 2026-06-23 · IST days · refreshed ${DATA.generated_utc} UTC · auto-refreshes hourly`;
 
 /* ── KPI row: last 7 full days vs prior 7 ── */
 const w1 = full.slice(-7), w0 = full.slice(-14,-7);
@@ -290,7 +290,7 @@ document.getElementById('foot').innerHTML =
    A2HS: pwa_install = user answered the native install prompt in their first session; accept/decline isn't persisted and iOS installs are invisible (see the A2HS deep-dive tab).
    Errors: playback_error events / tune attempts; one dying stream can fire many errors, so this overweights dead channels vs user pain — the level matters less than the trend.<br>
    <b>Era markers:</b> ${ERAS.map((e,i)=>`<span class="era-chip"><b>E${i+1}</b> ${e.date} — ${e.label}</span>`).join('')}<br>
-   Static snapshot computed directly from analytics.db (${DATA.generated_utc} UTC) — this page does not auto-refresh; ask the analyst agent to regenerate.`;
+   Computed read-only from analytics.db (${DATA.generated_utc} UTC) — auto-refreshed hourly by <code>hub_scorecard_refresh.sh</code>; do not hand-edit this page.`;
 
 function renderAll(){ renderWatchHrs(); renderWmps(); renderPct(); renderRet(); renderA2hs(); renderErr(); }
 renderAll();
