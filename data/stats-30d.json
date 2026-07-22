@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-22T22:46:16Z",
+  "fetched_at": "2026-07-22T23:46:40Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 15238,
-      "total_tunes": 72127,
-      "total_watch_min": 2809887,
+      "unique_users": 15235,
+      "total_tunes": 72125,
+      "total_watch_min": 2809886.5,
       "avg_duration_sec": 2087.6
     },
     "channelLeaderboard": [
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 31879,
-        "unique_users": 9120,
-        "watch_min": 40884.2
+        "tunes": 31877,
+        "unique_users": 9118,
+        "watch_min": 40883.6
       },
       {
         "cat": "News",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 58067,
-        "unique_users": 11875,
-        "watch_min": 59929.9
+        "tunes": 58065,
+        "unique_users": 11873,
+        "watch_min": 59929.4
       },
       {
         "lang": "English",
@@ -442,16 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-06-22 22:00",
-        "users": 1,
-        "tunes": 0
-      },
-      {
-        "hour": "2026-06-22 23:00",
-        "users": 4,
-        "tunes": 2
-      },
       {
         "hour": "2026-06-23 00:00",
         "users": 8,
@@ -4026,15 +4016,14 @@
         "hour": "2026-07-22 21:00",
         "users": 9,
         "tunes": 151
+      },
+      {
+        "hour": "2026-07-22 23:00",
+        "users": 1,
+        "tunes": 0
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-06-22",
-        "users": 4,
-        "tunes": 2,
-        "watch_min": 0.5
-      },
       {
         "day": "2026-06-23",
         "users": 432,
@@ -4211,7 +4200,7 @@
       },
       {
         "day": "2026-07-22",
-        "users": 512,
+        "users": 513,
         "tunes": 2720,
         "watch_min": 59993.3
       }
@@ -4219,11 +4208,11 @@
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14467
+        "users": 14465
       },
       {
         "device": "desktop",
-        "users": 375
+        "users": 374
       }
     ],
     "funnel": {
@@ -4549,10 +4538,10 @@
       }
     ],
     "engagement": {
-      "sessions": 15238,
+      "sessions": 15235,
       "avg_channels": 3.8,
       "avg_session_sec": 194,
-      "bounce_pct": 51.3,
+      "bounce_pct": 51.2,
       "zap_pct": 51.8
     },
     "survey": {

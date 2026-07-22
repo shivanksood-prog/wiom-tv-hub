@@ -1,114 +1,30 @@
 {
-  "fetched_at": "2026-07-22T22:46:16Z",
+  "fetched_at": "2026-07-22T23:46:40Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
       "unique_users": 1,
-      "total_tunes": 7,
-      "total_watch_min": 0.5,
-      "avg_duration_sec": 4.4
+      "total_tunes": 0,
+      "total_watch_min": 0,
+      "avg_duration_sec": 0
     },
-    "channelLeaderboard": [
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 226,
-        "name": "Times Now Navbharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 50,
-        "name": "NDTV 24x7",
-        "cat": "News",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 41,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 185,
-        "name": "Republic Bharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 167,
-        "name": "News Nation",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      }
-    ],
-    "categoryBreakdown": [
-      {
-        "cat": "News",
-        "tunes": 7,
-        "unique_users": 1,
-        "watch_min": 0.5
-      }
-    ],
-    "languageBreakdown": [
-      {
-        "lang": "Hindi",
-        "tunes": 6,
-        "unique_users": 1,
-        "watch_min": 0.5
-      },
-      {
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      }
-    ],
+    "channelLeaderboard": [],
+    "categoryBreakdown": [],
+    "languageBreakdown": [],
     "hourlyTrend": [
       {
-        "hour": "2026-07-22 21:00",
+        "hour": "2026-07-22 23:00",
         "users": 1,
-        "tunes": 7
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-22",
         "users": 1,
-        "tunes": 7,
-        "watch_min": 0.5
+        "tunes": 0,
+        "watch_min": 0
       }
     ],
     "deviceBreakdown": [
@@ -119,31 +35,25 @@
     ],
     "funnel": {
       "opens": 1,
-      "playback": 1,
+      "playback": 0,
       "engaged": 0
     },
     "retention": {
-      "new_users": 1,
-      "returning_users": 0
+      "new_users": 0,
+      "returning_users": 1
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1566,
-      "samples": 7
+      "avg_ttff_ms": null,
+      "samples": 0
     },
-    "netBreakdown": [
-      {
-        "net": "4g",
-        "starts": 7,
-        "avg_ttff_ms": 1566
-      }
-    ],
+    "netBreakdown": [],
     "engagement": {
       "sessions": 1,
-      "avg_channels": 7,
-      "avg_session_sec": 31,
-      "bounce_pct": 0,
-      "zap_pct": 71.4
+      "avg_channels": 0,
+      "avg_session_sec": 0,
+      "bounce_pct": 100,
+      "zap_pct": 0
     },
     "survey": {
       "very": null,
