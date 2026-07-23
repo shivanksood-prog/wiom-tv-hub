@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-23T22:36:03Z",
+  "fetched_at": "2026-07-23T23:35:41Z",
   "data": {
     "period": "24h",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 502,
-      "total_tunes": 2298,
-      "total_watch_min": 16526.9,
-      "avg_duration_sec": 377.8
+      "unique_users": 504,
+      "total_tunes": 2304,
+      "total_watch_min": 16527.6,
+      "avg_duration_sec": 376.9
     },
     "channelLeaderboard": [
       {
@@ -78,9 +78,9 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 76,
-        "unique_users": 65,
-        "watch_min": 35.2
+        "tunes": 77,
+        "unique_users": 66,
+        "watch_min": 35.4
       },
       {
         "ch": 167,
@@ -168,9 +168,9 @@
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 66,
-        "unique_users": 60,
-        "watch_min": 12.2
+        "tunes": 67,
+        "unique_users": 61,
+        "watch_min": 12.3
       },
       {
         "ch": 248,
@@ -290,15 +290,15 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 629,
-        "unique_users": 156,
-        "watch_min": 319.4
+        "tunes": 632,
+        "unique_users": 157,
+        "watch_min": 319.7
       },
       {
         "cat": "Music",
-        "tunes": 398,
-        "unique_users": 144,
-        "watch_min": 189.8
+        "tunes": 401,
+        "unique_users": 145,
+        "watch_min": 190.2
       },
       {
         "cat": "Movies",
@@ -406,20 +406,20 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1794,
-        "unique_users": 399,
-        "watch_min": 908
+        "tunes": 1798,
+        "unique_users": 401,
+        "watch_min": 908.5
       },
       {
         "lang": "Punjabi",
-        "tunes": 171,
-        "unique_users": 78,
-        "watch_min": 40.4
+        "tunes": 172,
+        "unique_users": 79,
+        "watch_min": 40.5
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 105,
-        "unique_users": 78,
+        "tunes": 106,
+        "unique_users": 79,
         "watch_min": 22.9
       },
       {
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-22 23:00",
-        "users": 1,
-        "tunes": 0
-      },
       {
         "hour": "2026-07-23 00:00",
         "users": 7,
@@ -559,28 +554,27 @@
       },
       {
         "hour": "2026-07-23 22:00",
-        "users": 3,
+        "users": 4,
         "tunes": 4
+      },
+      {
+        "hour": "2026-07-23 23:00",
+        "users": 2,
+        "tunes": 6
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-22",
-        "users": 1,
-        "tunes": 0,
-        "watch_min": 0
-      },
-      {
         "day": "2026-07-23",
-        "users": 501,
-        "tunes": 2298,
-        "watch_min": 16526.9
+        "users": 504,
+        "tunes": 2304,
+        "watch_min": 16527.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 463
+        "users": 465
       },
       {
         "device": "desktop",
@@ -588,13 +582,13 @@
       }
     ],
     "funnel": {
-      "opens": 325,
-      "playback": 239,
+      "opens": 327,
+      "playback": 241,
       "engaged": 47
     },
     "retention": {
-      "new_users": 242,
-      "returning_users": 91
+      "new_users": 245,
+      "returning_users": 90
     },
     "errorBoard": [
       {
@@ -672,7 +666,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 5,
-        "starts": 114
+        "starts": 115
       },
       {
         "ch": 52,
@@ -700,7 +694,7 @@
         "name": "9X Tashan",
         "cat": "Music",
         "errors": 4,
-        "starts": 39
+        "starts": 40
       },
       {
         "ch": 226,
@@ -815,6 +809,13 @@
         "starts": 1
       },
       {
+        "ch": 128,
+        "name": "Hi Dost!",
+        "cat": "Entertainment",
+        "errors": 2,
+        "starts": 1
+      },
+      {
         "ch": 162,
         "name": "News 1 India",
         "cat": "News",
@@ -869,24 +870,17 @@
         "cat": "News",
         "errors": 2,
         "starts": 3
-      },
-      {
-        "ch": 172,
-        "name": "Oscar Movies Bhojpuri",
-        "cat": "Movies",
-        "errors": 2,
-        "starts": 3
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8681,
-      "samples": 1289
+      "avg_ttff_ms": 8664,
+      "samples": 1293
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1150,
-        "avg_ttff_ms": 7909
+        "starts": 1154,
+        "avg_ttff_ms": 7893
       },
       {
         "net": "3g",
@@ -905,10 +899,10 @@
       }
     ],
     "engagement": {
-      "sessions": 502,
+      "sessions": 504,
       "avg_channels": 3.8,
       "avg_session_sec": 128,
-      "bounce_pct": 48,
+      "bounce_pct": 47.8,
       "zap_pct": 48.4
     },
     "survey": {
