@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-23T21:30:23Z",
+  "fetched_at": "2026-07-23T22:36:03Z",
   "data": {
     "period": "7d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 3443,
-      "total_tunes": 17931,
-      "total_watch_min": 1924139.8,
-      "avg_duration_sec": 5689.1
+      "unique_users": 3444,
+      "total_tunes": 17934,
+      "total_watch_min": 1924129.6,
+      "avg_duration_sec": 5688.2
     },
     "channelLeaderboard": [
       {
@@ -15,8 +15,8 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 505,
-        "unique_users": 381,
+        "tunes": 506,
+        "unique_users": 382,
         "watch_min": 1890.5
       },
       {
@@ -24,9 +24,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 588,
+        "tunes": 587,
         "unique_users": 445,
-        "watch_min": 999.7
+        "watch_min": 989.3
       },
       {
         "ch": 235,
@@ -78,9 +78,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 747,
-        "unique_users": 617,
-        "watch_min": 318.4
+        "tunes": 749,
+        "unique_users": 619,
+        "watch_min": 318.5
       },
       {
         "ch": 44,
@@ -105,9 +105,9 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 450,
-        "unique_users": 347,
-        "watch_min": 182.4
+        "tunes": 451,
+        "unique_users": 348,
+        "watch_min": 182.5
       },
       {
         "ch": 3,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "Music",
-        "tunes": 3541,
-        "unique_users": 1027,
-        "watch_min": 2975.9
+        "tunes": 3542,
+        "unique_users": 1028,
+        "watch_min": 2976
       },
       {
         "cat": "News",
         "tunes": 5087,
         "unique_users": 1130,
-        "watch_min": 2936
+        "watch_min": 2925.7
       },
       {
         "cat": "Devotional",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 4835,
-        "unique_users": 1145,
-        "watch_min": 1408.4
+        "tunes": 4837,
+        "unique_users": 1147,
+        "watch_min": 1408.6
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13453,
-        "unique_users": 2579,
-        "watch_min": 8740.5
+        "tunes": 13456,
+        "unique_users": 2582,
+        "watch_min": 8730.4
       },
       {
         "lang": "Punjabi",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-16 21:00",
-        "users": 3,
-        "tunes": 1
-      },
-      {
         "hour": "2026-07-16 22:00",
-        "users": 3,
-        "tunes": 2
+        "users": 2,
+        "tunes": 1
       },
       {
         "hour": "2026-07-16 23:00",
@@ -1279,16 +1274,21 @@
       },
       {
         "hour": "2026-07-23 21:00",
+        "users": 4,
+        "tunes": 32
+      },
+      {
+        "hour": "2026-07-23 22:00",
         "users": 3,
-        "tunes": 31
+        "tunes": 4
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-16",
-        "users": 7,
-        "tunes": 6,
-        "watch_min": 10.7
+        "users": 4,
+        "tunes": 4,
+        "watch_min": 0.3
       },
       {
         "day": "2026-07-17",
@@ -1328,15 +1328,15 @@
       },
       {
         "day": "2026-07-23",
-        "users": 497,
-        "tunes": 2293,
-        "watch_min": 16526.5
+        "users": 501,
+        "tunes": 2298,
+        "watch_min": 16526.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3203
+        "users": 3204
       },
       {
         "device": "desktop",
@@ -1344,13 +1344,13 @@
       }
     ],
     "funnel": {
-      "opens": 2059,
-      "playback": 1634,
-      "engaged": 322
+      "opens": 2060,
+      "playback": 1636,
+      "engaged": 321
     },
     "retention": {
-      "new_users": 1775,
-      "returning_users": 311
+      "new_users": 1777,
+      "returning_users": 310
     },
     "errorBoard": [
       {
@@ -1407,7 +1407,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 42,
-        "starts": 574
+        "starts": 576
       },
       {
         "ch": 30,
@@ -1477,7 +1477,7 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 21,
-        "starts": 336
+        "starts": 337
       },
       {
         "ch": 40,
@@ -1498,7 +1498,7 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "errors": 20,
-        "starts": 277
+        "starts": 278
       },
       {
         "ch": 33,
@@ -1635,14 +1635,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8424,
-      "samples": 10065
+      "avg_ttff_ms": 8421,
+      "samples": 10069
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8651,
-        "avg_ttff_ms": 8208
+        "starts": 8655,
+        "avg_ttff_ms": 8205
       },
       {
         "net": "3g",
@@ -1666,7 +1666,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3443,
+      "sessions": 3444,
       "avg_channels": 4.2,
       "avg_session_sec": 192,
       "bounce_pct": 47.2,

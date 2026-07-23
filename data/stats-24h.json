@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-23T21:30:23Z",
+  "fetched_at": "2026-07-23T22:36:03Z",
   "data": {
     "period": "24h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 500,
-      "total_tunes": 2311,
-      "total_watch_min": 16528.3,
-      "avg_duration_sec": 375.9
+      "unique_users": 502,
+      "total_tunes": 2298,
+      "total_watch_min": 16526.9,
+      "avg_duration_sec": 377.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 140,
-        "unique_users": 113,
-        "watch_min": 120.3
+        "tunes": 139,
+        "unique_users": 112,
+        "watch_min": 120.1
       },
       {
         "ch": 38,
@@ -51,9 +51,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 94,
-        "unique_users": 78,
-        "watch_min": 41.5
+        "tunes": 96,
+        "unique_users": 80,
+        "watch_min": 41.7
       },
       {
         "ch": 75,
@@ -69,17 +69,17 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 53,
-        "unique_users": 43,
-        "watch_min": 38.5
+        "tunes": 51,
+        "unique_users": 41,
+        "watch_min": 38.3
       },
       {
         "ch": 29,
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 75,
-        "unique_users": 64,
+        "tunes": 76,
+        "unique_users": 65,
         "watch_min": 35.2
       },
       {
@@ -87,27 +87,27 @@
         "name": "News Nation",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 43,
-        "unique_users": 35,
-        "watch_min": 33.5
+        "tunes": 41,
+        "unique_users": 33,
+        "watch_min": 33.4
       },
       {
         "ch": 185,
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 59,
-        "unique_users": 46,
-        "watch_min": 30.4
+        "tunes": 57,
+        "unique_users": 44,
+        "watch_min": 30.1
       },
       {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 43,
-        "unique_users": 33,
-        "watch_min": 28.9
+        "tunes": 41,
+        "unique_users": 31,
+        "watch_min": 28.8
       },
       {
         "ch": 11,
@@ -132,9 +132,9 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 71,
-        "unique_users": 58,
-        "watch_min": 24.4
+        "tunes": 70,
+        "unique_users": 57,
+        "watch_min": 24
       },
       {
         "ch": 5,
@@ -150,8 +150,8 @@
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 21,
-        "unique_users": 17,
+        "tunes": 20,
+        "unique_users": 16,
         "watch_min": 15
       },
       {
@@ -267,8 +267,8 @@
         "name": "Zee Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 14,
-        "unique_users": 13,
+        "tunes": 13,
+        "unique_users": 12,
         "watch_min": 7.6
       },
       {
@@ -284,20 +284,20 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 737,
-        "unique_users": 201,
-        "watch_min": 360.6
+        "tunes": 721,
+        "unique_users": 200,
+        "watch_min": 359.1
       },
       {
         "cat": "Entertainment",
-        "tunes": 627,
-        "unique_users": 154,
-        "watch_min": 319.3
+        "tunes": 629,
+        "unique_users": 156,
+        "watch_min": 319.4
       },
       {
         "cat": "Music",
-        "tunes": 397,
-        "unique_users": 143,
+        "tunes": 398,
+        "unique_users": 144,
         "watch_min": 189.8
       },
       {
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1804,
-        "unique_users": 397,
-        "watch_min": 909.2
+        "tunes": 1794,
+        "unique_users": 399,
+        "watch_min": 908
       },
       {
         "lang": "Punjabi",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "English",
-        "tunes": 135,
-        "unique_users": 66,
-        "watch_min": 14.3
+        "tunes": 132,
+        "unique_users": 64,
+        "watch_min": 14.2
       },
       {
         "lang": "Marathi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-22 21:00",
-        "users": 2,
-        "tunes": 18
-      },
       {
         "hour": "2026-07-22 23:00",
         "users": 1,
@@ -559,28 +554,33 @@
       },
       {
         "hour": "2026-07-23 21:00",
+        "users": 4,
+        "tunes": 32
+      },
+      {
+        "hour": "2026-07-23 22:00",
         "users": 3,
-        "tunes": 31
+        "tunes": 4
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-22",
-        "users": 3,
-        "tunes": 18,
-        "watch_min": 1.7
+        "users": 1,
+        "tunes": 0,
+        "watch_min": 0
       },
       {
         "day": "2026-07-23",
-        "users": 497,
-        "tunes": 2293,
-        "watch_min": 16526.5
+        "users": 501,
+        "tunes": 2298,
+        "watch_min": 16526.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 461
+        "users": 463
       },
       {
         "device": "desktop",
@@ -588,13 +588,13 @@
       }
     ],
     "funnel": {
-      "opens": 324,
-      "playback": 238,
+      "opens": 325,
+      "playback": 239,
       "engaged": 47
     },
     "retention": {
       "new_users": 242,
-      "returning_users": 90
+      "returning_users": 91
     },
     "errorBoard": [
       {
@@ -665,14 +665,14 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 5,
-        "starts": 70
+        "starts": 72
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 5,
-        "starts": 115
+        "starts": 114
       },
       {
         "ch": 52,
@@ -707,14 +707,14 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "errors": 4,
-        "starts": 41
+        "starts": 40
       },
       {
         "ch": 41,
         "name": "ABP News",
         "cat": "News",
         "errors": 4,
-        "starts": 43
+        "starts": 41
       },
       {
         "ch": 36,
@@ -770,7 +770,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 3,
-        "starts": 16
+        "starts": 15
       },
       {
         "ch": 26,
@@ -879,14 +879,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8611,
-      "samples": 1302
+      "avg_ttff_ms": 8681,
+      "samples": 1289
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1163,
-        "avg_ttff_ms": 7839
+        "starts": 1150,
+        "avg_ttff_ms": 7909
       },
       {
         "net": "3g",
@@ -905,10 +905,10 @@
       }
     ],
     "engagement": {
-      "sessions": 500,
+      "sessions": 502,
       "avg_channels": 3.8,
-      "avg_session_sec": 129,
-      "bounce_pct": 47.6,
+      "avg_session_sec": 128,
+      "bounce_pct": 48,
       "zap_pct": 48.4
     },
     "survey": {
