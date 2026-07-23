@@ -1,167 +1,77 @@
 {
-  "fetched_at": "2026-07-23T17:44:26Z",
+  "fetched_at": "2026-07-23T18:52:44Z",
   "data": {
     "period": "1h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 25,
-      "total_tunes": 107,
-      "total_watch_min": 338.9,
-      "avg_duration_sec": 169.5
+      "unique_users": 37,
+      "total_tunes": 160,
+      "total_watch_min": 2973.4,
+      "avg_duration_sec": 985.7
     },
     "channelLeaderboard": [
+      {
+        "ch": 62,
+        "name": "ABP Ganga",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 7.8
+      },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 8,
-        "watch_min": 15.8
+        "tunes": 10,
+        "unique_users": 10,
+        "watch_min": 3
       },
       {
-        "ch": 41,
-        "name": "ABP News",
+        "ch": 147,
+        "name": "Living India News",
         "cat": "News",
-        "lang": "Hindi",
+        "lang": "Punjabi",
         "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 8
+        "unique_users": 1,
+        "watch_min": 2.4
       },
       {
-        "ch": 9,
-        "name": "Zee South Flix",
+        "ch": 8,
+        "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 5.2
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 1.7
+      },
+      {
+        "ch": 223,
+        "name": "The Movie Club",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 6,
+        "unique_users": 6,
+        "watch_min": 1.4
       },
       {
         "ch": 32,
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "lang": "Bhojpuri",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 4.8
-      },
-      {
-        "ch": 25,
-        "name": "ZB Cinema",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 4.2
-      },
-      {
-        "ch": 62,
-        "name": "ABP Ganga",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 2.8
-      },
-      {
-        "ch": 105,
-        "name": "DD National SD",
-        "cat": "Entertainment",
-        "lang": "Hindi",
         "tunes": 4,
-        "unique_users": 1,
-        "watch_min": 1.7
-      },
-      {
-        "ch": 27,
-        "name": "9XM",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 1.6
-      },
-      {
-        "ch": 21,
-        "name": "Travelxp 4K",
-        "cat": "Entertainment",
-        "lang": "English",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 1.2
-      },
-      {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 3,
         "unique_users": 3,
-        "watch_min": 0.9
-      },
-      {
-        "ch": 5,
-        "name": "Zee Comedy Nation",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.9
+        "watch_min": 1.3
       },
       {
         "ch": 30,
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 4,
-        "watch_min": 0.8
-      },
-      {
-        "ch": 167,
-        "name": "News Nation",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.6
-      },
-      {
-        "ch": 180,
-        "name": "PTC Punjabi Gold",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 179,
-        "name": "PTC Punjabi",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 77,
-        "name": "Ananda Barta",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 11,
-        "name": "Shubh Cinema",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
+        "tunes": 8,
+        "unique_users": 8,
+        "watch_min": 1.2
       },
       {
         "ch": 2,
@@ -170,253 +80,462 @@
         "lang": "Hindi",
         "tunes": 4,
         "unique_users": 4,
-        "watch_min": 0.3
+        "watch_min": 1.1
       },
       {
-        "ch": 239,
-        "name": "Weatherspy",
-        "cat": "Weather",
-        "lang": "English",
+        "ch": 106,
+        "name": "DD News HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 1
+      },
+      {
+        "ch": 170,
+        "name": "NTC TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.9
+      },
+      {
+        "ch": 104,
+        "name": "DD National HD",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.9
+      },
+      {
+        "ch": 53,
+        "name": "AmarUjala",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 1,
+        "watch_min": 0.9
+      },
+      {
+        "ch": 139,
+        "name": "Ishwar Bhakti TV",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.8
+      },
+      {
+        "ch": 105,
+        "name": "DD National SD",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 2,
+        "watch_min": 0.8
+      },
+      {
+        "ch": 27,
+        "name": "9XM",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.8
+      },
+      {
+        "ch": 248,
+        "name": "Zee Rajasthan",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.6
+      },
+      {
+        "ch": 172,
+        "name": "Oscar Movies Bhojpuri",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.6
+      },
+      {
+        "ch": 46,
+        "name": "News 24",
+        "cat": "News",
+        "lang": "Hindi",
         "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.2
+        "watch_min": 0.6
+      },
+      {
+        "ch": 29,
+        "name": "9X Jhakaas",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.6
       },
       {
         "ch": 226,
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.5
+      },
+      {
+        "ch": 191,
+        "name": "Salvation TV",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.4
+      },
+      {
+        "ch": 59,
+        "name": "Channel Divya",
+        "cat": "Devotional",
+        "lang": "Punjabi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.4
+      },
+      {
+        "ch": 41,
+        "name": "ABP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.4
+      },
+      {
+        "ch": 118,
+        "name": "Goldmines",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 107,
+        "name": "DD Punjabi",
+        "cat": "Culture",
+        "lang": "Punjabi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 87,
+        "name": "Big TV 24x7",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 35,
+        "name": "Pitaara",
+        "cat": "Music",
+        "lang": "Punjabi",
+        "tunes": 3,
+        "unique_users": 3,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 33,
+        "name": "YRF Music",
+        "cat": "Music",
+        "lang": "Hindi",
         "tunes": 4,
         "unique_users": 4,
-        "watch_min": 0.2
+        "watch_min": 0.3
       },
       {
-        "ch": 205,
-        "name": "Shekinah TV",
-        "cat": "Undefined",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 223,
-        "name": "The Movie Club",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 216,
-        "name": "Studio One +",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 215,
-        "name": "Stingray Today's KPOP",
-        "cat": "Music",
-        "lang": "English",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 206,
-        "name": "Shemaroo TV",
+        "ch": 9,
+        "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 185,
-        "name": "Republic Bharat",
-        "cat": "News",
-        "lang": "Hindi",
         "tunes": 2,
         "unique_users": 2,
-        "watch_min": 0.1
+        "watch_min": 0.3
       },
       {
-        "ch": 182,
-        "name": "Qello Concerts by Stingray",
+        "ch": 192,
+        "name": "Sana Plus",
         "cat": "Music",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 175,
-        "name": "Prime News",
-        "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 171,
-        "name": "Onkar Only Truth TV",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.2
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 36,
-        "unique_users": 9,
-        "watch_min": 29.5
+        "tunes": 42,
+        "unique_users": 14,
+        "watch_min": 19.3
       },
       {
         "cat": "Entertainment",
-        "tunes": 36,
-        "unique_users": 10,
-        "watch_min": 11.1
+        "tunes": 39,
+        "unique_users": 7,
+        "watch_min": 7.5
       },
       {
         "cat": "Music",
-        "tunes": 20,
-        "unique_users": 5,
-        "watch_min": 7.8
+        "tunes": 31,
+        "unique_users": 12,
+        "watch_min": 5.3
       },
       {
         "cat": "Movies",
-        "tunes": 6,
-        "unique_users": 4,
-        "watch_min": 4.3
+        "tunes": 13,
+        "unique_users": 10,
+        "watch_min": 2.6
       },
       {
         "cat": "Devotional",
-        "tunes": 4,
+        "tunes": 15,
         "unique_users": 2,
-        "watch_min": 0.3
+        "watch_min": 2.6
       },
       {
-        "cat": "Weather",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.2
+        "cat": "DD",
+        "tunes": 8,
+        "unique_users": 3,
+        "watch_min": 0.5
       },
       {
         "cat": "Undefined",
+        "tunes": 3,
+        "unique_users": 2,
+        "watch_min": 0.4
+      },
+      {
+        "cat": "Culture",
         "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "cat": "Kids",
+        "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.2
       },
       {
-        "cat": "Education",
+        "cat": "Business",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0
+        "watch_min": 0.2
+      },
+      {
+        "cat": "Science",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "cat": "Legislative",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "cat": "Education",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "cat": "Documentary",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 83,
-        "unique_users": 21,
-        "watch_min": 45.8
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 4.8
-      },
-      {
-        "lang": "English",
-        "tunes": 9,
-        "unique_users": 4,
-        "watch_min": 1.6
+        "tunes": 126,
+        "unique_users": 30,
+        "watch_min": 32.2
       },
       {
         "lang": "Punjabi",
-        "tunes": 10,
+        "tunes": 16,
+        "unique_users": 7,
+        "watch_min": 3.9
+      },
+      {
+        "lang": "Bhojpuri",
+        "tunes": 6,
+        "unique_users": 4,
+        "watch_min": 1.9
+      },
+      {
+        "lang": "English",
+        "tunes": 6,
         "unique_users": 3,
-        "watch_min": 0.9
+        "watch_min": 0.7
       },
       {
         "lang": "Marathi",
-        "tunes": 3,
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.5
+      },
+      {
+        "lang": "Urdu",
+        "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.3
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-23 16:00",
-        "users": 7,
-        "tunes": 11
+        "hour": "2026-07-23 17:00",
+        "users": 6,
+        "tunes": 26
       },
       {
-        "hour": "2026-07-23 17:00",
-        "users": 19,
-        "tunes": 96
+        "hour": "2026-07-23 18:00",
+        "users": 31,
+        "tunes": 134
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-23",
-        "users": 25,
-        "tunes": 107,
-        "watch_min": 338.9
+        "users": 37,
+        "tunes": 160,
+        "watch_min": 2973.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 24
+        "users": 33
       }
     ],
     "funnel": {
-      "opens": 21,
-      "playback": 10,
-      "engaged": 5
+      "opens": 28,
+      "playback": 19,
+      "engaged": 3
     },
     "retention": {
-      "new_users": 13,
-      "returning_users": 9
+      "new_users": 20,
+      "returning_users": 10
     },
     "errorBoard": [
       {
-        "ch": 4,
-        "name": "Epic TV",
+        "ch": 33,
+        "name": "YRF Music",
+        "cat": "Music",
+        "errors": 3,
+        "starts": 0
+      },
+      {
+        "ch": 36,
+        "name": "Zoom",
+        "cat": "Music",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 41,
+        "name": "ABP News",
+        "cat": "News",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 44,
+        "name": "NDTV India",
+        "cat": "News",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 53,
+        "name": "AmarUjala",
+        "cat": "News",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 107,
+        "name": "DD Punjabi",
+        "cat": "Culture",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 132,
+        "name": "IBC 24",
+        "cat": "News",
+        "errors": 2,
+        "starts": 0
+      },
+      {
+        "ch": 8,
+        "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "errors": 1,
         "starts": 0
       },
       {
-        "ch": 10,
-        "name": "History TV18 HD",
+        "ch": 15,
+        "name": "NDTV Good Times",
         "cat": "Entertainment",
         "errors": 1,
         "starts": 0
       },
       {
-        "ch": 21,
-        "name": "Travelxp 4K",
+        "ch": 16,
+        "name": "Travelxp HD",
         "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 18,
+        "name": "Desi Channel",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 20,
+        "name": "Gangaur TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 42,
+        "name": "Zee News",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 43,
+        "name": "India TV",
+        "cat": "News",
         "errors": 1,
         "starts": 0
       },
@@ -428,81 +547,214 @@
         "starts": 0
       },
       {
-        "ch": 171,
-        "name": "Onkar Only Truth TV",
+        "ch": 55,
+        "name": "Zee Business",
+        "cat": "Business",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 57,
+        "name": "Aastha",
+        "cat": "Devotional",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 65,
+        "name": "NDTV Marathi",
         "cat": "News",
         "errors": 1,
         "starts": 0
       },
       {
-        "ch": 206,
-        "name": "Shemaroo TV",
+        "ch": 72,
+        "name": "Aastha Prime 1",
+        "cat": "Devotional",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 73,
+        "name": "ABP News",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 74,
+        "name": "Adhyatm TV",
+        "cat": "Devotional",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 82,
+        "name": "Arputhar Yesu TV",
+        "cat": "Devotional",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 86,
+        "name": "Bharat Samachar",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 97,
+        "name": "DD Goa",
+        "cat": "DD",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 112,
+        "name": "DD Uttarakhand",
+        "cat": "DD",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 122,
+        "name": "GTC Punjabi",
         "cat": "Entertainment",
         "errors": 1,
         "starts": 0
       },
       {
-        "ch": 239,
-        "name": "Weatherspy",
-        "cat": "Weather",
+        "ch": 128,
+        "name": "Hi Dost!",
+        "cat": "Entertainment",
         "errors": 1,
         "starts": 0
       },
       {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
+        "ch": 134,
+        "name": "India Today",
+        "cat": "News",
         "errors": 1,
-        "starts": 1
+        "starts": 0
       },
       {
-        "ch": 5,
-        "name": "Zee Comedy Nation",
-        "cat": "Entertainment",
+        "ch": 137,
+        "name": "INWILD",
+        "cat": "Documentary",
         "errors": 1,
-        "starts": 1
+        "starts": 0
       },
       {
-        "ch": 180,
-        "name": "PTC Punjabi Gold",
+        "ch": 138,
+        "name": "InWonder",
+        "cat": "Science",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 140,
+        "name": "Jan TV",
+        "cat": "DD",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 141,
+        "name": "Janta TV",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 142,
+        "name": "Jinvani Channel",
+        "cat": "Devotional",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 149,
+        "name": "Maha Punjabi",
         "cat": "Entertainment",
         "errors": 1,
-        "starts": 2
+        "starts": 0
+      },
+      {
+        "ch": 157,
+        "name": "NDTV 24x7",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 162,
+        "name": "News 1 India",
+        "cat": "News",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 182,
+        "name": "Qello Concerts by Stingray",
+        "cat": "Music",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 187,
+        "name": "Saam TV",
+        "cat": "Undefined",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 197,
+        "name": "Sansad TV 1 HD",
+        "cat": "Legislative",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 208,
+        "name": "South Station",
+        "cat": "Movies",
+        "errors": 1,
+        "starts": 0
       }
     ],
     "perf": {
-      "avg_ttff_ms": 2001,
-      "samples": 55
+      "avg_ttff_ms": 4306,
+      "samples": 56
     },
     "netBreakdown": [
       {
         "net": "4g",
         "starts": 50,
-        "avg_ttff_ms": 1977
+        "avg_ttff_ms": 3611
       },
       {
         "net": "3g",
         "starts": 4,
-        "avg_ttff_ms": 2440
+        "avg_ttff_ms": 13938
       },
       {
         "net": "unknown",
-        "starts": 1,
-        "avg_ttff_ms": 1464
+        "starts": 2,
+        "avg_ttff_ms": 2414
       }
     ],
     "engagement": {
-      "sessions": 25,
+      "sessions": 37,
       "avg_channels": 3.8,
-      "avg_session_sec": 124,
-      "bounce_pct": 56,
-      "zap_pct": 46.7
+      "avg_session_sec": 68,
+      "bounce_pct": 59.5,
+      "zap_pct": 31.9
     },
     "survey": {
-      "very": null,
-      "somewhat": null,
-      "not_disappointed": null,
-      "responses": 0
+      "very": 0,
+      "somewhat": 0,
+      "not_disappointed": 2,
+      "responses": 2
     }
   }
 }
