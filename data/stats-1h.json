@@ -1,51 +1,15 @@
 {
-  "fetched_at": "2026-07-26T22:07:14Z",
+  "fetched_at": "2026-07-26T23:10:48Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 9,
-      "total_tunes": 17,
-      "total_watch_min": 2.1,
-      "avg_duration_sec": 6.9
+      "unique_users": 1,
+      "total_tunes": 1,
+      "total_watch_min": 0.1,
+      "avg_duration_sec": 7
     },
     "channelLeaderboard": [
-      {
-        "ch": 20,
-        "name": "Gangaur TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 136,
-        "name": "INFAST",
-        "cat": "Lifestyle",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 29,
-        "name": "9X Jhakaas",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
       {
         "ch": 2,
         "name": "Dangal TV",
@@ -53,169 +17,73 @@
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 57,
-        "name": "Aastha",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
         "watch_min": 0.1
-      },
-      {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 226,
-        "name": "Times Now Navbharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 30,
-        "name": "9X Tashan",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.6
-      },
-      {
-        "cat": "Music",
-        "tunes": 8,
-        "unique_users": 2,
-        "watch_min": 0.4
-      },
-      {
-        "cat": "News",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Lifestyle",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Devotional",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
-      },
-      {
-        "cat": "Movies",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13,
-        "unique_users": 6,
-        "watch_min": 1.7
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0
+        "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-26 21:00",
-        "users": 9,
-        "tunes": 17
+        "hour": "2026-07-26 22:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-26",
-        "users": 9,
-        "tunes": 17,
-        "watch_min": 2.1
+        "users": 1,
+        "tunes": 1,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 8
-      },
-      {
-        "device": "desktop",
         "users": 1
       }
     ],
     "funnel": {
-      "opens": 8,
-      "playback": 6,
+      "opens": 1,
+      "playback": 1,
       "engaged": 0
     },
     "retention": {
-      "new_users": 6,
-      "returning_users": 2
+      "new_users": 1,
+      "returning_users": 0
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 3560,
-      "samples": 8
+      "avg_ttff_ms": 6072,
+      "samples": 1
     },
     "netBreakdown": [
       {
-        "net": "4g",
-        "starts": 7,
-        "avg_ttff_ms": 3461
-      },
-      {
         "net": "3g",
         "starts": 1,
-        "avg_ttff_ms": 4250
+        "avg_ttff_ms": 6072
       }
     ],
     "engagement": {
-      "sessions": 9,
-      "avg_channels": 1.3,
-      "avg_session_sec": 25,
-      "bounce_pct": 66.7,
-      "zap_pct": 47.1
+      "sessions": 1,
+      "avg_channels": 1,
+      "avg_session_sec": 8,
+      "bounce_pct": 100,
+      "zap_pct": 0
     },
     "survey": {
       "very": null,
