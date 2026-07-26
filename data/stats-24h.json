@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-25T23:11:50Z",
+  "fetched_at": "2026-07-26T00:16:36Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 535,
-      "total_tunes": 3339,
-      "total_watch_min": 37984.3,
-      "avg_duration_sec": 601.7
+      "unique_users": 538,
+      "total_tunes": 3344,
+      "total_watch_min": 37988.9,
+      "avg_duration_sec": 600.9
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 172,
-        "unique_users": 128,
-        "watch_min": 1282
+        "tunes": 175,
+        "unique_users": 131,
+        "watch_min": 1286.5
       },
       {
         "ch": 27,
@@ -96,9 +96,9 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 97,
-        "unique_users": 77,
-        "watch_min": 46.1
+        "tunes": 99,
+        "unique_users": 79,
+        "watch_min": 46.2
       },
       {
         "ch": 25,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 1135,
-        "unique_users": 211,
-        "watch_min": 2149.4
+        "tunes": 1140,
+        "unique_users": 214,
+        "watch_min": 2154.1
       },
       {
         "cat": "Music",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 2599,
-        "unique_users": 416,
-        "watch_min": 3716.8
+        "tunes": 2604,
+        "unique_users": 419,
+        "watch_min": 3721.4
       },
       {
         "lang": "Bhojpuri",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-24 23:00",
-        "users": 2,
-        "tunes": 0
-      },
       {
         "hour": "2026-07-25 01:00",
         "users": 4,
@@ -559,22 +554,16 @@
       },
       {
         "hour": "2026-07-25 23:00",
-        "users": 2,
-        "tunes": 21
+        "users": 6,
+        "tunes": 26
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-24",
-        "users": 2,
-        "tunes": 0,
-        "watch_min": 0
-      },
-      {
         "day": "2026-07-25",
-        "users": 534,
-        "tunes": 3339,
-        "watch_min": 37984.3
+        "users": 538,
+        "tunes": 3344,
+        "watch_min": 37988.9
       }
     ],
     "deviceBreakdown": [
@@ -584,16 +573,16 @@
       },
       {
         "device": "desktop",
-        "users": 15
+        "users": 16
       }
     ],
     "funnel": {
-      "opens": 351,
-      "playback": 282,
-      "engaged": 55
+      "opens": 354,
+      "playback": 285,
+      "engaged": 56
     },
     "retention": {
-      "new_users": 249,
+      "new_users": 253,
       "returning_users": 112
     },
     "errorBoard": [
@@ -675,18 +664,18 @@
         "starts": 97
       },
       {
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
+        "errors": 8,
+        "starts": 138
+      },
+      {
         "ch": 216,
         "name": "Studio One +",
         "cat": "Movies",
         "errors": 7,
         "starts": 27
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "errors": 7,
-        "starts": 136
       },
       {
         "ch": 52,
@@ -879,14 +868,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 33053,
-      "samples": 1938
+      "avg_ttff_ms": 32987,
+      "samples": 1942
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1752,
-        "avg_ttff_ms": 36102
+        "starts": 1754,
+        "avg_ttff_ms": 36062
       },
       {
         "net": "3g",
@@ -895,8 +884,8 @@
       },
       {
         "net": "unknown",
-        "starts": 25,
-        "avg_ttff_ms": 2002
+        "starts": 27,
+        "avg_ttff_ms": 1909
       },
       {
         "net": "slow-2g",
@@ -905,10 +894,10 @@
       }
     ],
     "engagement": {
-      "sessions": 535,
+      "sessions": 538,
       "avg_channels": 5.1,
-      "avg_session_sec": 269,
-      "bounce_pct": 43.2,
+      "avg_session_sec": 237,
+      "bounce_pct": 43.1,
       "zap_pct": 52.7
     },
     "survey": {
