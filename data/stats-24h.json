@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-26T23:10:48Z",
+  "fetched_at": "2026-07-27T00:16:18Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 524,
-      "total_tunes": 2620,
-      "total_watch_min": 18159.7,
-      "avg_duration_sec": 365.6
+      "unique_users": 523,
+      "total_tunes": 2622,
+      "total_watch_min": 18307.6,
+      "avg_duration_sec": 368.4
     },
     "channelLeaderboard": [
       {
@@ -18,6 +18,15 @@
         "tunes": 149,
         "unique_users": 95,
         "watch_min": 286.4
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 29,
+        "unique_users": 23,
+        "watch_min": 155.8
       },
       {
         "ch": 249,
@@ -33,9 +42,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 38,
-        "unique_users": 31,
-        "watch_min": 108.7
+        "tunes": 40,
+        "unique_users": 32,
+        "watch_min": 108.8
       },
       {
         "ch": 180,
@@ -47,22 +56,22 @@
         "watch_min": 78.4
       },
       {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 121,
-        "unique_users": 101,
-        "watch_min": 51.6
-      },
-      {
         "ch": 29,
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 120,
-        "unique_users": 97,
-        "watch_min": 49.1
+        "tunes": 121,
+        "unique_users": 98,
+        "watch_min": 49.2
+      },
+      {
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 118,
+        "unique_users": 98,
+        "watch_min": 47.1
       },
       {
         "ch": 2,
@@ -132,9 +141,9 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 62,
-        "unique_users": 53,
-        "watch_min": 22.7
+        "tunes": 60,
+        "unique_users": 51,
+        "watch_min": 22.6
       },
       {
         "ch": 41,
@@ -254,6 +263,15 @@
         "watch_min": 9
       },
       {
+        "ch": 44,
+        "name": "NDTV India",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 33,
+        "unique_users": 30,
+        "watch_min": 7.9
+      },
+      {
         "ch": 26,
         "name": "Shemaroo Marathi Bana",
         "cat": "Movies",
@@ -261,32 +279,20 @@
         "tunes": 50,
         "unique_users": 40,
         "watch_min": 7.9
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 31,
-        "unique_users": 29,
-        "watch_min": 7.8
-      },
-      {
-        "ch": 191,
-        "name": "Salvation TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 7.5
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 719,
-        "unique_users": 177,
-        "watch_min": 466.7
+        "tunes": 718,
+        "unique_users": 175,
+        "watch_min": 462.2
+      },
+      {
+        "cat": "Entertainment",
+        "tunes": 693,
+        "unique_users": 175,
+        "watch_min": 398.7
       },
       {
         "cat": "Movies",
@@ -295,16 +301,10 @@
         "watch_min": 355.3
       },
       {
-        "cat": "Entertainment",
-        "tunes": 691,
-        "unique_users": 174,
-        "watch_min": 246.4
-      },
-      {
         "cat": "Music",
-        "tunes": 539,
-        "unique_users": 151,
-        "watch_min": 134.5
+        "tunes": 540,
+        "unique_users": 152,
+        "watch_min": 134.6
       },
       {
         "cat": "Devotional",
@@ -400,9 +400,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1950,
+        "tunes": 1952,
         "unique_users": 384,
-        "watch_min": 824.6
+        "watch_min": 972.5
       },
       {
         "lang": "Bhojpuri",
@@ -436,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-25 23:00",
-        "users": 4,
-        "tunes": 5
-      },
       {
         "hour": "2026-07-26 00:00",
         "users": 1,
@@ -555,39 +550,49 @@
         "hour": "2026-07-26 22:00",
         "users": 1,
         "tunes": 1
+      },
+      {
+        "hour": "2026-07-26 23:00",
+        "users": 2,
+        "tunes": 5
+      },
+      {
+        "hour": "2026-07-27 00:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-25",
-        "users": 4,
-        "tunes": 5,
-        "watch_min": 4.6
+        "day": "2026-07-26",
+        "users": 521,
+        "tunes": 2620,
+        "watch_min": 18307.5
       },
       {
-        "day": "2026-07-26",
-        "users": 520,
-        "tunes": 2615,
-        "watch_min": 18155.1
+        "day": "2026-07-27",
+        "users": 2,
+        "tunes": 2,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 478
+        "users": 479
       },
       {
         "device": "desktop",
-        "users": 31
+        "users": 30
       }
     ],
     "funnel": {
-      "opens": 392,
-      "playback": 297,
+      "opens": 390,
+      "playback": 295,
       "engaged": 56
     },
     "retention": {
-      "new_users": 295,
+      "new_users": 292,
       "returning_users": 105
     },
     "errorBoard": [
@@ -641,13 +646,6 @@
         "starts": 0
       },
       {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "errors": 6,
-        "starts": 100
-      },
-      {
         "ch": 25,
         "name": "ZB Cinema",
         "cat": "Movies",
@@ -660,6 +658,13 @@
         "cat": "Music",
         "errors": 5,
         "starts": 18
+      },
+      {
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
+        "errors": 5,
+        "starts": 98
       },
       {
         "ch": 2,
@@ -687,7 +692,7 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 4,
-        "starts": 91
+        "starts": 92
       },
       {
         "ch": 24,
@@ -873,14 +878,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 3267,
-      "samples": 1446
+      "avg_ttff_ms": 3274,
+      "samples": 1445
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1237,
-        "avg_ttff_ms": 3170
+        "starts": 1238,
+        "avg_ttff_ms": 3173
       },
       {
         "net": "3g",
@@ -889,8 +894,8 @@
       },
       {
         "net": "unknown",
-        "starts": 41,
-        "avg_ttff_ms": 2422
+        "starts": 39,
+        "avg_ttff_ms": 2508
       },
       {
         "net": "slow-2g",
@@ -899,11 +904,11 @@
       }
     ],
     "engagement": {
-      "sessions": 524,
+      "sessions": 523,
       "avg_channels": 4.1,
-      "avg_session_sec": 200,
-      "bounce_pct": 48.5,
-      "zap_pct": 53.8
+      "avg_session_sec": 218,
+      "bounce_pct": 48.6,
+      "zap_pct": 53.9
     },
     "survey": {
       "very": 4,

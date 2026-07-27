@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-26T23:10:48Z",
+  "fetched_at": "2026-07-27T00:16:18Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3502,
-      "total_tunes": 19111,
-      "total_watch_min": 2026238.2,
-      "avg_duration_sec": 5585.5
+      "unique_users": 3503,
+      "total_tunes": 19115,
+      "total_watch_min": 2026390.5,
+      "avg_duration_sec": 5584.9
     },
     "channelLeaderboard": [
       {
@@ -42,9 +42,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 739,
-        "unique_users": 533,
-        "watch_min": 588.8
+        "tunes": 737,
+        "unique_users": 531,
+        "watch_min": 588.7
       },
       {
         "ch": 41,
@@ -69,8 +69,8 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 640,
-        "unique_users": 502,
+        "tunes": 641,
+        "unique_users": 503,
         "watch_min": 417.6
       },
       {
@@ -81,6 +81,15 @@
         "tunes": 134,
         "unique_users": 106,
         "watch_min": 417.1
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 285,
+        "unique_users": 225,
+        "watch_min": 361.3
       },
       {
         "ch": 71,
@@ -105,17 +114,17 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 255,
-        "unique_users": 194,
-        "watch_min": 299.6
+        "tunes": 257,
+        "unique_users": 195,
+        "watch_min": 299.7
       },
       {
         "ch": 44,
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 229,
-        "unique_users": 173,
+        "tunes": 231,
+        "unique_users": 174,
         "watch_min": 275.1
       },
       {
@@ -135,15 +144,6 @@
         "tunes": 539,
         "unique_users": 417,
         "watch_min": 241.3
-      },
-      {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 283,
-        "unique_users": 223,
-        "watch_min": 209
       },
       {
         "ch": 204,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 5886,
-        "unique_users": 1243,
-        "watch_min": 6296.6
+        "tunes": 5890,
+        "unique_users": 1244,
+        "watch_min": 6296.8
       },
       {
         "cat": "Music",
-        "tunes": 3535,
-        "unique_users": 1029,
-        "watch_min": 2139.1
+        "tunes": 3536,
+        "unique_users": 1030,
+        "watch_min": 2139.2
       },
       {
         "cat": "Devotional",
@@ -302,15 +302,15 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 5031,
-        "unique_users": 1175,
-        "watch_min": 1648.6
+        "tunes": 5033,
+        "unique_users": 1176,
+        "watch_min": 1800.8
       },
       {
         "cat": "Movies",
-        "tunes": 1990,
-        "unique_users": 839,
-        "watch_min": 1029.2
+        "tunes": 1987,
+        "unique_users": 837,
+        "watch_min": 1029
       },
       {
         "cat": "Culture",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 14501,
-        "unique_users": 2654,
-        "watch_min": 11866.5
+        "tunes": 14507,
+        "unique_users": 2656,
+        "watch_min": 12018.9
       },
       {
         "lang": "Punjabi",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1111,
-        "unique_users": 713,
-        "watch_min": 716.9
+        "tunes": 1109,
+        "unique_users": 711,
+        "watch_min": 716.8
       },
       {
         "lang": "English",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-19 23:00",
-        "users": 2,
-        "tunes": 3
-      },
       {
         "hour": "2026-07-20 00:00",
         "users": 5,
@@ -1271,15 +1266,19 @@
         "hour": "2026-07-26 22:00",
         "users": 1,
         "tunes": 1
+      },
+      {
+        "hour": "2026-07-26 23:00",
+        "users": 2,
+        "tunes": 5
+      },
+      {
+        "hour": "2026-07-27 00:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-19",
-        "users": 2,
-        "tunes": 3,
-        "watch_min": 0.2
-      },
       {
         "day": "2026-07-20",
         "users": 480,
@@ -1318,15 +1317,21 @@
       },
       {
         "day": "2026-07-26",
-        "users": 520,
-        "tunes": 2615,
-        "watch_min": 18155.1
+        "users": 521,
+        "tunes": 2620,
+        "watch_min": 18307.5
+      },
+      {
+        "day": "2026-07-27",
+        "users": 2,
+        "tunes": 2,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3254
+        "users": 3255
       },
       {
         "device": "desktop",
@@ -1334,13 +1339,13 @@
       }
     ],
     "funnel": {
-      "opens": 2074,
-      "playback": 1637,
-      "engaged": 319
+      "opens": 2075,
+      "playback": 1638,
+      "engaged": 320
     },
     "retention": {
       "new_users": 1769,
-      "returning_users": 337
+      "returning_users": 338
     },
     "errorBoard": [
       {
@@ -1411,7 +1416,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 32,
-        "starts": 594
+        "starts": 592
       },
       {
         "ch": 26,
@@ -1453,7 +1458,7 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 26,
-        "starts": 467
+        "starts": 468
       },
       {
         "ch": 41,
@@ -1516,7 +1521,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 15,
-        "starts": 171
+        "starts": 172
       },
       {
         "ch": 125,
@@ -1600,7 +1605,7 @@
         "name": "South Station",
         "cat": "Movies",
         "errors": 12,
-        "starts": 62
+        "starts": 61
       },
       {
         "ch": 68,
@@ -1621,7 +1626,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 12,
-        "starts": 188
+        "starts": 189
       }
     ],
     "perf": {
@@ -1631,13 +1636,13 @@
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 9597,
-        "avg_ttff_ms": 12612
+        "starts": 9599,
+        "avg_ttff_ms": 12610
       },
       {
         "net": "3g",
-        "starts": 848,
-        "avg_ttff_ms": 6099
+        "starts": 846,
+        "avg_ttff_ms": 6106
       },
       {
         "net": "unknown",
@@ -1656,9 +1661,9 @@
       }
     ],
     "engagement": {
-      "sessions": 3502,
+      "sessions": 3503,
       "avg_channels": 4.4,
-      "avg_session_sec": 274,
+      "avg_session_sec": 276,
       "bounce_pct": 46.1,
       "zap_pct": 51.3
     },
