@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-27T22:29:42Z",
+  "fetched_at": "2026-07-27T23:38:36Z",
   "data": {
     "period": "7d",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 3520,
-      "total_tunes": 18036,
-      "total_watch_min": 1228242.1,
-      "avg_duration_sec": 3576.5
+      "unique_users": 3514,
+      "total_tunes": 18015,
+      "total_watch_min": 1228233.8,
+      "avg_duration_sec": 3580.5
     },
     "channelLeaderboard": [
       {
@@ -78,9 +78,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 783,
-        "unique_users": 648,
-        "watch_min": 393.6
+        "tunes": 778,
+        "unique_users": 644,
+        "watch_min": 392.5
       },
       {
         "ch": 3,
@@ -186,18 +186,18 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 282,
-        "unique_users": 209,
-        "watch_min": 147.6
+        "tunes": 280,
+        "unique_users": 208,
+        "watch_min": 147.4
       },
       {
         "ch": 9,
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 263,
-        "unique_users": 199,
-        "watch_min": 141
+        "tunes": 261,
+        "unique_users": 198,
+        "watch_min": 140.9
       },
       {
         "ch": 42,
@@ -258,27 +258,27 @@
         "name": "Zoom",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 61,
-        "unique_users": 51,
-        "watch_min": 108
+        "tunes": 60,
+        "unique_users": 50,
+        "watch_min": 107.9
       },
       {
         "ch": 8,
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 215,
-        "unique_users": 165,
-        "watch_min": 102.2
+        "tunes": 212,
+        "unique_users": 164,
+        "watch_min": 101.6
       },
       {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 306,
-        "unique_users": 250,
-        "watch_min": 101.7
+        "ch": 104,
+        "name": "DD National HD",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 269,
+        "unique_users": 212,
+        "watch_min": 99
       }
     ],
     "categoryBreakdown": [
@@ -286,19 +286,19 @@
         "cat": "News",
         "tunes": 5427,
         "unique_users": 1241,
-        "watch_min": 5958.1
+        "watch_min": 5958
       },
       {
         "cat": "Music",
-        "tunes": 3346,
-        "unique_users": 1022,
-        "watch_min": 1992.3
+        "tunes": 3341,
+        "unique_users": 1019,
+        "watch_min": 1986.7
       },
       {
         "cat": "Entertainment",
-        "tunes": 4805,
-        "unique_users": 1180,
-        "watch_min": 1937.3
+        "tunes": 4789,
+        "unique_users": 1175,
+        "watch_min": 1935.1
       },
       {
         "cat": "Devotional",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13753,
-        "unique_users": 2662,
-        "watch_min": 11091.8
+        "tunes": 13737,
+        "unique_users": 2656,
+        "watch_min": 11089.4
       },
       {
         "lang": "Punjabi",
-        "tunes": 1466,
-        "unique_users": 630,
-        "watch_min": 834
+        "tunes": 1461,
+        "unique_users": 628,
+        "watch_min": 828.5
       },
       {
         "lang": "Bhojpuri",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-20 22:00",
-        "users": 7,
-        "tunes": 21
-      },
-      {
         "hour": "2026-07-20 23:00",
-        "users": 2,
-        "tunes": 2
+        "users": 1,
+        "tunes": 1
       },
       {
         "hour": "2026-07-21 00:00",
@@ -1276,14 +1271,19 @@
         "hour": "2026-07-27 22:00",
         "users": 7,
         "tunes": 22
+      },
+      {
+        "hour": "2026-07-27 23:00",
+        "users": 2,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-20",
-        "users": 9,
-        "tunes": 23,
-        "watch_min": 29.4
+        "users": 1,
+        "tunes": 1,
+        "watch_min": 21.1
       },
       {
         "day": "2026-07-21",
@@ -1323,28 +1323,28 @@
       },
       {
         "day": "2026-07-27",
-        "users": 488,
-        "tunes": 2167,
+        "users": 490,
+        "tunes": 2168,
         "watch_min": 11099.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3265
+        "users": 3259
       },
       {
         "device": "desktop",
-        "users": 149
+        "users": 148
       }
     ],
     "funnel": {
-      "opens": 2061,
-      "playback": 1627,
-      "engaged": 317
+      "opens": 2055,
+      "playback": 1623,
+      "engaged": 316
     },
     "retention": {
-      "new_users": 1737,
+      "new_users": 1732,
       "returning_users": 354
     },
     "errorBoard": [
@@ -1401,15 +1401,15 @@
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
-        "errors": 44,
-        "starts": 596
+        "errors": 43,
+        "starts": 592
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 36,
-        "starts": 765
+        "starts": 764
       },
       {
         "ch": 24,
@@ -1486,7 +1486,7 @@
         "name": "Punjabi Hits",
         "cat": "Music",
         "errors": 19,
-        "starts": 164
+        "starts": 163
       },
       {
         "ch": 125,
@@ -1528,7 +1528,7 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "errors": 15,
-        "starts": 197
+        "starts": 195
       },
       {
         "ch": 68,
@@ -1591,7 +1591,7 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "errors": 12,
-        "starts": 161
+        "starts": 158
       },
       {
         "ch": 7,
@@ -1630,14 +1630,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 13590,
-      "samples": 10171
+      "avg_ttff_ms": 13611,
+      "samples": 10154
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8916,
-        "avg_ttff_ms": 13770
+        "starts": 8902,
+        "avg_ttff_ms": 13790
       },
       {
         "net": "3g",
@@ -1646,8 +1646,8 @@
       },
       {
         "net": "unknown",
-        "starts": 387,
-        "avg_ttff_ms": 4143
+        "starts": 384,
+        "avg_ttff_ms": 4167
       },
       {
         "net": "slow-2g",
@@ -1661,7 +1661,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3520,
+      "sessions": 3514,
       "avg_channels": 4.2,
       "avg_session_sec": 242,
       "bounce_pct": 46.8,

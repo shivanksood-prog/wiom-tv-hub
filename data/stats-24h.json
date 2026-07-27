@@ -1,24 +1,15 @@
 {
-  "fetched_at": "2026-07-27T22:29:42Z",
+  "fetched_at": "2026-07-27T23:38:36Z",
   "data": {
     "period": "24h",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
       "unique_users": 491,
-      "total_tunes": 2173,
-      "total_watch_min": 11252.4,
-      "avg_duration_sec": 272.2
+      "total_tunes": 2172,
+      "total_watch_min": 11100.1,
+      "avg_duration_sec": 268.7
     },
     "channelLeaderboard": [
-      {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 34,
-        "unique_users": 25,
-        "watch_min": 173.3
-      },
       {
         "ch": 133,
         "name": "India Daily Live",
@@ -33,9 +24,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 108,
-        "unique_users": 87,
-        "watch_min": 106.8
+        "tunes": 107,
+        "unique_users": 86,
+        "watch_min": 106.6
       },
       {
         "ch": 9,
@@ -60,9 +51,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 122,
-        "unique_users": 92,
-        "watch_min": 53.6
+        "tunes": 123,
+        "unique_users": 93,
+        "watch_min": 53.7
       },
       {
         "ch": 7,
@@ -143,6 +134,15 @@
         "lang": "Hindi",
         "tunes": 8,
         "unique_users": 7,
+        "watch_min": 21.1
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 33,
+        "unique_users": 24,
         "watch_min": 21.1
       },
       {
@@ -283,16 +283,16 @@
     ],
     "categoryBreakdown": [
       {
-        "cat": "Entertainment",
-        "tunes": 555,
-        "unique_users": 170,
-        "watch_min": 468
+        "cat": "News",
+        "tunes": 598,
+        "unique_users": 166,
+        "watch_min": 362.8
       },
       {
-        "cat": "News",
-        "tunes": 597,
-        "unique_users": 165,
-        "watch_min": 362.7
+        "cat": "Entertainment",
+        "tunes": 553,
+        "unique_users": 168,
+        "watch_min": 315.6
       },
       {
         "cat": "Music",
@@ -388,9 +388,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1658,
-        "unique_users": 356,
-        "watch_min": 992.4
+        "tunes": 1657,
+        "unique_users": 355,
+        "watch_min": 840.1
       },
       {
         "lang": "Bhojpuri",
@@ -425,14 +425,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-26 22:00",
-        "users": 1,
-        "tunes": 1
-      },
-      {
         "hour": "2026-07-26 23:00",
-        "users": 2,
-        "tunes": 5
+        "users": 1,
+        "tunes": 4
       },
       {
         "hour": "2026-07-27 00:00",
@@ -548,26 +543,31 @@
         "hour": "2026-07-27 22:00",
         "users": 7,
         "tunes": 22
+      },
+      {
+        "hour": "2026-07-27 23:00",
+        "users": 2,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-26",
-        "users": 3,
-        "tunes": 6,
-        "watch_min": 152.5
+        "users": 1,
+        "tunes": 4,
+        "watch_min": 0.2
       },
       {
         "day": "2026-07-27",
-        "users": 488,
-        "tunes": 2167,
+        "users": 490,
+        "tunes": 2168,
         "watch_min": 11099.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 453
+        "users": 454
       },
       {
         "device": "desktop",
@@ -575,13 +575,13 @@
       }
     ],
     "funnel": {
-      "opens": 318,
-      "playback": 237,
+      "opens": 319,
+      "playback": 236,
       "engaged": 54
     },
     "retention": {
       "new_users": 223,
-      "returning_users": 104
+      "returning_users": 105
     },
     "errorBoard": [
       {
@@ -638,7 +638,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 7,
-        "starts": 78
+        "starts": 77
       },
       {
         "ch": 12,
@@ -866,8 +866,8 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8841,
-      "samples": 1104
+      "avg_ttff_ms": 8844,
+      "samples": 1103
     },
     "netBreakdown": [
       {
@@ -877,8 +877,8 @@
       },
       {
         "net": "3g",
-        "starts": 58,
-        "avg_ttff_ms": 25546
+        "starts": 57,
+        "avg_ttff_ms": 25887
       },
       {
         "net": "unknown",
@@ -896,7 +896,7 @@
       "avg_channels": 3.5,
       "avg_session_sec": 120,
       "bounce_pct": 47.9,
-      "zap_pct": 52.6
+      "zap_pct": 52.7
     },
     "survey": {
       "very": 1,
