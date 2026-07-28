@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-28T20:47:40Z",
+  "fetched_at": "2026-07-28T21:51:08Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 482,
-      "total_tunes": 2576,
-      "total_watch_min": 18658,
-      "avg_duration_sec": 388.2
+      "unique_users": 479,
+      "total_tunes": 2559,
+      "total_watch_min": 18636.5,
+      "avg_duration_sec": 390.3
     },
     "channelLeaderboard": [
       {
@@ -33,9 +33,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 114,
+        "tunes": 113,
         "unique_users": 79,
-        "watch_min": 118.6
+        "watch_min": 118.5
       },
       {
         "ch": 70,
@@ -60,9 +60,9 @@
         "name": "9XM",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 78,
-        "unique_users": 53,
-        "watch_min": 43.5
+        "tunes": 77,
+        "unique_users": 52,
+        "watch_min": 43.2
       },
       {
         "ch": 119,
@@ -126,15 +126,6 @@
         "tunes": 60,
         "unique_users": 40,
         "watch_min": 23.2
-      },
-      {
-        "ch": 57,
-        "name": "Aastha",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 12,
-        "unique_users": 9,
-        "watch_min": 20.2
       },
       {
         "ch": 226,
@@ -227,15 +218,6 @@
         "watch_min": 6.5
       },
       {
-        "ch": 32,
-        "name": "B4U Bhojpuri",
-        "cat": "Music",
-        "lang": "Bhojpuri",
-        "tunes": 33,
-        "unique_users": 28,
-        "watch_min": 6.5
-      },
-      {
         "ch": 144,
         "name": "K News India",
         "cat": "News",
@@ -243,6 +225,15 @@
         "tunes": 3,
         "unique_users": 2,
         "watch_min": 6.4
+      },
+      {
+        "ch": 32,
+        "name": "B4U Bhojpuri",
+        "cat": "Music",
+        "lang": "Bhojpuri",
+        "tunes": 32,
+        "unique_users": 27,
+        "watch_min": 6.1
       },
       {
         "ch": 241,
@@ -279,20 +270,29 @@
         "tunes": 7,
         "unique_users": 5,
         "watch_min": 4.5
+      },
+      {
+        "ch": 37,
+        "name": "Punjabi Hits",
+        "cat": "Music",
+        "lang": "Punjabi",
+        "tunes": 23,
+        "unique_users": 16,
+        "watch_min": 4.5
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 703,
-        "unique_users": 170,
-        "watch_min": 522.6
+        "tunes": 693,
+        "unique_users": 168,
+        "watch_min": 520.8
       },
       {
         "cat": "Music",
-        "tunes": 555,
+        "tunes": 554,
         "unique_users": 158,
-        "watch_min": 160.8
+        "watch_min": 160.9
       },
       {
         "cat": "Entertainment",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 187,
-        "unique_users": 52,
-        "watch_min": 105.9
+        "tunes": 181,
+        "unique_users": 50,
+        "watch_min": 86.4
       },
       {
         "cat": "DD",
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1921,
-        "unique_users": 364,
-        "watch_min": 981.3
+        "tunes": 1912,
+        "unique_users": 363,
+        "watch_min": 962
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 150,
-        "unique_users": 100,
-        "watch_min": 36.8
+        "tunes": 149,
+        "unique_users": 99,
+        "watch_min": 36.5
       },
       {
         "lang": "English",
-        "tunes": 152,
-        "unique_users": 60,
-        "watch_min": 33.2
+        "tunes": 145,
+        "unique_users": 58,
+        "watch_min": 31.6
       },
       {
         "lang": "Punjabi",
@@ -442,16 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-27 20:00",
-        "users": 2,
-        "tunes": 5
-      },
-      {
-        "hour": "2026-07-27 21:00",
-        "users": 3,
-        "tunes": 14
-      },
       {
         "hour": "2026-07-27 22:00",
         "users": 7,
@@ -566,40 +556,45 @@
         "hour": "2026-07-28 20:00",
         "users": 5,
         "tunes": 39
+      },
+      {
+        "hour": "2026-07-28 21:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-27",
-        "users": 14,
-        "tunes": 42,
-        "watch_min": 25.1
+        "users": 9,
+        "tunes": 23,
+        "watch_min": 2.7
       },
       {
         "day": "2026-07-28",
-        "users": 468,
-        "tunes": 2534,
-        "watch_min": 18632.9
+        "users": 470,
+        "tunes": 2536,
+        "watch_min": 18633.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 456
+        "users": 455
       },
       {
         "device": "desktop",
-        "users": 11
+        "users": 10
       }
     ],
     "funnel": {
-      "opens": 334,
-      "playback": 261,
-      "engaged": 54
+      "opens": 333,
+      "playback": 259,
+      "engaged": 53
     },
     "retention": {
-      "new_users": 233,
-      "returning_users": 106
+      "new_users": 232,
+      "returning_users": 105
     },
     "errorBoard": [
       {
@@ -666,13 +661,6 @@
         "starts": 0
       },
       {
-        "ch": 52,
-        "name": "Bharat24",
-        "cat": "News",
-        "errors": 5,
-        "starts": 0
-      },
-      {
         "ch": 149,
         "name": "Maha Punjabi",
         "cat": "Entertainment",
@@ -687,6 +675,13 @@
         "starts": 89
       },
       {
+        "ch": 52,
+        "name": "Bharat24",
+        "cat": "News",
+        "errors": 4,
+        "starts": 0
+      },
+      {
         "ch": 125,
         "name": "Hare Krsna TV",
         "cat": "Devotional",
@@ -698,7 +693,7 @@
         "name": "Aastha",
         "cat": "Devotional",
         "errors": 4,
-        "starts": 6
+        "starts": 4
       },
       {
         "ch": 25,
@@ -796,7 +791,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 3,
-        "starts": 83
+        "starts": 82
       },
       {
         "ch": 144,
@@ -884,24 +879,24 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 3784,
-      "samples": 1501
+      "avg_ttff_ms": 3070,
+      "samples": 1490
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1267,
-        "avg_ttff_ms": 2522
+        "starts": 1258,
+        "avg_ttff_ms": 2528
       },
       {
         "net": "3g",
-        "starts": 109,
-        "avg_ttff_ms": 20216
+        "starts": 108,
+        "avg_ttff_ms": 10311
       },
       {
         "net": "unknown",
-        "starts": 109,
-        "avg_ttff_ms": 1765
+        "starts": 108,
+        "avg_ttff_ms": 1772
       },
       {
         "net": "slow-2g",
@@ -915,17 +910,17 @@
       }
     ],
     "engagement": {
-      "sessions": 482,
+      "sessions": 479,
       "avg_channels": 4.4,
       "avg_session_sec": 155,
-      "bounce_pct": 45,
+      "bounce_pct": 45.5,
       "zap_pct": 48.7
     },
     "survey": {
       "very": 6,
       "somewhat": 1,
-      "not_disappointed": 1,
-      "responses": 8
+      "not_disappointed": 0,
+      "responses": 7
     }
   }
 }
