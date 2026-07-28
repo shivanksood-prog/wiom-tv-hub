@@ -1,0 +1,103 @@
+<title>Experiment 3 — fse_v3 cross-genre ordering</title>
+<style>
+:root{--bg:#FAF9FC;--card:#FFF;--subtle:#F1EDF7;--border:#D7D3E0;--grid:#E7E2EF;
+--ink:#161021;--muted:#665E75;--faint:#A7A1B2;--accent:#D9008D;--accent-soft:#FFE5F6;
+--rc:#665E75;--ri:#D9008D;--rl:#6D17CE;
+--pass-fg:#008043;--pass-bg:#E1FAED;--warn-fg:#B45B00;--warn-bg:#FFE6CC;
+--fail-fg:#E01E00;--fail-bg:#FFE9E5;--info-fg:#6D17CE;--info-bg:#F1E5FF;}
+@media(prefers-color-scheme:dark){:root{--bg:#161021;--card:#352D42;--subtle:#2A2336;
+--border:#443152;--grid:#3E3550;--ink:#FAF9FC;--muted:#A7A1B2;--faint:#665E75;
+--accent:#F033AE;--accent-soft:rgba(217,0,141,.16);--rc:#A7A1B2;--ri:#F033AE;--rl:#9D5CFF;
+--pass-fg:#4ADE97;--pass-bg:rgba(0,128,67,.22);--warn-fg:#FFA64D;--warn-bg:rgba(255,128,0,.16);
+--fail-fg:#FF7A66;--fail-bg:rgba(224,30,0,.18);--info-fg:#C9A2FF;--info-bg:rgba(109,23,206,.22);}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:30px 18px 60px;line-height:1.5;
+font-family:"Noto Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px}
+.wrap{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:26px;line-height:1.15;margin:5px 0 0;font-weight:800;letter-spacing:-.01em}
+h2{font-size:16px;font-weight:700;margin:0}
+.meta{font-size:12.5px;color:var(--muted);margin-top:8px;max-width:96ch}
+.card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:19px}
+.sub{font-size:12.5px;color:var(--muted);margin:3px 0 0;max-width:88ch}
+p{margin:0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--subtle);
+padding:1px 4px;border-radius:3px;border:1px solid var(--border)}
+.verdict{border-left:5px solid var(--warn-fg)}
+.verdict.pass{border-left-color:var(--pass-fg)}.verdict.fail{border-left-color:var(--fail-fg)}
+.verdict .word{font-size:20px;font-weight:800;color:var(--warn-fg)}
+.verdict.pass .word{color:var(--pass-fg)}.verdict.fail .word{color:var(--fail-fg)}
+.verdict .why{font-size:13px;max-width:74ch;margin-top:7px}
+.verdict .dates{font-size:12px;color:var(--muted);margin-top:11px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin-top:12px}
+th{text-align:left;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
+font-weight:700;padding:0 9px 6px 0;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 9px 8px 0;border-bottom:1px solid var(--grid);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+.scroll{overflow-x:auto}
+.rowhead{background:var(--subtle);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+color:var(--muted);font-weight:700}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:650;padding:2px 8px;
+border-radius:5px;border:1px solid var(--border);background:var(--subtle);color:var(--muted);white-space:nowrap}
+.chip.ok{background:var(--pass-bg);color:var(--pass-fg);border-color:transparent}
+.chip.bad{background:var(--fail-bg);color:var(--fail-fg);border-color:transparent}
+.chip.warn{background:var(--warn-bg);color:var(--warn-fg);border-color:transparent}
+.chip.info{background:var(--info-bg);color:var(--info-fg);border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.dot{width:8px;height:8px;border-radius:2px;flex:none}
+.p{font-variant-numeric:tabular-nums;font-size:12px;padding:1px 6px;border-radius:4px;background:var(--subtle)}
+.p.sig{background:var(--pass-bg);color:var(--pass-fg);font-weight:700}
+.note{font-size:12px;color:var(--muted);margin-top:11px;max-width:88ch}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media(max-width:800px){.big{grid-template-columns:1fr}}
+.stat{border:1px solid var(--border);border-radius:9px;padding:14px 16px;background:var(--subtle)}
+.stat .n{font-size:25px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .l{font-size:12px;color:var(--muted);margin-top:3px}
+.stat.rc{border-left:4px solid var(--rc)}.stat.ri{border-left:4px solid var(--ri)}
+.stat.rl{border-left:4px solid var(--rl)}
+footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);padding-top:13px}
+</style>
+<div class="wrap">
+<header><div class="eyebrow">Wiom TV · Experiment 3 · fse_v3 cross-genre ordering</div>
+<h1>Does a traversable catalogue change anything?</h1>
+<div class="meta">Checked 2026-07-28 13:03:40 UTC · this page refreshes hourly and will populate itself within
+an hour of the deploy.</div></header>
+
+<section class="card verdict">
+  <div class="eyebrow">Status</div><div class="word">AWAITING DEPLOY</div>
+  <div class="why">No user carries an <code>fse_v3</code> arm yet. That is the expected state until
+  the branch is merged, rsynced and <code>reload-wiom-tv</code> has run.
+  <b>This is not a failure mode</b> — the client refuses to enrol anyone until
+  <code>/api/order</code> proves the server is reloaded (<code>algo:'v3'</code>), so an un-deployed
+  or half-deployed state produces a clean exclusion rather than corrupted attribution. Until then
+  every new user silently gets Arm RC's experience, which is the incumbent.</div>
+  <div class="dates">Cohort start auto-derives from the first stamped arm — no manual cutoff to
+  set, nothing to remember on deploy day. Schema probe: <code>flat_pos</code> column
+  not yet created (appears on reload).</div>
+</section>
+
+<section class="card">
+  <h2>What will be measured</h2>
+  <p class="sub">Pre-registered before launch. Two looks, and only the second one decides.</p>
+  <div class="scroll"><table>
+  <thead><tr><th>Look</th><th>Metric</th><th>Rule</th></tr></thead><tbody>
+  <tr><td><b>Day 5</b><br><span class="chip">gate</span></td>
+      <td>% of first-session users touching <b>&ge;2 genres</b><br>
+      <span class="sub">baseline 28.9%</span></td>
+      <td>RI <b>and</b> RL must each show <b>&ge; +10pp vs RC</b>.
+      If neither clears, <b>abort</b> — the arms are not doing what they claim.
+      Outcome metrics are not examined at this look.</td></tr>
+  <tr><td><b>Day 28</b><br><span class="chip" style="color:var(--accent);border-color:var(--accent)">primary</span></td>
+      <td>Attended, P95-winsorized <b>7-day watch minutes</b> per user</td>
+      <td>RI vs RC and RL vs RC at <b>Bonferroni &alpha;=0.025</b>. Enrolment closes day
+      21. Ties and near-misses mean <b>keep RC</b>.</td></tr>
+  </tbody></table></div>
+  <p class="note">Guardrails, checked at every refresh once data exists: playback errors per tune,
+  day-0 activation, landing wait p90, sample-ratio mismatch, and the <code>algo:'v3'</code>
+  handshake rate. Any breach pauses the experiment.</p>
+</section>
+
+<footer>Generated by <code>hub_exp3_render.py</code> from a read-only extract of production
+<code>analytics.db</code>. Spec: <code>~/wiom_tv/specs/spec_6_fse_v3_cross_genre.md</code>.</footer>
+</div>
