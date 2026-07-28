@@ -1,15 +1,42 @@
 {
-  "fetched_at": "2026-07-27T23:38:36Z",
+  "fetched_at": "2026-07-28T01:03:01Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 2,
-      "total_tunes": 1,
-      "total_watch_min": 0.1,
-      "avg_duration_sec": 4
+      "unique_users": 3,
+      "total_tunes": 5,
+      "total_watch_min": 0.5,
+      "avg_duration_sec": 5.4
     },
     "channelLeaderboard": [
+      {
+        "ch": 29,
+        "name": "9X Jhakaas",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 106,
+        "name": "DD News HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 105,
+        "name": "DD National SD",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
@@ -18,66 +45,113 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "ch": 107,
+        "name": "DD Punjabi",
+        "cat": "Culture",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.2
+      },
+      {
+        "cat": "Music",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "cat": "Entertainment",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "cat": "Culture",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 0.4
+      },
+      {
+        "lang": "Punjabi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-27 23:00",
-        "users": 2,
-        "tunes": 1
+        "hour": "2026-07-28 00:00",
+        "users": 3,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-27",
-        "users": 2,
-        "tunes": 1,
-        "watch_min": 0.1
+        "day": "2026-07-28",
+        "users": 3,
+        "tunes": 5,
+        "watch_min": 0.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 2
+        "users": 3
       }
     ],
     "funnel": {
-      "opens": 2,
-      "playback": 0,
+      "opens": 3,
+      "playback": 3,
       "engaged": 0
     },
     "retention": {
-      "new_users": 1,
+      "new_users": 2,
       "returning_users": 1
     },
-    "errorBoard": [],
+    "errorBoard": [
+      {
+        "ch": 105,
+        "name": "DD National SD",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      }
+    ],
     "perf": {
-      "avg_ttff_ms": null,
-      "samples": 0
+      "avg_ttff_ms": 2890,
+      "samples": 4
     },
-    "netBreakdown": [],
+    "netBreakdown": [
+      {
+        "net": "4g",
+        "starts": 4,
+        "avg_ttff_ms": 2890
+      }
+    ],
     "engagement": {
-      "sessions": 2,
-      "avg_channels": 0.5,
-      "avg_session_sec": 4,
-      "bounce_pct": 100,
-      "zap_pct": 100
+      "sessions": 3,
+      "avg_channels": 1.7,
+      "avg_session_sec": 9,
+      "bounce_pct": 66.7,
+      "zap_pct": 60
     },
     "survey": {
       "very": null,

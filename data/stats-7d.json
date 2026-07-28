@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-27T23:38:36Z",
+  "fetched_at": "2026-07-28T01:03:01Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3514,
-      "total_tunes": 18015,
-      "total_watch_min": 1228233.8,
-      "avg_duration_sec": 3580.5
+      "unique_users": 3515,
+      "total_tunes": 18018,
+      "total_watch_min": 1228212.7,
+      "avg_duration_sec": 3579.9
     },
     "channelLeaderboard": [
       {
@@ -15,8 +15,8 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 947,
-        "unique_users": 730,
+        "tunes": 948,
+        "unique_users": 731,
         "watch_min": 2979.2
       },
       {
@@ -69,18 +69,18 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 700,
-        "unique_users": 550,
-        "watch_min": 398.7
+        "tunes": 701,
+        "unique_users": 551,
+        "watch_min": 398.9
       },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 778,
-        "unique_users": 644,
-        "watch_min": 392.5
+        "tunes": 777,
+        "unique_users": 643,
+        "watch_min": 392.1
       },
       {
         "ch": 3,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 5427,
-        "unique_users": 1241,
-        "watch_min": 5958
+        "tunes": 5429,
+        "unique_users": 1243,
+        "watch_min": 5958.1
       },
       {
         "cat": "Music",
-        "tunes": 3341,
-        "unique_users": 1019,
-        "watch_min": 1986.7
+        "tunes": 3342,
+        "unique_users": 1020,
+        "watch_min": 1986.8
       },
       {
         "cat": "Entertainment",
         "tunes": 4789,
         "unique_users": 1175,
-        "watch_min": 1935.1
+        "watch_min": 1934.7
       },
       {
         "cat": "Devotional",
@@ -314,8 +314,8 @@
       },
       {
         "cat": "Culture",
-        "tunes": 76,
-        "unique_users": 57,
+        "tunes": 77,
+        "unique_users": 58,
         "watch_min": 278.6
       },
       {
@@ -337,12 +337,6 @@
         "watch_min": 48
       },
       {
-        "cat": "Family",
-        "tunes": 43,
-        "unique_users": 32,
-        "watch_min": 29.1
-      },
-      {
         "cat": "Kids",
         "tunes": 59,
         "unique_users": 48,
@@ -353,6 +347,12 @@
         "tunes": 93,
         "unique_users": 68,
         "watch_min": 12.8
+      },
+      {
+        "cat": "Family",
+        "tunes": 42,
+        "unique_users": 31,
+        "watch_min": 8
       },
       {
         "cat": "Sports",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13737,
-        "unique_users": 2656,
+        "tunes": 13740,
+        "unique_users": 2658,
         "watch_min": 11089.4
       },
       {
         "lang": "Punjabi",
-        "tunes": 1461,
-        "unique_users": 628,
-        "watch_min": 828.5
+        "tunes": 1462,
+        "unique_users": 629,
+        "watch_min": 828.6
       },
       {
         "lang": "Bhojpuri",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "English",
-        "tunes": 955,
-        "unique_users": 455,
-        "watch_min": 220.5
+        "tunes": 954,
+        "unique_users": 454,
+        "watch_min": 199.4
       },
       {
         "lang": "Marathi",
@@ -442,16 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-20 23:00",
-        "users": 1,
-        "tunes": 1
-      },
-      {
-        "hour": "2026-07-21 00:00",
-        "users": 1,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-21 01:00",
         "users": 3,
@@ -1276,20 +1266,19 @@
         "hour": "2026-07-27 23:00",
         "users": 2,
         "tunes": 1
+      },
+      {
+        "hour": "2026-07-28 00:00",
+        "users": 3,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-20",
-        "users": 1,
-        "tunes": 1,
-        "watch_min": 21.1
-      },
-      {
         "day": "2026-07-21",
-        "users": 472,
-        "tunes": 2054,
-        "watch_min": 950274.7
+        "users": 471,
+        "tunes": 2053,
+        "watch_min": 950274.3
       },
       {
         "day": "2026-07-22",
@@ -1326,12 +1315,18 @@
         "users": 490,
         "tunes": 2168,
         "watch_min": 11099.9
+      },
+      {
+        "day": "2026-07-28",
+        "users": 3,
+        "tunes": 5,
+        "watch_min": 0.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3259
+        "users": 3261
       },
       {
         "device": "desktop",
@@ -1339,13 +1334,13 @@
       }
     ],
     "funnel": {
-      "opens": 2055,
-      "playback": 1623,
+      "opens": 2056,
+      "playback": 1624,
       "engaged": 316
     },
     "retention": {
-      "new_users": 1732,
-      "returning_users": 354
+      "new_users": 1734,
+      "returning_users": 353
     },
     "errorBoard": [
       {
@@ -1402,14 +1397,14 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 43,
-        "starts": 592
+        "starts": 591
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 36,
-        "starts": 764
+        "starts": 765
       },
       {
         "ch": 24,
@@ -1423,7 +1418,7 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 31,
-        "starts": 493
+        "starts": 494
       },
       {
         "ch": 30,
@@ -1630,14 +1625,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 13611,
-      "samples": 10154
+      "avg_ttff_ms": 13608,
+      "samples": 10156
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8902,
-        "avg_ttff_ms": 13790
+        "starts": 8904,
+        "avg_ttff_ms": 13787
       },
       {
         "net": "3g",
@@ -1661,7 +1656,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3514,
+      "sessions": 3515,
       "avg_channels": 4.2,
       "avg_session_sec": 242,
       "bounce_pct": 46.8,
