@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-29T21:37:17Z",
+  "fetched_at": "2026-07-29T22:38:18Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 15185,
-      "total_tunes": 79065,
-      "total_watch_min": 2935842.7,
+      "unique_users": 15186,
+      "total_tunes": 79066,
+      "total_watch_min": 2935843.2,
       "avg_duration_sec": 1976.3
     },
     "channelLeaderboard": [
@@ -15,9 +15,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6666,
-        "unique_users": 5535,
-        "watch_min": 26131.9
+        "tunes": 6668,
+        "unique_users": 5536,
+        "watch_min": 26132.3
       },
       {
         "ch": 40,
@@ -33,9 +33,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2433,
-        "unique_users": 1974,
-        "watch_min": 2884.1
+        "tunes": 2432,
+        "unique_users": 1973,
+        "watch_min": 2884
       },
       {
         "ch": 29,
@@ -204,8 +204,8 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1650,
-        "unique_users": 1393,
+        "tunes": 1649,
+        "unique_users": 1392,
         "watch_min": 493.6
       },
       {
@@ -285,8 +285,8 @@
       {
         "cat": "Entertainment",
         "tunes": 30127,
-        "unique_users": 7911,
-        "watch_min": 37453.2
+        "unique_users": 7912,
+        "watch_min": 37453.4
       },
       {
         "cat": "News",
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 13080,
-        "unique_users": 3605,
-        "watch_min": 7955.4
+        "tunes": 13081,
+        "unique_users": 3606,
+        "watch_min": 7955.7
       },
       {
         "cat": "Movies",
@@ -407,8 +407,8 @@
       {
         "lang": "Hindi",
         "tunes": 62422,
-        "unique_users": 11872,
-        "watch_min": 62713.1
+        "unique_users": 11873,
+        "watch_min": 62713.3
       },
       {
         "lang": "Bhojpuri",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 5056,
-        "unique_users": 2231,
-        "watch_min": 1475.7
+        "tunes": 5057,
+        "unique_users": 2232,
+        "watch_min": 1475.9
       },
       {
         "lang": "Marathi",
@@ -442,16 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-06-29 21:00",
-        "users": 1,
-        "tunes": 3
-      },
-      {
-        "hour": "2026-06-29 22:00",
-        "users": 1,
-        "tunes": 0
-      },
       {
         "hour": "2026-06-29 23:00",
         "users": 2,
@@ -4019,16 +4009,21 @@
       },
       {
         "hour": "2026-07-29 21:00",
+        "users": 3,
+        "tunes": 3
+      },
+      {
+        "hour": "2026-07-29 22:00",
         "users": 1,
-        "tunes": 0
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-06-29",
-        "users": 4,
-        "tunes": 3,
-        "watch_min": 0.2
+        "users": 2,
+        "tunes": 0,
+        "watch_min": 0
       },
       {
         "day": "2026-06-30",
@@ -4206,15 +4201,15 @@
       },
       {
         "day": "2026-07-29",
-        "users": 435,
-        "tunes": 2301,
-        "watch_min": 59508.1
+        "users": 438,
+        "tunes": 2305,
+        "watch_min": 59508.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14345
+        "users": 14346
       },
       {
         "device": "desktop",
@@ -4222,12 +4217,12 @@
       }
     ],
     "funnel": {
-      "opens": 8252,
-      "playback": 6758,
+      "opens": 8253,
+      "playback": 6760,
       "engaged": 1244
     },
     "retention": {
-      "new_users": 8025,
+      "new_users": 8026,
       "returning_users": 304
     },
     "errorBoard": [
@@ -4278,7 +4273,7 @@
         "name": "Epic TV",
         "cat": "Entertainment",
         "errors": 406,
-        "starts": 618
+        "starts": 617
       },
       {
         "ch": 13,
@@ -4292,7 +4287,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 330,
-        "starts": 5102
+        "starts": 5103
       },
       {
         "ch": 19,
@@ -4418,7 +4413,7 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "errors": 65,
-        "starts": 1745
+        "starts": 1744
       },
       {
         "ch": 26,
@@ -4519,8 +4514,8 @@
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 35947,
-        "avg_ttff_ms": 9232
+        "starts": 35946,
+        "avg_ttff_ms": 9233
       },
       {
         "net": "3g",
@@ -4529,7 +4524,7 @@
       },
       {
         "net": "unknown",
-        "starts": 2691,
+        "starts": 2692,
         "avg_ttff_ms": 2833
       },
       {
@@ -4544,7 +4539,7 @@
       }
     ],
     "engagement": {
-      "sessions": 15185,
+      "sessions": 15186,
       "avg_channels": 4.2,
       "avg_session_sec": 218,
       "bounce_pct": 46.8,
