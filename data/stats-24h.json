@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-29T20:39:07Z",
+  "fetched_at": "2026-07-29T21:37:17Z",
   "data": {
     "period": "24h",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 442,
-      "total_tunes": 2354,
-      "total_watch_min": 59534,
-      "avg_duration_sec": 1358.7
+      "unique_users": 443,
+      "total_tunes": 2356,
+      "total_watch_min": 59534.4,
+      "avg_duration_sec": 1357.7
     },
     "channelLeaderboard": [
       {
@@ -42,18 +42,18 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 98,
-        "unique_users": 75,
-        "watch_min": 118.1
+        "tunes": 97,
+        "unique_users": 74,
+        "watch_min": 117.9
       },
       {
         "ch": 29,
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 113,
-        "unique_users": 88,
-        "watch_min": 55.2
+        "tunes": 116,
+        "unique_users": 91,
+        "watch_min": 55.6
       },
       {
         "ch": 24,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "Music",
-        "tunes": 511,
-        "unique_users": 150,
-        "watch_min": 655.6
+        "tunes": 513,
+        "unique_users": 152,
+        "watch_min": 655.1
       },
       {
         "cat": "Entertainment",
@@ -297,8 +297,8 @@
       {
         "cat": "News",
         "tunes": 621,
-        "unique_users": 128,
-        "watch_min": 203.6
+        "unique_users": 127,
+        "watch_min": 204.4
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1750,
-        "unique_users": 319,
-        "watch_min": 959.1
+        "tunes": 1751,
+        "unique_users": 320,
+        "watch_min": 958.6
       },
       {
         "lang": "Bhojpuri",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "English",
-        "tunes": 102,
+        "tunes": 103,
         "unique_users": 34,
-        "watch_min": 21.5
+        "watch_min": 22.5
       },
       {
         "lang": "Marathi",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-28 20:00",
-        "users": 1,
-        "tunes": 0
-      },
-      {
         "hour": "2026-07-28 21:00",
-        "users": 3,
-        "tunes": 3
+        "users": 1,
+        "tunes": 1
       },
       {
         "hour": "2026-07-28 22:00",
@@ -564,28 +559,33 @@
       },
       {
         "hour": "2026-07-29 20:00",
-        "users": 8,
-        "tunes": 34
+        "users": 11,
+        "tunes": 38
+      },
+      {
+        "hour": "2026-07-29 21:00",
+        "users": 1,
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-28",
-        "users": 11,
-        "tunes": 57,
-        "watch_min": 27.3
+        "users": 8,
+        "tunes": 55,
+        "watch_min": 26.3
       },
       {
         "day": "2026-07-29",
-        "users": 431,
-        "tunes": 2297,
-        "watch_min": 59506.7
+        "users": 435,
+        "tunes": 2301,
+        "watch_min": 59508.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 410
+        "users": 411
       },
       {
         "device": "desktop",
@@ -594,12 +594,12 @@
     ],
     "funnel": {
       "opens": 331,
-      "playback": 248,
-      "engaged": 43
+      "playback": 247,
+      "engaged": 44
     },
     "retention": {
-      "new_users": 234,
-      "returning_users": 102
+      "new_users": 235,
+      "returning_users": 101
     },
     "errorBoard": [
       {
@@ -677,7 +677,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 5,
-        "starts": 72
+        "starts": 71
       },
       {
         "ch": 19,
@@ -824,7 +824,7 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 3,
-        "starts": 79
+        "starts": 81
       },
       {
         "ch": 23,
@@ -884,14 +884,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 9025,
-      "samples": 1323
+      "avg_ttff_ms": 9029,
+      "samples": 1322
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 1165,
-        "avg_ttff_ms": 2446
+        "starts": 1164,
+        "avg_ttff_ms": 2444
       },
       {
         "net": "3g",
@@ -915,11 +915,11 @@
       }
     ],
     "engagement": {
-      "sessions": 442,
+      "sessions": 443,
       "avg_channels": 4.4,
-      "avg_session_sec": 193,
-      "bounce_pct": 50.5,
-      "zap_pct": 54.4
+      "avg_session_sec": 192,
+      "bounce_pct": 50.6,
+      "zap_pct": 54.3
     },
     "survey": {
       "very": 3,
