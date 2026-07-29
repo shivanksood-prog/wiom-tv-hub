@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-29T22:38:18Z",
+  "fetched_at": "2026-07-29T23:40:58Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3446,
-      "total_tunes": 18136,
-      "total_watch_min": 296113.6,
-      "avg_duration_sec": 862.3
+      "unique_users": 3449,
+      "total_tunes": 18141,
+      "total_watch_min": 296309.9,
+      "avg_duration_sec": 862.7
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 915,
-        "unique_users": 697,
-        "watch_min": 2513.2
+        "tunes": 917,
+        "unique_users": 699,
+        "watch_min": 2513.7
       },
       {
         "ch": 27,
@@ -42,9 +42,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 702,
-        "unique_users": 500,
-        "watch_min": 585.5
+        "tunes": 703,
+        "unique_users": 501,
+        "watch_min": 585.8
       },
       {
         "ch": 29,
@@ -96,9 +96,9 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 431,
-        "unique_users": 327,
-        "watch_min": 276.9
+        "tunes": 432,
+        "unique_users": 328,
+        "watch_min": 277.1
       },
       {
         "ch": 199,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 5392,
-        "unique_users": 1224,
-        "watch_min": 5440.2
+        "tunes": 5395,
+        "unique_users": 1226,
+        "watch_min": 5440.9
       },
       {
         "cat": "Music",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 1926,
-        "unique_users": 784,
-        "watch_min": 997.6
+        "tunes": 1928,
+        "unique_users": 785,
+        "watch_min": 997.9
       },
       {
         "cat": "Devotional",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13840,
-        "unique_users": 2598,
-        "watch_min": 10536.8
+        "tunes": 13843,
+        "unique_users": 2600,
+        "watch_min": 10537.6
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1036,
-        "unique_users": 671,
-        "watch_min": 864.9
+        "tunes": 1037,
+        "unique_users": 672,
+        "watch_min": 865.1
       },
       {
         "lang": "Punjabi",
@@ -430,9 +430,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 687,
-        "unique_users": 430,
-        "watch_min": 88.8
+        "tunes": 688,
+        "unique_users": 431,
+        "watch_min": 89
       },
       {
         "lang": "Urdu",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-22 23:00",
-        "users": 1,
-        "tunes": 0
-      },
       {
         "hour": "2026-07-23 00:00",
         "users": 7,
@@ -1274,17 +1269,16 @@
       },
       {
         "hour": "2026-07-29 22:00",
-        "users": 1,
-        "tunes": 1
+        "users": 3,
+        "tunes": 4
+      },
+      {
+        "hour": "2026-07-29 23:00",
+        "users": 2,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-22",
-        "users": 1,
-        "tunes": 0,
-        "watch_min": 0
-      },
       {
         "day": "2026-07-23",
         "users": 504,
@@ -1323,15 +1317,15 @@
       },
       {
         "day": "2026-07-29",
-        "users": 438,
-        "tunes": 2305,
-        "watch_min": 59508.8
+        "users": 442,
+        "tunes": 2310,
+        "watch_min": 59705.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3207
+        "users": 3210
       },
       {
         "device": "desktop",
@@ -1339,13 +1333,13 @@
       }
     ],
     "funnel": {
-      "opens": 2034,
-      "playback": 1603,
+      "opens": 2036,
+      "playback": 1605,
       "engaged": 316
     },
     "retention": {
-      "new_users": 1694,
-      "returning_users": 368
+      "new_users": 1697,
+      "returning_users": 367
     },
     "errorBoard": [
       {
@@ -1409,7 +1403,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 35,
-        "starts": 730
+        "starts": 731
       },
       {
         "ch": 29,
@@ -1451,7 +1445,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 24,
-        "starts": 546
+        "starts": 547
       },
       {
         "ch": 216,
@@ -1486,7 +1480,7 @@
         "name": "Republic Bharat",
         "cat": "News",
         "errors": 20,
-        "starts": 261
+        "starts": 262
       },
       {
         "ch": 68,
@@ -1630,19 +1624,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 12636,
-      "samples": 10143
+      "avg_ttff_ms": 12633,
+      "samples": 10146
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8954,
-        "avg_ttff_ms": 12242
+        "starts": 8956,
+        "avg_ttff_ms": 12239
       },
       {
         "net": "3g",
-        "starts": 797,
-        "avg_ttff_ms": 18867
+        "starts": 798,
+        "avg_ttff_ms": 18856
       },
       {
         "net": "unknown",
@@ -1661,9 +1655,9 @@
       }
     ],
     "engagement": {
-      "sessions": 3446,
+      "sessions": 3449,
       "avg_channels": 4.3,
-      "avg_session_sec": 243,
+      "avg_session_sec": 242,
       "bounce_pct": 46.8,
       "zap_pct": 51.4
     },
