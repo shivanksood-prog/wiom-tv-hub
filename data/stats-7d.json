@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-30T22:35:53Z",
+  "fetched_at": "2026-07-30T23:39:39Z",
   "data": {
     "period": "7d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 3366,
-      "total_tunes": 17670,
-      "total_watch_min": 293911.5,
-      "avg_duration_sec": 880.1
+      "unique_users": 3364,
+      "total_tunes": 17665,
+      "total_watch_min": 293910.9,
+      "avg_duration_sec": 880.3
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 862,
-        "unique_users": 651,
-        "watch_min": 3752.8
+        "tunes": 863,
+        "unique_users": 652,
+        "watch_min": 3752.9
       },
       {
         "ch": 27,
@@ -51,9 +51,9 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 782,
-        "unique_users": 606,
-        "watch_min": 406.8
+        "tunes": 781,
+        "unique_users": 605,
+        "watch_min": 406.6
       },
       {
         "ch": 73,
@@ -249,9 +249,9 @@
         "name": "PTC Music",
         "cat": "Music",
         "lang": "Punjabi",
-        "tunes": 338,
-        "unique_users": 269,
-        "watch_min": 104.9
+        "tunes": 337,
+        "unique_users": 268,
+        "watch_min": 104.8
       },
       {
         "ch": 180,
@@ -267,8 +267,8 @@
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 430,
-        "unique_users": 351,
+        "tunes": 429,
+        "unique_users": 350,
         "watch_min": 81.5
       },
       {
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 5141,
-        "unique_users": 1134,
-        "watch_min": 6538.7
+        "tunes": 5142,
+        "unique_users": 1135,
+        "watch_min": 6538.8
       },
       {
         "cat": "Music",
-        "tunes": 3545,
-        "unique_users": 1048,
-        "watch_min": 2568.4
+        "tunes": 3542,
+        "unique_users": 1047,
+        "watch_min": 2568
       },
       {
         "cat": "Entertainment",
-        "tunes": 4482,
-        "unique_users": 1115,
-        "watch_min": 1876.7
+        "tunes": 4479,
+        "unique_users": 1114,
+        "watch_min": 1876.4
       },
       {
         "cat": "Movies",
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13372,
-        "unique_users": 2493,
-        "watch_min": 11370.9
+        "tunes": 13369,
+        "unique_users": 2492,
+        "watch_min": 11370.5
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1090,
-        "unique_users": 688,
+        "tunes": 1089,
+        "unique_users": 687,
         "watch_min": 923.5
       },
       {
         "lang": "Punjabi",
-        "tunes": 1473,
-        "unique_users": 637,
-        "watch_min": 364.5
+        "tunes": 1472,
+        "unique_users": 636,
+        "watch_min": 364.4
       },
       {
         "lang": "English",
@@ -442,16 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-23 22:00",
-        "users": 1,
-        "tunes": 0
-      },
-      {
-        "hour": "2026-07-23 23:00",
-        "users": 2,
-        "tunes": 6
-      },
       {
         "hour": "2026-07-24 00:00",
         "users": 2,
@@ -1279,17 +1269,11 @@
       },
       {
         "hour": "2026-07-30 22:00",
-        "users": 2,
-        "tunes": 1
+        "users": 3,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-23",
-        "users": 3,
-        "tunes": 6,
-        "watch_min": 0.7
-      },
       {
         "day": "2026-07-24",
         "users": 481,
@@ -1328,15 +1312,15 @@
       },
       {
         "day": "2026-07-30",
-        "users": 419,
-        "tunes": 1827,
-        "watch_min": 14128.5
+        "users": 420,
+        "tunes": 1828,
+        "watch_min": 14128.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3138
+        "users": 3136
       },
       {
         "device": "desktop",
@@ -1344,12 +1328,12 @@
       }
     ],
     "funnel": {
-      "opens": 2016,
-      "playback": 1590,
+      "opens": 2014,
+      "playback": 1589,
       "engaged": 312
     },
     "retention": {
-      "new_users": 1673,
+      "new_users": 1671,
       "returning_users": 367
     },
     "errorBoard": [
@@ -1414,7 +1398,7 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 32,
-        "starts": 544
+        "starts": 543
       },
       {
         "ch": 40,
@@ -1449,7 +1433,7 @@
         "name": "9X Tashan",
         "cat": "Music",
         "errors": 23,
-        "starts": 281
+        "starts": 280
       },
       {
         "ch": 125,
@@ -1526,7 +1510,7 @@
         "name": "PTC Music",
         "cat": "Music",
         "errors": 16,
-        "starts": 244
+        "starts": 243
       },
       {
         "ch": 23,
@@ -1635,14 +1619,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 16849,
-      "samples": 9905
+      "avg_ttff_ms": 16853,
+      "samples": 9902
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8763,
-        "avg_ttff_ms": 17121
+        "starts": 8760,
+        "avg_ttff_ms": 17126
       },
       {
         "net": "3g",
@@ -1666,7 +1650,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3366,
+      "sessions": 3364,
       "avg_channels": 4.3,
       "avg_session_sec": 265,
       "bounce_pct": 47.2,

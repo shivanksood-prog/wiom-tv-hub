@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-30T22:35:53Z",
+  "fetched_at": "2026-07-30T23:39:39Z",
   "data": {
     "period": "24h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 423,
-      "total_tunes": 1832,
-      "total_watch_min": 14324.8,
-      "avg_duration_sec": 417.2
+      "unique_users": 420,
+      "total_tunes": 1828,
+      "total_watch_min": 14128.6,
+      "avg_duration_sec": 412.5
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 86,
-        "unique_users": 67,
-        "watch_min": 1359.8
+        "tunes": 85,
+        "unique_users": 66,
+        "watch_min": 1359.3
       },
       {
         "ch": 32,
@@ -60,9 +60,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 107,
-        "unique_users": 73,
-        "watch_min": 26.7
+        "tunes": 106,
+        "unique_users": 72,
+        "watch_min": 26.5
       },
       {
         "ch": 5,
@@ -150,9 +150,9 @@
         "name": "Shemaroo Marathi Bana",
         "cat": "Movies",
         "lang": "Marathi",
-        "tunes": 54,
-        "unique_users": 41,
-        "watch_min": 8.8
+        "tunes": 53,
+        "unique_users": 40,
+        "watch_min": 8.7
       },
       {
         "ch": 155,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 470,
-        "unique_users": 111,
-        "watch_min": 1457.6
+        "tunes": 468,
+        "unique_users": 110,
+        "watch_min": 1456.9
       },
       {
         "cat": "Music",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 244,
-        "unique_users": 99,
-        "watch_min": 48
+        "tunes": 242,
+        "unique_users": 98,
+        "watch_min": 47.7
       },
       {
         "cat": "Animation",
@@ -388,15 +388,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 1326,
-        "unique_users": 295,
-        "watch_min": 1742.1
+        "tunes": 1324,
+        "unique_users": 294,
+        "watch_min": 1741.5
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 159,
-        "unique_users": 95,
-        "watch_min": 81.5
+        "tunes": 158,
+        "unique_users": 94,
+        "watch_min": 81.3
       },
       {
         "lang": "English",
@@ -412,9 +412,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 96,
-        "unique_users": 57,
-        "watch_min": 11.8
+        "tunes": 95,
+        "unique_users": 56,
+        "watch_min": 11.7
       },
       {
         "lang": "Urdu",
@@ -425,14 +425,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-29 22:00",
-        "users": 2,
-        "tunes": 3
-      },
-      {
         "hour": "2026-07-29 23:00",
-        "users": 3,
-        "tunes": 2
+        "users": 1,
+        "tunes": 0
       },
       {
         "hour": "2026-07-30 00:00",
@@ -546,28 +541,28 @@
       },
       {
         "hour": "2026-07-30 22:00",
-        "users": 2,
-        "tunes": 1
+        "users": 3,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-29",
-        "users": 5,
-        "tunes": 5,
-        "watch_min": 196.3
+        "users": 1,
+        "tunes": 0,
+        "watch_min": 0
       },
       {
         "day": "2026-07-30",
-        "users": 419,
-        "tunes": 1827,
-        "watch_min": 14128.5
+        "users": 420,
+        "tunes": 1828,
+        "watch_min": 14128.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 394
+        "users": 391
       },
       {
         "device": "desktop",
@@ -575,13 +570,13 @@
       }
     ],
     "funnel": {
-      "opens": 307,
-      "playback": 225,
+      "opens": 304,
+      "playback": 224,
       "engaged": 41
     },
     "retention": {
-      "new_users": 221,
-      "returning_users": 93
+      "new_users": 219,
+      "returning_users": 92
     },
     "errorBoard": [
       {
@@ -631,7 +626,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 5,
-        "starts": 74
+        "starts": 73
       },
       {
         "ch": 16,
@@ -866,19 +861,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 47495,
-      "samples": 1051
+      "avg_ttff_ms": 47573,
+      "samples": 1049
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 959,
-        "avg_ttff_ms": 51632
+        "starts": 958,
+        "avg_ttff_ms": 51684
       },
       {
         "net": "3g",
-        "starts": 53,
-        "avg_ttff_ms": 5182
+        "starts": 52,
+        "avg_ttff_ms": 5086
       },
       {
         "net": "unknown",
@@ -897,11 +892,11 @@
       }
     ],
     "engagement": {
-      "sessions": 423,
+      "sessions": 420,
       "avg_channels": 3.4,
-      "avg_session_sec": 210,
-      "bounce_pct": 51.3,
-      "zap_pct": 51.4
+      "avg_session_sec": 211,
+      "bounce_pct": 51.4,
+      "zap_pct": 51.5
     },
     "survey": {
       "very": 0,

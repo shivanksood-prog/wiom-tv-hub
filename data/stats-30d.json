@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-30T22:35:53Z",
+  "fetched_at": "2026-07-30T23:39:39Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 15032,
-      "total_tunes": 77748,
-      "total_watch_min": 2931328.4,
-      "avg_duration_sec": 2004.4
+      "unique_users": 15030,
+      "total_tunes": 77744,
+      "total_watch_min": 2931328.1,
+      "avg_duration_sec": 2004.5
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 6350,
-        "unique_users": 5289,
-        "watch_min": 25630.8
+        "tunes": 6346,
+        "unique_users": 5286,
+        "watch_min": 25630.4
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2050,
-        "unique_users": 1572,
-        "watch_min": 5317.5
+        "tunes": 2051,
+        "unique_users": 1573,
+        "watch_min": 5317.6
       },
       {
         "ch": 29,
@@ -42,9 +42,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2260,
-        "unique_users": 1847,
-        "watch_min": 2782.6
+        "tunes": 2259,
+        "unique_users": 1846,
+        "watch_min": 2782.5
       },
       {
         "ch": 24,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "Entertainment",
-        "tunes": 29005,
-        "unique_users": 7640,
-        "watch_min": 35856.9
+        "tunes": 29000,
+        "unique_users": 7637,
+        "watch_min": 35856.5
       },
       {
         "cat": "News",
-        "tunes": 17305,
-        "unique_users": 3718,
-        "watch_min": 14265.2
+        "tunes": 17306,
+        "unique_users": 3719,
+        "watch_min": 14265.3
       },
       {
         "cat": "Music",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 61151,
-        "unique_users": 11691,
-        "watch_min": 62352.3
+        "tunes": 61147,
+        "unique_users": 11689,
+        "watch_min": 62352
       },
       {
         "lang": "Bhojpuri",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-06-30 23:00",
-        "users": 3,
-        "tunes": 5
-      },
       {
         "hour": "2026-07-01 00:00",
         "users": 4,
@@ -4014,17 +4009,11 @@
       },
       {
         "hour": "2026-07-30 22:00",
-        "users": 2,
-        "tunes": 1
+        "users": 3,
+        "tunes": 2
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-06-30",
-        "users": 3,
-        "tunes": 5,
-        "watch_min": 0.4
-      },
       {
         "day": "2026-07-01",
         "users": 507,
@@ -4201,15 +4190,15 @@
       },
       {
         "day": "2026-07-30",
-        "users": 419,
-        "tunes": 1827,
-        "watch_min": 14128.5
+        "users": 420,
+        "tunes": 1828,
+        "watch_min": 14128.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14186
+        "users": 14184
       },
       {
         "device": "desktop",
@@ -4217,12 +4206,12 @@
       }
     ],
     "funnel": {
-      "opens": 8192,
-      "playback": 6679,
+      "opens": 8190,
+      "playback": 6678,
       "engaged": 1229
     },
     "retention": {
-      "new_users": 7938,
+      "new_users": 7936,
       "returning_users": 333
     },
     "errorBoard": [
@@ -4287,7 +4276,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 315,
-        "starts": 4852
+        "starts": 4849
       },
       {
         "ch": 19,
@@ -4357,7 +4346,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 82,
-        "starts": 1634
+        "starts": 1635
       },
       {
         "ch": 27,
@@ -4420,7 +4409,7 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "errors": 64,
-        "starts": 1610
+        "starts": 1609
       },
       {
         "ch": 42,
@@ -4509,12 +4498,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 9816,
-      "samples": 41916
+      "samples": 41913
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 35391,
+        "starts": 35388,
         "avg_ttff_ms": 9149
       },
       {
@@ -4539,9 +4528,9 @@
       }
     ],
     "engagement": {
-      "sessions": 15032,
+      "sessions": 15030,
       "avg_channels": 4.2,
-      "avg_session_sec": 215,
+      "avg_session_sec": 216,
       "bounce_pct": 46.8,
       "zap_pct": 52.1
     },

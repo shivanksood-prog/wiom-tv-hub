@@ -1,37 +1,19 @@
 {
-  "fetched_at": "2026-07-30T22:35:53Z",
+  "fetched_at": "2026-07-30T23:39:39Z",
   "data": {
     "period": "1h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 3,
-      "total_tunes": 4,
-      "total_watch_min": 0.3,
-      "avg_duration_sec": 4.5
+      "unique_users": 1,
+      "total_tunes": 1,
+      "total_watch_min": 0.1,
+      "avg_duration_sec": 6
     },
     "channelLeaderboard": [
       {
-        "ch": 29,
-        "name": "9X Jhakaas",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 30,
-        "name": "9X Tashan",
-        "cat": "Music",
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
@@ -40,21 +22,15 @@
     ],
     "categoryBreakdown": [
       {
-        "cat": "Music",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 0.3
+        "cat": "News",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "lang": "Punjabi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
@@ -62,61 +38,52 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-30 21:00",
-        "users": 1,
-        "tunes": 3
-      },
-      {
         "hour": "2026-07-30 22:00",
-        "users": 2,
+        "users": 1,
         "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-30",
-        "users": 3,
-        "tunes": 4,
-        "watch_min": 0.3
+        "users": 1,
+        "tunes": 1,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
         "users": 1
-      },
-      {
-        "device": "desktop",
-        "users": 1
       }
     ],
     "funnel": {
-      "opens": 2,
+      "opens": 1,
       "playback": 1,
       "engaged": 0
     },
     "retention": {
-      "new_users": 3,
+      "new_users": 1,
       "returning_users": 0
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1260,
-      "samples": 3
+      "avg_ttff_ms": 1402,
+      "samples": 1
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 3,
-        "avg_ttff_ms": 1260
+        "starts": 1,
+        "avg_ttff_ms": 1402
       }
     ],
     "engagement": {
-      "sessions": 3,
-      "avg_channels": 1.3,
-      "avg_session_sec": 23,
-      "bounce_pct": 66.7,
-      "zap_pct": 50
+      "sessions": 1,
+      "avg_channels": 1,
+      "avg_session_sec": 6,
+      "bounce_pct": 100,
+      "zap_pct": 0
     },
     "survey": {
       "very": null,
