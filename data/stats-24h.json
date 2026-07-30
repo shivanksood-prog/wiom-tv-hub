@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-07-30T21:21:33Z",
+  "fetched_at": "2026-07-30T22:35:53Z",
   "data": {
     "period": "24h",
     "liveNow": 1,
     "overview": {
-      "unique_users": 424,
+      "unique_users": 423,
       "total_tunes": 1832,
-      "total_watch_min": 14325.1,
+      "total_watch_min": 14324.8,
       "avg_duration_sec": 417.2
     },
     "channelLeaderboard": [
@@ -51,9 +51,9 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 105,
-        "unique_users": 74,
-        "watch_min": 30.1
+        "tunes": 107,
+        "unique_users": 76,
+        "watch_min": 30.3
       },
       {
         "ch": 24,
@@ -96,9 +96,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 94,
-        "unique_users": 81,
-        "watch_min": 20.5
+        "tunes": 91,
+        "unique_users": 79,
+        "watch_min": 20
       },
       {
         "ch": 115,
@@ -177,8 +177,8 @@
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 53,
-        "unique_users": 42,
+        "tunes": 54,
+        "unique_users": 43,
         "watch_min": 6.1
       },
       {
@@ -200,15 +200,6 @@
         "watch_min": 5.7
       },
       {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 42,
-        "unique_users": 28,
-        "watch_min": 5.7
-      },
-      {
         "ch": 7,
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
@@ -224,6 +215,15 @@
         "lang": "Hindi",
         "tunes": 22,
         "unique_users": 19,
+        "watch_min": 5.5
+      },
+      {
+        "ch": 34,
+        "name": "PTC Music",
+        "cat": "Music",
+        "lang": "Punjabi",
+        "tunes": 42,
+        "unique_users": 28,
         "watch_min": 5.5
       },
       {
@@ -290,15 +290,15 @@
       },
       {
         "cat": "Music",
-        "tunes": 434,
-        "unique_users": 137,
-        "watch_min": 136.9
+        "tunes": 437,
+        "unique_users": 138,
+        "watch_min": 137
       },
       {
         "cat": "Entertainment",
-        "tunes": 517,
-        "unique_users": 138,
-        "watch_min": 124.1
+        "tunes": 514,
+        "unique_users": 136,
+        "watch_min": 123.6
       },
       {
         "cat": "Devotional",
@@ -390,7 +390,7 @@
         "lang": "Hindi",
         "tunes": 1326,
         "unique_users": 295,
-        "watch_min": 1742.3
+        "watch_min": 1742.1
       },
       {
         "lang": "Bhojpuri",
@@ -408,7 +408,7 @@
         "lang": "Punjabi",
         "tunes": 121,
         "unique_users": 58,
-        "watch_min": 13.5
+        "watch_min": 13.3
       },
       {
         "lang": "Marathi",
@@ -425,14 +425,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-29 21:00",
-        "users": 3,
-        "tunes": 3
-      },
-      {
         "hour": "2026-07-29 22:00",
-        "users": 3,
-        "tunes": 4
+        "users": 2,
+        "tunes": 3
       },
       {
         "hour": "2026-07-29 23:00",
@@ -546,42 +541,47 @@
       },
       {
         "hour": "2026-07-30 21:00",
+        "users": 3,
+        "tunes": 17
+      },
+      {
+        "hour": "2026-07-30 22:00",
         "users": 2,
-        "tunes": 14
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-29",
-        "users": 9,
-        "tunes": 9,
-        "watch_min": 197
+        "users": 5,
+        "tunes": 5,
+        "watch_min": 196.3
       },
       {
         "day": "2026-07-30",
-        "users": 416,
-        "tunes": 1823,
-        "watch_min": 14128.2
+        "users": 419,
+        "tunes": 1827,
+        "watch_min": 14128.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 397
+        "users": 394
       },
       {
         "device": "desktop",
-        "users": 13
+        "users": 14
       }
     ],
     "funnel": {
-      "opens": 309,
-      "playback": 227,
+      "opens": 307,
+      "playback": 225,
       "engaged": 41
     },
     "retention": {
-      "new_users": 220,
-      "returning_users": 95
+      "new_users": 221,
+      "returning_users": 93
     },
     "errorBoard": [
       {
@@ -659,7 +659,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 4,
-        "starts": 68
+        "starts": 66
       },
       {
         "ch": 17,
@@ -680,14 +680,14 @@
         "name": "9X Tashan",
         "cat": "Music",
         "errors": 3,
-        "starts": 35
+        "starts": 36
       },
       {
         "ch": 29,
         "name": "9X Jhakaas",
         "cat": "Music",
         "errors": 3,
-        "starts": 63
+        "starts": 64
       },
       {
         "ch": 51,
@@ -866,14 +866,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 47506,
+      "avg_ttff_ms": 47495,
       "samples": 1051
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 958,
-        "avg_ttff_ms": 51696
+        "starts": 959,
+        "avg_ttff_ms": 51632
       },
       {
         "net": "3g",
@@ -882,8 +882,8 @@
       },
       {
         "net": "unknown",
-        "starts": 28,
-        "avg_ttff_ms": 3487
+        "starts": 27,
+        "avg_ttff_ms": 3505
       },
       {
         "net": "2g",
@@ -897,11 +897,11 @@
       }
     ],
     "engagement": {
-      "sessions": 424,
+      "sessions": 423,
       "avg_channels": 3.4,
-      "avg_session_sec": 209,
-      "bounce_pct": 51.4,
-      "zap_pct": 51.3
+      "avg_session_sec": 210,
+      "bounce_pct": 51.3,
+      "zap_pct": 51.4
     },
     "survey": {
       "very": 0,
