@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-30T23:39:39Z",
+  "fetched_at": "2026-07-31T01:14:16Z",
   "data": {
     "period": "7d",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
       "unique_users": 3364,
-      "total_tunes": 17665,
-      "total_watch_min": 293910.9,
-      "avg_duration_sec": 880.3
+      "total_tunes": 17654,
+      "total_watch_min": 293908.8,
+      "avg_duration_sec": 880.9
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 863,
-        "unique_users": 652,
-        "watch_min": 3752.9
+        "tunes": 861,
+        "unique_users": 650,
+        "watch_min": 3752.6
       },
       {
         "ch": 27,
@@ -33,9 +33,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 746,
-        "unique_users": 526,
-        "watch_min": 601.3
+        "tunes": 747,
+        "unique_users": 527,
+        "watch_min": 601.4
       },
       {
         "ch": 41,
@@ -96,9 +96,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 236,
-        "unique_users": 189,
-        "watch_min": 299.2
+        "tunes": 235,
+        "unique_users": 188,
+        "watch_min": 299.1
       },
       {
         "ch": 199,
@@ -114,8 +114,8 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 408,
-        "unique_users": 314,
+        "tunes": 407,
+        "unique_users": 313,
         "watch_min": 250
       },
       {
@@ -123,9 +123,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 225,
-        "unique_users": 177,
-        "watch_min": 199.6
+        "tunes": 224,
+        "unique_users": 176,
+        "watch_min": 199.5
       },
       {
         "ch": 7,
@@ -141,8 +141,8 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 391,
-        "unique_users": 318,
+        "tunes": 390,
+        "unique_users": 317,
         "watch_min": 168.3
       },
       {
@@ -177,9 +177,9 @@
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 206,
-        "unique_users": 168,
-        "watch_min": 133.4
+        "tunes": 205,
+        "unique_users": 167,
+        "watch_min": 133.3
       },
       {
         "ch": 230,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 5142,
-        "unique_users": 1135,
-        "watch_min": 6538.8
+        "tunes": 5133,
+        "unique_users": 1133,
+        "watch_min": 6538.2
       },
       {
         "cat": "Music",
-        "tunes": 3542,
-        "unique_users": 1047,
-        "watch_min": 2568
+        "tunes": 3543,
+        "unique_users": 1048,
+        "watch_min": 2568.1
       },
       {
         "cat": "Entertainment",
-        "tunes": 4479,
-        "unique_users": 1114,
-        "watch_min": 1876.4
+        "tunes": 4477,
+        "unique_users": 1113,
+        "watch_min": 1876
       },
       {
         "cat": "Movies",
@@ -350,9 +350,9 @@
       },
       {
         "cat": "Kids",
-        "tunes": 61,
-        "unique_users": 51,
-        "watch_min": 12.3
+        "tunes": 60,
+        "unique_users": 50,
+        "watch_min": 12.1
       },
       {
         "cat": "Family",
@@ -406,14 +406,14 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13369,
-        "unique_users": 2492,
-        "watch_min": 11370.5
+        "tunes": 13358,
+        "unique_users": 2491,
+        "watch_min": 11369.3
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1089,
-        "unique_users": 687,
+        "tunes": 1090,
+        "unique_users": 688,
         "watch_min": 923.5
       },
       {
@@ -424,9 +424,9 @@
       },
       {
         "lang": "English",
-        "tunes": 918,
-        "unique_users": 400,
-        "watch_min": 219.9
+        "tunes": 917,
+        "unique_users": 399,
+        "watch_min": 219.8
       },
       {
         "lang": "Marathi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-24 00:00",
-        "users": 2,
-        "tunes": 13
-      },
       {
         "hour": "2026-07-24 01:00",
         "users": 4,
@@ -1271,14 +1266,24 @@
         "hour": "2026-07-30 22:00",
         "users": 3,
         "tunes": 2
+      },
+      {
+        "hour": "2026-07-31 00:00",
+        "users": 1,
+        "tunes": 1
+      },
+      {
+        "hour": "2026-07-31 01:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-24",
-        "users": 481,
-        "tunes": 2804,
-        "watch_min": 134020.8
+        "users": 479,
+        "tunes": 2791,
+        "watch_min": 134018.6
       },
       {
         "day": "2026-07-25",
@@ -1315,6 +1320,12 @@
         "users": 420,
         "tunes": 1828,
         "watch_min": 14128.6
+      },
+      {
+        "day": "2026-07-31",
+        "users": 2,
+        "tunes": 2,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
@@ -1328,12 +1339,12 @@
       }
     ],
     "funnel": {
-      "opens": 2014,
+      "opens": 2015,
       "playback": 1589,
       "engaged": 312
     },
     "retention": {
-      "new_users": 1671,
+      "new_users": 1672,
       "returning_users": 367
     },
     "errorBoard": [
@@ -1405,14 +1416,14 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 30,
-        "starts": 694
+        "starts": 692
       },
       {
         "ch": 24,
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 29,
-        "starts": 564
+        "starts": 565
       },
       {
         "ch": 52,
@@ -1524,7 +1535,7 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 15,
-        "starts": 241
+        "starts": 240
       },
       {
         "ch": 17,
@@ -1555,6 +1566,13 @@
         "starts": 21
       },
       {
+        "ch": 33,
+        "name": "YRF Music",
+        "cat": "Music",
+        "errors": 11,
+        "starts": 0
+      },
+      {
         "ch": 38,
         "name": "ZB Music",
         "cat": "Music",
@@ -1566,14 +1584,7 @@
         "name": "Shemaroo TV",
         "cat": "Entertainment",
         "errors": 11,
-        "starts": 105
-      },
-      {
-        "ch": 33,
-        "name": "YRF Music",
-        "cat": "Music",
-        "errors": 10,
-        "starts": 0
+        "starts": 104
       },
       {
         "ch": 118,
@@ -1587,7 +1598,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 10,
-        "starts": 170
+        "starts": 169
       },
       {
         "ch": 88,
@@ -1619,14 +1630,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 16853,
-      "samples": 9902
+      "avg_ttff_ms": 16869,
+      "samples": 9892
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8760,
-        "avg_ttff_ms": 17126
+        "starts": 8750,
+        "avg_ttff_ms": 17143
       },
       {
         "net": "3g",

@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-30T23:39:39Z",
+  "fetched_at": "2026-07-31T01:14:16Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 15030,
-      "total_tunes": 77744,
-      "total_watch_min": 2931328.1,
-      "avg_duration_sec": 2004.5
+      "unique_users": 15027,
+      "total_tunes": 77745,
+      "total_watch_min": 2931327.8,
+      "avg_duration_sec": 2004.4
     },
     "channelLeaderboard": [
       {
@@ -51,9 +51,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 2489,
-        "unique_users": 1777,
-        "watch_min": 2100.4
+        "tunes": 2490,
+        "unique_users": 1778,
+        "watch_min": 2100.5
       },
       {
         "ch": 226,
@@ -298,12 +298,12 @@
         "cat": "Music",
         "tunes": 13077,
         "unique_users": 3634,
-        "watch_min": 7888.7
+        "watch_min": 7888.4
       },
       {
         "cat": "Movies",
-        "tunes": 8200,
-        "unique_users": 3046,
+        "tunes": 8201,
+        "unique_users": 3047,
         "watch_min": 4874.1
       },
       {
@@ -408,13 +408,13 @@
         "lang": "Hindi",
         "tunes": 61147,
         "unique_users": 11689,
-        "watch_min": 62352
+        "watch_min": 62351.7
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 4072,
-        "unique_users": 2517,
-        "watch_min": 2713.8
+        "tunes": 4073,
+        "unique_users": 2518,
+        "watch_min": 2713.9
       },
       {
         "lang": "English",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-01 00:00",
-        "users": 4,
-        "tunes": 0
-      },
-      {
         "hour": "2026-07-01 01:00",
-        "users": 9,
-        "tunes": 75
+        "users": 8,
+        "tunes": 74
       },
       {
         "hour": "2026-07-01 02:00",
@@ -4011,14 +4006,24 @@
         "hour": "2026-07-30 22:00",
         "users": 3,
         "tunes": 2
+      },
+      {
+        "hour": "2026-07-31 00:00",
+        "users": 1,
+        "tunes": 1
+      },
+      {
+        "hour": "2026-07-31 01:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-01",
-        "users": 507,
-        "tunes": 2708,
-        "watch_min": 68387.9
+        "users": 502,
+        "tunes": 2707,
+        "watch_min": 68387.5
       },
       {
         "day": "2026-07-02",
@@ -4193,12 +4198,18 @@
         "users": 420,
         "tunes": 1828,
         "watch_min": 14128.6
+      },
+      {
+        "day": "2026-07-31",
+        "users": 2,
+        "tunes": 2,
+        "watch_min": 0.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 14184
+        "users": 14181
       },
       {
         "device": "desktop",
@@ -4206,13 +4217,13 @@
       }
     ],
     "funnel": {
-      "opens": 8190,
-      "playback": 6678,
+      "opens": 8189,
+      "playback": 6677,
       "engaged": 1229
     },
     "retention": {
-      "new_users": 7936,
-      "returning_users": 333
+      "new_users": 7934,
+      "returning_users": 334
     },
     "errorBoard": [
       {
@@ -4276,7 +4287,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 315,
-        "starts": 4849
+        "starts": 4847
       },
       {
         "ch": 19,
@@ -4332,7 +4343,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 88,
-        "starts": 1927
+        "starts": 1928
       },
       {
         "ch": 30,
@@ -4479,7 +4490,14 @@
         "name": "Zoom",
         "cat": "Music",
         "errors": 45,
-        "starts": 232
+        "starts": 231
+      },
+      {
+        "ch": 33,
+        "name": "YRF Music",
+        "cat": "Music",
+        "errors": 44,
+        "starts": 0
       },
       {
         "ch": 43,
@@ -4487,18 +4505,11 @@
         "cat": "News",
         "errors": 44,
         "starts": 462
-      },
-      {
-        "ch": 33,
-        "name": "YRF Music",
-        "cat": "Music",
-        "errors": 43,
-        "starts": 0
       }
     ],
     "perf": {
-      "avg_ttff_ms": 9816,
-      "samples": 41913
+      "avg_ttff_ms": 9817,
+      "samples": 41911
     },
     "netBreakdown": [
       {
@@ -4513,8 +4524,8 @@
       },
       {
         "net": "unknown",
-        "starts": 2637,
-        "avg_ttff_ms": 2879
+        "starts": 2635,
+        "avg_ttff_ms": 2880
       },
       {
         "net": "slow-2g",
@@ -4528,7 +4539,7 @@
       }
     ],
     "engagement": {
-      "sessions": 15030,
+      "sessions": 15027,
       "avg_channels": 4.2,
       "avg_session_sec": 216,
       "bounce_pct": 46.8,
