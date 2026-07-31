@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-07-31T22:28:18Z",
+  "fetched_at": "2026-07-31T23:33:57Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
       "unique_users": 785,
-      "total_tunes": 3210,
+      "total_tunes": 3211,
       "total_watch_min": 14900.6,
-      "avg_duration_sec": 253.1
+      "avg_duration_sec": 253
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "Goldmines",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 48,
-        "unique_users": 18,
-        "watch_min": 253.7
+        "tunes": 49,
+        "unique_users": 19,
+        "watch_min": 253.8
       },
       {
         "ch": 206,
@@ -33,9 +33,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 198,
-        "unique_users": 158,
-        "watch_min": 80.8
+        "tunes": 197,
+        "unique_users": 157,
+        "watch_min": 80.7
       },
       {
         "ch": 73,
@@ -51,9 +51,9 @@
         "name": "9X Jhakaas",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 180,
-        "unique_users": 154,
-        "watch_min": 52.1
+        "tunes": 179,
+        "unique_users": 153,
+        "watch_min": 52
       },
       {
         "ch": 2,
@@ -284,8 +284,8 @@
     "categoryBreakdown": [
       {
         "cat": "Movies",
-        "tunes": 390,
-        "unique_users": 189,
+        "tunes": 391,
+        "unique_users": 190,
         "watch_min": 342.3
       },
       {
@@ -296,21 +296,21 @@
       },
       {
         "cat": "News",
-        "tunes": 859,
-        "unique_users": 225,
-        "watch_min": 265.3
+        "tunes": 858,
+        "unique_users": 224,
+        "watch_min": 265.2
       },
       {
         "cat": "Music",
-        "tunes": 613,
-        "unique_users": 214,
-        "watch_min": 119.1
+        "tunes": 612,
+        "unique_users": 213,
+        "watch_min": 119
       },
       {
         "cat": "Devotional",
-        "tunes": 253,
-        "unique_users": 74,
-        "watch_min": 39.9
+        "tunes": 255,
+        "unique_users": 76,
+        "watch_min": 40
       },
       {
         "cat": "Undefined",
@@ -400,7 +400,7 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 2367,
+        "tunes": 2368,
         "unique_users": 556,
         "watch_min": 976.4
       },
@@ -436,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-30 22:00",
-        "users": 2,
-        "tunes": 2
-      },
       {
         "hour": "2026-07-31 00:00",
         "users": 1,
@@ -553,41 +548,40 @@
       },
       {
         "hour": "2026-07-31 22:00",
-        "users": 2,
-        "tunes": 3
+        "users": 3,
+        "tunes": 5
+      },
+      {
+        "hour": "2026-07-31 23:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-07-30",
-        "users": 2,
-        "tunes": 2,
-        "watch_min": 0.2
-      },
-      {
         "day": "2026-07-31",
-        "users": 783,
-        "tunes": 3208,
-        "watch_min": 14900.5
+        "users": 785,
+        "tunes": 3211,
+        "watch_min": 14900.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 759
+        "users": 760
       },
       {
         "device": "desktop",
-        "users": 11
+        "users": 10
       }
     ],
     "funnel": {
-      "opens": 425,
-      "playback": 344,
+      "opens": 423,
+      "playback": 343,
       "engaged": 54
     },
     "retention": {
-      "new_users": 348,
+      "new_users": 346,
       "returning_users": 84
     },
     "errorBoard": [
@@ -659,7 +653,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 6,
-        "starts": 149
+        "starts": 148
       },
       {
         "ch": 2,
@@ -902,8 +896,8 @@
       "sessions": 785,
       "avg_channels": 3.2,
       "avg_session_sec": 104,
-      "bounce_pct": 58.7,
-      "zap_pct": 52.7
+      "bounce_pct": 58.6,
+      "zap_pct": 52.8
     },
     "survey": {
       "very": 3,
