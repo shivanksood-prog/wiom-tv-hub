@@ -1,134 +1,316 @@
 {
-  "fetched_at": "2026-08-02T22:07:19Z",
+  "fetched_at": "2026-08-02T23:09:33Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
       "unique_users": 12,
-      "total_tunes": 13,
-      "total_watch_min": 2.9,
-      "avg_duration_sec": 13.2
+      "total_tunes": 28,
+      "total_watch_min": 29.6,
+      "avg_duration_sec": 61.2
     },
     "channelLeaderboard": [
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 1.3
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.9
-      },
       {
         "ch": 224,
         "name": "The Movie Club +2",
         "cat": "Movies",
         "lang": "Hindi",
         "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.5
+        "unique_users": 2,
+        "watch_min": 5
       },
       {
-        "ch": 29,
-        "name": "9X Jhakaas",
-        "cat": "Music",
+        "ch": 24,
+        "name": "Bhojpuri Cinema",
+        "cat": "Movies",
+        "lang": "Bhojpuri",
+        "tunes": 5,
+        "unique_users": 5,
+        "watch_min": 2
+      },
+      {
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
+        "tunes": 5,
+        "unique_users": 5,
+        "watch_min": 0.6
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.4
+      },
+      {
+        "ch": 104,
+        "name": "DD National HD",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 6,
+        "name": "Zee Dil Se",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 7,
+        "name": "Zee Horror Nights",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
         "watch_min": 0.2
+      },
+      {
+        "ch": 180,
+        "name": "PTC Punjabi Gold",
+        "cat": "Entertainment",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 26,
+        "name": "Shemaroo Marathi Bana",
+        "cat": "Movies",
+        "lang": "Marathi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 15,
+        "name": "NDTV Good Times",
+        "cat": "Entertainment",
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 14,
+        "name": "Mango TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 13,
+        "name": "Abzy Dhakad",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 5,
+        "name": "Zee Comedy Nation",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 179,
+        "name": "PTC Punjabi",
+        "cat": "Entertainment",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 12,
+        "name": "Abzy Movies",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 11,
+        "name": "Shubh Cinema",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 9,
+        "name": "Zee South Flix",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 4,
+        "name": "Epic TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "Movies",
-        "tunes": 6,
-        "unique_users": 4,
-        "watch_min": 1.4
+        "tunes": 8,
+        "unique_users": 6,
+        "watch_min": 7.2
+      },
+      {
+        "cat": "Entertainment",
+        "tunes": 15,
+        "unique_users": 1,
+        "watch_min": 1.9
       },
       {
         "cat": "News",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 1.3
-      },
-      {
-        "cat": "Music",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.2
+        "tunes": 5,
+        "unique_users": 5,
+        "watch_min": 0.6
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 1.9
+        "tunes": 19,
+        "unique_users": 8,
+        "watch_min": 7.3
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.9
+        "tunes": 5,
+        "unique_users": 5,
+        "watch_min": 2
+      },
+      {
+        "lang": "Punjabi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "lang": "Marathi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-02 21:00",
+        "hour": "2026-08-02 22:00",
         "users": 12,
-        "tunes": 13
+        "tunes": 28
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-02",
         "users": 12,
-        "tunes": 13,
-        "watch_min": 2.9
+        "tunes": 28,
+        "watch_min": 29.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 12
+        "users": 11
       }
     ],
     "funnel": {
-      "opens": 9,
-      "playback": 5,
-      "engaged": 1
+      "opens": 5,
+      "playback": 4,
+      "engaged": 2
     },
     "retention": {
-      "new_users": 7,
-      "returning_users": 2
+      "new_users": 1,
+      "returning_users": 4
     },
-    "errorBoard": [],
+    "errorBoard": [
+      {
+        "ch": 4,
+        "name": "Epic TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 13,
+        "name": "Abzy Dhakad",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 14,
+        "name": "Mango TV",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      },
+      {
+        "ch": 15,
+        "name": "NDTV Good Times",
+        "cat": "Entertainment",
+        "errors": 1,
+        "starts": 0
+      }
+    ],
     "perf": {
-      "avg_ttff_ms": 1574,
-      "samples": 8
+      "avg_ttff_ms": 1438,
+      "samples": 22
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 8,
-        "avg_ttff_ms": 1574
+        "starts": 22,
+        "avg_ttff_ms": 1438
       }
     ],
     "engagement": {
       "sessions": 12,
-      "avg_channels": 0.8,
-      "avg_session_sec": 15,
-      "bounce_pct": 66.7,
-      "zap_pct": 38.5
+      "avg_channels": 2.3,
+      "avg_session_sec": 43,
+      "bounce_pct": 83.3,
+      "zap_pct": 35.7
     },
     "survey": {
       "very": null,
