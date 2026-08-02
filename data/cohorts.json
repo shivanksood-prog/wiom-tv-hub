@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-01T23:02:05Z",
+  "fetched_at": "2026-08-02T00:08:26Z",
   "data": {
     "offsets": [
       0,
@@ -11,6 +11,47 @@
       30
     ],
     "grid": [
+      {
+        "cohort": "2026-08-02",
+        "size": 1,
+        "cells": [
+          {
+            "day": 0,
+            "users": 1,
+            "pct": 100
+          },
+          {
+            "day": 1,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 2,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 3,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 7,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 14,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 30,
+            "users": 0,
+            "pct": 0
+          }
+        ]
+      },
       {
         "cohort": "2026-08-01",
         "size": 597,
@@ -864,47 +905,6 @@
             "day": 14,
             "users": 5,
             "pct": 2
-          },
-          {
-            "day": 30,
-            "users": 0,
-            "pct": 0
-          }
-        ]
-      },
-      {
-        "cohort": "2026-07-11",
-        "size": 276,
-        "cells": [
-          {
-            "day": 0,
-            "users": 276,
-            "pct": 100
-          },
-          {
-            "day": 1,
-            "users": 23,
-            "pct": 8
-          },
-          {
-            "day": 2,
-            "users": 5,
-            "pct": 2
-          },
-          {
-            "day": 3,
-            "users": 3,
-            "pct": 1
-          },
-          {
-            "day": 7,
-            "users": 3,
-            "pct": 1
-          },
-          {
-            "day": 14,
-            "users": 1,
-            "pct": 0
           },
           {
             "day": 30,
