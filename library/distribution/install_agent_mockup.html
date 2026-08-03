@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiom TV Install Agent — Guided Flow & Screens</title>
+<style>
+  :root{
+    --brand:#D9008D; --brand2:#443152; --pink100:#FFE5F6; --pink300:#FFB2E4;
+    --ink:#161021; --muted:#665E75; --n300:#D7D3E0; --n100:#F1EDF7; --page:#FAF9FC;
+    --pos:#008043; --pos100:#E1FAED; --warn:#FF8000; --warn200:#FFE6CC; --neg:#E01E00; --neg100:#FFE9E5;
+    --info:#6D17CE; --info100:#F1E5FF; --playgreen:#0B8043;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans','Segoe UI',system-ui,sans-serif;background:var(--page);color:var(--ink);line-height:1.5}
+  .hero{background:linear-gradient(135deg,#D9008D,#443152);color:#fff;padding:42px 24px}
+  .hero .in{max-width:1240px;margin:0 auto}
+  .ey{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;font-weight:700}
+  .hero h1{font-size:31px;margin:12px 0 8px;font-weight:800}
+  .hero p{opacity:.92;max-width:780px}
+  .hero .pills{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+  .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600}
+  .wrap{max-width:1240px;margin:0 auto;padding:34px 24px 90px}
+  h2.sec{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:800;margin:8px 0 18px;display:flex;align-items:center;gap:10px}
+  h2.sec::before{content:"";width:26px;height:3px;background:var(--brand);border-radius:3px}
+
+  .pivot{background:var(--pink100);border:1px solid var(--pink300);border-left:5px solid var(--brand);border-radius:14px;padding:20px 24px;margin-bottom:38px}
+  .pivot .lab{color:var(--brand);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .pivot p{font-size:15px}
+  .pivot strong{color:var(--brand)}
+  .ba{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+  .ba .col{flex:1;min-width:230px;border-radius:10px;padding:13px 15px;font-size:13px}
+  .ba .before{background:var(--neg100);border:1px solid #f3b6aa}
+  .ba .after{background:var(--pos100);border:1px solid #a9e3c4}
+  .ba h4{font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+  .ba .before h4{color:var(--neg)} .ba .after h4{color:var(--pos)}
+  .ba ul{margin:0;padding-left:16px;color:var(--muted)}
+
+  .flow{background:#fff;border:1px solid var(--n300);border-radius:16px;padding:26px;margin-bottom:46px}
+  .stage{margin-bottom:22px}.stage:last-child{margin-bottom:0}
+  .stage-h{font-weight:800;font-size:15px;color:var(--brand2);margin-bottom:4px}
+  .stage-q{font-size:13px;color:var(--muted);margin-bottom:12px}
+  .branches{display:flex;gap:12px;flex-wrap:wrap}
+  .branch{flex:1;min-width:175px;border-radius:12px;padding:12px 14px;font-size:13px;border:1px solid var(--n300)}
+  .branch .bt{font-weight:700;margin-bottom:3px}
+  .branch .bd{color:var(--muted);font-size:12px}
+  .branch.good{background:var(--pos100);border-color:#a9e3c4}.branch.good .bt{color:var(--pos)}
+  .branch.bad{background:var(--neg100);border-color:#f3b6aa}.branch.bad .bt{color:var(--neg)}
+  .branch.warn{background:var(--warn200);border-color:#f3c38a}.branch.warn .bt{color:#a85200}
+  .branch.info{background:var(--info100);border-color:#d4b8f5}.branch.info .bt{color:var(--info)}
+  .arrowdown{text-align:center;color:var(--brand);font-size:18px;margin:6px 0}
+
+  .grid{display:flex;flex-wrap:wrap;gap:34px 28px;justify-content:center}
+  .item{width:266px}
+  .cap{margin-top:13px;text-align:center}
+  .cap .tag{display:inline-block;border-radius:999px;font-size:10.5px;font-weight:800;padding:3px 10px;letter-spacing:.04em}
+  .cap .desc{font-size:12px;color:var(--muted);margin-top:7px;padding:0 4px}
+  .tg-good{background:var(--pos100);color:var(--pos)}.tg-pre{background:var(--info100);color:var(--info)}
+  .tg-bad{background:var(--neg100);color:var(--neg)}.tg-warn{background:var(--warn200);color:#a85200}
+
+  .phone{width:266px;height:556px;background:#0c0a12;border-radius:36px;padding:9px;box-shadow:0 16px 36px rgba(22,16,33,.18);position:relative}
+  .screen{width:100%;height:100%;background:var(--page);border-radius:29px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:112px;height:20px;background:#0c0a12;border-radius:0 0 14px 14px;z-index:5}
+  .sb{height:28px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:10.5px;font-weight:600}
+  .body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px 20px}
+  .eyebrow{color:var(--brand);font-weight:800;font-size:10.5px;letter-spacing:.18em}
+  .icon{width:56px;height:56px;border-radius:16px;background:var(--pink100);border:1px solid var(--pink300);display:flex;align-items:center;justify-content:center;font-size:26px;margin:13px 0}
+  h3.head{font-size:18px;font-weight:800;margin:5px 0;line-height:1.2}
+  .sub{font-size:12px;color:var(--muted);margin-top:7px}
+  .btn{margin-top:auto;width:100%;background:var(--brand);color:#fff;border:none;border-radius:13px;padding:12px;font-size:14px;font-weight:700}
+  .btn.ghost{background:#fff;color:var(--brand);border:1.5px solid var(--brand)}
+  .btn+.btn{margin-top:9px}
+  .spinner{width:32px;height:32px;border:4px solid var(--pink100);border-top-color:var(--brand);border-radius:50%;animation:spin 1s linear infinite;margin:16px 0}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .chip{display:inline-block;background:var(--pos100);color:var(--pos);font-size:10.5px;font-weight:700;border-radius:999px;padding:3px 10px;margin-top:9px}
+
+  /* instructions visual */
+  .ibar{display:flex;align-items:center;gap:9px;width:100%;margin:6px 0 14px}
+  .iinstall{flex:1;height:40px;background:var(--playgreen);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .iarrow{width:40px;height:40px;border:2px solid var(--brand);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;position:relative}
+  .pulse{position:absolute;inset:-4px;border:2px solid var(--brand);border-radius:10px;animation:pulse 1.2s infinite}
+  @keyframes pulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+  .istep{display:flex;align-items:center;gap:10px;width:100%;margin:7px 0;text-align:left}
+  .inum{width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:0 0 auto}
+  .itext{font-size:12.5px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="in">
+    <div class="ey">Wiom TV Install Agent · v1.0-pilot · GUIDED build</div>
+    <h1>The guided installer — zero permission prompts</h1>
+    <p>We pivoted away from accessibility auto-tap after the permission wall (Play Protect + the greyed-out "restricted settings"). This build asks for <strong>nothing</strong> — it just finds the TV, shows the 3 taps, and opens Google Play. The household makes the taps in an app they were already guided through.</p>
+    <div class="pills">
+      <span class="pill">0 permission prompts</span>
+      <span class="pill">No accessibility</span>
+      <span class="pill">No overlay</span>
+      <span class="pill">Just a sideload + 3 guided taps</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="pivot">
+    <div class="lab">Why we pivoted</div>
+    <p>The accessibility permission only ever bought us <strong>tapping Install for the user</strong> — it unlocked no extra capability (Google blocks programmatic TV install regardless). But it demanded sideload → Play Protect warning → accessibility grant → "allow restricted settings." For a non-tech base that chain is <strong>more friction than the 3 taps it removed.</strong> So we keep the guidance, drop the automation.</p>
+    <div class="ba">
+      <div class="col before"><h4>✕ Auto-tap build</h4><ul><li>Sideload + unknown sources</li><li>Play Protect warning</li><li>Accessibility grant</li><li>"Allow restricted settings" unblock</li><li>~1 tap, but brittle selectors</li></ul></div>
+      <div class="col after"><h4>✓ Guided build (now)</h4><ul><li>Sideload + unknown sources</li><li>No other prompts at all</li><li>Finds the TV, shows the 3 taps</li><li>Opens Play; user taps Install</li><li>Catches wrong-device installs</li></ul></div>
+    </div>
+  </div>
+
+  <h2 class="sec">The MECE flow — guided</h2>
+  <div class="flow">
+    <div class="stage">
+      <div class="stage-h">1 · TV on the network</div>
+      <div class="stage-q">What's on this Wi-Fi? (silent mDNS — no prompt)</div>
+      <div class="branches">
+        <div class="branch bad"><div class="bt">✕ Nothing found</div><div class="bd">TV off / not on Wi-Fi → Retry</div></div>
+        <div class="branch warn"><div class="bt">⚠ Fire TV</div><div class="bd">no Google Play → another way</div></div>
+        <div class="branch warn"><div class="bt">⚠ Tizen / webOS</div><div class="bd">no Google Play → another way</div></div>
+        <div class="branch good"><div class="bt">✓ Google-TV family</div><div class="bd">Play-capable → ready</div></div>
+      </div>
+    </div>
+    <div class="arrowdown">▼</div>
+    <div class="stage">
+      <div class="stage-h">2 · Guided install (user does 3 taps)</div>
+      <div class="stage-q">App shows the steps, opens Play; the user taps</div>
+      <div class="branches">
+        <div class="branch info"><div class="bt">① Tap ▾ arrow</div><div class="bd">opens the device picker</div></div>
+        <div class="branch info"><div class="bt">② Choose your TV</div><div class="bd">same-account TVs are listed</div></div>
+        <div class="branch info"><div class="bt">③ Tap Install</div><div class="bd">sends to the TV over the air</div></div>
+      </div>
+    </div>
+    <div class="arrowdown">▼</div>
+    <div class="stage">
+      <div class="stage-h">3 · Outcome</div>
+      <div class="stage-q">"Did it install on your TV?"</div>
+      <div class="branches">
+        <div class="branch good"><div class="bt">✓ It installed</div><div class="bd">success → open it on the TV once</div></div>
+        <div class="branch bad"><div class="bt">✕ Landed on phone</div><div class="bd">detected → "pick your TV" retry</div></div>
+        <div class="branch warn"><div class="bt">⚠ Didn't work</div><div class="bd">help: TV must be on same Wi-Fi + account</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">All 11 screens</h2>
+  <div class="grid">
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon">📺</div>
+        <h3 class="head">Get Wiom TV on your TV</h3><div class="sub">We'll show you exactly what to tap — no typing on the TV.</div>
+        <button class="btn">Set up Wiom TV</button></div>
+    </div></div><div class="cap"><span class="tag tg-pre">Welcome</span><div class="desc">One tap to start. No permissions asked.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div>
+        <h3 class="head">Finding your TV…</h3><div class="spinner"></div><div class="sub">Looking for your TV on the Wi-Fi…</div></div>
+    </div></div><div class="cap"><span class="tag tg-pre">Diagnose</span><div class="desc">Silent mDNS — no popup.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--warn200);border-color:#f3c38a">📡</div>
+        <h3 class="head">We can't see your TV yet</h3><div class="sub">Turn on your TV and connect it to your Wiom Wi-Fi, then tap Retry.</div>
+        <button class="btn ghost">Retry</button></div>
+    </div></div><div class="cap"><span class="tag tg-warn">TV off / no Wi-Fi</span><div class="desc">Distinct from incompatible TVs.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--warn200);border-color:#f3c38a">🔥</div>
+        <h3 class="head">This is a Fire TV</h3><div class="sub">It can't install from Google Play. We'll help you set up Wiom TV another way.</div>
+        <button class="btn ghost">Try a different TV</button></div>
+    </div></div><div class="cap"><span class="tag tg-bad">Fire TV</span><div class="desc">Detected via <code>_amzn-wplay</code> mDNS.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--warn200);border-color:#f3c38a">🚫</div>
+        <h3 class="head">No Google Play on this TV</h3><div class="sub">This TV doesn't have the Google Play Store, so it can't install this way.</div>
+        <button class="btn ghost">Try a different TV</button></div>
+    </div></div><div class="cap"><span class="tag tg-bad">Tizen / webOS</span><div class="desc">Non-Google smart TV.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--pos100);border-color:#a9e3c4">✅</div>
+        <h3 class="head">Ready to install</h3><span class="chip">📺 Sony Bravia found</span>
+        <div class="sub">Found Sony Bravia. Ready to install.</div>
+        <button class="btn">Show me how</button></div>
+    </div></div><div class="cap"><span class="tag tg-good">Ready</span><div class="desc">Play-capable TV detected.</div></div></div>
+
+    <!-- INSTRUCTIONS -->
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div>
+        <h3 class="head" style="margin-bottom:10px">3 quick taps in Google Play</h3>
+        <div class="ibar"><div class="iinstall">Install</div><div class="iarrow">▾<span class="pulse"></span></div></div>
+        <div class="istep"><div class="inum">1</div><div class="itext">Tap the small ▾ arrow next to Install</div></div>
+        <div class="istep"><div class="inum">2</div><div class="itext">Choose your TV from the list</div></div>
+        <div class="istep"><div class="inum">3</div><div class="itext">Tap Install — it sends to your TV</div></div>
+        <div style="width:100%;background:var(--pos100);border-radius:10px;padding:10px;margin-top:14px;text-align:center">
+          <div style="font-size:10.5px;color:#06623a">This phone uses</div>
+          <div style="font-size:13px;color:#06623a;font-weight:800">rahul@gmail.com</div>
+          <div style="font-size:10.5px;color:#06623a;margin-top:3px">Make sure your TV uses this same account.</div>
+        </div>
+        <div style="font-size:10.5px;color:var(--muted);margin-top:8px">Not in the list? Your TV is on a different Google account.</div>
+        <button class="btn" style="margin-top:12px">Open Google Play</button></div>
+    </div></div><div class="cap"><span class="tag tg-good">★ Instructions + account check</span><div class="desc">Shows the phone's Google account (permission-free chooser) so the user can match the TV.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon">⏳</div>
+        <h3 class="head">Did it install on your TV?</h3><div class="sub">Follow the 3 steps in Google Play, then come back.</div>
+        <button class="btn">It installed ✓</button>
+        <button class="btn ghost">I need help</button></div>
+    </div></div><div class="cap"><span class="tag tg-pre">After Play</span><div class="desc">Self-report check.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--neg100);border-color:#f3b6aa">📱</div>
+        <h3 class="head">Let's fix that</h3><div class="sub">It looks like Wiom TV installed on this phone, not your TV. Open Play again and pick your TV from the device list.</div>
+        <button class="btn">Open Play again</button></div>
+    </div></div><div class="cap"><span class="tag tg-bad">Wrong device</span><div class="desc">Auto-detected via the phone's packages.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--warn200);border-color:#f3c38a">🔑</div>
+        <h3 class="head">Let's get it working</h3><div class="sub">If your TV wasn't in the list: make sure it's ON, on the same Wi-Fi, and signed into the SAME Google account as this phone. Then try again.</div>
+        <button class="btn">Try again</button></div>
+    </div></div><div class="cap"><span class="tag tg-warn">Need help</span><div class="desc">Covers account mismatch & TV-not-listed.</div></div></div>
+
+    <div class="item"><div class="phone"><div class="notch"></div><div class="screen">
+      <div class="sb"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="body"><div class="eyebrow">WIOM TV SETUP</div><div class="icon" style="background:var(--pos100);border-color:#a9e3c4">🎉</div>
+        <h3 class="head">Almost done 🎉</h3><div class="sub">Wiom TV is on its way to your TV. Open it on your TV once to finish.</div>
+        <span class="chip">No field visit needed</span></div>
+    </div></div><div class="cap"><span class="tag tg-good">Success</span><div class="desc">One TV-open remains.</div></div></div>
+
+  </div>
+</div>
+</body>
+</html>

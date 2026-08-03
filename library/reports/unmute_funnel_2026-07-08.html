@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wiom.tv Unmute Funnel — 8 Jul 2026</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --border:#D7D3E0; --zebra:#F1EDF7;
+    --text:#161021; --muted:#665E75; --label:#A7A1B2;
+    --accent:#D9008D; --accent-mid:#D9008D; --accent-light:#F27DC6; --accent-dark:#8F005D;
+    --purple:#6D17CE; --green:#008043; --green-bg:#E1FAED;
+    --amber:#FF8000; --amber-bg:#FFE6CC; --red:#E01E00; --red-bg:#FFE9E5;
+    --info-bg:#F1E5FF; --pink-bg:#FFE5F6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Noto Sans','Segoe UI',system-ui,sans-serif;line-height:1.45;padding:32px 16px 64px}
+  .wrap{max-width:980px;margin:0 auto}
+  header{margin-bottom:28px}
+  .eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  h1{font-size:26px;font-weight:700;margin:6px 0 4px}
+  .sub{color:var(--muted);font-size:13.5px}
+  .headline{background:linear-gradient(135deg,var(--pink-bg),#fff);border:1px solid var(--accent-light);border-left:4px solid var(--accent);border-radius:12px;padding:18px 20px;margin:20px 0 28px}
+  .headline .big{font-size:17px;font-weight:700;margin-bottom:6px}
+  .headline p{font-size:13.5px;color:var(--muted)}
+  .headline p b{color:var(--text)}
+  h2{font-size:17px;font-weight:700;margin:36px 0 4px}
+  .h2sub{color:var(--muted);font-size:12.5px;margin-bottom:14px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+  /* stat tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:8px}
+  .tile{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+  .tile .lbl{font-size:12px;color:var(--muted);margin-bottom:4px}
+  .tile .val{font-size:30px;font-weight:600}
+  .tile .note{font-size:11.5px;color:var(--label);margin-top:3px}
+  /* funnel */
+  .fstage{display:grid;grid-template-columns:190px 1fr;align-items:center;gap:12px;margin-bottom:2px}
+  .fstage .name{font-size:13px;font-weight:600;text-align:right}
+  .fstage .name small{display:block;font-weight:400;color:var(--label);font-size:11px}
+  .ftrack{position:relative;height:34px;padding-right:120px}
+  .fbar{height:24px;margin-top:5px;border-radius:0 4px 4px 0;position:relative}
+  .fbar:hover{filter:brightness(1.08)}
+  .fval{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;white-space:nowrap;color:var(--text)}
+  .fval small{font-weight:400;color:var(--muted)}
+  .fdrop{grid-column:2;font-size:11.5px;color:var(--label);padding:2px 0 8px 2px}
+  /* column charts */
+  .chart{display:flex;align-items:flex-end;gap:34px;height:230px;padding:0 8px;border-bottom:1px solid var(--border);position:relative;margin-top:18px;margin-left:40px}
+  .xlbls{margin-left:40px}
+  .grid{position:absolute;left:0;right:0;height:1px;background:var(--zebra)}
+  .grid span{position:absolute;right:100%;padding-right:8px;top:-7px;font-size:10.5px;color:var(--label)}
+  .bgrp{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:2px;height:100%;position:relative;z-index:1}
+  .col{width:24px;border-radius:4px 4px 0 0;position:relative}
+  .col:hover{filter:brightness(1.08)}
+  .col .v{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);padding-bottom:3px;font-size:11.5px;font-weight:600;color:var(--text);white-space:nowrap}
+  .xlbls{display:flex;gap:34px;padding:8px 8px 0}
+  .xlbls div{flex:1;text-align:center;font-size:12px;color:var(--muted)}
+  .xlbls b{display:block;color:var(--text);font-size:12.5px}
+  .legend{display:flex;gap:18px;margin:14px 2px 0;font-size:12px;color:var(--muted)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  /* h-bars (unmute paths) */
+  .hrow{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:12px;margin-bottom:10px}
+  .hrow .name{font-size:13px;text-align:right;color:var(--text)}
+  .hrow .name small{display:block;color:var(--label);font-size:11px}
+  .hbar{height:24px;background:var(--accent);border-radius:0 4px 4px 0;position:relative}
+  .hbar:hover{filter:brightness(1.08)}
+  .hbar .fval{font-size:12.5px}
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px}
+  th{text-align:left;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;padding:8px 10px;border-bottom:1px solid var(--border)}
+  td{padding:8px 10px;border-bottom:1px solid var(--zebra);font-variant-numeric:tabular-nums}
+  tr:nth-child(even) td{background:var(--zebra)}
+  th.n,td.n{text-align:right}
+  .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11.5px;font-weight:600}
+  .pill.ok{background:var(--green-bg);color:var(--green)}
+  .pill.warn{background:var(--amber-bg);color:#A35200}
+  .pill.bad{background:var(--red-bg);color:var(--red)}
+  .pill.info{background:var(--info-bg);color:var(--purple)}
+  .callout{border-radius:10px;padding:12px 16px;font-size:13px;margin-top:16px}
+  .callout.warn{background:var(--amber-bg);border-left:3px solid var(--amber)}
+  .callout.info{background:var(--info-bg);border-left:3px solid var(--purple)}
+  .dq li{margin:0 0 10px 18px;font-size:13px}
+  .dq code{background:var(--zebra);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px;font-family:ui-monospace,Consolas,monospace}
+  footer{margin-top:44px;color:var(--label);font-size:11.5px;border-top:1px solid var(--border);padding-top:14px}
+  .scrollx{overflow-x:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Wiom TV &middot; Analytics</div>
+  <h1>Unmute funnel: the overlay works — reaching it is the problem</h1>
+  <div class="sub">Live analytics.db &middot; window 3 Jul 05:40 → 8 Jul 07:57 UTC (clean unmute-instrumentation era) &middot; sessions with <code style="font-family:inherit">session_start</code> &middot; generated 8 Jul 2026</div>
+</header>
+
+<div class="headline">
+  <div class="big">64% of sessions that see the "tap to unmute" overlay go on to unmute. But 44% of launches never see it at all — they bounce before playback settles.</div>
+  <p>Unmute conversion is not gated by the overlay UX: once shown, it converts well (55.9% tap it directly, and more unmute via the mute button or keyboard). The leak is upstream — <b>72% of launches die in under 60&nbsp;seconds</b>, and in those sessions only 52% ever reach the prompt and only 27% unmute. Sessions that survive 1–5&nbsp;min unmute at <b>59%</b>. Fixing time-to-stable-playback moves this funnel more than any overlay tweak.</p>
+</div>
+
+<div class="tiles">
+  <div class="tile"><div class="lbl">Launches (sessions)</div><div class="val">2,629</div><div class="note">5.1 days, all devices</div></div>
+  <div class="tile"><div class="lbl">Saw unmute prompt</div><div class="val">55.5%</div><div class="note">1,459 sessions</div></div>
+  <div class="tile"><div class="lbl">Unmuted (any path)</div><div class="val">35.4%</div><div class="note">931 sessions &middot; matches 34.5% baseline</div></div>
+  <div class="tile"><div class="lbl">Prompt → unmute</div><div class="val">63.8%</div><div class="note">594 of 1,459 prompted sessions never unmute</div></div>
+</div>
+
+<h2>The funnel</h2>
+<div class="h2sub">Session-level: a session counts once per step, any time in the window. All three steps are real instrumented events — no proxies (see data quality below).</div>
+<div class="card">
+  <div class="fstage">
+    <div class="name">1 &middot; Launch<small>session_start</small></div>
+    <div class="ftrack"><div class="fbar" style="width:100%;background:var(--accent-light)"><span class="fval">2,629 <small>100%</small></span></div></div>
+  </div>
+  <div class="fstage"><div></div><div class="fdrop">▼ −1,170 sessions (44.5%) never see the prompt — early bounce before playback, or audio already allowed</div></div>
+  <div class="fstage">
+    <div class="name">2 &middot; Unmute prompt seen<small>unmute_prompt_shown</small></div>
+    <div class="ftrack"><div class="fbar" style="width:55.5%;background:var(--accent-mid)"><span class="fval">1,459 <small>55.5%</small></span></div></div>
+  </div>
+  <div class="fstage"><div></div><div class="fdrop">▼ −643 prompted sessions stay muted; +115 sessions unmute without ever seeing the prompt</div></div>
+  <div class="fstage">
+    <div class="name">3 &middot; Unmuted — any path<small>unmute (overlay / button / key)</small></div>
+    <div class="ftrack"><div class="fbar" style="width:35.4%;background:var(--accent-dark)"><span class="fval">931 <small>35.4%</small></span></div></div>
+  </div>
+  <div class="callout info" style="margin-top:20px"><b>Why step 2 isn't 100%:</b> the overlay only fires when Chrome blocks autoplay-with-sound <i>and</i> the user hasn't already interacted. 115 of the 931 unmuters (12.4%) never saw the prompt — returning users whose browser allowed sound, or who tapped the mute button first. The rest of the gap is sessions dying before the player reaches the overlay moment.</div>
+</div>
+
+<h2>Split A — by session duration</h2>
+<div class="h2sub">Duration = first-to-last event per session_id (not the dwell field). Note the mechanical confound: longer sessions have more time in which to unmute — read this as "where the funnel lives", not pure causation.</div>
+<div class="card">
+  <div class="chart">
+    <div class="grid" style="bottom:25%"><span>25%</span></div>
+    <div class="grid" style="bottom:50%"><span>50%</span></div>
+    <div class="grid" style="bottom:75%"><span>75%</span></div>
+    <!-- bars scaled: 100% height = 75% conversion -->
+    <div class="bgrp" title="<1 min: prompt 52.1%, unmuted 27.0%">
+      <div class="col" style="height:69.5%;background:var(--accent)"><span class="v">52%</span></div>
+      <div class="col" style="height:36.0%;background:var(--purple)"><span class="v">27%</span></div>
+    </div>
+    <div class="bgrp" title="1–5 min: prompt 65.8%, unmuted 59.1%">
+      <div class="col" style="height:87.7%;background:var(--accent)"><span class="v">66%</span></div>
+      <div class="col" style="height:78.8%;background:var(--purple)"><span class="v">59%</span></div>
+    </div>
+    <div class="bgrp" title="5–15 min: prompt 67.0%, unmuted 52.7%">
+      <div class="col" style="height:89.3%;background:var(--accent)"><span class="v">67%</span></div>
+      <div class="col" style="height:70.3%;background:var(--purple)"><span class="v">53%</span></div>
+    </div>
+    <div class="bgrp" title="15 min+: prompt 48.5%, unmuted 48.5%">
+      <div class="col" style="height:64.7%;background:var(--accent)"><span class="v">49%</span></div>
+      <div class="col" style="height:64.7%;background:var(--purple)"><span class="v">49%</span></div>
+    </div>
+  </div>
+  <div class="xlbls">
+    <div><b>&lt;1 min</b>1,900 launches &middot; 72.3%</div>
+    <div><b>1–5 min</b>570 &middot; 21.7%</div>
+    <div><b>5–15 min</b>91 &middot; 3.5%</div>
+    <div><b>15 min+</b>68 &middot; 2.6%</div>
+  </div>
+  <div class="legend"><span><i style="background:var(--accent)"></i>Prompt seen (% of launches)</span><span><i style="background:var(--purple)"></i>Unmuted, any path (% of launches)</span></div>
+  <div class="scrollx"><table>
+    <tr><th>Duration bucket</th><th class="n">Launches</th><th class="n">Share</th><th class="n">Prompt seen</th><th class="n">Unmuted</th><th class="n">Prompt → unmute</th><th class="n">Unmuted w/o prompt</th></tr>
+    <tr><td>&lt;1 min</td><td class="n">1,900</td><td class="n">72.3%</td><td class="n">990 &middot; 52.1%</td><td class="n">513 &middot; 27.0%</td><td class="n">46.8%</td><td class="n">50</td></tr>
+    <tr><td>1–5 min</td><td class="n">570</td><td class="n">21.7%</td><td class="n">375 &middot; 65.8%</td><td class="n">337 &middot; 59.1%</td><td class="n">77.6%</td><td class="n">46</td></tr>
+    <tr><td>5–15 min</td><td class="n">91</td><td class="n">3.5%</td><td class="n">61 &middot; 67.0%</td><td class="n">48 &middot; 52.7%</td><td class="n">68.9%</td><td class="n">6</td></tr>
+    <tr><td>15 min+</td><td class="n">68</td><td class="n">2.6%</td><td class="n">33 &middot; 48.5%</td><td class="n">33 &middot; 48.5%</td><td class="n">60.6%</td><td class="n">13</td></tr>
+  </table></div>
+  <div class="callout warn"><b>Where the loss is:</b> the &lt;1-min bucket is 72% of all launches and converts at 27%. The 15-min+ bucket is interesting — fewer see the prompt (48.5%) yet all who stay long unmute, and 13 of its 33 unmuters never needed the overlay: likely returning users whose browser already permits sound.</div>
+</div>
+
+<h2>Split B — by fse_v1 experiment arm</h2>
+<div class="h2sub">Cohort data EXISTS but only from the server reload at <b>7 Jul 01:43:18 UTC</b> — variant attribution 3–6 Jul was lost to the pm2 incident (deploy without reload) and is excluded. Window here: 7 Jul 01:43 → 8 Jul 07:57 UTC (~1.3 days). 603 of 671 post-reload launches (89.9%) carry a variant; assignment covers new uids.</div>
+<div class="card">
+  <div class="chart" style="height:200px">
+    <div class="grid" style="bottom:33.3%"><span>25%</span></div>
+    <div class="grid" style="bottom:66.7%"><span>50%</span></div>
+    <!-- 100% height = 75% -->
+    <div class="bgrp" title="Arm A: prompt 57.0%, unmuted 39.9%">
+      <div class="col" style="height:76.0%;background:var(--accent)"><span class="v">57%</span></div>
+      <div class="col" style="height:53.2%;background:var(--purple)"><span class="v">40%</span></div>
+    </div>
+    <div class="bgrp" title="Arm B: prompt 54.7%, unmuted 38.4%">
+      <div class="col" style="height:72.9%;background:var(--accent)"><span class="v">55%</span></div>
+      <div class="col" style="height:51.2%;background:var(--purple)"><span class="v">38%</span></div>
+    </div>
+    <div class="bgrp" title="Arm C (control): prompt 59.5%, unmuted 36.4%">
+      <div class="col" style="height:79.3%;background:var(--accent)"><span class="v">60%</span></div>
+      <div class="col" style="height:48.5%;background:var(--purple)"><span class="v">36%</span></div>
+    </div>
+  </div>
+  <div class="xlbls">
+    <div><b>A &middot; genre intro</b>193 launches &middot; 135 uids</div>
+    <div><b>B &middot; reordered guide</b>190 &middot; 139 uids</div>
+    <div><b>C &middot; control</b>220 &middot; 154 uids</div>
+  </div>
+  <div class="legend"><span><i style="background:var(--accent)"></i>Prompt seen</span><span><i style="background:var(--purple)"></i>Unmuted, any path</span></div>
+  <div class="scrollx"><table>
+    <tr><th>Arm</th><th class="n">Launches</th><th class="n">Distinct uids</th><th class="n">Prompt seen</th><th class="n">Unmuted</th><th class="n">vs control</th></tr>
+    <tr><td>A — first-launch genre grid</td><td class="n">193</td><td class="n">135</td><td class="n">110 &middot; 57.0%</td><td class="n">77 &middot; 39.9%</td><td class="n">+3.5 pp</td></tr>
+    <tr><td>B — engagement-ranked channel order</td><td class="n">190</td><td class="n">139</td><td class="n">104 &middot; 54.7%</td><td class="n">73 &middot; 38.4%</td><td class="n">+2.0 pp</td></tr>
+    <tr><td>C — control</td><td class="n">220</td><td class="n">154</td><td class="n">131 &middot; 59.5%</td><td class="n">80 &middot; 36.4%</td><td class="n">—</td></tr>
+  </table></div>
+  <div class="callout warn"><b>Underpowered — no winner.</b> Assignment integrity looks healthy (even 3-way split: 193/190/220 launches, 135/139/154 uids), but at 135–154 uids per arm the A-vs-control gap (+3.5 pp, z ≈ 0.7) is well inside noise. Need ~300+ uids/arm before reading anything into this. Re-cut after ~1 week of clean data.</div>
+</div>
+
+<h2>How people unmute (paths)</h2>
+<div class="h2sub">989 unmute events in the window (a session can unmute more than once). The <code style="font-family:inherit">trigger</code> column separates the paths — all are captured by one volumechange handler since the 3 Jul mute_bug fix.</div>
+<div class="card">
+  <div class="hrow"><div class="name">Overlay tap<small>the "tap to unmute" prompt</small></div><div class="ftrack"><div class="hbar" style="width:78%"><span class="fval">553 <small>55.9%</small></span></div></div></div>
+  <div class="hrow"><div class="name">Other<small>keyboard M / system volume</small></div><div class="ftrack"><div class="hbar" style="width:34.8%"><span class="fval">247 <small>25.0%</small></span></div></div></div>
+  <div class="hrow"><div class="name">Mute button<small>player control</small></div><div class="ftrack"><div class="hbar" style="width:26.7%"><span class="fval">189 <small>19.1%</small></span></div></div></div>
+  <div class="callout info">44% of unmutes happen <b>outside the overlay</b> — a funnel built on overlay taps alone would materially undercount engagement. This report's step 3 includes all three paths.</div>
+</div>
+
+<h2>Daily sanity check</h2>
+<div class="card">
+  <div class="scrollx"><table>
+    <tr><th>Date (UTC)</th><th class="n">Launches</th><th class="n">Prompts</th><th class="n">Unmute events</th><th class="n">Unmutes / launch</th></tr>
+    <tr><td>3 Jul (from 05:40)</td><td class="n">409</td><td class="n">219</td><td class="n">142</td><td class="n">34.7%</td></tr>
+    <tr><td>4 Jul</td><td class="n">449</td><td class="n">249</td><td class="n">158</td><td class="n">35.2%</td></tr>
+    <tr><td>5 Jul</td><td class="n">607</td><td class="n">329</td><td class="n">236</td><td class="n">38.9%</td></tr>
+    <tr><td>6 Jul</td><td class="n">490</td><td class="n">297</td><td class="n">193</td><td class="n">39.4%</td></tr>
+    <tr><td>7 Jul</td><td class="n">531</td><td class="n">301</td><td class="n">209</td><td class="n">39.4%</td></tr>
+    <tr><td>8 Jul (partial, to 07:57)</td><td class="n">143</td><td class="n">85</td><td class="n">51</td><td class="n">35.7%</td></tr>
+  </table></div>
+  <div class="h2sub" style="margin-top:10px">Stable 35–39% day over day — no era discontinuity inside the window. Event-level ratio; the headline 35.4% is session-deduplicated.</div>
+</div>
+
+<h2>Follow-ups (asked 8 Jul)</h2>
+<div class="h2sub">Re-queried at 08:15 UTC — base is 2,640 launches (11 more than the morning pull). Same era rules.</div>
+
+<div class="card">
+  <h3 style="font-size:14.5px;margin-bottom:4px">1 &middot; Who clicks but doesn't unmute?</h3>
+  <div class="h2sub" style="margin-bottom:10px">"Clicked the overlay but didn't unmute" can't happen — the overlay tap <i>is</i> the unmute. So this measures sessions with any deliberate interaction (channel surf/guide/numpad tune, guide open, cast, intro tap, survey, install, mute/volume controls) that still never unmuted.</div>
+  <div class="scrollx"><table style="margin-top:4px">
+    <tr><th>Population</th><th class="n">Sessions</th><th class="n">Interacted</th><th class="n">Interacted, never unmuted</th></tr>
+    <tr><td>All launches</td><td class="n">2,640</td><td class="n">1,096 &middot; 41.5%</td><td class="n">373 &middot; <b>34.0% of interactors</b> (14.1% of launches)</td></tr>
+    <tr><td>Prompt-seen launches</td><td class="n">1,462</td><td class="n">755 &middot; 51.6%</td><td class="n">146 &middot; <b>19.3% of interactors</b></td></tr>
+  </table></div>
+  <div class="callout info">Among users who saw the prompt <i>and</i> actively used the app, <b>81% unmute</b> — engaged users overwhelmingly want sound. The 146 who surf channels silently are a real but small segment (~5.5% of launches): plausibly quiet-context viewing.</div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:4px">2 &middot; Muted vs unmuted: watching retention (prompt-seen sessions only)</h3>
+  <div class="h2sub" style="margin-bottom:10px">Conditioning on prompt-seen removes the no-prompt bias AND the autoplay ambiguity — the prompt only fires when the browser blocked sound, so "stayed muted" here is genuinely silent viewing.</div>
+  <div class="scrollx"><table style="margin-top:4px">
+    <tr><th>Group</th><th class="n">Sessions</th><th class="n">Median duration</th><th class="n">&ge;60s</th><th class="n">&ge;5 min</th><th class="n">&ge;15 min</th><th class="n">Came back a later day*</th></tr>
+    <tr><td>Unmuted</td><td class="n">817</td><td class="n"><b>44s</b></td><td class="n"><b>43.2%</b></td><td class="n">7.6%</td><td class="n">2.4%</td><td class="n">13.1% (64/488 uids)</td></tr>
+    <tr><td>Stayed muted</td><td class="n">645</td><td class="n">8s</td><td class="n">18.0%</td><td class="n">5.0%</td><td class="n">2.0%</td><td class="n">14.1% (51/361 uids)</td></tr>
+  </table></div>
+  <div class="h2sub" style="margin-top:8px">*uid-level: first prompted session on/before 6 Jul (&ge;1 full day of lookahead), any event on a later UTC day.</div>
+  <div class="callout warn"><b>Unmute predicts session depth, not return.</b> Within the session: 5.5&times; median duration and 2.4&times; the &ge;60s survival. But day-over-day come-back is statistically identical (13.1% vs 14.1%). The unmute moment is a <i>this-session engagement</i> gate, not a retention gate — and the duration gap is partly self-selection (people intending to watch unmute).</div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:4px">3 &middot; Why do only ~55% see the prompt? Decomposing the 1,178 no-prompt launches</h3>
+  <div class="h2sub" style="margin-bottom:10px">Mechanism (verified in <code style="font-family:inherit">tryPlay()</code>): the overlay fires ONLY when unmuted <code style="font-family:inherit">play()</code> is rejected by the browser AND the muted retry succeeds AND the user hasn't interacted yet. Everything outside that path skips it. (67% was the 5–15&nbsp;min bucket; overall it's 55.5%.)</div>
+  <div class="hrow"><div class="name">Never reached first frame<small>load_start, no playback_start</small></div><div class="ftrack"><div class="hbar" style="width:78%;background:var(--red)"><span class="fval">688 <small>58.4%</small></span></div></div></div>
+  <div class="hrow"><div class="name">Died before player boot<small>no load_start at all</small></div><div class="ftrack"><div class="hbar" style="width:7.7%;background:var(--red)"><span class="fval">68 <small>5.8%</small></span></div></div></div>
+  <div class="hrow"><div class="name">Picture, no prompt, muted<small>autoplay-sound OK or early interaction</small></div><div class="ftrack"><div class="hbar" style="width:38.5%;background:var(--amber)"><span class="fval">340 <small>28.9%</small></span></div></div></div>
+  <div class="hrow"><div class="name">Picture, no prompt, unmuted<small>arm-A intro tap / autoplay + manual</small></div><div class="ftrack"><div class="hbar" style="width:10.4%;background:var(--amber)"><span class="fval">92 <small>7.8%</small></span></div></div></div>
+  <div class="callout warn" style="margin-top:14px"><b>64% of the gap is the cold-start bounce, not the overlay.</b> 756 of 1,178 no-prompt sessions never rendered a frame — the median no-prompt session lasts 9s and 51% are gone inside 10s; the prompt logic simply never got to run. The remaining 432 reached picture: browsers that allowed autoplay-with-sound (working as designed — no prompt needed), arm-A genre-grid taps that unmute programmatically and suppress the overlay, and early taps (mute button / guide) that set <code style="font-family:inherit">userInteracted</code> before the muted retry resolved.</div>
+  <div class="callout info"><b>Instrumentation gap:</b> autoplay-with-sound success is not beaconed, so we cannot split "played with sound from the start" out of the 340 amber sessions — some of them had audio all along and are miscounted as silent. Recommend a one-line <code style="font-family:inherit">autoplay_sound_ok</code> beacon in the <code style="font-family:inherit">play()</code>-resolve path; it would also make step 2 of this funnel exact.</div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:4px">4 &middot; User buckets — the exhaustive (MECE) partition of every launch</h3>
+  <div class="h2sub" style="margin-bottom:14px">All 2,645 launches (re-queried 08:30 UTC), each in exactly one bucket. 10 sessions with <code style="font-family:inherit">playback_start</code> but no <code style="font-family:inherit">load_start</code> (beacon loss) are placed with "reached picture", where they belong — the tree sums to 100%.</div>
+
+  <div style="font-size:13px;font-weight:700;margin:6px 0 8px">Never saw picture — 752 &middot; 28.4%</div>
+  <div class="hrow"><div class="name">A1 &middot; Dead on arrival<small>no player boot &middot; median 0s</small></div><div class="ftrack"><div class="hbar" style="width:5.3%;background:var(--red)"><span class="fval">59 <small>2.2%</small></span></div></div></div>
+  <div class="hrow"><div class="name">A2 &middot; Loading purgatory<small>load started, frame never came &middot; median 3s</small></div><div class="ftrack"><div class="hbar" style="width:62.6%;background:var(--red)"><span class="fval">690 <small>26.1%</small></span></div></div></div>
+  <div class="hrow"><div class="name">A3 &middot; Prompt before frame<small>edge case</small></div><div class="ftrack"><div class="hbar" style="width:1%;min-width:3px;background:var(--red)"><span class="fval">3 <small>0.1%</small></span></div></div></div>
+
+  <div style="font-size:13px;font-weight:700;margin:16px 0 8px">Reached picture — 1,893 &middot; 71.6%</div>
+  <div class="hrow"><div class="name">B1 &middot; Prompt → unmuted<small>the core engaged path &middot; median 44s</small></div><div class="ftrack"><div class="hbar" style="width:74.2%;background:var(--accent)"><span class="fval">817 <small>30.9%</small></span></div></div></div>
+  <div class="hrow"><div class="name">B2 &middot; Prompt → muted, interacted<small>deliberate silent watchers &middot; median 29s</small></div><div class="ftrack"><div class="hbar" style="width:13.2%;background:var(--amber)"><span class="fval">145 <small>5.5%</small></span></div></div></div>
+  <div class="hrow"><div class="name">B3 &middot; Prompt → muted, passive<small>picture + nudge, did nothing &middot; median 6s</small></div><div class="ftrack"><div class="hbar" style="width:45.4%;background:var(--amber)"><span class="fval">499 <small>18.9%</small></span></div></div></div>
+  <div class="hrow"><div class="name">B4 &middot; No prompt → unmuted<small>autoplay-sound / intro tap &middot; median 71s</small></div><div class="ftrack"><div class="hbar" style="width:8.4%;background:var(--accent)"><span class="fval">92 <small>3.5%</small></span></div></div></div>
+  <div class="hrow"><div class="name">B5 &middot; No prompt → no unmute<small>hides B5a "sound-on from start" — see caveat &middot; median 36s</small></div><div class="ftrack"><div class="hbar" style="width:31%;background:var(--amber)"><span class="fval">340 <small>12.9%</small></span></div></div></div>
+  <div class="legend" style="margin-top:12px"><span><i style="background:var(--red)"></i>Lost before playback</span><span><i style="background:var(--accent)"></i>Unmuted / engaged</span><span><i style="background:var(--amber)"></i>Muted or ambiguous</span></div>
+
+  <div class="scrollx"><table>
+    <tr><th>Bucket</th><th class="n">Sessions</th><th class="n">% of launches</th><th class="n">Median dur</th><th class="n">&ge;60s</th><th class="n">Interacted</th></tr>
+    <tr><td>A1 — dead on arrival (no load_start, no frame)</td><td class="n">59</td><td class="n">2.2%</td><td class="n">0s</td><td class="n">3%</td><td class="n">2%</td></tr>
+    <tr><td>A2 — loading purgatory (load_start, no frame, no prompt)</td><td class="n">690</td><td class="n">26.1%</td><td class="n">3s</td><td class="n">10%</td><td class="n">16%</td></tr>
+    <tr><td>A3 — prompt fired but frame never rendered</td><td class="n">3</td><td class="n">0.1%</td><td class="n">2s</td><td class="n">0%</td><td class="n">67%</td></tr>
+    <tr><td>B1 — prompt → unmuted</td><td class="n">817</td><td class="n">30.9%</td><td class="n">44s</td><td class="n">43%</td><td class="n">75%</td></tr>
+    <tr><td>B2 — prompt → stayed muted but interacted</td><td class="n">145</td><td class="n">5.5%</td><td class="n">29s</td><td class="n">34%</td><td class="n">100%</td></tr>
+    <tr><td>B3 — prompt → stayed muted, zero interaction</td><td class="n">499</td><td class="n">18.9%</td><td class="n">6s</td><td class="n">13%</td><td class="n">0%</td></tr>
+    <tr><td>B4 — no prompt → unmuted anyway</td><td class="n">92</td><td class="n">3.5%</td><td class="n">71s</td><td class="n">62%</td><td class="n">99%</td></tr>
+    <tr><td>B5 — no prompt → no unmute event</td><td class="n">340</td><td class="n">12.9%</td><td class="n">36s</td><td class="n">40%</td><td class="n">42%</td></tr>
+  </table></div>
+
+  <div class="callout warn" style="margin-top:14px"><b>The two big non-engaged masses are different problems.</b> A2 (26.1% — playback never started) is a TTFF / cold-start problem. B3 (18.9% — got picture and the nudge, left silent in ~6s) is a first-content / first-impression problem. Together they are 45% of all launches — the sub-60s bounce in two shapes with two distinct fixes.</div>
+  <div class="callout info"><b>Caveats.</b> (1) <b>B5 conceals a real ninth bucket — B5a, "browser never restricted autoplay"</b>: sound on from frame one, nothing was ever muted, so the session emits no prompt / mute / unmute event at all and is indistinguishable from true silent viewing (B5b) in today's data. Evidence B5a exists and is sizeable: <b>115 of 340 B5 sessions (34%) belong to uids that had unmuted in an earlier session</b> — exactly the engagement history Chrome's Media Engagement Index rewards with unrestricted autoplay; B5's profile (median 36s, 40% &ge;60s, 42% interaction) resembles sound-on viewing, not B3's 6s silent bounce; and 3 B5 sessions <i>prove</i> sound-on via later mute/volume events. Bounds: B5a is between ~1% (proven floor) and 12.9% (all of B5) of launches, plausibly ~4%+ — and the true "watches but won't unmute" audience is correspondingly 5.5–18.4%. Only the <code style="font-family:inherit">autoplay_sound_ok</code> beacon in the <code style="font-family:inherit">play()</code>-resolve path resolves this. (2) The <b>A2/A3 boundary</b> inherits the same gap — the prompt fires on manifest-parse, before first frame, so a few "no-frame" sessions legitimately carry prompts. (3) Buckets are event-inferred from a live DB; counts drift a few sessions per re-query.</div>
+
+  <h3 style="font-size:14.5px;margin:22px 0 4px">Which buckets to solve — the unmute priority verdict</h3>
+  <div class="h2sub" style="margin-bottom:10px">Only two buckets are genuinely solvable from an unmute standpoint; one tempting target should be left alone. Of B3's ~500 sessions, only 179 (36%) stayed &ge;10s — the persuadable core; the rest is bounce-intent no nudge can save.</div>
+  <div class="scrollx"><table style="margin-top:4px">
+    <tr><th>Priority</th><th>Bucket</th><th class="n">Size</th><th>Verdict</th></tr>
+    <tr><td><span class="pill bad">1</span></td><td>B3 — saw prompt, passive, left muted</td><td class="n">18.9% gross &middot; ~6.8% persuadable (&ge;10s stayers)</td><td>Primary unmute target. Two-thirds is a first-impression problem wearing an unmute costume; the 179 lingerers are the prize.</td></tr>
+    <tr><td><span class="pill warn">2</span></td><td>B5b — muted, never got a prompt</td><td class="n">&le;12.9%, plausibly ~5–9%</td><td>Mechanism bug, not behaviour: the overlay is one-shot — suppressed once by an early tap, it never returns. These users were never asked.</td></tr>
+    <tr><td><span class="pill info">Leave alone</span></td><td>B2 — prompted, interacted, chose silence</td><td class="n">5.5%</td><td>Deliberate quiet-context viewing. Serve it (captions), don't fight it.</td></tr>
+    <tr><td><span class="pill info">Not unmute</span></td><td>A1/A2/A3 — never saw picture</td><td class="n">28.4%</td><td>Cold-start / TTFF work only; no unmute fix touches these.</td></tr>
+    <tr><td><span class="pill ok">Solved</span></td><td>B1, B4, B5a</td><td class="n">~38%+</td><td>Already unmuted or sound-on from the start.</td></tr>
+  </table></div>
+  <div style="font-size:13px;margin-top:14px"><b>Concrete fixes, in order:</b>
+    <ol style="margin:8px 0 0 20px;font-size:13px">
+      <li style="margin-bottom:6px"><b>Ship the <code style="font-family:inherit">autoplay_sound_ok</code> beacon</b> (one line, hand to Satyam) — sizing B5b precisely is the prerequisite for everything below.</li>
+      <li style="margin-bottom:6px"><b>Re-arm the overlay</b> — if still muted N seconds after an interaction, or on the next tune while muted, show the prompt again. Directly fixes B5b.</li>
+      <li style="margin-bottom:6px"><b>Unmute on any first gesture</b> — <span class="pill ok">coded, pending review/deploy</span> Implemented locally (uncommitted, <code style="font-family:inherit">~/june-wiom-tv/public/wiom-tv.html</code>): a <code style="font-family:inherit">forcedMute</code> flag marks browser-forced mutes; the first <code style="font-family:inherit">pointerdown</code>/<code style="font-family:inherit">keydown</code> anywhere unmutes only those, mute button / M-key are excluded so deliberate mutes aren't fought, and fullscreen-prompt sequencing is preserved. Mechanically converts B3's interactors and most of B5b. Recommend shipping as an fse-style arm (surprise audio is a UX risk). Diff rebased onto <code style="font-family:inherit">e803172</code> (origin/main) and re-verified: trigger attribution intact (<code style="font-family:inherit">button</code>/<code style="font-family:inherit">key</code>/<code style="font-family:inherit">overlay</code> preserved), and gesture unmutes will arrive with a new distinct <code style="font-family:inherit">trigger='gesture'</code> — a measurable path in the unmute-paths chart above.</li>
+      <li><b>Prompt salience / copy test</b> for the 179 B3 lingerers — bigger overlay, Hindi copy ("आवाज़ चालू करें"), pulse animation.</li>
+    </ol>
+  </div>
+  <div class="callout warn" style="margin-top:14px"><b>Ceiling on the payoff:</b> unmute buys session depth (2.4&times; the &ge;60s survival), <i>not</i> next-day return (13.1% vs 14.1% — identical). The total unmute-addressable pool is ~12–16% of launches; winning it moves watch-time and the &ge;60s KPI. Retention needs a different lever.</div>
+</div>
+
+<h2>JTBD map — the job each bucket is hiring wiom.tv for, and the solution that serves it</h2>
+<div class="h2sub">One Job-To-Be-Done per bucket group, prioritized. Each solution is tested against three bars: does it actually serve the job, does it create no new friction elsewhere, and is it near-zero effort for the user. Two new mechanism facts feed these: the overlay copy is <b>English</b> ("Tap to unmute") for a Hindi-first base, and <code style="font-family:inherit">loadStream()</code> hides the overlay on <b>every</b> channel load — <b>142 of 662 (21%) prompted-never-unmuted sessions had the prompt yanked within 5s</b> (80 by dead-channel auto-skip), through no action of the user.</div>
+
+<div class="card">
+  <div class="scrollx"><table style="margin-top:0">
+    <tr><th>#</th><th>Buckets</th><th>JTBD</th><th class="n">Mass</th><th>Solution in one line</th></tr>
+    <tr><td><span class="pill bad">P1</span></td><td>A1+A2</td><td>"When I open wiom.tv, show me live picture in ~2s — like a real TV's power button — so I trust it works before my patience runs out."</td><td class="n">28.4%</td><td>Instant-on: poster-frame first paint, lowest-TTFF healthy boot channel, lowest-bitrate-first</td></tr>
+    <tr><td><span class="pill bad">P2</span></td><td>B3</td><td>"When the TV starts silent, let me instantly understand it's working and sound is one tap away — in my language — so I don't judge it broken and leave."</td><td class="n">18.9% (~6.8% persuadable)</td><td>Hindi copy + gesture-unmute + muted-watchable boot channel + stop yanking the overlay</td></tr>
+    <tr><td><span class="pill warn">P3</span></td><td>B5b</td><td>"When I miss the unmute moment, give sound back the instant I engage — no hunting — so I'm not stuck in accidental silence."</td><td class="n">~5–9%</td><td>Gesture-unmute (coded) + overlay survives auto-skips + persistent corner badge</td></tr>
+    <tr><td><span class="pill info">P4</span></td><td>B2</td><td>"When I choose silence, stop asking and stay useful quietly — my mute is a decision, not a problem."</td><td class="n">5.5%</td><td>A guardrail, not a build: every nudge gates on forcedMute; explicit mute is a contract</td></tr>
+    <tr><td><span class="pill info">P5</span></td><td>B4+B5a</td><td>"When I've unmuted before, have sound on automatically next time — my TV should remember me."</td><td class="n">~7%+</td><td>Protect &amp; instrument: autoplay_sound_ok beacon; never reset MEI (domain/iframe); volume memory</td></tr>
+    <tr><td><span class="pill ok">—</span></td><td>B1</td><td>"Now that I can hear, show me something worth staying for."</td><td class="n">30.9%</td><td>Not an unmute job — this is fse_v1 territory (arms A/B); listed for completeness</td></tr>
+  </table></div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:10px">P1 &middot; Instant-on TV (A1+A2 — 28.4% of launches)</h3>
+  <div style="font-size:13px">
+    <p style="margin-bottom:8px"><b>Why this is the job:</b> a TV that shows nothing for 5s is a broken TV; these users left at median 3s. No unmute, guide, or content work matters until picture exists — this JTBD gates every other one.</p>
+    <p style="margin-bottom:8px"><b>Solution:</b> (a) <b>poster frame at first paint</b> — a static image of the boot channel rendered before any JS/HLS work, swapped out on <code style="font-family:inherit">loadeddata</code> (the hook already exists as <code style="font-family:inherit">reportOk</code>); (b) <b>boot on the lowest-TTFF healthy channel</b> — we already collect <code style="font-family:inherit">ttff_ms</code> and <code style="font-family:inherit">playback_error</code> per channel, so the boot slot can be earned, not fixed (compatible with arm B's boot-first design); (c) <b>hls.js <code style="font-family:inherit">startLevel=0</code></b> — start at the lowest bitrate and adapt up; on 2–4GB phones on 2G/3G this converts "nothing" into "something" seconds earlier.</p>
+    <p><b>No-new-problems check:</b> all engineering-side, zero user effort. One trap: a poster that lingers reads as a frozen TV — the swap on first real frame is mandatory, and the existing CRT static should keep running under it as the "warming up" cue. Lowest-bitrate-first briefly costs sharpness; on this audience's devices that trade is free.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:10px">P2 &middot; Silence must be legible (B3 — the 179 persuadable lingerers)</h3>
+  <div style="font-size:13px">
+    <p style="margin-bottom:8px"><b>Why this is the job:</b> a silent TV screen has two readings — "muted, tap here" or "broken". Users who leave at median 6s chose the second. The prompt's job is to force the first reading in under a second, and today it argues in the wrong language: the copy is literally <b>"Tap to unmute", in English</b>, to a Hindi-first audience (the PMF survey already ships in Hindi for the same reason).</p>
+    <p style="margin-bottom:8px"><b>Solution:</b> (a) <b>Hindi-first copy</b> — "आवाज़ के लिए कहीं भी टैप करें" with a pulsing speaker icon; (b) <b>gesture-unmute</b> (coded, pending review) makes "कहीं भी / anywhere" literally true — the promise and the mechanics match; (c) <b>muted-watchable boot channel</b> — prefer channels that communicate value with sound off (news with tickers) for the boot slot, so the silent first seconds still show a working, information-rich TV rather than a mute talking head; (d) <b>stop yanking the overlay</b> — see P3; a fifth of these users had the prompt removed by the app itself within 5s.</p>
+    <p><b>No-new-problems check:</b> zero added steps — the overlay is already a full-screen tap target, we only change what it says and how long it honestly stays. Copy is a no-risk change. Muted-watchable boot ordering also serves P4's quiet viewers and costs sound-on users nothing.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:10px">P3 &middot; A second chance at sound (B5b — plus the 21% yanked-prompt sessions)</h3>
+  <div style="font-size:13px">
+    <p style="margin-bottom:8px"><b>Why this is the job:</b> today the unmute moment is one-shot: <code style="font-family:inherit">loadStream()</code> hides the overlay on every channel load — including <b>dead-channel auto-skips where the user did nothing</b> (80 sessions) — and once suppressed it never returns, because muted <code style="font-family:inherit">play()</code> resolves and never re-triggers the prompt. The user isn't refusing sound; the app stopped offering it.</p>
+    <p style="margin-bottom:8px"><b>Solution (layered, least→most visible):</b> (a) <b>gesture-unmute</b> — <span class="pill ok">coded, pending review/deploy</span>: <code style="font-family:inherit">forcedMute</code> flag marks browser-forced mutes; first <code style="font-family:inherit">pointerdown</code>/<code style="font-family:inherit">keydown</code> anywhere unmutes only those; (b) <b>don't hide the overlay on loads while <code style="font-family:inherit">forcedMute</code></b> — especially auto-skips — and re-show it on the next tune if still force-muted; (c) <b>persistent corner badge</b> (crossed speaker, subtle pulse) whenever force-muted: the always-available, never-blocking affordance.</p>
+    <p><b>No-new-problems check (thought through):</b> <i>Startle risk</i> — sudden audio on a tap can blast; ramp volume 0→100% over ~400ms and show a 1.5s toast "आवाज़ चालू ✓" with the mute button adjacent, so an unwanted unmute is reversible in one tap. <i>Scroll vs tap</i> — <code style="font-family:inherit">pointerdown</code> fires on scroll-intent in the guide, so a browsing user could get audio mid-scroll; if review deems this a real risk, trigger on <code style="font-family:inherit">pointerup</code> with &lt;10px movement (a true tap) instead. <i>Deliberate silence protected</i> — mute button and M-key clear <code style="font-family:inherit">forcedMute</code> (verified in the diff), so neither the badge nor any re-shown overlay ever nags a chosen mute. <i>Beacon integrity</i> — <span class="pill ok">verified in the rebased diff</span> (on <code style="font-family:inherit">e803172</code> / origin&#8209;main): <code style="font-family:inherit">logMute('button')</code> / <code style="font-family:inherit">('key')</code> / <code style="font-family:inherit">('overlay')</code> all preserved; the gesture path calls <code style="font-family:inherit">logMute('gesture')</code> before flipping, so <code style="font-family:inherit">unmute</code> lands with a NEW distinct <code style="font-family:inherit">trigger='gesture'</code> — directly measurable as its own path in this report's trigger breakdown; the overlay is excluded from the gesture handler, so 'overlay' attribution is unchanged; all manual toggle sites clear <code style="font-family:inherit">forcedMute</code>.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h3 style="font-size:14.5px;margin-bottom:10px">P4 &middot; Respect my silence (B2) &nbsp;+&nbsp; P5 &middot; Don't make me ask twice (B4+B5a)</h3>
+  <div style="font-size:13px">
+    <p style="margin-bottom:8px"><b>P4 — the solution is restraint:</b> an explicit mute (button or M-key) is a contract — no re-arm, no badge pulse, no overlay for the rest of the session. This is a gate on P2/P3, not a feature; its cost is zero and its violation would convert 5.5% of satisfied quiet viewers into annoyed ones. Optional serve-the-job: a captions button where the stream carries text tracks (most Indian FTA HLS don't — offer only when present, never promise).</p>
+    <p><b>P5 — protect what already works:</b> B4/B5a users get frictionless sound because the browser's Media Engagement Index learned to trust wiom.tv. Our job is to not break that (no domain moves, no iframe embedding — both reset MEI) and to finally see it: the <code style="font-family:inherit">autoplay_sound_ok</code> one-line beacon. Plus volume memory across sessions — the returning user's TV should sound like they left it.</p>
+  </div>
+</div>
+
+<h2>Data quality &amp; instrumentation</h2>
+<div class="card dq">
+  <table style="margin-top:0">
+    <tr><th>Funnel step</th><th>Event</th><th>Status</th><th>Trustworthy since (UTC)</th></tr>
+    <tr><td>1 &middot; Launch</td><td><code>session_start</code></td><td><span class="pill ok">Real event</span></td><td>12 Jun 2026 (launch)</td></tr>
+    <tr><td>2 &middot; Prompt seen</td><td><code>unmute_prompt_shown</code></td><td><span class="pill ok">Real event</span></td><td>27 Jun 12:31 (cold-start instrumentation)</td></tr>
+    <tr><td>3 &middot; Unmuted, all paths</td><td><code>unmute</code> + <code>trigger</code> col</td><td><span class="pill ok">Real event</span></td><td>3 Jul 05:40 (mute_bug fix client — pre-Jul-3 missed overlay taps)</td></tr>
+    <tr><td>B &middot; Experiment arm</td><td><code>variant</code> column</td><td><span class="pill warn">Clean from reload only</span></td><td>7 Jul 01:43:18 (pm2 reload; 3–6 Jul attribution lost)</td></tr>
+  </table>
+  <ul style="margin-top:16px">
+    <li><b>No proxies were needed</b> — all three funnel steps are directly instrumented. Verified against both the live event taxonomy (30 distinct events) and <code>origin/main</code> of <code>public/wiom-tv.html</code>.</li>
+    <li><b>Never trend unmute across 3 Jul:</b> the old client didn't beacon overlay-tap unmutes; the apparent 5.9% → 34.5% jump is instrumentation, not behaviour. This report starts at the fix.</li>
+    <li><b>Prompt-seen &lt; 100% is partly by design:</b> the overlay fires only when autoplay-with-sound is blocked and the user hasn't interacted (<code>tryPlay()</code>); users with autoplay-sound permission skip straight past it (115 unmutes with no prompt).</li>
+    <li><b>Unmute trigger detail</b> lives in the <code>trigger</code> column (overlay / button / other), not <code>meta</code> (meta is NULL on all unmute rows).</li>
+    <li><b>73 sessions</b> in the window had events but no <code>session_start</code> (era-boundary truncation / beacon loss) — excluded from the funnel base.</li>
+    <li><b>Session duration</b> is first-to-last event per <code>session_id</code>, not the <code>duration_sec</code> dwell field.</li>
+    <li>All timestamps <b>UTC</b> (analytics.db stores UTC); IST = UTC +5:30.</li>
+  </ul>
+</div>
+
+<footer>
+  Source: production analytics.db via read-only SSH (shivank@satyam.wiom.in, better-sqlite3) &middot; code cross-check: github.com/satyamdarmora/june-wiom-tv origin/main &middot; wiom.tv Analyst &middot; 2026-07-08
+</footer>
+
+</div>
+</body>
+</html>

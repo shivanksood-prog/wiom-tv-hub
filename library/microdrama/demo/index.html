@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Wiom TV - 245 Live Channels</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0a0612">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wiom TV">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="preconnect" href="https://akamaized.net" crossorigin>
+<link rel="preconnect" href="https://cloudfront.net" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7"></script>
+<script async src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+<!-- PostHog session replay (US Cloud). Loader is async => never blocks first frame.
+     NOTE: the <video> surface is NOT captured by replay (DOM-only) — the channel
+     picture is always black; replay shows UI/overlays/taps only. Session Replay must
+     also be toggled ON in the PostHog project settings for recordings to start. -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_yYLb9wbE38HA9inVKzHkgso6DzRChRA3VqojBLGT4bs9', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only',  // anonymous sessions still record; we identify by uid below
+    // Masking intentionally OFF for now (per decision) — revisit before scaling.
+  });
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0612;color:#fff;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow:hidden;height:100vh;width:100vw}
+#app{position:relative;width:100vw;height:100vh}
+#video-container{position:absolute;inset:0;background:#0a0612}
+#player{width:100%;height:100%;background:#0a0612;object-fit:contain}
+/* CRT Retro TV transition */
+#static-overlay{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;
+  background:#0a0612;overflow:hidden}
+/* Scanlines */
+#static-overlay::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.3) 2px,rgba(0,0,0,.3) 4px);
+  z-index:1;pointer-events:none}
+/* Phosphor glow sweep */
+#static-overlay::after{content:'';position:absolute;top:-100%;left:0;right:0;height:100%;
+  background:linear-gradient(180deg,transparent 0%,rgba(217,0,141,.08) 40%,rgba(217,0,141,.15) 50%,rgba(217,0,141,.08) 60%,transparent 100%);
+  animation:crtSweep .8s ease-in-out infinite;z-index:2}
+@keyframes crtSweep{0%{top:-100%}100%{top:200%}}
+/* CRT screen curve vignette */
+#crt-vignette{position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 60%,rgba(10,6,18,.7) 100%);z-index:3}
+/* Channel number display */
+#crt-channel{position:relative;z-index:4;text-align:center}
+#crt-num{font-size:72px;font-weight:900;color:#D9008D;line-height:1;
+  text-shadow:0 0 30px rgba(217,0,141,.5),0 0 60px rgba(217,0,141,.2);
+  animation:crtFlicker .1s steps(1) 3}
+@keyframes crtFlicker{0%,100%{opacity:1}50%{opacity:.7}}
+#crt-name{font-size:16px;color:#FFB2E4;margin-top:8px;font-weight:600;letter-spacing:1px;opacity:.8}
+#crt-signal{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:12px}
+#crt-signal span{font-size:11px;color:#665E75;text-transform:uppercase;letter-spacing:2px}
+.signal-bar{width:4px;border-radius:2px;background:#D9008D;animation:signalGrow .6s ease-out forwards}
+.signal-bar:nth-child(1){height:6px;animation-delay:.1s}
+.signal-bar:nth-child(2){height:10px;animation-delay:.2s}
+.signal-bar:nth-child(3){height:14px;animation-delay:.3s}
+.signal-bar:nth-child(4){height:18px;animation-delay:.4s}
+@keyframes signalGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+#channel-banner{position:absolute;bottom:100px;left:0;z-index:10;display:flex;align-items:center;gap:16px;
+  background:linear-gradient(135deg,rgba(10,6,18,.94),rgba(68,49,82,.88));
+  border-left:4px solid #D9008D;padding:16px 28px 16px 20px;border-radius:0 12px 12px 0;
+  box-shadow:0 4px 30px rgba(217,0,141,.15);
+  animation:slideIn .3s ease-out}
+@keyframes slideIn{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideOut{from{transform:translateX(0);opacity:1}to{transform:translateX(-100%);opacity:0}}
+#channel-banner.hiding{animation:slideOut .3s ease-in forwards}
+#banner-number{font-size:42px;font-weight:800;color:#D9008D;min-width:70px;text-align:center;line-height:1}
+#banner-name{font-size:22px;font-weight:700;letter-spacing:.5px}
+#banner-meta{font-size:13px;color:#FFB2E4;margin-top:3px}
+#banner-category{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;
+  background:#D9008D;color:#fff;padding:4px 10px;border-radius:4px;margin-left:auto;white-space:nowrap}
+#banner-health{font-size:9px;color:#665E75;margin-top:2px}
+#number-input{position:absolute;top:40px;right:40px;z-index:15;background:rgba(10,6,18,.9);
+  border:2px solid #D9008D;border-radius:10px;padding:12px 24px;backdrop-filter:blur(10px)}
+#number-display{font-size:48px;font-weight:800;color:#D9008D;font-variant-numeric:tabular-nums}
+#remote{position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:12;display:flex;flex-direction:column;gap:8px;
+  transition:opacity .4s;opacity:0;pointer-events:none}
+#remote.visible{opacity:1;pointer-events:auto}
+.rb{background:rgba(10,6,18,.7);border:2px solid rgba(217,0,141,.4);color:#D9008D;
+  font-size:14px;font-weight:800;padding:14px 16px;border-radius:12px;cursor:pointer;
+  transition:all .15s;backdrop-filter:blur(10px);-webkit-tap-highlight-color:transparent;
+  min-width:70px;text-align:center;user-select:none}
+.rb:hover{background:rgba(217,0,141,.15);border-color:#D9008D}
+.rb:active{background:rgba(217,0,141,.3);transform:scale(.95)}
+.rb.sec{color:#FFB2E4;font-size:18px}
+.rb svg{width:20px;height:20px;fill:currentColor;vertical-align:middle}
+/* Unmute overlay */
+#unmute-overlay{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#unmute-box{background:rgba(10,6,18,.85);border:1px solid rgba(217,0,141,.4);border-radius:12px;
+  padding:14px 24px;display:flex;align-items:center;gap:10px;animation:fadeIn .3s}
+#unmute-box svg{width:24px;height:24px;fill:#D9008D}
+#unmute-box span{font-size:14px;color:#FFB2E4;font-weight:600}
+#guide{position:absolute;inset:0;z-index:20;background:rgba(10,6,18,.97);  display:flex;flex-direction:column;animation:fadeIn .2s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#guide-header{padding:20px 24px 12px;border-bottom:1px solid #443152}
+#guide-header h2{font-size:20px;font-weight:700;margin-bottom:12px;color:#FFB2E4}
+#guide-header h2 span{color:#D9008D}
+#guide-close{position:absolute;top:16px;right:20px;font-size:28px;color:#665E75;cursor:pointer;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+#guide-close:hover{color:#fff;background:rgba(217,0,141,.15)}
+#guide-filters{display:flex;gap:8px;flex-wrap:wrap}
+.fb{background:#443152;color:#665E75;border:1px solid rgba(217,0,141,.2);border-radius:20px;
+  padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.fb:hover{border-color:#D9008D;color:#fff}
+.fb.active{background:#D9008D;color:#fff;border-color:#D9008D}
+#lang-toggle{position:absolute;top:20px;right:68px;display:flex;border:1px solid rgba(217,0,141,.35);border-radius:20px;overflow:hidden;background:rgba(68,49,82,.5)}
+#lang-toggle button{background:transparent;border:none;color:#A7A1B2;font-size:12px;font-weight:700;padding:7px 12px;cursor:pointer;font-family:inherit;line-height:1}
+#lang-toggle button.active{background:#D9008D;color:#fff}
+#guide-list{flex:1;overflow-y:auto;padding:8px 16px;scrollbar-width:thin;scrollbar-color:#443152 transparent}
+.gi{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:8px;cursor:pointer;transition:background .15s}
+.gi:hover{background:rgba(217,0,141,.08)}
+.gi.active{background:rgba(217,0,141,.15);border-left:3px solid #D9008D}
+.gi.dead{opacity:.35}
+.gi.dead .gn::after{content:' (offline)';color:#665E75;font-size:11px}
+body.lang-hi .gi.dead .gn::after{content:' (बंद)'}
+.gc{font-size:18px;font-weight:800;color:#D9008D;min-width:40px;text-align:center}
+.gn{font-size:15px;font-weight:600;flex:1}
+.gl{font-size:12px;color:#665E75}
+.gcat{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#443152;
+  background:rgba(217,0,141,.08);padding:3px 8px;border-radius:3px}
+.gdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.gdot.live{background:#00c853}
+.gdot.dead{background:#666}
+.gdot.checking{background:#ff8000;animation:pulse .8s infinite}
+#attribution{padding:12px 24px;border-top:1px solid #443152;font-size:11px;color:#665E75;text-align:center;line-height:1.6}
+#attribution a{color:#FFB2E4;text-decoration:none}
+#error-overlay{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,#443152,#0a0612 70%);flex-direction:column;gap:8px}
+#error-icon{font-size:64px}
+#error-channel-name{font-size:22px;font-weight:700}
+#error-msg{font-size:15px;color:#665E75}
+#error-hint{font-size:13px;color:#FFB2E4}
+#vol-indicator{position:absolute;top:40px;left:50%;transform:translateX(-50%);z-index:15;
+  background:rgba(10,6,18,.9);border:1px solid #443152;border-radius:10px;padding:10px 20px;  font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px;color:#FFB2E4}
+#vol-bar-bg{width:100px;height:6px;background:#443152;border-radius:3px;overflow:hidden}
+#vol-bar{height:100%;background:#D9008D;border-radius:3px;transition:width .15s}
+#health-status{position:absolute;top:12px;left:12px;z-index:11;font-size:10px;color:#665E75;
+  background:rgba(10,6,18,.7);padding:4px 10px;border-radius:6px;backdrop-filter:blur(8px)}
+@media(max-width:768px){
+  #channel-banner{bottom:80px;padding:10px 18px 10px 14px;gap:10px}
+  #banner-number{font-size:28px;min-width:45px}#banner-name{font-size:16px}
+  #banner-meta{font-size:11px}#banner-category{font-size:9px;padding:3px 7px}
+  #remote{right:10px}.rb{padding:12px 12px;font-size:12px;min-width:58px}
+  #number-input{top:20px;right:20px}#number-display{font-size:36px}
+  #health-status{display:none}
+}
+/* Fullscreen prompt */
+#fs-prompt{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,6,18,.8);cursor:pointer;animation:fadeIn .3s}
+#fs-prompt-box{text-align:center;padding:32px;border-radius:16px;background:rgba(68,49,82,.6);border:1px solid rgba(217,0,141,.3)}
+#fs-prompt-icon{font-size:48px;margin-bottom:12px}
+#fs-prompt-text{font-size:18px;font-weight:600;color:#FFB2E4;margin-bottom:6px}
+#fs-prompt-sub{font-size:13px;color:#665E75}
+/* Install banner */
+#install-banner{position:absolute;bottom:0;left:0;right:0;z-index:25;
+  background:linear-gradient(135deg,rgba(94,0,61,.95),rgba(68,49,82,.95));
+  padding:16px 20px;display:flex;align-items:center;gap:14px;
+  border-top:1px solid rgba(217,0,141,.3);animation:slideUp .4s ease-out}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+#install-banner-icon{width:44px;height:44px;border-radius:10px;background:#D9008D;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+#install-banner-text{flex:1}
+#install-banner-title{font-size:15px;font-weight:700;color:#fff}
+#install-banner-sub{font-size:12px;color:#FFB2E4;margin-top:2px}
+.install-btn{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .15s}
+.install-btn:active{transform:scale(.95)}
+.install-btn-primary{background:#D9008D;color:#fff}
+.install-btn-dismiss{background:transparent;color:#665E75}
+/* iOS install instructions */
+#ios-instructions{position:absolute;inset:0;z-index:31;background:rgba(10,6,18,.95);  display:flex;align-items:center;justify-content:center;animation:fadeIn .3s}
+#ios-box{text-align:center;padding:32px 24px;max-width:320px}
+#ios-box h3{font-size:18px;color:#FFB2E4;margin-bottom:16px}
+.ios-step{display:flex;align-items:center;gap:12px;text-align:left;margin-bottom:14px;font-size:14px;color:#e0dce8}
+.ios-step-num{width:28px;height:28px;border-radius:50%;background:#D9008D;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+#ios-close{margin-top:16px;padding:10px 28px;border-radius:8px;background:#443152;color:#FFB2E4;border:none;font-size:14px;font-weight:600;cursor:pointer}
+/* PMF micro-survey */
+#pmf-survey{position:absolute;bottom:0;left:0;right:0;z-index:30;background:#1a1128;border-top:2px solid #D9008D;padding:18px 20px 22px;animation:slideUp .35s}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+#pmf-close{position:absolute;top:10px;right:14px;background:none;border:none;color:#665E75;font-size:22px;cursor:pointer;line-height:1}
+#pmf-q{font-size:15px;font-weight:700;color:#fff;margin-bottom:14px;padding-right:24px}
+#pmf-opts{display:flex;flex-direction:column;gap:8px}
+.pmf-btn{padding:12px 16px;border-radius:10px;background:#443152;color:#FFE5F6;border:1px solid rgba(217,0,141,.3);font-size:14px;font-weight:600;cursor:pointer;text-align:left;transition:all .15s}
+.pmf-btn:active{transform:scale(.98)}
+.pmf-btn:hover{border-color:#D9008D;background:#5E003D}
+#pmf-thanks{text-align:center;font-size:15px;font-weight:700;color:#FFB2E4;padding:14px}
+.hidden{display:none !important}
+#btn-cast.cast-on{background:#D9008D;color:#fff;border-color:#D9008D}
+#btn-cast.cast-on svg{fill:#fff}
+#cast-overlay{position:absolute;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,#352D42 0%,#161021 100%)}
+#cast-box{text-align:center;padding:0 28px;max-width:360px;width:100%}
+#cast-head{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:28px}
+#cast-glyph{width:30px;height:30px;fill:#D9008D;animation:castpulse 2s ease-in-out infinite}
+@keyframes castpulse{0%,100%{opacity:.55}50%{opacity:1}}
+#cast-title{font-size:15px;font-weight:700;color:#FAF9FC}
+#cast-device{color:#FFB2E4}
+#cast-channel{margin-bottom:32px}
+#cast-chnum{font-size:64px;font-weight:800;color:#D9008D;line-height:1}
+#cast-chname{font-size:18px;font-weight:600;color:#FAF9FC;margin-top:6px;min-height:22px}
+#cast-remote{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:30px}
+.crb{width:88px;height:88px;border-radius:50%;background:#352D42;border:1.5px solid #443152;color:#FAF9FC;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.crb svg{width:44px;height:44px;fill:#FAF9FC}
+.crb:active{transform:scale(.92);background:#5E003D;border-color:#D9008D}
+.crb-guide{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:24px;background:#443152;color:#FFE5F6;border:1px solid rgba(217,0,141,.3);font-size:15px;font-weight:600;cursor:pointer}
+.crb-guide svg{width:18px;height:18px;fill:#FFE5F6}
+.crb-guide:active{transform:scale(.96);background:#5E003D}
+#cast-stop{padding:11px 24px;border-radius:24px;background:none;border:1.5px solid #665E75;color:#A7A1B2;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+#cast-stop:active{border-color:#D9008D;color:#fff}
+body.is-casting #remote,body.is-casting #channel-banner{display:none !important}
+#cast-toast{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);z-index:40;max-width:84vw;background:#352D42;border:1px solid #443152;color:#FAF9FC;font-size:14px;font-weight:600;text-align:center;padding:14px 18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.5);animation:fadeIn .2s}
+/* ===== Microdrama promo channel (Dashverse) ===== */
+#md-overlay{position:absolute;inset:0;z-index:18;background:#000;overflow:hidden;animation:fadeIn .3s}
+#md-video{width:100%;height:100%;object-fit:contain;background:#000;transition:filter .45s ease,transform .45s ease}
+#md-video.frozen{filter:blur(16px) brightness(.45);transform:scale(1.06)}
+#md-chip{position:absolute;top:14px;left:14px;z-index:3;display:flex;align-items:center;gap:8px;
+  background:rgba(22,16,33,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,178,228,.22);border-radius:999px;padding:7px 14px 7px 10px;
+  font-size:13px;font-weight:700;color:#FAF9FC;max-width:70%;transition:opacity .3s}
+#md-chip .dot{width:7px;height:7px;border-radius:50%;background:#D9008D;flex:0 0 auto;
+  box-shadow:0 0 0 0 rgba(217,0,141,.7);animation:mdPulse 2s infinite}
+@keyframes mdPulse{70%{box-shadow:0 0 0 7px rgba(217,0,141,0)}100%{box-shadow:0 0 0 0 rgba(217,0,141,0)}}
+#md-chip .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#md-chip .ct{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#FFB2E4;
+  border-left:1px solid rgba(255,178,228,.28);padding-left:8px;flex:0 0 auto}
+#md-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.14);z-index:3}
+#md-bar{height:100%;width:0;background:linear-gradient(90deg,#D9008D,#FFB2E4);transition:width .25s linear}
+#md-overlay.paywalled #md-chip{opacity:0}
+/* end-of-promo offer sheet */
+#md-sheet{position:absolute;left:0;right:0;bottom:0;z-index:6;transform:translateY(101%);
+  transition:transform .42s cubic-bezier(.16,1,.3,1);background:#1D1526;
+  border-top:1px solid rgba(255,178,228,.2);border-radius:22px 22px 0 0;
+  padding:22px 20px calc(20px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 -18px 50px rgba(0,0,0,.6)}
+#md-sheet.up{transform:translateY(0)}
+#md-sheet .grab{width:38px;height:4px;border-radius:2px;background:rgba(255,255,255,.2);margin:0 auto 16px}
+#md-sheet h3{margin:0 0 4px;font-size:21px;font-weight:800;color:#FAF9FC;letter-spacing:-.01em}
+#md-sheet .sub{margin:0 0 16px;font-size:14px;color:#A7A1B2;line-height:1.45}
+#md-offer{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(217,0,141,.16),rgba(109,23,206,.13));
+  border:1px solid rgba(255,178,228,.28);border-radius:14px;padding:14px 16px;margin-bottom:14px}
+#md-offer .price{font-size:30px;font-weight:900;color:#FFB2E4;line-height:1;font-variant-numeric:tabular-nums}
+#md-offer .price small{font-size:15px;font-weight:800;vertical-align:top;margin-right:1px}
+#md-offer .what{font-size:14.5px;font-weight:700;color:#FAF9FC;line-height:1.3}
+#md-offer .what span{display:block;font-size:12.5px;font-weight:600;color:#A7A1B2;margin-top:3px}
+#md-pay{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  background:#D9008D;color:#fff;border:0;border-radius:13px;padding:16px;
+  font-size:16.5px;font-weight:800;font-family:inherit;cursor:pointer;
+  transition:transform .12s ease,filter .18s ease;-webkit-tap-highlight-color:transparent}
+#md-pay:hover{filter:brightness(1.08)}
+#md-pay:active{transform:scale(.985)}
+#md-pay:focus-visible,#md-skip:focus-visible,#md-dismiss:focus-visible{outline:2px solid #FFB2E4;outline-offset:3px}
+#md-pay .upi{font-size:11px;font-weight:800;letter-spacing:.1em;background:rgba(255,255,255,.2);
+  padding:3px 7px;border-radius:5px}
+#md-skip{display:block;width:100%;margin-top:10px;background:none;border:0;color:#A7A1B2;
+  font-size:14px;font-weight:600;font-family:inherit;padding:11px;cursor:pointer;border-radius:10px}
+#md-skip:hover{color:#FAF9FC}
+#md-note{margin:12px 0 0;text-align:center;font-size:11.5px;color:#665E75;letter-spacing:.02em}
+/* payment progress + success */
+#md-pay.busy{pointer-events:none;background:#443152;color:#A7A1B2}
+#md-pay.busy .upi{display:none}
+.md-spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.28);border-top-color:#FFB2E4;
+  border-radius:50%;animation:mdSpin .7s linear infinite;display:inline-block}
+@keyframes mdSpin{to{transform:rotate(360deg)}}
+#md-done{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:14px;background:rgba(22,16,33,.93);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);animation:fadeIn .25s}
+#md-done .tick{width:66px;height:66px;border-radius:50%;background:#008043;display:flex;align-items:center;
+  justify-content:center;font-size:33px;color:#fff;animation:mdPop .4s cubic-bezier(.2,1.4,.4,1)}
+@keyframes mdPop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+#md-done .t{font-size:19px;font-weight:800;color:#FAF9FC}
+#md-done .s{font-size:14px;color:#A7A1B2;margin-top:-6px}
+/* unmute pill, scoped to the promo surface */
+#md-unmute{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:5;
+  display:flex;align-items:center;gap:8px;background:rgba(217,0,141,.94);color:#fff;
+  border:0;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:700;font-family:inherit;
+  cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.45);animation:fadeIn .3s}
+#md-unmute svg{width:17px;height:17px;fill:currentColor}
+@media (min-width:900px){
+  #md-sheet{left:50%;right:auto;transform:translate(-50%,101%);width:440px;border-radius:22px;bottom:26px}
+  #md-sheet.up{transform:translate(-50%,0)}
+}
+@media (prefers-reduced-motion:reduce){
+  #md-overlay,#md-sheet,#md-video,#md-bar,#md-done .tick,#md-done{animation:none!important;transition:none!important}
+  #md-chip .dot{animation:none}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="video-container">
+    <video id="player" autoplay playsinline preload="none"></video>
+    <div id="static-overlay" class="hidden">
+      <div id="crt-vignette"></div>
+      <div id="crt-channel">
+        <div id="crt-num"></div>
+        <div id="crt-name"></div>
+        <div id="crt-signal">
+          <div class="signal-bar"></div><div class="signal-bar"></div><div class="signal-bar"></div><div class="signal-bar"></div>
+          <span data-i18n="connecting">Connecting</span>
+        </div>
+      </div>
+    </div>
+    <div id="error-overlay" class="hidden">
+      <div id="error-icon">&#128250;</div>
+      <div id="error-channel-name"></div>
+      <div id="error-msg" data-i18n="errUnavailable">Channel unavailable right now</div>
+      <div id="error-hint" data-i18n="errSkipping">Skipping to next channel...</div>
+    </div>
+    <div id="unmute-overlay" class="hidden">
+      <div id="unmute-box">
+        <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+        <span data-i18n="tapUnmute">Tap to unmute</span>
+      </div>
+    </div>
+    <div id="md-overlay" class="hidden">
+      <video id="md-video" playsinline preload="auto"></video>
+      <div id="md-chip"><span class="dot"></span><span class="nm"></span><span class="ct">प्रोमो</span></div>
+      <div id="md-progress"><div id="md-bar"></div></div>
+      <button id="md-unmute" class="hidden" type="button">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        <span>आवाज़ चालू करें</span>
+      </button>
+      <div id="md-sheet" role="dialog" aria-modal="true" aria-labelledby="md-sheet-title">
+        <div class="grab"></div>
+        <h3 id="md-sheet-title">आगे क्या हुआ? 👀</h3>
+        <p class="sub">प्रोमो ख़त्म — पूरी कहानी और <b>सारे शोज़</b> अभी देखें।</p>
+        <div id="md-offer">
+          <div class="price"><small>₹</small>10</div>
+          <div class="what">12 घंटे तक सब कुछ<span>सभी शोज़ • बिना रुकावट</span></div>
+        </div>
+        <button id="md-pay" type="button"><span class="upi">UPI</span><span class="lbl">₹10 देकर देखते रहिए</span></button>
+        <button id="md-skip" type="button">अभी नहीं, अगला प्रोमो दिखाएँ</button>
+        <p id="md-note">डेमो — कोई असली पेमेंट नहीं होगा</p>
+      </div>
+    </div>
+  </div>
+  <div id="channel-banner" class="hidden">
+    <div id="banner-number"></div>
+    <div id="banner-info"><div id="banner-name"></div><div id="banner-meta"></div></div>
+    <div id="banner-category"></div>
+  </div>
+  <div id="number-input" class="hidden"><span id="number-display"></span></div>
+  <div id="vol-indicator" class="hidden">
+    <span id="vol-icon">&#128266;</span>
+    <div id="vol-bar-bg"><div id="vol-bar" style="width:100%"></div></div>
+    <span id="vol-pct">100%</span>
+  </div>
+  <div id="health-status">Checking channels...</div>
+  <div id="guide" class="hidden">
+    <div id="guide-header">
+      <h2><span>Wiom</span> TV &middot; 245 <span data-i18n="channelsWord">Channels</span></h2>
+      <div id="lang-toggle"><button type="button" data-lang="hi">हिंदी</button><button type="button" data-lang="en">EN</button></div>
+      <div id="guide-close" title="Close">&times;</div>
+      <div id="guide-filters">
+        <button class="fb active" data-cat="All" data-i18n="allTab">All (245)</button>
+        <button class="fb" data-cat="News">News</button>
+        <button class="fb" data-cat="Entertainment">Entertainment</button>
+        <button class="fb" data-cat="Music">Music</button>
+        <button class="fb" data-cat="Movies">Movies</button>
+        <button class="fb" data-cat="Devotional">Devotional</button>
+        <button class="fb" data-cat="DD">Doordarshan</button>
+        <button class="fb" data-cat="Business">Business</button>
+        <button class="fb" data-cat="Education">Education</button>
+        <button class="fb" data-cat="_more" data-i18n="moreTab">More</button>
+      </div>
+    </div>
+    <div id="guide-list"></div>
+    <div id="attribution">
+      All channels are property of their respective broadcasters. No content is hosted or modified.<br>
+      Built with <a href="#">Wiom</a> &middot; Pure client-side &middot; Your browser connects directly to broadcaster CDN.
+    </div>
+  </div>
+  <!-- Fullscreen prompt -->
+  <div id="fs-prompt" class="hidden">
+    <div id="fs-prompt-box">
+      <div id="fs-prompt-icon">&#128250;</div>
+      <div id="fs-prompt-text" data-i18n="fsText">Tap to go fullscreen</div>
+      <div id="fs-prompt-sub" data-i18n="fsSub">Best experience in fullscreen mode</div>
+    </div>
+  </div>
+
+  <!-- Install banner -->
+  <div id="install-banner" class="hidden">
+    <div id="install-banner-icon">&#128250;</div>
+    <div id="install-banner-text">
+      <div id="install-banner-title" data-i18n="installTitle">Add Wiom TV to Home Screen</div>
+      <div id="install-banner-sub" data-i18n="installSub">Watch anytime, one tap away</div>
+    </div>
+    <button class="install-btn install-btn-primary" id="install-btn">Install</button>
+    <button class="install-btn install-btn-dismiss" id="install-dismiss" data-i18n="laterBtn">Later</button>
+  </div>
+
+  <!-- iOS install instructions -->
+  <div id="ios-instructions" class="hidden">
+    <div id="ios-box">
+      <h3 data-i18n="installTitle">Add Wiom TV to Home Screen</h3>
+      <div class="ios-step"><span class="ios-step-num">1</span><span data-i18n-html="iosStep1">Tap the <b>Share</b> button (&#9757;) at the bottom of Safari</span></div>
+      <div class="ios-step"><span class="ios-step-num">2</span><span data-i18n-html="iosStep2">Scroll down and tap <b>Add to Home Screen</b></span></div>
+      <div class="ios-step"><span class="ios-step-num">3</span><span data-i18n-html="iosStep3">Tap <b>Add</b> in the top right</span></div>
+      <button id="ios-close" data-i18n="gotIt">Got it</button>
+    </div>
+  </div>
+
+  <!-- PMF micro-survey (Sean-Ellis) -->
+  <div id="pmf-survey" class="hidden">
+    <button id="pmf-close" aria-label="close">&times;</button>
+    <div id="pmf-q">अगर Wiom TV बंद हो जाए तो आपको कैसा लगेगा?</div>
+    <div id="pmf-opts">
+      <button class="pmf-btn" data-v="very">😞 बहुत बुरा लगेगा</button>
+      <button class="pmf-btn" data-v="somewhat">😐 थोड़ा बुरा लगेगा</button>
+      <button class="pmf-btn" data-v="not">🙂 कोई फर्क नहीं पड़ेगा</button>
+    </div>
+    <div id="pmf-thanks" class="hidden">आपकी राय के लिए धन्यवाद! 💜</div>
+  </div>
+
+  <div id="cast-overlay" class="hidden">
+    <div id="cast-box">
+      <div id="cast-head">
+        <svg id="cast-glyph" viewBox="0 0 24 24"><path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+        <span id="cast-title"><span data-i18n="castingTo">Casting to</span> <span id="cast-device">TV</span></span>
+      </div>
+      <div id="cast-channel">
+        <div id="cast-chnum">—</div>
+        <div id="cast-chname"></div>
+      </div>
+      <div id="cast-remote">
+        <button class="crb" id="cast-up" title="Channel Up"><svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg></button>
+        <button class="crb-guide" id="cast-guide"><svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg> Guide</button>
+        <button class="crb" id="cast-down" title="Channel Down"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+      </div>
+      <button id="cast-stop" data-i18n="stopCast">Stop casting</button>
+    </div>
+  </div>
+
+  <div id="cast-toast" class="hidden"></div>
+
+  <div id="remote">
+    <button class="rb" id="btn-up" title="Channel Up"><svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg></button>
+    <button class="rb sec" id="btn-guide" title="Guide"><svg viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg></button>
+    <button class="rb sec" id="btn-cast" title="Cast to TV"><svg viewBox="0 0 24 24"><path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></button>
+    <button class="rb sec" id="btn-mute" title="Mute"><svg id="mute-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg></button>
+    <button class="rb sec" id="btn-fs" title="Fullscreen"><svg id="fs-icon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>
+    <button class="rb" id="btn-down" title="Channel Down"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+  </div>
+</div>
+<script>
+(() => {
+  const channels = [{"ch":2,"name":"Dangal TV","cat":"Entertainment","lang":"Hindi","url":"https://live-dangal.akamaized.net/liveabr/playlist.m3u8"},{"ch":3,"name":"Dangal 2","cat":"Entertainment","lang":"Hindi","url":"https://live-dangal2.akamaized.net/liveabr/playlist.m3u8"},{"ch":4,"name":"Epic TV","cat":"Entertainment","lang":"Hindi","url":"https://epiconvh.akamaized.net/live/epic/master.m3u8"},{"ch":5,"name":"Zee Comedy Nation","cat":"Entertainment","lang":"Hindi","url":"https://amg00862-amg00862c5-amgplt0173.playout.now3.amagi.tv/playlist/amg00862-amg00862c5-amgplt0173/playlist.m3u8"},{"ch":6,"name":"Zee Dil Se","cat":"Entertainment","lang":"Hindi","url":"https://amg00862-amg00862c6-amgplt0173.playout.now3.amagi.tv/playlist/amg00862-amg00862c6-amgplt0173/playlist.m3u8"},{"ch":7,"name":"Zee Horror Nights","cat":"Entertainment","lang":"Hindi","url":"https://amg00862-amg00862c7-amgplt0173.playout.now3.amagi.tv/playlist/amg00862-amg00862c7-amgplt0173/playlist.m3u8"},{"ch":8,"name":"Zee Cine Classic","cat":"Entertainment","lang":"Hindi","url":"https://amg00862-amg00862c8-amgplt0173.playout.now3.amagi.tv/playlist/amg00862-amg00862c8-amgplt0173/playlist.m3u8"},{"ch":9,"name":"Zee South Flix","cat":"Entertainment","lang":"Hindi","url":"https://amg00862-amg00862c9-amgplt0173.playout.now3.amagi.tv/playlist/amg00862-amg00862c9-amgplt0173/playlist.m3u8"},{"ch":10,"name":"History TV18 HD","cat":"Entertainment","lang":"Hindi","url":"https://amg01448-amg01448c16-samsung-in-3495.playouts.now.amagi.tv/playlist/amg01448-amg01448c16-samsung-in-3495/playlist.m3u8"},{"ch":11,"name":"Shubh Cinema","cat":"Entertainment","lang":"Hindi","url":"https://d393sxaxig6bax.cloudfront.net/out/v1/589cf2cf44bf42bb941e817a2240d62e/index.m3u8"},{"ch":12,"name":"Abzy Movies","cat":"Entertainment","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/db8d4eca72d64748a00d0631debf542d/index.m3u8"},{"ch":13,"name":"Abzy Dhakad","cat":"Entertainment","lang":"Hindi","url":"https://d2lk5u59tns74c.cloudfront.net/out/v1/4fe6ab07a13543d6bdb2ec63b3e2df44/index.m3u8"},{"ch":14,"name":"Mango TV","cat":"Entertainment","lang":"Hindi","url":"https://amg01911-mangotv-amg01911c1-xiaomi-in-1270.playouts.now.amagi.tv/playlist/amg01911-mangotv-amg01911c1-xiaomi-in-1270/playlist.m3u8"},{"ch":15,"name":"NDTV Good Times","cat":"Entertainment","lang":"English","url":"https://amg01448-samsungin-ndtvgoodtimes-samsungin-ad-gp.amagi.tv/playlist/amg01448-samsungin-ndtvgoodtimes-samsungin-ad-gp/playlist.m3u8"},{"ch":16,"name":"Travelxp HD","cat":"Entertainment","lang":"English","url":"https://amg00416-amg00416c9-samsung-in-4882.playouts.now.amagi.tv/playlist/amg00416-amg00416c9-samsung-in-4882/playlist.m3u8"},{"ch":17,"name":"Shemaroo Josh","cat":"Entertainment","lang":"Hindi","url":"https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/playlist.m3u8"},{"ch":18,"name":"Desi Channel","cat":"Entertainment","lang":"Hindi","url":"https://livestream.unlimitedcdn.com/agm-dc/desi-channel/index.m3u8"},{"ch":19,"name":"Filamchi Bhojpuri","cat":"Entertainment","lang":"Bhojpuri","url":"https://epiconvh.akamaized.net/live/filamchi/master.m3u8"},{"ch":20,"name":"Gangaur TV","cat":"Entertainment","lang":"Hindi","url":"https://pbgangaur.wiseplayout.com/Gangaur/master.m3u8"},{"ch":24,"name":"Bhojpuri Cinema","cat":"Movies","lang":"Bhojpuri","url":"https://live-bhojpuri.akamaized.net/liveabr/playlist.m3u8"},{"ch":25,"name":"ZB Cinema","cat":"Movies","lang":"Hindi","url":"https://server.zillarbarta.com/ZBCINEMA/index.m3u8"},{"ch":26,"name":"Shemaroo Marathi Bana","cat":"Movies","lang":"Marathi","url":"https://airtelapp.shemaroo.com/marathibana/smil:marathibanaadp.smil/playlist.m3u8"},{"ch":27,"name":"9XM","cat":"Music","lang":"Hindi","url":"https://9xjio.wiseplayout.com/9XM/master.m3u8"},{"ch":29,"name":"9X Jhakaas","cat":"Music","lang":"Hindi","url":"https://amg01281-9xmediapvtltd-9xjhakaas-samsungin-ci2cs.amagi.tv/playlist/amg01281-9xmediapvtltd-9xjhakaas-samsungin/playlist.m3u8"},{"ch":30,"name":"9X Tashan","cat":"Music","lang":"Hindi","url":"https://amg01281-9xmediapvtltd-9xtashan-samsungin-xz1sd.amagi.tv/playlist/amg01281-9xmediapvtltd-9xtashan-samsungin/playlist.m3u8"},{"ch":32,"name":"B4U Bhojpuri","cat":"Music","lang":"Bhojpuri","url":"https://cdnb4u.wiseplayout.com/B4U_Bhojpuri/master.m3u8"},{"ch":33,"name":"YRF Music","cat":"Music","lang":"Hindi","url":"https://d14c63magvk61v.cloudfront.net/strm/channels/yrfmusic/master.m3u8"},{"ch":34,"name":"PTC Music","cat":"Music","lang":"Punjabi","url":"https://d2lk5u59tns74c.cloudfront.net/out/v1/f913cf893c594f73b114216e74a2efbc/index.m3u8"},{"ch":35,"name":"Pitaara","cat":"Music","lang":"Punjabi","url":"https://vg-pitaaratvlive.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-583798/playlist.m3u8"},{"ch":36,"name":"Zoom","cat":"Music","lang":"Hindi","url":"https://d14c63magvk61v.cloudfront.net/strm/channels/zoom/master.m3u8"},{"ch":37,"name":"Punjabi Hits","cat":"Music","lang":"Punjabi","url":"https://stream.ottlive.co.in/punjabihits/index.m3u8"},{"ch":38,"name":"ZB Music","cat":"Music","lang":"Hindi","url":"https://server.zillarbarta.com/zbmusic/index.m3u8"},{"ch":39,"name":"Steelbird Music","cat":"Music","lang":"Hindi","url":"https://cdn2.in/SteelbirdMusicTVhls/live.m3u8"},{"ch":40,"name":"Aaj Tak HD","cat":"News","lang":"Hindi","url":"https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8"},{"ch":41,"name":"ABP News","cat":"News","lang":"Hindi","url":"https://d2l4ar6y3mrs4k.cloudfront.net/live-streaming/abpnews-livetv/master.m3u8"},{"ch":42,"name":"Zee News","cat":"News","lang":"Hindi","url":"https://dknttpxmr0dwf.cloudfront.net/index_57.m3u8"},{"ch":43,"name":"India TV","cat":"News","lang":"Hindi","url":"https://pl-indiatvnews.akamaized.net/out/v1/db79179b608641ceaa5a4d0dd0dca8da/index.m3u8"},{"ch":44,"name":"NDTV India","cat":"News","lang":"Hindi","url":"https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679/ndtvindia/master.m3u8"},{"ch":45,"name":"Zee Bharat","cat":"News","lang":"Hindi","url":"https://vg-zeefta.akamaized.net/ptnr-yupptv/title-zeehindustan/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/96bbab12-582e-4540-af70-510ab6824581/main.m3u8"},{"ch":46,"name":"News 24","cat":"News","lang":"Hindi","url":"https://vidcdn.vidgyor.com/news24-origin/liveabr/playlist.m3u8"},{"ch":47,"name":"Sudarshan News","cat":"News","lang":"Hindi","url":"https://ott.livelegitpro.in/sudarshannews/sudarshannews/tracks-v1/index.fmp4.m3u8"},{"ch":48,"name":"India Today","cat":"News","lang":"English","url":"https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/playlist.m3u8"},{"ch":49,"name":"WION","cat":"News","lang":"English","url":"https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8"},{"ch":50,"name":"NDTV 24x7","cat":"News","lang":"English","url":"https://ndtv24x7elemarchana.akamaized.net/hls/live/2003678/ndtv24x7/master.m3u8"},{"ch":51,"name":"RT India","cat":"News","lang":"English","url":"https://rt-india.rttv.com/dvr/rtindia/playlist.m3u8"},{"ch":52,"name":"Bharat24","cat":"News","lang":"Hindi","url":"https://cdn.ottlive.co.in/bharat24/index.fmp4.m3u8"},{"ch":53,"name":"AmarUjala","cat":"News","lang":"Hindi","url":"https://amarujala.ottlive.co.in/amarujala/index.m3u8"},{"ch":54,"name":"TOI Global","cat":"News","lang":"English","url":"https://live.sli.ke/live/npnhm84gz9/master.m3u8"},{"ch":55,"name":"Zee Business","cat":"Business","lang":"Hindi","url":"https://dwby15d04agvq.cloudfront.net/index_5.m3u8"},{"ch":56,"name":"ET Now Swadesh","cat":"Business","lang":"Hindi","url":"https://d32gxr3r1ksq2p.cloudfront.net/master.m3u8"},{"ch":57,"name":"Aastha","cat":"Devotional","lang":"Hindi","url":"https://aasthaott.akamaized.net/110923/smil:aasthatv.smil/index.m3u8"},{"ch":58,"name":"Aastha Bhajan","cat":"Devotional","lang":"Hindi","url":"https://aasthaott.akamaized.net/110923/smil:bhajan.smil/playlist.m3u8"},{"ch":59,"name":"Channel Divya","cat":"Devotional","lang":"Punjabi","url":"https://vg-pitaaratvlive.akamaized.net/v1/vglive-sk-906482/playlist.m3u8"},{"ch":60,"name":"Chardikla Gurbani","cat":"Devotional","lang":"Punjabi","url":"https://chardikalatimestv.gigabitcdn.net/in-chardikala/chardikala-gurbani-tv/playlist.m3u8"},{"ch":61,"name":"ZB Bhakti","cat":"Devotional","lang":"Hindi","url":"https://server.zillarbarta.com/zbbhakti/index.m3u8"},{"ch":62,"name":"ABP Ganga","cat":"News","lang":"Hindi","url":"https://d2l4ar6y3mrs4k.cloudfront.net/live-streaming/ganga-livetv/master.m3u8"},{"ch":63,"name":"ABP Asmita","cat":"News","lang":"Marathi","url":"https://d2l4ar6y3mrs4k.cloudfront.net/live-streaming/asmita-livetv/master.m3u8"},{"ch":64,"name":"Zee 24 Taas","cat":"News","lang":"Marathi","url":"https://dgrvlduwztkd4.cloudfront.net/index_5.m3u8"},{"ch":65,"name":"NDTV Marathi","cat":"News","lang":"Marathi","url":"https://web-ndtv-marathi.akamaized.net/hls/live/2110470/ndtvmarathi/master_1.m3u8"},{"ch":66,"name":"ZB Cartoon","cat":"Kids","lang":"Hindi","url":"https://server.zillarbarta.com/zbcatun/video.m3u8"},{"ch":67,"name":"4TV News","cat":"News","lang":"Hindi","url":"https://cdn-4.pishow.tv/live/1007/master.m3u8"},{"ch":68,"name":"7S Music","cat":"Music","lang":"Hindi","url":"https://mumt03.tangotv.in/Dsly5z3H7SMUSIC/index.m3u8"},{"ch":69,"name":"Aaryaa TV","cat":"Music","lang":"Hindi","url":"https://stream.ottlive.co.in/aryatvtamil/index.m3u8"},{"ch":70,"name":"Aaseervatham TV","cat":"Devotional","lang":"Hindi","url":"https://mumt04.tangotv.in/m18aqlK4AASEERVATHAMTV/index.m3u8"},{"ch":71,"name":"Aastha Bhajan","cat":"Devotional","lang":"Hindi","url":"https://mumt05.tangotv.in/87NeALx2AASTHABHAJAN/index.m3u8"},{"ch":72,"name":"Aastha Prime 1","cat":"Devotional","lang":"Hindi","url":"https://aasthaott.akamaized.net/110923/smil:aasthaprime1.smil/master.m3u8"},{"ch":73,"name":"ABP News","cat":"News","lang":"Hindi","url":"https://d1rc86nwwc9fag.cloudfront.net/vglive-sk-472500/abpnews/master.m3u8"},{"ch":74,"name":"Adhyatm TV","cat":"Devotional","lang":"Hindi","url":"https://mumbai-edge.smartplaytv.in/AdhyatmTV/index.m3u8"},{"ch":75,"name":"Alankar TV","cat":"Movies","lang":"Hindi","url":"https://livetv.tarangplus.in/alankar-origin/live/playlist.m3u8"},{"ch":76,"name":"Anand TV","cat":"Devotional","lang":"Hindi","url":"https://live.legitpro.co.in/anandtv/index.m3u8"},{"ch":77,"name":"Ananda Barta","cat":"News","lang":"Hindi","url":"https://account19.livebox.co.in/Anandabarta2hls/live.m3u8"},{"ch":78,"name":"Andy Haryana","cat":"Culture","lang":"Hindi","url":"https://mumt03.tangotv.in/Dsly5z3HANDYHARYANA/index.m3u8"},{"ch":79,"name":"Angel TV","cat":"Devotional","lang":"Hindi","url":"https://janya-digimix.akamaized.net/vglive-sk-394914/india/ngrp:angelindia_all/playlist.m3u8"},{"ch":80,"name":"Apna Punjab TV","cat":"Entertainment","lang":"Punjabi","url":"https://plus.gigabitcdn.net/live-stream/apna-punjab-H3sE/playlist.m3u8"},{"ch":81,"name":"Aradana TV","cat":"Devotional","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/961/master.m3u8"},{"ch":82,"name":"Arputhar Yesu TV","cat":"Devotional","lang":"Hindi","url":"https://arputharyesutv.arputharyesutv.com/live/md/index.m3u8"},{"ch":83,"name":"Aryan TV National","cat":"Undefined","lang":"Hindi","url":"https://mumt04.tangotv.in/m18aqlK4ARYANTVNATIONAL/index.m3u8"},{"ch":84,"name":"B4U Music","cat":"Music","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/415/master.m3u8"},{"ch":85,"name":"Bansal News","cat":"News","lang":"Hindi","url":"https://8yzmq2gbdvax-hls-live.wmncdn.net/bansalnewstv1/live1.stream/playlist.m3u8"},{"ch":86,"name":"Bharat Samachar","cat":"News","lang":"Hindi","url":"https://idvd.multitvsolution.com/idvo/bharatsamachar.m3u8"},{"ch":87,"name":"Big TV 24x7","cat":"News","lang":"Hindi","url":"https://d2gvyg6lvauoko.cloudfront.net/230226/bigtvmalyalam/chunks.m3u8"},{"ch":88,"name":"Brio TV","cat":"Entertainment","lang":"Hindi","url":"https://mumt02.tangotv.in/BRIOTV/index.m3u8"},{"ch":89,"name":"BRK News","cat":"News","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/1037/master.m3u8"},{"ch":90,"name":"Channel WIN","cat":"Devotional","lang":"Hindi","url":"https://cdn-4.pishow.tv/live/229/master.m3u8"},{"ch":91,"name":"Chardikla Time TV","cat":"News","lang":"Punjabi","url":"https://chardikalagurbanitv.gigabitcdn.net/in-chardikala/chardikala-timetv/playlist.m3u8"},{"ch":92,"name":"Chardikla Time TV North America","cat":"News","lang":"Punjabi","url":"https://chardikalanorthamerica.gigabitcdn.net/in-chardikala/chardikala-north-usa/playlist.m3u8"},{"ch":93,"name":"Cnews Bharat","cat":"News","lang":"Hindi","url":"https://legitpro.co.in/cnews/cnews/index.fmp4.m3u8"},{"ch":94,"name":"CTVN AKD Plus","cat":"News","lang":"Hindi","url":"https://live.legitpro.co.in/ctvnakdplus/index.m3u8"},{"ch":95,"name":"DD Bihar","cat":"DD","lang":"Hindi","url":"https://cdn-4.pishow.tv/live/35/master.m3u8"},{"ch":96,"name":"DD Chhattisgarh","cat":"DD","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/15/master.m3u8"},{"ch":97,"name":"DD Goa","cat":"DD","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/e5b9db1cc184406bb97159da2f120f91/index.m3u8"},{"ch":98,"name":"DD Haryana","cat":"DD","lang":"Hindi","url":"https://d2lk5u59tns74c.cloudfront.net/out/v1/950fc69666474351bde0a32b9600c804/index.m3u8"},{"ch":99,"name":"DD Himachal Pradesh","cat":"DD","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/afd2e335b0ba40eb9bdf1096118c6ede/index.m3u8"},{"ch":100,"name":"DD India","cat":"DD","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/ceda14583477426aa162a65392d8ea07/index.m3u8"},{"ch":101,"name":"DD Jharkhand","cat":"DD","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/e8c3741f8c154d3185831f4e31777fb2/index.m3u8"},{"ch":102,"name":"DD Kisan","cat":"Education","lang":"Hindi","url":"https://cdn-6.pishow.tv/live/9/master.m3u8"},{"ch":103,"name":"DD Madhya Pradesh","cat":"DD","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/31/master.m3u8"},{"ch":104,"name":"DD National HD","cat":"Entertainment","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/40492a64c1db4a1385ba1a397d357d3a/index.m3u8"},{"ch":105,"name":"DD National SD","cat":"Entertainment","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/11/master.m3u8"},{"ch":106,"name":"DD News HD","cat":"News","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/0811cd8c37ca4c409d5385a6cd2fa18b/index.m3u8"},{"ch":107,"name":"DD Punjabi","cat":"Culture","lang":"Punjabi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/da821c24a59d4e57960497aeaca8fb33/index.m3u8"},{"ch":108,"name":"DD Rajasthan","cat":"DD","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/34/master.m3u8"},{"ch":109,"name":"DD Sports SD","cat":"Sports","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/b17adfe543354fdd8d189b110617cddd/index.m3u8"},{"ch":110,"name":"DD Urdu","cat":"DD","lang":"Urdu","url":"https://cdn-4.pishow.tv/live/8/master.m3u8"},{"ch":111,"name":"DD Uttar Pradesh","cat":"DD","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/36/master.m3u8"},{"ch":112,"name":"DD Uttarakhand","cat":"DD","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/17/master.m3u8"},{"ch":113,"name":"Dharsan TV","cat":"Devotional","lang":"Hindi","url":"https://cable91tataplay.akamaized.net/live/dharshantv/index.m3u8"},{"ch":114,"name":"Dheeran TV","cat":"Devotional","lang":"Hindi","url":"https://live.we2live.in/dheerantv/dheerantv/playlist.m3u8"},{"ch":115,"name":"Epic TV Digital","cat":"Entertainment","lang":"Hindi","url":"https://cc-czbq30x55knit.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-czbq30x55knit/DIYC/PMSL/IN10/Epic_TV_IN_B/Epic_TV_IN_B.m3u8"},{"ch":116,"name":"ET Now","cat":"Business","lang":"Hindi","url":"https://pubads.g.doubleclick.net/ssai/event/pJrzNyDoT_K_GwYQsijTsQ/master.m3u8"},{"ch":117,"name":"ETV News","cat":"News","lang":"Hindi","url":"https://cc-3448kp65yhc5w.akamaized.net/WWBI/Amagi/ETV_News_IN/playlist.m3u8"},{"ch":118,"name":"Goldmines","cat":"Movies","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/1459/master.m3u8"},{"ch":119,"name":"Goldmines 2","cat":"Movies","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/1460/master.m3u8"},{"ch":120,"name":"GoodNews TV","cat":"Devotional","lang":"Hindi","url":"https://bpgdlwwar3ze-hls-live.wmncdn.net/goodnews/live.stream/playlist.m3u8"},{"ch":121,"name":"GTC News","cat":"News","lang":"Hindi","url":"https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/921cca59-daee-4f89-8c38-7ffe8de44f4c/index.m3u8"},{"ch":122,"name":"GTC Punjabi","cat":"Entertainment","lang":"Punjabi","url":"https://gtc-yupp.vgcdn.net/vglive-sk-254807/index.m3u8"},{"ch":123,"name":"Guarantee News","cat":"News","lang":"Hindi","url":"https://guaranteenews.in:8443/live/gnews/index.m3u8"},{"ch":124,"name":"Gyandarshan","cat":"Education","lang":"Hindi","url":"https://cdn-6.pishow.tv/live/14/master.m3u8"},{"ch":125,"name":"Hare Krsna TV","cat":"Devotional","lang":"Hindi","url":"https://hktv.harekrsnatv.com/HKTV/HKWebApp/manifest.mpd"},{"ch":126,"name":"Harvest TV","cat":"Devotional","lang":"Hindi","url":"https://7mbd4ogkr3gx-hls-live.wmncdn.net/harvesttvlive1/bbb19eae240ec100af921d511efc86a0.sdp/index.m3u8"},{"ch":127,"name":"Hebron TV","cat":"Devotional","lang":"Hindi","url":"https://account20.livebox.co.in/charleshls/live.m3u8"},{"ch":128,"name":"Hi Dost!","cat":"Entertainment","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/224/master.m3u8"},{"ch":129,"name":"High News","cat":"News","lang":"Hindi","url":"https://highmedia.livebox.co.in/HIGHNEWShls/LIVE.m3u8"},{"ch":130,"name":"Hindi Khabar","cat":"News","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/1041/master.m3u8"},{"ch":131,"name":"Hindu Dharmam","cat":"Devotional","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/959/master.m3u8"},{"ch":132,"name":"IBC 24","cat":"News","lang":"Hindi","url":"https://cdn-3.pishow.tv/live/220/master.m3u8"},{"ch":133,"name":"India Daily Live","cat":"News","lang":"Hindi","url":"https://indiadaily.ottlive.co.in/indiadailylive/index.m3u8"},{"ch":134,"name":"India Today","cat":"News","lang":"English","url":"https://d1rc86nwwc9fag.cloudfront.net/vglive-sk-293160/master.m3u8"},{"ch":135,"name":"India TV Speed News","cat":"News","lang":"Hindi","url":"https://cc-lyf4c0hwzg5dd.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-lyf4c0hwzg5dd/v1/vglive-sk-479089/main.m3u8"},{"ch":136,"name":"INFAST","cat":"Lifestyle","lang":"Hindi","url":"https://amg00861-terninternation-lifestyle-samsungau-kdlyy.amagi.tv/playlist/amg00861-terninternation-lifestyle-samsungau/playlist.m3u8"},{"ch":137,"name":"INWILD","cat":"Documentary","lang":"English","url":"https://amg00861-terninternation-inwild-samsunguk-w5wic.amagi.tv/playlist/amg00861-terninternation-inwild-samsunguk/playlist.m3u8"},{"ch":138,"name":"InWonder","cat":"Science","lang":"English","url":"https://amg00861-terninternation-inwonder-samsungau-1k63k.amagi.tv/playlist/amg00861-terninternation-inwonder-samsungau/playlist.m3u8"},{"ch":139,"name":"Ishwar Bhakti TV","cat":"Devotional","lang":"Hindi","url":"https://6n3yow8pl9ok-hls-live.5centscdn.com/ishwartvlive/tv.stream/playlist.m3u8"},{"ch":140,"name":"Jan TV","cat":"DD","lang":"Hindi","url":"https://cdn-6.pishow.tv/live/10004/master.m3u8"},{"ch":141,"name":"Janta TV","cat":"News","lang":"Hindi","url":"https://live.jswk.online/IK_RTPM/live/index.m3u8"},{"ch":142,"name":"Jinvani Channel","cat":"Devotional","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/989/master.m3u8"},{"ch":143,"name":"Joy TV","cat":"Devotional","lang":"Hindi","url":"https://ktismaservers.in:3412/live/joytvlive.m3u8"},{"ch":144,"name":"K News India","cat":"News","lang":"Hindi","url":"https://mumt02.tangotv.in/KNEWSINDIA/index.m3u8"},{"ch":145,"name":"Kashish News","cat":"News","lang":"Hindi","url":"https://server.thelegitpro.in/kashishnews/kashishnews/index.m3u8"},{"ch":146,"name":"Life TV","cat":"Devotional","lang":"Hindi","url":"https://lifetv.livebox.co.in/lifetvhls/lifetv.m3u8"},{"ch":147,"name":"Living India News","cat":"News","lang":"Punjabi","url":"https://stream.ottlive.co.in/livingindia/index.m3u8"},{"ch":148,"name":"Maha Movie","cat":"Movies","lang":"Hindi","url":"https://cdn-6.pishow.tv/live/10007/master.m3u8"},{"ch":149,"name":"Maha Punjabi","cat":"Entertainment","lang":"Punjabi","url":"https://cdn-4.pishow.tv/live/1521/master.m3u8"},{"ch":150,"name":"MediBizTV","cat":"Education","lang":"Hindi","url":"https://43wrzjnpqoxe-hls-live.wmncdn.net/marinebiztvlive/marinebiztvlive/playlist.m3u8"},{"ch":151,"name":"Mercy TV","cat":"Devotional","lang":"Hindi","url":"https://5dd3981940faa.streamlock.net/mercytv/mercytv/playlist.m3u8"},{"ch":152,"name":"Metro TV","cat":"DD","lang":"Hindi","url":"https://mercury.streambridge.link:8042/telugu/metrotv/index.m3u8"},{"ch":153,"name":"Mirror Now","cat":"News","lang":"Hindi","url":"https://dai.google.com/linear/hls/event/ClPOullTQky5vGPf7fMZ8g/master.m3u8"},{"ch":154,"name":"MNTV","cat":"Entertainment","lang":"Hindi","url":"https://mntv.livebox.co.in/mntvhls/live.m3u8"},{"ch":155,"name":"Mr. Bean Animated","cat":"Animation","lang":"English","url":"https://amg00627-amg00627c23-samsung-au-4110.playouts.now.amagi.tv/playlist.m3u8"},{"ch":156,"name":"Nazara","cat":"Entertainment","lang":"Hindi","url":"https://cc-p1izg43bk7sj5.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-p1izg43bk7sj5/DIYC/PMSL/IN10/Nazara_IN_B/Nazara_IN_B.m3u8"},{"ch":157,"name":"NDTV 24x7","cat":"News","lang":"English","url":"https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/NDTV24x7.m3u8"},{"ch":158,"name":"NDTV Madhya Pradesh Chhattisgarh","cat":"News","lang":"Hindi","url":"https://ndtvregional.akamaized.net/hls/live/2102726-b/ndtvmpcg/master_1.m3u8"},{"ch":159,"name":"NDTV Profit","cat":"Business","lang":"Hindi","url":"https://ndtvprofit.akamaized.net/hls/live/2107404/ndtvprofit/chunklist_5.m3u8"},{"ch":160,"name":"NDTV Rajasthan","cat":"News","lang":"Hindi","url":"https://ndtvregional.akamaized.net/hls/live/2102726-b/ndtvraj/master_1.m3u8"},{"ch":161,"name":"Network 10","cat":"DD","lang":"Hindi","url":"https://network10.livebox.co.in/network10hls/live.m3u8"},{"ch":162,"name":"News 1 India","cat":"News","lang":"Hindi","url":"https://d1msejlow1t3l4.cloudfront.net/fta/news1india/playlist.m3u8"},{"ch":163,"name":"News 1st","cat":"News","lang":"Hindi","url":"https://cdn-3.pishow.tv/live/268/master.m3u8"},{"ch":164,"name":"News9Live","cat":"News","lang":"Hindi","url":"https://amg01106-amg01106c3-amgplt0844.playout.now3.amagi.tv/ts-ap-s1-n1/playlist/amg01106-amg01106c3-amgplt0844/playlist.m3u8"},{"ch":165,"name":"News 11","cat":"DD","lang":"Hindi","url":"https://mumt02.tangotv.in/NEWS11BHARAT/index.m3u8"},{"ch":166,"name":"News Daily 24","cat":"News","lang":"Hindi","url":"https://cdn-6.pishow.tv/live/10009/master.m3u8"},{"ch":167,"name":"News Nation","cat":"News","lang":"Hindi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/6cd2f649739a45ca9de1daf81cc7d0f2/index.m3u8"},{"ch":168,"name":"Nireekshana TV","cat":"Devotional","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/965/master.m3u8"},{"ch":169,"name":"NK TV 24x7","cat":"News","lang":"Hindi","url":"https://nktv.smartstream.video/smartstream-us/nktvplus/nktvplus/chunks.m3u8"},{"ch":170,"name":"NTC TV","cat":"Entertainment","lang":"Hindi","url":"https://galaxyott.live/hls/ntv.m3u8"},{"ch":171,"name":"Onkar Only Truth TV","cat":"News","lang":"Hindi","url":"https://5dd3981940faa.streamlock.net/onkarentertainment/onkarentertainment/playlist.m3u8"},{"ch":172,"name":"Oscar Movies Bhojpuri","cat":"Movies","lang":"Bhojpuri","url":"https://cdn-4.pishow.tv/live/233/master.m3u8"},{"ch":173,"name":"Peace TV Urdu","cat":"Devotional","lang":"Urdu","url":"https://dzkyvlfyge.erbvr.com/PeaceTvUrdu/index.m3u8"},{"ch":174,"name":"Pravasi Channel","cat":"Undefined","lang":"Hindi","url":"https://m6gdavepdn93-hls-live.5centscdn.com/pravasi/d0dbe915091d400bd8ee7f27f0791303.sdp/playlist.m3u8"},{"ch":175,"name":"Prime News","cat":"News","lang":"Hindi","url":"https://mumt02.tangotv.in/PRIMENEWS/index.m3u8"},{"ch":176,"name":"Prudent Media","cat":"News","lang":"Hindi","url":"https://prudentmcdn.rixcast.com/prudentm.m3u8"},{"ch":177,"name":"PTC Chakde","cat":"Music","lang":"Punjabi","url":"https://cdn-1.pishow.tv/live/449/master.m3u8"},{"ch":178,"name":"PTC News","cat":"News","lang":"Punjabi","url":"https://cdn-4.pishow.tv/live/1502/master.m3u8"},{"ch":179,"name":"PTC Punjabi","cat":"Entertainment","lang":"Punjabi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/3e22a9c278db4e3eb779afd42e41b0a6/index.m3u8"},{"ch":180,"name":"PTC Punjabi Gold","cat":"Entertainment","lang":"Punjabi","url":"https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/6e14bac6d0384e129521a4d005188bfb/index.m3u8"},{"ch":181,"name":"PTC Simran","cat":"Devotional","lang":"Punjabi","url":"https://cdn-6.pishow.tv/live/1503/master.m3u8"},{"ch":182,"name":"Qello Concerts by Stingray","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/qello-qello001-montreal/samsungtvplus/master.m3u8"},{"ch":183,"name":"Raftaar Media","cat":"Undefined","lang":"Hindi","url":"https://6n3yorwpy9ok-hls-live.5centscdn.com/raftaarmedia/243bd1ce0387f18005abfc43b001646a.sdp/playlist.m3u8"},{"ch":184,"name":"RC Music","cat":"Music","lang":"Hindi","url":"https://view.rcserver.in/tmp_hls1/stream/index.m3u8"},{"ch":185,"name":"Republic Bharat","cat":"News","lang":"Hindi","url":"https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/RepublicBharat.m3u8"},{"ch":186,"name":"Rozana Spokesman","cat":"News","lang":"Punjabi","url":"https://live1.ottlive.co.in/spokesman/spokesman/index.m3u8"},{"ch":187,"name":"Saam TV","cat":"Undefined","lang":"Marathi","url":"https://cdn-3.pishow.tv/live/437/master.m3u8"},{"ch":188,"name":"Sadhna","cat":"Devotional","lang":"Hindi","url":"https://6n3yow8pl9ok-hls-live.5centscdn.com/sadhanalivetv/live.stream/playlist.m3u8"},{"ch":189,"name":"Sadhna Plus News","cat":"News","lang":"Hindi","url":"https://6n3yow8pl9ok-hls-live.5centscdn.com/sadhananewstv/live.stream/playlist.m3u8"},{"ch":190,"name":"Salaam TV","cat":"News","lang":"Urdu","url":"https://d2o3r1shda7xvv.cloudfront.net/index_5.m3u8"},{"ch":191,"name":"Salvation TV","cat":"Devotional","lang":"Hindi","url":"https://ktismaservers.in:3902/live/salvationtvlive.m3u8"},{"ch":192,"name":"Sana Plus","cat":"Music","lang":"Hindi","url":"https://mumbai-edge.smartplaytv.in/SanaPlusHD/index.m3u8"},{"ch":193,"name":"Sana TV","cat":"Entertainment","lang":"Hindi","url":"https://vglivessai.akamaized.net/us/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/b6d9e864-ec16-410a-804d-ccf8f720bfaa/index.m3u8"},{"ch":194,"name":"Sangeet Marathi","cat":"Music","lang":"Marathi","url":"https://cdn-3.pishow.tv/live/1229/master.m3u8"},{"ch":195,"name":"Sankara TV","cat":"Devotional","lang":"Hindi","url":"https://cdn-3.pishow.tv/live/1135/master.m3u8"},{"ch":196,"name":"Sansad TV 1","cat":"Legislative","lang":"Hindi","url":"https://playhls.media.nic.in/hls/live/lstv/lstv.m3u8"},{"ch":197,"name":"Sansad TV 1 HD","cat":"Legislative","lang":"Hindi","url":"https://d2lk5u59tns74c.cloudfront.net/out/v1/fff8f20221d5456e8922e689d71dedc3/index.m3u8"},{"ch":198,"name":"Sansad TV 2","cat":"Legislative","lang":"Hindi","url":"https://d2lk5u59tns74c.cloudfront.net/out/v1/e4182054dce340da9e0ff38b6b3658a4/index.m3u8"},{"ch":199,"name":"Sanskar TV","cat":"Culture","lang":"Hindi","url":"https://d26idhjf0y1p2g.cloudfront.net/out/v1/cd66dd25b9774cb29943bab54bbf3e2f/index.m3u8"},{"ch":200,"name":"Sanskar Web TV","cat":"Devotional","lang":"Hindi","url":"https://deatfcv3xdvi3.cloudfront.net/out/v1/7a43dd2f64e34ec28da1b4bd6923251a/index.m3u8"},{"ch":201,"name":"Santvani Channel","cat":"Undefined","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/475/master.m3u8"},{"ch":202,"name":"Satsang TV","cat":"Devotional","lang":"Hindi","url":"https://d2vfwvjxwtwq1t.cloudfront.net/out/v1/6b24239d5517495b986e7705490c6e65/index.m3u8"},{"ch":203,"name":"Satsang Web TV","cat":"Devotional","lang":"Hindi","url":"https://d1ji7e9jbzm5g8.cloudfront.net/out/v1/769f22f64d80442889306b9c4abea63c/index.m3u8"},{"ch":204,"name":"Shalom","cat":"Devotional","lang":"Hindi","url":"https://d2c4zqo2rb5uf1.cloudfront.net/master.m3u8"},{"ch":205,"name":"Shekinah TV","cat":"Undefined","lang":"Hindi","url":"https://livetv.timeiptv.in/ShekinahNewsIndia/955ad3298db330b5ee880c2c9e6f23a0.sdp/playlist.m3u8"},{"ch":206,"name":"Shemaroo TV","cat":"Entertainment","lang":"Hindi","url":"https://cdn-3.pishow.tv/live/230/master.m3u8"},{"ch":207,"name":"Shubh TV","cat":"Undefined","lang":"Hindi","url":"https://d2g1vdc6ozl2o8.cloudfront.net/out/v1/0a0dc7d7911b4fddbb4dfc963fdd4b9e/index.m3u8"},{"ch":208,"name":"South Station","cat":"Movies","lang":"Hindi","url":"https://cc-yw7ztecy8do3q.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-yw7ztecy8do3q/SS_IN.m3u8"},{"ch":209,"name":"Starnet","cat":"DD","lang":"Hindi","url":"https://5a1178b42cc03.streamlock.net/8220/8220/playlist.m3u8"},{"ch":210,"name":"Stingray Classic Rock","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/ose-101ads-montreal/samsungtvplus/master.m3u8"},{"ch":211,"name":"Stingray DJAZZ","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/djazz-djaads-montreal/samsungtvplus/master.m3u8"},{"ch":212,"name":"Stingray Easy Listening","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/ose-137ads-montreal/samsungtvplus/master.m3u8"},{"ch":213,"name":"Stingray Naturescape","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/naturescape-a003-montreal/samsungtvplus/master.m3u8"},{"ch":214,"name":"Stingray The Spa","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/ose-122ads-montreal/samsungtvplus/master.m3u8"},{"ch":215,"name":"Stingray Today's KPOP","cat":"Music","lang":"English","url":"https://lotus.stingray.com/manifest/ose-317ads-montreal/samsungtvplus/master.m3u8"},{"ch":216,"name":"Studio One +","cat":"Movies","lang":"Hindi","url":"https://cdn-1.pishow.tv/live/276/master.m3u8"},{"ch":217,"name":"Subhavaartha TV","cat":"Devotional","lang":"Hindi","url":"https://2mk9qae4rwyb-hls-live.wmncdn.net/shubhavartha/live.stream/playlist.m3u8"},{"ch":218,"name":"Swadesh News","cat":"News","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/465/master.m3u8"},{"ch":219,"name":"Swatantra TV","cat":"News","lang":"Hindi","url":"https://mumbai-edge.smartplaytv.in/SwatantraTV/index.m3u8"},{"ch":220,"name":"Taaza TV","cat":"Undefined","lang":"Hindi","url":"https://live.we2live.in/taazatv/live/playlist.m3u8"},{"ch":221,"name":"Tabbar Hits","cat":"Music","lang":"Punjabi","url":"https://vglivessai.akamaized.net/sg/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e11b0319-52e8-4190-ab03-3931cc68eac9/index.m3u8"},{"ch":222,"name":"Tehzeeb TV","cat":"Undefined","lang":"Urdu","url":"https://cdn-4.pishow.tv/live/239/master.m3u8"},{"ch":223,"name":"The Movie Club","cat":"Movies","lang":"Hindi","url":"https://sis-global.prod.samsungtv.plus/v1/tvpprd/sc-mp2ar4ca425xo.m3u8"},{"ch":224,"name":"The Movie Club +2","cat":"Movies","lang":"Hindi","url":"https://d3gnyty2vddhsg.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/pb-ytipwjqub3kf8/TMC2_IN.m3u8?ads.ads_cdn=cf&ads.cdn=cf"},{"ch":225,"name":"The Pet Collective","cat":"Family","lang":"English","url":"https://the-pet-collective-international-in.samsung.wurl.tv/playlist.m3u8"},{"ch":226,"name":"Times Now Navbharat","cat":"News","lang":"Hindi","url":"https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/TimesNowNavbharat.m3u8"},{"ch":227,"name":"TNP News","cat":"News","lang":"Hindi","url":"https://server.thelegitpro.in/tnpnews/tnpnews/index.m3u8"},{"ch":228,"name":"Total Bhakti","cat":"Devotional","lang":"Hindi","url":"https://d34z4embz0hjf6.cloudfront.net/out/v1/d55b3323a9f142638f897378f0b526fe/index.m3u8"},{"ch":229,"name":"Total TV Haryana","cat":"Undefined","lang":"Hindi","url":"https://cdn-2.pishow.tv/live/1522/master.m3u8"},{"ch":230,"name":"Tunes 6","cat":"Music","lang":"Hindi","url":"https://stream.d6-pro.com/tunes6music/live/video.m3u8"},{"ch":231,"name":"TV9 Bharatvarsh","cat":"News","lang":"Hindi","url":"https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9hinjzgtpe/liveabr/playlist.m3u8"},{"ch":232,"name":"TV9 Marathi","cat":"News","lang":"Marathi","url":"https://dyjmyiv3bp2ez.cloudfront.net/pub-iotv9marlygv8h/liveabr/playlist.m3u8"},{"ch":233,"name":"TV BRICS English","cat":"DD","lang":"English","url":"https://engbrics.mediacdn.ru/cdn/brics/english/playlist.m3u8"},{"ch":234,"name":"Ultimate TV","cat":"Music","lang":"Hindi","url":"https://stream.ottlive.co.in/utvtamil/index.m3u8"},{"ch":235,"name":"Vedic","cat":"Devotional","lang":"Hindi","url":"https://aasthaott.akamaized.net/110923/smil:vedic.smil/playlist.m3u8"},{"ch":236,"name":"Village TV","cat":"Devotional","lang":"Hindi","url":"https://villagetv.applelive.in/villagetv/villagetv/index.m3u8"},{"ch":237,"name":"VIP News","cat":"News","lang":"Hindi","url":"https://live.vipnews24x7.co.in/vipnews24x7/d0dbe915091d400bd8ee7f27f0791303.sdp/playlist.m3u8"},{"ch":238,"name":"Vyas NIC","cat":"Education","lang":"Hindi","url":"https://playhls.media.nic.in/hls/live/vyas/vyas.m3u8"},{"ch":239,"name":"Weatherspy","cat":"Weather","lang":"English","url":"https://jukin-weatherspy-2-in.samsung.wurl.tv/playlist.m3u8"},{"ch":240,"name":"Win TV","cat":"Undefined","lang":"Hindi","url":"https://cdn-4.pishow.tv/live/1531/master.m3u8"},{"ch":241,"name":"YRF Music","cat":"Music","lang":"Hindi","url":"https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01412-xiaomiasia-yrfmusic-xiaomi/playlist.m3u8"},{"ch":242,"name":"Zainabia Channel","cat":"Devotional","lang":"Urdu","url":"https://zainabia.livebox.co.in/ZainabiaChannelhls/channel.m3u8"},{"ch":243,"name":"Zee 24 Kalak","cat":"News","lang":"Hindi","url":"https://vg-zeefta.akamaized.net/ptnr-yupptv/title-zee24kalak/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/497f7199-758d-495d-9d2f-a5489231c428/14b7c8ec-16da-47f2-8d7e-5bbaec67b3e2/3.m3u8"},{"ch":244,"name":"Zee Bihar Jharkhand","cat":"News","lang":"Hindi","url":"https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/ZeeBiharJharkhand.m3u8"},{"ch":245,"name":"Zee Delhi NCR Haryana","cat":"News","lang":"Hindi","url":"https://vg-zeefta.akamaized.net/ptnr-yupptv/title-zeedelhincr/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/cc483a15-1b39-4642-872d-5d08d362ed01/main.m3u8"},{"ch":246,"name":"Zee Madhya Pradesh Chhattisgarh","cat":"News","lang":"Hindi","url":"https://vg-zeefta.akamaized.net/ptnr-yupptv/title-zeemadhyachhattisgarh/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/2ab17056-6187-4f0e-a34d-f436ac479d6c/main.m3u8"},{"ch":247,"name":"Zee Punjab Haryana Himachal","cat":"News","lang":"Punjabi","url":"https://vg-zeefta.akamaized.net/ptnr-yupptv/title-zeepunjabharyanahima/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/65eed269-2f3a-4dd0-ac89-d18959af28e3/main.m3u8"},{"ch":248,"name":"Zee Rajasthan","cat":"News","lang":"Hindi","url":"https://vg-zeefta.akamaized.net/ptnr-yupptv/title-zeerajashthannews/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/8e864b9a-1681-41a0-99a6-387490bc5b24/main.m3u8"},{"ch":249,"name":"Zee Uttar Pradesh/Uttarakhand","cat":"News","lang":"Hindi","url":"https://duw35ict5q7th.cloudfront.net/index_3.m3u8"},{"ch":250,"name":"ZillarBarta News","cat":"Classic","lang":"Hindi","url":"https://server.zillarbarta.com/zillarbarta/index.m3u8"},{"ch":251,"name":"Zoom","cat":"Music","lang":"Hindi","url":"https://dai.google.com/linear/hls/event/JCAm25qkRXiKcK1AJMlvKQ/master.m3u8"}];
+
+  // ===== Microdrama promo channel (Dashverse) =====
+  // Promos are self-hosted MP4s, not live HLS: a tune plays one promo FROM THE START
+  // (a promo is a pitch — a mid-join doesn't sell), then offers the sachet at the end.
+  // Rotation advances per tune so a returning viewer meets a different show.
+  // Resolved relative to the document, so the same build works at wiom.tv's root, under
+  // satyam.wiom.in/tv, and on static hosting — and never contains the literal '/tv/' that
+  // nginx sub_filter rewrites on wiom.tv. Swap this one line for the CDN origin in production.
+  const MD_BASE = new URL('./md/', document.baseURI).href;
+  const MD_SHOWS = [
+    { slug: 'zeher-sa',            name: 'ज़हर सा',         dur: 49  },
+    { slug: 'pehli-mulaqaat',      name: 'पहली मुलाक़ात',    dur: 75  },
+    { slug: 'mission-mummy',       name: 'मिशन मम्मी',       dur: 84  },
+    { slug: 'teen-saal-ka-vachan', name: 'तीन साल का वचन',  dur: 125 },
+    { slug: 'om-namah-shivaay',    name: 'ॐ नमः शिवाय',     dur: 105 },
+    { slug: 'de-ghumake',          name: 'दे घुमा के',       dur: 156 }
+  ];
+  // Virtual channel: fills the real 21 gap, carries md:true so tune() hands off to MD
+  // instead of loadStream(). url points at the first promo purely so anything that reads
+  // ch.url generically (banner, cast guards) has something valid.
+  channels.push({ ch: 21, name: 'माइक्रोड्रामा', cat: 'Microdrama', lang: 'Hindi',
+                  md: true, url: MD_BASE + MD_SHOWS[0].slug + '.mp4' });
+  channels.sort((a, b) => a.ch - b.ch);
+  const mainCats = ["News","Entertainment","Music","Movies","Devotional","DD","Business","Education"];
+
+  let cur = 0, hls = null, seq = 0, bannerT = null, numBuf = '', numT = null, guideOpen = false, filter = 'All', volT = null;
+  // --- analytics state (cold-start instrumentation) ---
+  let curLoadAbandon = null, hasFrame = false, guideOpenT = 0, volBeaconT = null, _lastMuted = null, _muteHint = null;
+  const sessionT0 = Date.now();
+  const elapsed = () => Date.now() - sessionT0;
+  let casting = false, castInited = false;
+  const health = {}; // ch -> true/false/undefined
+  let healthChecked = 0;
+  const $ = id => document.getElementById(id);
+  // Is the microdrama promo surface currently on screen? Read from the DOM rather than the
+  // MD module so anything defined before it (gesture unmute, fullscreen prompt) can ask
+  // without a load-order dependency.
+  const mdSurfaceUp = () => {
+    const o = document.getElementById('md-overlay');
+    return !!o && !o.classList.contains('hidden');
+  };
+  const player = $('player');
+
+  // --- i18n: Hindi default, English via guide toggle. Kept deliberately OUT of this
+  // dictionary: the PMF survey (stays Hindi in both modes for comparability across eras)
+  // and channel data (names/lang/cat are broadcaster-given).
+  // Hindi copy rule: everyday words only; English kept where it's the more natural
+  // word for this audience (Install, Guide, genre tab names, Wi-Fi, TV).
+  const T = {
+    connecting:   { hi: 'जुड़ रहा है', en: 'Connecting' },
+    errUnavailable:{ hi: 'यह चैनल अभी नहीं चल रहा', en: 'Channel unavailable right now' },
+    errSkipping:  { hi: 'अगला चैनल लगा रहे हैं...', en: 'Skipping to next channel...' },
+    tapUnmute:    { hi: 'आवाज़ के लिए टैप करें', en: 'Tap to unmute' },
+    channelsWord: { hi: 'चैनल', en: 'Channels' },
+    allTab:       { hi: 'सभी (245)', en: 'All (245)' },
+    moreTab:      { hi: 'और भी', en: 'More' },
+    fsText:       { hi: 'पूरी स्क्रीन के लिए टैप करें', en: 'Tap to go fullscreen' },
+    fsSub:        { hi: 'पूरी स्क्रीन पर मज़ा ज़्यादा है', en: 'Best experience in fullscreen mode' },
+    installTitle: { hi: 'Wiom TV होम स्क्रीन पर जोड़ें', en: 'Add Wiom TV to Home Screen' },
+    installSub:   { hi: 'एक टैप में, जब चाहें देखें', en: 'Watch anytime, one tap away' },
+    laterBtn:     { hi: 'बाद में', en: 'Later' },
+    iosStep1:     { hi: 'Safari में सबसे नीचे <b>Share</b> बटन (&#9757;) टैप करें', en: 'Tap the <b>Share</b> button (&#9757;) at the bottom of Safari' },
+    iosStep2:     { hi: 'नीचे जाकर <b>Add to Home Screen</b> टैप करें', en: 'Scroll down and tap <b>Add to Home Screen</b>' },
+    iosStep3:     { hi: 'ऊपर दाईं ओर <b>Add</b> टैप करें', en: 'Tap <b>Add</b> in the top right' },
+    gotIt:        { hi: 'ठीक है', en: 'Got it' },
+    castingTo:    { hi: 'TV पर चल रहा है:', en: 'Casting to' },
+    stopCast:     { hi: 'कास्ट बंद करें', en: 'Stop casting' },
+    castSkip:     { hi: '{name} TV पर नहीं चल रहा — अगला लगा रहे हैं…', en: '{name} isn’t available on TV — skipping…' },
+    castNeedsChrome:{ hi: 'कास्ट करने के लिए Android फ़ोन पर Google Chrome चाहिए।', en: 'Casting needs Google Chrome on an Android phone.' },
+    castNoTv:     { hi: 'इस Wi-Fi पर कोई TV नहीं मिला। देख लें कि TV चालू है और फ़ोन वाले ही Wi-Fi से जुड़ा है।', en: 'No TV found on this Wi-Fi. Make sure your TV is on and connected to the same Wi-Fi as this phone.' },
+    healthChecked:{ hi: '{n}/{total} चेक हुए', en: '{n}/{total} checked' },
+    healthLive:   { hi: '{n}/{total} चालू', en: '{n}/{total} live' }
+  };
+  let uiLang = 'hi';
+  try { uiLang = localStorage.getItem('wiom-tv-lang') || 'hi'; } catch {}
+  if (uiLang !== 'en') uiLang = 'hi';
+  const t = (k, vars) => {
+    let s = (T[k] && (T[k][uiLang] || T[k].en)) || k;
+    if (vars) for (const v in vars) s = s.replace('{' + v + '}', vars[v]);
+    return s;
+  };
+  function applyLang() {
+    document.documentElement.lang = uiLang;
+    document.body.classList.toggle('lang-hi', uiLang === 'hi');
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
+    document.querySelectorAll('#lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === uiLang));
+  }
+  function setLang(l) {
+    if (l === uiLang) return;
+    uiLang = l;
+    try { localStorage.setItem('wiom-tv-lang', l); } catch {}
+    applyLang();
+    beacon('lang_switch', { meta: { to: l } });
+    try { posthog.register({ app_lang: l }); } catch {}
+  }
+  applyLang();
+  document.querySelectorAll('#lang-toggle button').forEach(b => {
+    b.onclick = e => { e.stopPropagation(); setLang(b.dataset.lang); };
+  });
+
+  // --- Health Checker (Web Worker via Blob) ---
+  const workerCode = `
+    let channels = [];
+    self.onmessage = async (e) => {
+      if (e.data.type === 'init') {
+        channels = e.data.channels;
+        checkAll();
+        setInterval(checkAll, 10 * 60 * 1000);
+      }
+    };
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+    async function checkAll() {
+      for (let i = 0; i < channels.length; i += 5) {
+        const batch = channels.slice(i, i + 5);
+        if (i > 0) await sleep(500);
+        const results = await Promise.all(batch.map(async ch => {
+          try {
+            const ctrl = new AbortController();
+            const t = setTimeout(() => ctrl.abort(), 5000);
+            const r = await fetch(ch.url, { method: 'HEAD', mode: 'cors', signal: ctrl.signal });
+            clearTimeout(t);
+            return { ch: ch.ch, alive: r.ok };
+          } catch {
+            return { ch: ch.ch, alive: false };
+          }
+        }));
+        self.postMessage({ type: 'batch', results });
+      }
+      self.postMessage({ type: 'done' });
+    }
+  `;
+  const blob = new Blob([workerCode], { type: 'application/javascript' });
+  const worker = new Worker(URL.createObjectURL(blob));
+  worker.onmessage = (e) => {
+    if (e.data.type === 'batch') {
+      e.data.results.forEach(r => { health[r.ch] = r.alive; healthChecked++; });
+      $('health-status').textContent = t('healthChecked', { n: healthChecked, total: channels.length });
+      if (guideOpen) buildGuide();
+    }
+    if (e.data.type === 'done') {
+      const alive = Object.values(health).filter(Boolean).length;
+      $('health-status').textContent = t('healthLive', { n: alive, total: channels.length });
+      setTimeout(() => $('health-status').classList.add('hidden'), 5000);
+    }
+  };
+  // Microdrama channels are never probed: the promo files are our own, and a cors HEAD
+  // against a CDN-cached media object can fail on a cached no-cors response — which would
+  // mark the channel dead and make tune() hard-skip it. Seeded alive; the <video> error
+  // handler in MD is the real liveness signal.
+  channels.forEach(c => { if (c.md) health[c.ch] = true; });
+  worker.postMessage({ type: 'init', channels: channels.filter(c => !c.md).map(c => ({ ch: c.ch, url: c.url })) });
+
+  // --- Playback ---
+  function tune(idx, direction) {
+    if (!channels.length) return;
+    idx = ((idx % channels.length) + channels.length) % channels.length;
+
+    // Auto-skip dead channels (max 20 skips to prevent infinite loop)
+    const dir = direction || 1;
+    let skips = 0;
+    while (health[channels[idx].ch] === false && skips < 20) {
+      idx = ((idx + dir) % channels.length + channels.length) % channels.length;
+      skips++;
+    }
+
+    cur = idx;
+    const ch = channels[cur];
+    const s = ++seq;
+    hideError(); showStatic(ch); showBanner(ch); updateGuideActive();
+    try { localStorage.setItem('wiom-tv-last', ch.ch); } catch {}
+
+    // Leaving the microdrama channel tears the promo surface down before anything else
+    // touches the shared player, so a promo can never keep playing under a live channel.
+    if (!ch.md && typeof MD !== 'undefined' && MD.isOpen()) MD.close('tune_away');
+
+    clearTimeout(window._switchT);
+    window._switchT = setTimeout(() => {
+      if (s !== seq) return;
+      if (ch.md) MD.open(ch, s);      // MD clears the CRT itself once it has a frame
+      else loadStream(ch, s);
+    }, ch.md ? 420 : 150);
+  }
+
+  // Chrome autoplay policy: must start muted, then unmute on user interaction
+  let userInteracted = false;
+  let forcedMute = false; // muted by autoplay policy, not by the user
+  function tryPlay(s) {
+    const p = player.play();
+    if (p) p.catch(() => {
+      // Autoplay blocked — mute and retry
+      if (s !== seq) return;
+      player.muted = true;
+      forcedMute = true;
+      player.play().then(() => {
+        if (!userInteracted) { $('unmute-overlay').classList.remove('hidden'); beacon('unmute_prompt_shown', { ch: channels[cur] && channels[cur].ch }); }
+      }).catch(() => {});
+    });
+  }
+
+  // Any first gesture is a valid unmute grant — don't make users find the
+  // overlay/mute button. Only undoes policy-forced mutes, never a user's own.
+  //
+  // Event choice mirrors what Chrome counts as "user activation" — unmuting
+  // WITHOUT activation makes Chrome pause the video (frozen picture) instead:
+  //   keydown      grants activation, except Escape and bare modifier keys
+  //   pointerdown  grants for mouse only — touch grants on the up-edge
+  //   click        the up-edge for touch/pen taps (a scroll never emits one)
+  // Overlay + mute controls excluded: overlay keeps its 'overlay' attribution
+  // via its own click handler; an explicit mute toggle isn't fought. The M key
+  // has its own toggle handler ('key' attribution). While casting, the local
+  // player is deliberately paused — never touch it from here.
+  const GESTURE_SKIP_KEYS = ['Escape', 'Shift', 'Control', 'Alt', 'Meta', 'm', 'M'];
+  function gestureUnmute(e) {
+    if (!forcedMute || !player.muted) return;
+    if (!e.isTrusted) return;
+    if (document.body.classList.contains('is-casting')) return;
+    // While a microdrama promo owns the screen the live player is paused and off-screen:
+    // unmuting it here would fire its fullscreen prompt over the promo UI, and hand audio
+    // to a channel nobody is watching. MD runs its own gesture-unmute for its own element.
+    if (mdSurfaceUp()) return;
+    if (e.type === 'pointerdown' && e.pointerType !== 'mouse') return;
+    if (e.type === 'keydown' && GESTURE_SKIP_KEYS.includes(e.key)) return;
+    if (e.target && e.target.closest && e.target.closest('#btn-mute, #unmute-overlay')) return;
+    const s = seq;                      // channel-load generation at unmute time
+    logMute('gesture');                 // attribute before flipping (volumechange listener emits the beacon)
+    player.muted = false;
+    forcedMute = false;
+    userInteracted = true;
+    $('unmute-overlay').classList.add('hidden');
+    updateMuteIcon();
+    maybeShowFsPrompt();
+    // Belt-and-braces: if the browser still rejected the unmute (no activation ->
+    // it pauses playback), revert to muted playback so the picture never freezes,
+    // re-arm, and bring the overlay back so the next real tap gets another shot.
+    // seq guard: if a channel switch happened meanwhile, tryPlay owns the state.
+    setTimeout(() => {
+      if (s !== seq || !player.paused) return;
+      if (document.body.classList.contains('is-casting')) return;
+      logMute('policy_revert');
+      player.muted = true;
+      forcedMute = true;
+      $('unmute-overlay').classList.remove('hidden');
+      updateMuteIcon();
+      player.play().catch(() => {});
+    }, 250);
+  }
+  ['pointerdown', 'keydown', 'click'].forEach(ev => document.addEventListener(ev, gestureUnmute, true));
+
+  $('unmute-overlay').onclick = () => {
+    player.muted = false;
+    forcedMute = false;
+    userInteracted = true;
+    $('unmute-overlay').classList.add('hidden');
+    updateMuteIcon();
+    logMute('overlay');
+  };
+
+  function updateMuteIcon() {
+    const silent = player.muted || player.volume === 0;   // effective audio-off (matches tracking)
+    const svg = silent
+      ? '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>'
+      : '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+    $('mute-icon').innerHTML = svg;
+    $('btn-mute').title = silent ? 'Unmute' : 'Mute';
+  }
+
+  function loadStream(ch, s) {
+    if (casting) { castLoad(ch, s); return; }
+    if (hls) { hls.destroy(); hls = null; }
+    player.removeAttribute('src'); player.load();
+    $('unmute-overlay').classList.add('hidden');
+    hasFrame = false;
+
+    // --- Cold-start: load_start marks the TTFF clock ---
+    beacon('load_start', { ch: ch.ch, trigger: lastTrig || 'boot', net: netType });
+
+    // --- Instrumentation: report exactly one outcome per tune ---
+    const tStart = Date.now();
+    let reported = false;
+    const meta = { ch: ch.ch, name: ch.name, cat: ch.cat, lang: ch.lang };
+
+    // --- boot_timing: decompose TTFF + capture mid-load abandonment ---
+    const tmark = {};
+    let firedTiming = false;
+    const phaseNow = () => tmark.segment ? 'decoding' : tmark.playlist ? 'segment' : tmark.manifest ? 'playlist' : 'connecting';
+    const flushTiming = (outcome, lastPhase) => {
+      if (firedTiming || s !== seq) return; firedTiming = true; curLoadAbandon = null;
+      beacon('boot_timing', { ch: ch.ch, name: ch.name, net: netType, mem: deviceMem,
+        code: JSON.stringify({ outcome, last_phase_reached: lastPhase, elapsed_ms: Date.now() - tStart, ...tmark, ...readResourceTiming(ch.url) }) });
+    };
+    curLoadAbandon = () => flushTiming('abandoned', phaseNow());
+
+    const reportOk  = () => { if (reported || s !== seq) return; reported = true; hasFrame = true; beacon('playback_start', { ...meta, ttff: Date.now() - tStart }); flushTiming('frame', 'frame'); };
+    const reportErr = (code) => { if (reported || s !== seq) return; reported = true; beacon('playback_error', { ...meta, code }); flushTiming(code === 'timeout' ? 'timeout' : 'error', phaseNow()); };
+
+    if (Hls.isSupported()) {
+      const lowMem = (navigator.deviceMemory || 4) < 4;
+      hls = new Hls({ enableWorker:true, lowLatencyMode:false,
+        maxBufferLength: lowMem ? 8 : 15, maxMaxBufferLength: lowMem ? 15 : 30,
+        startFragPrefetch: !lowMem, fragLoadingTimeOut:6000, manifestLoadingTimeOut:6000, levelLoadingTimeOut:6000 });
+      hls.on(Hls.Events.MANIFEST_LOADED, () => { if (!tmark.manifest) tmark.manifest = Date.now() - tStart; });
+      hls.on(Hls.Events.LEVEL_LOADED,    () => { if (!tmark.playlist) tmark.playlist = Date.now() - tStart; });
+      hls.on(Hls.Events.FRAG_LOADED,     () => { if (!tmark.segment)  tmark.segment  = Date.now() - tStart; });
+      hls.loadSource(ch.url); hls.attachMedia(player);
+      let loaded = false;
+      hls.on(Hls.Events.MANIFEST_PARSED, () => { if (s!==seq) return; loaded=true; tryPlay(s); });
+      player.addEventListener('loadeddata', function f() { player.removeEventListener('loadeddata',f); if(s===seq){ hideStatic(); reportOk(); } });
+      hls.on(Hls.Events.ERROR, (_, d) => { if(s!==seq) return; if(d.fatal){ hideStatic(); reportErr(d.details || d.type || 'fatal'); showError(ch.name); autoSkip(); } });
+      setTimeout(() => { if(s===seq && !loaded){ hideStatic(); reportErr('timeout'); showError(ch.name); autoSkip(); } }, 7000);
+    } else if (player.canPlayType('application/vnd.apple.mpegurl')) {
+      player.src = ch.url;
+      player.addEventListener('loadeddata', () => { if(s===seq){ hideStatic(); reportOk(); tryPlay(s); } }, {once:true});
+      player.addEventListener('error', () => { if(s===seq){ hideStatic(); reportErr('native'); showError(ch.name); autoSkip(); } }, {once:true});
+    } else { hideStatic(); reportErr('unsupported'); flushTiming('error', 'connecting'); showError(ch.name); }
+  }
+
+  // --- Mid-watch rebuffer -> playback_stall (only after a frame has painted) ---
+  let _stallStart = 0;
+  player.addEventListener('waiting', () => { if (hasFrame && !_stallStart) _stallStart = Date.now(); });
+  player.addEventListener('playing', () => {
+    if (_stallStart) { const ms = Date.now() - _stallStart; _stallStart = 0; if (ms > 250) beacon('playback_stall', { ch: channels[cur] && channels[cur].ch, dur: ms }); }
+  });
+
+  function autoSkip() {
+    health[channels[cur].ch] = false;
+    beacon('channel_skipped', { ch: channels[cur].ch, code: 'dead' });
+    setTimeout(() => tuneFn(cur + 1, 1, 'skip'), 2000);
+  }
+
+  function showError(n) { $('error-overlay').classList.remove('hidden'); $('error-channel-name').textContent = n; }
+  function hideError() { $('error-overlay').classList.add('hidden'); }
+
+  function showBanner(ch) {
+    $('banner-number').textContent = ch.ch;
+    $('banner-name').textContent = ch.name;
+    $('banner-meta').textContent = ch.lang + ' \u2022 ' + ch.cat;
+    $('banner-category').textContent = ch.cat;
+    const b = $('channel-banner'); b.classList.remove('hidden','hiding');
+    b.style.animation='none'; b.offsetHeight; b.style.animation='';
+    clearTimeout(bannerT);
+    bannerT = setTimeout(() => { b.classList.add('hiding'); setTimeout(()=>b.classList.add('hidden'),300); }, 3000);
+    showRemote();
+  }
+
+  function showStatic(ch) {
+    // Populate CRT transition with channel info
+    if (ch) {
+      $('crt-num').textContent = ch.ch;
+      $('crt-name').textContent = ch.name;
+    }
+    $('static-overlay').classList.remove('hidden');
+  }
+  function hideStatic() { $('static-overlay').classList.add('hidden'); }
+
+  // --- Remote auto-hide ---
+  let remoteT = null;
+  function showRemote() {
+    $('remote').classList.add('visible');
+    clearTimeout(remoteT);
+    remoteT = setTimeout(() => $('remote').classList.remove('visible'), 4000);
+  }
+
+  // Tap anywhere on video to toggle remote visibility
+  $('video-container').addEventListener('click', (e) => {
+    if (e.target.closest('#remote') || e.target.closest('#unmute-overlay')) return;
+    if ($('remote').classList.contains('visible')) {
+      $('remote').classList.remove('visible');
+      clearTimeout(remoteT);
+    } else {
+      showRemote();
+    }
+  });
+
+  function showVol() {
+    const v=Math.round(player.volume*100);
+    $('vol-icon').innerHTML=player.muted?'&#128263;':v>50?'&#128266;':'&#128265;';
+    $('vol-bar').style.width=(player.muted?0:v)+'%';
+    $('vol-pct').textContent=player.muted?'MUTE':v+'%';
+    $('vol-indicator').classList.remove('hidden');
+    clearTimeout(volT); volT=setTimeout(()=>$('vol-indicator').classList.add('hidden'),1500);
+  }
+
+  function handleNum(d) {
+    numBuf+=d; $('number-display').textContent=numBuf; $('number-input').classList.remove('hidden');
+    clearTimeout(numT); numT=setTimeout(()=>{
+      const n=parseInt(numBuf,10); numBuf=''; $('number-input').classList.add('hidden');
+      const idx=channels.findIndex(c=>c.ch===n); if(idx!==-1)tuneFn(idx,1,'numpad');
+    },1200);
+  }
+
+  // --- Guide (virtual scroll for low-end perf) ---
+  let guideFiltered = [];
+  let guideRenderStart = 0;
+  const GUIDE_PAGE = 30; // render 30 items at a time
+
+  function buildGuide() {
+    const list = $('guide-list'); list.innerHTML = '';
+    guideFiltered = channels;
+    if (filter !== 'All') {
+      if (filter === '_more') guideFiltered = channels.filter(c => !mainCats.includes(c.cat));
+      else guideFiltered = channels.filter(c => c.cat === filter);
+    }
+    guideRenderStart = 0;
+    renderGuideChunk();
+    // Lazy load more on scroll
+    list.onscroll = () => {
+      if (list.scrollTop + list.clientHeight > list.scrollHeight - 100) renderGuideChunk();
+    };
+  }
+
+  function renderGuideChunk() {
+    const list = $('guide-list');
+    const end = Math.min(guideRenderStart + GUIDE_PAGE, guideFiltered.length);
+    for (let j = guideRenderStart; j < end; j++) {
+      const ch = guideFiltered[j];
+      const i = channels.indexOf(ch);
+      const alive = health[ch.ch];
+      const el = document.createElement('div');
+      el.className = 'gi' + (i === cur ? ' active' : '') + (alive === false ? ' dead' : '');
+      const dotClass = alive === true ? 'live' : alive === false ? 'dead' : 'checking';
+      el.innerHTML = '<span class="gdot ' + dotClass + '"></span><span class="gc">' + ch.ch + '</span><span class="gn">' + ch.name + '</span><span class="gl">' + ch.lang + '</span><span class="gcat">' + ch.cat + '</span>';
+      el.onclick = () => { tuneFn(i, 1, 'guide'); toggleGuide(); };
+      list.appendChild(el);
+    }
+    guideRenderStart = end;
+  }
+
+  function updateGuideActive() {
+    document.querySelectorAll('.gi').forEach(el => {
+      const n = parseInt(el.querySelector('.gc').textContent, 10);
+      el.classList.toggle('active', channels[cur] && n === channels[cur].ch);
+    });
+  }
+  function toggleGuide() {
+    guideOpen=!guideOpen; $('guide').classList.toggle('hidden',!guideOpen);
+    if(guideOpen){
+      guideOpenT=Date.now();
+      beacon('guide_open', { trigger:'button', ch: channels[cur] && channels[cur].ch, elapsed: elapsed() });
+      buildGuide();setTimeout(()=>{const a=$('guide').querySelector('.gi.active');if(a)a.scrollIntoView({block:'center',behavior:'smooth'});},100);
+    } else {
+      beacon('guide_close', { dur: guideOpenT ? Math.round((Date.now()-guideOpenT)/1000) : 0 });
+    }
+  }
+
+  document.querySelectorAll('.fb').forEach(b=>{b.onclick=()=>{
+    document.querySelectorAll('.fb').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); filter=b.dataset.cat; buildGuide();
+  };});
+
+  $('guide-close').onclick=toggleGuide;
+  $('btn-up').onclick=()=>tune(cur-1,-1);
+  $('btn-down').onclick=()=>tune(cur+1,1);
+  $('btn-guide').onclick=toggleGuide;
+  $('btn-mute').onclick=()=>{player.muted=!player.muted;forcedMute=false;userInteracted=true;$('unmute-overlay').classList.add('hidden');updateMuteIcon();showVol();logMute('button');};
+  $('btn-fs').onclick=()=>{document.fullscreenElement?exitFullscreen():goFullscreen();};
+
+  document.addEventListener('keydown', document._kh = e=>{
+    if(guideOpen&&e.key==='Escape'){toggleGuide();return;}if(guideOpen)return;
+    switch(e.key){
+      case'ArrowUp':case'k':e.preventDefault();tune(cur-1,-1);break;
+      case'ArrowDown':case'j':e.preventDefault();tune(cur+1,1);break;
+      case'ArrowRight':e.preventDefault();player.volume=Math.min(1,player.volume+.1);showVol();break;
+      case'ArrowLeft':e.preventDefault();player.volume=Math.max(0,player.volume-.1);showVol();break;
+      case'g':case'G':toggleGuide();break;
+      case'm':case'M':player.muted=!player.muted;forcedMute=false;updateMuteIcon();showVol();break;
+      case'f':case'F':document.fullscreenElement?exitFullscreen():goFullscreen();break;
+      default:if(e.key>='0'&&e.key<='9')handleNum(e.key);
+    }
+  });
+
+  let touchY=0;
+  document.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',e=>{const d=touchY-e.changedTouches[0].clientY;if(Math.abs(d)>60)d>0?tuneFn(cur+1,1,'swipe'):tuneFn(cur-1,-1,'swipe');},{passive:true});
+
+  // --- Analytics Beacon ---
+  const API_BASE = (location.pathname.includes('/tv') ? '/tv' : '') + '/api/event';
+  // Persistent device id (survives reloads) -> lets us measure retention, not just sessions
+  let uid, _uidNew = false;
+  try {
+    uid = localStorage.getItem('wiom-tv-uid');
+    if (!uid) { uid = 'U' + Date.now().toString(36) + Math.random().toString(36).slice(2,10); localStorage.setItem('wiom-tv-uid', uid); _uidNew = true; }
+  } catch { uid = 'U0'; }
+  const sid = 'S' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+
+  // --- fse_v2: genre-landing experiment ------------------------------------------------
+  // fse_v1 (A/B/C) is CALLED (2026-07-10): the genre grid showed no advantage and trended
+  // negative; the silent reorder moved no first-session metric >=5pp. Verdict: we double
+  // down on SORTING — the health-gated ordering now ships to EVERY user, every session —
+  // and experiment on the LANDING instead: which genre a brand-new user's first session
+  // boots into. Four sticky arms (hash%4, NEW uids only), identical after the first channel:
+  //   LE = CONTROL — today's default boot channel, pinned (see _landingBoot). NOT the
+  //        Entertainment hero: a baseline has to be the status quo, or a null result cannot
+  //        mean "keep what we have".
+  //   LN News · LM Movies · LU Music — each lands on its genre's hero (best cold performer
+  //        among health-verified channels; the hero floats with the data, the GENRE is the arm).
+  // Return sessions boot as always (last-watched channel) — landing differs ONLY on the
+  // very first session. Flip EXPERIMENT_ON=false to kill the landing split instantly
+  // (sorting stays — it is the product now, not the experiment).
+  // Known, accepted sample cost: a user whose FIRST-EVER page load cannot reach /api/order
+  // (3s timeout) is never enrolled, and is excluded for good. Exclusion is independent of the
+  // arm (the hash is already fixed), so it cannot bias the comparison — it only trims the
+  // cohort slightly toward users with a working connection.
+  const EXPERIMENT_ON = true;
+  const EXPERIMENT_ID = 'fse_v2';                                // bump per experiment -> re-randomizes cleanly
+  const ARMS = ['LE', 'LN', 'LM', 'LU'];                         // hash(uid+exp)%4 -> even 1/4 split
+  const ARM_GENRE = { LE: 'Entertainment', LN: 'News', LM: 'Movies', LU: 'Music' };
+  function _hash(s){ let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+  // fse_v2 key ('...enrolled2'): the old 'wiom-tv-enrolled' belongs to fse_v1 cohorts and
+  // must NOT leak fse_v1 users into fse_v2 — this experiment is new uids only.
+  let enrolled = false;
+  try { enrolled = localStorage.getItem('wiom-tv-enrolled2') === '1'; } catch {}
+  // localhost-only override for QA (e.g. ?_arm=LM) — has NO effect on the live site
+  const _armForce = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? new URLSearchParams(location.search).get('_arm') : null;
+  const _armFor = u => ARMS[_hash(u + '|' + EXPERIMENT_ID) % 4];
+  const _pendingArm = !EXPERIMENT_ON ? null
+    : (_armForce && ARMS.includes(_armForce)) ? _armForce : _armFor(uid);
+  // ── SPLIT-BRAIN GUARD (the fse_v1 lesson) ────────────────────────────────────────────
+  // The client is static (live on `git pull`); the ranking + the LE/LN/LM/LU-aware insert
+  // only exist AFTER `reload-wiom-tv`. On an un-reloaded server the old insert coerces any
+  // unknown variant to NULL — we would stamp experiment='fse_v2' with no arm and lose
+  // attribution silently, exactly as in July. So a brand-new user is only ENROLLED once
+  // /api/order proves the server is running ranking v2 (`algo:'v2'`). If it isn't, we do
+  // not enrol, do not stamp, do not land: the user is cleanly EXCLUDED and just watches TV.
+  // Failure mode is exclusion, never corruption — and it self-heals the moment we reload.
+  // Already-enrolled users stamp from their first event (enrolment already proved v2).
+  let variant = (enrolled && _pendingArm) ? _pendingArm : null;
+  let exp = variant ? EXPERIMENT_ID : null;                      // stamped on every event -> readout filters by experiment
+  const _needsEnrolment = !!(_pendingArm && !enrolled && _uidNew);
+  // EVERYONE fetches the ordering now — the health-gated sort is the default experience.
+  // Prototype/static hosting has no Express behind it. Rather than fire beacons and order
+  // lookups into a 404, keep the funnel locally so it stays inspectable (window.__wiomEvents).
+  // Production (real host, real /api) is untouched.
+  const MOCK_BACKEND = /github\.io$/.test(location.hostname) || location.protocol === 'file:'
+                       || /[?&]mock=1/.test(location.search);
+  window.__wiomEvents = [];
+
+  const ORDER_BASE = (location.pathname.includes('/tv') ? '/tv' : '') + '/api/order';
+  let orderData = null;
+  let _orderApplied = false;               // rank only stamped once the sorted order is live (never mixes pre/post)
+  // Race the fetch against a 3s timeout so a hung request never blocks boot or the reorder.
+  const orderReady = Promise.race([
+    MOCK_BACKEND ? Promise.resolve()   // static/demo hosting: no Express to ask, skip the round trip
+      : fetch(ORDER_BASE + '?uid=' + encodeURIComponent(uid)).then(r => r.json()).then(d => { orderData = d; }).catch(() => {}),
+    new Promise(r => setTimeout(r, 3000))
+  ]);
+
+  // Link the PostHog replay to our persistent uid + this session, so a recording can be
+  // matched back to a row in analytics.db (uid/sid) during drop-off analysis. Calls are
+  // safe against the async stub (methods queue until array.js loads).
+  try {
+    if (window.posthog && posthog.identify) {
+      posthog.identify(uid);
+      posthog.register({ wiom_uid: uid, wiom_sid: sid, fse_v2_arm: variant || 'none' });
+    }
+  } catch {}
+  const deviceType = /Mobi|Android/i.test(navigator.userAgent) ? 'mobile' : /Tablet|iPad/i.test(navigator.userAgent) ? 'tablet' : 'desktop';
+  const screenSize = screen.width + 'x' + screen.height;
+  const netType = (navigator.connection && navigator.connection.effectiveType) || null;
+  const deviceMem = navigator.deviceMemory || null;
+  let lastTuneTime = 0, lastTuneCh = null, lastTrig = 'boot';
+
+  function beacon(event, data) {
+    // canonical fields LAST so per-event data can never overwrite device/screen/variant/exp/event
+    const payload = JSON.stringify({ ...data, sid, uid, variant, exp, event, device: deviceType, screen: screenSize, net: netType });
+    if (MOCK_BACKEND) {
+      const row = JSON.parse(payload); row.t = new Date().toISOString();
+      window.__wiomEvents.push(row);
+      if (window.__wiomEvents.length > 500) window.__wiomEvents.shift();
+      if (/^md_/.test(event)) console.debug('[md]', event, data || {});
+      return;
+    }
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(API_BASE, new Blob([payload], { type: 'application/json' }));
+    } else {
+      fetch(API_BASE, { method: 'POST', body: payload, headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(() => {});
+    }
+  }
+
+  // Rank of a channel within its genre in the CURRENT order (1-based) -> proves the ordering.
+  // Suppressed until the sorted order has applied so we never mix pre-/post-sort ranks.
+  function rankOf(chObj) {
+    if (!chObj) return null;
+    if (!_orderApplied) return null;
+    const inGenre = channels.filter(c => c.cat === chObj.cat);
+    const i = inGenre.findIndex(c => c.ch === chObj.ch);
+    return i === -1 ? null : i + 1;
+  }
+
+  // Attribution hint only: each audio control sets this just before it flips state.
+  // It does NOT beacon — the single volumechange listener below is the sole emitter,
+  // so no control can silently lose tracking (the overlay-override bug class).
+  function logMute(trig) { _muteHint = trig; }
+
+  // SINGLE SOURCE OF TRUTH for audio on/off. The <video> element fires 'volumechange'
+  // on ANY change to .muted or .volume — overlay tap, remote button, keyboard, volume-to-0,
+  // or programmatic — so every present and future path is captured here, once.
+  const audioSilent = () => player.muted || player.volume === 0;
+  _lastMuted = audioSilent();                       // seed baseline from the real state at init
+  player.addEventListener('volumechange', () => {
+    const silent = audioSilent();
+    if (silent === _lastMuted) return;              // volume nudged but on/off unchanged -> ignore
+    _lastMuted = silent;
+    updateMuteIcon();                               // keep the button icon/title true on EVERY flip (incl. autoplay auto-mute)
+    if (!userInteracted && !_muteHint) return;      // pre-interaction autoplay mute -> baseline, not a user act
+    const trigger = _muteHint || (!player.muted && player.volume === 0 ? 'volume' : 'other');
+    _muteHint = null;
+    beacon(silent ? 'mute' : 'unmute', { elapsed: elapsed(), trigger, ch: channels[cur] && channels[cur].ch });
+  });
+  // Volume change -> debounced beacon
+  function logVol() {
+    clearTimeout(volBeaconT);
+    volBeaconT = setTimeout(() => beacon('volume_change', { dur: Math.round(player.volume * 100) }), 800);
+  }
+  // Resource Timing sub-splits for a stream URL (cross-origin may null some without Timing-Allow-Origin)
+  function readResourceTiming(url) {
+    try {
+      const base = url.split('?')[0];
+      const e = performance.getEntriesByType('resource').filter(r => r.name && (r.name === base || base.indexOf(new URL(r.name).origin) === 0)).slice(-1)[0];
+      if (!e) return {};
+      return {
+        t_dns: Math.round(e.domainLookupEnd - e.domainLookupStart),
+        t_tcp: Math.round(e.connectEnd - e.connectStart),
+        t_tls: e.secureConnectionStart ? Math.round(e.connectEnd - e.secureConnectionStart) : 0,
+        t_ttfb: Math.round(e.responseStart - e.requestStart),
+        t_download: Math.round(e.responseEnd - e.responseStart)
+      };
+    } catch { return {}; }
+  }
+
+  // Patch tune to track channel switches
+  const _origTune = tune;
+  const tuneFn = function(idx, dir, trig) {
+    // Calculate duration on previous channel, tagged with how we got there
+    if (lastTuneTime && lastTuneCh !== null) {
+      const dur = (Date.now() - lastTuneTime) / 1000;
+      const prev = channels.find(c => c.ch === lastTuneCh);
+      if (prev && dur > 1) {
+        beacon('tune', { ch: prev.ch, name: prev.name, cat: prev.cat, lang: prev.lang, dur: Math.round(dur), trigger: lastTrig, rank: rankOf(prev) });
+      }
+    }
+    lastTuneTime = Date.now();
+    // We need to calculate the actual index after skip logic runs
+    const beforeCur = cur;
+    _origTune(idx, dir);
+    lastTuneCh = channels[cur] ? channels[cur].ch : null;
+    lastTrig = trig || 'surf';
+  };
+  // Replace tune references — tuneFn is the single instrumented entry point
+  window._tuneFn = tuneFn;
+
+  // Override button handlers to use tracked tune
+  $('btn-up').onclick = () => tuneFn(cur-1, -1, 'surf');
+  $('btn-down').onclick = () => tuneFn(cur+1, 1, 'surf');
+
+  // ===== Google Cast (Default Media Receiver — no App ID) =====
+  // Phone/desktop Chrome -> Android TV / Chromecast-built-in. Casts the raw
+  // m3u8 directly; the TV fetches from the broadcaster CDN (same as in-browser).
+  function castLoad(ch, s) {
+    const session = window.cast && cast.framework.CastContext.getInstance().getCurrentSession();
+    if (!session) return;
+    hideStatic(); hideError();
+    $('cast-chnum').textContent = ch.ch;
+    $('cast-chname').textContent = ch.name;
+    const mi = new chrome.cast.media.MediaInfo(ch.url, 'application/x-mpegurl');
+    mi.streamType = chrome.cast.media.StreamType.LIVE;          // required for live HLS
+    mi.metadata = new chrome.cast.media.GenericMediaMetadata();
+    mi.metadata.title = ch.name;
+    mi.metadata.subtitle = (ch.cat || '') + (ch.lang ? ' · ' + ch.lang : '');
+    const req = new chrome.cast.media.LoadRequest(mi);
+    const t0 = Date.now();
+    const fresh = () => s === undefined || s === seq;
+    session.loadMedia(req).then(
+      () => { if (fresh()) beacon('cast_playback_start', { ch: ch.ch, name: ch.name, cat: ch.cat, ttff: Date.now() - t0 }); },
+      (err) => {
+        if (!fresh()) return;                                   // superseded tune — ignore
+        beacon('cast_playback_error', { ch: ch.ch, name: ch.name, cat: ch.cat, code: String(err && err.code || err) });
+        health[ch.ch] = false;                                  // mark dead, like the local autoSkip path
+        castMsg(t('castSkip', { name: ch.name }));
+        setTimeout(() => { if (fresh()) tuneFn(cur + 1, 1); }, 1500);
+      }
+    );
+  }
+
+  function startCasting() {
+    flushWatch();                                  // close out pre-cast local watch-time cleanly (#4)
+    casting = true;
+    const session = cast.framework.CastContext.getInstance().getCurrentSession();
+    try { player.pause(); } catch {}
+    if (hls) { hls.destroy(); hls = null; }
+    player.removeAttribute('src'); player.load();
+    $('unmute-overlay').classList.add('hidden');
+    hideStatic(); hideError();
+    let dev = 'TV';
+    try { dev = session.getCastDevice().friendlyName || 'TV'; } catch {}
+    $('cast-device').textContent = dev;
+    document.body.classList.add('is-casting');
+    $('cast-overlay').classList.remove('hidden');
+    $('btn-cast').classList.add('cast-on');
+    beacon('cast_start', { device: dev });
+    seq++; castLoad(channels[cur], seq);          // push current channel to the TV
+  }
+
+  function stopCasting() {
+    casting = false;
+    document.body.classList.remove('is-casting');
+    $('cast-overlay').classList.add('hidden');
+    $('btn-cast').classList.remove('cast-on');
+    beacon('cast_end', {});
+    flushWatch();                                  // close out cast watch-time before resuming local (#4)
+    tune(cur);                                     // resume playback locally
+  }
+
+  // Field-support readout: append ?castdebug=1 to the URL to see live cast state.
+  const CASTDBG = location.search.includes('castdebug');
+  function castDbg(msg) {
+    if (!CASTDBG) return;
+    let el = document.getElementById('castdbg');
+    if (!el) {
+      el = document.createElement('div'); el.id = 'castdbg';
+      el.style.cssText = 'position:fixed;top:8px;left:8px;z-index:9999;background:rgba(0,0,0,.88);color:#0f0;font:12px/1.5 monospace;padding:8px 10px;border:1px solid #0f0;border-radius:6px;max-width:86vw;white-space:pre-wrap';
+      document.body.appendChild(el);
+    }
+    el.textContent = 'CAST: ' + msg;
+  }
+  castDbg('chrome=' + /Chrome/.test(navigator.userAgent) + ' secure=' + window.isSecureContext);
+
+  // Transient on-screen message (e.g. "no TV on this Wi-Fi")
+  let castMsgT = null;
+  function castMsg(text) {
+    const el = $('cast-toast');
+    el.textContent = text;
+    el.classList.remove('hidden');
+    clearTimeout(castMsgT);
+    castMsgT = setTimeout(() => el.classList.add('hidden'), 4500);
+  }
+
+  // Human-readable cast state, reused by analytics and the debug readout.
+  function castStateName(s) {
+    return (window.cast && cast.framework && Object.keys(cast.framework.CastState).find(k => cast.framework.CastState[k] === s)) || String(s);
+  }
+
+  // Cast controls are wired here (not inside initCast) so they work on every browser.
+  // If the SDK never loads (iOS Safari, Firefox, in-app webviews) the button still
+  // gives feedback instead of being a dead control (#1).
+  function onCastTap() {
+    if (!window.cast || !cast.framework) {
+      beacon('cast_click', { code: 'unsupported' });
+      castMsg(t('castNeedsChrome'));
+      return;
+    }
+    const ctx = cast.framework.CastContext.getInstance();
+    beacon('cast_click', { code: castStateName(ctx.getCastState()) });   // Clicked + State
+    if (casting) { ctx.endCurrentSession(true); return; }
+    // Defer to the SDK's own picker for async device discovery; only message on a real
+    // "no receiver" rejection so we never falsely claim there's no TV during discovery (#3).
+    ctx.requestSession().then(undefined, (err) => {
+      const code = (err && err.code) || err;
+      if (code && code !== 'cancel') {
+        castMsg(t('castNoTv'));
+      }
+    });
+  }
+  $('btn-cast').onclick = onCastTap;
+  $('cast-stop').onclick = () => { if (window.cast && cast.framework) cast.framework.CastContext.getInstance().endCurrentSession(true); };
+  $('cast-up').onclick = () => tuneFn(cur - 1, -1);     // while casting, the phone is the remote
+  $('cast-down').onclick = () => tuneFn(cur + 1, 1);
+  $('cast-guide').onclick = toggleGuide;
+
+  function initCast() {
+   try {
+    if (!window.cast || !cast.framework) { castDbg('SDK not available'); return; }
+    if (castInited) return;                        // SDK can fire both init paths when cached (#8)
+    castInited = true;
+    const ctx = cast.framework.CastContext.getInstance();
+    ctx.setOptions({
+      // 'CC1AD845' is the Default Media Receiver id; literal fallback because the
+      // chrome.cast.media constants aren't always populated when this callback fires.
+      receiverApplicationId: (chrome.cast.media && chrome.cast.media.DefaultMediaReceiverAppId) || 'CC1AD845',
+      autoJoinPolicy: (chrome.cast.AutoJoinPolicy && chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED) || 'origin_scoped',
+    });
+    castDbg('state=' + castStateName(ctx.getCastState()));
+    ctx.addEventListener(cast.framework.CastContextEventType.CAST_STATE_CHANGED, (e) => {
+      const st = castStateName(e.castState);
+      castDbg('state=' + st);
+      beacon('cast_state', { code: st });            // State transitions
+    });
+    ctx.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED, (e) => {
+      const S = cast.framework.SessionState;
+      if (e.sessionState === S.SESSION_STARTED || e.sessionState === S.SESSION_RESUMED) {
+        if (!casting) startCasting();
+      } else if (e.sessionState === S.SESSION_ENDED) {
+        if (casting) stopCasting();
+      }
+    });
+   } catch (err) {
+    castDbg('init error: ' + (err && err.message));
+   }
+  }
+  // SDK calls this once it's ready; fall back if it already loaded before us.
+  window['__onGCastApiAvailable'] = (ok) => { if (ok) initCast(); };
+  if (window.cast && window.cast.framework) initCast();
+
+  // Session start (with acquisition + device context)
+  const launch_mode = (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) ? 'standalone' : 'browser';
+  // CATCH-ALL: serialize every landing query param to JSON (robust to renamed/added/removed params)
+  const entry_params = (() => { const o = {}; new URLSearchParams(location.search).forEach((v, k) => { o[k] = v; }); return Object.keys(o).length ? JSON.stringify(o) : null; })();
+  beacon('session_start', { mem: deviceMem, ref: document.referrer || '', launch_mode, entry_params, meta: { app_lang: uiLang } });
+  try { posthog.register({ app_lang: uiLang }); } catch {}
+
+  // Flush the in-progress channel's watch time (call before unload/background)
+  function flushWatch() {
+    if (lastTuneTime && lastTuneCh !== null) {
+      const dur = (Date.now() - lastTuneTime) / 1000;
+      const prev = channels.find(c => c.ch === lastTuneCh);
+      if (prev && dur > 1) beacon('tune', { ch: prev.ch, name: prev.name, cat: prev.cat, lang: prev.lang, dur: Math.round(dur), rank: rankOf(prev) });
+      lastTuneTime = Date.now(); // reset so re-foregrounding doesn't double-count
+    }
+  }
+
+  // Session end on unload
+  window.addEventListener('beforeunload', () => { flushWatch(); beacon('session_end', {}); });
+
+  // beforeunload is unreliable on mobile (tab kill / app switch) -> flush on the reliable
+  // terminal signals (pagehide / visibility-hidden). Also flush an in-progress load as
+  // 'abandoned' so mid-load bouncers (the no-frame 17%) are captured.
+  window.addEventListener('pagehide', () => { if (curLoadAbandon) curLoadAbandon(); flushWatch(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') { if (curLoadAbandon) curLoadAbandon(); flushWatch(); }
+  });
+
+  // Override keyboard/touch to use tracked tune
+  document.removeEventListener('keydown', document._kh);
+  document.addEventListener('keydown', e => {
+    if(guideOpen&&e.key==='Escape'){toggleGuide();return;}if(guideOpen)return;
+    switch(e.key){
+      case'ArrowUp':case'k':e.preventDefault();tuneFn(cur-1,-1,'surf');break;
+      case'ArrowDown':case'j':e.preventDefault();tuneFn(cur+1,1,'surf');break;
+      case'ArrowRight':e.preventDefault();player.volume=Math.min(1,player.volume+.1);showVol();logVol();break;
+      case'ArrowLeft':e.preventDefault();player.volume=Math.max(0,player.volume-.1);showVol();logVol();break;
+      case'g':case'G':toggleGuide();break;
+      case'm':case'M':player.muted=!player.muted;forcedMute=false;updateMuteIcon();showVol();logMute('key');break;
+      case'f':case'F':document.fullscreenElement?exitFullscreen():goFullscreen();break;
+      default:if(e.key>='0'&&e.key<='9')handleNum(e.key);
+    }
+  });
+
+  // --- Fullscreen UX ---
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+  function goFullscreen() {
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    // Don't lock orientation — let user rotate freely to exit
+  }
+
+  function exitFullscreen() {
+    const d = document;
+    if (d.fullscreenElement || d.webkitFullscreenElement || d.mozFullScreenElement || d.msFullscreenElement) {
+      if (d.exitFullscreen) d.exitFullscreen();
+      else if (d.webkitExitFullscreen) d.webkitExitFullscreen();
+      else if (d.webkitCancelFullScreen) d.webkitCancelFullScreen();
+      else if (d.mozCancelFullScreen) d.mozCancelFullScreen();
+      else if (d.msExitFullscreen) d.msExitFullscreen();
+    }
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
+  }
+
+  // Also update fullscreen icon when state changes
+  function onFsChange() {
+    const isFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    $('fs-icon').innerHTML = isFull
+      ? '<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>'
+      : '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+  }
+  document.addEventListener('fullscreenchange', onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+
+  // Show fullscreen prompt AFTER user has unmuted (or if autoplay worked)
+  // Sequence: unmute first → then fullscreen prompt after 5s
+  const fsDismissed = parseInt(localStorage.getItem('wiom-tv-fs-dismiss') || '0', 10);
+  const fsPrompt = $('fs-prompt');
+
+  function maybeShowFsPrompt() {
+    if (isStandalone || isFullscreen() || Date.now() - fsDismissed < 7 * 86400000) return;
+    if (mdSurfaceUp()) return;
+    setTimeout(() => {
+      if (isFullscreen() || guideOpen || mdSurfaceUp()) return;   // re-check: 5s is long enough to tune
+      fsPrompt.classList.remove('hidden');
+      setTimeout(() => { if (!fsPrompt.classList.contains('hidden')) fsPrompt.classList.add('hidden'); }, 5000);
+    }, 5000);
+  }
+
+  // Trigger fullscreen prompt after unmute tap, or after 8s if autoplay worked (no unmute needed)
+  const _origUnmuteClick = $('unmute-overlay').onclick;
+  $('unmute-overlay').onclick = () => {
+    logMute('overlay');                 // attribute the unmute before flipping (listener emits the beacon)
+    player.muted = false;
+    forcedMute = false;
+    userInteracted = true;
+    $('unmute-overlay').classList.add('hidden');
+    updateMuteIcon();
+    maybeShowFsPrompt();
+  };
+  // If autoplay succeeds (no unmute needed), show fullscreen prompt after 8s
+  setTimeout(() => { if (userInteracted || $('unmute-overlay').classList.contains('hidden')) maybeShowFsPrompt(); }, 8000);
+
+  fsPrompt.onclick = () => {
+    fsPrompt.classList.add('hidden');
+    goFullscreen();
+    localStorage.setItem('wiom-tv-fs-dismiss', Date.now().toString());
+  };
+
+  // Double-tap to toggle fullscreen (mobile)
+  let lastTapTime = 0;
+  if (isMobile) {
+    document.getElementById('video-container').addEventListener('touchend', e => {
+      const now = Date.now();
+      if (now - lastTapTime < 300) {
+        e.preventDefault();
+        document.fullscreenElement ? exitFullscreen() : goFullscreen();
+        lastTapTime = 0;
+      } else {
+        lastTapTime = now;
+      }
+    });
+  }
+
+  // Helper: check if currently fullscreen (cross-browser)
+  function isFullscreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement);
+  }
+
+  // Landscape → fullscreen, Portrait → exit fullscreen (mobile)
+  if (isMobile && !isIOS) {
+    screen.orientation?.addEventListener('change', () => {
+      if (screen.orientation.type.startsWith('landscape') && !isFullscreen()) {
+        goFullscreen();
+      } else if (screen.orientation.type.startsWith('portrait') && isFullscreen()) {
+        exitFullscreen();
+      }
+    });
+  }
+
+  // --- PWA Install Banner ---
+  let deferredPrompt = null;
+  const installDismissed = parseInt(localStorage.getItem('wiom-tv-install-dismiss') || '0', 10);
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Show install banner after 60s of watching (30s for returning users)
+    if (isStandalone || Date.now() - installDismissed < 14 * 86400000) return;
+    const delay = fsDismissed > 0 ? 30000 : 60000;
+    setTimeout(() => {
+      if (deferredPrompt && !guideOpen && !document.querySelector('#fs-prompt:not(.hidden)')) {
+        $('install-banner').classList.remove('hidden');
+        beacon('install_shown', { os: 'android' });
+      }
+    }, delay);
+  });
+
+  $('install-btn').onclick = async () => {
+    $('install-banner').classList.add('hidden');
+    if (isIOS) {
+      $('ios-instructions').classList.remove('hidden');
+      return;
+    }
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      beacon('pwa_install', { outcome });
+    }
+  };
+
+  $('install-dismiss').onclick = () => {
+    $('install-banner').classList.add('hidden');
+    beacon('install_dismiss', {});
+    localStorage.setItem('wiom-tv-install-dismiss', Date.now().toString());
+  };
+
+  $('ios-close').onclick = () => {
+    $('ios-instructions').classList.add('hidden');
+    localStorage.setItem('wiom-tv-install-dismiss', Date.now().toString());
+  };
+
+  // If on iOS Safari and not installed, show install banner after 60s
+  if (isIOS && !isStandalone && Date.now() - installDismissed > 14 * 86400000) {
+    setTimeout(() => {
+      if (!guideOpen) { $('install-banner').classList.remove('hidden'); beacon('install_shown', { os: 'ios' }); }
+    }, 60000);
+  }
+
+  // --- PMF micro-survey (Sean-Ellis): shown once, to engaged returning viewers ---
+  (function initSurvey() {
+    let visits = 1, surveyDone = false;
+    try {
+      visits = (parseInt(localStorage.getItem('wiom-tv-visits') || '0', 10) || 0) + 1;
+      localStorage.setItem('wiom-tv-visits', String(visits));
+      surveyDone = !!localStorage.getItem('wiom-tv-survey-done');
+    } catch {}
+    const finish = () => { surveyDone = true; try { localStorage.setItem('wiom-tv-survey-done', '1'); } catch {} };
+
+    document.querySelectorAll('.pmf-btn').forEach(b => {
+      b.onclick = () => {
+        beacon('survey', { survey: b.dataset.v });
+        $('pmf-q').classList.add('hidden'); $('pmf-opts').classList.add('hidden');
+        $('pmf-thanks').classList.remove('hidden');
+        finish();
+        setTimeout(() => $('pmf-survey').classList.add('hidden'), 1800);
+      };
+    });
+    $('pmf-close').onclick = () => { $('pmf-survey').classList.add('hidden'); finish(); beacon('survey_dismiss', {}); };
+
+    if (surveyDone || visits < 2) return; // returning users only
+    setTimeout(() => {
+      if (surveyDone || guideOpen) return;
+      if (!$('install-banner').classList.contains('hidden')) return; // don't stack with install banner
+      $('pmf-survey').classList.remove('hidden');
+      beacon('survey_shown', {});
+    }, 120000); // after 2 min of engagement this session
+  })();
+
+  // --- Service Worker Registration ---
+  if ('serviceWorker' in navigator) {
+    Promise.reject(new Error("demo: no service worker")).catch(() => {});
+  }
+
+  // Status-quo boot channel, captured BEFORE any sorting reorders `channels` — this is
+  // literally what a new user lands on today, and it is what the LE control arm must serve.
+  const _defaultBootCh = channels[0] && channels[0].ch;
+
+  // Start — experiment-aware boot ------------------------------------------------------
+  // ===== Microdrama promo surface =====
+  // Owns everything that happens on a microdrama channel: which promo plays, the
+  // end-of-promo offer, and the 12-hour pass it sells. Deliberately self-contained —
+  // the live player is paused while this is up and never shares state with it.
+  const MD = (() => {
+    const PASS_KEY = 'wiom-md-pass', CURSOR_KEY = 'wiom-md-cursor';
+    const PASS_HOURS = 12, PRICE = 10;
+    const qs = new URLSearchParams(location.search);
+    const DEMO = qs.has('md_demo');               // jump near the end, to reach the offer fast
+    if (qs.has('md_reset')) { try { localStorage.removeItem(PASS_KEY); localStorage.removeItem(CURSOR_KEY); } catch {} }
+
+    let open = false, idx = 0, show = null, gen = 0;
+    let startT = 0, sheetUp = false, ended = false, forcedMuteMd = false;
+
+    try { idx = parseInt(localStorage.getItem(CURSOR_KEY), 10) || 0; } catch {}
+
+    const el = {
+      box:   () => $('md-overlay'), v: () => $('md-video'),
+      chip:  () => $('md-chip'),    bar: () => $('md-bar'),
+      sheet: () => $('md-sheet'),   pay: () => $('md-pay'),
+      skip:  () => $('md-skip'),    unmute: () => $('md-unmute')
+    };
+
+    // --- the 12-hour pass this channel sells ---
+    function passLeftMs() {
+      try { return Math.max(0, (parseInt(localStorage.getItem(PASS_KEY), 10) || 0) - Date.now()); }
+      catch { return 0; }
+    }
+    function hasPass() { return passLeftMs() > 0; }
+    function grantPass() {
+      try { localStorage.setItem(PASS_KEY, String(Date.now() + PASS_HOURS * 3600e3)); } catch {}
+    }
+
+    function isOpen() { return open; }
+
+    function setChip(name, unlocked) {
+      const c = el.chip();
+      c.querySelector('.nm').textContent = name;
+      c.querySelector('.ct').textContent = unlocked ? 'अनलॉक्ड' : 'प्रोमो';
+    }
+
+    // --- playback ---
+    function load(g) {
+      if (g !== gen) return;
+      show = MD_SHOWS[idx % MD_SHOWS.length];
+      ended = false;
+      const v = el.v();
+      v.classList.remove('frozen');
+      el.bar().style.width = '0%';
+      setChip(show.name, hasPass());
+      v.src = MD_BASE + show.slug + '.mp4';
+      v.currentTime = 0;
+      v.load();
+      startT = Date.now();
+      tryPlayMd(g);
+      beacon('md_promo_start', {                       // one per promo shown, never per frame
+        ch: 21, show: show.slug, idx: idx % MD_SHOWS.length,
+        pass: hasPass() ? 1 : 0, trigger: lastTrig || 'tune'
+      });
+    }
+
+    function tryPlayMd(g) {
+      const v = el.v();
+      const p = v.play();
+      if (p) p.catch(() => {
+        if (g !== gen) return;
+        v.muted = true; forcedMuteMd = true;          // autoplay policy — mute and retry
+        v.play().then(() => {
+          if (g !== gen) return;
+          el.unmute().classList.remove('hidden');
+          beacon('md_unmute_prompt', { ch: 21, show: show && show.slug });
+        }).catch(() => {});
+      });
+    }
+
+    function unmuteMd(trigger) {
+      const v = el.v();
+      if (!forcedMuteMd || !v.muted) return;
+      v.muted = false; forcedMuteMd = false;
+      el.unmute().classList.add('hidden');
+      beacon('md_unmute', { ch: 21, show: show && show.slug, trigger });
+    }
+
+    // --- end of promo: the offer ---
+    function onEnded() {
+      if (ended) return;
+      ended = true;
+      const watched = Math.round((Date.now() - startT) / 1000);
+      beacon('md_promo_complete', { ch: 21, show: show && show.slug, dur: watched });
+      // A live pass means they already bought — roll straight into the next show.
+      if (hasPass()) { advance('pass_autoplay'); return; }
+      showSheet();
+    }
+
+    function showSheet() {
+      sheetUp = true;
+      el.v().classList.add('frozen');
+      el.box().classList.add('paywalled');
+      el.sheet().classList.add('up');
+      el.pay().focus({ preventScroll: true });
+      beacon('md_pg_shown', { ch: 21, show: show && show.slug, price: PRICE });
+    }
+
+    function hideSheet() {
+      sheetUp = false;
+      el.sheet().classList.remove('up');
+      el.box().classList.remove('paywalled');
+      el.v().classList.remove('frozen');
+    }
+
+    // Mock payment: the real one swaps this for a UPI intent + webhook confirmation.
+    function payFlow() {
+      const g = gen, btn = el.pay();
+      beacon('md_pg_click', { ch: 21, show: show && show.slug, price: PRICE });
+      btn.classList.add('busy');
+      btn.querySelector('.lbl').innerHTML = '<span class="md-spin"></span> UPI ऐप खुल रहा है…';
+      setTimeout(() => {
+        if (g !== gen) return;
+        btn.querySelector('.lbl').textContent = 'पेमेंट कन्फ़र्म हो रहा है…';
+      }, 900);
+      setTimeout(() => {
+        if (g !== gen) return;
+        grantPass();
+        beacon('md_pay_success', { ch: 21, show: show && show.slug, price: PRICE, mock: 1 });
+        btn.classList.remove('busy');
+        btn.querySelector('.lbl').textContent = '₹10 देकर देखते रहिए';
+        hideSheet();
+        celebrate();
+      }, 2100);
+    }
+
+    function celebrate() {
+      const g = gen, d = document.createElement('div');
+      d.id = 'md-done';
+      d.innerHTML = '<div class="tick">&#10003;</div>' +
+                    '<div class="t">12 घंटे अनलॉक!</div>' +
+                    '<div class="s">अगला शो शुरू हो रहा है…</div>';
+      el.box().appendChild(d);
+      setTimeout(() => {
+        d.remove();
+        if (g === gen) advance('after_pay');
+      }, 1700);
+    }
+
+    function advance(reason) {
+      idx = (idx + 1) % MD_SHOWS.length;
+      try { localStorage.setItem(CURSOR_KEY, String(idx)); } catch {}
+      hideSheet();
+      beacon('md_next', { ch: 21, reason, next: MD_SHOWS[idx].slug });
+      load(gen);
+    }
+
+    // --- lifecycle ---
+    function open_(ch, s) {
+      const g = ++gen;
+      open = true;
+      try { player.pause(); } catch {}          // free the live decoder while a promo owns the screen
+      $('unmute-overlay').classList.add('hidden');   // live-player chrome must not bleed through
+      $('fs-prompt').classList.add('hidden');
+      el.box().classList.remove('hidden');
+      hideSheet();
+      beacon('md_open', { ch: 21, trigger: lastTrig || 'tune', pass: hasPass() ? 1 : 0 });
+      load(g);
+      // Keep the CRT beat up until there is a real frame — it masks the whole startup.
+      const v = el.v();
+      const clear = () => { if (g === gen && s === seq) hideStatic(); };
+      v.addEventListener('loadeddata', clear, { once: true });
+      setTimeout(clear, 1500);                  // fallback: never strand the viewer in static
+    }
+
+    function close_(reason) {
+      if (!open) return;
+      gen++;                                    // invalidates every in-flight callback above
+      open = false;
+      const v = el.v(), watched = startT ? Math.round((Date.now() - startT) / 1000) : 0;
+      beacon('md_close', { ch: 21, reason, show: show && show.slug, dur: watched, sheet: sheetUp ? 1 : 0 });
+      try { v.pause(); v.removeAttribute('src'); v.load(); } catch {}   // stop the download too
+      hideSheet();
+      el.unmute().classList.add('hidden');
+      const done = document.getElementById('md-done'); if (done) done.remove();
+      el.box().classList.add('hidden');
+      forcedMuteMd = false; sheetUp = false; ended = false;
+    }
+
+    // --- wiring (once) ---
+    function init() {
+      const v = el.v();
+      v.addEventListener('ended', onEnded);
+      v.addEventListener('timeupdate', () => {
+        if (!open || !v.duration) return;
+        el.bar().style.width = ((v.currentTime / v.duration) * 100).toFixed(2) + '%';
+        // Demo aid: skip to just before the end so the offer is reachable in seconds.
+        if (DEMO && v.currentTime < v.duration - 6) v.currentTime = v.duration - 5;
+      });
+      v.addEventListener('error', () => {
+        if (!open) return;
+        beacon('md_error', { ch: 21, show: show && show.slug, code: (v.error && v.error.code) || 0 });
+        advance('error');                        // a bad file skips to the next show, not a dead channel
+      });
+      el.pay().onclick = payFlow;
+      el.skip().onclick = () => {
+        beacon('md_pg_dismiss', { ch: 21, show: show && show.slug });
+        advance('dismiss');
+      };
+      el.unmute().onclick = (e) => { e.stopPropagation(); unmuteMd('pill'); };
+      // Any first gesture on the promo surface is a valid unmute grant, mirroring the
+      // live player's behaviour so the two surfaces feel identical.
+      ['pointerdown', 'keydown', 'click'].forEach(ev =>
+        document.addEventListener(ev, (e) => {
+          if (!open || !forcedMuteMd || !e.isTrusted) return;
+          if (e.type === 'pointerdown' && e.pointerType !== 'mouse') return;
+          if (e.type === 'keydown' && GESTURE_SKIP_KEYS.includes(e.key)) return;
+          if (e.target && e.target.closest && e.target.closest('#md-sheet, #md-unmute')) return;
+          unmuteMd('gesture');
+        }, true)
+      );
+      document.addEventListener('visibilitychange', () => {
+        if (!open) return;
+        if (document.hidden) { try { el.v().pause(); } catch {} }
+        else if (!sheetUp && !ended) { try { el.v().play().catch(() => {}); } catch {} }
+      });
+    }
+    init();
+
+    return { open: open_, close: close_, isOpen, hasPass, passLeftMs };
+  })();
+  window.addEventListener('beforeunload', () => { if (MD.isOpen()) MD.close('unload'); });
+
+  function _boot() {
+    const last = parseInt(localStorage.getItem('wiom-tv-last'), 10) || 21;
+    const si = channels.findIndex(c => c.ch === last);
+    tuneFn(si !== -1 ? si : 0, 1, 'boot');
+  }
+
+  // Sort for EVERYONE: reorder channels WITHIN each genre by the backend order (health-gated
+  // popularity -> personal). Slot-preserving: each genre keeps its existing positions in the
+  // flat list — only the channels inside those slots are resequenced. Pure ordering change.
+  function _applyOrder() {
+    if (!orderData || !Array.isArray(orderData.order)) return;
+    const want = new Map(orderData.order.map((ch, i) => [ch, i]));
+    const slots = {};
+    channels.forEach((c, idx) => { (slots[c.cat] = slots[c.cat] || []).push(idx); });
+    for (const cat of Object.keys(slots)) {
+      const idxs = slots[cat];
+      const chans = idxs.map(i => channels[i]);
+      // COLD START: the server's catalog is derived from event history, so a channel we just
+      // added has ZERO events and is absent from `order`. Burying it at the bottom would
+      // guarantee it never gets tuned, never earns events, and stays buried forever — the
+      // rich-get-richer trap. Give unseen channels their genre's MEDIAN slot instead, so they
+      // sit mid-pack and accrue the data that lets the server judge them (this mirrors the
+      // server's own exploration tier for thin-but-known channels).
+      const known = chans.map(c => want.get(c.ch)).filter(v => v !== undefined).sort((a, b) => a - b);
+      const med = known.length ? known[known.length >> 1] : 0;
+      const keyOf = c => (want.has(c.ch) ? want.get(c.ch) : med + 0.5);
+      chans.sort((a, b) => keyOf(a) - keyOf(b) || a.ch - b.ch);
+      idxs.forEach((slot, k) => { channels[slot] = chans[k]; });
+    }
+    _orderApplied = true;   // from here on, tune ranks reflect the sorted list
+  }
+
+  // fse_v2 landing: on the VERY FIRST session only, boot into the assigned genre's hero —
+  // the top health-verified channel per /api/order. All four arms wait on the same fetch
+  // (3s-capped), so time-to-first-frame stays symmetric across the experiment. If the hero
+  // is missing (fetch failed / genre has no verified channel), fall back to the default
+  // boot and say so on the beacon — the fallback share is a pre-registered guardrail (<5%).
+  function _landingBoot() {
+    const g = ARM_GENRE[variant];
+    // LE is the CONTROL arm: it must reproduce exactly what a new user gets today — the
+    // default boot channel — NOT "Entertainment's best channel". Otherwise all four arms are
+    // treatments, nothing represents the status quo, and we could crown the best of four
+    // options that are all worse than today. (This bites the moment the hero logic picks a
+    // better cold performer than the incumbent, which on live data it already does.)
+    // _defaultBootCh is captured BEFORE any sorting, so the control can never drift.
+    const isControl = (variant === 'LE');
+    const hero = isControl ? _defaultBootCh
+      : ((orderData && orderData.heroByGenre) ? orderData.heroByGenre[g] : null);
+    const idx = hero != null ? channels.findIndex(c => c.ch === hero) : -1;
+    // elapsed = how long the user stared at the tuning screen waiting for the hero.
+    // Guardrail: if this creeps up (slow /api/order), first-session activation pays for it
+    // in EVERY arm — watch p75, not the mean.
+    beacon('landing', { cat: g, ch: idx !== -1 ? hero : null, elapsed: Math.round(performance.now()),
+      meta: { fallback: idx === -1 ? 1 : 0, control: isControl ? 1 : 0 } });
+    if (idx !== -1) tuneFn(idx, 1, 'boot');
+    else _boot();
+  }
+
+  if (_needsEnrolment) {
+    // First-ever session of a candidate user. We cannot boot before /api/order answers (the
+    // hero IS the treatment), so show the CRT tuning state immediately — the wait is normally
+    // ~100ms (cached, indexed) and 3s worst case, but it must never be a black screen: this is
+    // the first impression, and the metric this experiment moves. Identical for all four arms,
+    // so the comparison stays symmetric.
+    showStatic();
+    orderReady.then(() => {
+      if (orderData && orderData.algo === 'v2') {
+        // Server proved it is reloaded -> enrol, stamp from here on, land on the arm's hero.
+        variant = _pendingArm;
+        exp = EXPERIMENT_ID;
+        try { localStorage.setItem('wiom-tv-enrolled2', '1'); } catch {}
+        try { if (window.posthog && posthog.register) posthog.register({ fse_v2_arm: variant }); } catch {}
+        _applyOrder();
+        _landingBoot();
+      } else {
+        // Un-reloaded (or unreachable) server: stay unenrolled and unstamped. Boot normally.
+        _applyOrder();   // no-op if the fetch failed; applies the OLD order if the server is old
+        _boot();
+      }
+      if (guideOpen) buildGuide();
+    });
+  } else {
+    // Everyone else: boot instantly (last-watched channel), sort silently when the order
+    // arrives — keep the playing channel consistent (no flicker, no first-frame latency).
+    _boot();
+    orderReady.then(() => {
+      const playing = channels[cur] && channels[cur].ch;
+      _applyOrder();
+      if (playing != null) { const i = channels.findIndex(c => c.ch === playing); if (i !== -1) cur = i; }
+      if (guideOpen) buildGuide();
+    });
+  }
+})();
+</script>
+</body>
+</html>

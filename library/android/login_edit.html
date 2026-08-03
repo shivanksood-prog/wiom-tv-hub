@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#D9008D">
+<title>Wiom TV — लॉग इन</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#D9008D; --brand-100:#FFE5F6; --brand-300:#FFB2E4;
+    --bg:#FAF9FC; --card:#FFFFFF; --text:#161021; --muted:#665E75;
+    --border:#D7D3E0; --pink-bg:#FFE5F6;
+    --pos:#008043; --pos-100:#E1FAED; --neg:#E01E00; --neg-100:#FFE9E5;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Noto Sans','Noto Sans Devanagari',system-ui,sans-serif;
+    background:var(--bg); color:var(--text);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:24px 18px 40px;
+  }
+  .brand{font-size:24px;font-weight:700;color:var(--text);margin:6px 0 26px;letter-spacing:-.01em;}
+  .brand b{color:var(--brand);}
+  .card{
+    width:100%; max-width:420px; background:var(--card);
+    border:1px solid var(--border); border-radius:22px;
+    padding:28px 22px; box-shadow:0 8px 30px rgba(68,49,82,.07);
+  }
+  h1{font-size:21px;font-weight:700;line-height:1.35;margin:0 0 4px;}
+  .sub{font-size:14px;color:var(--muted);margin:0 0 22px;}
+  label{font-size:13px;font-weight:600;color:var(--muted);display:block;margin:0 0 8px;}
+  .field{
+    width:100%; font-family:inherit; font-size:22px; font-weight:600;
+    letter-spacing:.02em; text-align:center;
+    padding:16px 14px; border:2px solid var(--border); border-radius:14px;
+    background:var(--bg); color:var(--text); outline:none; transition:border-color .15s;
+  }
+  .field:focus{border-color:var(--brand); background:#fff;}
+  .field.otp{letter-spacing:.5em; padding-left:.5em; font-size:26px;}
+  .prefix{display:flex;align-items:center;gap:0;}
+  .prefix .cc{
+    font-size:20px;font-weight:600;color:var(--muted);
+    padding:16px 12px;border:2px solid var(--border);border-right:none;
+    border-radius:14px 0 0 14px;background:var(--bg);
+  }
+  .prefix .field{border-radius:0 14px 14px 0;text-align:left;}
+  .btn{
+    width:100%; margin-top:20px; font-family:inherit; font-size:17px; font-weight:700;
+    color:#fff; background:var(--brand); border:none; border-radius:14px;
+    padding:17px; cursor:pointer; transition:opacity .15s,transform .05s;
+  }
+  .btn:active{transform:scale(.99);}
+  .btn:disabled{opacity:.45; cursor:not-allowed;}
+  .msg{font-size:14px; margin-top:14px; padding:11px 14px; border-radius:11px; display:none; line-height:1.4;}
+  .msg.err{display:block; color:var(--neg); background:var(--neg-100);}
+  .msg.ok{display:block; color:var(--pos); background:var(--pos-100);}
+  .resend{margin-top:18px; text-align:center; font-size:14px; color:var(--muted);}
+  .resend button{
+    background:none;border:none;color:var(--brand);font-family:inherit;
+    font-size:14px;font-weight:700;cursor:pointer;padding:4px;
+  }
+  .resend button:disabled{color:var(--muted);font-weight:500;cursor:default;}
+  .back{margin-top:16px;text-align:center;}
+  .back button{background:none;border:none;color:var(--muted);font-family:inherit;font-size:14px;cursor:pointer;}
+  .spinner{
+    width:18px;height:18px;border:2.5px solid rgba(255,255,255,.45);
+    border-top-color:#fff;border-radius:50%;display:inline-block;
+    vertical-align:-3px;margin-right:8px;animation:spin .7s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .hide{display:none !important;}
+  .success{text-align:center;padding:18px 0;}
+  .success .tick{
+    width:74px;height:74px;border-radius:50%;background:var(--pos-100);
+    color:var(--pos);font-size:40px;line-height:74px;margin:0 auto 16px;
+  }
+  .success h1{color:var(--pos);}
+  .footnote{font-size:12px;color:var(--muted);text-align:center;margin-top:22px;max-width:420px;line-height:1.5;}
+</style>
+</head>
+<body>
+  <div class="brand">◖ <b>Wiom</b></div>
+
+  <!-- STEP 1: phone -->
+  <div class="card" id="step-phone">
+    <h1>मनोरंजन शुरू करने के लिए अपना फ़ोन नंबर दें</h1>
+    <p class="sub">आपके नंबर पर एक OTP भेजा जाएगा</p>
+    <label for="phone">फ़ोन नंबर</label>
+    <div class="prefix">
+      <span class="cc">+91</span>
+      <input class="field" id="phone" type="tel" inputmode="numeric" maxlength="10"
+             placeholder="9876543210" autocomplete="off">
+    </div>
+    <div class="msg" id="phone-msg"></div>
+    <button class="btn" id="send-btn">OTP भेजें</button>
+  </div>
+
+  <!-- STEP 2: otp -->
+  <div class="card hide" id="step-otp">
+    <h1>अपने फ़ोन पर आए OTP को लिखें</h1>
+    <p class="sub">OTP भेजा गया है <b id="otp-to"></b> पर</p>
+    <label for="otp">4-अंकों का OTP</label>
+    <input class="field otp" id="otp" type="tel" inputmode="numeric" maxlength="4"
+           placeholder="••••" autocomplete="one-time-code">
+    <div class="msg" id="otp-msg"></div>
+    <button class="btn" id="verify-btn">पुष्टि करें</button>
+    <div class="resend">
+      <span id="timer-text"></span>
+      <button id="resend-btn" disabled>OTP दोबारा भेजें</button>
+    </div>
+    <div class="back"><button id="back-btn">← नंबर बदलें</button></div>
+  </div>
+
+  <!-- STEP 3: success -->
+  <div class="card hide" id="step-done">
+    <div class="success">
+      <div class="tick">✓</div>
+      <h1 id="done-h1">लॉग इन हो गए</h1>
+      <p class="sub" id="done-sub">अब आप अपने TV पर मनोरंजन का आनंद लें</p>
+    </div>
+  </div>
+
+  <p class="footnote">Wiom TV · आपका नंबर केवल लॉग इन के लिए इस्तेमाल होता है</p>
+
+<script>
+(function(){
+  "use strict";
+  var BASE = "https://user-registry.i2e1.in/wiomtv/users";
+  var RELAY = "https://wiom-tv-pair-production.up.railway.app";
+  // device_code passed by the TV's QR (?code=...) — present only when opened via the TV.
+  var DEVICE_CODE = (new URLSearchParams(location.search).get("code") || "").trim();
+  var state = { phone:"", guid:"", token:"", verified:false, timer:null, resends:0, MAX_RESENDS:3 };
+
+  var $ = function(id){ return document.getElementById(id); };
+  function show(id){
+    ["step-phone","step-otp","step-done"].forEach(function(s){
+      $(s).classList.toggle("hide", s !== id);
+    });
+  }
+  function setMsg(el, text, kind){
+    el.textContent = text || "";
+    el.className = "msg" + (text ? (" " + kind) : "");
+  }
+  function busy(btn, on, label){
+    btn.disabled = on;
+    btn.innerHTML = on ? '<span class="spinner"></span>' + (label||"...") : btn.dataset.label;
+  }
+
+  // remember original labels
+  $("send-btn").dataset.label = "OTP भेजें";
+  $("verify-btn").dataset.label = "पुष्टि करें";
+
+  function post(path, body){
+    return fetch(BASE + "/" + path, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+      body: JSON.stringify(body)
+    }).then(function(r){
+      return r.json().then(function(j){ return { ok:r.ok, status:r.status, data:j }; });
+    });
+  }
+
+  // ---- phone digits only ----
+  $("phone").addEventListener("input", function(){
+    this.value = this.value.replace(/\D/g,"").slice(0,10);
+    setMsg($("phone-msg"), "");
+  });
+  $("otp").addEventListener("input", function(){
+    this.value = this.value.replace(/\D/g,"").slice(0,4);
+    setMsg($("otp-msg"), "");
+  });
+
+  // ---- send OTP ----
+  function sendOtp(isResend){
+    var p = state.phone;
+    busy(isResend ? $("resend-btn") : $("send-btn"), true, "भेज रहे हैं");
+    if(isResend){ $("resend-btn").innerHTML = "भेज रहे हैं…"; $("resend-btn").disabled = true; }
+    return post("sendotp", { mobile: p }).then(function(res){
+      busy($("send-btn"), false);
+      if(res.ok && res.data && res.data.data && res.data.data.guid){
+        state.guid = res.data.data.guid;
+        return true;
+      }
+      throw new Error("send-failed");
+    });
+  }
+
+  $("send-btn").addEventListener("click", function(){
+    var p = $("phone").value;
+    if(!/^[6-9]\d{9}$/.test(p)){
+      setMsg($("phone-msg"), "कृपया सही 10-अंकों का नंबर डालें", "err");
+      return;
+    }
+    state.phone = p;
+    sendOtp(false).then(function(){
+      $("otp-to").textContent = "+91 " + p;
+      $("otp").value = "";
+      show("step-otp");
+      $("otp").focus();
+      startTimer();
+    }).catch(function(){
+      busy($("send-btn"), false);
+      setMsg($("phone-msg"), "OTP भेजने में दिक्कत — इंटरनेट जांचें और दोबारा कोशिश करें", "err");
+    });
+  });
+
+  // ---- verify ----
+  $("verify-btn").addEventListener("click", function(){
+    // If OTP already verified but TV-pairing failed, this button retries pairing only
+    // (the OTP is single-use, so we must not re-verify it).
+    if(state.verified && state.token){ finishLogin(); return; }
+
+    var otp = $("otp").value;
+    if(otp.length !== 4){
+      setMsg($("otp-msg"), "4-अंकों का OTP डालें", "err");
+      return;
+    }
+    busy($("verify-btn"), true, "जांच रहे हैं");
+    post("verifyotp", { mobile: state.phone, otp: otp, guid: state.guid }).then(function(res){
+      busy($("verify-btn"), false);
+      var d = res.data && res.data.data;
+      if(res.ok && d && d.isVerified && d.token){
+        state.verified = true; state.token = d.token;
+        stopTimer();
+        finishLogin();
+      } else {
+        setMsg($("otp-msg"), "गलत OTP — दोबारा कोशिश करें", "err");
+        $("otp").value = ""; $("otp").focus();
+      }
+    }).catch(function(){
+      busy($("verify-btn"), false);
+      setMsg($("otp-msg"), "नेटवर्क दिक्कत — दोबारा कोशिश करें", "err");
+    });
+  });
+
+  function setSuccess(title, sub){
+    $("done-h1").textContent = title;
+    $("done-sub").textContent = sub;
+  }
+
+  // After a verified OTP: if opened via the TV's QR (has device_code), hand the token to the
+  // relay so the TV picks it up; otherwise this is a standalone phone login.
+  function finishLogin(){
+    if(!DEVICE_CODE){
+      setSuccess("लॉग इन हो गए", "अब आप अपने TV पर मनोरंजन का आनंद लें");
+      show("step-done");
+      return;
+    }
+    busy($("verify-btn"), true, "टीवी से जोड़ रहे हैं");
+    fetch(RELAY + "/pair/complete", {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ device_code: DEVICE_CODE, token: state.token })
+    }).then(function(r){ return r.json().then(function(j){ return { ok:r.ok, data:j }; }); })
+      .then(function(res){
+        busy($("verify-btn"), false);
+        if(res.ok && res.data && res.data.ok){
+          setSuccess("टीवी पर लॉग इन हो गया ✓", "अब आप टीवी पर वापस जा सकते हैं");
+          show("step-done");
+        } else {
+          $("verify-btn").innerHTML = "टीवी से दोबारा जोड़ें";
+          setMsg($("otp-msg"), "टीवी से कनेक्ट नहीं हो पाया — दोबारा कोशिश करें", "err");
+        }
+      }).catch(function(){
+        busy($("verify-btn"), false);
+        $("verify-btn").innerHTML = "टीवी से दोबारा जोड़ें";
+        setMsg($("otp-msg"), "टीवी से कनेक्ट नहीं हो पाया — दोबारा कोशिश करें", "err");
+      });
+  }
+
+  // ---- resend + timer ----
+  function startTimer(){
+    var left = 30;
+    $("resend-btn").disabled = true;
+    $("resend-btn").innerHTML = "OTP दोबारा भेजें";
+    tick();
+    function tick(){
+      $("timer-text").textContent = left > 0 ? (left + "s में ") : "";
+      if(left <= 0){ $("resend-btn").disabled = (state.resends >= state.MAX_RESENDS); clearInterval(state.timer); return; }
+      left--;
+    }
+    clearInterval(state.timer);
+    state.timer = setInterval(tick, 1000);
+  }
+  function stopTimer(){ clearInterval(state.timer); }
+
+  $("resend-btn").addEventListener("click", function(){
+    if(state.resends >= state.MAX_RESENDS){
+      setMsg($("otp-msg"), "बहुत बार कोशिश हुई — नंबर जांचें या थोड़ी देर बाद कोशिश करें", "err");
+      return;
+    }
+    state.resends++;
+    sendOtp(true).then(function(){
+      $("otp").value = ""; $("otp").focus();
+      setMsg($("otp-msg"), "");
+      startTimer();
+    }).catch(function(){
+      $("resend-btn").disabled = false;
+      $("resend-btn").innerHTML = "OTP दोबारा भेजें";
+      setMsg($("otp-msg"), "दोबारा भेजने में दिक्कत — इंटरनेट जांचें", "err");
+    });
+  });
+
+  $("back-btn").addEventListener("click", function(){
+    stopTimer(); state.guid=""; state.resends=0; state.verified=false; state.token="";
+    $("verify-btn").innerHTML = $("verify-btn").dataset.label;
+    setMsg($("otp-msg"), ""); setMsg($("phone-msg"), "");
+    show("step-phone"); $("phone").focus();
+  });
+})();
+</script>
+</body>
+</html>

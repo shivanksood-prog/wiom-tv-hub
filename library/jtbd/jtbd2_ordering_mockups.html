@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV · JTBD-2 — Channel ordering within a genre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161021; --card:#352D42; --border:#443152; --text:#FAF9FC; --muted:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFB2E4; --pink100:#FFE5F6;
+    --green:#008043; --green100:#E1FAED; --amber:#FF8000; --amber200:#FFE6CC;
+    --purple:#6D17CE; --info100:#F1E5FF; --page:#FAF9FC; --ink:#161021; --slate:#665E75;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--page);color:var(--ink);
+       -webkit-font-smoothing:antialiased;padding:34px 22px 90px}
+  .wrap{max-width:1180px;margin:0 auto}
+  .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+          color:var(--accent);background:var(--pink100);padding:5px 12px;border-radius:999px}
+  h1{font-size:30px;font-weight:800;margin:14px 0 6px;letter-spacing:-.01em}
+  .sub{font-size:15px;color:var(--slate);max-width:820px;line-height:1.55}
+  .sub b{color:var(--ink)}
+  .algo{margin-top:18px;background:var(--bg);color:#E9E4F2;border-radius:14px;padding:16px 18px;max-width:760px;
+        font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7}
+  .algo .c1{color:#A7A1B2} .algo .c2{color:var(--accent-soft)} .algo b{color:#fff}
+
+  .gallery{margin-top:46px;display:flex;flex-wrap:wrap;gap:40px 34px;justify-content:center}
+  figure{width:300px;display:flex;flex-direction:column;align-items:center}
+
+  .phone{width:300px;height:620px;background:#000;border-radius:42px;padding:11px;
+         box-shadow:0 24px 60px rgba(22,16,33,.28),0 4px 12px rgba(22,16,33,.12);position:relative}
+  .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:24px;background:#000;border-radius:0 0 16px 16px;z-index:50}
+  .screen{width:100%;height:100%;border-radius:32px;overflow:hidden;position:relative;background:var(--bg)}
+  .video{position:absolute;top:0;left:0;right:0;height:172px;background:
+        radial-gradient(120% 90% at 70% 10%, #6D17CE40 0%, transparent 55%),
+        linear-gradient(160deg,#2c2040 0%,#181122 100%)}
+  .video::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 2px,transparent 2px 4px)}
+  .topbar{position:absolute;top:34px;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+  .logo{font-weight:800;font-size:14px;color:var(--text);letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .live{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--text);background:rgba(0,0,0,.4);padding:4px 9px;border-radius:999px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #00804333}
+  .nowplay{position:absolute;top:130px;left:16px;z-index:20;color:#fff}
+  .nowplay .t{font-size:14px;font-weight:800}
+  .nowplay .s{font-size:10.5px;color:var(--accent-soft)}
+
+  .glist{position:absolute;top:172px;left:0;right:0;bottom:0;z-index:15;background:var(--bg);
+         border-radius:18px 18px 0 0;border-top:1px solid var(--border);padding:12px 0 0;overflow:hidden}
+  .ghd{display:flex;align-items:center;justify-content:space-between;padding:2px 16px 11px}
+  .ghd .g{font-size:14px;font-weight:800;color:var(--text)}
+  .ghd .o{font-size:9.5px;font-weight:700;color:var(--accent-soft);background:rgba(217,0,141,.16);padding:3px 8px;border-radius:6px}
+  .row{display:flex;align-items:center;gap:10px;padding:8px 16px}
+  .row.now{background:linear-gradient(90deg,rgba(217,0,141,.16),transparent)}
+  .rk{flex:0 0 20px;font-size:12px;font-weight:800;color:var(--muted);text-align:center}
+  .row.now .rk{color:var(--accent)}
+  .lg{flex:0 0 40px;width:40px;height:26px;border-radius:6px;border:1px solid var(--border);
+      background:linear-gradient(135deg,#3a2342,#241a33)}
+  .ci{flex:1;min-width:0}
+  .cn{font-size:12.5px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cm{font-size:9.5px;color:var(--muted);margin-top:1px}
+  .cm.pop{color:#FFB2E4} .cm.me{color:#9be3bb}
+  .pill{flex:0 0 auto;font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.03em}
+  .pill.hot{background:rgba(255,128,0,.2);color:#FFB36b}
+  .pill.me{background:rgba(0,128,67,.22);color:#7fe0a8}
+
+  figcaption{margin-top:20px;width:100%;text-align:left}
+  .ctag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--slate);padding:3px 10px;border-radius:6px}
+  .ctag.c{background:var(--slate)} .ctag.pop{background:var(--amber)} .ctag.blend{background:var(--accent)}
+  figcaption h3{font-size:16px;font-weight:800;margin:9px 0 5px}
+  figcaption p{font-size:12.5px;color:#665E75;line-height:1.5}
+
+  .apanel{max-width:1180px;margin:50px auto 0;background:#fff;border:1px solid #D7D3E0;border-radius:18px;padding:26px 28px}
+  .apanel h3{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:12px}
+  .arow{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:14px 0;border-top:1px solid #ECE8F2}
+  .arow:first-of-type{border-top:none}
+  .arow .lab{font-weight:800;font-size:14px}
+  .arow .lab .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--purple);display:block;margin-top:3px;font-weight:600}
+  .arow .txt{font-size:13px;color:#3a3447;line-height:1.55}
+  .arow .txt b{color:var(--ink)}
+  .epay{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--purple);background:#F6F2FB;border:1px solid #E7DFF3;border-radius:7px;padding:5px 9px;display:inline-block;margin-top:4px}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--green100);color:var(--green);margin:0 2px}
+  .tag.new{background:var(--amber200);color:#9a4d00}
+  .note{margin-top:16px;background:var(--info100);border:1px solid #E7DFF3;border-radius:12px;padding:13px 16px;font-size:13px;color:#3a2356;line-height:1.55}
+  .note b{color:var(--purple)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="kicker">Wiom TV · JTBD-2 — "Get me what I like" · the cheap lever</span>
+  <h1>Reorder channels within a genre — popularity → personal</h1>
+  <p class="sub">No onboarding, no new screen. We just <b>change the sort order of the existing channel list inside each genre</b>. Same genre (<b>फिल्में</b>) shown three ways below. The order is the single source of truth for the channel A1 lands you on, the guide, and the up/down zap sequence.</p>
+
+  <div class="algo">
+    <span class="c1">// within each genre, sort channels by score (desc)</span><br>
+    score(ch) = <b>POP[ch]</b>          <span class="c1">// global watch-min, last 7d  → the prior</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + k · <span class="c2">MINE[ch]</span>   <span class="c1">// this uid's own dwell  → 0 at cold-start</span><br>
+    <span class="c1">cold-start (no history) → MINE=0 → <b>pure popularity</b></span><br>
+    <span class="c1">over visits&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ your channels rise → <b>becomes yours</b></span>
+  </div>
+
+  <div class="gallery">
+
+    <!-- C control -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div><div class="live"><span class="dot"></span>LIVE</div></div>
+        <div class="nowplay"><div class="t">201 · &amp;pictures</div><div class="s">अभी · हिंदी फ़िल्म</div></div>
+        <div class="glist">
+          <div class="ghd"><span class="g">🎬 फिल्में</span><span class="o">चैनल नंबर क्रम</span></div>
+          <div class="row now"><div class="rk">1</div><div class="lg"></div><div class="ci"><div class="cn">&amp;pictures</div><div class="cm">चैनल 201</div></div></div>
+          <div class="row"><div class="rk">2</div><div class="lg"></div><div class="ci"><div class="cn">B4U Movies</div><div class="cm">चैनल 202</div></div></div>
+          <div class="row"><div class="rk">3</div><div class="lg"></div><div class="ci"><div class="cn">Dhinchaak</div><div class="cm">चैनल 203</div></div></div>
+          <div class="row"><div class="rk">4</div><div class="lg"></div><div class="ci"><div class="cn">Sony MAX</div><div class="cm">चैनल 204</div></div></div>
+          <div class="row"><div class="rk">5</div><div class="lg"></div><div class="ci"><div class="cn">Zee Cinema</div><div class="cm">चैनल 205</div></div></div>
+          <div class="row"><div class="rk">6</div><div class="lg"></div><div class="ci"><div class="cn">Star Gold</div><div class="cm">चैनल 206</div></div></div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag c">C · Control</span>
+        <h3>Channel-number order</h3>
+        <p>Today's behaviour. You land on whatever happens to sit first numerically (&amp;pictures) — the strongest film channel (Zee Cinema) is buried at #5. Pure luck whether the hero is on top.</p>
+      </figcaption>
+    </figure>
+
+    <!-- B pure popularity (cold-start state) -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div><div class="live"><span class="dot"></span>LIVE</div></div>
+        <div class="nowplay"><div class="t">Zee Cinema</div><div class="s">अभी · सबसे लोकप्रिय</div></div>
+        <div class="glist">
+          <div class="ghd"><span class="g">🎬 फिल्में</span><span class="o">लोकप्रियता</span></div>
+          <div class="row now"><div class="rk">1</div><div class="lg"></div><div class="ci"><div class="cn">Zee Cinema</div><div class="cm pop">1,240 देख रहे</div></div><span class="pill hot">टॉप</span></div>
+          <div class="row"><div class="rk">2</div><div class="lg"></div><div class="ci"><div class="cn">Sony MAX</div><div class="cm pop">980 देख रहे</div></div></div>
+          <div class="row"><div class="rk">3</div><div class="lg"></div><div class="ci"><div class="cn">Star Gold</div><div class="cm pop">760 देख रहे</div></div></div>
+          <div class="row"><div class="rk">4</div><div class="lg"></div><div class="ci"><div class="cn">&amp;pictures</div><div class="cm pop">540 देख रहे</div></div></div>
+          <div class="row"><div class="rk">5</div><div class="lg"></div><div class="ci"><div class="cn">B4U Movies</div><div class="cm pop">310 देख रहे</div></div></div>
+          <div class="row"><div class="rk">6</div><div class="lg"></div><div class="ci"><div class="cn">Dhinchaak</div><div class="cm pop">140 देख रहे</div></div></div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag pop">B · cold-start</span>
+        <h3>Popularity order</h3>
+        <p>What a brand-new user sees (no history yet). The most-watched film channel leads, so A1 lands them on Zee Cinema, not a random one. Good defaults from second one.</p>
+      </figcaption>
+    </figure>
+
+    <!-- B blend (returning) -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div><div class="live"><span class="dot"></span>LIVE</div></div>
+        <div class="nowplay"><div class="t">Star Gold</div><div class="s">अभी · आपकी पसंद</div></div>
+        <div class="glist">
+          <div class="ghd"><span class="g">🎬 फिल्में</span><span class="o">पसंद + लोकप्रियता</span></div>
+          <div class="row now"><div class="rk">1</div><div class="lg"></div><div class="ci"><div class="cn">Star Gold</div><div class="cm me">आपने 42 मिनट देखा</div></div><span class="pill me">आपकी</span></div>
+          <div class="row"><div class="rk">2</div><div class="lg"></div><div class="ci"><div class="cn">Sony MAX</div><div class="cm me">आपने 18 मिनट देखा</div></div><span class="pill me">आपकी</span></div>
+          <div class="row"><div class="rk">3</div><div class="lg"></div><div class="ci"><div class="cn">Zee Cinema</div><div class="cm pop">1,240 देख रहे</div></div></div>
+          <div class="row"><div class="rk">4</div><div class="lg"></div><div class="ci"><div class="cn">&amp;pictures</div><div class="cm pop">540 देख रहे</div></div></div>
+          <div class="row"><div class="rk">5</div><div class="lg"></div><div class="ci"><div class="cn">B4U Movies</div><div class="cm pop">310 देख रहे</div></div></div>
+          <div class="row"><div class="rk">6</div><div class="lg"></div><div class="ci"><div class="cn">Dhinchaak</div><div class="cm pop">140 देख रहे</div></div></div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag blend">B · returning</span>
+        <h3>Personal blend</h3>
+        <p>Same user, visit 3. The films <b>they</b> actually watched (Star Gold, Sony MAX) float above the crowd favourite. The order quietly became theirs — no question ever asked.</p>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <!-- analytics -->
+  <div class="apanel">
+    <h3>How we measure the ordering — one new field</h3>
+    <div class="arow">
+      <div class="lab">Add <code>rank</code> to tune<span class="mono">tune + landing</span></div>
+      <div class="txt">The only new instrumentation: stamp the channel's <b>position in its ordered genre</b> on every tune/landing. Lets us prove the sort surfaces better channels.
+        <div class="epay">{ variant:"B", event:"tune", ch:206, cat:"movies", rank:1, dur:2520 }</div></div>
+    </div>
+    <div class="arow">
+      <div class="lab">Dwell-by-rank curve<span class="mono">the proof</span></div>
+      <div class="txt">Plot average dwell &amp; tune-share by <code>rank</code>, per variant. If ordering works, <b>rank-1 channels capture more watch-time and more tunes</b> in B than in C — i.e. the top of the list is genuinely the right channel.</div>
+    </div>
+    <div class="arow">
+      <div class="lab">Headline metrics<span class="mono">already covered</span></div>
+      <div class="txt">No extra events needed for the three: <span class="tag">first-session activation</span> <span class="tag">avg time / user</span> <span class="tag">channel switches → dwell-per-switch</span> all split by <code>variant</code>. Better ordering should <b>raise dwell-per-switch</b> (fewer hunts to reach a keeper) — your "better channels" signal.</div>
+    </div>
+    <div class="arow">
+      <div class="lab">Cohort tracking<span class="mono">unchanged</span></div>
+      <div class="txt">Same sticky <code>variant</code> (hash of <code>uid</code>) + <code>devices</code> first-seen as Arm A. <code>POP[]</code> comes from the leaderboard we already compute; <code>MINE[]</code> from the user's own tune dwell (localStorage, server-confirmable). <b>No new endpoint.</b></div>
+    </div>
+    <div class="note"><b>Stacks with A1, tests cleanly alone.</b> A1 (Arm A) chooses the genre; this ordering (Arm B) decides the hero + zap sequence inside it. Run B vs C to isolate the ordering effect, or A+B vs C to see them together — the <code>variant</code> column handles both.</div>
+  </div>
+
+</div>
+</body>
+</html>

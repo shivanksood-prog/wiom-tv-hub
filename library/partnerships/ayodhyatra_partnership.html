@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wiom TV × Ayodhyatra — Partnership Models & Technical Integration</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --ink:#161021; --accent:#D9008D; --secondary:#443152;
+    --muted:#665E75; --faint:#A7A1B2; --line:#D7D3E0; --soft:#F1EDF7;
+    --pink100:#FFE5F6; --pink300:#FFB2E4;
+    --green:#008043; --greenbg:#E1FAED; --red:#E01E00; --amber:#FF8000;
+    --info:#6D17CE; --infobg:#F1E5FF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Noto Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.5; font-size:12px;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  @page{ size:A4; margin:14mm 13mm; }
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 4px}
+
+  /* ---------- cover / header ---------- */
+  .cover{padding:26px 28px;border-radius:16px;color:#fff;
+    background:linear-gradient(135deg,#D9008D 0%,#a3006b 55%,#443152 100%);
+    margin-bottom:20px}
+  .brandbar{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.14em;
+    font-size:12px;text-transform:uppercase;opacity:.92}
+  .brandbar .dot{width:9px;height:9px;border-radius:50%;background:#FFB2E4}
+  .cover h1{font-size:25px;line-height:1.2;margin:14px 0 6px;font-weight:800}
+  .cover .sub{font-size:13px;opacity:.9;font-weight:500;max-width:620px}
+  .cover .meta{margin-top:16px;font-size:11px;opacity:.82;display:flex;gap:20px;flex-wrap:wrap}
+
+  h2.sec{font-size:15px;font-weight:800;color:var(--secondary);margin:26px 0 4px;
+    padding-bottom:7px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:9px}
+  h2.sec .n{background:var(--accent);color:#fff;width:22px;height:22px;border-radius:6px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 auto}
+  h3.grp{font-size:12px;font-weight:800;color:var(--accent);text-transform:uppercase;
+    letter-spacing:.08em;margin:20px 0 8px}
+  p.lead{font-size:12.5px;color:var(--ink);margin:8px 0}
+  p.lead b{color:var(--secondary)}
+
+  .principle{background:var(--pink100);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+    padding:12px 15px;margin:14px 0;font-size:12.5px;font-weight:600;color:var(--secondary)}
+
+  /* ---------- model cards ---------- */
+  .models{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+  .model{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;
+    break-inside:avoid}
+  .model .top{display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--soft)}
+  .badge{font-weight:800;font-size:11px;color:#fff;border-radius:6px;padding:3px 9px;flex:0 0 auto;letter-spacing:.03em}
+  .b1{background:var(--accent)} .b2{background:var(--info)} .b3{background:var(--secondary)}
+  .model .top .name{font-weight:800;font-size:13px;color:var(--ink)}
+  .model .body{padding:10px 14px;font-size:12px;color:var(--ink)}
+  .model .body .req{margin-top:6px;font-size:11px;color:var(--muted)}
+  .model .body .req b{color:var(--secondary)}
+
+  /* ---------- requirements table ---------- */
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:11.5px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--secondary);color:#fff;font-weight:700;font-size:11px}
+  tbody tr:nth-child(even) td, tr:nth-child(even) td{background:#faf7fc}
+  td b{color:var(--secondary)}
+  .reqchip{display:inline-block;background:var(--infobg);color:var(--info);font-weight:700;
+    border-radius:5px;padding:2px 7px;font-size:10.5px;margin:0 4px 4px 0}
+
+  /* ---------- Q&A ---------- */
+  .q{border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin:10px 0;
+    background:#fff;break-inside:avoid}
+  .q .qh{font-weight:800;font-size:12.5px;color:var(--secondary);margin-bottom:8px;display:flex;gap:8px}
+  .q .qh .qmark{color:var(--accent);font-weight:800;flex:0 0 auto}
+  .row{display:flex;gap:9px;padding:5px 0;font-size:11.8px;align-items:flex-start}
+  .row + .row{border-top:1px dashed var(--line)}
+  .lab{flex:0 0 30px;font-weight:800;font-size:10.5px;color:#fff;border-radius:5px;
+    padding:2px 0;text-align:center;line-height:1.3}
+  .l1{background:var(--accent)} .l2{background:var(--info)} .l3{background:var(--secondary)}
+  .lall{background:var(--green);flex-basis:44px}
+  .row .txt{flex:1}
+  .row .txt b{color:var(--secondary)}
+  .note{font-size:10.5px;color:var(--muted);font-style:italic}
+
+  .assets ul{margin:2px 0 0;padding-left:16px}
+  .assets li{margin:2px 0;font-size:11.3px}
+  .assets li b{color:var(--secondary)}
+
+  .callout{background:var(--greenbg);border:1px solid #bfe9d2;border-radius:10px;padding:11px 14px;
+    font-size:11.8px;color:#0a5030;margin:8px 0;break-inside:avoid}
+  .callout b{color:var(--green)}
+
+  .foot{margin-top:26px;padding-top:12px;border-top:1px solid var(--line);
+    font-size:10px;color:var(--faint);text-align:center}
+  .kbd{font-family:'Consolas',monospace;background:var(--soft);border:1px solid var(--line);
+    border-radius:4px;padding:1px 5px;font-size:10.5px;color:var(--secondary)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ COVER ============ -->
+  <div class="cover">
+    <div class="brandbar"><span class="dot"></span> WIOM.TV &nbsp;·&nbsp; Partnerships</div>
+    <h1>Partnership Models &amp; Technical Integration</h1>
+    <div class="sub">A working brief for <b>Ayodhyatra</b> — the three ways your devotional content can reach Wiom's audience, what we need from you, and detailed answers to every integration question raised.</div>
+    <div class="meta"><span>Prepared 23 July 2026</span><span>Surfaces: wiom.tv web app (PWA) + Wiom TV Android app</span></div>
+  </div>
+
+  <!-- ============ PART 1 ============ -->
+  <h2 class="sec"><span class="n">1</span> Partnership Models &amp; Our Requirements</h2>
+
+  <p class="lead">Wiom TV is Wiom's live entertainment surface — a web app (PWA) and an Android TV app that reach Wiom's broadband households. There are three ways to bring Ayodhyatra's content to that audience. They differ in <b>how deep the integration goes</b>, but share one principle:</p>
+
+  <div class="principle">Ayodhyatra keeps its content on its own hosting and retains full control. Wiom adds only the surface, the access layer, or the promotion — no content migration, and no lock-in.</div>
+
+  <div class="models">
+    <div class="model">
+      <div class="top"><span class="badge b1">Option 1</span><span class="name">Channel on Wiom TV</span></div>
+      <div class="body">Ayodhyatra runs as a <b>linear channel</b> inside the Wiom TV app, alongside our existing channels. Wiom points its player at your hosted stream; viewers tune in like any other channel.
+        <div class="req"><b>We need:</b> a hosted 24/7 stream (HLS), channel metadata (name, category, language), and a channel logo.</div>
+      </div>
+    </div>
+    <div class="model">
+      <div class="top"><span class="badge b2">Option 2</span><span class="name">Sachet on Wiom TV</span></div>
+      <div class="body">A self-contained <b>content pack</b> (e.g. the Ayodhyatra series) is surfaced within Wiom TV and unlocked by the viewer on our surface. Content streams on demand from your hosting; Wiom provides the surface and the access layer.
+        <div class="req"><b>We need:</b> on-demand episodes (HLS or hosted MP4), pack metadata, and key-art.</div>
+      </div>
+    </div>
+    <div class="model">
+      <div class="top"><span class="badge b3">Option 3</span><span class="name">Promo → Install Handshake</span></div>
+      <div class="body">Wiom shows a <b>promo</b> for Ayodhyatra; the viewer installs <b>Ayodhyatra's own app</b>; a handshake passes context at install. Your content never flows through Wiom — we drive discovery and installs.
+        <div class="req"><b>We need:</b> a hosted promo clip, creative assets, your Play Store link, and an install-referrer handshake.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="grp">Requirements common to all three</h3>
+  <p class="lead">
+    <span class="reqchip">Self-hosted</span>
+    <span class="reqchip">HTTPS only</span>
+    <span class="reqchip">CORS enabled</span>
+    <span class="reqchip">H.264 + AAC-LC</span>
+    <span class="reqchip">HLS preferred</span>
+    <span class="reqchip">720p cap</span>
+  </p>
+  <table>
+    <tr><th style="width:26%">Requirement</th><th>What it means</th></tr>
+    <tr><td><b>You host it</b></td><td>Content and promo stay on your own origin / CDN / object storage. Wiom points at the URL — zero hosting or CDN cost on our side.</td></tr>
+    <tr><td><b>HTTPS on every URL</b></td><td>Our surfaces are served over HTTPS; non-HTTPS (mixed-content) URLs are blocked by the browser.</td></tr>
+    <tr><td><b>CORS enabled</b></td><td>Your origin must allow cross-origin playback from <span class="kbd">wiom.tv</span>. This is required for browser / PWA playback; the native Android app does not need it.</td></tr>
+    <tr><td><b>Codec: H.264 + AAC-LC</b></td><td>Universal across both our players. Avoid HEVC (won't play reliably in the web PWA). 720p is the sensible ceiling for our broadband base; ~6s HLS segments.</td></tr>
+    <tr><td><b>HLS preferred</b></td><td>HLS adapts to bandwidth. A partner-hosted MP4 at a direct URL also works, but it's progressive (no bitrate ladder) — fine for short assets, less so for long-form.</td></tr>
+  </table>
+
+  <!-- ============ PART 2 ============ -->
+  <h2 class="sec"><span class="n">2</span> Integration Questions — Answered by Option</h2>
+
+  <h3 class="grp">A · Technical Ingest</h3>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>For content delivery, would you like us to push a feed into your origin, or pull from a manifest URL we host?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">We <b>pull</b> your hosted <span class="kbd">.m3u8</span> and surface it as a linear channel. You keep the origin.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">We <b>pull</b> your hosted VOD and gate it behind the sachet access layer. You host, we entitle.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>Nothing streams through us.</b> You host the promo as a VOD asset; our client points at the URL and plays it per-user from the start — zero CDN cost to us — then CTA → install → handshake.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>What are the exact codec / container specs — video &amp; audio codec, resolution &amp; bitrate ladder, and segment length?</span></div>
+    <div class="row"><span class="lab lall">All</span><span class="txt">We accept <b>what you already publish</b> — no re-encode on our side. Target <b>HLS, H.264 + AAC-LC</b>; 720p cap; ~6s segments.</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">Your live / looped HLS as-is.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">Each episode as <b>HLS on your origin (preferred)</b>, or an <b>MP4 hosted on your side at a direct URL</b>. <span class="note">MP4 is progressive — no ladder; HLS adapts down on low bandwidth, so it's better for long-form.</span></span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt">No content encode needed — only a short <b>promo VOD you host</b>.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>What player technology do you use?</span></div>
+    <div class="row"><span class="lab lall">All</span><span class="txt"><b>Web (wiom.tv PWA):</b> <span class="kbd">hls.js v1.5.7</span> for HLS, with native HLS fallback on Safari/iOS; HTML5 <span class="kbd">&lt;video&gt;</span> for MP4. &nbsp;<b>Android TV app:</b> AndroidX <b>Media3 ExoPlayer</b> (HLS + progressive MP4) with segment caching. Deliver H.264 + AAC and it plays on both — <b>no partner SDK required</b>.</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">Your live stream plays directly in both players.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">Your on-demand episodes play in the same players, behind the access layer.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt">Your promo VOD plays in the same <span class="kbd">&lt;video&gt;</span> / ExoPlayer surface, <b>per-user from t=0</b> — already our live pattern — then hands off to your app.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>What EPG format do you expect (XMLTV or proprietary), and how often must it update?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">Static "now-playing" title by default; supply <b>XMLTV</b> only if you want a richer guide — we don't generate one.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt"><b>No EPG</b> — a pack, not a linear guide. You supply title, poster, and episode list once.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>N/A</b> — it's a promo unit, no channel or guide.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>Is DRM / content protection required, or is unencrypted delivery fine given our FTA setup?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt"><b>Unencrypted</b>, like our existing FTA channels.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">The access layer is an <b>entitlement gate, not media DRM</b> — your stream stays clear. Apply <b>AES-128 at your origin</b> if you want media protection.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>N/A for us</b> — all playback and protection happen inside your app.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>Do you have a partner / channel-management API for scheduling updates, or is onboarding manual?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">One-time manual add; your feed updates flow through automatically because we pull.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">You manage the pack at your URL; no scheduling API to build.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt">The <b>handshake is the one-time integration</b>; swap the promo file at your URL and it's picked up automatically.</span></div>
+  </div>
+
+  <h3 class="grp">B · Playout Ownership</h3>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>For library / VOD content like Ayodhyatra that loops as a channel — would you handle playout &amp; scheduling, or would you like us to deliver an already-looped 24/7 feed?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt"><b>You deliver the already-looped 24/7 HLS feed;</b> we pull it. We don't build or run a looper.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt"><b>On-demand</b> — the "loop 24/7" problem disappears; viewers play episodes on demand from your hosting.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>N/A</b> — playout is entirely inside your app.</span></div>
+  </div>
+
+  <h3 class="grp">C · Commercial &amp; Operational</h3>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>Are there content / compliance guidelines specific to AI-generated content we should be aware of?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">You <b>self-certify</b> licensing / originality and carry the <b>"AI-generated" label</b> per India norms; devotional &amp; cultural sensitivity sits with you as the content owner.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">As O1, plus a <b>one-time content-policy sign-off</b> — no ongoing review pipeline on our side.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt">You self-certify; the <b>promo creative</b> meets ad norms; in-app content compliance is entirely yours.</span></div>
+  </div>
+
+  <div class="q assets">
+    <div class="qh"><span class="qmark">Q</span><span>What are your branding requirements for channel name, logo, and description — and exactly which assets do you need?</span></div>
+    <p class="lead" style="margin:2px 0 8px">You supply assets to our spec; <b>we place them — no design work on our side.</b> Requirements verified against the live web app, the Android app, and our demos:</p>
+    <div class="row"><span class="lab l1">O1</span><span class="txt"><b>Channel on Wiom TV</b>
+      <ul>
+        <li><b>Hosted HLS URL</b> (<span class="kbd">.m3u8</span>, the 24/7 feed)</li>
+        <li><b>Channel name</b> — ≤18 characters (the web banner shows it)</li>
+        <li><b>Category:</b> Devotional &nbsp;·&nbsp; <b>Language</b></li>
+        <li><b>Channel logo</b> (Android surface): transparent <b>PNG, landscape, min 720×540</b> (1280×720 preferred), &lt;200 KB — renders "fit" in a 150×88 tile and doubles as the Android-TV home poster. <span class="note">Web uses number + name only, no logo.</span></li>
+      </ul>
+    </span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt"><b>Sachet on Wiom TV</b>
+      <ul>
+        <li><b>Per-episode HLS</b> on your origin (preferred), or a <b>partner-hosted MP4</b> at a direct URL</li>
+        <li><b>Pack key-art:</b> 9:16 portrait, <b>1080×1920</b></li>
+        <li><b>Pack title</b> &nbsp;·&nbsp; <b>one-line hook</b> (~60 chars)</li>
+        <li><b>Episode list</b> — titles + order</li>
+      </ul>
+    </span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>Promo → Install Handshake</b>
+      <ul>
+        <li><b>Promo VOD hosted by you</b> — HLS-VOD <span class="kbd">.m3u8</span> or H.264/AAC MP4 at a direct / signed URL</li>
+        <li><b>Landscape hero:</b> 16:9, min <b>1280×720</b> (+ optional 9:16 portrait)</li>
+        <li><b>App name + app icon</b> &nbsp;·&nbsp; <b>Play Store link</b> &nbsp;·&nbsp; <b>CTA copy</b></li>
+        <li><b>Handshake parameters</b> — install-referrer token / deep-link scheme</li>
+      </ul>
+    </span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>Could you share rough current viewership and reach numbers so we can size our infrastructure and cost estimate?</span></div>
+    <div class="callout">We're <b>deliberately holding DAU down</b> while we get the product right — the platform isn't being promoted across our user base yet. <b>Please size for ~1,000 DAU / daily tune-ins, with concurrency well below that.</b> When we open it up further, <b>we'll give you a week's notice</b> to scale.</div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">Your origin serves our (currently capped) viewers.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">Your origin serves only viewers who unlock the pack — a smaller subset.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt">Promo impressions to that same capped audience, converting to installs handed to your app.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>What does a typical onboarding timeline look like for a new content partner?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt"><b>Days</b> — add URL + assets, QA, list.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt"><b>~1 week</b> — stand up the pack surface + access layer + assets.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>~1 week</b> — creative is fast; the handshake needs install-referrer / deep-link testing.</span></div>
+  </div>
+
+  <h3 class="grp">D · Operational</h3>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>Is there a staging or test environment to validate the feed before it goes live publicly?</span></div>
+    <div class="row"><span class="lab lall">All</span><span class="txt">We'll <b>provide a demo showing exactly how your listing (or promo) appears to customers</b>, for sign-off before it goes public. <b>O3</b> also includes a <b>test install handshake</b>.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>For ongoing updates, should we notify Wiom per update, or does your system pick up the latest schedule from our feed automatically?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt"><b>Auto</b> — we pull, so your hosted feed is the source of truth; changes appear with no notification workflow.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt"><b>Auto</b> — your hosted pack is the source of truth; add or change episodes at your URL and they appear.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt"><b>Auto</b> — the promo lives at your URL; replace the file to swap the creative; the handshake stays static.</span></div>
+  </div>
+
+  <div class="q">
+    <div class="qh"><span class="qmark">Q</span><span>Do you pre-screen or approve content before it airs, or does that responsibility sit entirely with us?</span></div>
+    <div class="row"><span class="lab l1">O1</span><span class="txt">Responsibility sits with you; we spot-check at listing.</span></div>
+    <div class="row"><span class="lab l2">O2</span><span class="txt">Responsibility sits with you; a <b>one-time sign-off</b> at listing rather than a per-update gate.</span></div>
+    <div class="row"><span class="lab l3">O3</span><span class="txt">Your app owns all content; we review only the <b>promo creative</b>, once.</span></div>
+  </div>
+
+  <div class="foot">
+    Wiom TV × Ayodhyatra · Partnership Models &amp; Technical Integration · Prepared 23 July 2026 ·
+    Specs verified against the live wiom.tv web app and the Wiom TV Android app.
+  </div>
+
+</div>
+</body>
+</html>

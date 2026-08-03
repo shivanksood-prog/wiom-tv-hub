@@ -1,0 +1,544 @@
+<title>How Wiom TV sorts channels — the ranking algorithm, in detail</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0; --grid:#E7E2EF;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --chosen:#6D17CE; --cold:#D9008D;
+    --ok:#008043; --ok-bg:#E1FAED;
+    --warn:#B45B00; --warn-bg:#FFE6CC;
+    --bad:#E01E00; --bad-bg:#FFE9E5;
+    --code-bg:#F1EDF7;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152; --grid:#3E3550;
+      --ink:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+      --accent:#F033AE; --accent-soft:rgba(217,0,141,.16);
+      --chosen:#9D5CFF; --cold:#F033AE;
+      --ok:#4ADE97; --ok-bg:rgba(0,128,67,.22);
+      --warn:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+      --bad:#FF7A66; --bad-bg:rgba(224,30,0,.18);
+      --code-bg:#2A2336;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152; --grid:#3E3550;
+    --ink:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+    --accent:#F033AE; --accent-soft:rgba(217,0,141,.16);
+    --chosen:#9D5CFF; --cold:#F033AE;
+    --ok:#4ADE97; --ok-bg:rgba(0,128,67,.22);
+    --warn:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+    --bad:#FF7A66; --bad-bg:rgba(224,30,0,.18);
+    --code-bg:#2A2336;
+  }
+  :root[data-theme="light"]{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0; --grid:#E7E2EF;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --chosen:#6D17CE; --cold:#D9008D;
+    --ok:#008043; --ok-bg:#E1FAED;
+    --warn:#B45B00; --warn-bg:#FFE6CC;
+    --bad:#E01E00; --bad-bg:#FFE9E5;
+    --code-bg:#F1EDF7;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); margin:0; padding:36px 20px 80px; line-height:1.6;
+    font-family:"Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;}
+  .wrap{max-width:980px; margin:0 auto; display:flex; flex-direction:column; gap:22px;}
+  .eyebrow{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  h1{font-size:30px; line-height:1.15; margin:6px 0 0; font-weight:800; letter-spacing:-.01em; text-wrap:balance;}
+  .lede{font-size:15.5px; color:var(--muted); max-width:66ch; margin-top:10px;}
+  .lede b{color:var(--ink); font-weight:600;}
+  h2{font-size:19px; margin:0; font-weight:700; letter-spacing:-.005em;}
+  h3{font-size:14.5px; margin:0; font-weight:700;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px;}
+  .sub{font-size:13px; color:var(--muted); margin:4px 0 0; max-width:74ch;}
+  p{margin:0;} .stack{display:flex; flex-direction:column; gap:14px;}
+  code{font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:12.5px;
+    background:var(--code-bg); padding:2px 6px; border-radius:5px;}
+  pre{background:var(--code-bg); border:1px solid var(--border); border-radius:9px; padding:14px 16px;
+    overflow-x:auto; margin:0;}
+  pre code{background:none; padding:0; font-size:12.5px; line-height:1.6;}
+  .k{color:var(--accent); font-weight:600;}
+
+  /* pipeline */
+  .pipe{display:flex; flex-direction:column; gap:12px; margin-top:16px;}
+  .stage{display:grid; grid-template-columns:34px 1fr; gap:14px; align-items:start;}
+  .stage .num{width:34px; height:34px; border-radius:9px; background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;}
+  .stage .body{padding-top:3px;}
+  .stage .body h3{margin-bottom:3px;}
+  .stage .body p{font-size:13.5px; color:var(--muted);}
+  .stage .body p b{color:var(--ink);}
+  .stage .out{font-size:12px; color:var(--faint); margin-top:5px;}
+  .stage .out code{font-size:11.5px;}
+
+  /* verdict pills */
+  .pill{display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700;
+    letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap;}
+  .pill.ok{background:var(--ok-bg); color:var(--ok);}
+  .pill.warn{background:var(--warn-bg); color:var(--warn);}
+  .pill.bad{background:var(--bad-bg); color:var(--bad);}
+
+  /* verdict cards */
+  .verds{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
+  @media (max-width:800px){.verds{grid-template-columns:1fr;}}
+  .verd{border:1px solid var(--border); border-radius:10px; padding:14px 16px; background:var(--subtle);}
+  .verd .top{display:flex; align-items:center; gap:8px; margin-bottom:8px;}
+  .verd p{font-size:12.8px; color:var(--muted);}
+  .verd p b{color:var(--ink);}
+  .verd .rule{font-size:11.5px; color:var(--faint); margin-top:8px; font-family:ui-monospace,Menlo,monospace;}
+
+  /* tables */
+  .tablebox{overflow-x:auto; margin-top:14px;}
+  table{border-collapse:collapse; width:100%; font-size:12.8px; font-variant-numeric:tabular-nums;}
+  th{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:700;
+    text-align:right; padding:8px 10px; border-bottom:2px solid var(--border); white-space:nowrap;}
+  th:first-child, th.l{text-align:left;}
+  td{padding:8px 10px; border-bottom:1px solid var(--grid); text-align:right; white-space:nowrap;}
+  td:first-child, td.l{text-align:left;}
+  td.name{font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+  tr.hero{background:var(--accent-soft);}
+  tr.hero td:first-child::after{content:" ← HERO"; color:var(--accent); font-size:10px; font-weight:800; letter-spacing:.06em;}
+  tr.dim td{color:var(--muted);}
+  .muted{color:var(--muted);} .faint{color:var(--faint);}
+
+  /* charts */
+  .chartbox{overflow-x:auto; margin-top:8px;}
+  .legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--muted); margin-top:12px; align-items:center;}
+  .legend .kk{display:inline-flex; align-items:center; gap:7px;}
+  .sw{width:11px; height:11px; border-radius:3px;}
+  svg text{font-family:inherit;}
+  .foot{font-size:12.5px; color:var(--faint); margin-top:12px; max-width:76ch; line-height:1.65;}
+
+  /* callouts */
+  .co{border-radius:10px; padding:15px 18px; font-size:13.5px; line-height:1.65;}
+  .co.bad{background:var(--bad-bg); border-left:4px solid var(--bad);}
+  .co.warn{background:var(--warn-bg); border-left:4px solid var(--warn);}
+  .co.ok{background:var(--ok-bg); border-left:4px solid var(--ok);}
+  .co b{font-weight:700;}
+  .co ul{margin:8px 0 0; padding-left:18px;} .co li{margin-bottom:6px;} .co li:last-child{margin-bottom:0;}
+
+  /* config */
+  .cfg{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:14px;}
+  .cfgi{background:var(--subtle); border-radius:8px; padding:10px 12px;}
+  .cfgi .v{font-size:17px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .cfgi .n{font-size:11px; color:var(--muted); margin-top:1px; font-family:ui-monospace,Menlo,monospace;}
+  .cfgi .d{font-size:11.5px; color:var(--faint); margin-top:4px; line-height:1.45;}
+
+  #tip{position:fixed; pointer-events:none; background:var(--ink); color:var(--bg); font-size:12px;
+    padding:7px 10px; border-radius:6px; opacity:0; transition:opacity .12s; z-index:20; max-width:260px;
+    font-variant-numeric:tabular-nums; line-height:1.5;}
+  @media (prefers-reduced-motion: reduce){#tip{transition:none}}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Wiom TV · Ranking algorithm v2 · <code>server.js → computePopulationPop()</code></div>
+    <h1>Two questions, two signals: how channels get ordered</h1>
+    <p class="lede">The old algorithm asked one question — <i>“who sticks around?”</i> — and used the answer for
+    everything. But a <b>guide</b> and a <b>landing</b> ask different things, and health was never asked about at all.
+    Every number on this page is live production data from the last 14 days.</p>
+  </header>
+
+  <!-- ═══ WHY ═══ -->
+  <section class="card">
+    <h2>What the old version got wrong</h2>
+    <p class="sub">Three failures, each observed in production — not hypothetical.</p>
+    <div class="stack" style="margin-top:14px">
+      <div class="co bad">
+        <b>1 · It never looked at whether a channel actually plays.</b> The code assumed errors would “bake in”
+        via short dwells. They didn’t. <b>Shemaroo Josh</b> held rank 1 in Entertainment with <b>10.7 errors per 100 tunes</b>
+        and a 51% start rate; <b>Hi Dost!</b> sat at rank 3 while half its viewers bailed inside 5 seconds. Appeal
+        outran brokenness.
+      </div>
+      <div class="co bad">
+        <b>2 · A coin-flip could outrank a fact.</b> Raw stick-rate treated <b>7 engaged out of 39</b> (The Movie Club,
+        17.9%) as better than <b>51 out of 347</b> (Bhojpuri Cinema, 14.7%). This is why the #1 channel churned daily.
+      </div>
+      <div class="co bad">
+        <b>3 · One score did two jobs.</b> The same number picked the guide order <i>and</i> the boot channel — but
+        “of those who <b>chose</b> this, who stuck?” is a different question from “of those <b>dropped</b> here cold,
+        who stuck?” They diverge sharply (see below), so one of the two jobs was always being done with the wrong number.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PIPELINE ═══ -->
+  <section class="card">
+    <h2>The pipeline</h2>
+    <p class="sub">Runs over a rolling <b>14-day</b> window, cached for <b>5 minutes</b>, recomputed live — so the order
+    tracks current reality and a recovered channel re-enters on its own.</p>
+    <div class="pipe">
+      <div class="stage"><div class="num">1</div><div class="body">
+        <h3>Build the catalog</h3>
+        <p>Channel → genre is derived from event history. Five channels found <b>dead in production</b> (zero successful
+        starts on real traffic) are dropped outright: Travelxp 4K, B4U Movies, B4U Kadak, 9X Jalwa, and a duplicate B4U Music.</p>
+        <div class="out">→ <code>byGenre{}</code></div>
+      </div></div>
+
+      <div class="stage"><div class="num">2</div><div class="body">
+        <h3>Judge health — three-valued, and condemnation requires proof</h3>
+        <p>Per channel, over the same window: <b>start-coverage</b> (<code>playback_start / tunes</code>) and
+        <b>error rate</b> (<code>playback_error / tunes</code>). A channel is only condemned when even the
+        <i>charitable</i> reading of its data is bad.</p>
+        <div class="out">→ <code>BROKEN</code> / <code>UNKNOWN</code> / <code>HEALTHY</code></div>
+      </div></div>
+
+      <div class="stage"><div class="num">3</div><div class="body">
+        <h3>Score for the <span style="color:var(--chosen)">guide</span> — stick-rate on <i>chosen</i> tunes</h3>
+        <p><code>engaged_users / tuners</code> (engaged = watched &gt; 30s), ranked by its <b>Wilson 95% lower bound</b>.
+        <b>Boot tunes are excluded</b> — a boot is not a choice. This is the pollution shield: whatever we land people
+        on can no longer drag its own guide rank around.</p>
+        <div class="out">→ <code>basePop[ch]</code></div>
+      </div></div>
+
+      <div class="stage"><div class="num">4</div><div class="body">
+        <h3>Score for the <span style="color:var(--cold)">landing</span> — first-impression hold</h3>
+        <p>A user’s <b>first-ever tune</b> to a channel: did it hold ≥30s? Every channel has a sample (it equals its
+        distinct tuner count). The hero of each genre is the best cold performer <i>among healthy channels</i>, needing
+        ≥30 first impressions to qualify. <b>Every landing we serve feeds back into this</b> — so a bad landing demotes itself.</p>
+        <div class="out">→ <code>heroByGenre[genre]</code></div>
+      </div></div>
+
+      <div class="stage"><div class="num">5</div><div class="body">
+        <h3>Assemble the order</h3>
+        <p>Within each genre: <code>score = basePop + 2 × (personal signal)</code>, then <b>BROKEN channels are pinned to
+        the bottom</b> — no amount of personal affinity can promote a channel with proven bad health into a visible slot.
+        Genres keep their existing slots in the flat list; only the channels inside them are resequenced.</p>
+        <div class="out">→ <code>{ order[], heroByGenre{}, algo:'v2' }</code></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ═══ HEALTH VERDICT ═══ -->
+  <section class="card">
+    <h2>Stage 2 in detail — you need evidence to condemn, not just to promote</h2>
+    <p class="sub">The small-sample trap cuts both ways. If a 4-tune channel with 1 error were judged on its raw 25%
+    error rate, we’d execute it on a single unlucky event. So the bar for condemning is the same as the bar for promoting:
+    statistical confidence.</p>
+    <div class="verds">
+      <div class="verd">
+        <div class="top"><span class="pill bad">Broken</span></div>
+        <p><b>Pinned to the bottom of its genre.</b> Enough evidence (≥20 tunes) <i>and</i> the charitable reading is
+        still bad: the <b>lower</b> bound of its error rate exceeds 5%, or the <b>upper</b> bound of its coverage falls
+        below 50%.</p>
+        <div class="rule">errLB &gt; 0.05 || covUB &lt; 0.50</div>
+      </div>
+      <div class="verd">
+        <div class="top"><span class="pill warn">Unknown</span></div>
+        <p><b>Explored mid-pack.</b> Thin data — the 4-tunes-1-error case. Can’t be condemned, can’t be a hero. Sits at
+        its genre’s median score, keeps accruing tunes, and graduates automatically as evidence arrives.</p>
+        <div class="rule">tunes &lt; 20, or bounds inconclusive</div>
+      </div>
+      <div class="verd">
+        <div class="top"><span class="pill ok">Healthy</span></div>
+        <p><b>Eligible to rank and to be a hero.</b> Enough evidence and it passes both thresholds outright. Only these
+        channels can hold a top slot or greet a brand-new user.</p>
+        <div class="rule">cov ≥ 0.50 &amp;&amp; err ≤ 0.05 &amp;&amp; n ≥ 20</div>
+      </div>
+    </div>
+    <p class="foot">In production this pins <b>20 of 35</b> Entertainment channels, <b>22 of 76</b> News, <b>13 of 30</b> Music,
+    and <b>4 of 12</b> Movies to the bottom of their genre. That sounds brutal, but it only reorders the tail — and it
+    matches reality: platform-wide start-coverage is about 51%.</p>
+  </section>
+
+  <!-- ═══ WILSON ═══ -->
+  <section class="card">
+    <h2>Stage 3 in detail — why we rank by the <i>lower bound</i></h2>
+    <p class="sub">A channel with 7 hits out of 39 might be brilliant, or it might be lucky. The Wilson lower bound asks:
+    “what’s the worst this could plausibly be?” — so a channel has to <b>earn</b> a top slot with volume, not luck.
+    Small samples get pulled toward zero; big samples barely move.</p>
+    <div class="chartbox"><svg id="wilson" viewBox="0 0 880 250" width="100%" role="img"
+      aria-label="Observed stick-rate versus Wilson lower bound. Small-sample channels lose most of their apparent rate."></svg></div>
+    <div class="legend">
+      <span class="kk"><span class="sw" style="background:var(--faint)"></span>Observed rate (what it looks like)</span>
+      <span class="kk"><span class="sw" style="background:var(--chosen)"></span>Wilson 95% lower bound (what we rank by)</span>
+    </div>
+    <p class="foot">Read the gap as the “luck penalty.” <b>The Movie Club</b> looks like a 14.6% channel on 41 viewers but
+    could plausibly be a 6.9% one — so it ranks as 6.9%. <b>Bhojpuri Cinema</b> claims 15.8% on 355 viewers and keeps 12.4%
+    of it. The apparent winner loses to the proven one, which is exactly the fix for the daily rank-1 churn.</p>
+  </section>
+
+  <!-- ═══ TWO SIGNALS ═══ -->
+  <section class="card">
+    <h2>Stage 4 in detail — the two questions really do have different answers</h2>
+    <p class="sub">For every channel: how it performs for people who <b>chose</b> it, versus for people meeting it for the
+    <b>first time</b>. If these were the same, one signal would do. They are not.</p>
+    <div class="chartbox"><svg id="diverge" viewBox="0 0 880 300" width="100%" role="img"
+      aria-label="Chosen stick-rate versus cold first-impression hold, by channel."></svg></div>
+    <div class="legend">
+      <span class="kk"><span class="sw" style="background:var(--chosen)"></span>Chosen — of people who picked it, who stuck</span>
+      <span class="kk"><span class="sw" style="background:var(--cold)"></span>Cold — of people meeting it first time, who stuck</span>
+    </div>
+    <p class="foot">Cold is <i>always</i> the harder test (a first impression is harder to win than a deliberate choice),
+    so the levels drop across the board — that’s expected and doesn’t matter. <b>What matters is that the ranking changes.</b>
+    <b>Aaj Tak HD</b> loses 9.4pp when forced on a stranger; <b>Bhojpuri Cinema</b> loses 6.4pp but still holds
+    <b>9.4%</b> of cold viewers — the best of any healthy Movies channel, which is exactly why it wins that landing slot.
+    Ranking heroes by the purple bar would have optimised the wrong thing.</p>
+  </section>
+
+  <!-- ═══ WORKED EXAMPLE ═══ -->
+  <section class="card">
+    <h2>Worked example — the entire Movies genre, live</h2>
+    <p class="sub">Every column the algorithm actually looks at, and the decision it reaches. <span class="muted">Sorted
+    by final guide position. Hover a row for the reasoning.</span></p>
+    <div class="tablebox">
+      <table>
+        <thead>
+          <tr>
+            <th class="l">#</th><th class="l">Channel</th><th class="l">Verdict</th>
+            <th>Coverage</th><th>Err/tune</th>
+            <th>Chosen</th><th>Wilson LB</th>
+            <th>Cold</th><th>Cold LB</th><th>Cold n</th>
+          </tr>
+        </thead>
+        <tbody id="movies"></tbody>
+      </table>
+    </div>
+    <p class="foot"><b>Read the top three.</b> <span style="color:var(--ok)">Bhojpuri Cinema</span> is healthy, proven on
+    volume, and the best cold performer — it takes both rank 1 and the landing slot. <b>Goldmines</b> has the genre’s best
+    cold hold (14.6%) and the best chosen rate (19.4%) — and still <b>cannot be the hero</b>, because at 6.9 errors per
+    100 tunes and 62% coverage it fails the health gate. It is the clearest illustration of the whole design: a top slot is a
+    promise to a stranger, and a channel that breaks 1 in 14 times cannot make that promise. The fix for Goldmines is
+    fixing its stream, not softening the gate.</p>
+  </section>
+
+  <!-- ═══ COLD START ═══ -->
+  <section class="card">
+    <h2>The cold-start problem — and the rich-get-richer trap</h2>
+    <p class="sub">The catalog is built from event history. So a channel we <i>just added</i> has zero events and is
+    invisible to the server.</p>
+    <div class="co warn" style="margin-top:14px">
+      <b>The trap:</b> if unseen channels were sorted to the bottom (the obvious implementation), they would never be
+      tuned, would never earn events, and would stay buried <i>forever</i>. New content could never break in.
+      <br><br>
+      <b>The fix:</b> a channel the server has never seen is placed at its genre’s <b>median</b> slot, not last — mid-pack,
+      where it accrues the data that lets the algorithm judge it. This mirrors the <span class="pill warn">Unknown</span>
+      exploration tier on the server side. Ignorance is treated as ignorance, never as guilt.
+    </div>
+  </section>
+
+  <!-- ═══ SELF-CORRECTION ═══ -->
+  <section class="card">
+    <h2>Why a bad landing fixes itself</h2>
+    <p class="sub">The landing is not a one-way bet — it is a feedback loop, and this is the cushion that makes it safe to try.</p>
+    <div class="co ok" style="margin-top:14px">
+      Every user we land on a channel becomes one of its <b>first impressions</b>. If they bail before 30 seconds, that
+      is a miss in the denominator and nothing in the numerator — the channel’s cold score falls, its Wilson lower bound
+      falls, and it <b>demotes itself out of the hero slot</b> for the next user.
+      <br><br>
+      At the volume a landing arm generates against a channel’s existing sample, a genuinely wrong pick corrects itself in
+      <b>days, not at the end of the experiment</b>. The Wilson lower bound is what stops it whipsawing the other way on
+      one unlucky afternoon.
+      <br><br>
+      <b>What does not self-correct is the person who bounced.</b> The population learns; that user is gone. That is the
+      real cost of a bad landing, and the reason the experiment still has an early look and a hard control arm.
+    </div>
+  </section>
+
+  <!-- ═══ CONFIG ═══ -->
+  <section class="card">
+    <h2>Every knob, and what it buys</h2>
+    <div class="cfg">
+      <div class="cfgi"><div class="v">30<span class="faint" style="font-size:12px">s</span></div><div class="n">X</div>
+        <div class="d">Watch this long = “engaged”</div></div>
+      <div class="cfgi"><div class="v">14<span class="faint" style="font-size:12px">d</span></div><div class="n">WIN</div>
+        <div class="d">Rolling window — old behaviour ages out</div></div>
+      <div class="cfgi"><div class="v">5<span class="faint" style="font-size:12px">min</span></div><div class="n">TTL_MS</div>
+        <div class="d">Cache; the whole thing recomputes live</div></div>
+      <div class="cfgi"><div class="v">30</div><div class="n">TUNE_MIN</div>
+        <div class="d">Tunes before a channel’s own rate counts <span class="faint">(was 10)</span></div></div>
+      <div class="cfgi"><div class="v">8</div><div class="n">TUNER_MIN</div>
+        <div class="d">Distinct people — one binge-watcher can’t rank a channel</div></div>
+      <div class="cfgi"><div class="v">0.50</div><div class="n">START_COV_MIN</div>
+        <div class="d">Must actually render a frame half the time</div></div>
+      <div class="cfgi"><div class="v">0.05</div><div class="n">ERR_MAX</div>
+        <div class="d">≤5 errors per 100 tunes</div></div>
+      <div class="cfgi"><div class="v">20</div><div class="n">HEALTH_MIN_TUNES</div>
+        <div class="d">Evidence needed before any health verdict</div></div>
+      <div class="cfgi"><div class="v">30</div><div class="n">COLD_MIN</div>
+        <div class="d">First impressions before a channel can be a hero</div></div>
+      <div class="cfgi"><div class="v">2</div><div class="n">K</div>
+        <div class="d">Weight on the personal signal (unchanged)</div></div>
+    </div>
+    <p class="foot"><b>Thresholds are judgment calls, not fitted constants.</b> Deliberately strict-first: loosening later
+    quietly <i>promotes</i> channels (harmless), while tightening later <i>demotes</i> them (visible churn for users). At
+    <code>ERR_MAX 0.08</code>, Goldmines and Zee Horror Nights would pass; at <code>START_COV_MIN 0.40</code>, 9XM would.
+    Those are one-line changes when the streams get fixed.</p>
+  </section>
+
+  <!-- ═══ LIMITS ═══ -->
+  <section class="card">
+    <h2>What it deliberately does <i>not</i> do</h2>
+    <div class="stack" style="margin-top:12px">
+      <div class="co warn">
+        <b>Known limitations — the honest list.</b>
+        <ul>
+          <li><b>Start-coverage has a zap bias.</b> A user who flips away before the first frame looks the same as a failed
+          start. Mitigated by keeping the floor low (0.5, well under the 0.6–0.9 of healthy channels) and by the error rate,
+          which has no such bias — but it is not a clean measurement.</li>
+          <li><b>Time-to-first-frame is not used.</b> We log it, but it only exists for tunes that <i>succeeded</i>
+          (~51%) — a survivor-biased number would punish the wrong channels. It needs a <code>playback_giveup</code>
+          event before it can be trusted.</li>
+          <li><b>No personalisation of the landing.</b> The personal signal needs history, and a brand-new user has none.
+          The landing is deliberately a population-level bet.</li>
+          <li><b>Thin heroes are possible.</b> DD National HD currently wins Entertainment’s cold slot on just 54 first
+          impressions (13.0%, lower bound 6.4% — a hair above Dangal TV’s 5.7%). Defensible, but thin. This is precisely why
+          the experiment’s control arm is <b>pinned to today’s boot channel</b> rather than to a floating hero.</li>
+          <li><b>It is not “bug-free.”</b> It is health-aware, small-sample-safe, self-correcting, and covered by 38 automated
+          checks. That is a different and more honest claim.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    Source: <code>server.js → computePopulationPop()</code> + <code>/api/order</code> · client applies the order in
+    <code>_applyOrder()</code> · full contract in <code>spec_5_ordering_algo.md</code> ·
+    all figures are live production data, 14-day window, generated 2026-07-13 ·
+    ⚠ this ships in <code>server.js</code> — it is dead code until <code>reload-wiom-tv</code> runs.
+  </footer>
+</div>
+
+<div id="tip" role="status"></div>
+
+<script>
+(function(){
+  var css = getComputedStyle(document.documentElement);
+  var tok = function(n){ return css.getPropertyValue(n).trim(); };
+  var tip = document.getElementById('tip');
+  function show(e, html){
+    tip.innerHTML = html; tip.style.opacity = 1;
+    tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 275) + 'px';
+    tip.style.top = (e.clientY + 16) + 'px';
+  }
+  function hide(){ tip.style.opacity = 0; }
+  function S(t, a, p){ var el = document.createElementNS('http://www.w3.org/2000/svg', t);
+    for (var k in a) el.setAttribute(k, a[k]); if (p) p.appendChild(el); return el; }
+
+  /* ---------- live Movies decision table ---------- */
+  var MOVIES = [
+    {r:1, n:'Bhojpuri Cinema', lang:'Bhojpuri', v:'HEALTHY', cov:0.80, err:0.021, ch:15.8, chlb:12.4, cold:9.4, coldlb:6.9, cn:395, hero:true},
+    {r:2, n:'Alankar TV',      lang:'Hindi',    v:'UNKNOWN', cov:0.81, err:0.063, ch:2.0,  chlb:0.4,  cold:0.0, coldlb:0.0, cn:53},
+    {r:3, n:'Goldmines',       lang:'Hindi',    v:'UNKNOWN', cov:0.62, err:0.069, ch:19.4, chlb:14.9, cold:14.6, coldlb:10.8, cn:260},
+    {r:4, n:'Maha Movie',      lang:'Hindi',    v:'UNKNOWN', cov:0.66, err:0.057, ch:1.7,  chlb:0.3,  cold:1.6, coldlb:0.3, cn:64},
+    {r:5, n:'South Station',   lang:'Hindi',    v:'UNKNOWN', cov:0.61, err:0.061, ch:15.6, chlb:7.7,  cold:14.0, coldlb:7.0, cn:50},
+    {r:6, n:'The Movie Club',  lang:'Hindi',    v:'UNKNOWN', cov:0.62, err:0.062, ch:14.6, chlb:6.9,  cold:7.0, coldlb:2.4, cn:43},
+    {r:7, n:'The Movie Club +2',lang:'Hindi',   v:'UNKNOWN', cov:0.70, err:0.082, ch:16.7, chlb:8.3,  cold:11.1, coldlb:4.8, cn:45},
+    {r:8, n:'Studio One +',    lang:'Hindi',    v:'HEALTHY', cov:0.58, err:0.048, ch:5.7,  chlb:1.9,  cold:0.0, coldlb:0.0, cn:62},
+    {r:9, n:'ZB Cinema',       lang:'Hindi',    v:'BROKEN',  cov:0.37, err:0.102, ch:10.2, chlb:6.9,  cold:5.8, coldlb:3.6, cn:257},
+    {r:10,n:'Shemaroo Marathi Bana', lang:'Marathi', v:'BROKEN', cov:0.46, err:0.038, ch:7.2, chlb:4.6, cold:4.8, coldlb:2.8, cn:290},
+    {r:11,n:'Goldmines 2',     lang:'Hindi',    v:'BROKEN',  cov:0.55, err:0.082, ch:15.5, chlb:11.0, cold:10.3, coldlb:7.0, cn:224},
+    {r:12,n:'Oscar Movies Bhojpuri', lang:'Bhojpuri', v:'BROKEN', cov:0.58, err:0.120, ch:10.8, chlb:4.3, cold:6.5, coldlb:2.2, cn:46}
+  ];
+  var PILL = { HEALTHY:'ok', UNKNOWN:'warn', BROKEN:'bad' };
+  var WHY = {
+    HEALTHY: 'Passes both thresholds on enough evidence — can rank and can be a hero.',
+    UNKNOWN: 'Cannot be confidently condemned, but does not clear the bar either → explored at the genre median. Never a hero.',
+    BROKEN:  'Even the charitable reading of its data is bad → pinned to the bottom of the genre.'
+  };
+  var tb = document.getElementById('movies');
+  MOVIES.forEach(function(m){
+    var tr = document.createElement('tr');
+    if (m.hero) tr.className = 'hero';
+    else if (m.v === 'BROKEN') tr.className = 'dim';
+    tr.innerHTML =
+      '<td class="l faint">' + m.r + '</td>' +
+      '<td class="l name">' + m.n + ' <span class="faint" style="font-weight:400">· ' + m.lang + '</span></td>' +
+      '<td class="l"><span class="pill ' + PILL[m.v] + '">' + m.v + '</span></td>' +
+      '<td' + (m.cov < 0.5 ? ' style="color:var(--bad);font-weight:700"' : '') + '>' + m.cov.toFixed(2) + '</td>' +
+      '<td' + (m.err > 0.05 ? ' style="color:var(--bad);font-weight:700"' : '') + '>' + m.err.toFixed(3) + '</td>' +
+      '<td class="muted">' + m.ch.toFixed(1) + '%</td>' +
+      '<td style="font-weight:700">' + m.chlb.toFixed(1) + '%</td>' +
+      '<td class="muted">' + m.cold.toFixed(1) + '%</td>' +
+      '<td style="font-weight:700;color:var(--cold)">' + m.coldlb.toFixed(1) + '%</td>' +
+      '<td class="faint">' + m.cn + '</td>';
+    tr.addEventListener('mousemove', function(e){
+      show(e, '<b>' + m.n + '</b><br>' + WHY[m.v] +
+        (m.hero ? '<br><br><b>Landing hero:</b> best cold performer among healthy channels.' : '') +
+        (m.v === 'UNKNOWN' && m.cold > 12 ? '<br><br><b>Note:</b> best cold hold in the genre — but fails the health gate, so it can never take the slot.' : ''));
+    });
+    tr.addEventListener('mouseleave', hide);
+    tb.appendChild(tr);
+  });
+
+  /* ---------- Wilson chart ---------- */
+  var W = [
+    {n:'The Movie Club',  obs:14.6, lb:6.9,  users:41,   note:'6 of 41 — could plausibly be a 6.9% channel'},
+    {n:'South Station',   obs:15.6, lb:7.7,  users:45,   note:'7 of 45 — thin'},
+    {n:'DD National HD',  obs:19.1, lb:10.4, users:47,   note:'9 of 47 — thin, but healthy'},
+    {n:'Goldmines',       obs:19.4, lb:14.9, users:242,  note:'47 of 242 — well evidenced (but fails health)'},
+    {n:'Bhojpuri Cinema', obs:15.8, lb:12.4, users:355,  note:'56 of 355 — proven on volume'},
+    {n:'Dangal TV',       obs:12.7, lb:11.2, users:1753, note:'222 of 1753 — barely penalised'}
+  ];
+  (function(){
+    var svg = document.getElementById('wilson');
+    var m = {l:130, r:70, t:16, b:34}, w=880, h=250, max=24;
+    var x = function(v){ return m.l + (w-m.l-m.r) * (v/max); };
+    var rowH = (h-m.t-m.b) / W.length;
+    [0,5,10,15,20].forEach(function(v){
+      S('line', {x1:x(v), x2:x(v), y1:m.t, y2:h-m.b, stroke:tok('--grid'), 'stroke-width':1}, svg);
+      S('text', {x:x(v), y:h-m.b+18, 'text-anchor':'middle', 'font-size':11, fill:tok('--faint')}, svg).textContent = v+'%';
+    });
+    W.forEach(function(d, i){
+      var y = m.t + rowH*i + rowH/2;
+      S('text', {x:m.l-12, y:y+4, 'text-anchor':'end', 'font-size':12, fill:tok('--ink'), 'font-weight':600}, svg).textContent = d.n;
+      // luck-penalty span
+      S('line', {x1:x(d.lb), x2:x(d.obs), y1:y, y2:y, stroke:tok('--grid'), 'stroke-width':6, 'stroke-linecap':'round'}, svg);
+      S('circle', {cx:x(d.obs), cy:y, r:5, fill:tok('--faint')}, svg);
+      S('circle', {cx:x(d.lb), cy:y, r:6.5, fill:tok('--chosen'), stroke:tok('--card'), 'stroke-width':2}, svg);
+      S('text', {x:x(d.obs)+12, y:y+4, 'font-size':11.5, fill:tok('--muted'), 'font-variant-numeric':'tabular-nums'}, svg)
+        .textContent = 'n=' + d.users;
+      var hit = S('rect', {x:m.l, y:y-rowH/2, width:w-m.l-m.r, height:rowH, fill:'transparent'}, svg);
+      hit.addEventListener('mousemove', function(e){
+        show(e, '<b>'+d.n+'</b><br>Observed '+d.obs.toFixed(1)+'% → ranked as <b>'+d.lb.toFixed(1)+'%</b><br>'+d.note);
+      });
+      hit.addEventListener('mouseleave', hide);
+    });
+  })();
+
+  /* ---------- divergence chart ---------- */
+  var D = [
+    {n:'Aaj Tak HD',      chosen:26.1, cold:16.7, v:'HEALTHY'},
+    {n:'Goldmines',       chosen:19.4, cold:14.6, v:'UNKNOWN'},
+    {n:'Bhojpuri Cinema', chosen:15.8, cold:9.4,  v:'HEALTHY'},
+    {n:'9X Jhakaas',      chosen:13.0, cold:7.2,  v:'HEALTHY'},
+    {n:'Dangal TV',       chosen:12.7, cold:6.5,  v:'HEALTHY'},
+    {n:'Zee Cine Classic',chosen:11.5, cold:6.1,  v:'HEALTHY'},
+    {n:'PTC Music',       chosen:7.5,  cold:2.6,  v:'HEALTHY'}
+  ];
+  (function(){
+    var svg = document.getElementById('diverge');
+    var m = {l:130, r:24, t:16, b:38}, w=880, h=300, max=28;
+    var x = function(v){ return m.l + (w-m.l-m.r) * (v/max); };
+    var rowH = (h-m.t-m.b) / D.length;
+    [0,5,10,15,20,25].forEach(function(v){
+      S('line', {x1:x(v), x2:x(v), y1:m.t, y2:h-m.b, stroke:tok('--grid'), 'stroke-width':1}, svg);
+      S('text', {x:x(v), y:h-m.b+20, 'text-anchor':'middle', 'font-size':11, fill:tok('--faint')}, svg).textContent = v+'%';
+    });
+    S('text', {x:(m.l + w-m.r)/2, y:h-6, 'text-anchor':'middle', 'font-size':11, fill:tok('--muted')}, svg)
+      .textContent = 'share who watched > 30 seconds';
+    D.forEach(function(d, i){
+      var y = m.t + rowH*i, bh = 9, gap = 2;
+      S('text', {x:m.l-12, y:y+rowH/2+4, 'text-anchor':'end', 'font-size':12, fill:tok('--ink'), 'font-weight':600}, svg).textContent = d.n;
+      var y1 = y + rowH/2 - bh - gap/2, y2 = y + rowH/2 + gap/2;
+      S('rect', {x:m.l, y:y1, width:Math.max(2,x(d.chosen)-m.l), height:bh, rx:3, fill:tok('--chosen')}, svg);
+      S('rect', {x:m.l, y:y2, width:Math.max(2,x(d.cold)-m.l), height:bh, rx:3, fill:tok('--cold')}, svg);
+      S('text', {x:x(d.chosen)+7, y:y1+bh-0.5, 'font-size':11, fill:tok('--muted'), 'font-variant-numeric':'tabular-nums'}, svg)
+        .textContent = d.chosen.toFixed(1)+'%';
+      S('text', {x:x(d.cold)+7, y:y2+bh-0.5, 'font-size':11, fill:tok('--muted'), 'font-variant-numeric':'tabular-nums'}, svg)
+        .textContent = d.cold.toFixed(1)+'%';
+      var hit = S('rect', {x:m.l, y:y, width:w-m.l-m.r, height:rowH, fill:'transparent'}, svg);
+      hit.addEventListener('mousemove', function(e){
+        show(e, '<b>'+d.n+'</b><br>Chosen: '+d.chosen.toFixed(1)+'%<br>Cold: <b>'+d.cold.toFixed(1)+'%</b><br>'+
+          'Drop when forced on a stranger: <b>'+(d.cold-d.chosen).toFixed(1)+'pp</b>');
+      });
+      hit.addEventListener('mouseleave', hide);
+    });
+  })();
+})();
+</script>

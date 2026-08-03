@@ -1,0 +1,422 @@
+<title>fse_v2 — the genre-landing experiment, explained</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0; --grid:#E7E2EF;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --le:#B08A1E; --ln:#3E6FA8; --lm:#D9008D; --lu:#6D17CE;
+    --good-fg:#008043; --good-bg:#E1FAED;
+    --warn-fg:#B45B00; --warn-bg:#FFE6CC;
+    --bad-fg:#E01E00;  --bad-bg:#FFE9E5;
+    --info-fg:#6D17CE; --info-bg:#F1E5FF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152; --grid:#3E3550;
+      --ink:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+      --accent:#F033AE; --accent-soft:rgba(217,0,141,.16);
+      --le:#A8821F; --ln:#4E88C6; --lm:#F033AE; --lu:#9D5CFF;
+      --good-fg:#4ADE97; --good-bg:rgba(0,128,67,.22);
+      --warn-fg:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+      --bad-fg:#FF7A66;  --bad-bg:rgba(224,30,0,.18);
+      --info-fg:#C9A2FF; --info-bg:rgba(109,23,206,.22);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152; --grid:#3E3550;
+    --ink:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+    --accent:#F033AE; --accent-soft:rgba(217,0,141,.16);
+    --le:#A8821F; --ln:#4E88C6; --lm:#F033AE; --lu:#9D5CFF;
+    --good-fg:#4ADE97; --good-bg:rgba(0,128,67,.22);
+    --warn-fg:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+    --bad-fg:#FF7A66;  --bad-bg:rgba(224,30,0,.18);
+    --info-fg:#C9A2FF; --info-bg:rgba(109,23,206,.22);
+  }
+  :root[data-theme="light"]{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0; --grid:#E7E2EF;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --le:#B08A1E; --ln:#3E6FA8; --lm:#D9008D; --lu:#6D17CE;
+    --good-fg:#008043; --good-bg:#E1FAED;
+    --warn-fg:#B45B00; --warn-bg:#FFE6CC;
+    --bad-fg:#E01E00;  --bad-bg:#FFE9E5;
+    --info-fg:#6D17CE; --info-bg:#F1E5FF;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink); margin:0; padding:36px 20px 72px;
+    font-family:"Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:22px;}
+  .eyebrow{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  h1{font-size:30px; line-height:1.15; margin:6px 0 0; font-weight:800; text-wrap:balance; letter-spacing:-.01em;}
+  .lede{font-size:15.5px; color:var(--muted); max-width:64ch; margin-top:10px;}
+  .lede b{color:var(--ink); font-weight:600;}
+  h2{font-size:17px; font-weight:700; margin:0;}
+  h3{font-size:14px; font-weight:700; margin:0;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px;}
+  .sub{font-size:13px; color:var(--muted); margin:3px 0 0; max-width:70ch;}
+  p{margin:0;}
+  .sect-eyebrow{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); font-weight:700; margin-bottom:4px;}
+
+  /* hero stat strip */
+  .hero{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:18px; align-items:stretch;}
+  @media (max-width:760px){.hero{grid-template-columns:1fr;}}
+  .stat{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 20px;}
+  .stat .n{font-size:34px; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-.02em;}
+  .stat .n small{font-size:16px; font-weight:700; color:var(--muted);}
+  .stat .l{font-size:13px; color:var(--muted); margin-top:4px; max-width:36ch;}
+  .stat.accent{border-left:4px solid var(--accent);}
+
+  /* flow diagram */
+  .flow{display:flex; flex-direction:column; gap:0; margin-top:16px;}
+  .flow-top{display:flex; justify-content:center;}
+  .node{background:var(--subtle); border:1px solid var(--border); border-radius:8px;
+        padding:8px 16px; font-size:13px; font-weight:600; text-align:center;}
+  .node .d{display:block; font-weight:400; font-size:11.5px; color:var(--muted);}
+  .flow-stem{display:flex; justify-content:center;}
+  .flow-stem span{width:2px; height:18px; background:var(--border);}
+  .flow-arms{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  @media (max-width:760px){.flow-arms{grid-template-columns:1fr 1fr;}}
+  .armnode{border-radius:8px; padding:10px 12px; font-size:12.5px; border:1px solid var(--border);
+           border-top:4px solid var(--c); background:var(--card);}
+  .armnode b{font-size:13px;}
+  .armnode .pct{float:right; color:var(--muted); font-variant-numeric:tabular-nums;}
+  .armnode .boots{display:block; margin-top:3px; color:var(--muted);}
+  .flow-note{font-size:12.5px; color:var(--muted); margin-top:12px; max-width:70ch;}
+
+  /* arm cards */
+  .arms{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:760px){.arms{grid-template-columns:1fr;}}
+  .arm{background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden;}
+  .arm header{padding:13px 18px 11px; border-bottom:1px solid var(--border);
+              display:flex; align-items:baseline; gap:10px; border-top:5px solid var(--c);}
+  .arm header .tag{font-size:11px; font-weight:800; letter-spacing:.08em; color:var(--c);}
+  .arm header h3{font-size:16px;}
+  .arm header .base{margin-left:auto; font-size:10.5px; font-weight:700; letter-spacing:.06em;
+                    text-transform:uppercase; background:var(--subtle); color:var(--muted);
+                    padding:3px 9px; border-radius:999px;}
+  .arm .body{padding:14px 18px 17px; display:flex; flex-direction:column; gap:10px;}
+  .arm .hyp{font-size:13.5px;}
+  .arm .hyp b{font-weight:700;}
+  .boot{font-size:12.5px; background:var(--subtle); border-radius:7px; padding:8px 11px; color:var(--muted);}
+  .boot b{color:var(--ink);}
+  .obs{display:flex; gap:8px; flex-wrap:wrap;}
+  .obs span{font-size:11.5px; background:var(--subtle); border-radius:999px; padding:4px 10px;
+            color:var(--muted); font-variant-numeric:tabular-nums;}
+  .obs span b{color:var(--ink); font-weight:700;}
+
+  /* dwell chart */
+  .chart{margin-top:14px;}
+  .crow{display:grid; grid-template-columns:118px 1fr 74px; gap:12px; align-items:center; margin-bottom:9px;}
+  .crow .cl{font-size:12.5px; color:var(--muted); text-align:right;}
+  .crow .cl b{color:var(--ink); font-weight:600;}
+  .ctrack{position:relative; height:18px;}
+  .cbar{position:absolute; inset:0 auto 0 0; border-radius:0 4px 4px 0; background:var(--c); min-width:3px;}
+  .crow .cv{font-size:12.5px; font-variant-numeric:tabular-nums; color:var(--ink); font-weight:600;}
+  .chart-foot{font-size:12px; color:var(--faint); margin-top:10px; max-width:72ch;}
+
+  /* measurement table */
+  .tablebox{overflow-x:auto; margin-top:14px;}
+  table{border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums;}
+  th{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:700;
+     text-align:left; padding:8px 12px 8px 0; border-bottom:2px solid var(--border);}
+  td{padding:9px 12px 9px 0; border-bottom:1px solid var(--grid); vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td:first-child{font-weight:600; white-space:nowrap;}
+  td .why{display:block; font-size:12px; color:var(--muted); font-weight:400; margin-top:2px; max-width:52ch;}
+  .role{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+        padding:3px 9px; border-radius:999px; white-space:nowrap;}
+  .role.primary{background:var(--accent-soft); color:var(--accent);}
+  .role.secondary{background:var(--info-bg); color:var(--info-fg);}
+  .role.guard{background:var(--warn-bg); color:var(--warn-fg);}
+
+  /* timeline */
+  .tl{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
+  @media (max-width:760px){.tl{grid-template-columns:1fr;}}
+  .tl .step{background:var(--subtle); border-radius:10px; padding:14px 16px; position:relative;}
+  .tl .step .day{font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);}
+  .tl .step h3{margin-top:4px;}
+  .tl .step p{font-size:12.5px; color:var(--muted); margin-top:6px;}
+  .tl .step p b{color:var(--ink);}
+
+  /* decision table */
+  .scen td:first-child{white-space:normal; font-weight:400; font-size:13px;}
+  .scen td:last-child{font-weight:600;}
+
+  /* callouts */
+  .co{border-radius:10px; padding:14px 18px; font-size:13.5px;}
+  .co.warn{background:var(--warn-bg); color:var(--ink); border-left:4px solid var(--warn-fg);}
+  .co.info{background:var(--info-bg); color:var(--ink); border-left:4px solid var(--info-fg);}
+  .co b{font-weight:700;}
+  .co ul{margin:8px 0 0; padding-left:18px;}
+  .co li{margin-bottom:6px;}
+  .co li:last-child{margin-bottom:0;}
+
+  /* story strip */
+  .story{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px;}
+  @media (max-width:760px){.story{grid-template-columns:1fr;}}
+  .beat{background:var(--subtle); border-radius:10px; padding:13px 15px;}
+  .beat .when{font-size:10.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);}
+  .beat h3{margin-top:3px; font-size:13.5px;}
+  .beat p{font-size:12.5px; color:var(--muted); margin-top:5px;}
+
+  .foot{font-size:12px; color:var(--faint); line-height:1.7;}
+  .foot code{background:var(--subtle); border-radius:4px; padding:1px 6px; font-size:11.5px;}
+  #tip{position:fixed; pointer-events:none; background:var(--ink); color:var(--bg); font-size:12px;
+       padding:6px 10px; border-radius:6px; opacity:0; transition:opacity .12s; z-index:10;
+       max-width:280px; font-variant-numeric:tabular-nums;}
+  @media (prefers-reduced-motion: reduce){ #tip{transition:none;} }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Wiom TV · Experiment brief · fse_v2</div>
+    <h1>Where should a first session land? Four genres go head-to-head.</h1>
+    <p class="lede">Every new wiom.tv visitor boots into the same hardcoded channel. fse_v2 randomizes that one decision —
+    the <b>landing genre</b> — across four equal cohorts, on top of a health-gated channel ranking that ships to everyone.
+    Nothing else differs between arms. One pre-registered metric decides it.</p>
+  </header>
+
+  <!-- ═══ WHY ═══ -->
+  <div class="hero">
+    <div class="stat accent">
+      <div class="n">87<small>%</small></div>
+      <div class="l">of first tunes land on Entertainment — not by preference, but because channel 2 is hardcoded. The landing has never been a choice.</div>
+    </div>
+    <div class="stat">
+      <div class="n">100<small>%</small></div>
+      <div class="l">of users experience the boot channel. fse_v1's guide reorder only touched users who browsed — and moved nothing.</div>
+    </div>
+    <div class="stat">
+      <div class="n">3.3<small>×</small></div>
+      <div class="l">Movies' new-user dwell vs Entertainment (63s vs 19s) — observational, self-selected. Exactly what randomization resolves.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MECHANICS ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">Mechanics</div>
+    <h2>One hash, four sticky cohorts, one changed variable</h2>
+    <p class="sub">New users only. Existing users keep their current boot channel and are excluded from analysis
+    (they do get the new ranking — it ships globally). Assignment is client-side, deterministic, and auditable:
+    the hub recomputes every user's hash and flags mismatches.</p>
+    <div class="flow">
+      <div class="flow-top"><div class="node">new uid arrives<span class="d">hash(uid + '|fse_v2') % 4 → sticky forever</span></div></div>
+      <div class="flow-stem"><span></span></div>
+      <div class="flow-arms">
+        <div class="armnode" style="--c:var(--le)"><b>LE</b> <span class="pct">25%</span><span class="boots">lands on <b>Entertainment</b></span></div>
+        <div class="armnode" style="--c:var(--ln)"><b>LN</b> <span class="pct">25%</span><span class="boots">lands on <b>News</b></span></div>
+        <div class="armnode" style="--c:var(--lm)"><b>LM</b> <span class="pct">25%</span><span class="boots">lands on <b>Movies</b></span></div>
+        <div class="armnode" style="--c:var(--lu)"><b>LU</b> <span class="pct">25%</span><span class="boots">lands on <b>Music</b></span></div>
+      </div>
+      <p class="flow-note">Each arm boots into its genre's <b>hero</b> — the top channel that is verifiably healthy
+      (≥50% start-coverage, ≤5% errors/tune, enough data to be confident) and popular by Wilson-bounded stick-rate.
+      The <b>genre</b> is what's randomized; the hero channel floats with the data. If a genre has no healthy channel
+      at boot, the session falls back to Entertainment and logs itself (guardrail: &lt;5%).
+      After the first channel, the four arms are pixel-identical.</p>
+    </div>
+  </section>
+
+  <!-- ═══ ARMS ═══ -->
+  <section>
+    <div class="sect-eyebrow" style="margin:0 4px 10px">The four arms — each is a hypothesis about what hooks a cold visitor</div>
+    <div class="arms">
+      <div class="arm" style="--c:var(--le)">
+        <header><span class="tag">LE</span><h3>Entertainment</h3><span class="base">Baseline</span></header>
+        <div class="body">
+          <p class="hyp"><b>The incumbent.</b> Hindi serials and general entertainment — what everyone lands on today. Every other arm is judged against this.</p>
+          <div class="boot">Boots into: <b>Dangal TV</b> — 12.4% stick-rate on n=3,645, the platform's strongest volume-backed channel.</div>
+          <div class="obs"><span>watch share <b>81%</b></span><span>new-user dwell <b>19s</b></span><span>user conv <b>11.8%</b></span></div>
+        </div>
+      </div>
+      <div class="arm" style="--c:var(--ln)">
+        <header><span class="tag">LN</span><h3>News</h3></header>
+        <div class="body">
+          <p class="hyp"><b>The conversion story.</b> News converts its visitors best of any genre on both measures — but they come with intent. Does that survive being <i>assigned</i>?</p>
+          <div class="boot">Boots into: <b>Aaj Tak HD</b> — 28.9% stick-rate, 85% start-coverage. The one channel that is both loved and healthy.</div>
+          <div class="obs"><span>user conv <b>17.7%</b> · best</span><span>per-tune hold <b>4.0%</b> · best</span><span>first-tune hold <b>1.7%</b> · weak</span></div>
+        </div>
+      </div>
+      <div class="arm" style="--c:var(--lm)">
+        <header><span class="tag">LM</span><h3>Movies</h3></header>
+        <div class="body">
+          <p class="hyp"><b>The dwell story.</b> Movies holds new users 3× longer than Entertainment when they find it. A film is a natural lean-back commitment — if the landing supplies it.</p>
+          <div class="boot">Boots into: <b>Bhojpuri Cinema</b> — 14.7% stick, 83% coverage. ⚠ Language skew accepted knowingly: it's the only high-volume Movies channel that passes the health gate (Goldmines fails it).</div>
+          <div class="obs"><span>new-user dwell <b>63s</b> · best</span><span>per-tune hold <b>3.65%</b></span><span>user conv <b>11.4%</b></span></div>
+        </div>
+      </div>
+      <div class="arm" style="--c:var(--lu)">
+        <header><span class="tag">LU</span><h3>Music</h3></header>
+        <div class="body">
+          <p class="hyp"><b>The lean-back story.</b> Music asks for zero commitment — no plot to follow, instant gratification. Maybe a cold visitor just wants something on.</p>
+          <div class="boot">Boots into: <b>9X Tashan</b> — 13.5% stick, 62% coverage. (9XM, the genre's most-loved channel, fails the health gate at 43% coverage — flagged to content-sourcing.)</div>
+          <div class="obs"><span>user conv <b>12.5%</b> · #2</span><span>tune volume <b>high</b></span><span>new-user dwell <b>~16s</b></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PREREQUISITE ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">Prerequisite — ships to everyone, all arms equally</div>
+    <h2>The health-gated ranking (spec 5) is the floor this runs on</h2>
+    <p class="sub">fse_v1's ranking promoted broken channels to top slots (a channel with 50% instant skip-away held rank 3 for four days).
+    Before fse_v2 starts, the ranking gets three fixes — so every arm's landing hero and guide order are trustworthy.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Fix</th><th>Rule</th><th>Effect (simulated on live data)</th></tr></thead>
+        <tbody>
+          <tr><td>Health gate</td><td>A channel is condemned only on confident evidence: ≥20 tunes AND Wilson-95 bounds prove coverage &lt;50% or errors &gt;5%/tune. Thin channels (4 tunes, 1 error) stay "unknown" — explored mid-pack, never headlined.</td><td>Broken channels pin to genre bottom. Shemaroo Josh &amp; Hi Dost! leave Entertainment's top 2; Dangal TV takes rank 1.</td></tr>
+          <tr><td>Wilson ranking</td><td>Rank by the 95% lower bound of stick-rate, needing ≥30 tunes and ≥8 distinct tuners.</td><td>7-of-39-users flukes stop outranking 51-of-347 facts; daily rank-1 churn stops.</td></tr>
+          <tr><td>Dead-channel purge</td><td>Five channels with zero successful starts on real volume removed from the catalog.</td><td>~15–20% of today's dead-channel skips disappear for every arm.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ MEASUREMENT ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">Measurement — locked at deploy, no metric shopping</div>
+    <h2>One metric decides. Everything else supports or protects.</h2>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Metric</th><th>Role</th><th>Why this role</th></tr></thead>
+        <tbody>
+          <tr><td>First-session activation<span class="why">≥1 channel held ≥60s in the first session</span></td>
+              <td><span class="role primary">Primary</span></td>
+              <td>Landing is a first-session lever — this is the metric it must move. Three comparisons (LN/LM/LU vs LE) at Bonferroni-corrected α=0.0167 each.</td></tr>
+          <tr><td>D1 retention · installs · watch-min · unmute</td>
+              <td><span class="role secondary">Secondary</span></td>
+              <td>Support the story, never decide it. A D1 win without an activation win spawns a follow-up experiment — it does not switch the landing.</td></tr>
+          <tr><td>Stream-error hit rate</td>
+              <td><span class="role guard">Guardrail</span></td>
+              <td>No arm may route users into more broken streams. The health gate should make landings <i>safer</i> — this verifies it.</td></tr>
+          <tr><td>Sample ratio (1:1:1:1) · hash audit · landing-fallback &lt;5% · hero stability</td>
+              <td><span class="role guard">Guardrail</span></td>
+              <td>Integrity first: a lift on invalid data is worthless. All checked hourly on the hub before any effect is read.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ TIMELINE ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">Timeline &amp; power</div>
+    <h2>Two looks. No peeking between them.</h2>
+    <p class="sub">~312 new users/day → ~78 per arm per day. fse_v1's lesson is baked in: its day-2 "+7.9pp winner" at p=0.073
+    evaporated within 48 hours. Verdicts happen at pre-committed dates only.</p>
+    <div class="tl">
+      <div class="step"><div class="day">Day 0</div><h3>Deploy</h3>
+        <p>Ranking v2 + 4-arm assignment go live. <b>server.js changed → pm2 reload required</b> — the exact step whose omission burned fse_v1 on Jul 3. Variant rows verified flowing within the hour.</p></div>
+      <div class="step"><div class="day">Day 7 · ~550/arm</div><h3>Interim — no decision</h3>
+        <p>Integrity, guardrails, and direction only. Pairwise sensitivity is still ≈5pp uncorrected — <b>any "significant winner" this early is a peeking artifact by construction.</b></p></div>
+      <div class="step"><div class="day">Day 12 · ~940/arm</div><h3>Final — decision</h3>
+        <p>Detects <b>≈4.5pp</b> (Bonferroni-corrected, 80% power). A challenger that clears it becomes the default landing. Nothing clears it → Entertainment stays.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ DECISION RULES ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">Decision rules — agreed before data exists</div>
+    <h2>Every outcome already has an answer</h2>
+    <div class="tablebox">
+      <table class="scen">
+        <thead><tr><th>What the data says at day 12</th><th>What we do</th></tr></thead>
+        <tbody>
+          <tr><td>A challenger beats Entertainment at corrected p &lt; 0.0167</td><td>Its genre becomes the default landing for everyone.</td></tr>
+          <tr><td>Two challengers clear the bar</td><td>Highest point estimate wins; runner-up seeds the next test.</td></tr>
+          <tr><td>Nothing clears the bar</td><td>Entertainment stays. A true effect smaller than ~4.5pp isn't worth a default switch — status-quo bias is correct under a null.</td></tr>
+          <tr><td>A secondary (say D1) wins but activation doesn't</td><td>No switch. It becomes the pre-registered primary of a follow-up — signals get their own experiment, not a retroactive promotion.</td></tr>
+          <tr><td>A guardrail breaks (SRM, errors, fallback&gt;5%)</td><td>Effects are unreadable — fix the pipeline first. Integrity precedes interpretation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT WE GAVE UP ═══ -->
+  <div class="co warn">
+    <b>Recorded trade-off: there is no un-sorted control arm.</b> The health-gated sort ships to 100% on judgment — it's free,
+    provably harmless, and was <i>directionally</i> positive — not on proof. fse_v1 ruled out sort effects ≥5pp on activation, and by
+    Jul 11 every residual "commitment" signal had faded too (D1 down to +1.1pp, p=0.59). The cost of this choice: the sort's causal
+    effect on retention is now permanently unmeasurable. If that question ever matters again, it needs a fresh 5–10% holdback —
+    rejected today to keep all four landing arms at full power.
+  </div>
+
+  <!-- ═══ NEEDS A YES ═══ -->
+  <div class="co info">
+    <b>Three things that need a conscious yes before hand-off to Satyam:</b>
+    <ul>
+      <li><b>LM boots into Bhojpuri Cinema.</b> That is the Movies catalog after honest health-gating. Approving the arm approves the language skew.</li>
+      <li><b>The ~4.5pp decision bar.</b> Smaller true effects deliberately resolve to "keep Entertainment". A default switch should demand a real effect.</li>
+      <li><b>Sequencing:</b> gesture-unmute and the Hindi toggle deploy at look boundaries only — both change first-session behavior and would contaminate the primary mid-window.</li>
+    </ul>
+  </div>
+
+  <!-- ═══ LINEAGE ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">How we got here</div>
+    <h2>fse_v2 is built from fse_v1's scar tissue</h2>
+    <div class="story">
+      <div class="beat"><div class="when">Jul 3–7 · the incident</div><h3>Deployed but never reloaded</h3>
+        <p>fse_v1 ran 4 days with variant data silently dropped. Hence: reload in the checklist, variant rows verified within the hour.</p></div>
+      <div class="beat"><div class="when">Jul 8–10 · the whiplash</div><h3>+7.9pp → +0.5pp</h3>
+        <p>An early "winner" (p=0.073) collapsed as clean cohorts accrued — winner's curse in the wild. Hence: two pre-committed looks, no verdicts between.</p></div>
+      <div class="beat"><div class="when">Jul 10 · the autopsy</div><h3>The ranking promoted junk</h3>
+        <p>Health analysis found broken channels in top slots and five dead channels in the catalog. Hence: spec 5's gate, and error rate as a standing guardrail.</p></div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTEXT CHART ═══ -->
+  <section class="card">
+    <div class="sect-eyebrow">The observational prior (why these genres — not evidence of the outcome)</div>
+    <h2>New-user dwell by genre, last 14 days</h2>
+    <p class="sub">Self-selected: users who <i>navigated</i> to a genre wanted it. The experiment exists precisely because assigned landings may behave differently.</p>
+    <div class="chart" id="dwell"></div>
+    <p class="chart-foot">Avg seconds per tune among clean-era new users. Movies' lead is the single strongest reason this experiment exists;
+    News' low dwell alongside its best-in-class conversion (17.7% of its visitors) is the tension arm LN resolves.</p>
+  </section>
+
+  <footer class="foot">
+    Spec: <code>~/wiom_tv/specs/spec_4_fse_v2_health_gated_reorder.md</code> (experiment contract) ·
+    <code>spec_5_ordering_algo.md</code> (ranking contract, with live before/after simulations) ·
+    predecessor readouts: fse_v1 final (2026-07-10) + channel-health addendum + Jul-11 post-call refresh ·
+    dashboard: hub_exp2 (hourly, auto-verdict) replaces the frozen fse_v1 page on deploy ·
+    brief generated 2026-07-11.
+  </footer>
+
+</div>
+
+<div id="tip" role="status"></div>
+
+<script>
+(function(){
+  var data = [
+    {key:'LM', name:'Movies',        v:63, c:'--lm', note:'745 tunes · best hold + best dwell'},
+    {key:'LN', name:'News',          v:28, c:'--ln', note:'1,242 tunes · best conversion, short visits'},
+    {key:'LE', name:'Entertainment', v:19, c:'--le', note:'4,506 tunes · incumbent, boot-inflated volume'},
+    {key:'LU', name:'Music',         v:16, c:'--lu', note:'985 tunes · lean-back, low commitment'}
+  ];
+  var max = 70;
+  var el = document.getElementById('dwell');
+  var tip = document.getElementById('tip');
+  data.forEach(function(d){
+    var row = document.createElement('div');
+    row.className = 'crow';
+    row.innerHTML =
+      '<div class="cl"><b>' + d.name + '</b></div>' +
+      '<div class="ctrack"><div class="cbar" style="--c:var(' + d.c + '); width:' + (100*d.v/max) + '%"></div></div>' +
+      '<div class="cv">' + d.v + 's</div>';
+    row.addEventListener('mousemove', function(e){
+      tip.innerHTML = '<b>' + d.name + '</b> — ' + d.v + 's avg dwell/tune<br>' + d.note;
+      tip.style.opacity = 1;
+      tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 290) + 'px';
+      tip.style.top = (e.clientY + 14) + 'px';
+    });
+    row.addEventListener('mouseleave', function(){ tip.style.opacity = 0; });
+    el.appendChild(row);
+  });
+})();
+</script>

@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayodhyatra × Wiom TV · Technical Answers</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --sunk:#F1EDF7; --border:#D7D3E0; --line2:#E7E3EE;
+    --text:#161021; --muted:#665E75; --dim:#A7A1B2;
+    --accent:#D9008D; --secondary:#443152; --pink300:#FFB2E4; --pink100:#FFE5F6;
+    --green:#008043; --green100:#E1FAED; --red:#E01E00; --red100:#FFE9E5;
+    --amber:#FF8000; --amber200:#FFE6CC; --purple:#6D17CE; --purple100:#F1E5FF;
+    --shadow:0 1px 3px rgba(22,16,33,.06); --lift:0 1px 2px rgba(22,16,33,.05),0 10px 30px -14px rgba(22,16,33,.22);
+  }
+  body[data-theme="dark"]{
+    --bg:#161021; --card:#241C31; --sunk:#1D1629; --border:#443152; --line2:#332944;
+    --text:#FAF9FC; --muted:#A7A1B2; --dim:#7C7489;
+    --accent:#FF3FAF; --secondary:#FFB2E4; --pink300:#FFB2E4; --pink100:#3A1030;
+    --green:#4BD48D; --green100:#0E2E20; --red:#FF7A61; --red100:#331612;
+    --amber:#FFA34D; --amber200:#33220E; --purple:#B98CFF; --purple100:#251437;
+    --shadow:0 1px 3px rgba(0,0,0,.4); --lift:0 1px 2px rgba(0,0,0,.4),0 14px 36px -18px rgba(0,0,0,.75);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.62}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 80px}
+
+  .top{padding:36px 0 22px}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:800}
+  h1{margin-top:12px;font-size:clamp(25px,3.4vw,34px);line-height:1.12;letter-spacing:-.025em;font-weight:800;text-wrap:balance}
+  .lede{margin-top:13px;max-width:64ch;font-size:16px;color:var(--muted)}
+  .meta{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--dim)}
+  .meta b{color:var(--muted)}
+  .tools{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+  .btn{appearance:none;font:inherit;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:9px;
+       border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer}
+  .btn:hover{color:var(--text);border-color:var(--dim)}
+  .btn.on{background:var(--accent);color:#fff;border-color:transparent}
+
+  h2.sec{margin:44px 0 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}
+  h2.sec + .secsub{font-size:13.5px;color:var(--dim);margin-bottom:16px}
+
+  .qa{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);
+      padding:22px 24px;margin-top:14px}
+  .q{display:flex;gap:13px;align-items:flex-start}
+  .qn{flex:none;display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;
+      background:var(--sunk);color:var(--accent);font-weight:800;font-size:12.5px;margin-top:1px}
+  .q p{font-size:16px;font-weight:700;letter-spacing:-.012em;line-height:1.4}
+  .a{margin-top:15px;padding-top:15px;border-top:1px solid var(--line2);color:var(--muted);font-size:14.5px}
+  .a > * + *{margin-top:11px}
+  .a b,.a strong{color:var(--text);font-weight:700}
+  .a ul{margin:0;padding-left:19px}
+  .a li{margin:6px 0}
+  .a code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+          background:var(--sunk);padding:1.5px 5px;border-radius:5px;color:var(--text)}
+
+  .hl{display:inline-block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;
+      padding:2.5px 7px;border-radius:5px;margin-bottom:9px}
+  .hl.y{background:var(--green100);color:var(--green)}
+  .hl.n{background:var(--red100);color:var(--red)}
+  .hl.i{background:var(--purple100);color:var(--purple)}
+
+  .spec{background:var(--sunk);border-radius:10px;padding:13px 16px;font-size:13.5px}
+  .spec dl{display:grid;grid-template-columns:auto 1fr;gap:7px 16px}
+  .spec dt{font-weight:700;color:var(--text);white-space:nowrap}
+  .spec dd{color:var(--muted)}
+  @media (max-width:600px){.spec dl{grid-template-columns:1fr;gap:2px 0}.spec dd{margin-bottom:9px}}
+
+  .flag{border-left:3px solid var(--accent);background:var(--pink100);border-radius:0 10px 10px 0;
+        padding:12px 16px;font-size:13.5px;color:var(--text)}
+  body[data-theme="dark"] .flag{color:var(--text)}
+
+  .int{border-left:3px solid var(--amber);background:var(--amber200);border-radius:0 10px 10px 0;
+       padding:12px 16px;font-size:13px;color:var(--text)}
+  .int .lbl{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;
+            color:var(--amber);margin-bottom:5px}
+  body.clean .int{display:none}
+  body.clean .onlyint{display:none}
+
+  footer{padding:24px 0 0;margin-top:48px;border-top:1px solid var(--border);font-size:12px;color:var(--dim);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Wiom TV · Partner onboarding</div>
+  <h1>Ayodhyatra × Wiom TV — answers to your technical questions</h1>
+  <p class="lede">
+    Short answers, mostly, because our ingest is deliberately thin: you host the stream, we carry a URL.
+    Everything below reflects what Wiom TV runs today, not what we intend to build.
+  </p>
+  <div class="meta">
+    <span>22 July 2026</span><span>·</span>
+    <span>Source of truth · <b>Wiom TV tech expectations v1 (frozen)</b></span><span>·</span>
+    <span>13 questions</span>
+  </div>
+  <div class="tools">
+    <button class="btn" id="clean">Hide internal notes</button>
+    <button class="btn" id="theme">Toggle theme</button>
+  </div>
+</header>
+
+<h2 class="sec">Technical ingest</h2>
+<p class="secsub">You host and deliver. We pull, and we do not re-encode or repackage.</p>
+
+<div class="qa">
+  <div class="q"><span class="qn">1</span><p>For content delivery, would you like us to push a feed into your origin, or would you prefer to pull from a manifest URL you host?</p></div>
+  <div class="a">
+    <span class="hl i">Pull — you host</span>
+    <p><b>Pull, from a manifest URL you host.</b> We have no ingest origin and we never take delivery of a feed. Your URL becomes one row in our channel config; our players fetch it directly from your CDN. Nothing is re-encoded or repackaged on our side.</p>
+    <p>The practical consequence: delivery cost and uptime stay with you, and a change at your origin reaches our viewers immediately — which is why the notice requirement in question 12 matters.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">2</span><p>What are the exact codec and container specifications you require — video and audio codec, resolution and bitrate ladder, and segment length?</p></div>
+  <div class="a">
+    <div class="spec">
+      <dl>
+        <dt>Container</dt><dd>HLS over HTTPS — TS or fMP4. Master or media playlist both fine. No DASH/MPD.</dd>
+        <dt>Video</dt><dd>H.264, Main profile. HEVC-only feeds will not decode reliably on the devices we actually reach.</dd>
+        <dt>Audio</dt><dd>AAC-LC.</dd>
+        <dt>Bitrate</dt><dd>At least one rendition <b>under ~1.5 Mbps</b>. Our reference device is a low-end Android TV box on a shared connection, so the bottom rung matters more than the top.</dd>
+        <dt>Ladder</dt><dd>Welcome, not required. A large part of our current line-up is single-rendition and ships fine. If you do build one, 720p / 480p is more useful to us than adding 1080p.</dd>
+        <dt>Segments</dt><dd><b>≤10 s</b>, 6 s ideal. Live window of at least three segments.</dd>
+        <dt>Playlist</dt><dd>Responds in <b>under 2 s</b>. Our player buffers 8–15 s and abandons a playlist at 6 s.</dd>
+      </dl>
+    </div>
+    <p>Two requirements that are easy to miss and decide whether a feed works in practice:</p>
+    <ul>
+      <li><b>A stable URL.</b> No per-session token, no expiring query string, no Referer or User-Agent allowlist. A browser cannot set those headers, so a feed that depends on them plays in our TV app and fails on our web surface.</li>
+      <li><b>CORS open to our origins</b> — on the playlist <i>and</i> the segments, with <code>HEAD</code> allowed. Our web client health-probes every channel from the browser; a channel that refuses the probe is marked dead and skipped even when the stream itself is perfect.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">3</span><p>What EPG format do you expect (XMLTV or proprietary) and how frequently does it need to be updated?</p></div>
+  <div class="a">
+    <span class="hl i">None needed</span>
+    <p><b>None — please don't build one for us.</b> We have no guide surface to render a schedule in today, so an XMLTV feed would be filed and not used. When we ship a guide we will come back to you for now/next.</p>
+    <p>What we do need to list the channel is in question 8.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">4</span><p>Is DRM or content protection required, or is unencrypted delivery fine given our existing FTA channel setup?</p></div>
+  <div class="a">
+    <span class="hl n">Unencrypted required</span>
+    <p><b>Unencrypted isn't just fine — it's required.</b> Our stream validator rejects any encrypted playlist (Widevine, PlayReady or SAMPLE-AES), and neither of our surfaces has a DRM path today. Your existing FTA setup is exactly the right shape.</p>
+    <p>Flagging it plainly because it is usually raised late: if the rights behind Ayodhyatra ever require protected delivery, that is a build decision on our side rather than a configuration change, and we would need to know before signature.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">5</span><p>Do you have a partner or channel management API for scheduling updates, or is onboarding handled manually?</p></div>
+  <div class="a">
+    <span class="hl i">Manual, but five minutes</span>
+    <p><b>No API today — onboarding is manual on our side, and fast.</b> A channel is one row in a hosted config that our apps poll every five minutes. We can put a channel live, change it, or pull it entirely within five minutes of the decision.</p>
+    <p>There is nothing for you to integrate against, and nothing you need to call. Scheduling updates don't reach us at all, because we consume a continuous feed rather than a schedule — see question 6.</p>
+  </div>
+</div>
+
+<h2 class="sec">Playout ownership</h2>
+<p class="secsub">The one answer that changes your scope, so it is worth being unambiguous.</p>
+
+<div class="qa">
+  <div class="q"><span class="qn">6</span><p>For library and VOD content like Ayodhyatra that would need to loop as a channel — would you handle playout and scheduling on your end, or would you like us to deliver an already-looped 24/7 feed?</p></div>
+  <div class="a">
+    <span class="hl y">Please deliver an already-looped 24/7 feed</span>
+    <p><b>We do not run playout or scheduling.</b> Our player joins a live edge; there is no scheduler on our side that could loop a library into a channel. So the looped 24/7 feed needs to come from you.</p>
+    <p>Two practical notes from feeds we've onboarded before:</p>
+    <ul>
+      <li>It must be a genuine rolling live playlist — <b>no <code>EXT-X-ENDLIST</code></b>, or we treat it as a finished asset rather than a channel.</li>
+      <li>Mark the loop seam with a <b>discontinuity tag</b> so players re-initialise cleanly instead of stalling at the wrap.</li>
+    </ul>
+    <div class="flag">
+      <b>If you'd rather not run playout at all, there is a second route.</b> We also take library content as <b>files</b> — you send masters, we encode, host and deliver on our mobile surface. Zero engineering on your side, different commercial shape. Worth ten minutes on the call before you commit to standing up a 24/7 origin.
+    </div>
+  </div>
+</div>
+
+<h2 class="sec">Commercial &amp; operational</h2>
+
+<div class="qa">
+  <div class="q"><span class="qn">7</span><p>Are there any content or compliance guidelines specific to AI-generated content we should be aware of?</p></div>
+  <div class="a">
+    <p>We don't publish a separate AI-content policy, so rather than point you at a document, here is what we would ask for in writing alongside the standard rights confirmation:</p>
+    <ul>
+      <li><b>Disclosure</b> that the content is AI-generated, so we can label it if we later need to.</li>
+      <li><b>No synthetic likeness of real, identifiable people</b> without documented consent.</li>
+      <li><b>Nothing synthetic presented as documentary or news footage.</b></li>
+      <li><b>Rights that cover the generated material itself</b>, not only its distribution.</li>
+    </ul>
+    <p>Beyond that, the usual applies: our apps ship through app stores, so their content policies bind us both, as do the Indian intermediary rules.</p>
+    <div class="int">
+      <span class="lbl">Internal — not for the partner</span>
+      This is a proposed position, not existing Wiom policy. It needs a founder-level call before it goes out: Ayodhyatra is AI-generated <i>devotional</i> content, Devotional is our second-largest genre, and the Android app is already carrying a live Google Play policy action. That combination is exactly what draws store and press scrutiny. Decide deliberately rather than in a reply.
+    </div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">8</span><p>What are your branding requirements for channel name, logo, and description format on WIOM.TV?</p></div>
+  <div class="a">
+    <div class="spec">
+      <dl>
+        <dt>Name</dt><dd>Channel name in <b>English and Hindi</b>.</dd>
+        <dt>Genre</dt><dd>One from our list — Ayodhyatra would sit in <b>Devotional</b>.</dd>
+        <dt>Language</dt><dd>Audio language.</dd>
+        <dt>Logo</dt><dd><b>A hosted URL</b> — transparent PNG, 512px or better. We reference the URL rather than taking a file, so you can update the mark without coming back to us.</dd>
+        <dt>Description</dt><dd>Not needed. We don't render a channel description field today.</dd>
+      </dl>
+    </div>
+    <p>Brand usage guidelines are welcome if you have them, so the channel renders the way you'd want it to.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">9</span><p>Could you share rough current viewership and reach numbers so we can size your infrastructure and cost estimate properly?</p></div>
+  <div class="a">
+    <p>Wiom serves close to <b>a million households</b> on its network. Wiom TV is in pilot across those households, and content onboarding is our focus for the next 30 days.</p>
+    <p>For sizing your delivery, the number that actually drives your egress is <b>peak concurrent viewers</b>, not audience size — and we'll share a concurrency forecast ahead of go-live, plus <b>monthly minutes-watched reporting per channel</b> once you're live, so the estimate stays honest as we scale.</p>
+    <div class="int">
+      <span class="lbl">Internal — not for the partner</span>
+      Deliberately no DAU figure here. Current pilot DAU is a three-digit number; quoting it hands away the position-of-strength framing and invites them to price us as a test. The million-household network figure is true, checkable, and the right frame. If you want to give them something firmer, give a <b>concurrency forecast</b> — it answers their real question without disclosing audience size.
+    </div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">10</span><p>What does a typical onboarding timeline look like for a new content partner?</p></div>
+  <div class="a">
+    <span class="hl y">Days, not weeks</span>
+    <p>Once we have a compliant URL and the rights confirmation, validation and go-live are <b>same-day</b>: we run the stream through our checker, play it on a real device, add the config row, and enable it. <b>The gate is paperwork, not engineering.</b></p>
+    <p>Realistically, the elapsed time is however long it takes your side to stand up the looped 24/7 origin and confirm rights in writing. Everything after that is ours, and it's measured in hours.</p>
+  </div>
+</div>
+
+<h2 class="sec">Operational</h2>
+
+<div class="qa">
+  <div class="q"><span class="qn">11</span><p>Is there a staging or test environment available to validate the feed before it goes live publicly?</p></div>
+  <div class="a">
+    <p>No public staging environment, but the effect is the same. We <b>onboard the channel disabled</b>, validate the stream through our checker and play it on a real device, then enable it.</p>
+    <p>Because the config is polled every five minutes, a soft launch — or an instant rollback if something looks wrong on air — is trivial. In practice partners get more safety from that than from a staging environment.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">12</span><p>For ongoing content updates, would you like us to notify WIOM per update, or does your system automatically pick up the latest schedule from your feed?</p></div>
+  <div class="a">
+    <span class="hl y">Automatic — no notification needed</span>
+    <p>You're delivering a continuous feed and we don't consume a schedule, so we carry <b>whatever the feed carries</b>. Content changes need no notification at all.</p>
+    <p>Tell us about three things only:</p>
+    <ul>
+      <li><b>A URL or origin change — with notice, please.</b> Silently moved URLs are our single largest cause of channel loss.</li>
+      <li><b>Extended outages</b>, so we can pull the channel rather than let viewers land on a dead tune.</li>
+      <li><b>Any change to the rights window.</b></li>
+    </ul>
+    <p>We'll also need a named technical contact and a response-time expectation for a dead stream.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="q"><span class="qn">13</span><p>Do you pre-screen or approve content before it airs, or does that responsibility sit entirely with you?</p></div>
+  <div class="a">
+    <p><b>Editorial responsibility sits with you</b>, backed by written confirmation of India distribution rights for connected-TV and OTT redistribution.</p>
+    <p>We spot-check at onboarding rather than pre-screening a 24/7 feed — pre-screening a continuous channel isn't something any distributor can honestly promise. What we do keep is the ability to <b>pull the channel within five minutes</b>, which is the enforcement that actually matters.</p>
+  </div>
+</div>
+
+<footer>
+  Answers reflect <b>Wiom TV tech expectations v1</b>, frozen 22 July 2026 — the live channel config, web health probe,
+  stream validator and delivery build as they run today. Anything marked as a build decision is not available now and
+  should not be assumed. Happy to take the playout and commercial items on a call.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var q = new URLSearchParams(location.search).get('theme');
+  var dark = q === 'dark' || (!q && matchMedia('(prefers-color-scheme: dark)').matches);
+  if (dark) document.body.dataset.theme = 'dark';
+  document.getElementById('theme').onclick = function(){
+    document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
+  };
+  var b = document.getElementById('clean');
+  b.onclick = function(){
+    var on = document.body.classList.toggle('clean');
+    b.textContent = on ? 'Show internal notes' : 'Hide internal notes';
+    b.classList.toggle('on', on);
+  };
+})();
+</script>
+</body>
+</html>

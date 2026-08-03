@@ -94,6 +94,16 @@
 
   .empty{color:var(--muted);font-size:14px;padding:30px 0;text-align:center}
 
+  /* ── Artifact Library (60-day catalog) ── */
+  .libcat{margin-bottom:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .libcat summary{cursor:pointer;user-select:none;padding:13px 16px;font-size:13.5px;font-weight:800;color:var(--secondary);list-style:none;display:flex;align-items:center;gap:10px}
+  .libcat summary::-webkit-details-marker{display:none}
+  .libcat summary::before{content:"▸";color:var(--accent);transition:transform .15s}
+  .libcat[open] summary::before{transform:rotate(90deg)}
+  .libcat summary:hover{background:var(--pink100)}
+  .libcat .count{font-weight:600;color:var(--muted);font-size:12px}
+  .libcat .doccards{padding:4px 14px 16px}
+
   /* ── Document reader ── */
   .sect{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin:26px 0 10px;display:flex;align-items:center;gap:10px}
   .sect::after{content:"";flex:1;height:1px;background:var(--border)}
@@ -204,6 +214,8 @@
     </div>
     <div class="page">
       <div id="library-view">
+        <div class="sect">Artifact Library · every HTML &amp; artifact from the last 60 days</div>
+        <div id="artifact-library"></div>
         <div class="sect">Library · from the SD master doc</div>
         <div class="doccards" id="librarycards"></div>
         <div class="sect">Links · from the sheet's Documents tab</div>
@@ -380,6 +392,39 @@ function renderAll(){
   document.getElementById('editSheet2').href = sheetUrl;
   renderRoadmap(); renderDocs();
 }
+
+/* ── Artifact Library: 60-day catalog of all HTMLs/artifacts (library/catalog.json) ── */
+async function loadArtifactLibrary(){
+  const host = document.getElementById('artifact-library');
+  try{
+    const cat = await (await fetch('library/catalog.json')).json();
+    const BADGE = {
+      hosted:  ['s-done',    'hosted here'],
+      live:    ['s-progress','live'],
+      artifact:['s-planned', 'Claude artifact'],
+      local:   ['s-blocked', 'local only']
+    };
+    host.innerHTML = `<div class="fmeta" style="margin:-4px 0 10px;color:var(--muted);font-size:12px">${esc(cat.window)} · ${cat.categories.reduce((n,c)=>n+c.items.length,0)} items</div>` +
+      cat.categories.map((c,i) => `
+      <details class="libcat" ${i===0?'open':''}>
+        <summary>${esc(c.name)} <span class="count">${c.items.length}</span></summary>
+        <div class="doccards">${c.items.map(d => {
+          const [cls,lbl] = BADGE[d.badge] || BADGE.hosted;
+          return `
+          <div class="doc">
+            <h3>${esc(d.title)}</h3>
+            <span class="chip ${cls} type">${lbl}${d.date?` · ${esc(d.date)}`:""}</span>
+            <div class="notes">${esc(d.desc)}</div>
+            ${d.url?`<a class="btn open" href="${esc(d.url)}" target="_blank" rel="noopener">Open ↗</a>`
+                   :`<span class="nolink">not published</span>`}
+          </div>`;}).join("")}
+        </div>
+      </details>`).join("");
+  }catch(e){
+    host.innerHTML = '<div class="empty">Artifact library unavailable.</div>';
+  }
+}
+loadArtifactLibrary();
 
 /* ── Docs library: markdown docs in ./docs, split from the SD master Google Doc ── */
 let libManifest = null;

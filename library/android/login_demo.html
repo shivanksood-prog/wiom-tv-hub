@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiom TV — Login Demo (pixel-faithful)</title>
+<style>
+  :root{
+    /* exact tokens from colors.xml */
+    --primary:#D9008D;            /* primary_color */
+    --bg:#16111E;                 /* primary_background_color (Login/OTP Surface) */
+    --bgdark:#161021;             /* dark_backgound_color */
+    --unfocused:#443152;          /* unfocused_button_background_color */
+    --white:#FAF9FC; --gray:#A7A1B2;
+    --field:#FFFFFF; --fieldtext:#000000;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#0a0710;color:var(--white);
+    font-family:'Noto Sans',system-ui,'Segoe UI',sans-serif;
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:18px 14px 44px}
+  .page{font-size:1.05rem;font-weight:600;color:var(--gray);margin:0 0 2px}
+  .pagesub{font-size:.8rem;color:#7a7287;margin:0 0 14px;text-align:center;max-width:720px}
+  .pagesub b{color:var(--primary)}
+  .modebar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;justify-content:center}
+  .modebtn{font-size:.8rem;padding:7px 14px;border-radius:999px;border:1px solid var(--unfocused);
+    background:#1d1530;color:var(--gray);cursor:pointer}
+  .modebtn.on{background:rgba(217,0,141,.16);border-color:#5a2b4a;color:#FFB2E4;font-weight:600}
+
+  /* ---- TV bezel, true 16:9 ---- */
+  .tvshell{width:min(960px,97vw)}
+  .tvbezel{background:#000;border:11px solid #0a0710;border-radius:16px;
+    box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px #241a33;overflow:hidden}
+  .screen{position:relative;aspect-ratio:16/9;background:var(--bg);overflow:hidden}
+  .standneck{width:42px;height:24px;background:#0a0710;margin:0 auto}
+  .stand{width:150px;height:13px;background:#0a0710;border-radius:0 0 9px 9px;margin:0 auto}
+
+  /* everything scales off the screen width via cqw so it stays proportional */
+  .screen{container-type:inline-size}
+  .view{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .view.active{opacity:1;pointer-events:auto}
+
+  /* ---- HeaderLogo: TopStart, height 120dp, padding 16dp, "Wiom" in pink 36sp ---- */
+  .header{position:absolute;top:0;left:0;display:flex;align-items:center;gap:2.2cqw;
+    padding:2.4cqw;z-index:5}
+  .header img{height:9.4cqw;width:auto;display:block}
+  .header .wm{color:var(--primary);font-weight:700;font-size:5cqw;line-height:1}
+
+  /* ---- LOGIN ---- */
+  .col{position:absolute;top:0;left:0;height:100%;display:flex;flex-direction:column;
+    align-items:center;padding-top:15cqw;padding-left:6cqw}
+  .col.login{align-items:flex-start}
+  .title{color:#fff;font-weight:700;font-size:3.3cqw;line-height:1.18;text-align:left;
+    width:30cqw;margin:0 0 0 1cqw}
+  .field{width:30cqw;height:7.4cqw;margin-top:4.2cqw;background:var(--field);color:var(--fieldtext);
+    border-radius:2.1cqw;display:flex;align-items:center;padding:0 2.4cqw;gap:1.6cqw;
+    font-size:3cqw;font-weight:700;letter-spacing:.04em;border:1.5px solid #d4d0db}
+  .field svg{height:3.3cqw;width:auto;flex:0 0 auto;opacity:.85}
+  .field .val{color:#000} .field .ph{color:#8a8a8a;font-weight:600;letter-spacing:.02em}
+  .caret{display:inline-block;width:2px;height:1em;background:var(--primary);
+    vertical-align:-2px;animation:blink 1s steps(1) infinite;margin-left:1px}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---- NumberPad: 3x4, 96dp keys, rounded 8, pink when focused ---- */
+  .pad{margin-top:6.4cqw;display:grid;grid-template-columns:repeat(3,12.6cqw);
+    gap:1.1cqw 2.1cqw}
+  .key{height:7.2cqw;border-radius:1.1cqw;background:var(--unfocused);color:#fff;border:none;
+    font-size:3.1cqw;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:background .12s,transform .05s,box-shadow .12s}
+  .key:active{transform:scale(.96)}
+  .key.focus{background:var(--primary);box-shadow:0 0 0 .4cqw rgba(217,0,141,.35)}
+  .key svg{height:3.4cqw;width:auto}
+
+  /* ---- OTP पाएं button (appears at 10 digits) ---- */
+  .cta{width:30cqw;height:6cqw;margin-top:3.2cqw;border-radius:1.1cqw;background:var(--unfocused);
+    border:.28cqw solid #fff;color:#fff;font-weight:700;font-size:2.3cqw;cursor:pointer;
+    display:none;align-items:center;justify-content:center;transition:background .12s}
+  .cta.show{display:flex}
+  .cta.focus{background:var(--primary)}
+  .cta .spin{width:2.6cqw;height:2.6cqw;border:.34cqw solid rgba(255,255,255,.4);border-top-color:#fff;
+    border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---- OTP screen ---- */
+  .col.otp{align-items:flex-start;padding-left:6cqw}
+  .otphead{display:flex;align-items:flex-start;gap:1.4cqw;width:42cqw}
+  .backbtn{width:6.4cqw;height:6.4cqw;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;
+    justify-content:center;background:transparent;border:none;cursor:pointer;margin-top:.4cqw}
+  .backbtn.focus{background:var(--primary)}
+  .backbtn svg{width:4.2cqw;height:4.2cqw}
+  .otpboxes{display:flex;gap:1.6cqw;margin-top:4.2cqw}
+  .otpbox{width:8cqw;height:6.6cqw;border-radius:1.1cqw;background:#fff;color:#000;
+    display:flex;align-items:center;justify-content:center;font-size:3.3cqw;font-weight:700;
+    box-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .resend{margin-top:3.4cqw;font-size:2.2cqw;color:#fff;width:39cqw;text-align:left}
+  .resend a{color:#fff;text-decoration:underline;cursor:pointer}
+  .resend a.focus{color:var(--primary)}
+
+  /* ---- splash ---- */
+  .splash{position:absolute;inset:0;background:#000}
+  .splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .splash .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqw}
+  .splash img{height:16cqw;width:auto;filter:drop-shadow(0 6px 24px rgba(0,0,0,.5))}
+  .splash .wm{color:var(--primary);font-weight:800;font-size:7cqw;line-height:1;text-shadow:0 3px 18px rgba(0,0,0,.6)}
+  .splash .note{position:absolute;bottom:7cqw;color:#cfc7da;font-size:1.9cqw;opacity:.9}
+
+  /* ---- home ---- */
+  .home{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+  .home .tick{width:9cqw;height:9cqw;border-radius:50%;background:#008043;display:flex;align-items:center;
+    justify-content:center;font-size:5cqw;margin-bottom:2cqw;animation:pop .4s ease}
+  @keyframes pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+  .home h3{margin:.2cqw 0;font-size:3.4cqw} .home p{color:var(--gray);font-size:2cqw;margin:.4cqw 0 0}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;width:62cqw;margin-top:3cqw}
+  .grid div{aspect-ratio:16/10;border-radius:1.2cqw;border:1px solid var(--unfocused);
+    background:linear-gradient(135deg,#2b2438,#1d1530);display:flex;align-items:center;justify-content:center;
+    font-size:1.9cqw;color:var(--gray)}
+
+  /* wifi steps overlay reuse */
+  .wsteps{position:absolute;left:6cqw;top:16cqw;width:54cqw;display:flex;flex-direction:column;gap:1.4cqw}
+  .wtitle{font-size:3.1cqw;font-weight:700;margin-bottom:1.2cqw}
+  .wsub{font-size:2cqw;color:var(--gray);margin-bottom:2cqw}
+  .wstep{display:flex;align-items:center;gap:1.4cqw;font-size:2cqw;color:var(--gray);
+    background:rgba(255,255,255,.03);border:1px solid var(--unfocused);border-radius:1.2cqw;
+    padding:1.6cqw 2cqw;opacity:.35;transition:opacity .3s,border-color .3s}
+  .wstep.on{opacity:1;border-color:#5a2b4a;color:#fff}
+  .wstep .d{width:1.4cqw;height:1.4cqw;border-radius:50%;background:var(--gray);flex:0 0 auto}
+  .wstep.done .d{background:#008043}
+  .wstep .ep{color:#FFB2E4;font-family:ui-monospace,monospace;font-size:.86em}
+
+  .toast{position:absolute;top:3cqw;left:50%;transform:translateX(-50%);background:#0f0b18;
+    border:1px solid #5a2b4a;color:#FFB2E4;padding:1.4cqw 2.4cqw;border-radius:1.2cqw;font-size:2cqw;
+    opacity:0;transition:opacity .3s;pointer-events:none;z-index:9;white-space:nowrap}
+  .toast.show{opacity:1}
+
+  .controls{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;justify-content:center}
+  .ghost{font-size:.8rem;padding:7px 14px;border-radius:8px;border:1px solid var(--unfocused);
+    background:#1d1530;color:var(--gray);cursor:pointer}
+  .ghost:hover{color:#fff;border-color:#5a2b4a}
+  .hint{font-size:.76rem;color:#7a7287;text-align:center;margin-top:9px;max-width:720px}
+  .hint kbd{font-family:ui-monospace,monospace;background:#0f0b18;border:1px solid var(--unfocused);
+    border-radius:5px;padding:1px 6px;color:#FFB2E4}
+  .src{font-size:.7rem;color:#5a5168;margin-top:5px;text-align:center}
+</style>
+</head>
+<body>
+  <div class="page">Wiom TV — Login flow <span style="color:#FFB2E4">(pixel-faithful)</span></div>
+  <p class="pagesub">Rebuilt to match <b>com.wiomtv.android.prod</b> v11.0.2 exactly — real logo &amp; splash video, exact colors (<b>#D9008D / #16111E / #443152</b>), exact Hindi strings, real layout &amp; TV D-pad focus. Mock backend (no real OTP sent).</p>
+
+  <div class="modebar">
+    <button class="modebtn on" data-mode="otp">📱 Phone + OTP login</button>
+    <button class="modebtn" data-mode="wifi">📶 WiFi auto-auth (silent)</button>
+  </div>
+
+  <div class="tvshell">
+    <div class="tvbezel"><div class="screen" id="screen">
+      <div class="toast" id="toast"></div>
+
+      <!-- SPLASH -->
+      <div class="view active" data-view="splash">
+        <div class="splash">
+          <video id="splashVid" src="login_demo_assets/splash_bg.mp4" muted playsinline loop></video>
+          <div class="ov">
+            <img src="login_demo_assets/logo.webp" alt="Wiom TV">
+            <div class="wm">Wiom TV</div>
+          </div>
+          <div class="note" id="splashnote">Starting up…</div>
+        </div>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="view" data-view="login">
+        <div class="header"><img src="login_demo_assets/logo.webp" alt=""><span class="wm">Wiom</span></div>
+        <div class="col login">
+          <div class="title">मनोरंजन शुरू करने के लिए<br>अपना फ़ोन नंबर दें</div>
+          <div class="field" id="phoneField">
+            <svg viewBox="0 0 48 48"><path fill="#A7A1B2" d="M34,2.02L14,2C11.8,2 10,3.8 10,6V42C10,44.2 11.8,46 14,46H34C36.2,46 38,44.2 38,42V6C38,3.8 36.2,2.02 34,2.02ZM34,38H14V10H34V38Z"/></svg>
+            <span id="phoneVal" class="ph">उदाहरण: 9876543210</span>
+          </div>
+          <div class="pad" id="phonePad"></div>
+          <button class="cta" id="phoneCta"><span class="lbl">OTP पाएं</span></button>
+        </div>
+      </div>
+
+      <!-- OTP -->
+      <div class="view" data-view="otp">
+        <div class="header"><img src="login_demo_assets/logo.webp" alt=""><span class="wm">Wiom</span></div>
+        <div class="col otp">
+          <div class="otphead">
+            <button class="backbtn" id="backBtn" title="Back">
+              <svg viewBox="0 0 48 48"><path fill="#FAF9FC" d="M38,22H15.66L25.42,12.24C26.2,11.46 26.2,10.18 25.42,9.4C24.64,8.62 23.38,8.62 22.6,9.4L9.42,22.58C8.64,23.36 8.64,24.62 9.42,25.4L22.6,38.58C23.38,39.36 24.64,39.36 25.42,38.58C26.2,37.8 26.2,36.54 25.42,35.76L15.66,26H38C39.1,26 40,25.1 40,24C40,22.9 39.1,22 38,22Z"/></svg>
+            </button>
+            <div class="title"><span id="otpPhone">9876543210</span> पर आए<br>OTP को लिखें</div>
+          </div>
+          <div class="otpboxes" id="otpBoxes"></div>
+          <div class="pad" id="otpPad"></div>
+          <div class="resend" id="resendRow"></div>
+        </div>
+      </div>
+
+      <!-- WIFI -->
+      <div class="view" data-view="wifi">
+        <div class="header"><img src="login_demo_assets/logo.webp" alt=""><span class="wm">Wiom</span></div>
+        <div class="wsteps">
+          <div class="wtitle">Wiom नेटवर्क मिल गया</div>
+          <div class="wsub">Signing you in automatically — no OTP needed</div>
+          <div class="wstep" data-s="0"><span class="d"></span><div>Detect Wiom WiFi · SSID <b>“Wiom_5G”</b> · <span class="ep">is_on_wiom_net ✓</span></div></div>
+          <div class="wstep" data-s="1"><span class="d"></span><div>setAppData → <span class="ep">customer.i2e1.in</span> · returns <code>signalToken</code></div></div>
+          <div class="wstep" data-s="2"><span class="d"></span><div>fetchUserOnSignal(ssid, token, mac) → matched customer</div></div>
+          <div class="wstep" data-s="3"><span class="d"></span><div>Session saved · <span class="ep">wifi_authenticated = true</span></div></div>
+        </div>
+      </div>
+
+      <!-- HOME -->
+      <div class="view" data-view="home">
+        <div class="home">
+          <div class="tick">✓</div>
+          <h3>Welcome to Wiom TV</h3>
+          <p id="homeWho">Logged in</p>
+          <div class="grid"><div>Aaj Tak</div><div>9XM</div><div>Dangal</div><div>Aastha</div><div>ABP News</div><div>Sony</div><div>Zee</div><div>+ more</div></div>
+        </div>
+      </div>
+
+    </div></div></div>
+    <div class="standneck"></div><div class="stand"></div>
+  </div>
+
+  <div class="controls">
+    <button class="ghost" id="restart">↺ Restart</button>
+    <button class="ghost" id="autofill">⚡ Auto-fill</button>
+  </div>
+  <div class="hint">TV remote: <kbd>← ↑ → ↓</kbd> move focus · <kbd>Enter / OK</kbd> press · or just type <kbd>0–9</kbd>, <kbd>⌫</kbd>. The focused key turns <b style="color:#FFB2E4">pink</b>, exactly like the real D-pad. Mock OTP is shown on screen.</div>
+  <div class="src">Pixel-matched to Splash.kt · LoginFragment.kt · OtpFragment.kt · NumberPad.kt · HeaderLogo.kt · colors.xml · real assets: logo.webp, splash_bg.mp4</div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s), screen=$('#screen'), toast=$('#toast');
+  const views={}; document.querySelectorAll('.view').forEach(v=>views[v.dataset.view]=v);
+  let mode='otp', phone='', otp='', mockOtp='', timerInt=null, t=30;
+
+  function show(n){Object.values(views).forEach(v=>v.classList.remove('active'));views[n].classList.add('active');setFocusables(n);}
+  function flash(m){toast.textContent=m;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),2600);}
+
+  // NumberPad layout EXACTLY as NumberPad.kt: 1..9, then 🗑(clear), 0, ⌫(backspace)
+  const TRASH='<svg viewBox="0 0 48 48"><path fill="#FAF9FC" d="M12,38C12,40.2 13.8,42 16,42H32C34.2,42 36,40.2 36,38V18C36,15.8 34.2,14 32,14H16C13.8,14 12,15.8 12,18V38ZM36,8H31L29.58,6.58C29.22,6.22 28.7,6 28.18,6H19.82C19.3,6 18.78,6.22 18.42,6.58L17,8H12C10.9,8 10,8.9 10,10C10,11.1 10.9,12 12,12H36C37.1,12 38,11.1 38,10C38,8.9 37.1,8 36,8Z"/></svg>';
+  function buildPad(el,onDigit,onBack,onClear){
+    el.innerHTML='';
+    [['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9'],['clr',TRASH],['0'],['del','⌫']].forEach(([k,svg])=>{
+      const b=document.createElement('button'); b.className='key'; b.dataset.k=k;
+      if(k==='clr'){b.innerHTML=svg;b.onclick=onClear;}
+      else if(k==='del'){b.textContent='⌫';b.onclick=onBack;}
+      else{b.textContent=k;b.onclick=()=>onDigit(k);}
+      el.appendChild(b);
+    });
+  }
+
+  /* ---- LOGIN ---- */
+  const phoneVal=$('#phoneVal'), phoneCta=$('#phoneCta');
+  function renderPhone(){
+    if(!phone){phoneVal.className='ph';phoneVal.textContent='उदाहरण: 9876543210';}
+    else{phoneVal.className='val';phoneVal.innerHTML=phone+'<span class="caret"></span>';}
+    phoneCta.classList.toggle('show',phone.length===10);
+    if(phone.length===10) refocusCta(); else setFocusables('login');
+  }
+  function phoneDigit(d){if(phone.length<10){phone+=d;renderPhone();}}
+  function phoneBack(){phone=phone.slice(0,-1);renderPhone();}
+  function phoneClear(){phone='';renderPhone();}
+  buildPad($('#phonePad'),phoneDigit,phoneBack,phoneClear);
+  phoneCta.onclick=submitPhone;
+  function submitPhone(){
+    if(phone.length!==10)return;
+    phoneCta.querySelector('.lbl').outerHTML='<span class="spin"></span>';
+    mockOtp=''+Math.floor(1000+Math.random()*9000);
+    setTimeout(()=>{ // mimic OtpRepository.sendOtp → {mobile, otp, guid}
+      phoneCta.innerHTML='<span class="lbl">OTP पाएं</span>';
+      $('#otpPhone').textContent=phone; otp=''; renderOtp(); startTimer(); show('otp');
+      flash('OTP sent (demo): '+mockOtp);
+    },650);
+  }
+
+  /* ---- OTP ---- */
+  const otpBoxes=$('#otpBoxes');
+  function renderOtp(){otpBoxes.innerHTML='';for(let i=0;i<4;i++){const d=document.createElement('div');d.className='otpbox';d.textContent=otp[i]||'';otpBoxes.appendChild(d);}}
+  function otpDigit(d){if(otp.length<4){otp+=d;renderOtp();if(otp.length===4)setTimeout(verifyOtp,260);}}
+  function otpBack(){otp=otp.slice(0,-1);renderOtp();}
+  function otpClear(){otp='';renderOtp();}
+  buildPad($('#otpPad'),otpDigit,otpBack,otpClear);
+  function verifyOtp(){ // mimic verifyOtp → {token, isVerified}
+    if(otp===mockOtp){$('#homeWho').textContent='+91 '+phone+' · token saved (is_logged_in = true)';clearInterval(timerInt);show('home');flash('OTP verified ✓');}
+    else{flash('Invalid OTP — it was '+mockOtp);otp='';renderOtp();}
+  }
+  function startTimer(){
+    t=30;clearInterval(timerInt);renderResend();
+    timerInt=setInterval(()=>{t--;renderResend();if(t<=0)clearInterval(timerInt);},1000);
+  }
+  function renderResend(){
+    const row=$('#resendRow');
+    const mm=String(Math.floor(t/60)).padStart(2,'0'),ss=String(t%60).padStart(2,'0');
+    if(t>0){row.innerHTML=mm+':'+ss+' में OTP दोबारा प्राप्त करेंं';}
+    else{row.innerHTML='<a id="resendLink">OTP दोबारा प्राप्त करेंं</a>';
+      $('#resendLink').onclick=()=>{mockOtp=''+Math.floor(1000+Math.random()*9000);otp='';renderOtp();startTimer();flash('OTP resent (demo): '+mockOtp);};
+      setFocusables('otp');}
+  }
+  $('#backBtn').onclick=()=>{clearInterval(timerInt);show('login');renderPhone();};
+
+  /* ---- WIFI ---- */
+  function runWifi(){
+    show('wifi');const steps=[...document.querySelectorAll('.wstep')];steps.forEach(s=>s.classList.remove('on','done'));let i=0;
+    (function nx(){if(i>=steps.length){setTimeout(()=>{$('#homeWho').textContent='Auto-logged via Wiom WiFi · no OTP entered';show('home');flash('Signed in silently ✓');},600);return;}
+      steps[i].classList.add('on');setTimeout(()=>{steps[i].classList.add('done');i++;nx();},850);})();
+  }
+
+  /* ---- SPLASH ---- */
+  function boot(){
+    show('splash');const v=$('#splashVid');try{v.currentTime=0;v.play().catch(()=>{});}catch(e){}
+    const note=$('#splashnote');const msgs=['Starting up…','Checking session…',mode==='wifi'?'Wiom network found — auto-signing in…':'Not signed in — opening login…'];
+    let k=0;note.textContent=msgs[0];const iv=setInterval(()=>{k++;if(msgs[k])note.textContent=msgs[k];},750);
+    setTimeout(()=>{clearInterval(iv);if(mode==='wifi')runWifi();else{phone='';renderPhone();show('login');}},2400);
+  }
+
+  /* ---- TV D-pad focus ring ---- */
+  let focusList=[],fi=0;
+  function setFocusables(view){
+    focusList=[];fi=0;
+    document.querySelectorAll('.focus').forEach(e=>e.classList.remove('focus'));
+    if(view==='login'){
+      focusList=[...views.login.querySelectorAll('.key')];
+      if(phone.length===10)focusList.push(phoneCta);
+    }else if(view==='otp'){
+      focusList=[$('#backBtn'),...views.otp.querySelectorAll('.key')];
+      const rl=$('#resendLink');if(rl)focusList.push(rl);
+    }
+    if(focusList.length){fi=view==='login'?0:1;paintFocus();}
+  }
+  function refocusCta(){setFocusables('login');const idx=focusList.indexOf(phoneCta);if(idx>=0){fi=idx;paintFocus();}}
+  function paintFocus(){focusList.forEach((e,i)=>e.classList.toggle('focus',i===fi));}
+  function moveFocus(dx,dy){
+    if(!focusList.length)return;
+    const cur=focusList[fi];
+    // grid-aware move within the 3-col numberpad; fall back to linear
+    const keys=focusList.filter(e=>e.classList.contains('key'));
+    const ki=keys.indexOf(cur);
+    if(ki>=0){
+      let col=ki%3,row=Math.floor(ki/3);
+      if(dx){col=(col+dx+3)%3;}
+      if(dy){row=row+dy;}
+      const ni=row*3+col;
+      if(ni>=0&&ni<keys.length){fi=focusList.indexOf(keys[ni]);paintFocus();return;}
+      // moving below last key row → CTA / resend
+      if(dy>0&&row*3>=keys.length){const tail=focusList[focusList.length-1];if(tail&&!tail.classList.contains('key')){fi=focusList.length-1;paintFocus();return;}}
+      // moving up from top key row → back button (otp)
+      if(dy<0&&row<0){const head=focusList[0];if(head&&!head.classList.contains('key')){fi=0;paintFocus();return;}}
+      paintFocus();return;
+    }
+    // non-key (back/cta/resend): up/down jumps into the pad
+    fi=Math.min(Math.max(fi+(dy>0?1:dy<0?-1:0),0),focusList.length-1);paintFocus();
+  }
+  function pressFocus(){const e=focusList[fi];if(e)e.click();}
+
+  /* ---- controls + keyboard ---- */
+  document.querySelectorAll('.modebtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.modebtn').forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.mode;restart();});
+  function restart(){clearInterval(timerInt);phone='';otp='';boot();}
+  $('#restart').onclick=restart;
+  $('#autofill').onclick=()=>{const v=document.querySelector('.view.active').dataset.view;
+    if(v==='login'){phone='9876543210';renderPhone();setTimeout(submitPhone,200);}
+    else if(v==='otp'){otp=mockOtp;renderOtp();setTimeout(verifyOtp,250);}else flash('Use on the login / OTP screen');};
+  document.addEventListener('keydown',e=>{
+    const v=document.querySelector('.view.active').dataset.view;
+    if(e.key>='0'&&e.key<='9'){if(v==='login')phoneDigit(e.key);else if(v==='otp')otpDigit(e.key);return;}
+    if(e.key==='Backspace'){e.preventDefault();if(v==='login')phoneBack();else if(v==='otp')otpBack();return;}
+    if(e.key==='ArrowLeft'){e.preventDefault();moveFocus(-1,0);}
+    else if(e.key==='ArrowRight'){e.preventDefault();moveFocus(1,0);}
+    else if(e.key==='ArrowUp'){e.preventDefault();moveFocus(0,-1);}
+    else if(e.key==='ArrowDown'){e.preventDefault();moveFocus(0,1);}
+    else if(e.key==='Enter'){e.preventDefault();pressFocus();}
+  });
+
+  restart();
+})();
+</script>
+</body>
+</html>

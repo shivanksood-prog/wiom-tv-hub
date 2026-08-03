@@ -1,0 +1,644 @@
+<title>Wiom TV — News is the demand engine</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --rule:#D7D3E0; --wash:#F1EDF7; --accent:#D9008D; --accentWash:#FFE5F6;
+    --news:#D9008D; --rest:#6D17CE; --pos:#008043; --posWash:#E1FAED;
+    --warn:#FF8000; --warnWash:#FFE6CC; --grid:rgba(22,16,33,.09);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#161021; --card:#352D42; --ink:#FAF9FC; --muted:#A7A1B2; --faint:#8B8397;
+      --rule:#443152; --wash:#2A2336; --accent:#FF5FB8; --accentWash:#3A1130;
+      --news:#F53FA5; --rest:#A06BFF; --pos:#4FD08C; --posWash:#12301F;
+      --warn:#FFA34D; --warnWash:#3A2410; --grid:rgba(250,249,252,.10);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#FAF9FC; --card:#FFFFFF; --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --rule:#D7D3E0; --wash:#F1EDF7; --accent:#D9008D; --accentWash:#FFE5F6;
+    --news:#D9008D; --rest:#6D17CE; --pos:#008043; --posWash:#E1FAED;
+    --warn:#FF8000; --warnWash:#FFE6CC; --grid:rgba(22,16,33,.09);
+  }
+  :root[data-theme="dark"]{
+    --bg:#161021; --card:#352D42; --ink:#FAF9FC; --muted:#A7A1B2; --faint:#8B8397;
+    --rule:#443152; --wash:#2A2336; --accent:#FF5FB8; --accentWash:#3A1130;
+    --news:#F53FA5; --rest:#A06BFF; --pos:#4FD08C; --posWash:#12301F;
+    --warn:#FFA34D; --warnWash:#3A2410; --grid:rgba(250,249,252,.10);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans","Segoe UI",Roboto,-apple-system,Helvetica,Arial,sans-serif;
+    font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:56px 28px 96px; display:flex; flex-direction:column; gap:44px}
+  .mono{font-family:ui-monospace,SFMono-Regular,"Cascadia Mono",Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
+
+  .eyebrow{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:11px; letter-spacing:.17em; text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ---- masthead ---- */
+  header{display:flex; flex-direction:column; gap:18px}
+  .kicker{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .live{
+    display:inline-flex; align-items:center; gap:7px; background:var(--accentWash); color:var(--accent);
+    padding:4px 11px; border-radius:3px; font-family:ui-monospace,Menlo,monospace;
+    font-size:11px; letter-spacing:.15em; text-transform:uppercase; font-weight:700;
+  }
+  .live i{width:7px; height:7px; border-radius:50%; background:var(--accent); display:block}
+  h1{
+    margin:0; font-size:clamp(30px,5vw,46px); line-height:1.1; font-weight:700;
+    letter-spacing:-.024em; text-wrap:balance; max-width:19ch;
+  }
+  h1 em{font-style:normal; color:var(--accent)}
+  .standfirst{margin:0; font-size:19px; line-height:1.55; color:var(--muted); max-width:62ch}
+  .byline{
+    display:flex; gap:18px; flex-wrap:wrap; padding-top:16px; border-top:1px solid var(--rule);
+    font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--faint);
+  }
+
+  /* ---- section furniture ---- */
+  section{display:flex; flex-direction:column; gap:18px}
+  h2{
+    margin:0; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); font-family:ui-monospace,Menlo,monospace;
+  }
+  h3{margin:0; font-size:20px; font-weight:700; letter-spacing:-.012em; text-wrap:balance}
+  p{margin:0; max-width:74ch}
+  .lede{font-size:17.5px}
+  strong{font-weight:700}
+
+  /* ---- event spine ---- */
+  .spine{display:flex; flex-direction:column; gap:0; margin-top:4px}
+  .beat{display:grid; grid-template-columns:96px 1fr; gap:22px; position:relative; padding:0 0 26px}
+  .beat:last-child{padding-bottom:0}
+  .beat .when{
+    font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--muted);
+    text-align:right; padding-top:3px; font-variant-numeric:tabular-nums;
+  }
+  .beat .body{position:relative; padding-left:26px; border-left:1px solid var(--rule)}
+  .beat:last-child .body{border-left-color:transparent}
+  .beat .body::before{
+    content:""; position:absolute; left:-4.5px; top:8px; width:9px; height:9px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--faint);
+  }
+  .beat.hit .body::before{background:var(--accent); border-color:var(--accent)}
+  .beat .body h4{margin:0 0 4px; font-size:16.5px; font-weight:700}
+  .beat .body p{font-size:15px; color:var(--muted); max-width:64ch}
+  .beat .body .num{
+    display:inline-block; margin-top:8px; font-family:ui-monospace,Menlo,monospace; font-size:13px;
+    background:var(--accentWash); color:var(--accent); padding:3px 9px; border-radius:3px; font-weight:700;
+  }
+
+  /* ---- figure ---- */
+  figure{margin:0; background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:22px}
+  figcaption{margin-top:14px; font-size:13.5px; color:var(--muted); max-width:76ch}
+  .figtop{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:16px}
+  .figtitle{font-size:15.5px; font-weight:700}
+  .figsub{font-size:12.5px; color:var(--muted); margin-top:2px}
+  .legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--muted)}
+  .legend span{display:inline-flex; align-items:center; gap:7px}
+  .sw{width:11px; height:11px; border-radius:2.5px; display:block}
+  .chartbox{width:100%; overflow-x:auto}
+  svg{display:block}
+  .tip{
+    position:fixed; pointer-events:none; opacity:0; transition:opacity .1s; z-index:20;
+    background:var(--ink); color:var(--bg); padding:8px 11px; border-radius:5px;
+    font-family:ui-monospace,Menlo,monospace; font-size:11.5px; line-height:1.5; white-space:nowrap;
+    box-shadow:0 6px 22px rgba(0,0,0,.28);
+  }
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto; border:1px solid var(--rule); border-radius:6px; background:var(--card)}
+  table{border-collapse:collapse; width:100%; min-width:560px; font-size:14.5px}
+  caption{
+    text-align:left; padding:15px 18px 0; font-size:13px; color:var(--muted);
+    font-family:ui-monospace,Menlo,monospace;
+  }
+  th,td{padding:10px 18px; text-align:right; border-bottom:1px solid var(--rule)}
+  th:first-child,td:first-child{text-align:left}
+  thead th{
+    font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--muted);
+    font-weight:700; font-family:ui-monospace,Menlo,monospace; white-space:nowrap;
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.rule td{background:var(--wash); font-weight:700}
+  td.n{font-family:ui-monospace,Menlo,monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+  .up{color:var(--pos); font-weight:700}
+  .flat{color:var(--muted)}
+
+  /* ---- stat row ---- */
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:6px; overflow:hidden}
+  .stat{background:var(--card); padding:18px 18px 16px; display:flex; flex-direction:column; gap:5px}
+  .stat .v{font-family:ui-monospace,Menlo,monospace; font-size:26px; font-weight:700; letter-spacing:-.02em; color:var(--accent)}
+  .stat .k{font-size:12.5px; color:var(--muted); line-height:1.4}
+
+  /* ---- build blocks ---- */
+  .builds{display:flex; flex-direction:column; gap:14px}
+  .build{
+    background:var(--card); border:1px solid var(--rule); border-radius:6px; padding:20px;
+    display:grid; grid-template-columns:1fr auto; gap:6px 20px; align-items:start;
+  }
+  .build h4{margin:0; font-size:17px; font-weight:700; letter-spacing:-.01em}
+  .build p{font-size:14.5px; color:var(--muted); grid-column:1/-1; margin-top:2px}
+  .tag{
+    font-family:ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    padding:4px 9px; border-radius:3px; white-space:nowrap; font-weight:700;
+    background:var(--wash); color:var(--muted); border:1px solid var(--rule);
+  }
+  .tag.now{background:var(--posWash); color:var(--pos); border-color:transparent}
+
+  /* ---- callout ---- */
+  .note{
+    border-left:3px solid var(--warn); background:var(--warnWash); border-radius:0 5px 5px 0;
+    padding:16px 20px; display:flex; flex-direction:column; gap:8px;
+  }
+  .note h4{margin:0; font-size:14px; font-weight:700; letter-spacing:.02em}
+  .note p{font-size:14.5px; max-width:72ch}
+  :root[data-theme="dark"] .note p, :root[data-theme="dark"] .note h4{color:var(--ink)}
+
+  ul{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:7px; max-width:74ch}
+  li{font-size:15px}
+  li strong{color:var(--ink)}
+
+  footer{border-top:1px solid var(--rule); padding-top:20px; font-size:13px; color:var(--faint); max-width:76ch}
+  a{color:var(--accent)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+  @media (max-width:560px){
+    .beat{grid-template-columns:1fr; gap:6px}
+    .beat .when{text-align:left}
+    .beat .body{padding-left:20px}
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="kicker">
+      <span class="live"><i></i>Validated · 27 Jul 2026</span>
+      <span class="eyebrow">Wiom TV · Product proposal</span>
+    </div>
+    <h1>News is not a spike. It is the <em>demand engine</em>.</h1>
+    <p class="standfirst">
+      Two national news events — the 20 July Delhi march and the 25 July resignation — produced the
+      two heaviest watch days in wiom.tv's history. Stripping whales, the lift holds. It is carried by
+      depth, not new installs, and it shows up independently on the Android app. We should stop treating
+      news as one of nine genres and build the News Desk.
+    </p>
+    <div class="byline mono">
+      <span>Sources · wiom.tv analytics.db · CleverTap TV → Snowflake</span>
+      <span>Windows · 13–19 vs 20–26 Jul (web), 14–19 vs 20–25 Jul (Android)</span>
+      <span>All times IST</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The natural experiment</h2>
+    <p class="lede">
+      We did not run this test — the news cycle ran it for us. The CJP protest arc gave us two
+      hard-dated demand shocks fourteen days into a stable data era, with no product change in between.
+    </p>
+    <div class="spine">
+      <div class="beat">
+        <div class="when">13 Jul</div>
+        <div class="body">
+          <h4>Baseline era begins</h4>
+          <p>PR#8 ships: 5 dead channels removed, gesture-unmute, fse_v2 landing arms go live. Everything after this date is one clean, comparable era — the pre and post windows below sit entirely inside it.</p>
+        </div>
+      </div>
+      <div class="beat hit">
+        <div class="when">20 Jul</div>
+        <div class="body">
+          <h4>Delhi march · police action</h4>
+          <p>CJP marches on the Education Ministry; 150 protesters injured. Watch time jumps to 26.6 h — the heaviest day in five weeks. News alone takes 45.1% of the day.</p>
+          <span class="num">News 12.0 h · +212% vs prior 7d</span>
+        </div>
+      </div>
+      <div class="beat">
+        <div class="when">21–24 Jul</div>
+        <div class="body">
+          <h4>The lift does not decay</h4>
+          <p>Marches are suspended, talks with government begin. Watch time stays elevated every single day — 25.7, 19.1, 18.9, 29.4 h. This is the part that matters: a one-day spike would have fallen back. It did not.</p>
+        </div>
+      </div>
+      <div class="beat hit">
+        <div class="when">25 Jul</div>
+        <div class="body">
+          <h4>Education Minister resigns</h4>
+          <p>48.8 h watched — the single biggest day on record, 3.1× the prior week's average. News is 52.7% of it, concentrated in the 10:00, 15:00 and 23:00 bulletin hours.</p>
+          <span class="num">News 25.7 h · 6.7× the pre-window daily average</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What actually moved — wiom.tv (web)</h2>
+    <figure>
+      <div class="figtop">
+        <div>
+          <div class="figtitle">Daily watch hours, split News vs rest of catalogue</div>
+          <div class="figsub">6–27 Jul 2026 · IST · tune dwell winsorised at 4 h/tune</div>
+        </div>
+        <div class="legend">
+          <span><i class="sw" style="background:var(--news)"></i>News</span>
+          <span><i class="sw" style="background:var(--rest)"></i>Rest of catalogue</span>
+        </div>
+      </div>
+      <div class="chartbox"><svg id="c1" role="img" aria-label="Daily watch hours on wiom.tv, 6 to 27 July 2026, with News split out. News hours rise sharply from 20 July, peaking at 25.7 hours on 25 July."></svg></div>
+      <figcaption>
+        27 Jul is a partial day (data to 13:17 IST) and is excluded from every comparison.
+        The two annotated days are the march and the resignation.
+      </figcaption>
+    </figure>
+
+    <div class="stats">
+      <div class="stat"><span class="v">+73%</span><span class="k">Total watch hours per day<br>15.7 → 27.1 h</span></div>
+      <div class="stat"><span class="v">+70%</span><span class="k">Still +70% after stripping the top 1% of whale user-days</span></div>
+      <div class="stat"><span class="v">+6%</span><span class="k">Active users per day — reach barely moved</span></div>
+      <div class="stat"><span class="v">1.9×</span><span class="k">User-days over 15 min<br>69 → 131 (95% CI 1.4–2.5×)</span></div>
+    </div>
+
+    <p>
+      That combination is the whole argument. Reach was flat, so this was not acquisition. The lift
+      survives whale-stripping, so it was not one heavy household. What grew was <strong>depth per
+      existing user</strong> — and the depth is news-shaped: News took <strong>73% of every
+      incremental hour</strong>, and its share of all watch time went from a quarter to nearly a half.
+    </p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>wiom.tv · 7-day averages, 13–19 Jul vs 20–26 Jul</caption>
+        <thead>
+          <tr><th>Metric</th><th>Pre</th><th>Post</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr class="rule"><td>News watch hours / day</td><td class="n">3.85</td><td class="n">12.13</td><td class="n up">+215%</td></tr>
+          <tr><td>News share of all watch time</td><td class="n">24.5%</td><td class="n">44.7%</td><td class="n up">+20.2pp</td></tr>
+          <tr><td>Minutes held per news tune</td><td class="n">0.41</td><td class="n">0.85</td><td class="n up">+107%</td></tr>
+          <tr><td>News hours, excl. top 3 users/day</td><td class="n">1.68</td><td class="n">5.31</td><td class="n up">+216%</td></tr>
+          <tr><td>User-days ≥ 15 min on news</td><td class="n">2.9</td><td class="n">8.1</td><td class="n up">+183%</td></tr>
+          <tr class="rule"><td>Repeat-user watch hours / day</td><td class="n">5.7</td><td class="n">14.2</td><td class="n up">+149%</td></tr>
+          <tr><td>Repeat users per day</td><td class="n">60.3</td><td class="n">65.4</td><td class="n flat">+8%</td></tr>
+          <tr><td>Repeat-user news hours / day</td><td class="n">1.68</td><td class="n">7.19</td><td class="n up">+328%</td></tr>
+          <tr class="rule"><td>Same users, both weeks (n = 167)</td><td class="n">8.3 min</td><td class="n">14.9 min</td><td class="n up">+80%</td></tr>
+          <tr><td>…of which news</td><td class="n">2.2 min</td><td class="n">7.1 min</td><td class="n up">+219%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      The paired row is the cleanest cut available: the same 167 users, present in both weeks, watching
+      <strong>80% more</strong> — and the entire increase is news. Aaj Tak HD went from 3.5 h to
+      31.0 h (9×); ABP News 3.3 → 14.5 h; Republic Bharat from nothing to 3.1 h.
+    </p>
+  </section>
+
+  <section>
+    <h2>The same shape on Android</h2>
+    <figure>
+      <div class="figtop">
+        <div>
+          <div class="figtitle">New Android app · daily news watch hours</div>
+          <div class="figsub">14–25 Jul 2026 · v13.x · dwell between play events, capped at 4 h</div>
+        </div>
+        <div class="legend"><span><i class="sw" style="background:var(--news)"></i>News hours</span></div>
+      </div>
+      <div class="chartbox"><svg id="c2" role="img" aria-label="Daily news watch hours on the new Android app, 14 to 25 July 2026, rising from about 63 hours per day to a peak of 114 hours on 21 July."></svg></div>
+      <figcaption>26 Jul excluded — it is the last day in the warehouse, so final-play dwell is truncated.</figcaption>
+    </figure>
+
+    <div class="tablewrap">
+      <table>
+        <caption>New Android app (v13.x) · 6-day averages, 14–19 Jul vs 20–25 Jul</caption>
+        <thead><tr><th>Metric</th><th>Pre</th><th>Post</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr class="rule"><td>News watch hours / day</td><td class="n">63.2</td><td class="n">91.1</td><td class="n up">+44%</td></tr>
+          <tr><td>Total watch hours / day</td><td class="n">72.5</td><td class="n">100.0</td><td class="n up">+38%</td></tr>
+          <tr><td>Hours excl. top 3 devices / day</td><td class="n">50.8</td><td class="n">74.0</td><td class="n up">+46%</td></tr>
+          <tr><td>Active devices / day</td><td class="n">50.8</td><td class="n">59.2</td><td class="n flat">+16%</td></tr>
+          <tr><td>Device-days ≥ 15 min</td><td class="n">28.5</td><td class="n">36.8</td><td class="n up">+29%</td></tr>
+          <tr><td>Device-days ≥ 60 min</td><td class="n">17.5</td><td class="n">22.5</td><td class="n up">+29%</td></tr>
+          <tr><td>News share of watch time</td><td class="n">87.2%</td><td class="n">92.3%</td><td class="n up">+5.1pp</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Two independent products, different codebases, different measurement stacks, same week, same
+      shape: <strong>whale-independent depth growth, carried by news</strong>. On Android the effect is
+      even starker — news absorbed essentially <em>all</em> of the incremental hours, and the app was
+      already 87% news before the shock. Its peak landed on 20–21 Jul rather than 25 Jul, consistent
+      with a TV-in-the-living-room audience following the march coverage rather than the announcement.
+    </p>
+
+    <div class="note">
+      <h4>The old Android app cannot answer this — and that is a finding, not a gap</h4>
+      <p>
+        The v11/v12 app is retired. It served 2 devices in all of July against 410 on v13, having
+        migrated its base by January 2026. There is no population left on it to test, so every Android
+        number above is the new app. Anyone asking "does this replicate on the old app?" should be told
+        it has no users, not that the test was inconclusive.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Does news retain, or just spike?</h2>
+    <p>
+      Depth only matters if it comes back. Users whose first day includes 2+ minutes of news return at
+      <strong>D1 17.5% and D7 27.5%</strong> (n = 229) against <strong>12.4% and 24.0%</strong> for users
+      who watched 2+ minutes of anything else (n = 840). But that comparison flatters news, because news
+      viewers also watch far longer on day one. Controlling for first-day depth:
+    </p>
+    <div class="tablewrap">
+      <table>
+        <caption>D1 return by first-day watch depth · news-led vs other-led · 1–25 Jul</caption>
+        <thead><tr><th>First-day watch</th><th>News-led D1</th><th>Other-led D1</th><th>n (news / other)</th></tr></thead>
+        <tbody>
+          <tr><td>2–5 min</td><td class="n">9.2%</td><td class="n">12.3%</td><td class="n">65 / 473</td></tr>
+          <tr><td>5–15 min</td><td class="n up">15.6%</td><td class="n">10.0%</td><td class="n">45 / 281</td></tr>
+          <tr><td>15–45 min</td><td class="n up">28.1%</td><td class="n">15.0%</td><td class="n">32 / 100</td></tr>
+          <tr><td>45 min +</td><td class="n up">42.1%</td><td class="n">24.1%</td><td class="n">19 / 54</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Read this honestly. Below five minutes, news is <em>worse</em> than the rest of the catalogue —
+      a user who samples news and bounces is a user we lost. Above five minutes it is consistently
+      1.6–1.9× better, and the advantage widens with depth. The cell sizes are small (19–65), so this
+      is <strong>directional, not conclusive</strong>. The design implication is sharp: the prize is not
+      getting people to news, it is getting them <em>past the first five minutes</em> of it.
+    </p>
+  </section>
+
+  <section>
+    <h2>We are already half-testing this</h2>
+    <p>
+      fse_v2 has been running since 13 Jul with four landing arms, one of which — <span class="mono">LN</span> —
+      lands new users directly on the best-performing news channel. It is the closest thing we have to
+      the proposed product, and it is quietly the best arm:
+    </p>
+    <div class="tablewrap">
+      <table>
+        <caption>fse_v2 landing arms · new users only · 13–27 Jul · one row per user</caption>
+        <thead><tr><th>Arm</th><th>n</th><th>60s survival</th><th>≥15 min</th><th>D1 return</th><th>News min / user</th></tr></thead>
+        <tbody>
+          <tr class="rule"><td>LN — News landing</td><td class="n">856</td><td class="n up">28.5%</td><td class="n up">3.7%</td><td class="n up">7.5%</td><td class="n">1.99</td></tr>
+          <tr><td>LE — control (today's default)</td><td class="n">840</td><td class="n">25.5%</td><td class="n">2.9%</td><td class="n">6.5%</td><td class="n">0.61</td></tr>
+          <tr><td>LM — Movies landing</td><td class="n">833</td><td class="n">27.5%</td><td class="n">2.6%</td><td class="n">6.7%</td><td class="n">0.33</td></tr>
+          <tr><td>LU — Music landing</td><td class="n">752</td><td class="n">26.6%</td><td class="n">3.9%</td><td class="n">6.0%</td><td class="n">3.22*</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <h4>Do not call this a win yet</h4>
+      <p>
+        LN beats control on every metric, but <strong>none of it is significant</strong>. The survival
+        gap is +3.0pp with a 95% CI of −1.2 to +7.3pp (p = 0.16); the minimum detectable effect at
+        n ≈ 850/arm is 6.0pp. To resolve a real 3pp effect we need roughly 3,370 users per arm — about
+        40 more days at the current ~61 new users/arm/day. The mechanism <em>is</em> confirmed
+        (LN users watch 1.99 news minutes vs control's 0.61 — the landing works); the payoff is not.
+        <span class="mono">*LU's minutes figure is total watch, not news.</span>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What to build</h2>
+    <p class="lede">
+      Three pieces, ordered by evidence strength. The first is nearly free and already de-risked; the
+      third is the actual bet.
+    </p>
+    <div class="builds">
+      <div class="build">
+        <h4>1 · Keep LN running to significance, and pre-register the call</h4>
+        <span class="tag now">This week · ~0 eng</span>
+        <p>
+          The cheapest decision available: do nothing to the code, commit now to a fixed read-out date
+          at n ≈ 3,370/arm (≈ 5 Sep) with 60-second survival as the single primary metric. If we keep
+          peeking we will call a 3pp effect on noise, exactly as we did with fse_v1's arm B.
+        </p>
+      </div>
+      <div class="build">
+        <h4>2 · A News rail that survives the first five minutes</h4>
+        <span class="tag">2–3 weeks</span>
+        <p>
+          The retention table says users who bounce off news inside five minutes are lost, and those who
+          stay are our best cohort. So the surface is not a genre grid — it is a persistent rail of the
+          4–5 news channels that actually hold attention (Aaj Tak, ABP, NDTV India, India TV, Republic
+          Bharat carried 70% of post-window news hours), with instant switching and no re-buffer
+          penalty. Resume-on-last-news-channel for returning users.
+        </p>
+      </div>
+      <div class="build">
+        <h4>3 · Breaking-news activation</h4>
+        <span class="tag">4–6 weeks · the bet</span>
+        <p>
+          The 20 and 25 July peaks were demand we captured passively. A monitored trigger — a headline
+          band on the player plus a push to installed users when a major story breaks — converts a news
+          cycle we do not control into a return visit we do. This is the only proposal here that grows
+          reach rather than depth, and it is the one that would have made 25 July a 3× day instead of
+          a 3.1× day on a flat user base.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How we will know we were right — and how we would know we were wrong</h2>
+    <ul>
+      <li><strong>Primary:</strong> 60-second first-session survival, LN vs LE, at n = 3,370/arm. Ship if the CI excludes zero.</li>
+      <li><strong>Secondary:</strong> user-days ≥ 15 min per active user — the metric that actually moved (1.9×) and the one the rail is designed to move.</li>
+      <li><strong>Guardrail:</strong> D1 return for the 2–5 minute news cohort. Today it is 9.2%, <em>below</em> the catalogue. If the rail does not lift this, we have built a better funnel into our worst-retaining experience.</li>
+      <li><strong>Falsifier:</strong> if watch hours revert to the 15.7 h/day baseline by mid-August with news share back near 25%, this was a news cycle, not a product truth — and build 3 should not be funded.</li>
+    </ul>
+    <div class="note">
+      <h4>The honest caveat</h4>
+      <p>
+        Everything on this page except the fse_v2 table is <strong>observational</strong>. A national
+        news event moved behaviour; we did not. The correct inference is that latent news demand on this
+        base is far larger than its 25% baseline share suggested — not that a news feature causes a 73%
+        watch-time lift. Build 1 is what converts this from an observation into a claim we can defend.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    Evidence: wiom.tv <span class="mono">analytics.db</span> (read-only, 405,771 events to 27 Jul 13:17 IST) ·
+    <span class="mono">CLEVERTAP_TV.CLEVERTAP_TV_EVENTS</span> in Snowflake (synced 27 Jul 06:09 IST).
+    All web windows sit inside the post-13 Jul data era, so the PR#8 channel cleanup and gesture-unmute
+    changes affect both sides of every comparison equally. Event context:
+    <a href="https://www.aljazeera.com/news/2026/7/21/indias-cockroach-protest-movement-halts-marches-after-police-violence">Al Jazeera, 21 Jul</a> ·
+    <a href="https://www.aljazeera.com/features/2026/7/25/we-have-done-it-joy-as-cockroach-protests-push-india-minister-out">Al Jazeera, 25 Jul</a>.
+  </footer>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+(function(){
+  var tip = document.getElementById('tip');
+  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+  function showTip(e, html){
+    tip.innerHTML = html; tip.style.opacity = '1';
+    var r = tip.getBoundingClientRect();
+    var x = e.clientX + 14, y = e.clientY - r.height - 12;
+    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+    if (y < 8) y = e.clientY + 18;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hideTip(){ tip.style.opacity = '0'; }
+
+  // ---- data ------------------------------------------------------------
+  // [day, total hours, news hours]
+  var WEB = [
+    [6,14.3,4.08],[7,22.1,1.74],[8,20.0,2.08],[9,19.1,4.32],[10,21.8,7.61],[11,23.1,4.61],
+    [12,32.2,9.49],[13,12.8,1.34],[14,22.0,5.52],[15,19.7,7.59],[16,8.3,2.40],[17,15.2,4.50],
+    [18,14.1,2.58],[19,17.8,3.00],[20,26.6,12.01],[21,25.7,6.74],[22,19.1,11.25],[23,18.9,7.67],
+    [24,29.4,13.71],[25,48.8,25.66],[26,21.5,7.86],[27,10.6,4.89]
+  ];
+  var AND = [
+    [14,70.73],[15,69.49],[16,36.74],[17,67.69],[18,70.12],[19,64.30],
+    [20,107.63],[21,114.41],[22,90.15],[23,90.14],[24,68.18],[25,76.06]
+  ];
+
+  function axisText(svg, x, y, str, anchor, size, color){
+    var t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',x); t.setAttribute('y',y); t.setAttribute('text-anchor',anchor||'middle');
+    t.setAttribute('font-size',size||11); t.setAttribute('fill',color||css('--muted'));
+    t.setAttribute('font-family','ui-monospace,Menlo,monospace');
+    t.textContent = str; svg.appendChild(t); return t;
+  }
+  function rect(svg,x,y,w,h,fill,rTop){
+    var p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    var r = Math.min(rTop?4:0, w/2, h);
+    var d = r>0
+      ? 'M'+x+','+(y+h)+' L'+x+','+(y+r)+' Q'+x+','+y+' '+(x+r)+','+y+
+        ' L'+(x+w-r)+','+y+' Q'+(x+w)+','+y+' '+(x+w)+','+(y+r)+' L'+(x+w)+','+(y+h)+' Z'
+      : 'M'+x+','+y+' h'+w+' v'+h+' h'+(-w)+' Z';
+    p.setAttribute('d',d); p.setAttribute('fill',fill); svg.appendChild(p); return p;
+  }
+
+  // ---- chart 1: stacked web ----
+  function drawWeb(){
+    var svg = document.getElementById('c1');
+    svg.innerHTML = '';
+    var W = Math.max(660, svg.parentNode.clientWidth), H = 300;
+    var mL = 42, mR = 14, mT = 34, mB = 34;
+    svg.setAttribute('width', W); svg.setAttribute('height', H);
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    var pw = W-mL-mR, ph = H-mT-mB;
+    var max = 50, band = pw/WEB.length, bw = Math.min(22, band-6);
+    var yOf = function(v){ return mT + ph - (v/max)*ph; };
+
+    [0,10,20,30,40,50].forEach(function(g){
+      var ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+      ln.setAttribute('x1',mL); ln.setAttribute('x2',W-mR);
+      ln.setAttribute('y1',yOf(g)); ln.setAttribute('y2',yOf(g));
+      ln.setAttribute('stroke', g===0 ? css('--rule') : css('--grid'));
+      ln.setAttribute('stroke-width',1); svg.appendChild(ln);
+      axisText(svg, mL-9, yOf(g)+4, g, 'end', 10.5, css('--faint'));
+    });
+
+    WEB.forEach(function(d,i){
+      var x = mL + i*band + (band-bw)/2;
+      var partial = d[0]===27;
+      var news = d[2], rest = d[1]-d[2];
+      var hNews = (news/max)*ph, hRest = (rest/max)*ph;
+      // rest sits on top of news, 2px surface gap between the two fills
+      var rNews = rect(svg, x, yOf(news), bw, hNews, css('--news'), false);
+      var rRest = rect(svg, x, yOf(d[1]), bw, Math.max(0,hRest-2), css('--rest'), true);
+      if (partial){ rNews.setAttribute('opacity','.42'); rRest.setAttribute('opacity','.42'); }
+
+      var hit = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      hit.setAttribute('x', mL+i*band); hit.setAttribute('y', mT);
+      hit.setAttribute('width', band); hit.setAttribute('height', ph);
+      hit.setAttribute('fill','transparent'); hit.style.cursor='crosshair';
+      hit.addEventListener('mousemove', function(e){
+        showTip(e, '<b>'+d[0]+' Jul'+(partial?' (partial)':'')+'</b><br>'+
+          'News &nbsp;'+d[2].toFixed(2)+' h ('+Math.round(d[2]/d[1]*100)+'%)<br>'+
+          'Rest &nbsp;'+rest.toFixed(2)+' h<br>Total '+d[1].toFixed(1)+' h');
+      });
+      hit.addEventListener('mouseleave', hideTip);
+      svg.appendChild(hit);
+
+      if (d[0]%2===0 || d[0]===25) axisText(svg, x+bw/2, H-13, d[0], 'middle', 10.5, css('--faint'));
+    });
+
+    // annotate the two event days
+    [[20,'MARCH'],[25,'RESIGNS']].forEach(function(a){
+      var i = WEB.findIndex(function(d){ return d[0]===a[0]; });
+      var d = WEB[i], cx = mL + i*band + band/2;
+      var ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+      ln.setAttribute('x1',cx); ln.setAttribute('x2',cx);
+      ln.setAttribute('y1',yOf(d[1])-9); ln.setAttribute('y2',mT-6);
+      ln.setAttribute('stroke',css('--accent')); ln.setAttribute('stroke-width',1);
+      ln.setAttribute('stroke-dasharray','2 3'); svg.appendChild(ln);
+      axisText(svg, cx, mT-12, a[1], a[0]===20?'middle':'end', 10, css('--accent'))
+        .setAttribute('font-weight','700');
+    });
+    axisText(svg, mL-9, mT-12, 'hrs', 'end', 10, css('--faint'));
+  }
+
+  // ---- chart 2: android news ----
+  function drawAnd(){
+    var svg = document.getElementById('c2');
+    svg.innerHTML = '';
+    var W = Math.max(600, svg.parentNode.clientWidth), H = 200;
+    var mL = 42, mR = 14, mT = 22, mB = 32;
+    svg.setAttribute('width', W); svg.setAttribute('height', H);
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    var pw = W-mL-mR, ph = H-mT-mB;
+    var max = 120, band = pw/AND.length, bw = Math.min(30, band-10);
+    var yOf = function(v){ return mT + ph - (v/max)*ph; };
+
+    [0,40,80,120].forEach(function(g){
+      var ln = document.createElementNS('http://www.w3.org/2000/svg','line');
+      ln.setAttribute('x1',mL); ln.setAttribute('x2',W-mR);
+      ln.setAttribute('y1',yOf(g)); ln.setAttribute('y2',yOf(g));
+      ln.setAttribute('stroke', g===0 ? css('--rule') : css('--grid'));
+      svg.appendChild(ln);
+      axisText(svg, mL-9, yOf(g)+4, g, 'end', 10.5, css('--faint'));
+    });
+
+    // pre / post divider
+    var di = AND.findIndex(function(d){ return d[0]===20; });
+    var dx = mL + di*band - 3;
+    var dl = document.createElementNS('http://www.w3.org/2000/svg','line');
+    dl.setAttribute('x1',dx); dl.setAttribute('x2',dx);
+    dl.setAttribute('y1',mT-4); dl.setAttribute('y2',mT+ph);
+    dl.setAttribute('stroke',css('--accent')); dl.setAttribute('stroke-width',1);
+    dl.setAttribute('stroke-dasharray','2 3'); svg.appendChild(dl);
+    axisText(svg, dx+5, mT-8, '20 JUL →', 'start', 10, css('--accent')).setAttribute('font-weight','700');
+
+    AND.forEach(function(d,i){
+      var x = mL + i*band + (band-bw)/2;
+      var h = (d[1]/max)*ph;
+      rect(svg, x, yOf(d[1]), bw, h, css('--news'), true);
+      var hit = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      hit.setAttribute('x',mL+i*band); hit.setAttribute('y',mT);
+      hit.setAttribute('width',band); hit.setAttribute('height',ph);
+      hit.setAttribute('fill','transparent'); hit.style.cursor='crosshair';
+      hit.addEventListener('mousemove', function(e){
+        showTip(e,'<b>'+d[0]+' Jul</b><br>News '+d[1].toFixed(1)+' h');
+      });
+      hit.addEventListener('mouseleave', hideTip);
+      svg.appendChild(hit);
+      axisText(svg, x+bw/2, H-11, d[0], 'middle', 10.5, css('--faint'));
+    });
+    axisText(svg, mL-9, mT-8, 'hrs', 'end', 10, css('--faint'));
+  }
+
+  function drawAll(){ drawWeb(); drawAnd(); }
+  drawAll();
+  var t; addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(drawAll, 120); });
+  if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawAll);
+  new MutationObserver(drawAll).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+})();
+</script>

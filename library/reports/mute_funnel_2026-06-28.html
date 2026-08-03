@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiom TV · Launch → Mute/Unmute Funnel · Jun 28</title>
+<style>
+  :root{
+    --brand:#D9008D; --brand2:#443152; --brand300:#FFB2E4; --brand100:#FFE5F6;
+    --bg:#FAF9FC; --card:#FFFFFF; --ink:#161021; --muted:#665E75; --label:#A7A1B2;
+    --line:#D7D3E0; --zebra:#F1EDF7;
+    --green:#008043; --green100:#E1FAED; --red:#E01E00; --red100:#FFE9E5;
+    --amber:#FF8000; --amber200:#FFE6CC; --purple:#6D17CE; --info100:#F1E5FF;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Noto Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.45}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+  header{margin-bottom:8px}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:700}
+  h1{font-size:30px;margin:6px 0 4px;font-weight:800;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px}
+  .pill{display:inline-block;background:var(--brand100);color:var(--brand);font-size:12px;
+    font-weight:700;padding:3px 10px;border-radius:999px;margin-left:6px}
+  section{margin-top:34px}
+  h2{font-size:19px;font-weight:800;margin:0 0 4px}
+  .h2note{color:var(--muted);font-size:13px;margin:0 0 16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px;
+    box-shadow:0 1px 2px rgba(22,16,33,.04)}
+  /* KPI strip */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .kpi .v{font-size:28px;font-weight:800;letter-spacing:-.02em}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  .kpi .t{font-size:12px;font-weight:700;margin-top:6px}
+  .up{color:var(--green)} .down{color:var(--red)} .warn{color:var(--amber)}
+  /* Funnel */
+  .funnel{display:flex;flex-direction:column;gap:10px}
+  .step{position:relative}
+  .step .bar{height:54px;border-radius:12px;display:flex;align-items:center;
+    padding:0 18px;color:#fff;font-weight:700;overflow:hidden;transition:width .3s}
+  .step .meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .step .name{font-weight:700;font-size:14px}
+  .step .pct{font-size:13px;color:var(--muted)}
+  .drop{font-size:12px;color:var(--red);font-weight:700;margin:2px 0 0 2px}
+  .b1{background:linear-gradient(90deg,#D9008D,#B0006F)}
+  .b2{background:linear-gradient(90deg,#B0006F,#8A0057)}
+  .b3{background:linear-gradient(90deg,#6D17CE,#5512a0)}
+  .b4{background:linear-gradient(90deg,#008043,#00663550)}
+  .barnum{font-size:16px}
+  /* split */
+  .splitwrap{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}
+  .splitbar{height:46px;border-radius:12px;overflow:hidden;display:flex;font-weight:800;color:#fff}
+  .seg-mute{background:var(--brand2);display:flex;align-items:center;justify-content:center}
+  .seg-unmute{background:var(--green);display:flex;align-items:center;justify-content:center}
+  .legend{font-size:13px;color:var(--muted);margin-top:10px}
+  .legend b{color:var(--ink)}
+  .callout{background:var(--red100);border-left:4px solid var(--red);border-radius:10px;
+    padding:12px 16px;font-size:13.5px;margin-top:16px;color:#5a0d00}
+  .callout.amber{background:var(--amber200);border-color:var(--amber);color:#5a2e00}
+  .callout b{font-weight:800}
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  thead th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--label);font-weight:700}
+  tbody tr:nth-child(even){background:var(--zebra)}
+  .chbar{display:inline-block;height:9px;border-radius:5px;background:var(--brand);vertical-align:middle;margin-left:8px}
+  .wbar{display:inline-block;height:9px;border-radius:5px;background:var(--purple);vertical-align:middle;margin-left:8px}
+  .mono{font-variant-numeric:tabular-nums}
+  .foot{margin-top:34px;color:var(--label);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+  @media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}.splitwrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Wiom TV · Engagement Instrumentation</div>
+    <h1>Launch → Mute / Unmute Funnel <span class="pill">Jun 28, 2026 · IST</span></h1>
+    <p class="sub">First full day on the new build · 641 session launches · instrumentation from PR&nbsp;#1 (cold-start &amp; bounce)</p>
+  </header>
+
+  <!-- KPI STRIP -->
+  <section style="margin-top:22px">
+    <div class="kpis">
+      <div class="kpi"><div class="v">641</div><div class="l">Session launches</div><div class="t up">+37% vs 7d avg</div></div>
+      <div class="kpi"><div class="v">69.7%</div><div class="l">Reached playback</div><div class="t down">194 never played</div></div>
+      <div class="kpi"><div class="v warn">11.4%</div><div class="l">Unmute rate (of prompted)</div><div class="t warn">88.6% stay muted</div></div>
+      <div class="kpi"><div class="v">58%</div><div class="l">Unmuters who re-mute</div><div class="t down">21 of 36</div></div>
+    </div>
+  </section>
+
+  <!-- FUNNEL -->
+  <section>
+    <h2>1 · The Mute Funnel</h2>
+    <p class="h2note">Where audio is won and lost — session-level, each step a subset of the launch above it.</p>
+    <div class="card">
+      <div class="funnel">
+        <div class="step">
+          <div class="meta"><span class="name">Launch</span><span class="pct">100% · baseline</span></div>
+          <div class="bar b1" style="width:100%"><span class="barnum">641 sessions</span></div>
+        </div>
+        <div class="step">
+          <div class="meta"><span class="name">Reached playback</span><span class="pct">69.7% of launch</span></div>
+          <div class="bar b2" style="width:69.7%"><span class="barnum">447</span></div>
+          <div class="drop">▼ 194 sessions (30.3%) launched but video never started</div>
+        </div>
+        <div class="step">
+          <div class="meta"><span class="name">Unmute prompt shown</span><span class="pct">49.5% of launch · 70.9% of played</span></div>
+          <div class="bar b3" style="width:49.5%"><span class="barnum">317</span></div>
+          <div class="drop">▼ 130 played sessions were never even shown the prompt</div>
+        </div>
+        <div class="step">
+          <div class="meta"><span class="name">Unmuted (got audio)</span><span class="pct">5.6% of launch · 11.4% of prompted</span></div>
+          <div class="bar b4" style="width:6.5%;min-width:120px"><span class="barnum">36</span></div>
+          <div class="drop">▼ 281 prompted sessions tapped through but stayed silent</div>
+        </div>
+      </div>
+      <div class="callout"><b>9 in 10 sessions watch silent TV.</b> Of 317 sessions explicitly shown the “tap to unmute” prompt, only 36 (11.4%) turned sound on — and 21 of those 36 muted again. Sound is the core of the medium; right now the product is being consumed as a silent video wall.</div>
+    </div>
+  </section>
+
+  <!-- MUTE vs UNMUTE SPLIT -->
+  <section>
+    <h2>2 · Mute vs Unmute</h2>
+    <p class="h2note">Among the 447 sessions that actually reached playback.</p>
+    <div class="card">
+      <div class="splitwrap">
+        <div>
+          <div class="splitbar">
+            <div class="seg-mute" style="width:92.4%">Muted · 413</div>
+            <div class="seg-unmute" style="width:7.6%">34</div>
+          </div>
+          <div class="legend"><span style="color:var(--brand2)">■</span> <b>Muted 92.4%</b> &nbsp; · &nbsp; <span style="color:var(--green)">■</span> <b>Unmuted 7.6%</b></div>
+        </div>
+        <div>
+          <table style="font-size:13px">
+            <thead><tr><th>Device</th><th>Played</th><th>Unmuted</th><th>Rate</th></tr></thead>
+            <tbody>
+              <tr><td>Mobile</td><td class="mono">434</td><td class="mono">32</td><td class="mono">7.4%</td></tr>
+              <tr><td>Desktop</td><td class="mono">13</td><td class="mono">2</td><td class="mono">15.4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="callout amber"><b>Mobile autoplay policy is the wall.</b> Mobile (97% of traffic) unmutes at half the desktop rate. The prompt is being seen but not acted on — worth testing a louder affordance, sound-on-first-tap-anywhere, or a persistent unmute banner until audio is enabled.</div>
+    </div>
+  </section>
+
+  <!-- BUCKETS -->
+  <section>
+    <h2>3 · Channel Changes per Session + Duration</h2>
+    <p class="h2note">Sessions bucketed by how many times the channel changed (tunes), with how long they lasted and how much was watched. Span = time from first to last event; watch = summed per-channel dwell.</p>
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Channels changed</th><th>Sessions</th><th>Share</th><th>Median span</th><th>Avg span</th><th>Median watch</th><th>Avg watch</th></tr>
+        </thead>
+        <tbody id="btable"></tbody>
+      </table>
+      <div class="callout amber" style="margin-top:18px"><b>Engagement is monotonic in surfing — but the bottom is hollow.</b> 311 of 641 sessions (49%) changed the channel 0–1 times and watched essentially nothing (median &lt;10s). The top bucket (21+ changes, 50 sessions) is the real audience: ~5.4 min median session, ~4.3 min watched. The job is to move the 0–1 bucket up the ladder — better default landing channel + faster playback.</div>
+    </div>
+  </section>
+
+  <div class="foot">
+    Source: live <code>events</code> store (better-sqlite3) on satyam.wiom.in · IST = UTC+5:30 · dwell capped 1h, session span capped 4h to remove background-tab outliers · Funnel instrumentation shipped in PR&nbsp;#1 <code>analytics/cold-start-instrumentation</code>, live Jun 27 ~18:00 IST.
+  </div>
+</div>
+
+<script>
+const buckets = [
+  {bucket:'0',sessions:126,median_span_sec:1,avg_span_sec:5,median_watch_min:0,avg_watch_min:0},
+  {bucket:'1',sessions:185,median_span_sec:9,avg_span_sec:42,median_watch_min:0.12,avg_watch_min:0.6},
+  {bucket:'2-3',sessions:122,median_span_sec:24,avg_span_sec:119,median_watch_min:0.32,avg_watch_min:1.49},
+  {bucket:'4-6',sessions:61,median_span_sec:60,avg_span_sec:213,median_watch_min:0.62,avg_watch_min:1.56},
+  {bucket:'7-10',sessions:47,median_span_sec:79,avg_span_sec:98,median_watch_min:1.22,avg_watch_min:2.03},
+  {bucket:'11-20',sessions:50,median_span_sec:116,avg_span_sec:167,median_watch_min:1.79,avg_watch_min:2.58},
+  {bucket:'21+',sessions:50,median_span_sec:323,avg_span_sec:825,median_watch_min:4.31,avg_watch_min:10.91},
+];
+const total = buckets.reduce((s,b)=>s+b.sessions,0);
+const maxSess = Math.max(...buckets.map(b=>b.sessions));
+const maxW = Math.max(...buckets.map(b=>b.avg_watch_min));
+const fmtT = s => s>=60 ? (s/60).toFixed(1)+'m' : s+'s';
+const rows = buckets.map(b=>{
+  const sw = Math.round(b.sessions/maxSess*90);
+  const ww = Math.round(b.avg_watch_min/maxW*90);
+  return `<tr>
+    <td><b>${b.bucket}</b></td>
+    <td class="mono">${b.sessions}<span class="chbar" style="width:${sw}px"></span></td>
+    <td class="mono">${(b.sessions/total*100).toFixed(1)}%</td>
+    <td class="mono">${fmtT(b.median_span_sec)}</td>
+    <td class="mono">${fmtT(b.avg_span_sec)}</td>
+    <td class="mono">${b.median_watch_min} m</td>
+    <td class="mono">${b.avg_watch_min} m<span class="wbar" style="width:${ww}px"></span></td>
+  </tr>`;
+}).join('');
+document.getElementById('btable').innerHTML = rows;
+</script>
+</body>
+</html>

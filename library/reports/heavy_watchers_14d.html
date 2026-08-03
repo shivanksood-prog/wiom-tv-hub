@@ -1,0 +1,2619 @@
+<title>wiom.tv · Heavy Watchers Tracker (14d)</title>
+<style>
+:root{--bg:#161021;--card:#352D42;--border:#443152;--text:#FAF9FC;--muted:#A7A1B2;
+--accent:#D9008D;--green:#008043;--red:#E01E00;--amber:#FF8000;--purple:#6D17CE;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:'Noto Sans',system-ui,-apple-system,sans-serif;line-height:1.5;padding:28px 20px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-.02em}
+h2{font-size:15px;margin:34px 0 12px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:600}
+.sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+.lead{background:linear-gradient(135deg,rgba(217,0,141,.18),rgba(109,23,206,.10));
+border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:16px 18px;margin-bottom:26px}
+.lead b{color:#FFB2E4}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.kpi .v{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+.kpi .n{font-size:11px;color:var(--muted);margin-top:6px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.chart{display:flex;align-items:flex-end;gap:6px;height:210px;padding-top:8px}
+.daycol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bar{width:100%;max-width:46px;border-radius:5px 5px 0 0;overflow:hidden;display:flex;flex-direction:column-reverse;min-height:3px}
+.bar span{display:block;width:100%}
+.bval{font-size:11px;margin-top:5px;font-weight:600}
+.bu{font-size:10px;color:var(--accent);font-weight:700}
+.blab{font-size:10px;color:var(--muted);margin-top:1px}
+.legend{margin-top:10px;font-size:11px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:900px}
+th{text-align:left;padding:10px 12px;color:var(--muted);font-size:10px;text-transform:uppercase;
+letter-spacing:.07em;border-bottom:1px solid var(--border);white-space:nowrap;position:sticky;top:0;background:var(--card)}
+td{padding:9px 12px;border-bottom:1px solid rgba(102,94,117,.28);white-space:nowrap}
+tr:hover td{background:rgba(217,0,141,.07)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.strong{font-weight:700}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:11.5px}
+.sm{font-size:11.5px;color:var(--muted)}
+.b{font-size:9px;padding:2px 6px;border-radius:99px;margin-left:8px;font-weight:700;letter-spacing:.04em}
+.b-idle{background:rgba(255,128,0,.18);color:#FF8000;border:1px solid rgba(255,128,0,.35)}
+.b-rep{background:rgba(0,128,67,.18);color:#3ecf8e;border:1px solid rgba(0,128,67,.4)}
+.grow{display:flex;align-items:center;gap:10px;margin-bottom:9px;font-size:13px}
+.gname{width:110px;color:var(--muted)}
+.gbar{flex:1;height:9px;background:rgba(102,94,117,.28);border-radius:99px;overflow:hidden}
+.gbar i{display:block;height:100%;border-radius:99px}
+.gval{width:32px;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.f{background:var(--card);border:1px solid var(--border);color:var(--muted);border-radius:99px;
+padding:5px 13px;font-size:12px;cursor:pointer;font-family:inherit}
+.f.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+.note b{color:var(--text)}
+</style>
+<div class="wrap">
+<h1>Heavy Watchers · 15+ minutes a day</h1>
+<div class="sub">wiom.tv · 2026-07-14 → 2026-07-27 (IST) · watch capped at 4h per tune · uid-level</div>
+
+<div class="lead"><b>167 devices</b> crossed 15 minutes in a single day over the last 14 days —
+about <b>5% of daily actives</b>, but they carry <b>217 of the 296 total watch hours (73%)</b>.
+Only <b>19</b> came back for a second heavy day, and <b>34</b> look like a stream left running rather than someone watching.</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">167</div><div class="l">Heavy devices</div><div class="n">203 heavy device-days</div></div>
+  <div class="kpi"><div class="v">217h</div><div class="l">Their watch time</div><div class="n">73% of all watch</div></div>
+  <div class="kpi"><div class="v" style="color:#3ecf8e">19</div><div class="l">Repeat heavy</div><div class="n">2+ heavy days (11%)</div></div>
+  <div class="kpi"><div class="v">108</div><div class="l">Heavy on day one</div><div class="n">65% went deep on first ever visit</div></div>
+  <div class="kpi"><div class="v" style="color:#FF8000">34</div><div class="l">Likely left running</div><div class="n">68h of inflated watch</div></div>
+  <div class="kpi"><div class="v">68</div><div class="l">Seen in last 3 days</div><div class="n">still reachable</div></div>
+</div>
+
+<h2>Daily — heavy hours, split by genre</h2>
+<div class="card">
+  <div class="chart"><div class="daycol">
+      <div class="bar" style="height:40%"><span style="height:25.2%;background:#D9008D" title="News 4.4h"></span><span style="height:21.3%;background:#6D17CE" title="Music 3.7h"></span><span style="height:17.5%;background:#FF8000" title="Entertainment 3.0h"></span><span style="height:0.5%;background:#008043" title="Devotional 0.1h"></span><span style="height:35.0%;background:#00A3C4" title="Movies 6.1h"></span><span style="height:0.6%;background:#665E75" title="Other 0.1h"></span></div>
+      <div class="bval">17.4h</div>
+      <div class="bu">17</div>
+      <div class="blab">14 T</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:35%"><span style="height:41.6%;background:#D9008D" title="News 6.2h"></span><span style="height:7.7%;background:#6D17CE" title="Music 1.1h"></span><span style="height:28.2%;background:#FF8000" title="Entertainment 4.2h"></span><span style="height:1.5%;background:#008043" title="Devotional 0.2h"></span><span style="height:20.3%;background:#00A3C4" title="Movies 3.0h"></span><span style="height:0.1%;background:#D5AF4A" title="Culture 0.0h"></span><span style="height:0.7%;background:#665E75" title="Other 0.1h"></span></div>
+      <div class="bval">15h</div>
+      <div class="bu">12</div>
+      <div class="blab">15 W</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:9%"><span style="height:41.0%;background:#D9008D" title="News 1.5h"></span><span style="height:9.8%;background:#6D17CE" title="Music 0.4h"></span><span style="height:26.0%;background:#FF8000" title="Entertainment 0.9h"></span><span style="height:4.1%;background:#008043" title="Devotional 0.1h"></span><span style="height:5.2%;background:#00A3C4" title="Movies 0.2h"></span><span style="height:0.3%;background:#D5AF4A" title="Culture 0.0h"></span><span style="height:13.7%;background:#665E75" title="Other 0.5h"></span></div>
+      <div class="bval">3.7h</div>
+      <div class="bu">8</div>
+      <div class="blab">16 T</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:21%"><span style="height:32.1%;background:#D9008D" title="News 3.0h"></span><span style="height:45.0%;background:#6D17CE" title="Music 4.2h"></span><span style="height:0.4%;background:#FF8000" title="Entertainment 0.0h"></span><span style="height:4.7%;background:#008043" title="Devotional 0.4h"></span><span style="height:16.6%;background:#00A3C4" title="Movies 1.5h"></span><span style="height:0.4%;background:#D5AF4A" title="Culture 0.0h"></span><span style="height:0.8%;background:#665E75" title="Other 0.1h"></span></div>
+      <div class="bval">9.3h</div>
+      <div class="bu">11</div>
+      <div class="blab">17 F</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:19%"><span style="height:13.8%;background:#D9008D" title="News 1.1h"></span><span style="height:58.3%;background:#6D17CE" title="Music 4.9h"></span><span style="height:22.8%;background:#FF8000" title="Entertainment 1.9h"></span><span style="height:5.1%;background:#665E75" title="Other 0.4h"></span></div>
+      <div class="bval">8.4h</div>
+      <div class="bu">6</div>
+      <div class="blab">18 S</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:22%"><span style="height:12.0%;background:#D9008D" title="News 1.2h"></span><span style="height:17.6%;background:#6D17CE" title="Music 1.7h"></span><span style="height:14.9%;background:#FF8000" title="Entertainment 1.4h"></span><span style="height:10.5%;background:#008043" title="Devotional 1.0h"></span><span style="height:35.6%;background:#00A3C4" title="Movies 3.4h"></span><span style="height:9.3%;background:#665E75" title="Other 0.9h"></span></div>
+      <div class="bval">9.6h</div>
+      <div class="bu">11</div>
+      <div class="blab">19 S</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:44%"><span style="height:47.3%;background:#D9008D" title="News 8.9h"></span><span style="height:13.7%;background:#6D17CE" title="Music 2.6h"></span><span style="height:12.0%;background:#FF8000" title="Entertainment 2.3h"></span><span style="height:23.0%;background:#008043" title="Devotional 4.3h"></span><span style="height:2.1%;background:#00A3C4" title="Movies 0.4h"></span><span style="height:0.1%;background:#D5AF4A" title="Culture 0.0h"></span><span style="height:1.9%;background:#665E75" title="Other 0.4h"></span></div>
+      <div class="bval">18.9h</div>
+      <div class="bu">24</div>
+      <div class="blab">20 M</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:48%"><span style="height:26.3%;background:#D9008D" title="News 5.4h"></span><span style="height:2.4%;background:#6D17CE" title="Music 0.5h"></span><span style="height:2.1%;background:#FF8000" title="Entertainment 0.4h"></span><span style="height:63.6%;background:#008043" title="Devotional 13.2h"></span><span style="height:1.0%;background:#00A3C4" title="Movies 0.2h"></span><span style="height:4.7%;background:#665E75" title="Other 1.0h"></span></div>
+      <div class="bval">20.7h</div>
+      <div class="bu">10</div>
+      <div class="blab">21 T</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:29%"><span style="height:76.0%;background:#D9008D" title="News 9.4h"></span><span style="height:4.1%;background:#6D17CE" title="Music 0.5h"></span><span style="height:10.6%;background:#FF8000" title="Entertainment 1.3h"></span><span style="height:0.2%;background:#008043" title="Devotional 0.0h"></span><span style="height:9.0%;background:#00A3C4" title="Movies 1.1h"></span><span style="height:0.2%;background:#665E75" title="Other 0.0h"></span></div>
+      <div class="bval">12.4h</div>
+      <div class="bu">15</div>
+      <div class="blab">22 W</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:32%"><span style="height:44.5%;background:#D9008D" title="News 6.1h"></span><span style="height:16.1%;background:#6D17CE" title="Music 2.2h"></span><span style="height:28.6%;background:#FF8000" title="Entertainment 3.9h"></span><span style="height:1.5%;background:#008043" title="Devotional 0.2h"></span><span style="height:5.1%;background:#00A3C4" title="Movies 0.7h"></span><span style="height:4.2%;background:#665E75" title="Other 0.6h"></span></div>
+      <div class="bval">13.8h</div>
+      <div class="bu">20</div>
+      <div class="blab">23 T</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:52%"><span style="height:49.8%;background:#D9008D" title="News 11.3h"></span><span style="height:34.4%;background:#6D17CE" title="Music 7.8h"></span><span style="height:12.5%;background:#FF8000" title="Entertainment 2.8h"></span><span style="height:0.5%;background:#008043" title="Devotional 0.1h"></span><span style="height:1.9%;background:#00A3C4" title="Movies 0.4h"></span><span style="height:1.0%;background:#665E75" title="Other 0.2h"></span></div>
+      <div class="bval">22.7h</div>
+      <div class="bu">19</div>
+      <div class="blab">24 F</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:100%"><span style="height:55.2%;background:#D9008D" title="News 24.0h"></span><span style="height:10.8%;background:#6D17CE" title="Music 4.7h"></span><span style="height:9.3%;background:#FF8000" title="Entertainment 4.0h"></span><span style="height:0.7%;background:#008043" title="Devotional 0.3h"></span><span style="height:8.5%;background:#00A3C4" title="Movies 3.7h"></span><span style="height:9.3%;background:#D5AF4A" title="Culture 4.0h"></span><span style="height:6.2%;background:#665E75" title="Other 2.7h"></span></div>
+      <div class="bval">43.4h</div>
+      <div class="bu">27</div>
+      <div class="blab">25 S</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:33%"><span style="height:39.9%;background:#D9008D" title="News 5.8h"></span><span style="height:3.9%;background:#6D17CE" title="Music 0.6h"></span><span style="height:17.6%;background:#FF8000" title="Entertainment 2.5h"></span><span style="height:3.9%;background:#008043" title="Devotional 0.6h"></span><span style="height:32.0%;background:#00A3C4" title="Movies 4.6h"></span><span style="height:2.7%;background:#665E75" title="Other 0.4h"></span></div>
+      <div class="bval">14.4h</div>
+      <div class="bu">16</div>
+      <div class="blab">26 S</div>
+    </div><div class="daycol">
+      <div class="bar" style="height:16%"><span style="height:53.2%;background:#D9008D" title="News 3.6h"></span><span style="height:0.6%;background:#6D17CE" title="Music 0.0h"></span><span style="height:41.9%;background:#FF8000" title="Entertainment 2.9h"></span><span style="height:4.0%;background:#008043" title="Devotional 0.3h"></span><span style="height:0.3%;background:#00A3C4" title="Movies 0.0h"></span></div>
+      <div class="bval">6.8h</div>
+      <div class="bu">7</div>
+      <div class="blab">27 M</div>
+    </div></div>
+  <div class="legend"><span class="lg"><span class="dot" style="background:#D9008D"></span>News</span><span class="lg"><span class="dot" style="background:#6D17CE"></span>Music</span><span class="lg"><span class="dot" style="background:#FF8000"></span>Entertainment</span><span class="lg"><span class="dot" style="background:#008043"></span>Devotional</span><span class="lg"><span class="dot" style="background:#00A3C4"></span>Movies</span><span class="lg"><span class="dot" style="background:#D5AF4A"></span>Culture</span><span class="lg"><span class="dot" style="background:#665E75"></span>Other</span><span class="lg" style="margin-left:auto">pink number = heavy devices that day</span></div>
+</div>
+
+<div class="grid2" style="margin-top:16px">
+  <div>
+    <h2 style="margin-top:0">Primary genre of each heavy device</h2>
+    <div class="card"><div class="grow"><span class="gname">News</span>
+    <span class="gbar"><i style="width:100%;background:#D9008D"></i></span>
+    <span class="gval">69</span></div><div class="grow"><span class="gname">Entertainment</span>
+    <span class="gbar"><i style="width:55%;background:#FF8000"></i></span>
+    <span class="gval">38</span></div><div class="grow"><span class="gname">Music</span>
+    <span class="gbar"><i style="width:39%;background:#6D17CE"></i></span>
+    <span class="gval">27</span></div><div class="grow"><span class="gname">Movies</span>
+    <span class="gbar"><i style="width:28%;background:#00A3C4"></i></span>
+    <span class="gval">19</span></div><div class="grow"><span class="gname">Devotional</span>
+    <span class="gbar"><i style="width:10%;background:#008043"></i></span>
+    <span class="gval">7</span></div><div class="grow"><span class="gname">Undefined</span>
+    <span class="gbar"><i style="width:3%;background:#665E75"></i></span>
+    <span class="gval">2</span></div><div class="grow"><span class="gname">Culture</span>
+    <span class="gbar"><i style="width:1%;background:#D5AF4A"></i></span>
+    <span class="gval">1</span></div>
+      <div class="note">News is the anchor: <b>69 of 167</b> heavy devices spend most of
+      their time there. Devotional looks small here but has the highest hours-per-device of any genre.</div>
+    </div>
+  </div>
+  <div>
+    <h2 style="margin-top:0">What the cohort watches</h2>
+    <div class="tblwrap" style="max-height:330px;overflow-y:auto">
+      <table style="min-width:0"><thead><tr><th>Channel</th><th>Genre</th><th>Lang</th>
+      <th class="num">Devices</th><th class="num">Tunes</th><th class="num">Hours</th></tr></thead>
+      <tbody><tr><td>Aaj Tak HD</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">Hindi</td><td class="num">78</td>
+    <td class="num">296</td><td class="num strong">28.24</td></tr><tr><td>Bhojpuri Cinema</td>
+    <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+    <td class="sm">Bhojpuri</td><td class="num">51</td>
+    <td class="num">156</td><td class="num strong">17.59</td></tr><tr><td>ABP News</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">Hindi</td><td class="num">65</td>
+    <td class="num">256</td><td class="num strong">16.04</td></tr><tr><td>9X Jhakaas</td>
+    <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+    <td class="sm">Hindi</td><td class="num">64</td>
+    <td class="num">142</td><td class="num strong">9.88</td></tr><tr><td>Times Now Navbharat</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">Hindi</td><td class="num">67</td>
+    <td class="num">185</td><td class="num strong">7.85</td></tr><tr><td>Dangal 2</td>
+    <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+    <td class="sm">Hindi</td><td class="num">39</td>
+    <td class="num">90</td><td class="num strong">7.03</td></tr><tr><td>9X Tashan</td>
+    <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+    <td class="sm">Hindi</td><td class="num">59</td>
+    <td class="num">119</td><td class="num strong">5.56</td></tr><tr><td>India TV</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">Hindi</td><td class="num">54</td>
+    <td class="num">151</td><td class="num strong">4.82</td></tr><tr><td>Dangal TV</td>
+    <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+    <td class="sm">Hindi</td><td class="num">49</td>
+    <td class="num">102</td><td class="num strong">4.81</td></tr><tr><td>Vedic</td>
+    <td><span class="dot" style="background:#008043"></span>Devotional</td>
+    <td class="sm">Hindi</td><td class="num">15</td>
+    <td class="num">27</td><td class="num strong">4.5</td></tr><tr><td>NDTV India</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">Hindi</td><td class="num">57</td>
+    <td class="num">131</td><td class="num strong">4.42</td></tr><tr><td>9XM</td>
+    <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+    <td class="sm">Hindi</td><td class="num">44</td>
+    <td class="num">83</td><td class="num strong">4.35</td></tr><tr><td>Aastha Bhajan</td>
+    <td><span class="dot" style="background:#008043"></span>Devotional</td>
+    <td class="sm">Hindi</td><td class="num">31</td>
+    <td class="num">52</td><td class="num strong">4.05</td></tr><tr><td>Sanskar TV</td>
+    <td><span class="dot" style="background:#D5AF4A"></span>Culture</td>
+    <td class="sm">Hindi</td><td class="num">10</td>
+    <td class="num">11</td><td class="num strong">4.03</td></tr><tr><td>Chardikla Gurbani</td>
+    <td><span class="dot" style="background:#008043"></span>Devotional</td>
+    <td class="sm">Punjabi</td><td class="num">17</td>
+    <td class="num">26</td><td class="num strong">4.03</td></tr><tr><td>Goldmines</td>
+    <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+    <td class="sm">Hindi</td><td class="num">29</td>
+    <td class="num">79</td><td class="num strong">3.63</td></tr><tr><td>Shalom</td>
+    <td><span class="dot" style="background:#008043"></span>Devotional</td>
+    <td class="sm">Hindi</td><td class="num">24</td>
+    <td class="num">38</td><td class="num strong">3.23</td></tr><tr><td>NDTV 24x7</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">English</td><td class="num">49</td>
+    <td class="num">103</td><td class="num strong">3.14</td></tr><tr><td>Shemaroo Josh</td>
+    <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+    <td class="sm">Hindi</td><td class="num">28</td>
+    <td class="num">66</td><td class="num strong">3.06</td></tr><tr><td>Republic Bharat</td>
+    <td><span class="dot" style="background:#D9008D"></span>News</td>
+    <td class="sm">Hindi</td><td class="num">42</td>
+    <td class="num">118</td><td class="num strong">2.51</td></tr></tbody></table>
+    </div>
+  </div>
+</div>
+
+<h2>Every heavy device</h2>
+<div class="filters">
+  <button class="f on" data-f="all">All (167)</button>
+  <button class="f" data-f="repeat">Repeat heavy (19)</button>
+  <button class="f" data-f="News">News</button>
+  <button class="f" data-f="Entertainment">Entertainment</button>
+  <button class="f" data-f="Music">Music</button>
+  <button class="f" data-f="Movies">Movies</button>
+  <button class="f" data-f="Devotional">Devotional</button>
+  <button class="f" data-f="hideidle">Hide left-running</button>
+</div>
+<div class="tblwrap">
+<table><thead><tr>
+  <th>Device (uid)</th><th class="num">Heavy days</th><th class="num">Total min</th><th class="num">Best day</th>
+  <th class="num">Tunes</th><th class="num">Ch/day</th><th>Top channel</th><th>Top genre</th>
+  <th>First seen</th><th>Last seen</th><th class="num">Active days</th><th>Net</th><th>Arm</th>
+</tr></thead><tbody id="tb"><tr data-genre="Devotional" data-flag="repeat">
+      <td class="mono">Umrry0ifqhl5txdhv<span class="b b-rep">repeat</span></td>
+      <td class="num">4</td>
+      <td class="num strong">1139</td>
+      <td class="num">673</td>
+      <td class="num">175</td>
+      <td class="num">21</td>
+      <td>Aastha Bhajan</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">4</td>
+      <td class="sm">3g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrupnsyl7yd3ro16<span class="b b-rep">repeat</span></td>
+      <td class="num">5</td>
+      <td class="num strong">583</td>
+      <td class="num">316</td>
+      <td class="num">343</td>
+      <td class="num">27</td>
+      <td>ABP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">7</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrykuj9l7jw4rejk<span class="b b-idle">left running</span></td>
+      <td class="num">2</td>
+      <td class="num strong">480</td>
+      <td class="num">240</td>
+      <td class="num">4</td>
+      <td class="num">1</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Undefined" data-flag="">
+      <td class="mono">Umrz82n6qc3cao0j8</td>
+      <td class="num">1</td>
+      <td class="num strong">299</td>
+      <td class="num">299</td>
+      <td class="num">187</td>
+      <td class="num">146</td>
+      <td>Taaza TV</td>
+      <td><span class="dot" style="background:#665E75"></span>Undefined</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umqzle42gryt25r5j<span class="b b-rep">repeat</span></td>
+      <td class="num">4</td>
+      <td class="num strong">260</td>
+      <td class="num">148</td>
+      <td class="num">127</td>
+      <td class="num">11</td>
+      <td>Zee News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-06-30</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">10</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="Culture" data-flag="">
+      <td class="mono">Ums041w28agfx833x</td>
+      <td class="num">1</td>
+      <td class="num strong">243</td>
+      <td class="num">243</td>
+      <td class="num">35</td>
+      <td class="num">31</td>
+      <td>Sanskar TV</td>
+      <td><span class="dot" style="background:#D5AF4A"></span>Culture</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrq527zl92u0cp1y</td>
+      <td class="num">1</td>
+      <td class="num strong">243</td>
+      <td class="num">243</td>
+      <td class="num">25</td>
+      <td class="num">16</td>
+      <td>9X Tashan</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Ums1s2p3gt5d4rxgz</td>
+      <td class="num">1</td>
+      <td class="num strong">241</td>
+      <td class="num">241</td>
+      <td class="num">8</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrkzbak51dcc3tm9<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">241</td>
+      <td class="num">241</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Times Now Navbharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="idle">
+      <td class="mono">Umrz8954z4imfq05b<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">240</td>
+      <td class="num">240</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>9XM</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrvi2wgw81s5ytjl<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">240</td>
+      <td class="num">240</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Devotional" data-flag="idle">
+      <td class="mono">Umrrzvg0r315bomus<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">240</td>
+      <td class="num">240</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Vedic</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">—</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="idle">
+      <td class="mono">Umrnaymhin4p48hq5<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">240</td>
+      <td class="num">240</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Umrjh2dy58o9z2wgm<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">240</td>
+      <td class="num">240</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrtgrr9lkw1su7eo<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">227</td>
+      <td class="num">227</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrm6uqg0yqlpdd7d</td>
+      <td class="num">1</td>
+      <td class="num strong">215</td>
+      <td class="num">215</td>
+      <td class="num">11</td>
+      <td class="num">5</td>
+      <td>Shemaroo Josh</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrfvy8fbyqt30g3t<span class="b b-rep">repeat</span></td>
+      <td class="num">5</td>
+      <td class="num strong">205</td>
+      <td class="num">61</td>
+      <td class="num">145</td>
+      <td class="num">21</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-11</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">6</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrswootsja9wlvcu<span class="b b-rep">repeat</span></td>
+      <td class="num">4</td>
+      <td class="num strong">203</td>
+      <td class="num">147</td>
+      <td class="num">111</td>
+      <td class="num">14</td>
+      <td>TV9 Bharatvarsh</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">7</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrsbe14ctkp18889</td>
+      <td class="num">1</td>
+      <td class="num strong">172</td>
+      <td class="num">172</td>
+      <td class="num">14</td>
+      <td class="num">8</td>
+      <td>Dangal 2</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrye7lee2lfxr3hz</td>
+      <td class="num">1</td>
+      <td class="num strong">163</td>
+      <td class="num">163</td>
+      <td class="num">6</td>
+      <td class="num">1</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrz4l5x56p59dppj<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">158</td>
+      <td class="num">158</td>
+      <td class="num">3</td>
+      <td class="num">1</td>
+      <td>ABP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrvyqabyqxnkgw47<span class="b b-rep">repeat</span></td>
+      <td class="num">4</td>
+      <td class="num strong">154</td>
+      <td class="num">74</td>
+      <td class="num">189</td>
+      <td class="num">16</td>
+      <td>Republic Bharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">5</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Umrkodqy1t4scjkms<span class="b b-idle">left running</span></td>
+      <td class="num">2</td>
+      <td class="num strong">154</td>
+      <td class="num">88</td>
+      <td class="num">4</td>
+      <td class="num">2</td>
+      <td>Goldmines</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">4</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umrkzkm606q60z6p7</td>
+      <td class="num">1</td>
+      <td class="num strong">145</td>
+      <td class="num">145</td>
+      <td class="num">5</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Ums1flf3kapfjtila<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">144</td>
+      <td class="num">144</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Zee Uttar Pradesh/Uttarakhand</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Umrrpk7hjzrngmjh1<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">138</td>
+      <td class="num">138</td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umryqmko5x5plc1wv</td>
+      <td class="num">1</td>
+      <td class="num strong">130</td>
+      <td class="num">130</td>
+      <td class="num">7</td>
+      <td class="num">6</td>
+      <td>Tunes 6</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrjqdy9rvlv4cjnn</td>
+      <td class="num">1</td>
+      <td class="num strong">128</td>
+      <td class="num">128</td>
+      <td class="num">10</td>
+      <td class="num">8</td>
+      <td>Sangeet Marathi</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrkr2r5kmtemvsxa<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">127</td>
+      <td class="num">110</td>
+      <td class="num">40</td>
+      <td class="num">12</td>
+      <td>ABP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umrrn6gdfckti4l7x</td>
+      <td class="num">1</td>
+      <td class="num strong">126</td>
+      <td class="num">126</td>
+      <td class="num">41</td>
+      <td class="num">29</td>
+      <td>Goldmines</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Umrzy9uw49q8gi566<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">121</td>
+      <td class="num">121</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Devotional" data-flag="idle">
+      <td class="mono">Umr7szbaybq219jay<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">121</td>
+      <td class="num">121</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Aastha</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-05</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">A</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrxuif13pbidhgdf<span class="b b-rep">repeat</span></td>
+      <td class="num">3</td>
+      <td class="num strong">120</td>
+      <td class="num">63</td>
+      <td class="num">327</td>
+      <td class="num">56</td>
+      <td>Zee Cine Classic</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">5</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Ums2mmm82n7jshwmg<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">110</td>
+      <td class="num">110</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>India Daily Live</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrnv9lohengphvkc<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">103</td>
+      <td class="num">55</td>
+      <td class="num">17</td>
+      <td class="num">6</td>
+      <td>India Today</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">4</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums1nic12unz0sfov</td>
+      <td class="num">1</td>
+      <td class="num strong">102</td>
+      <td class="num">102</td>
+      <td class="num">10</td>
+      <td class="num">8</td>
+      <td>India TV</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="idle">
+      <td class="mono">Umruyu2i9f9yfe81h<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">100</td>
+      <td class="num">100</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Zoom</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Music" data-flag="idle">
+      <td class="mono">Umrxaas0ujjxevgyo<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">98</td>
+      <td class="num">98</td>
+      <td class="num">2</td>
+      <td class="num">2</td>
+      <td>ZB Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="Music" data-flag="repeat">
+      <td class="mono">Umrrinku4w4ys8263<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">98</td>
+      <td class="num">66</td>
+      <td class="num">238</td>
+      <td class="num">73</td>
+      <td>B4U Bhojpuri</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrz28z8c2gkzq78y</td>
+      <td class="num">1</td>
+      <td class="num strong">97</td>
+      <td class="num">97</td>
+      <td class="num">8</td>
+      <td class="num">6</td>
+      <td>Dangal 2</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrsw6wv34xjwpgfk</td>
+      <td class="num">1</td>
+      <td class="num strong">97</td>
+      <td class="num">97</td>
+      <td class="num">18</td>
+      <td class="num">7</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrv1nh363ghyr6o2</td>
+      <td class="num">1</td>
+      <td class="num strong">96</td>
+      <td class="num">96</td>
+      <td class="num">8</td>
+      <td class="num">5</td>
+      <td>NDTV India</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="repeat">
+      <td class="mono">Umrhn9f2yo9yjnrwg<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">93</td>
+      <td class="num">63</td>
+      <td class="num">192</td>
+      <td class="num">66</td>
+      <td>Dangal 2</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Ums0ck86kffi8dnvl</td>
+      <td class="num">1</td>
+      <td class="num strong">91</td>
+      <td class="num">91</td>
+      <td class="num">6</td>
+      <td class="num">2</td>
+      <td>Dangal TV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrk1x9unz08k1j8p</td>
+      <td class="num">1</td>
+      <td class="num strong">83</td>
+      <td class="num">83</td>
+      <td class="num">86</td>
+      <td class="num">38</td>
+      <td>Qello Concerts by Stingray</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umryx9wj5dviihfkb<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">75</td>
+      <td class="num">40</td>
+      <td class="num">25</td>
+      <td class="num">6</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Entertainment" data-flag="idle">
+      <td class="mono">Umrq17qf4qsglukai<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">74</td>
+      <td class="num">74</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Dangal TV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="idle">
+      <td class="mono">Umrhkty9w1cqpxp2x<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">72</td>
+      <td class="num">72</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>MNTV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-12</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">A</td>
+    </tr><tr data-genre="Entertainment" data-flag="idle">
+      <td class="mono">Ums1k0jvg4yv9i6jt<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">70</td>
+      <td class="num">70</td>
+      <td class="num">3</td>
+      <td class="num">3</td>
+      <td>PTC Punjabi Gold</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="idle">
+      <td class="mono">Umral1nswu5agkrvz<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">70</td>
+      <td class="num">70</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Dangal 2</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-07</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrw2k8pg24h42aas<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">68</td>
+      <td class="num">68</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>CTVN AKD Plus</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Umrkdxcsr8hvig840<span class="b b-idle">left running</span></td>
+      <td class="num">2</td>
+      <td class="num strong">67</td>
+      <td class="num">38</td>
+      <td class="num">6</td>
+      <td class="num">1</td>
+      <td>Alankar TV</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">4</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Entertainment" data-flag="idle">
+      <td class="mono">Umrjiabjljivz2xey<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">66</td>
+      <td class="num">66</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Dangal TV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrl4z7opg587isf9</td>
+      <td class="num">1</td>
+      <td class="num strong">63</td>
+      <td class="num">63</td>
+      <td class="num">4</td>
+      <td class="num">1</td>
+      <td>9X Tashan</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrhp40t9bsofp9b7<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">62</td>
+      <td class="num">62</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>News 24</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-12</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">A</td>
+    </tr><tr data-genre="News" data-flag="repeat">
+      <td class="mono">Umrx2siano4la2r3m<span class="b b-rep">repeat</span></td>
+      <td class="num">3</td>
+      <td class="num strong">61</td>
+      <td class="num">28</td>
+      <td class="num">145</td>
+      <td class="num">28</td>
+      <td>News Nation</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrghv9q5iapfdx8o</td>
+      <td class="num">1</td>
+      <td class="num strong">61</td>
+      <td class="num">61</td>
+      <td class="num">7</td>
+      <td class="num">5</td>
+      <td>DD National HD</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-11</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrzx4j66zb6zbjq5</td>
+      <td class="num">1</td>
+      <td class="num strong">60</td>
+      <td class="num">60</td>
+      <td class="num">110</td>
+      <td class="num">53</td>
+      <td>Zee Horror Nights</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrym2pojcfml1oza</td>
+      <td class="num">1</td>
+      <td class="num strong">60</td>
+      <td class="num">60</td>
+      <td class="num">4</td>
+      <td class="num">3</td>
+      <td>PTC Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrrvenf5azkw564j</td>
+      <td class="num">1</td>
+      <td class="num strong">57</td>
+      <td class="num">57</td>
+      <td class="num">5</td>
+      <td class="num">2</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrnib83lzuunjgpy</td>
+      <td class="num">1</td>
+      <td class="num strong">55</td>
+      <td class="num">55</td>
+      <td class="num">6</td>
+      <td class="num">5</td>
+      <td>K News India</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="Entertainment" data-flag="repeat">
+      <td class="mono">Umreo365216capuim<span class="b b-rep">repeat</span></td>
+      <td class="num">3</td>
+      <td class="num strong">55</td>
+      <td class="num">20</td>
+      <td class="num">14</td>
+      <td class="num">2</td>
+      <td>PTC News</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-10</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">5</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrry5loymubcnj54</td>
+      <td class="num">1</td>
+      <td class="num strong">54</td>
+      <td class="num">54</td>
+      <td class="num">59</td>
+      <td class="num">39</td>
+      <td>Republic Bharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umqt50oyhj7qrszjp<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">53</td>
+      <td class="num">53</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>DD News HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-06-25</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrpg2zxp5vjv6ha8</td>
+      <td class="num">1</td>
+      <td class="num strong">52</td>
+      <td class="num">52</td>
+      <td class="num">7</td>
+      <td class="num">6</td>
+      <td>Stingray The Spa</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umrou8432r4s0pkwv</td>
+      <td class="num">1</td>
+      <td class="num strong">48</td>
+      <td class="num">48</td>
+      <td class="num">20</td>
+      <td class="num">3</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrlr570eujecrcyh</td>
+      <td class="num">1</td>
+      <td class="num strong">47</td>
+      <td class="num">47</td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td>VIP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Devotional" data-flag="">
+      <td class="mono">Umrrgafeipfcq3071</td>
+      <td class="num">1</td>
+      <td class="num strong">46</td>
+      <td class="num">46</td>
+      <td class="num">58</td>
+      <td class="num">39</td>
+      <td>Jinvani Channel</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrlqkjytmivvaglz</td>
+      <td class="num">1</td>
+      <td class="num strong">46</td>
+      <td class="num">46</td>
+      <td class="num">83</td>
+      <td class="num">78</td>
+      <td>NDTV 24x7</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrz3cmrkavtg3855<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">45</td>
+      <td class="num">45</td>
+      <td class="num">3</td>
+      <td class="num">3</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrv6lvu35nigrmdx</td>
+      <td class="num">1</td>
+      <td class="num strong">45</td>
+      <td class="num">45</td>
+      <td class="num">131</td>
+      <td class="num">52</td>
+      <td>Zee Comedy Nation</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrstsmw9fmt5k011</td>
+      <td class="num">1</td>
+      <td class="num strong">44</td>
+      <td class="num">44</td>
+      <td class="num">79</td>
+      <td class="num">63</td>
+      <td>Zee Madhya Pradesh Chhattisgarh</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="num">2</td>
+      <td class="sm">2g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrel1iny70vzy81k</td>
+      <td class="num">1</td>
+      <td class="num strong">43</td>
+      <td class="num">43</td>
+      <td class="num">108</td>
+      <td class="num">74</td>
+      <td>YRF Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-10</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrj3w4zymt3cv5x2</td>
+      <td class="num">1</td>
+      <td class="num strong">40</td>
+      <td class="num">40</td>
+      <td class="num">7</td>
+      <td class="num">5</td>
+      <td>Desi Channel</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrhhf4rxzbg6ws7f</td>
+      <td class="num">1</td>
+      <td class="num strong">40</td>
+      <td class="num">40</td>
+      <td class="num">110</td>
+      <td class="num">104</td>
+      <td>Zee Dil Se</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-12</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">5</td>
+      <td class="sm">4g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrq04ggd4deh9nou</td>
+      <td class="num">1</td>
+      <td class="num strong">39</td>
+      <td class="num">39</td>
+      <td class="num">8</td>
+      <td class="num">7</td>
+      <td>Zee South Flix</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrng1bx3rx8oru5u</td>
+      <td class="num">1</td>
+      <td class="num strong">39</td>
+      <td class="num">39</td>
+      <td class="num">145</td>
+      <td class="num">92</td>
+      <td>Dangal 2</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="repeat">
+      <td class="mono">Umrrpv4pwvzpvevo8<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">38</td>
+      <td class="num">20</td>
+      <td class="num">31</td>
+      <td class="num">15</td>
+      <td>Dangal TV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrod35ehkbnnu9i6</td>
+      <td class="num">1</td>
+      <td class="num strong">37</td>
+      <td class="num">37</td>
+      <td class="num">19</td>
+      <td class="num">10</td>
+      <td>ABP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrxkiuo4prf02zs8</td>
+      <td class="num">1</td>
+      <td class="num strong">36</td>
+      <td class="num">36</td>
+      <td class="num">140</td>
+      <td class="num">108</td>
+      <td>Shubh Cinema</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrstisfw90lyz8ms</td>
+      <td class="num">1</td>
+      <td class="num strong">35</td>
+      <td class="num">35</td>
+      <td class="num">34</td>
+      <td class="num">18</td>
+      <td>NDTV India</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Devotional" data-flag="">
+      <td class="mono">Umrxncfb4phg4rqwh</td>
+      <td class="num">1</td>
+      <td class="num strong">34</td>
+      <td class="num">34</td>
+      <td class="num">25</td>
+      <td class="num">15</td>
+      <td>GoodNews TV</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrss3ov8uo9p8smk</td>
+      <td class="num">1</td>
+      <td class="num strong">34</td>
+      <td class="num">34</td>
+      <td class="num">44</td>
+      <td class="num">23</td>
+      <td>ABP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Movies" data-flag="repeat">
+      <td class="mono">Umrn0vj86jip7sbcb<span class="b b-rep">repeat</span></td>
+      <td class="num">2</td>
+      <td class="num strong">34</td>
+      <td class="num">18</td>
+      <td class="num">58</td>
+      <td class="num">20</td>
+      <td>Goldmines</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">2</td>
+      <td class="sm">—</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrye5bwugy633k34</td>
+      <td class="num">1</td>
+      <td class="num strong">33</td>
+      <td class="num">33</td>
+      <td class="num">16</td>
+      <td class="num">14</td>
+      <td>Times Now Navbharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrx3zysqed9ujd09</td>
+      <td class="num">1</td>
+      <td class="num strong">33</td>
+      <td class="num">33</td>
+      <td class="num">10</td>
+      <td class="num">4</td>
+      <td>News Nation</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrswslml204cjjjw</td>
+      <td class="num">1</td>
+      <td class="num strong">33</td>
+      <td class="num">33</td>
+      <td class="num">94</td>
+      <td class="num">56</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umros7u48jsy0nwzw</td>
+      <td class="num">1</td>
+      <td class="num strong">33</td>
+      <td class="num">33</td>
+      <td class="num">48</td>
+      <td class="num">23</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrk99epgjpgak2pl</td>
+      <td class="num">1</td>
+      <td class="num strong">33</td>
+      <td class="num">33</td>
+      <td class="num">9</td>
+      <td class="num">6</td>
+      <td>India TV</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umqs90gehtfc5m0ec</td>
+      <td class="num">1</td>
+      <td class="num strong">32</td>
+      <td class="num">32</td>
+      <td class="num">9</td>
+      <td class="num">7</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-06-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">5</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrsuuazbpdj7p219</td>
+      <td class="num">1</td>
+      <td class="num strong">31</td>
+      <td class="num">31</td>
+      <td class="num">15</td>
+      <td class="num">14</td>
+      <td>Metro TV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrmaepbcp8h9mjmq</td>
+      <td class="num">1</td>
+      <td class="num strong">31</td>
+      <td class="num">31</td>
+      <td class="num">52</td>
+      <td class="num">21</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umr3ql4vpjbwq8mtz</td>
+      <td class="num">1</td>
+      <td class="num strong">31</td>
+      <td class="num">31</td>
+      <td class="num">12</td>
+      <td class="num">11</td>
+      <td>PTC Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-02</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums0i3128jsrhjo5m</td>
+      <td class="num">1</td>
+      <td class="num strong">30</td>
+      <td class="num">30</td>
+      <td class="num">42</td>
+      <td class="num">19</td>
+      <td>Republic Bharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums06qkvzwenkh950</td>
+      <td class="num">1</td>
+      <td class="num strong">30</td>
+      <td class="num">30</td>
+      <td class="num">24</td>
+      <td class="num">21</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrs3pkwrdp6x43tr</td>
+      <td class="num">1</td>
+      <td class="num strong">30</td>
+      <td class="num">30</td>
+      <td class="num">81</td>
+      <td class="num">29</td>
+      <td>Zee Comedy Nation</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Family" data-flag="">
+      <td class="mono">Umrrqqmmr77z0q3bx</td>
+      <td class="num">1</td>
+      <td class="num strong">30</td>
+      <td class="num">30</td>
+      <td class="num">18</td>
+      <td class="num">14</td>
+      <td>The Pet Collective</td>
+      <td><span class="dot" style="background:#665E75"></span>Family</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrewowndi9622khk</td>
+      <td class="num">1</td>
+      <td class="num strong">30</td>
+      <td class="num">30</td>
+      <td class="num">40</td>
+      <td class="num">21</td>
+      <td>9X Tashan</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-10</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">5</td>
+      <td class="sm">—</td>
+      <td class="sm">A</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Ums1v81nlst6u4ih6</td>
+      <td class="num">1</td>
+      <td class="num strong">29</td>
+      <td class="num">29</td>
+      <td class="num">4</td>
+      <td class="num">2</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Ums1dkhn26w4dv93o</td>
+      <td class="num">1</td>
+      <td class="num strong">29</td>
+      <td class="num">29</td>
+      <td class="num">23</td>
+      <td class="num">9</td>
+      <td>Zee Horror Nights</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrwg06nl6mknsx5c</td>
+      <td class="num">1</td>
+      <td class="num strong">29</td>
+      <td class="num">29</td>
+      <td class="num">18</td>
+      <td class="num">9</td>
+      <td>News 24</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Undefined" data-flag="idle">
+      <td class="mono">Umrwfoduc1054uc4q<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">29</td>
+      <td class="num">29</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Aryan TV National</td>
+      <td><span class="dot" style="background:#665E75"></span>Undefined</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umri4qp1xfa9zjsgp</td>
+      <td class="num">1</td>
+      <td class="num strong">29</td>
+      <td class="num">29</td>
+      <td class="num">44</td>
+      <td class="num">20</td>
+      <td>ZB Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">8</td>
+      <td class="sm">4g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums0kafe370cq0ao4</td>
+      <td class="num">1</td>
+      <td class="num strong">28</td>
+      <td class="num">28</td>
+      <td class="num">6</td>
+      <td class="num">5</td>
+      <td>NDTV 24x7</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrykav5snf6wmpf2</td>
+      <td class="num">1</td>
+      <td class="num strong">28</td>
+      <td class="num">28</td>
+      <td class="num">14</td>
+      <td class="num">10</td>
+      <td>Zee Comedy Nation</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrstq69wq9t3jkiq</td>
+      <td class="num">1</td>
+      <td class="num strong">28</td>
+      <td class="num">28</td>
+      <td class="num">194</td>
+      <td class="num">112</td>
+      <td>Zee Cine Classic</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">4</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Legislative" data-flag="">
+      <td class="mono">Umrpl7typ58eey0g9</td>
+      <td class="num">1</td>
+      <td class="num strong">28</td>
+      <td class="num">28</td>
+      <td class="num">10</td>
+      <td class="num">10</td>
+      <td>Sansad TV 1 HD</td>
+      <td><span class="dot" style="background:#665E75"></span>Legislative</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="mono sm">2026-07-18</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums0dqsy4lmoqcc9x</td>
+      <td class="num">1</td>
+      <td class="num strong">27</td>
+      <td class="num">27</td>
+      <td class="num">60</td>
+      <td class="num">47</td>
+      <td>Shemaroo Josh</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="idle">
+      <td class="mono">Umrz6aqia7u98ydlr<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">27</td>
+      <td class="num">27</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>Big TV 24x7</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">2</td>
+      <td class="sm">slow-2g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umropppwfbtfdupee</td>
+      <td class="num">1</td>
+      <td class="num strong">27</td>
+      <td class="num">27</td>
+      <td class="num">13</td>
+      <td class="num">8</td>
+      <td>Times Now Navbharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrn575fzd2yzkw6q</td>
+      <td class="num">1</td>
+      <td class="num strong">27</td>
+      <td class="num">27</td>
+      <td class="num">6</td>
+      <td class="num">6</td>
+      <td>Abzy Dhakad</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">5</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrkxfk0bim3j0j6m</td>
+      <td class="num">1</td>
+      <td class="num strong">27</td>
+      <td class="num">27</td>
+      <td class="num">5</td>
+      <td class="num">4</td>
+      <td>Times Now Navbharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Ums057i427dx52dot</td>
+      <td class="num">1</td>
+      <td class="num strong">26</td>
+      <td class="num">26</td>
+      <td class="num">200</td>
+      <td class="num">109</td>
+      <td>Zee Horror Nights</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrxshd1a0in1et61</td>
+      <td class="num">1</td>
+      <td class="num strong">26</td>
+      <td class="num">26</td>
+      <td class="num">78</td>
+      <td class="num">59</td>
+      <td>ABP Ganga</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrw7c5mygslcpi5p</td>
+      <td class="num">1</td>
+      <td class="num strong">26</td>
+      <td class="num">26</td>
+      <td class="num">12</td>
+      <td class="num">6</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrmg35ldh3t6e79j</td>
+      <td class="num">1</td>
+      <td class="num strong">26</td>
+      <td class="num">26</td>
+      <td class="num">22</td>
+      <td class="num">12</td>
+      <td>WION</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrw6844a4icoiolo</td>
+      <td class="num">1</td>
+      <td class="num strong">25</td>
+      <td class="num">25</td>
+      <td class="num">9</td>
+      <td class="num">4</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Business" data-flag="">
+      <td class="mono">Ums1hv33wjgmsj6ua</td>
+      <td class="num">1</td>
+      <td class="num strong">24</td>
+      <td class="num">24</td>
+      <td class="num">25</td>
+      <td class="num">21</td>
+      <td>Zee Business</td>
+      <td><span class="dot" style="background:#665E75"></span>Business</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrz858l55cruww5v</td>
+      <td class="num">1</td>
+      <td class="num strong">24</td>
+      <td class="num">24</td>
+      <td class="num">124</td>
+      <td class="num">111</td>
+      <td>Zee South Flix</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umrvx68kgi3z6h1d5</td>
+      <td class="num">1</td>
+      <td class="num strong">24</td>
+      <td class="num">24</td>
+      <td class="num">31</td>
+      <td class="num">26</td>
+      <td>The Movie Club +2</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrp4sa43fzs1hwgh</td>
+      <td class="num">1</td>
+      <td class="num strong">24</td>
+      <td class="num">24</td>
+      <td class="num">125</td>
+      <td class="num">59</td>
+      <td>Shemaroo Marathi Bana</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Devotional" data-flag="">
+      <td class="mono">Umrnlg12u09kzo9o6</td>
+      <td class="num">1</td>
+      <td class="num strong">24</td>
+      <td class="num">24</td>
+      <td class="num">5</td>
+      <td class="num">5</td>
+      <td>Vedic</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-19</td>
+      <td class="num">3</td>
+      <td class="sm">3g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Ums0d38ape8t89a4s</td>
+      <td class="num">1</td>
+      <td class="num strong">23</td>
+      <td class="num">23</td>
+      <td class="num">127</td>
+      <td class="num">68</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums0402dx53s4gjzc</td>
+      <td class="num">1</td>
+      <td class="num strong">23</td>
+      <td class="num">23</td>
+      <td class="num">269</td>
+      <td class="num">184</td>
+      <td>Goldmines</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Umrw9mdgmgq0sdxid<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">23</td>
+      <td class="num">23</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrt3b3ygux77ljrl</td>
+      <td class="num">1</td>
+      <td class="num strong">23</td>
+      <td class="num">23</td>
+      <td class="num">36</td>
+      <td class="num">30</td>
+      <td>News 24</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrmyzgmn13kyavq5</td>
+      <td class="num">1</td>
+      <td class="num strong">23</td>
+      <td class="num">23</td>
+      <td class="num">221</td>
+      <td class="num">107</td>
+      <td>Desi Channel</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrwbatpvbzo2kzoy</td>
+      <td class="num">1</td>
+      <td class="num strong">22</td>
+      <td class="num">22</td>
+      <td class="num">14</td>
+      <td class="num">14</td>
+      <td>Filamchi Bhojpuri</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrtbhl90lg1ehncl</td>
+      <td class="num">1</td>
+      <td class="num strong">22</td>
+      <td class="num">22</td>
+      <td class="num">7</td>
+      <td class="num">7</td>
+      <td>MNTV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrojxwgzo8o6qdkb</td>
+      <td class="num">1</td>
+      <td class="num strong">22</td>
+      <td class="num">22</td>
+      <td class="num">8</td>
+      <td class="num">4</td>
+      <td>Times Now Navbharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">2</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umrjh4ijsq3hrg38r</td>
+      <td class="num">1</td>
+      <td class="num strong">22</td>
+      <td class="num">22</td>
+      <td class="num">15</td>
+      <td class="num">7</td>
+      <td>Goldmines 2</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrouqo9sg7tb1y79</td>
+      <td class="num">1</td>
+      <td class="num strong">21</td>
+      <td class="num">21</td>
+      <td class="num">13</td>
+      <td class="num">10</td>
+      <td>Times Now Navbharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrj6l4djxz7x3jjp</td>
+      <td class="num">1</td>
+      <td class="num strong">21</td>
+      <td class="num">21</td>
+      <td class="num">32</td>
+      <td class="num">21</td>
+      <td>Zee Comedy Nation</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="DD" data-flag="">
+      <td class="mono">Umrizer87kgu9j2u2</td>
+      <td class="num">1</td>
+      <td class="num strong">21</td>
+      <td class="num">21</td>
+      <td class="num">7</td>
+      <td class="num">5</td>
+      <td>DD Jharkhand</td>
+      <td><span class="dot" style="background:#665E75"></span>DD</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums1zdzk7f58lup7o</td>
+      <td class="num">1</td>
+      <td class="num strong">20</td>
+      <td class="num">20</td>
+      <td class="num">13</td>
+      <td class="num">9</td>
+      <td>ABP News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Movies" data-flag="idle">
+      <td class="mono">Ums0ms8tn5dtr3q2q<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">20</td>
+      <td class="num">20</td>
+      <td class="num">2</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">—</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Music" data-flag="idle">
+      <td class="mono">Umrtm5le8xpm2wefn<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">20</td>
+      <td class="num">20</td>
+      <td class="num">3</td>
+      <td class="num">1</td>
+      <td>ZB Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umrl2n8udwdh687j8</td>
+      <td class="num">1</td>
+      <td class="num strong">20</td>
+      <td class="num">20</td>
+      <td class="num">9</td>
+      <td class="num">1</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrdbjxxj5bxbjeq7</td>
+      <td class="num">1</td>
+      <td class="num strong">20</td>
+      <td class="num">20</td>
+      <td class="num">60</td>
+      <td class="num">16</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-09</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">11</td>
+      <td class="sm">4g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums2xn7wwknfxtv54</td>
+      <td class="num">1</td>
+      <td class="num strong">19</td>
+      <td class="num">19</td>
+      <td class="num">30</td>
+      <td class="num">21</td>
+      <td>Republic Bharat</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="idle">
+      <td class="mono">Umrwy7135c5efsgwh<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">19</td>
+      <td class="num">19</td>
+      <td class="num">1</td>
+      <td class="num">1</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrt0jvliczbqmmzw</td>
+      <td class="num">1</td>
+      <td class="num strong">19</td>
+      <td class="num">19</td>
+      <td class="num">96</td>
+      <td class="num">45</td>
+      <td>B4U Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrkxaxcr773tod38</td>
+      <td class="num">1</td>
+      <td class="num strong">19</td>
+      <td class="num">19</td>
+      <td class="num">9</td>
+      <td class="num">6</td>
+      <td>Zee Horror Nights</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrz4h6jtwhklq9tn</td>
+      <td class="num">1</td>
+      <td class="num strong">18</td>
+      <td class="num">18</td>
+      <td class="num">126</td>
+      <td class="num">81</td>
+      <td>Goldmines</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="mono sm">2026-07-24</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="idle">
+      <td class="mono">Umrx825l3wgchq9ec<span class="b b-idle">left running</span></td>
+      <td class="num">1</td>
+      <td class="num strong">18</td>
+      <td class="num">18</td>
+      <td class="num">3</td>
+      <td class="num">1</td>
+      <td>Dangal TV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-23</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LE</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrsqmphhwquxs454</td>
+      <td class="num">1</td>
+      <td class="num strong">18</td>
+      <td class="num">18</td>
+      <td class="num">41</td>
+      <td class="num">27</td>
+      <td>News 24</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-21</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umritf1031yyz1swk</td>
+      <td class="num">1</td>
+      <td class="num strong">18</td>
+      <td class="num">18</td>
+      <td class="num">34</td>
+      <td class="num">4</td>
+      <td>MNTV</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-13</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Ums0ofh0elymbo54p</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">4</td>
+      <td class="num">3</td>
+      <td>Studio One +</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums0l2iachai6rio0</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">4</td>
+      <td class="num">1</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Devotional" data-flag="">
+      <td class="mono">Ums00p67cx5zrifat</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">9</td>
+      <td class="num">5</td>
+      <td>Aastha</td>
+      <td><span class="dot" style="background:#008043"></span>Devotional</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-27</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrtd5esnervzuc09</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">5</td>
+      <td class="num">3</td>
+      <td>PTC Music</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrt2elq65wwwa1v5</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">63</td>
+      <td class="num">39</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrm2atbpx2tpkkya</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">65</td>
+      <td class="num">44</td>
+      <td>Desi Channel</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">2</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrlmcfnnmgofken5</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">47</td>
+      <td class="num">26</td>
+      <td>Zee Horror Nights</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="mono sm">2026-07-15</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrk9m3rasohk7dog</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">57</td>
+      <td class="num">39</td>
+      <td>Bhojpuri Cinema</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umr1xu16n0po6ov3l</td>
+      <td class="num">1</td>
+      <td class="num strong">17</td>
+      <td class="num">17</td>
+      <td class="num">30</td>
+      <td class="num">16</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-01</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">—</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrw9ualy044tvsam</td>
+      <td class="num">1</td>
+      <td class="num strong">16</td>
+      <td class="num">16</td>
+      <td class="num">141</td>
+      <td class="num">83</td>
+      <td>Kashish News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">3</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrtjmmnh4ktyi2it</td>
+      <td class="num">1</td>
+      <td class="num strong">16</td>
+      <td class="num">16</td>
+      <td class="num">27</td>
+      <td class="num">24</td>
+      <td>B4U Bhojpuri</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-26</td>
+      <td class="num">3</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrsycfwlz0cqqema</td>
+      <td class="num">1</td>
+      <td class="num strong">16</td>
+      <td class="num">16</td>
+      <td class="num">39</td>
+      <td class="num">30</td>
+      <td>Zee News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-22</td>
+      <td class="num">2</td>
+      <td class="sm">—</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrsjusygonygxllt</td>
+      <td class="num">1</td>
+      <td class="num strong">16</td>
+      <td class="num">16</td>
+      <td class="num">44</td>
+      <td class="num">36</td>
+      <td>NDTV Rajasthan</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umrkewookdfnbfzgf</td>
+      <td class="num">1</td>
+      <td class="num strong">16</td>
+      <td class="num">16</td>
+      <td class="num">168</td>
+      <td class="num">147</td>
+      <td>Zee Comedy Nation</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Ums0fqyy9pjka8eeh</td>
+      <td class="num">1</td>
+      <td class="num strong">15</td>
+      <td class="num">15</td>
+      <td class="num">28</td>
+      <td class="num">16</td>
+      <td>Prime News</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="mono sm">2026-07-25</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LM</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrsvrmukfaiu4e0j</td>
+      <td class="num">1</td>
+      <td class="num strong">15</td>
+      <td class="num">15</td>
+      <td class="num">6</td>
+      <td class="num">4</td>
+      <td>NDTV 24x7</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">LN</td>
+    </tr><tr data-genre="News" data-flag="">
+      <td class="mono">Umrkrt3p583ud3zum</td>
+      <td class="num">1</td>
+      <td class="num strong">15</td>
+      <td class="num">15</td>
+      <td class="num">12</td>
+      <td class="num">11</td>
+      <td>Aaj Tak HD</td>
+      <td><span class="dot" style="background:#D9008D"></span>News</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="mono sm">2026-07-14</td>
+      <td class="num">1</td>
+      <td class="sm">3g</td>
+      <td class="sm">LU</td>
+    </tr><tr data-genre="Music" data-flag="">
+      <td class="mono">Umrhfiixlyfpscsj3</td>
+      <td class="num">1</td>
+      <td class="num strong">15</td>
+      <td class="num">15</td>
+      <td class="num">51</td>
+      <td class="num">34</td>
+      <td>9X Jhakaas</td>
+      <td><span class="dot" style="background:#6D17CE"></span>Music</td>
+      <td class="mono sm">2026-07-12</td>
+      <td class="mono sm">2026-07-17</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">B</td>
+    </tr><tr data-genre="Movies" data-flag="">
+      <td class="mono">Umr7k1ynqk4qq9ohc</td>
+      <td class="num">1</td>
+      <td class="num strong">15</td>
+      <td class="num">15</td>
+      <td class="num">18</td>
+      <td class="num">10</td>
+      <td>Goldmines</td>
+      <td><span class="dot" style="background:#00A3C4"></span>Movies</td>
+      <td class="mono sm">2026-07-05</td>
+      <td class="mono sm">2026-07-20</td>
+      <td class="num">1</td>
+      <td class="sm">4g</td>
+      <td class="sm">C</td>
+    </tr><tr data-genre="Entertainment" data-flag="">
+      <td class="mono">Umqvc6yv25vzwnev6</td>
+      <td class="num">1</td>
+      <td class="num strong">15</td>
+      <td class="num">15</td>
+      <td class="num">50</td>
+      <td class="num">28</td>
+      <td>Zee Horror Nights</td>
+      <td><span class="dot" style="background:#FF8000"></span>Entertainment</td>
+      <td class="mono sm">2026-06-27</td>
+      <td class="mono sm">2026-07-16</td>
+      <td class="num">2</td>
+      <td class="sm">3g</td>
+      <td class="sm">—</td>
+    </tr></tbody></table>
+</div>
+<div class="note">
+<b>Definitions.</b> Heavy = a device that accumulated ≥15 min of tune dwell in one IST day, each tune capped at 4h.
+<b>“left running”</b> = every heavy day came from one long tune with ≤3 tunes total — almost certainly an abandoned tab, not viewing.
+<b>Arm</b> = fse_v2 landing variant (LE/LN/LM/LU); A/B/C rows are leftover fse_v1 devices.
+Watch dwell comes from <code>tune</code> events; <code>session_end</code> has carried no duration for all of July, so session-level survival is not usable here.
+Refresh: <code>heavy14_query.js</code> over ssh → <code>build_report.py</code>.
+</div>
+</div>
+<script>
+const tb=document.getElementById('tb');
+document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.f').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const f=b.dataset.f;
+  [...tb.rows].forEach(r=>{
+    let show=true;
+    if(f==='repeat') show=r.dataset.flag==='repeat';
+    else if(f==='hideidle') show=r.dataset.flag!=='idle';
+    else if(f!=='all') show=r.dataset.genre===f;
+    r.style.display=show?'':'none';
+  });
+});
+</script>

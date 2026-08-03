@@ -1,0 +1,555 @@
+<title>Wiom TV — टाइम-सैशे UX मॉक</title>
+<!-- ==================================================================
+  MICRODRAMA TIME-SACHET UX MOCK  (standalone, self-contained)
+  Model: time-metered sachet ("x और घंटे, x रुपये में")
+    • daily free window (10 min) → silent play → 2-min warning toast
+    • wall NEVER fires mid-scene — waits for the episode cliffhanger
+    • 3 anchors: ₹5/1घं • ₹10/3घं (pre-selected) • ₹15/day-pass(wall-clock)
+    • payment success = next episode autoplays (no receipt screen)
+    • balance chip = data-balance widget; amber under 10 min
+  DEMO: sim clock runs 20× (1 real s = 20 sim s). Orange panel = demo-only.
+  PRODUCTION funnel events (all go to mdLog → map to beacon()):
+    flick_open, meter_warning, meter_exhausted, wall_shown{reason,ep},
+    wall_option_select, pay_click{amount}, upi_app_selected,
+    pay_success{amount,option}, wall_dismiss{reason}, topup_open
+================================================================== -->
+<style>
+:root{
+  --bg:#161021; --card:#352D42; --border:#443152; --text:#FAF9FC;
+  --muted:#A7A1B2; --accent:#D9008D; --green:#008043; --red:#E01E00;
+  --amber:#FF8000; --purple:#6D17CE; --pink100:#FFE5F6; --pink300:#FFB2E4;
+  --n700:#665E75; --n300:#D7D3E0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);min-height:100%}
+body{font-family:'Noto Sans Devanagari','Noto Sans',system-ui,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+
+/* ============ ENTRY (flick surface) ============ */
+#entry{min-height:100dvh;max-width:430px;margin:0 auto;padding:22px 20px 44px;display:flex;flex-direction:column;gap:20px}
+.brand{font-size:15px;font-weight:900;letter-spacing:.3px}
+.brand b{color:var(--accent)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.flick{position:relative;width:216px;aspect-ratio:9/16;margin:4px auto 0;border-radius:20px;overflow:hidden;cursor:pointer;border:1px solid var(--border);background:linear-gradient(165deg,#3a2452,#5a3268 52%,#20122f);box-shadow:0 18px 60px rgba(217,0,141,.22),0 4px 18px rgba(0,0,0,.5)}
+.flick .f-scenery{position:absolute;top:12%;left:0;right:0;text-align:center;font-size:64px;opacity:.3;filter:blur(1.5px)}
+.flick .f-actors{position:absolute;top:34%;left:0;right:0;text-align:center;font-size:52px;text-shadow:0 10px 30px rgba(0,0,0,.6)}
+.flick .f-fade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,6,16,.92) 88%)}
+.flick .f-meta{position:absolute;left:14px;right:14px;bottom:14px}
+.flick .f-tag{display:inline-block;background:var(--accent);color:#fff;font-size:10px;font-weight:800;padding:3px 9px;border-radius:999px;letter-spacing:.4px;margin-bottom:8px}
+.flick .f-title{font-size:19px;font-weight:900;line-height:1.25}
+.flick .f-sub{font-size:11.5px;font-weight:700;color:var(--pink300);margin-top:3px}
+.flick .f-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(217,0,141,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(217,0,141,.55);animation:pulse 1.8s ease-in-out infinite}
+.flick .f-play i{width:0;height:0;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.07)}}
+.beats{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.beats h2{font-size:13px;font-weight:800;color:var(--pink300);margin-bottom:2px}
+.beat{display:flex;gap:11px;align-items:flex-start}
+.beat .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--pink100);color:var(--accent);font-size:11.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.beat p{font-size:13.5px;font-weight:600;line-height:1.5;color:var(--text)}
+.beat p small{display:block;color:var(--muted);font-size:12px;font-weight:600}
+.demo-note{font-size:12px;font-weight:700;color:var(--amber);background:rgba(255,128,0,.12);border:1px solid rgba(255,128,0,.35);border-radius:10px;padding:9px 12px;text-align:center}
+.hypo{font-size:11.5px;font-weight:600;color:var(--n700);text-align:center;line-height:1.5}
+
+/* ============ PLAYER ============ */
+#player{position:fixed;inset:0;z-index:9000;background:#000;display:none;align-items:center;justify-content:center}
+#player.open{display:flex}
+.stage{position:relative;height:100%;max-height:100dvh;aspect-ratio:9/16;max-width:100vw;background:var(--bg);overflow:hidden}
+@media (max-aspect-ratio:9/16){.stage{width:100vw;height:100dvh;aspect-ratio:auto}}
+.vid{position:absolute;inset:0;transition:filter .5s ease}
+.vid.frozen{filter:blur(14px) brightness(.55)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.sc-bg{position:absolute;inset:-8%;animation:kb 5.4s ease-out forwards}
+@keyframes kb{from{transform:scale(1) translateX(0)}to{transform:scale(1.14) translateX(-2.5%)}}
+.sc-scenery{position:absolute;top:14%;font-size:110px;opacity:.32;filter:blur(2px)}
+.sc-actors{position:relative;font-size:72px;line-height:1;display:flex;gap:16px;align-items:flex-end;text-shadow:0 12px 40px rgba(0,0,0,.6);animation:act .9s ease-out}
+@keyframes act{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+.sc-chip{position:absolute;top:22%;background:var(--accent);color:#fff;font-weight:800;font-size:15px;padding:5px 14px;border-radius:999px;letter-spacing:.5px;box-shadow:0 4px 18px rgba(217,0,141,.5)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 1px,transparent 1px 4px)}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 48%,rgba(0,0,0,.62) 100%)}
+.sub{position:absolute;left:6%;right:6%;bottom:11%;text-align:center;color:#fff;font-size:19px;font-weight:800;line-height:1.45;text-shadow:0 2px 10px rgba(0,0,0,.9),0 0 30px rgba(0,0,0,.7)}
+.sub .hl{color:var(--pink300)}
+.top{position:absolute;top:0;left:0;right:0;padding:10px 12px 18px;background:linear-gradient(180deg,rgba(0,0,0,.65),transparent);z-index:6}
+.prog{display:flex;gap:4px;margin-bottom:10px}
+.seg{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.28);overflow:hidden}
+.seg i{display:block;height:100%;width:0%;background:var(--accent);border-radius:2px}
+.row{display:flex;align-items:center;gap:8px}
+.ep{font-size:12.5px;font-weight:800;color:#fff;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.ic{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);color:#fff;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+
+/* meter chip — the data-balance widget */
+.chip{margin-left:auto;font-size:12.5px;font-weight:800;padding:5px 12px;border-radius:999px;cursor:pointer;white-space:nowrap;border:1px solid transparent;font-variant-numeric:tabular-nums;transition:background .3s,color .3s}
+.chip.free{background:var(--pink100);color:var(--accent)}
+.chip.paid{background:rgba(0,0,0,.4);border-color:rgba(255,255,255,.25);color:#fff}
+.chip.low{background:var(--amber);color:#fff;animation:chipPulse 1.4s ease-in-out infinite}
+.chip.pass{background:linear-gradient(135deg,#D5AF4A,#F2E983,#D5B14B);color:#161021}
+@keyframes chipPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.chip.pop{animation:chipPop .55s cubic-bezier(.34,1.56,.64,1)}
+@keyframes chipPop{from{transform:scale(.6)}to{transform:scale(1)}}
+.dummy{position:absolute;top:86px;right:10px;z-index:6;background:rgba(255,128,0,.92);color:#fff;font-size:10px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.4px}
+
+/* toast */
+.toast{position:absolute;top:96px;left:50%;transform:translate(-50%,-10px);opacity:0;transition:opacity .35s,transform .35s;z-index:20;background:#161021;border:1px solid var(--border);color:#fff;font-size:13.5px;font-weight:800;padding:10px 18px;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,.5);pointer-events:none;white-space:nowrap;max-width:92%;overflow:hidden;text-overflow:ellipsis}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.warn{background:var(--amber);border-color:var(--amber);color:#fff}
+.toast.ok{background:var(--green);border-color:var(--green);color:#fff}
+
+/* ============ SHEETS ============ */
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:10;background:#FAF9FC;border-radius:22px 22px 0 0;padding:20px 20px calc(18px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .45s cubic-bezier(.32,.72,.33,1);box-shadow:0 -12px 50px rgba(0,0,0,.55)}
+.sheet.up{transform:translateY(0)}
+.grab{width:42px;height:4px;border-radius:2px;background:var(--n300);margin:0 auto 14px}
+.w-eyebrow{text-align:center;font-size:12px;font-weight:800;letter-spacing:.6px;color:var(--amber);margin-bottom:5px}
+.w-title{text-align:center;color:#161021;font-size:22px;font-weight:900;line-height:1.3}
+.w-hook{text-align:center;color:var(--n700);font-size:13.5px;font-weight:600;margin:6px 0 15px;line-height:1.5}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid #E7E2F0;border-radius:14px;background:#fff;padding:11px 14px;margin-bottom:9px;cursor:pointer;transition:border-color .2s,background .2s}
+.opt.sel{border-color:var(--accent);background:var(--pink100)}
+.o-price{font-size:20px;font-weight:900;color:#161021;min-width:48px;font-variant-numeric:tabular-nums}
+.o-body b{display:block;font-size:15.5px;font-weight:800;color:#161021;line-height:1.3}
+.o-body small{font-size:11.5px;font-weight:600;color:var(--n700)}
+.o-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.o-note{font-size:11.5px;font-weight:600;color:var(--n700);text-align:center;margin:2px 0 13px;line-height:1.5}
+.cta{display:block;width:100%;background:var(--accent);color:#fff;border:none;border-radius:14px;font-size:17px;font-weight:800;padding:15px;cursor:pointer;box-shadow:0 6px 22px rgba(217,0,141,.35)}
+.upi-note{text-align:center;color:var(--n700);font-size:12px;font-weight:600;margin-top:9px}
+.later{display:block;margin:12px auto 0;background:none;border:none;color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:underline}
+
+/* upi */
+.upi-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.upi-title{color:#161021;font-size:17px;font-weight:800}
+.upi-amt{color:#161021;font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
+.upi-merchant{color:var(--n700);font-size:12.5px;font-weight:600;margin-bottom:15px}
+.upi-row{display:flex;align-items:center;gap:13px;width:100%;background:#fff;border:1px solid #E7E2F0;border-radius:14px;padding:13px 14px;margin-bottom:9px;cursor:pointer;text-align:left}
+.upi-row:active{background:var(--pink100);border-color:var(--pink300)}
+.upi-logo{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;flex:0 0 auto}
+.upi-name{color:#161021;font-size:15px;font-weight:800}
+.upi-sub{color:var(--muted);font-size:11.5px;font-weight:600}
+.upi-go{margin-left:auto;color:var(--accent);font-size:18px;font-weight:900}
+.upi-proc{display:none;flex-direction:column;align-items:center;padding:26px 0 12px}
+.upi-proc.on{display:flex}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--pink100);border-top-color:var(--accent);animation:spin .8s linear infinite;margin-bottom:14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.proc-t{color:#161021;font-size:15px;font-weight:800}
+.proc-s{color:var(--n700);font-size:12.5px;font-weight:600;margin-top:4px}
+.upi-back{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:17px;font-weight:900;cursor:pointer}
+
+/* ============ DEMO PANEL ============ */
+#demo{position:fixed;left:12px;bottom:12px;z-index:99999;display:none;flex-direction:column;gap:6px;background:rgba(22,16,33,.92);border:1px solid rgba(255,128,0,.6);border-radius:12px;padding:9px 10px;backdrop-filter:blur(6px)}
+#demo.on{display:flex}
+#demo .d-tag{font-size:9.5px;font-weight:900;letter-spacing:1px;color:var(--amber)}
+#demo button{background:rgba(255,128,0,.15);border:1px solid rgba(255,128,0,.5);color:#FFD9B3;font-size:11.5px;font-weight:800;border-radius:8px;padding:6px 10px;cursor:pointer;text-align:left}
+#demo button:active{background:rgba(255,128,0,.35)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<!-- ================= ENTRY ================= -->
+<div id="entry">
+  <div>
+    <div class="brand">wiom<b>.tv</b></div>
+    <div class="eyebrow">टाइम-सैशे UX — इंटरैक्टिव मॉक</div>
+  </div>
+
+  <div class="flick" id="flick" role="button" aria-label="फ्लिक चलाएँ">
+    <div class="f-scenery">🏯</div>
+    <div class="f-actors">👵 🙍‍♀️</div>
+    <div class="f-fade"></div>
+    <div class="f-play"><i></i></div>
+    <div class="f-meta">
+      <span class="f-tag">माइक्रोड्रामा</span>
+      <div class="f-title">सास का इंतक़ाम</div>
+      <div class="f-sub">52 एपिसोड • हर एपिसोड 1 मिनट</div>
+    </div>
+  </div>
+
+  <div class="beats">
+    <h2>इस मॉक में क्या होगा</h2>
+    <div class="beat"><span class="n">1</span><p>फ्लिक चलाएँ — रोज़ के <b>10 फ्री मिनट</b> चुपचाप शुरू<small>कोई काउंटडाउन नहीं दिखता — मीटर देखने का मज़ा नहीं बिगाड़ता</small></p></div>
+    <div class="beat"><span class="n">2</span><p>खत्म होने से <b>2 मिनट पहले वॉर्निंग</b><small>सरप्राइज़ वॉल = भरोसा टूटना; वॉर्निंग = तैयार ख़रीदार</small></p></div>
+    <div class="beat"><span class="n">3</span><p>वॉल हमेशा <b>एपिसोड की क्लिफ़हैंगर पर</b> — कभी सीन के बीच नहीं<small>₹5/1घं • ₹10/3घं • ₹15/डे-पास</small></p></div>
+    <div class="beat"><span class="n">4</span><p>पेमेंट होते ही <b>अगला एपिसोड अपने आप</b> — कोई रसीद स्क्रीन नहीं<small>क्लिफ़हैंगर → ₹10 → कहानी आगे, 10 सेकंड में</small></p></div>
+  </div>
+
+  <div class="demo-note">⏩ डेमो स्पीड 20× — असली 10 मिनट यहाँ ~30 सेकंड में बीतेंगे</div>
+  <div class="hypo">फ्री-विंडो (10 मि), दाम (₹5/₹10/₹15) और वॉल की जगह — सब A/B लीवर हैं, फ़ाइनल नंबर नहीं</div>
+</div>
+
+<!-- ================= PLAYER ================= -->
+<div id="player" role="dialog" aria-label="माइक्रोड्रामा प्लेयर">
+  <div class="stage">
+    <div class="vid" id="vid">
+      <div class="scene" id="scene"></div>
+      <div class="grain"></div>
+      <div class="vignette"></div>
+      <div class="sub" id="sub"></div>
+    </div>
+    <div class="top">
+      <div class="prog" id="prog"></div>
+      <div class="row">
+        <span class="ep" id="epchip">EP 1 • सास का इंतक़ाम</span>
+        <button class="chip free" id="chip" aria-label="टाइम बैलेंस">फ्री • 10मि बाकी</button>
+        <button class="ic" id="mute" aria-label="आवाज़">🔇</button>
+        <button class="ic" id="close" aria-label="बंद करें">✕</button>
+      </div>
+    </div>
+    <div class="dummy">डेमो क्लिप — असली वीडियो यहाँ लगेगा</div>
+    <div class="toast" id="toast"></div>
+
+    <!-- TIME WALL -->
+    <div class="sheet" id="wall">
+      <div class="grab"></div>
+      <div class="w-eyebrow" id="w-eyebrow"></div>
+      <div class="w-title" id="w-title"></div>
+      <div class="w-hook" id="w-hook"></div>
+      <div id="w-opts"></div>
+      <div class="o-note">घंटे वाले पैक = <b>देखने का</b> टाइम (पॉज़ पर नहीं घटता) • डे-पास = घड़ी से, पूरे कैटलॉग पर</div>
+      <button class="cta" id="w-pay">₹10 देकर देखते रहें</button>
+      <div class="upi-note">⚡ UPI से 10 सेकंड में • सभी कहानियों पर चलेगा</div>
+      <button class="later" id="w-later">बाद में देखूँगा</button>
+    </div>
+
+    <!-- UPI -->
+    <div class="sheet" id="upi">
+      <button class="upi-back" id="upi-back" aria-label="वापस">✕</button>
+      <div class="grab"></div>
+      <div id="upi-choose">
+        <div class="upi-head"><span class="upi-title">भुगतान करें</span><span class="upi-amt" id="upi-amt">₹10</span></div>
+        <div class="upi-merchant">Wiom Entertainment • wiom@axis</div>
+        <button class="upi-row" data-app="gpay"><span class="upi-logo" style="background:linear-gradient(135deg,#4285F4,#34A853)">G</span><span><span class="upi-name">Google Pay</span><br><span class="upi-sub">UPI</span></span><span class="upi-go">›</span></button>
+        <button class="upi-row" data-app="phonepe"><span class="upi-logo" style="background:#5F259F">पे</span><span><span class="upi-name">PhonePe</span><br><span class="upi-sub">UPI</span></span><span class="upi-go">›</span></button>
+        <button class="upi-row" data-app="paytm"><span class="upi-logo" style="background:#00BAF2">P</span><span><span class="upi-name">Paytm</span><br><span class="upi-sub">UPI</span></span><span class="upi-go">›</span></button>
+        <button class="upi-row" data-app="other"><span class="upi-logo" style="background:#443152">UPI</span><span><span class="upi-name">कोई भी UPI ऐप</span><br><span class="upi-sub">इंटेंट से खुलेगा</span></span><span class="upi-go">›</span></button>
+      </div>
+      <div class="upi-proc" id="upi-proc">
+        <div class="spin"></div>
+        <div class="proc-t">भुगतान हो रहा है…</div>
+        <div class="proc-s">अपने UPI ऐप में पिन डालें (डेमो: अपने आप पूरा होगा)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DEMO CONTROLS ================= -->
+<div id="demo">
+  <span class="d-tag">DEMO 20×</span>
+  <button id="d-warn">⏩ वॉर्निंग तक</button>
+  <button id="d-wall">⏩ वॉल तक</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  /* ---------- knobs (all A/B levers in production) ---------- */
+  var SIM_RATE = 20;        // demo: 1 real s = 20 sim s
+  var FREE_SIM = 10 * 60;   // daily free window
+  var WARN_SIM = 2 * 60;    // free-window warning threshold
+  var LOW_SIM  = 10 * 60;   // paid low-balance threshold
+  var SCENE_MS = 3600;      // real ms per scene (demo pacing)
+
+  var OPTIONS = [
+    { id: 'p5',  price: 5,  label: '1 घंटा',              sub: 'देखने का टाइम',        sims: 3600 },
+    { id: 'p10', price: 10, label: '3 घंटे',              sub: 'देखने का टाइम',        sims: 10800, best: true },
+    { id: 'p15', price: 15, label: 'आज रात 12 बजे तक',   sub: 'पूरी शाम बेफ़िक्र',     daypass: true }
+  ];
+
+  var EPISODES = [
+    { scenes: [
+      { bg: 'linear-gradient(165deg,#3a2452,#5a3268 52%,#20122f)', scenery: '🏯', actors: '👵 🙍‍♀️', sub: 'बड़े घर की बहू… पर <span class="hl">इज़्ज़त नौकरानी से भी कम</span>' },
+      { bg: 'linear-gradient(170deg,#101c33,#1d2f52 55%,#0a1122)', scenery: '⛈️', actors: '👵 🫵 😢', sub: 'आधी रात — सास ने <span class="hl">घर से बाहर निकाल दिया</span>' },
+      { bg: 'linear-gradient(180deg,#0b0b14,#181226 60%,#05050a)', scenery: '🌧️', actors: '😭', sub: 'ना पैसा, ना सहारा… बस एक क़सम — <span class="hl">बदले की</span>' }
+    ]},
+    { scenes: [
+      { bg: 'linear-gradient(160deg,#D9008D,#6D17CE 65%,#2b1436)', scenery: '🌇', actors: '🕶️ 👩‍💼 💼', chip: '5 साल बाद', sub: 'वो लौटी — <span class="hl">करोड़ों की कंपनी की मालकिन</span> बनकर' },
+      { bg: 'linear-gradient(165deg,#1a2740,#31456b 55%,#101828)', scenery: '🏢', actors: '👵🙏 👩‍💼', sub: 'वही सास अब उसके दफ़्तर के बाहर <span class="hl">हाथ जोड़े</span> खड़ी थी…' },
+      { bg: 'linear-gradient(160deg,#3d0a0a,#7a1010 55%,#160505)', scenery: '⚡', actors: '👩‍💼 🗯️', sub: 'उसने पलटकर जो कहा… <span class="hl">सुनकर सबके होश उड़ गए</span> ⚡' }
+    ]},
+    { scenes: [
+      { bg: 'linear-gradient(165deg,#1a2740,#2b3a5c 55%,#0d1424)', scenery: '🏢', actors: '👩‍💼 📄', sub: 'शर्त सिर्फ़ एक — <span class="hl">पूरा परिवार मेरे सामने झुकेगा</span>' },
+      { bg: 'linear-gradient(170deg,#2a2033,#443152 55%,#171021)', scenery: '🏠', actors: '👴 😰 📞', sub: 'ससुर ने काँपते हाथों से फ़ोन उठाया…' },
+      { bg: 'linear-gradient(180deg,#0b0b14,#241a33 60%,#05050a)', scenery: '🚪', actors: '🤵 ❓', sub: 'तभी दरवाज़े पर आया वो — <span class="hl">जिसे सब मरा हुआ समझते थे</span>' }
+    ]},
+    { scenes: [
+      { bg: 'linear-gradient(165deg,#101c33,#243a63 55%,#0a1122)', scenery: '🌃', actors: '🤵 🙍‍♀️', sub: 'पति ज़िंदा था… पर <span class="hl">किसके साथ?</span>' },
+      { bg: 'linear-gradient(170deg,#33202a,#5c3145 55%,#1a1016)', scenery: '💍', actors: '🙍‍♀️ 😡', sub: 'उसके हाथ में <span class="hl">दूसरी औरत की अँगूठी</span>' },
+      { bg: 'linear-gradient(160deg,#3d0a0a,#7a2a10 55%,#160505)', scenery: '🔥', actors: '👩‍💼 🧾', sub: 'अब बदला सिर्फ़ सास से नहीं…' }
+    ]},
+    { scenes: [
+      { bg: 'linear-gradient(165deg,#1f2b1a,#31552b 55%,#0e150c)', scenery: '🏦', actors: '👩‍💼 🖋️', sub: 'एक दस्तख़त — और <span class="hl">ससुराल की हवेली उसकी</span>' },
+      { bg: 'linear-gradient(170deg,#101c33,#1d2f52 55%,#0a1122)', scenery: '🌧️', actors: '👵 💔', sub: 'सास सड़क पर… <span class="hl">वही आधी रात, वही बारिश</span>' },
+      { bg: 'linear-gradient(180deg,#0b0b14,#181226 60%,#05050a)', scenery: '🌧️', actors: '🙍‍♀️ 🤲', sub: 'पर तभी उसने जो किया — <span class="hl">कोई सोच नहीं सकता था</span>' }
+    ]},
+    { scenes: [
+      { bg: 'linear-gradient(165deg,#2a2033,#443152 55%,#171021)', scenery: '🤲', actors: '🙍‍♀️ 👵', sub: 'उसने सास का हाथ थाम लिया…' },
+      { bg: 'linear-gradient(170deg,#33202a,#5c3145 55%,#1a1016)', scenery: '🎭', actors: '👵 😈', sub: 'पर सास की आँखों में <span class="hl">कुछ और ही था</span>' },
+      { bg: 'linear-gradient(160deg,#3d0a0a,#7a1010 55%,#160505)', scenery: '🗡️', actors: '😱', sub: '<span class="hl">असली खेल तो अब शुरू हुआ था…</span>' }
+    ]}
+  ];
+
+  var WALL_COPY = {
+    free_end:    { eyebrow: '⏳ आज का फ्री टाइम खत्म', title: 'आगे क्या हुआ?', hook: 'जानने के लिए टाइम जोड़ें — सभी कहानियाँ, कोई विज्ञापन नहीं', later: 'बाद में देखूँगा — कल फिर 10 मिनट फ्री' },
+    balance_end: { eyebrow: '⏳ टाइम खत्म हो गया', title: 'कहानी यहीं मत छोड़िए', hook: 'टॉप-अप करें और वहीं से देखते रहें जहाँ रुके थे', later: 'बाद में देखूँगा — कल फिर 10 मिनट फ्री' },
+    topup:       { eyebrow: 'टॉप-अप', title: 'टाइम जोड़ें', hook: 'बैलेंस खत्म होने से पहले जोड़ लें — देखना रुकेगा नहीं', later: 'अभी नहीं' }
+  };
+
+  function mdLog(ev, d) { try { console.log('[time-sachet]', ev, d || {}); } catch (e) {} }
+
+  /* ---------- state ---------- */
+  var S = {
+    mode: 'free', remain: FREE_SIM, daypass: false,
+    warned: false, lowWarned: false, wallPending: false,
+    ep: 0, scene: 0, playing: false, frozen: false,
+    wallReason: null, selOpt: 'p10', muted: true
+  };
+  var sceneElapsed = 0, lastTick = performance.now(), toastTimer = null;
+
+  /* ---------- dom ---------- */
+  var $ = function (id) { return document.getElementById(id); };
+  var entry = $('entry'), player = $('player'), vid = $('vid'), sceneEl = $('scene'),
+      subEl = $('sub'), progEl = $('prog'), epChip = $('epchip'), chip = $('chip'),
+      toastEl = $('toast'), wall = $('wall'), upi = $('upi'),
+      upiChoose = $('upi-choose'), upiProc = $('upi-proc'), demoPanel = $('demo');
+  var segs = [];
+
+  /* ---------- helpers ---------- */
+  function fmtSim(s) {
+    s = Math.max(0, s);
+    var m = Math.ceil(s / 60);
+    if (m >= 60) { var h = Math.floor(m / 60), mm = m % 60; return h + 'घं' + (mm ? ' ' + mm + 'मि' : ''); }
+    return m + 'मि';
+  }
+  function toast(msg, kind) {
+    toastEl.textContent = msg;
+    toastEl.className = 'toast on' + (kind ? ' ' + kind : '');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('on'); }, 3600);
+  }
+  function sheetOpen() { return wall.classList.contains('up') || upi.classList.contains('up'); }
+  function getOpt(id) { for (var i = 0; i < OPTIONS.length; i++) if (OPTIONS[i].id === id) return OPTIONS[i]; return OPTIONS[1]; }
+
+  /* ---------- scene engine ---------- */
+  function buildProgress(n) {
+    progEl.innerHTML = '';
+    segs = [];
+    for (var i = 0; i < n; i++) {
+      var seg = document.createElement('div');
+      seg.className = 'seg'; seg.innerHTML = '<i></i>';
+      progEl.appendChild(seg);
+      segs.push(seg.firstChild);
+    }
+  }
+  function startEpisode(i) {
+    S.ep = i;
+    buildProgress(EPISODES[i].scenes.length);
+    epChip.textContent = 'EP ' + (i + 1) + ' • सास का इंतक़ाम';
+    showScene(0);
+  }
+  function showScene(j) {
+    S.scene = j; sceneElapsed = 0;
+    var sc = EPISODES[S.ep].scenes[j];
+    sceneEl.innerHTML =
+      '<div class="sc-bg" style="background:' + sc.bg + '"></div>' +
+      '<div class="sc-scenery">' + sc.scenery + '</div>' +
+      (sc.chip ? '<div class="sc-chip">' + sc.chip + '</div>' : '') +
+      '<div class="sc-actors">' + sc.actors + '</div>';
+    subEl.innerHTML = sc.sub;
+    for (var k = 0; k < segs.length; k++) segs[k].style.width = k < j ? '100%' : '0%';
+    mdLog('scene', { ep: S.ep + 1, scene: j + 1 });
+  }
+  function endScene() {
+    var n = EPISODES[S.ep].scenes.length;
+    if (S.scene < n - 1) { showScene(S.scene + 1); return; }
+    /* episode boundary — the ONLY place a wall may fire */
+    if (S.wallPending) { freezeWall(S.mode === 'free' ? 'free_end' : 'balance_end'); return; }
+    var next = (S.ep + 1) % EPISODES.length;
+    if (next === 0) toast('डेमो लूप — फिर EP 1 से');
+    startEpisode(next);
+  }
+
+  /* ---------- meter ---------- */
+  function thresholds() {
+    if (S.mode === 'free') {
+      if (!S.warned && S.remain <= WARN_SIM && S.remain > 0) {
+        S.warned = true;
+        toast('⏳ फ्री टाइम 2 मिनट में खत्म होगा', 'warn');
+        mdLog('meter_warning', { mode: 'free' });
+      }
+    } else if (!S.daypass) {
+      if (!S.lowWarned && S.remain <= LOW_SIM && S.remain > 0) {
+        S.lowWarned = true;
+        toast('⏳ सिर्फ़ ' + fmtSim(S.remain) + ' बाकी — चिप टैप कर टॉप-अप करें', 'warn');
+        mdLog('meter_warning', { mode: 'paid' });
+      }
+    }
+    if (S.remain <= 0 && !S.daypass && !S.wallPending) {
+      S.remain = 0;
+      S.wallPending = true;
+      mdLog('meter_exhausted', { mode: S.mode });
+    }
+  }
+  function renderChip() {
+    if (S.mode === 'free') { chip.className = 'chip free'; chip.textContent = 'फ्री • ' + fmtSim(S.remain) + ' बाकी'; return; }
+    if (S.daypass) { chip.className = 'chip pass'; chip.textContent = 'आज रात 12 तक ✓'; return; }
+    chip.className = 'chip ' + (S.remain <= LOW_SIM ? 'low' : 'paid');
+    chip.textContent = '⏱ ' + fmtSim(S.remain);
+  }
+
+  /* ---------- main loop ---------- */
+  setInterval(function () {
+    var now = performance.now(), dt = (now - lastTick) / 1000;
+    lastTick = now;
+    if (!S.playing) return;
+    sceneElapsed += dt * 1000;
+    var f = Math.min(1, sceneElapsed / SCENE_MS);
+    if (segs[S.scene]) segs[S.scene].style.width = (f * 100) + '%';
+    if (!S.daypass) { S.remain -= dt * SIM_RATE; thresholds(); }
+    renderChip();
+    if (f >= 1) endScene();
+  }, 80);
+
+  /* ---------- wall ---------- */
+  function freezeWall(reason) {
+    S.playing = false; S.frozen = true;
+    vid.classList.add('frozen');
+    openWall(reason);
+  }
+  function openWall(reason) {
+    S.wallReason = reason;
+    var c = WALL_COPY[reason];
+    $('w-eyebrow').textContent = c.eyebrow;
+    $('w-title').textContent = c.title;
+    $('w-hook').textContent = c.hook;
+    $('w-later').textContent = c.later;
+    S.selOpt = 'p10';
+    renderOptions();
+    wall.classList.add('up');
+    mdLog('wall_shown', { reason: reason, ep: S.ep + 1 });
+  }
+  function renderOptions() {
+    var box = $('w-opts');
+    box.innerHTML = '';
+    OPTIONS.forEach(function (o) {
+      var b = document.createElement('button');
+      b.className = 'opt' + (o.id === S.selOpt ? ' sel' : '');
+      b.innerHTML = '<span class="o-price">₹' + o.price + '</span>' +
+        '<span class="o-body"><b>' + o.label + '</b><small>' + o.sub + '</small></span>' +
+        (o.best ? '<span class="o-badge">सबसे किफ़ायती</span>' : '');
+      b.addEventListener('click', function () {
+        S.selOpt = o.id;
+        renderOptions();
+        mdLog('wall_option_select', { option: o.id });
+      });
+      box.appendChild(b);
+    });
+    $('w-pay').textContent = '₹' + getOpt(S.selOpt).price + ' देकर देखते रहें';
+  }
+  $('w-pay').addEventListener('click', function () {
+    var o = getOpt(S.selOpt);
+    mdLog('pay_click', { amount: o.price, option: o.id });
+    $('upi-amt').textContent = '₹' + o.price;
+    wall.classList.remove('up');
+    setTimeout(function () { upi.classList.add('up'); }, 220);
+  });
+  $('w-later').addEventListener('click', function () {
+    mdLog('wall_dismiss', { reason: S.wallReason });
+    if (S.wallReason === 'topup') { wall.classList.remove('up'); S.playing = true; return; }
+    closePlayer();
+  });
+
+  /* chip = proactive top-up entry */
+  chip.addEventListener('click', function () {
+    if (sheetOpen() || S.frozen) return;
+    S.playing = false;
+    mdLog('topup_open', { via: 'chip' });
+    openWall('topup');
+  });
+
+  /* ---------- upi ---------- */
+  Array.prototype.forEach.call(upi.querySelectorAll('.upi-row'), function (row) {
+    row.addEventListener('click', function () {
+      mdLog('upi_app_selected', { app: row.getAttribute('data-app') });
+      upiChoose.style.display = 'none';
+      upiProc.classList.add('on');
+      /* PRODUCTION: fire real UPI intent here; success comes from webhook */
+      setTimeout(paySuccess, 1600);
+    });
+  });
+  $('upi-back').addEventListener('click', function () {
+    if (upiProc.classList.contains('on')) return;
+    upi.classList.remove('up');
+    setTimeout(function () { openWall(S.wallReason); }, 200);
+  });
+  function resetUpi() {
+    upiChoose.style.display = '';
+    upiProc.classList.remove('on');
+  }
+
+  /* success = next episode autoplays; the toast IS the receipt */
+  function paySuccess() {
+    var o = getOpt(S.selOpt);
+    upi.classList.remove('up');
+    resetUpi();
+    if (o.daypass) { S.daypass = true; }
+    else { S.remain = Math.max(S.remain, 0) + o.sims; }
+    S.mode = 'paid'; S.wallPending = false; S.lowWarned = false;
+    mdLog('pay_success', { amount: o.price, option: o.id });
+    renderChip();
+    chip.classList.add('pop');
+    setTimeout(function () { chip.classList.remove('pop'); }, 600);
+    toast(o.daypass ? '✓ आज रात 12 बजे तक — बेफ़िक्र देखिए' : '✓ ' + o.label + ' जुड़ गए', 'ok');
+    if (S.frozen) {
+      S.frozen = false;
+      vid.classList.remove('frozen');
+      startEpisode((S.ep + 1) % EPISODES.length);   /* cliffhanger resolves NOW */
+    }
+    S.playing = true;
+  }
+
+  /* ---------- open / close ---------- */
+  function resetAll() {
+    S.mode = 'free'; S.remain = FREE_SIM; S.daypass = false;
+    S.warned = false; S.lowWarned = false; S.wallPending = false;
+    S.frozen = false; S.playing = false; S.wallReason = null; S.selOpt = 'p10';
+    vid.classList.remove('frozen');
+    wall.classList.remove('up');
+    upi.classList.remove('up');
+    resetUpi();
+    toastEl.classList.remove('on');
+  }
+  function openPlayer() {
+    resetAll();
+    player.classList.add('open');
+    demoPanel.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    startEpisode(0);
+    renderChip();
+    S.playing = true;
+    mdLog('flick_open', { surface: 'wiomtv_flick' });
+  }
+  function closePlayer() {
+    resetAll();
+    player.classList.remove('open');
+    demoPanel.classList.remove('on');
+    document.body.style.overflow = '';
+  }
+  $('flick').addEventListener('click', openPlayer);
+  $('close').addEventListener('click', closePlayer);
+
+  $('mute').addEventListener('click', function () {
+    S.muted = !S.muted;
+    this.textContent = S.muted ? '🔇' : '🔊';
+    mdLog('mute_toggle', { muted: S.muted });
+  });
+
+  /* ---------- demo controls ---------- */
+  $('d-warn').addEventListener('click', function () {
+    if (sheetOpen()) return;
+    if (S.daypass) { toast('डे-पास में टाइम नहीं घटता'); return; }
+    S.remain = (S.mode === 'free' ? WARN_SIM : LOW_SIM) + 6;
+    S.warned = false; S.lowWarned = false;
+    toast('डेमो: वॉर्निंग के ठीक पहले पहुँचे');
+  });
+  $('d-wall').addEventListener('click', function () {
+    if (sheetOpen()) return;
+    if (S.daypass) { toast('डे-पास में टाइम नहीं घटता'); return; }
+    S.remain = 6;
+    toast('डेमो: टाइम बस खत्म — वॉल अगली क्लिफ़हैंगर पर');
+  });
+})();
+</script>

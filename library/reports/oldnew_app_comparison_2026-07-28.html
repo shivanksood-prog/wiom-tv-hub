@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Old vs New Wiom TV App — First Read After Rollout</title>
+<style>
+:root{
+  --bg:#FAF9FC; --card:#FFFFFF; --border:#D7D3E0; --text:#161021; --muted:#665E75;
+  --soft:#F1EDF7; --accent:#D9008D; --accent-soft:#FFE5F6;
+  --new:#D9008D; --old:#6D17CE; --old-soft:#F1E5FF;
+  --green:#008043; --green-soft:#E1FAED; --red:#E01E00; --red-soft:#FFE9E5;
+  --amber:#FF8000; --amber-soft:#FFE6CC;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#161021; --card:#352D42; --border:#443152; --text:#FAF9FC; --muted:#A7A1B2;
+    --soft:#2A2337; --accent:#F03FAE; --accent-soft:#4a1338;
+    --new:#F03FAE; --old:#9B6DF0; --old-soft:#2e2347;
+    --green-soft:#0e3322; --red-soft:#3d1610; --amber-soft:#3d2a10;
+  }
+}
+*{box-sizing:border-box; margin:0; padding:0}
+body{background:var(--bg); color:var(--text);
+  font-family:'Noto Sans',-apple-system,'Segoe UI',Roboto,sans-serif;
+  line-height:1.45; padding:28px 20px 60px; max-width:1060px; margin:0 auto}
+h1{font-size:1.5rem; margin-bottom:4px}
+h2{font-size:1.05rem; margin:0 0 2px}
+.sub{color:var(--muted); font-size:.85rem}
+.hero{background:linear-gradient(120deg,var(--accent-soft),var(--bg) 70%);
+  border:1px solid var(--border); border-radius:14px; padding:20px 22px; margin:18px 0}
+.hero .big{font-size:1.12rem; font-weight:700; margin-bottom:8px}
+.hero ul{margin:6px 0 0 18px; font-size:.92rem}
+.hero li{margin:3px 0}
+section{margin:26px 0}
+.card{background:var(--card); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; margin-top:10px}
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:10px}
+.tile{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 14px}
+.tile .k{font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em}
+.tile .v{font-size:1.45rem; font-weight:700; margin-top:2px}
+.tile .c{font-size:.78rem; color:var(--muted); margin-top:2px}
+.badge{display:inline-block; border-radius:999px; padding:1px 9px; font-size:.72rem; font-weight:600}
+.badge.up{background:var(--green-soft); color:var(--green)}
+.badge.down{background:var(--red-soft); color:var(--red)}
+.badge.warn{background:var(--amber-soft); color:var(--amber)}
+.legend{display:flex; gap:16px; font-size:.8rem; color:var(--muted); margin:8px 0 2px; flex-wrap:wrap}
+.legend .sw{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px}
+.chart-wrap{overflow-x:auto}
+svg text{font-family:inherit}
+table{border-collapse:collapse; width:100%; font-size:.85rem; margin-top:8px}
+th,td{padding:6px 10px; text-align:right; border-bottom:1px solid var(--border)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted); font-weight:600; font-size:.75rem; text-transform:uppercase; letter-spacing:.03em}
+tr.hl td{background:var(--soft); font-weight:600}
+.note{font-size:.8rem; color:var(--muted); margin-top:8px}
+.callout{border-left:4px solid var(--amber); background:var(--amber-soft);
+  border-radius:8px; padding:10px 14px; font-size:.86rem; margin-top:12px}
+.actions{border-left:4px solid var(--accent)}
+.actions ol{margin-left:18px; font-size:.88rem}
+.actions li{margin:5px 0}
+#tip{position:fixed; pointer-events:none; background:var(--card); border:1px solid var(--border);
+  border-radius:8px; padding:6px 10px; font-size:.78rem; box-shadow:0 4px 14px rgba(22,16,33,.18);
+  opacity:0; transition:opacity .08s; z-index:9; max-width:240px}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="tip"></div>
+
+<h1>Old vs New Wiom TV App</h1>
+<div class="sub">First read after Play rollout · data 15 Jun – 27 Jul 2026 · CleverTap (old = WRZ, new = WW8) · built 28 Jul</div>
+
+<div class="hero">
+  <div class="big">One week into rollout, the new app already carries ~26% of all Wiom TV watch-hours — and users who switched are watching more, not less.</div>
+  <ul>
+    <li><b>Switched users (n=43):</b> 11.2 → 17.1 min/day pooled (<span class="badge up">+53%</span>), median 1.8 → 4.3 min/day. 27 up &gt;20%, 12 down, only 2 went dark.</li>
+    <li><b>Fresh installs, same weekdays:</b> more reach content on day 0 (72% vs 60%) and watch longer (median 6.2 vs 4.5 min; mean 28 vs 8.9 min).</li>
+    <li><b>Watch it:</b> the two heaviest old-app watchers dropped hard after switching (92→22 and 68→25 min/day) — likely a content/EPG gap worth a call.</li>
+    <li><b>Instrumentation bug found:</b> the new app resets CleverTap identity on every boot, so day-1 return of logged-in fresh users is currently <i>invisible</i> (details below).</li>
+  </ul>
+</div>
+
+<!-- ================= A. SAME DATES ================= -->
+<section>
+  <h2>A · Same dates, both apps live — week of Tue 21 – Mon 27 Jul</h2>
+  <div class="sub">The fleet is mid-migration: devices auto-update from old (13.0.5) to new (13.1.1) and move accounts.</div>
+  <div class="tiles">
+    <div class="tile"><div class="k">Watchers (week)</div><div class="v">60 <span style="color:var(--muted);font-size:.9rem">vs 122</span></div><div class="c">new vs old — new = 33% of watching base</div></div>
+    <div class="tile"><div class="k">Watch-hours (week)</div><div class="v">62.5 <span style="color:var(--muted);font-size:.9rem">vs 181.8</span></div><div class="c">new = 26% of ecosystem hours</div></div>
+    <div class="tile"><div class="k">Min / watcher / week</div><div class="v">63 <span style="color:var(--muted);font-size:.9rem">vs 89</span></div><div class="c">old's best week; its prior 3 weeks were 62–69</div></div>
+    <div class="tile"><div class="k">Active devices</div><div class="v">71 <span style="color:var(--muted);font-size:.9rem">vs 160</span></div><div class="c">new count may include ~10 login-split shells</div></div>
+  </div>
+  <div class="card">
+    <h2>Daily watchers — old app vs new app</h2>
+    <div class="legend"><span><span class="sw" style="background:var(--old)"></span>Old app</span><span><span class="sw" style="background:var(--new)"></span>New app</span></div>
+    <div class="chart-wrap"><svg id="chWatchers" width="1000" height="240"></svg></div>
+    <div class="note">Watchers = devices with &gt;0 watch time that day. The new-app line starts with the 15 Jul pilot and ramps from 21 Jul as Play auto-updates reach the fleet. Old-app watchers were 27 on Mon 27 Jul vs 44 the weekday-matched Monday two weeks prior — the base is draining into the new app, not disappearing.</div>
+  </div>
+  <div class="card">
+    <h2>Daily watch-hours</h2>
+    <div class="legend"><span><span class="sw" style="background:var(--old)"></span>Old app</span><span><span class="sw" style="background:var(--new)"></span>New app</span></div>
+    <div class="chart-wrap"><svg id="chHours" width="1000" height="220"></svg></div>
+    <div class="note">27 Jul: new app 17.1 hrs vs old 12.8 hrs — the first day the new app out-watched the old one.</div>
+  </div>
+  <div class="card">
+    <h2>Weekly picture (old app's 4 recent weeks vs new app's first real week)</h2>
+    <table>
+      <tr><th>Week (Tue–Mon)</th><th>Watchers</th><th>Watch-hrs</th><th>Min/watcher</th></tr>
+      <tr><td>Old · 30 Jun – 6 Jul</td><td>124</td><td>128.4</td><td>62</td></tr>
+      <tr><td>Old · 7 – 13 Jul</td><td>155</td><td>167.5</td><td>65</td></tr>
+      <tr><td>Old · 14 – 20 Jul</td><td>130</td><td>149.8</td><td>69</td></tr>
+      <tr><td>Old · 21 – 27 Jul</td><td>122</td><td>181.8</td><td>89</td></tr>
+      <tr class="hl"><td>New · 21 – 27 Jul</td><td>60</td><td>62.5</td><td>63</td></tr>
+    </table>
+    <div class="note">Per-watcher intensity on the new app (63 min/wk) already matches the old app's normal run-rate (62–69). The old app's same-week 89 is partly a composition effect — lighter users migrate away first, leaving heavier ones behind.</div>
+  </div>
+</section>
+
+<!-- ================= B. MIGRATED ================= -->
+<section>
+  <h2>B · Users who moved old → new (n = 43 devices, matched by device-id / phone-hash)</h2>
+  <div class="sub">Before = same weekdays as each user's after-window, averaged over the 4 prior weeks on the old app. After = their full new-app span (1–7 days).</div>
+  <div class="tiles">
+    <div class="tile"><div class="k">Pooled watch / day</div><div class="v">11.2 → 17.1</div><div class="c">min/day, weekday-matched <span class="badge up">+53%</span></div></div>
+    <div class="tile"><div class="k">Median watch / day</div><div class="v">1.8 → 4.3</div><div class="c">min/day <span class="badge up">+139%</span></div></div>
+    <div class="tile"><div class="k">Direction</div><div class="v">27 ▲ · 12 ▼</div><div class="c">&gt;20% up vs down; 4 flat</div></div>
+    <div class="tile"><div class="k">Went dark</div><div class="v">2</div><div class="c">watched before, zero minutes since switching</div></div>
+  </div>
+  <div class="card">
+    <h2>Each switched user: before vs after (min/day)</h2>
+    <div class="legend"><span><span class="sw" style="background:var(--green)"></span>above line = watching more on new app</span><span><span class="sw" style="background:var(--red)"></span>below = less</span></div>
+    <div class="chart-wrap"><svg id="chScatter" width="560" height="420"></svg></div>
+    <div class="note">Square-root scales so the many light watchers stay visible. Hover a dot for the numbers. The two big losers at bottom-right are the heaviest old-app users; the standout winner (41→167 min/day) is top-centre.</div>
+  </div>
+  <div class="callout">⚠ Read with care: after-windows are only 1–7 days and include novelty effect. Watch-time is measured differently per app (old = gap between consecutive tune-ins in a session; new = player-reported seconds). Directional, not gospel.</div>
+</section>
+
+<!-- ================= C. FRESH INSTALLS ================= -->
+<section>
+  <h2>C · Fresh installs — new app vs old app, weekday-matched cohorts</h2>
+  <div class="sub">Fresh = device never seen in the old app's account (2-month lookback). New-app cohort Tue 21–Mon 27 Jul vs old-app cohort Tue 7–Mon 13 Jul (identical weekday mix) + old same-dates cohort.</div>
+  <div class="grid2">
+    <div class="card">
+      <h2>% of installs that watch on day 0</h2>
+      <div class="chart-wrap"><svg id="chD0pct" width="460" height="190"></svg></div>
+    </div>
+    <div class="card">
+      <h2>Median day-0 minutes (among watchers)</h2>
+      <div class="chart-wrap"><svg id="chD0min" width="460" height="190"></svg></div>
+    </div>
+  </div>
+  <div class="card">
+    <table>
+      <tr><th>Cohort</th><th>n</th><th>D0 watched</th><th>Med D0 min</th><th>Mean D0 min</th><th>D1 return</th></tr>
+      <tr class="hl"><td>New app · 21–27 Jul</td><td>29</td><td>72%</td><td>6.2</td><td>28.0</td><td>n/a*</td></tr>
+      <tr><td>Old app · 7–13 Jul (weekday-matched)</td><td>70</td><td>60%</td><td>4.5</td><td>8.9</td><td>9%</td></tr>
+      <tr><td>Old app · 21–27 Jul (same dates)</td><td>16</td><td>69%</td><td>5.1</td><td>15.1</td><td>6%</td></tr>
+      <tr><td>Old app · 30 Jun–6 Jul</td><td>41</td><td>61%</td><td>3.7</td><td>4.9</td><td>12%</td></tr>
+      <tr><td>Old app · 23–29 Jun</td><td>54</td><td>70%</td><td>2.7</td><td>8.5</td><td>7%</td></tr>
+    </table>
+    <div class="note">*New-app D1 return is currently unmeasurable — see the identity bug below. The raw number computes to 0%, which is an artifact, not reality.</div>
+  </div>
+  <div class="card">
+    <h2>Installs per day — Play has flipped</h2>
+    <div class="legend"><span><span class="sw" style="background:var(--old)"></span>Old app first-opens</span><span><span class="sw" style="background:var(--new)"></span>New app fresh devices</span></div>
+    <div class="chart-wrap"><svg id="chInstalls" width="1000" height="200"></svg></div>
+    <div class="note">Old-app installs ran ~5–12/day through mid-July, then collapsed to ~1/day from 24 Jul as the store started serving the new build. Combined install rate last week (~5–6/day) is below the old norm — worth checking Play rollout %, and store-listing conversion of the new listing assets.</div>
+  </div>
+</section>
+
+<!-- ================= ACTIONS ================= -->
+<section>
+  <div class="card actions">
+    <h2>Fix these to trust the next read</h2>
+    <ol>
+      <li><b>Boot identity reset (real bug):</b> <code>WiomTvApp.kt:26</code> calls <code>onUserLogin("tv_&lt;device&gt;")</code> on <i>every</i> app start, so a logged-in user's next-day session lands back on the device profile, split from their <code>ph_*</code>/<code>wifi_*</code> login profile. Until fixed, retention of logged-in fresh users is invisible and every funnel joining across login undercounts. Fix: restore the saved auth identity at startup instead of re-asserting <code>tv_*</code>.</li>
+      <li><b>Don't compare tune-in counts across apps:</b> new-app <code>channel_view</code> fires per view-segment (6,464 events vs old 3,558 same week) — it reads 2× busier without being 2× the engagement.</li>
+      <li><b>Call the two lapsed heavy users:</b> before/after 92→22 and 68→25 min/day. If the new lineup is missing their channels, that's cheap to learn now.</li>
+      <li><b>Migration match is a floor:</b> 43 of 78 new-app units matched to the old app. Lookback only reaches 1 Jun; 11 unmatched <code>ph_*</code> phone-hashes may still be older returning users, so "fresh" is slightly overstated.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h2>Method</h2>
+    <div class="note" style="margin-top:4px">
+      Sources: CleverTap event export — old app (Ashutosh's com.wiomtv.android.prod ≤13.0.5) account WRZ-989-957Z; new app (13.1.1, zero-based rebuild) account WW8-46Z-Z87Z.
+      Watch time: old = dwell between consecutive <code>play_first_framed</code> within a session (1s–2h cap, last-in-session excluded); new = Σ <code>channel_view.durationSec</code> (2h cap).
+      Identity: new-app units merged across <code>tv_&lt;device&gt;</code> and <code>ph_&lt;sha256(phone)[:16]&gt;</code> using phone hashes recovered from old-account profiles (13/24 matched); <code>wifi_*</code> (MAC-hash) units can't be linked and stand alone.
+      Migration = device-id or phone-hash present in old account since 1 Jun. All week windows are Tue–Mon; migrated before-windows weekday-match each user's after-window across the 4 prior weeks.
+      Data: <code>~/wiom_tv/clevertap/data/oldnew/</code> · scripts <code>oldnew_pull*.py</code>, <code>oldnew_analyse2.py</code>.
+    </div>
+  </div>
+</section>
+
+<script>
+const DATA = {"daily": [{"d": "20260615", "old_w": 39, "old_h": 27.7, "new_w": 0, "new_h": 0}, {"d": "20260616", "old_w": 43, "old_h": 16.6, "new_w": 0, "new_h": 0}, {"d": "20260617", "old_w": 38, "old_h": 14.5, "new_w": 0, "new_h": 0}, {"d": "20260618", "old_w": 43, "old_h": 26.3, "new_w": 0, "new_h": 0}, {"d": "20260619", "old_w": 39, "old_h": 23.5, "new_w": 0, "new_h": 0}, {"d": "20260620", "old_w": 40, "old_h": 15.6, "new_w": 0, "new_h": 0}, {"d": "20260621", "old_w": 52, "old_h": 23.4, "new_w": 0, "new_h": 0}, {"d": "20260622", "old_w": 42, "old_h": 21.8, "new_w": 0, "new_h": 0}, {"d": "20260623", "old_w": 44, "old_h": 19.0, "new_w": 0, "new_h": 0}, {"d": "20260624", "old_w": 42, "old_h": 14.4, "new_w": 0, "new_h": 0}, {"d": "20260625", "old_w": 32, "old_h": 16.0, "new_w": 0, "new_h": 0}, {"d": "20260626", "old_w": 36, "old_h": 14.6, "new_w": 0, "new_h": 0}, {"d": "20260627", "old_w": 31, "old_h": 19.5, "new_w": 0, "new_h": 0}, {"d": "20260628", "old_w": 51, "old_h": 22.8, "new_w": 0, "new_h": 0}, {"d": "20260629", "old_w": 31, "old_h": 23.4, "new_w": 0, "new_h": 0}, {"d": "20260630", "old_w": 38, "old_h": 15.6, "new_w": 0, "new_h": 0}, {"d": "20260701", "old_w": 31, "old_h": 13.7, "new_w": 0, "new_h": 0}, {"d": "20260702", "old_w": 30, "old_h": 18.5, "new_w": 0, "new_h": 0}, {"d": "20260703", "old_w": 39, "old_h": 15.8, "new_w": 0, "new_h": 0}, {"d": "20260704", "old_w": 35, "old_h": 22.5, "new_w": 0, "new_h": 0}, {"d": "20260705", "old_w": 43, "old_h": 22.1, "new_w": 0, "new_h": 0}, {"d": "20260706", "old_w": 40, "old_h": 20.1, "new_w": 0, "new_h": 0}, {"d": "20260707", "old_w": 46, "old_h": 23.6, "new_w": 0, "new_h": 0}, {"d": "20260708", "old_w": 44, "old_h": 29.0, "new_w": 0, "new_h": 0}, {"d": "20260709", "old_w": 49, "old_h": 25.0, "new_w": 0, "new_h": 0}, {"d": "20260710", "old_w": 41, "old_h": 20.8, "new_w": 0, "new_h": 0}, {"d": "20260711", "old_w": 46, "old_h": 26.8, "new_w": 0, "new_h": 0}, {"d": "20260712", "old_w": 39, "old_h": 23.6, "new_w": 0, "new_h": 0}, {"d": "20260713", "old_w": 44, "old_h": 18.8, "new_w": 0, "new_h": 0}, {"d": "20260714", "old_w": 34, "old_h": 13.9, "new_w": 0, "new_h": 0}, {"d": "20260715", "old_w": 38, "old_h": 17.2, "new_w": 2, "new_h": 2.2}, {"d": "20260716", "old_w": 39, "old_h": 25.7, "new_w": 0, "new_h": 0}, {"d": "20260717", "old_w": 39, "old_h": 16.3, "new_w": 2, "new_h": 0.6}, {"d": "20260718", "old_w": 40, "old_h": 25.5, "new_w": 1, "new_h": 0.0}, {"d": "20260719", "old_w": 48, "old_h": 21.7, "new_w": 0, "new_h": 0}, {"d": "20260720", "old_w": 52, "old_h": 29.5, "new_w": 1, "new_h": 0.9}, {"d": "20260721", "old_w": 47, "old_h": 28.8, "new_w": 5, "new_h": 2.9}, {"d": "20260722", "old_w": 43, "old_h": 33.7, "new_w": 12, "new_h": 5.5}, {"d": "20260723", "old_w": 36, "old_h": 33.4, "new_w": 9, "new_h": 7.6}, {"d": "20260724", "old_w": 41, "old_h": 36.6, "new_w": 14, "new_h": 7.9}, {"d": "20260725", "old_w": 41, "old_h": 24.0, "new_w": 22, "new_h": 14.9}, {"d": "20260726", "old_w": 29, "old_h": 12.5, "new_w": 15, "new_h": 6.7}, {"d": "20260727", "old_w": 27, "old_h": 12.8, "new_w": 20, "new_h": 17.1}],
+"installs": [{"d": "20260615", "old": 6, "new": 0}, {"d": "20260616", "old": 10, "new": 0}, {"d": "20260617", "old": 8, "new": 0}, {"d": "20260618", "old": 7, "new": 0}, {"d": "20260619", "old": 6, "new": 0}, {"d": "20260620", "old": 9, "new": 0}, {"d": "20260621", "old": 11, "new": 0}, {"d": "20260622", "old": 6, "new": 0}, {"d": "20260623", "old": 18, "new": 0}, {"d": "20260624", "old": 8, "new": 0}, {"d": "20260625", "old": 1, "new": 0}, {"d": "20260626", "old": 5, "new": 0}, {"d": "20260627", "old": 6, "new": 0}, {"d": "20260628", "old": 14, "new": 0}, {"d": "20260629", "old": 2, "new": 0}, {"d": "20260630", "old": 4, "new": 0}, {"d": "20260701", "old": 4, "new": 0}, {"d": "20260702", "old": 9, "new": 0}, {"d": "20260703", "old": 6, "new": 0}, {"d": "20260704", "old": 6, "new": 0}, {"d": "20260705", "old": 7, "new": 0}, {"d": "20260706", "old": 5, "new": 0}, {"d": "20260707", "old": 8, "new": 0}, {"d": "20260708", "old": 7, "new": 0}, {"d": "20260709", "old": 13, "new": 0}, {"d": "20260710", "old": 11, "new": 0}, {"d": "20260711", "old": 12, "new": 0}, {"d": "20260712", "old": 7, "new": 0}, {"d": "20260713", "old": 12, "new": 0}, {"d": "20260714", "old": 4, "new": 0}, {"d": "20260715", "old": 3, "new": 0}, {"d": "20260716", "old": 8, "new": 0}, {"d": "20260717", "old": 2, "new": 0}, {"d": "20260718", "old": 4, "new": 0}, {"d": "20260719", "old": 5, "new": 0}, {"d": "20260720", "old": 5, "new": 0}, {"d": "20260721", "old": 6, "new": 2}, {"d": "20260722", "old": 4, "new": 5}, {"d": "20260723", "old": 3, "new": 2}, {"d": "20260724", "old": 1, "new": 6}, {"d": "20260725", "old": 1, "new": 5}, {"d": "20260726", "old": 0, "new": 4}, {"d": "20260727", "old": 1, "new": 5}],
+"scatter": [{"u": "07531ab348", "b": 0.0, "a": 0.8, "span": 5}, {"u": "0b41ae0ee0", "b": 0.9, "a": 31.0, "span": 4}, {"u": "1943584f63", "b": 0.0, "a": 3.1, "span": 6}, {"u": "1e6e27a08d", "b": 0.0, "a": 1.1, "span": 1}, {"u": "20352cbb7d", "b": 12.8, "a": 93.9, "span": 1}, {"u": "2726607306", "b": 1.8, "a": 0.0, "span": 8}, {"u": "290fbf88fc", "b": 0.0, "a": 0.0, "span": 3}, {"u": "2ad9c50f23", "b": 0.0, "a": 0.1, "span": 6}, {"u": "3ec166cb3d", "b": 20.8, "a": 14.3, "span": 3}, {"u": "47f739b3e3", "b": 32.5, "a": 11.3, "span": 7}, {"u": "5580d306b5", "b": 2.9, "a": 8.1, "span": 5}, {"u": "561b4aaf70", "b": 1.7, "a": 5.5, "span": 4}, {"u": "56e7ef4755", "b": 27.6, "a": 12.7, "span": 5}, {"u": "6bee5276a6", "b": 27.8, "a": 20.5, "span": 3}, {"u": "6d96163b85", "b": 0.0, "a": 20.5, "span": 3}, {"u": "6e5797a0c1", "b": 5.9, "a": 5.7, "span": 5}, {"u": "746a32dbf5", "b": 0.0, "a": 5.9, "span": 4}, {"u": "79e421c1ac", "b": 67.9, "a": 25.1, "span": 3}, {"u": "870349dd31", "b": 8.4, "a": 28.4, "span": 7}, {"u": "8d6ba40de2", "b": 0.0, "a": 67.2, "span": 4}, {"u": "8f5bfaaa17", "b": 91.9, "a": 21.5, "span": 4}, {"u": "9218ca0313", "b": 0.0, "a": 4.3, "span": 6}, {"u": "a1acf78653", "b": 7.0, "a": 0.5, "span": 1}, {"u": "a8200bfc6b", "b": 0.4, "a": 2.0, "span": 6}, {"u": "a8b8c849b0", "b": 40.5, "a": 166.8, "span": 3}, {"u": "adedb63a7f", "b": 0.0, "a": 4.1, "span": 3}, {"u": "ae4c287b96", "b": 0.0, "a": 0.0, "span": 1}, {"u": "ae95e9b5cd", "b": 4.8, "a": 3.3, "span": 7}, {"u": "bddcffe931", "b": 0.0, "a": 3.7, "span": 3}, {"u": "c21902fc44", "b": 8.5, "a": 15.0, "span": 1}, {"u": "cbeea46b95", "b": 4.6, "a": 0.4, "span": 4}, {"u": "d890622b28", "b": 2.5, "a": 68.9, "span": 2}, {"u": "dcff55e736", "b": 0.0, "a": 2.2, "span": 1}, {"u": "e564002027", "b": 0.0, "a": 0.0, "span": 4}, {"u": "e7b4fc4457", "b": 32.1, "a": 83.4, "span": 6}, {"u": "e88a0e416a", "b": 0.0, "a": 1.1, "span": 2}, {"u": "ef8df9ce5a", "b": 0.0, "a": 3.7, "span": 1}, {"u": "efbd13e2a9", "b": 10.5, "a": 38.4, "span": 6}, {"u": "f64cb41a75", "b": 4.5, "a": 0.0, "span": 2}, {"u": "fedfa1801e", "b": 0.0, "a": 0.2, "span": 2}, {"u": "ph_41240cf", "b": 19.5, "a": 23.6, "span": 7}, {"u": "ph_f11c592", "b": 14.2, "a": 0.1, "span": 7}, {"u": "ph_f91d350", "b": 0.0, "a": 0.4, "span": 6}]};
+
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const tip = document.getElementById('tip');
+function showTip(html, ev){ tip.innerHTML = html; tip.style.opacity = 1;
+  tip.style.left = Math.min(ev.clientX + 14, innerWidth - 250) + 'px';
+  tip.style.top = (ev.clientY + 14) + 'px'; }
+function hideTip(){ tip.style.opacity = 0; }
+const fmtD = s => `${+s.slice(6,8)} ${'JanFebMarAprMayJunJulAugSepOctNovDec'.substr((+s.slice(4,6)-1)*3,3)}`;
+const NS = 'http://www.w3.org/2000/svg';
+function el(p, tag, at){ const e = document.createElementNS(NS, tag);
+  for (const k in at) e.setAttribute(k, at[k]); p.appendChild(e); return e; }
+
+// ---------- dual-series daily line chart ----------
+function lineChart(id, rows, kOld, kNew, yLabel){
+  const svg = document.getElementById(id);
+  const W = 1000, H = +svg.getAttribute('height'), M = {l:40, r:34, t:12, b:26};
+  const iw = W - M.l - M.r, ih = H - M.t - M.b;
+  const max = Math.max(...rows.map(r => Math.max(r[kOld], r[kNew]))) * 1.08;
+  const x = i => M.l + i / (rows.length - 1) * iw;
+  const y = v => M.t + ih - v / max * ih;
+  for (let g = 0; g <= 4; g++){
+    const v = max / 4 * g;
+    el(svg, 'line', {x1:M.l, x2:W-M.r, y1:y(v), y2:y(v), stroke:css('--border'), 'stroke-width':g?0.5:1});
+    el(svg, 'text', {x:M.l-6, y:y(v)+4, 'text-anchor':'end', 'font-size':10, fill:css('--muted')}).textContent = Math.round(v);
+  }
+  rows.forEach((r, i) => { if (i % 7 === 0 || i === rows.length - 1)
+    el(svg, 'text', {x:x(i), y:H-8, 'text-anchor':i === rows.length - 1 ? 'end' : 'middle',
+      'font-size':10, fill:css('--muted')}).textContent = fmtD(r.d); });
+  for (const [k, col] of [[kOld, css('--old')], [kNew, css('--new')]]){
+    const pts = rows.map((r, i) => `${x(i)},${y(r[k])}`).join(' ');
+    el(svg, 'polyline', {points:pts, fill:'none', stroke:col, 'stroke-width':2, 'stroke-linejoin':'round'});
+  }
+  const hover = el(svg, 'line', {y1:M.t, y2:M.t+ih, stroke:css('--muted'), 'stroke-width':1, 'stroke-dasharray':'3 3', opacity:0});
+  svg.addEventListener('mousemove', ev => {
+    const r = svg.getBoundingClientRect();
+    const i = Math.max(0, Math.min(rows.length-1, Math.round((ev.clientX-r.left - M.l)/iw*(rows.length-1))));
+    hover.setAttribute('x1', x(i)); hover.setAttribute('x2', x(i)); hover.setAttribute('opacity', .7);
+    showTip(`<b>${fmtD(rows[i].d)}</b><br>Old: ${rows[i][kOld]} ${yLabel}<br>New: ${rows[i][kNew]} ${yLabel}`, ev);
+  });
+  svg.addEventListener('mouseleave', () => { hover.setAttribute('opacity', 0); hideTip(); });
+}
+lineChart('chWatchers', DATA.daily, 'old_w', 'new_w', 'watchers');
+lineChart('chHours', DATA.daily, 'old_h', 'new_h', 'hrs');
+
+// ---------- migrated scatter ----------
+(function(){
+  const svg = document.getElementById('chScatter');
+  const W = 560, H = 420, M = {l:46, r:16, t:14, b:40};
+  const iw = W - M.l - M.r, ih = H - M.t - M.b;
+  const max = 170;
+  const sc = v => Math.sqrt(v / max);
+  const x = v => M.l + sc(v) * iw, y = v => M.t + ih - sc(v) * ih;
+  for (const v of [0, 5, 20, 50, 100, 160]){
+    el(svg, 'line', {x1:x(v), x2:x(v), y1:M.t, y2:M.t+ih, stroke:css('--border'), 'stroke-width':.5});
+    el(svg, 'line', {x1:M.l, x2:M.l+iw, y1:y(v), y2:y(v), stroke:css('--border'), 'stroke-width':.5});
+    el(svg, 'text', {x:x(v), y:H-22, 'text-anchor':'middle', 'font-size':10, fill:css('--muted')}).textContent = v;
+    el(svg, 'text', {x:M.l-8, y:y(v)+4, 'text-anchor':'end', 'font-size':10, fill:css('--muted')}).textContent = v;
+  }
+  el(svg, 'text', {x:M.l+iw/2, y:H-6, 'text-anchor':'middle', 'font-size':11, fill:css('--muted')}).textContent = 'Before — old app, min/day (weekday-matched)';
+  const yl = el(svg, 'text', {x:12, y:M.t+ih/2, 'font-size':11, fill:css('--muted'), transform:`rotate(-90 12 ${M.t+ih/2})`, 'text-anchor':'middle'});
+  yl.textContent = 'After — new app, min/day';
+  el(svg, 'line', {x1:x(0), y1:y(0), x2:x(max), y2:y(max), stroke:css('--muted'), 'stroke-dasharray':'4 4', 'stroke-width':1});
+  for (const p of DATA.scatter){
+    const up = p.a > p.b;
+    const dot = el(svg, 'circle', {cx:x(p.b), cy:y(p.a), r:5.5, fill:up ? css('--green') : css('--red'),
+      stroke:css('--card'), 'stroke-width':2, opacity:.9});
+    dot.addEventListener('mousemove', ev => showTip(
+      `<b>${p.u}</b><br>before ${p.b} → after ${p.a} min/day<br>${p.span} day${p.span>1?'s':''} on new app`, ev));
+    dot.addEventListener('mouseleave', hideTip);
+  }
+})();
+
+// ---------- cohort bars ----------
+function cohortBars(id, vals, unit){
+  const svg = document.getElementById(id);
+  const W = 460, H = 190, M = {l:8, r:8, t:10, b:44};
+  const labels = ['New 21–27 Jul', 'Old 7–13 Jul', 'Old 21–27 Jul'];
+  const cols = [css('--new'), css('--old'), css('--old')];
+  const iw = W - M.l - M.r, bw = 64, gap = (iw - 3*bw) / 4;
+  const max = Math.max(...vals) * 1.15, ih = H - M.t - M.b;
+  vals.forEach((v, i) => {
+    const bx = M.l + gap + i*(bw+gap), bh = v/max*ih, by = M.t + ih - bh;
+    const bar = el(svg, 'rect', {x:bx, y:by, width:bw, height:bh, rx:4, fill:cols[i]});
+    el(svg, 'text', {x:bx+bw/2, y:by-5, 'text-anchor':'middle', 'font-size':12, 'font-weight':700, fill:css('--text')}).textContent = v + unit;
+    const lines = labels[i].split(' ');
+    el(svg, 'text', {x:bx+bw/2, y:H-26, 'text-anchor':'middle', 'font-size':10.5, fill:css('--muted')}).textContent = lines.slice(0,1).join(' ');
+    el(svg, 'text', {x:bx+bw/2, y:H-13, 'text-anchor':'middle', 'font-size':10.5, fill:css('--muted')}).textContent = lines.slice(1).join(' ');
+    bar.addEventListener('mousemove', ev => showTip(`<b>${labels[i]}</b><br>${v}${unit}`, ev));
+    bar.addEventListener('mouseleave', hideTip);
+  });
+  el(svg, 'line', {x1:M.l, x2:W-M.r, y1:M.t+ih, y2:M.t+ih, stroke:css('--border')});
+}
+cohortBars('chD0pct', [72, 60, 69], '%');
+cohortBars('chD0min', [6.2, 4.5, 5.1], '');
+
+// ---------- installs chart ----------
+lineChart('chInstalls', DATA.installs, 'old', 'new', '/day');
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV · First-Session Engagement Experiment — Implementation Spec</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#D9008D; --brand2:#443152; --pink300:#FFB2E4; --pink100:#FFE5F6;
+    --n900:#161021; --n700:#665E75; --n500:#A7A1B2; --n300:#D7D3E0; --n100:#F1EDF7; --white:#FAF9FC;
+    --green:#008043; --green100:#E1FAED; --red:#E01E00; --amber:#FF8000; --amber200:#FFE6CC;
+    --purple:#6D17CE; --info100:#F1E5FF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--white);color:var(--n900);
+       -webkit-font-smoothing:antialiased;line-height:1.55}
+  .page{max-width:980px;margin:0 auto;padding:48px 28px 100px}
+
+  /* hero */
+  .hero{border-radius:20px;padding:34px 34px 30px;color:#fff;
+        background:linear-gradient(135deg,#D9008D 0%,#9c0066 55%,#443152 100%);box-shadow:0 14px 40px rgba(217,0,141,.22)}
+  .hero .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+             background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px}
+  .hero h1{font-size:30px;font-weight:800;margin:14px 0 8px;letter-spacing:-.02em;line-height:1.15}
+  .hero p{font-size:15px;opacity:.92;max-width:680px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .meta span{font-size:12px;font-weight:600;background:rgba(255,255,255,.14);padding:6px 11px;border-radius:8px}
+  .meta code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px}
+
+  h2{font-size:21px;font-weight:800;margin:44px 0 6px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  h2 .no{display:inline-flex;width:28px;height:28px;border-radius:8px;background:var(--pink100);color:var(--brand);
+         align-items:center;justify-content:center;font-size:14px}
+  h3{font-size:15px;font-weight:800;margin:22px 0 8px;color:var(--brand2)}
+  p.lead{color:var(--n700);font-size:14.5px;margin-bottom:6px;max-width:760px}
+  ul{margin:8px 0 8px 4px;list-style:none}
+  li{position:relative;padding:4px 0 4px 20px;font-size:14px;color:#3a3447}
+  li::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
+  li b{color:var(--n900)}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:var(--n100);
+       padding:1px 6px;border-radius:5px;color:var(--purple)}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border:1px solid var(--n300);
+        border-radius:12px;overflow:hidden;font-size:13.5px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--n100);vertical-align:top}
+  thead th{background:var(--n100);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--n700);font-weight:700}
+  tbody tr:last-child td{border-bottom:none}
+  td code{font-size:12px}
+
+  .arm{display:inline-block;font-weight:800;font-size:12px;padding:2px 9px;border-radius:6px}
+  .armC{background:var(--n100);color:var(--n700)} .armA{background:var(--pink100);color:var(--brand)}
+  .armB{background:var(--green100);color:var(--green)}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;margin:1px}
+  .pill.g{background:var(--green100);color:var(--green)} .pill.a{background:var(--amber200);color:#9a4d00}
+  .pill.n{background:var(--n100);color:var(--n700)} .pill.p{background:var(--info100);color:var(--purple)}
+
+  pre{background:#1c1426;color:#ECE6F5;border-radius:12px;padding:16px 18px;overflow:auto;margin:12px 0;
+      font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6}
+  pre .c{color:#9A8FB0} pre .k{color:#FFB2E4} pre .s{color:#9be3bb}
+
+  .card{background:#fff;border:1px solid var(--n300);border-radius:14px;padding:18px 20px;margin:12px 0}
+  .note{border-radius:12px;padding:13px 16px;font-size:13.5px;margin:12px 0;line-height:1.5}
+  .note.ok{background:var(--green100);color:#0a5c33} .note.info{background:var(--info100);color:#3a2356}
+  .note.warn{background:var(--amber200);color:#7a3d00}
+  .note b{font-weight:800}
+  .eq{background:var(--pink100);border:1px solid #ffc9ec;border-radius:12px;padding:16px 18px;margin:12px 0;
+      text-align:center;font-size:15px;font-weight:700;color:var(--brand2)}
+  .eq .ph{color:var(--brand);font-weight:800}
+  .eq small{display:block;color:var(--n700);font-weight:600;font-size:11.5px;margin-top:6px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+  .mini{background:#fff;border:1px solid var(--n300);border-radius:12px;padding:14px 16px}
+  .mini .h{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--n700)}
+  .mini .v{font-size:14px;font-weight:700;margin-top:6px}
+  .foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--n300);font-size:12.5px;color:var(--n500)}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <span class="tag">Wiom TV · Implementation Spec — as built</span>
+    <h1>First-Session Engagement A/B/C Experiment</h1>
+    <p>Three arms, each on one-third of enrolled new users, to lift first-session engagement — first through activation, then through retention to better channels.</p>
+    <div class="meta">
+      <span>Branch <code>Experiment_first_session_engagement</code></span>
+      <span>Status: built · tested locally · committed</span>
+      <span>Deploy: Satyam pushes PR → pull + <code>reload-wiom-tv</code></span>
+    </div>
+  </div>
+
+  <!-- BRIEF -->
+  <h2><span class="no">·</span> Experiment brief</h2>
+  <div class="grid3" style="margin-bottom:6px">
+    <div class="mini"><div class="h">JTBD</div><div class="v" style="font-weight:600;font-size:13px">1 · "Orient me — show what's on, fast" → <b>Arm A</b><br>2 · "Get me what I like" (silently) → <b>Arm B</b></div></div>
+    <div class="mini"><div class="h">Objective</div><div class="v" style="font-weight:600;font-size:13px">Lift <b>first-session engagement</b> — via activation, then retention to better channels. North Star = engagement/user; activation = fast gate.</div></div>
+    <div class="mini"><div class="h">Success</div><div class="v" style="font-weight:600;font-size:13px">An arm beats C on <b>activation ≥~20% rel.</b> (≥2 wks, ≥150/arm), confirmed by <b>avg watch/user</b>, no bounce/latency regression.</div></div>
+  </div>
+  <p class="lead"><b>Hypothesis:</b> a new user dropped onto channel 1 in channel-number order wastes time finding something good. Orienting them (A) or surfacing genuinely-engaging channels first (B) gets them to watchable content faster → higher activation, longer watch, better return. Live readout: <code>/tv/experiment1</code>.</p>
+
+  <!-- TLDR -->
+  <h2><span class="no">0</span> The three arms</h2>
+  <p class="lead">Same player, same channels — each arm changes only what happens on first launch. Assignment is sticky per <code>uid</code>; existing users are untouched.</p>
+  <table>
+    <thead><tr><th>Arm</th><th>Name</th><th>What changes</th><th>Visible?</th></tr></thead>
+    <tbody>
+      <tr><td><span class="arm armC">C</span></td><td>Control</td><td>Nothing — current behaviour (land last/first channel, guide closed, default channel order)</td><td><span class="pill n">—</span></td></tr>
+      <tr><td><span class="arm armA">A</span></td><td>Genre grid <span class="pill p">JTBD-1</span></td><td>First-launch genre menu over the playing video; tap genre → its hero channel, or <b>सीधे शुरू करें</b> keeps the current channel + unmutes (no skip)</td><td><span class="pill a">Yes</span></td></tr>
+      <tr><td><span class="arm armB">B</span></td><td>Silent reorder <span class="pill p">JTBD-2</span></td><td>Channels within each genre reordered backend-side (popularity → personal blend). Genres stay in place — only in-genre order changes.</td><td><span class="pill g">No</span></td></tr>
+    </tbody>
+  </table>
+  <div class="eq">
+    Total engagement = <span class="ph">activation</span> × <span class="ph">retention</span> × <span class="ph">better channels</span>
+    <small>Arm A widens the front door · Arm B deepens the match · measured per-user (N held out)</small>
+  </div>
+
+  <!-- DESIGN -->
+  <h2><span class="no">1</span> Experiment design</h2>
+  <h3>Arms &amp; split</h3>
+  <ul>
+    <li><b>3 arms — C, A, B — even split, 33.3% each</b> of enrolled new users.</li>
+    <li>Assignment is <b>deterministic &amp; sticky</b>: <code>hash(uid) % 3</code>. Same device → same arm forever.</li>
+    <li><b>New users only.</b> Existing users keep today's experience (<code>variant = null</code>) and are excluded from the read.</li>
+  </ul>
+  <pre><span class="c">// public/wiom-tv.html — sticky assignment + new-user enrollment</span>
+const ARMS = ['C','A','B'];
+function _hash(s){ let h=0; for (let i=0;i&lt;s.length;i++) h=(h*31+s.charCodeAt(i))|0; return Math.abs(h); }
+let enrolled = _uidNew ? (localStorage.setItem('wiom-tv-enrolled','1'), true)
+                       : localStorage.getItem('wiom-tv-enrolled')==='1';
+const variant = (EXPERIMENT_ON && enrolled) ? ARMS[_hash(uid) % 3] : null;</pre>
+  <div class="note ok"><b>Verified locally:</b> over 30k synthetic uids the split was 33.3 / 33.0 / 33.7%.</div>
+
+  <h3>Validity hygiene</h3>
+  <ul>
+    <li><b>SRM check</b> (built into the readout): enrolled counts must be ~33/33/33, else bucketing is broken.</li>
+    <li><b>Sticky</b> assignment so retention isn't contaminated. <b>A/A sanity</b>: C is a real arm.</li>
+  </ul>
+
+  <!-- SERVER -->
+  <h2><span class="no">2</span> Server changes — <code>server.js</code></h2>
+  <h3>Schema (auto-migrates on boot)</h3>
+  <table>
+    <thead><tr><th>Column</th><th>Type</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>variant</code></td><td>TEXT</td><td>C | A | B for enrolled users; NULL = legacy (excluded)</td></tr>
+      <tr><td><code>rank</code></td><td>INTEGER</td><td>channel position within its genre in the order shown → proves Arm B</td></tr>
+      <tr><td><code>meta</code></td><td>TEXT</td><td>JSON catch-all (via, pos, target_ch, n_genres …)</td></tr>
+      <tr><td><code>experiment</code></td><td>TEXT</td><td>experiment id (e.g. <code>fse_v1</code>) — scaffolding for iterative A/Bs (§8)</td></tr>
+    </tbody>
+  </table>
+  <div class="note info"><b>No manual SQL.</b> The existing safe <code>ALTER TABLE</code> migration loop adds these on restart — Satyam only needs to deploy + reload.</div>
+
+  <h3>Endpoints</h3>
+  <table>
+    <thead><tr><th>Route</th><th>Does</th></tr></thead>
+    <tbody>
+      <tr><td><code>POST /api/event</code></td><td>now accepts <code>variant</code>, <code>rank</code>, <code>meta</code>, <code>exp</code></td></tr>
+      <tr><td><code>GET /api/order</code></td><td><b>Arm B ordering, computed backend-side.</b> Catalog derived from event history → no client catalog. Returns <code>order</code> + <code>heroByGenre</code>.</td></tr>
+      <tr><td><code>GET /api/experiment</code></td><td>3 headline metrics × {C,A,B} + intro funnel + dwell-by-rank + D1/D7 (enrolled cohort)</td></tr>
+      <tr><td><code>GET /tv/experiment</code></td><td>self-contained readout page — does <b>not</b> touch the main dashboard</td></tr>
+    </tbody>
+  </table>
+
+  <!-- FRONTEND -->
+  <h2><span class="no">3</span> Frontend changes — <code>public/wiom-tv.html</code></h2>
+  <ul>
+    <li><b>Harness:</b> variant assignment + enrollment + <code>EXPERIMENT_ON</code> kill switch.</li>
+    <li><b><code>variant</code> on every beacon</b>; <b><code>rank</code> on every tune</b> (position within its genre).</li>
+    <li><b>Arm A</b> — first-launch genre grid (8 curated genres). No skip; <b>सीधे शुरू करें</b> keeps the current channel + unmutes. Fires <code>intro_shown → genre_select / start_direct → intro_complete</code>.</li>
+    <li><b>Arm B</b> — silent <b>slot-preserving in-genre reorder</b> from <code>/api/order</code>; genres keep their positions, only in-genre order changes. <b>Boots instantly</b> (never blocks first frame) and reorders in the background when the order arrives, re-pointing to the playing channel; fail-safe to default order if the fetch errors. <b>Zero UI added.</b></li>
+    <li><b>QA:</b> <code>?_arm=A|B|C</code> override that works <b>only on localhost</b> — inert on the live site.</li>
+  </ul>
+  <div class="note info"><b>Note:</b> the <code>unmute</code> event was already shipped to main (cold-start instrumentation), so it's reused, not re-added.</div>
+
+  <!-- ORDERING -->
+  <h2><span class="no">4</span> Ordering algorithm (Arm B) — engagement stick-rate</h2>
+  <p class="lead">Popularity is a <b>stick-rate</b>, not raw watch-time — so it can't be gamed by position or inflated by idle/left-on streams.</p>
+  <pre><span class="c">// within each genre, over a rolling 14d window</span>
+rate(ch) = <span class="k">(distinct people who watched &gt; X sec)</span> / <span class="k">(distinct people who tuned)</span>
+pop(ch)  = rate(ch)            <span class="c">if tunes(ch) ≥ TUNE_MIN</span>
+         = genre MEDIAN rate   <span class="c">otherwise → thin/new channels keep getting shown &amp; tested</span>
+score    = pop(ch) + K · <span class="s">MINEnorm(ch)</span>     <span class="c">// MINE = this device's own engaged tunes (0 at cold-start)</span></pre>
+  <ul>
+    <li><b>Removes the biases of raw watch-min:</b> dividing by who-tuned → no position bias · the <code>&gt;X sec</code> bar + distinct people → no idle/binge inflation · tune gate + median → no thin-data noise &amp; new channels stay in rotation.</li>
+    <li><b>Errors bake in by design</b> — a failed/partial tune counts in the denominator but never reaches X sec, so error-prone channels sink.</li>
+    <li><b>Denominator = distinct tuners</b> (not raw tune count) so a loyal niche channel isn't deflated by re-tunes; tune count is the confidence gate.</li>
+    <li><b>Evolves live</b> — recomputed each <code>/api/order</code> call, adapts with every tune. <b>Hero per genre</b> (Arm A landing) = top stick-rate.</li>
+  </ul>
+  <table>
+    <thead><tr><th>Param</th><th>Value</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td><code>X</code> engagement bar</td><td><b>30s</b></td><td>Above the &lt;5s "zap" floor, below the 60s activation bar — dense, stable "actually watched" signal (→ 60s to align with the activation OEC)</td></tr>
+      <tr><td><code>TUNE_MIN</code></td><td>10</td><td>Min tunes before a channel's own rate is trusted (else genre median)</td></tr>
+      <tr><td><code>K</code> personal weight</td><td>2</td><td>Personal signal dominates once a user has history</td></tr>
+      <tr><td><code>window</code></td><td>14d</td><td>Rolling window for popularity + personal signal</td></tr>
+    </tbody>
+  </table>
+  <div class="note info">Applied <b>slot-preserving</b> on the client: each genre keeps its existing positions; only the channels inside those slots are resequenced — so genres don't move, and there's still zero UI change.</div>
+
+  <!-- MEASUREMENT -->
+  <h2><span class="no">5</span> How we measure success</h2>
+  <p class="lead">Three headline metrics, compared per arm — engagement is the North Star, activation the fast gate.</p>
+  <div class="grid3">
+    <div class="mini"><div class="h">① Activation</div><div class="v">first-session ≥60s watch</div><div style="font-size:12px;color:var(--n700);margin-top:4px">fast decision gate</div></div>
+    <div class="mini"><div class="h">② Avg time / user</div><div class="v">watch-min ÷ enrolled</div><div style="font-size:12px;color:var(--n700);margin-top:4px">North Star · N held out</div></div>
+    <div class="mini"><div class="h">③ Channel switches</div><div class="v">read as dwell-per-switch</div><div style="font-size:12px;color:var(--n700);margin-top:4px">"better channels" diagnostic</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Tier</th><th>Metric</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill a">Gate</span></td><td>First-session activation rate · ≥2 wks · ≥~150/arm · ≥~20% rel. lift</td><td><code>/api/experiment</code></td></tr>
+      <tr><td><span class="pill g">Confirm</span></td><td>Avg watch-min per user (same direction)</td><td><code>/api/experiment</code></td></tr>
+      <tr><td><span class="pill p">Diagnose</span></td><td>Dwell-per-switch + dwell-by-rank (did the win come from better channels?)</td><td><code>rank</code> on tune</td></tr>
+      <tr><td><span class="pill p">North Star</span></td><td>D1 / D7 retention</td><td>cohort split by variant</td></tr>
+      <tr><td><span class="pill n">Guardrail</span></td><td>Bounce must not rise; Arm A intro must not delay first content</td><td><code>/api/stats</code></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ROLLOUT -->
+  <h2><span class="no">6</span> Rollout &amp; kill switch</h2>
+  <ul>
+    <li>Built on <code>Experiment_first_session_engagement</code>, verified locally (Node 22): schema migrated, all endpoints 200, arms emit correct events.</li>
+    <li><b>Satyam:</b> push branch → PR → on deploy, <code>git pull</code> + <code>reload-wiom-tv</code> (migration auto-runs).</li>
+    <li><b>Kill switch:</b> flip <code>EXPERIMENT_ON = false</code> in <code>wiom-tv.html</code> → everyone gets control.</li>
+    <li><b>Monitor:</b> <code>/tv/experiment</code> daily; hold the read until minimums; decide per §5.</li>
+  </ul>
+
+  <!-- DECISIONS -->
+  <h2><span class="no">7</span> Defaults locked &amp; known limits</h2>
+  <table>
+    <thead><tr><th>Decision</th><th>Choice</th></tr></thead>
+    <tbody>
+      <tr><td>Ordering location</td><td>Server <code>/api/order</code> (most backend; catalog derived from events, no client file)</td></tr>
+      <tr><td>Popularity</td><td>Engagement <b>stick-rate</b> (§4), not raw watch-min</td></tr>
+      <tr><td>Engagement bar X · TUNE_MIN · K · window</td><td>30s · 10 · 2 · 14d</td></tr>
+      <tr><td>Population</td><td>New users only (existing excluded, <code>variant=null</code>)</td></tr>
+      <tr><td>Arm A genres</td><td>The 8 curated genres the guide already filters by</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn"><b>Known confound:</b> A (lands on a popular hero) and B (stick-rate-ordered) both surface engaging content, so a 3-arm test can't fully separate "the menu" from "the good landing/order." Accepted for v1 — a future A+B-stack test isolates the interaction.</div>
+
+  <!-- SCAFFOLDING -->
+  <h2><span class="no">8</span> Scaffolding for iterative experiments</h2>
+  <p class="lead">Secondary objective: the A/B/C harness is built to host a <b>sequence</b> of experiments on the same enrolled cohort with near-zero new plumbing.</p>
+  <ul>
+    <li><b>Salted assignment</b> — <code>hash(uid + '|' + EXPERIMENT_ID) % 3</code>. Bump <code>EXPERIMENT_ID</code> (<code>fse_v1 → fse_v2</code>) → the cohort <b>re-randomizes cleanly</b>, so a user isn't stuck in the same arm across experiments.</li>
+    <li><b><code>exp</code> on every event</b> + an <code>experiment</code> column → the readout filters by experiment (<code>/api/experiment?exp=fse_v2</code>); each experiment's data is cleanly separable in one table.</li>
+    <li><b>Reusable readout</b> — <code>/tv/experiment</code> + the headline metrics are experiment-agnostic.</li>
+  </ul>
+  <div class="note info"><b>To launch experiment N+1:</b> (1) bump <code>EXPERIMENT_ID</code>; (2) define what the arms <i>do</i> (the only new code); (3) read <code>/tv/experiment?exp=&lt;id&gt;</code>. Bucketing, enrollment, the event pipeline, cohort tracking and dashboard already exist.</div>
+  <div class="note warn"><b>Caveat:</b> sequential experiments on the same users carry <b>learning/carry-over</b> risk — re-randomization fixes assignment balance, not history. For exposure-sensitive effects, use a fresh-user window or hold-out.</div>
+
+  <div class="foot">
+    Files: <code>server.js</code> · <code>public/wiom-tv.html</code> · <code>public/experiment.html</code> · spec + mockups under <code>analysis/</code>.
+    Wiom Design System · light theme.
+  </div>
+
+</div>
+</body>
+</html>

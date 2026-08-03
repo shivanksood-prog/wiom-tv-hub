@@ -1,0 +1,619 @@
+<title>wiom.tv Review — 23 Jul 2026</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --panel:#FFFFFF; --panel2:#F4F1F9; --border:#E4DEEE;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --green:#0E8A5F; --red:#E01E00; --amber:#E8850C; --purple:#6D17CE;
+    --c1:#C11574; --c2:#1D6FB8; --c3:#E8850C; --c4:#0E8A5F;
+    --grid:#EBE6F2; --zebra:#FAF8FC;
+    --shadow:0 1px 2px rgba(22,16,33,.06),0 6px 22px rgba(22,16,33,.05);
+    --mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#161021; --panel:#241B30; --panel2:#2C2338; --border:#443152;
+      --ink:#FAF9FC; --muted:#A7A1B2; --faint:#7A7188;
+      --accent:#FF52BE; --accent-soft:#3a1230;
+      --green:#3FB98A; --red:#FF6A54; --amber:#E5A24A; --purple:#B388F0;
+      --c1:#D45BA4; --c2:#4A90D0; --c3:#C6791C; --c4:#2E9E74;
+      --grid:#332944; --zebra:#211830;
+      --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 26px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#FAF9FC; --panel:#FFFFFF; --panel2:#F4F1F9; --border:#E4DEEE;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2; --accent:#D9008D; --accent-soft:#FFE5F6;
+    --green:#0E8A5F; --red:#E01E00; --amber:#E8850C; --purple:#6D17CE;
+    --c1:#C11574; --c2:#1D6FB8; --c3:#E8850C; --c4:#0E8A5F; --grid:#EBE6F2; --zebra:#FAF8FC;
+  }
+  :root[data-theme="dark"]{
+    --bg:#161021; --panel:#241B30; --panel2:#2C2338; --border:#443152;
+    --ink:#FAF9FC; --muted:#A7A1B2; --faint:#7A7188; --accent:#FF52BE; --accent-soft:#3a1230;
+    --green:#3FB98A; --red:#FF6A54; --amber:#E5A24A; --purple:#B388F0;
+    --c1:#D45BA4; --c2:#4A90D0; --c3:#C6791C; --c4:#2E9E74; --grid:#332944; --zebra:#211830;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.5;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 22px 80px}
+  .num{font-variant-numeric:tabular-nums}
+  h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance;letter-spacing:-.01em}
+  a{color:var(--accent)}
+  /* header */
+  header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;
+    padding-bottom:18px;border-bottom:2px solid var(--border);margin-bottom:26px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#D9008D,#6D17CE);
+    display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  h1{font-size:26px;font-weight:800;margin-top:2px}
+  .sub{color:var(--muted);font-size:13px;margin-top:5px}
+  .thru{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--panel2);
+    border:1px solid var(--border);border-radius:8px;padding:6px 10px;display:inline-block}
+  .tbtn{border:1px solid var(--border);background:var(--panel);color:var(--muted);border-radius:9px;
+    padding:8px 12px;font-size:13px;cursor:pointer;font-weight:600}
+  .tbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .tbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* sections */
+  section{margin-top:34px}
+  .shead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .snum{font-size:12px;font-weight:800;color:#fff;background:var(--accent);border-radius:6px;
+    padding:3px 8px;letter-spacing:.04em}
+  h2{font-size:20px;font-weight:800}
+  .slede{color:var(--muted);font-size:14px;margin:8px 0 18px;max-width:74ch}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 22px;
+    box-shadow:var(--shadow);margin-bottom:18px}
+  .card h3{font-size:15px;font-weight:700;margin-bottom:2px}
+  .chsub{color:var(--muted);font-size:12.5px;margin-bottom:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  /* stat tiles */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  @media(max-width:760px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 15px;box-shadow:var(--shadow)}
+  .tile .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .tile .v{font-size:27px;font-weight:800;margin-top:4px;letter-spacing:-.02em}
+  .tile .d{font-size:12px;margin-top:3px;color:var(--muted)}
+  .up{color:var(--green)} .dn{color:var(--red)}
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:2px 0 14px;font-size:12.5px;color:var(--muted)}
+  .lg{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+  /* small multiples */
+  .sm{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:900px){.sm{grid-template-columns:repeat(2,1fr)}}
+  .smp{border:1px solid var(--border);border-radius:10px;padding:10px 8px 6px;background:var(--panel2)}
+  .smp .t{font-size:11.5px;font-weight:700;text-align:center;color:var(--ink)}
+  .smp .tt{font-size:11px;text-align:center;color:var(--muted);margin-bottom:4px}
+  /* tables */
+  .tblwrap{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{padding:9px 10px;text-align:right;white-space:nowrap}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;
+    border-bottom:2px solid var(--border);position:sticky;top:0;background:var(--panel)}
+  td{border-bottom:1px solid var(--grid)}
+  th.l,td.l{text-align:left}
+  tbody tr:nth-child(even){background:var(--zebra)}
+  .rank{color:var(--faint);font-weight:700;width:26px}
+  .badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.03em;padding:2px 7px;border-radius:20px;
+    background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent);margin-left:7px;vertical-align:middle}
+  .gpill{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;
+    background:var(--panel2);color:var(--muted);border:1px solid var(--border)}
+  .mbar{display:inline-flex;height:11px;border-radius:3px;overflow:hidden;vertical-align:middle;min-width:60px;gap:1.5px}
+  .mbar i{display:block;height:100%}
+  /* callout */
+  .callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;
+    padding:13px 16px;font-size:14px;margin:14px 0}
+  .callout b{color:var(--ink)}
+  .callout.method{border-left-color:var(--purple);background:var(--panel2)}
+  .callout code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--accent-soft);
+    color:var(--ink);padding:1px 5px;border-radius:5px;white-space:nowrap}
+  .defgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:11px 0 4px}
+  @media(max-width:560px){.defgrid{grid-template-columns:1fr}}
+  .defcol{border:1px solid var(--border);border-radius:9px;padding:10px 12px;background:var(--panel)}
+  .defcol h5{margin:0 0 6px;font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+  .defcol ul{margin:0;padding-left:16px;font-size:13px} .defcol li{margin:3px 0}
+  .caveat{border:1px dashed var(--border);border-radius:10px;padding:13px 16px;font-size:12.5px;color:var(--muted);background:var(--panel2)}
+  .caveat b{color:var(--ink)}
+  ul.tight{margin:8px 0;padding-left:20px} ul.tight li{margin:4px 0}
+  .kv{font-family:var(--mono);font-size:12px}
+  .maprow{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 2px}
+  .armchip{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:10px;
+    padding:8px 12px;background:var(--panel2);font-size:13px}
+  .armchip .dot{width:12px;height:12px;border-radius:4px}
+  .armchip b{font-weight:800}
+  figcaption{font-size:11.5px;color:var(--muted);margin-top:10px}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .tick{fill:var(--faint);font-size:10px} .axl{fill:var(--muted);font-size:11px;font-weight:600}
+  .dlabel{fill:var(--ink);font-size:11px;font-weight:700}
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="logo">📺</div>
+      <div>
+        <div class="eyebrow">wiom.tv · EiR review pack</div>
+        <h1>State of wiom.tv</h1>
+        <div class="sub">Watch, activation, the July 20 spike & the channels that carry engagement</div>
+      </div>
+    </div>
+    <div style="text-align:right;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+      <button class="tbtn" id="themeBtn" aria-label="Toggle theme">◐ Theme</button>
+      <span class="thru" id="thru">data through 23 Jul 2026, 12:22 IST</span>
+    </div>
+  </header>
+
+  <div class="caveat" style="margin-bottom:8px">
+    <b>How every number here is built.</b> Watch = <b>tune-dwell only</b> (sum of <span class="kv">tune.duration_sec</span>),
+    <b>capped at 4h per tune</b> to kill left-open-tab outliers (30 such tunes trimmed, −166h); the buggy
+    <span class="kv">playback_stall</span> millisecond field is never counted. Unit of analysis is the <b>user (uid)</b>, never the session.
+    Days are <b>IST</b> (UTC + 5:30). Only the uid era (from 23 Jun) is used. Genre = the channel's own <span class="kv">channel_cat</span> (a real field — no bucketing needed).
+    <b>Activation = a user watching ≥60s total in a day</b> across all channels, over all users who opened the app that day.
+    Era notes: dwell was fixed 27 Jun; a fresh experiment (fse_v2) + 5 dead-channel removals landed 13 Jul — so pre-13-Jul error/unmute rates aren't comparable, but watch-hours are.
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <section id="s1">
+    <div class="shead"><span class="snum">01</span><h2>How the numbers are</h2></div>
+    <p class="slede">Watch is holding around <b>130–150 hours a week</b>. New users still supply most of it, but
+      <b>returning users are a growing share</b> (45% of watch this week vs 38% three weeks ago) — the base is starting to compound.
+      The engagement gate is unchanged: only about <b>1 in 4 users who open the app watch 60 seconds</b>.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Watch · last full wk</div><div class="v num">127.5<span style="font-size:15px;font-weight:600;color:var(--muted)"> h</span></div><div class="d">Jul 15–21 · <span class="dn">−15.6%</span> vs prior wk</div></div>
+      <div class="tile"><div class="k">Repeat-user share</div><div class="v num">45%</div><div class="d">of watch · <span class="up">↑</span> from 38% (Jun 24–30)</div></div>
+      <div class="tile"><div class="k">Activation</div><div class="v num">27.5%</div><div class="d">users watching ≥60s/day · flat</div></div>
+      <div class="tile"><div class="k">Genre carrying watch</div><div class="v" style="font-size:22px">News</div><div class="d">38.8 h · then Music, Entertainment</div></div>
+    </div>
+
+    <div class="card">
+      <h3>Total watch hours per day, grouped by week</h3>
+      <div class="chsub">Each panel is one IST week (Wed→Tue); bars are daily watch hours, split New vs Repeat by the <span class="kv">devices.first_seen</span> ledger. Jul 22–23 is partial.</div>
+      <div class="legend">
+        <span class="lg"><span class="sw" style="background:var(--c1)"></span>New user (first-ever day)</span>
+        <span class="lg"><span class="sw" style="background:var(--c2)"></span>Repeat user (returning)</span>
+      </div>
+      <div class="sm" id="smWeeks"></div>
+      <figcaption>Weekly totals: Jun 24–30 <b>133.6h</b> · Jul 1–7 <b>146.4h</b> · Jul 8–14 <b>151.0h</b> · Jul 15–21 <b>127.5h</b> · Jul 22–23* <b>25.1h</b>. The Jul 15–21 dip is partly one weak day (Jul 16, 8.3h) and the Jul 3–6 incident era is behind us.</figcaption>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>New-user watch, by landing arm (fse_v2)</h3>
+        <div class="chsub">Watch by the new-user cohort enrolled since 13 Jul, split by the genre their first session lands on. Activation rate labelled per arm.</div>
+        <div class="maprow">
+          <span class="armchip"><span class="dot" style="background:var(--c1)"></span><b>A</b>=LE · Entertainment <span class="gpill">control</span></span>
+          <span class="armchip"><span class="dot" style="background:var(--c2)"></span><b>B</b>=LN · News</span>
+          <span class="armchip"><span class="dot" style="background:var(--c3)"></span><b>C</b>=LM · Movies</span>
+          <span class="armchip"><span class="dot" style="background:var(--c4)"></span><b>D</b>=LU · Music</span>
+        </div>
+        <svg id="armChart" viewBox="0 0 440 220" role="img" aria-label="New-user watch hours by arm"></svg>
+        <figcaption>Jul 15–21. New-user watch is <b>concentrated in News landing (B / LN, 39.9h)</b>, then Music (D) and Movies (C); the status-quo Entertainment boot (A / control) is lowest on both watch and activation. <b>Directional only</b> — the pre-registered fse_v2 readout lives on the hub experiment2 page.</figcaption>
+      </div>
+
+      <div class="card">
+        <h3>Watch hours by genre</h3>
+        <div class="chsub">Last full week (Jul 15–21), capped tune-dwell. Genre is the channel's native category.</div>
+        <svg id="genreChart" viewBox="0 0 440 250" role="img" aria-label="Watch hours by genre"></svg>
+        <figcaption><b>News leads on volume; Devotional punches far above its reach</b> — 20.8h from just 218 users (deep, loyal watchers) vs Entertainment's 22.9h spread over 829 users.</figcaption>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Activation, day by day — New vs Repeat</h3>
+      <div class="chsub">Share of users who watched ≥60s total that day. Denominator = every user who opened the app that day.</div>
+      <div class="legend">
+        <span class="lg"><span class="sw" style="background:var(--c1)"></span>New users</span>
+        <span class="lg"><span class="sw" style="background:var(--c2)"></span>Repeat users</span>
+      </div>
+      <svg id="actChart" viewBox="0 0 900 240" role="img" aria-label="Daily activation new vs repeat"></svg>
+      <figcaption>1–22 Jul. Both hover ~26%. <b>Repeat users activate a little higher</b> and spike on high-traffic days (Jul 19–22) — returning users arrive with intent. Weekly averages: new 25–28%, repeat 28–35%.</figcaption>
+    </div>
+
+    <div class="callout">
+      <b>What is actually happening:</b> wiom.tv is a steady ~20h/day live-TV habit for a small, slowly-compounding base.
+      News is the engine, Devotional is the deepest-loyalty niche, and the returning-user share is climbing — the healthiest signal in the deck.
+      The wall is unchanged: three of four users who land never reach a minute, so the whole game is the first 60 seconds.
+    </div>
+
+    <div class="callout method">
+      <b>How the live dashboard's number differs.</b> The <code>wiom.tv/dashboard</code> tile <b>"Engaged · watched ≥60s"</b> comes from <code>/api/stats</code> in <code>server.js</code> — rendered as <code>funnel.engaged ÷ funnel.opens</code> — and it is <b>not</b> defined the same way as the ~27% activation above. Both count distinct users (uid) and both read the clean <code>tune.duration_sec</code> field (so neither carries the playback_stall ms bug), but the bar and the window differ:
+      <div class="defgrid">
+        <div class="defcol">
+          <h5>Live dashboard · "Engaged ≥60s"</h5>
+          <ul>
+            <li><b>≥60s in a single tune</b> — any one channel-dwell crosses 60s</li>
+            <li>Window: <b>rolling 24h (UTC)</b>, no day boundary</li>
+            <li>Denominator: users who <b>opened</b> (session_start / app_open)</li>
+            <li>No 4h/tune cap</li>
+          </ul>
+        </div>
+        <div class="defcol">
+          <h5>This review · "Activation"</h5>
+          <ul>
+            <li><b>≥60s total across all channels</b> that day</li>
+            <li>Window: <b>IST calendar day</b></li>
+            <li>Denominator: <b>everyone with any event</b> that day</li>
+            <li>4h/tune cap applied</li>
+          </ul>
+        </div>
+      </div>
+      Net: the dashboard is <b>stricter on concentration</b> (needs one continuous 60-second sitting) but <b>looser on window &amp; denominator</b>. A user watching 30s each on two channels is <b>activated here but not "engaged" there</b>; a rolling-24h read can also straddle two IST days. <b>So don't quote the live dashboard's % as the same figure — they will differ.</b>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 ============ -->
+  <section id="s2">
+    <div class="shead"><span class="snum">02</span><h2>What happened on July 20</h2></div>
+    <p class="slede">July 20 was the biggest watch day of the week — <b>26.6 hours</b> (+56% over the ~17h daily baseline) and the highest
+      channel-switching of any day (<b>3,751 tunes</b>). The cause is unmistakable in the data: <b>a news day.</b></p>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">Watch · Jul 20</div><div class="v num">26.6 h</div><div class="d"><span class="up">+9.5h</span> vs baseline (~17h)</div></div>
+      <div class="tile"><div class="k">News watch</div><div class="v num">12.0 h</div><div class="d"><span class="up">×2.2</span> vs 5.4h baseline</div></div>
+      <div class="tile"><div class="k">News share of the spike</div><div class="v num">69%</div><div class="d">of the day's extra watch hours</div></div>
+      <div class="tile"><div class="k">Tunes (surfing)</div><div class="v num">3,751</div><div class="d">highest of the week</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Extra watch hours vs baseline, by genre</h3>
+        <div class="chsub">Jul 20 watch minus the mean of the 7 surrounding days (Jul 15–19, 21–22).</div>
+        <svg id="j20genre" viewBox="0 0 440 220" role="img" aria-label="Extra watch hours by genre on July 20"></svg>
+        <figcaption>News accounts for +6.6h of the +9.5h. Devotional adds +2.3h; everything else is roughly flat, and Movies actually dipped.</figcaption>
+      </div>
+      <div class="card">
+        <h3>The channels that drove it</h3>
+        <div class="chsub">Ranked by extra watch hours vs the surrounding-day baseline.</div>
+        <div class="tblwrap"><table>
+          <thead><tr><th class="l">Channel</th><th>Genre</th><th>Jul 20 h</th><th>Base h</th><th>Extra h</th><th>Extra users</th></tr></thead>
+          <tbody id="j20tbl"></tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Likely cause:</b> a live news event pulled users onto Hindi &amp; regional news channels on 20 Jul — the fingerprint is
+      <b>broad breadth</b> (NDTV 24×7 +27 users, NDTV Rajasthan +25, DD News +30, Republic Bharat +19) plus regional Punjabi/Bhojpuri music,
+      layered on one very long <b>Vedic devotional</b> session. It's a genuine demand spike, <b>not</b> an instrumentation or product change —
+      no deploy landed on the 20th, and the surge is spread across dozens of news channels, exactly what a news day looks like.
+      We can't name the event from telemetry alone.
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 ============ -->
+  <section id="s3">
+    <div class="shead"><span class="snum">03</span><h2>Channels watched — Top 20</h2></div>
+    <p class="slede">Most-watched channels of the last full IST week (<b>Jul 15–21</b>). The <span class="badge">LANDING</span> badge marks a default boot / launch-surface channel.
+      Notice how <b>reach and stick diverge</b>: landing channels pull huge audiences but most users bounce before a minute.</p>
+
+    <div class="caveat" style="margin-bottom:16px">
+      <b>How to read the buckets.</b> A user is counted once per channel, placed by their <b>total watch time on that channel across the week</b>:
+      <b>&gt;1 min</b> = watched more than 60s (this equals the two depth tiers combined) · <b>1–5 min</b> = 60s–5min · <b>&gt;5 min</b> = deep watch.
+      "Users (reach)" is everyone who tuned in at all, even for a second — the gap between reach and &gt;1 min <i>is</i> the sub-60s bounce.
+      Δ shows change in &gt;1-min users vs the prior week (Jul 8–14).
+    </div>
+
+    <div class="card" style="padding:16px 18px">
+      <div class="legend" style="margin-bottom:10px">
+        <span class="lg"><span class="sw" style="background:var(--c3)"></span>1–5 min watchers</span>
+        <span class="lg"><span class="sw" style="background:var(--c1)"></span>&gt;5 min watchers</span>
+        <span class="lg">Bar = users who watched &gt;1 min</span>
+      </div>
+      <div class="tblwrap"><table>
+        <thead><tr>
+          <th class="rank"></th><th class="l">Channel</th><th>Genre</th>
+          <th>Users (reach)</th><th>Watch h</th><th>&gt;1 min</th><th>1–5 min</th><th>&gt;5 min</th>
+          <th class="l" style="min-width:120px">Stick depth</th><th>Δ &gt;1min</th>
+        </tr></thead>
+        <tbody id="topTbl"></tbody>
+      </table></div>
+      <figcaption style="margin-top:12px">Landing channels (<b>Dangal TV</b> A/control, <b>Aaj Tak HD</b> B/News, <b>Bhojpuri Cinema</b> C/Movies, <b>9X Tashan</b> D/Music)
+        top the reach column precisely because new users are auto-tuned there on boot — but their &gt;1-min stick is a small fraction of reach (e.g. Bhojpuri Cinema: 481 reached, 40 stuck).
+        <b>Times Now Navbharat, 9X Jhakaas and India TV grew their engaged audience fastest</b> week-on-week.</figcaption>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 ============ -->
+  <section id="s4">
+    <div class="shead"><span class="snum">04</span><h2>Benchmarking — how good are these numbers?</h2></div>
+    <p class="slede">Set the app's depth against two outside yardsticks: the attention we <b>buy</b> on Meta, and the attention Wiom <b>earns</b> organically on YouTube.
+      The app clears a much higher bar than any ad, and — critically — <b>installed users retain at YouTube-engaged levels while the captive portal crowd does not</b>.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="k">First-launch ≥60s</div><div class="v num">26.6%</div><div class="d">new users · <span class="up">~6×</span> a finished Meta ad</div></div>
+      <div class="tile"><div class="k">ATH / installed repeat ≥60s</div><div class="v num">73.0%</div><div class="d">return-days · YouTube-engaged level</div></div>
+      <div class="tile"><div class="k">wiom-net portal repeat ≥60s</div><div class="v num">24.3%</div><div class="d">return-days · shallow / captive</div></div>
+      <div class="tile"><div class="k">Meta ad completion (best)</div><div class="v num">4.2%</div><div class="d">TOF awareness · avg view ~5s</div></div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Panel A · Attention we buy vs attention we earn</h3>
+        <div class="chsub">Our Meta ad performance (Jun 1–Jul 15, impression-weighted) → in-app first-launch activation (Jul 15–21). Note the bars measure different things — see caption.</div>
+        <div class="legend">
+          <span class="lg"><span class="sw" style="background:var(--c3)"></span>Meta ad completion (video &lt;60s)</span>
+          <span class="lg"><span class="sw" style="background:var(--accent)"></span>App · ≥60s watched (ours)</span>
+        </div>
+        <svg id="benchA" viewBox="0 0 440 210" role="img" aria-label="Meta ad completion vs app first-launch activation"></svg>
+        <figcaption><b>Meta ads are 9–49s long, so "≥60s watched" cannot happen on Meta</b> — the video is shorter than 60s. The fair analog is ad <b>completion</b> (a few seconds of attention). The app asks for a <b>full minute</b> and gets it from <b>26.6%</b> of brand-new users — ~6× the ~4% who finish even a short awareness ad, and ~18× the ~1.5% who complete a BOF / retargeting ad.</figcaption>
+      </div>
+
+      <div class="card">
+        <h3>Panel B · Repeat engagement vs YouTube</h3>
+        <div class="chsub">Share of repeat return-days reaching ≥60s watch, by how the user arrived (Jul 15–21), against Wiom's YouTube per-view audience-retention band.</div>
+        <div class="legend">
+          <span class="lg"><span class="sw" style="background:var(--c4)"></span>Installed / ATH repeat</span>
+          <span class="lg"><span class="sw" style="background:var(--c2)"></span>wiom-net portal repeat</span>
+          <span class="lg"><span class="sw" style="background:var(--purple);opacity:.35"></span>YouTube engaged-viewer band</span>
+        </div>
+        <svg id="benchB" viewBox="0 0 440 210" role="img" aria-label="App repeat retention by surface vs YouTube retention band"></svg>
+        <figcaption><b>How they arrive decides everything.</b> Installed / add-to-home-screen users reach 60s on <b>73%</b> of return days — inside YouTube's engaged-viewer band (Ret@100 44% → avg 71%). The captive <b>wiom-net portal</b> repeat crowd reaches 60s only <b>24%</b> of the time. The install is the retention lever. <b>ATH base is small (N=74)</b> — directional.</figcaption>
+      </div>
+    </div>
+
+    <div class="caveat">
+      <b>Read as directional, not like-for-like.</b> The three denominators differ: <b>Meta</b> = share of paid <i>impressions</i> · <b>YouTube</b> = share of self-selected organic <i>views</i> (a warm, already-engaged base — different from paid) · <b>App</b> = share of <i>user-days</i> reaching 60s. These aren't identical bases, so treat them as benchmarks for "how good is our depth," not a common scoreboard. Because Meta ad videos are <b>sub-60s</b>, ad <b>completion</b> is the fairest Meta analog to our 60-second bar. YouTube figures exclude the 63M-view "Ek kahani" viral outlier.
+    </div>
+  </section>
+
+  <footer>
+    <b>Sources & caveats.</b> All figures queried live from <span class="kv">data/analytics.db</span> (better-sqlite3) on satyam.wiom.in, read-only, data through 23 Jul 2026 12:22 IST.
+    Watch = capped tune-dwell (≤4h/tune, playback_stall excluded), user-level, IST days.
+    Arm split covers new users enrolled since fse_v2 launch (13 Jul); the arm comparison here is descriptive, not the pre-registered statistical readout.
+    Weekly watch is outlier-sensitive — capping at 4h/tune is the house standard; raw sums run ~15–30% higher on days with forgotten tabs.
+    A2HS / retention / experiment significance are out of scope for this pack.
+  </footer>
+</div>
+
+<script>
+(function(){
+  // ---------- theme ----------
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+    root.setAttribute('data-theme', cur==='dark'?'light':'dark');
+  });
+  var cv=function(n){return getComputedStyle(root).getPropertyValue(n).trim();};
+
+  // ---------- DATA ----------
+  var daily=[
+    ['Jun 24–30',[['24',14.75,0.11],['25',12.2,1.68],['26',11.28,4.09],['27',10.91,6.05],['28',14.05,6.84],['29',10.97,14.85],['30',19.79,6.01]]],
+    ['Jul 1–7',[['1',23.58,14.64],['2',8.61,12.78],['3',11.83,4.81],['4',15.02,6.22],['5',10.74,1.76],['6',10.71,3.59],['7',10.18,11.9]]],
+    ['Jul 8–14',[['8',13.63,6.4],['9',13.74,5.34],['10',13.13,8.67],['11',8.93,14.13],['12',24.38,7.77],['13',6.73,6.08],['14',12.33,9.69]]],
+    ['Jul 15–21',[['15',13.2,6.52],['16',4.98,3.31],['17',7.46,7.78],['18',11.19,2.9],['19',14.16,3.64],['20',14.78,11.84],['21',4.89,20.84]]],
+    ['Jul 22–23*',[['22',13.13,6],['23',2.28,3.68]]]
+  ];
+  // arms: [code, label, watch h, activation %]  order A B C D
+  var arms=[
+    ['A','LE · Entertainment (ctrl)',17.86,25.6,'--c1'],
+    ['B','LN · News',39.89,30.2,'--c2'],
+    ['C','LM · Movies',21.04,29.2,'--c3'],
+    ['D','LU · Music',29.22,29.8,'--c4']
+  ];
+  var genres=[['News',38.8,684],['Music',23.9,729],['Entertainment',22.9,829],['Devotional',20.8,218],['Movies',15.6,659],['DD',1.2,88],['Other',3.6,null]];
+  // activation daily: [label, new%, rep%]
+  var act=[['1',30.9,29.9],['2',26.7,27.6],['3',22.9,21.8],['4',30.3,28.2],['5',26.3,26.7],['6',26.2,26.5],['7',27.9,32.5],
+    ['8',28.7,28.0],['9',21.9,29.7],['10',24.2,28.6],['11',22.4,26.6],['12',28.5,34.4],['13',25.4,25.3],['14',26.6,27.7],
+    ['15',22.4,19.5],['16',26.1,26.4],['17',27.0,27.7],['18',28.1,22.6],['19',29.6,47.4],['20',31.1,37.9],['21',21.0,27.1],['22',27.2,37.1]];
+  var j20genre=[['News',6.58],['Devotional',2.26],['Entertainment',0.90],['Music',0.70],['DD',0.29],['Movies',-0.95]];
+  var j20tbl=[
+    ['Vedic','Devotional',4.01,0.08,3.93,2.1],['NDTV 24×7','News',1.35,0.06,1.29,27.1],['NDTV Rajasthan','News',1.14,0.04,1.10,24.7],
+    ['Republic Bharat','News',0.90,0.09,0.81,19.4],['B4U Bhojpuri','Music',0.73,0.12,0.61,18.4],['Punjabi Hits','Music',0.60,0.08,0.52,21.4],
+    ['DD News HD','News',0.30,0.07,0.23,29.6],['PTC Music','Music',0.42,0.14,0.28,37.7],['India TV','News',0.58,0.20,0.38,8.7],['Zee MP/CG','News',0.44,0.01,0.43,3.9]
+  ];
+  // top20: [rank,name,genre,reach,watch_h,gt60,b1_5,gt5,prevGt60,landing]
+  var top=[
+    [1,'Bhojpuri Cinema','Movies',481,9.4,40,30,10,25,'C'],
+    [2,'Aaj Tak HD','News',269,9.0,40,26,14,19,'B'],
+    [3,'Dangal TV','Entertainment',543,5.2,39,29,10,74,'A'],
+    [4,'9X Tashan','Music',479,7.7,24,18,6,9,'D'],
+    [5,'Times Now Navbharat','News',239,6.1,24,19,5,5,null],
+    [6,'9X Jhakaas','Music',267,6.8,22,16,6,7,null],
+    [7,'Goldmines','Movies',214,3.1,18,10,8,20,null],
+    [8,'NDTV India','News',263,2.0,18,15,3,12,null],
+    [9,'Zee Cine Classic','Entertainment',211,1.9,18,13,5,23,null],
+    [10,'India TV','News',152,1.3,14,11,3,6,null],
+    [11,'ABP News','News',104,1.5,13,9,4,11,null],
+    [12,'Dangal 2','Entertainment',135,1.8,11,8,3,19,null],
+    [13,'Zee Comedy Nation','Entertainment',161,1.5,11,8,3,27,null],
+    [14,'Zee South Flix','Entertainment',138,1.3,11,10,1,14,null],
+    [15,'Shemaroo Josh','Entertainment',147,3.2,10,8,2,16,null],
+    [16,'Desi Channel','Entertainment',132,1.4,10,8,2,11,null],
+    [17,'B4U Music','Music',215,1.0,10,10,0,6,null],
+    [18,'Zee Horror Nights','Entertainment',111,0.9,10,8,2,24,null],
+    [19,'ABP News (73)','News',77,0.7,9,8,1,10,null],
+    [20,'B4U Bhojpuri','Music',123,1.5,8,4,4,7,null]
+  ];
+
+  var SVGNS='http://www.w3.org/2000/svg';
+  function el(t,a){var e=document.createElementNS(SVGNS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function txt(x,y,s,cls,anchor){var e=el('text',{x:x,y:y,class:cls||'tick'});if(anchor)e.setAttribute('text-anchor',anchor);e.textContent=s;return e;}
+
+  // ---------- small multiples ----------
+  var maxDay=0; daily.forEach(function(w){w[1].forEach(function(d){maxDay=Math.max(maxDay,d[1]+d[2]);});});
+  maxDay=Math.ceil(maxDay/10)*10;
+  var smWrap=document.getElementById('smWeeks');
+  daily.forEach(function(w){
+    var W=170,H=118,pad=6,base=H-16,top0=8, bw=(W-pad*2)/w[1].length;
+    var panel=document.createElement('div'); panel.className='smp';
+    var totalH=w[1].reduce(function(s,d){return s+d[1]+d[2];},0);
+    var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img'});
+    // gridline at max
+    [0.5,1].forEach(function(f){var y=top0+(base-top0)*(1-f);svg.appendChild(el('line',{x1:pad,y1:y,x2:W-pad,y2:y,stroke:cv('--grid'),'stroke-width':1}));});
+    w[1].forEach(function(d,i){
+      var x=pad+i*bw+bw*0.16, bwi=bw*0.68;
+      var hN=(base-top0)*(d[1]/maxDay), hR=(base-top0)*(d[2]/maxDay);
+      svg.appendChild(el('rect',{x:x,y:base-hN,width:bwi,height:Math.max(hN,0),fill:cv('--c1'),rx:1.5}));
+      svg.appendChild(el('rect',{x:x,y:base-hN-hR-1.5,width:bwi,height:Math.max(hR,0),fill:cv('--c2'),rx:1.5}));
+      svg.appendChild(txt(x+bwi/2,base+10,d[0],'tick','middle'));
+    });
+    svg.appendChild(el('line',{x1:pad,y1:base,x2:W-pad,y2:base,stroke:cv('--border'),'stroke-width':1}));
+    var head=document.createElement('div'); head.className='t'; head.textContent=w[0];
+    var sub=document.createElement('div'); sub.className='tt'; sub.textContent=totalH.toFixed(0)+' h';
+    panel.appendChild(head); panel.appendChild(sub); panel.appendChild(svg);
+    smWrap.appendChild(panel);
+  });
+
+  // ---------- arm chart (horizontal bars) ----------
+  (function(){
+    var svg=document.getElementById('armChart'); var W=440,H=220,left=48,right=54,top0=10,rowH=44,maxV=42;
+    arms.forEach(function(a,i){
+      var y=top0+i*rowH, cx=cv(a[4]);
+      var bw=(W-left-right)*(a[2]/maxV);
+      svg.appendChild(txt(left-8,y+rowH/2-2,a[0],'axl','end'));
+      svg.appendChild(el('rect',{x:left,y:y+6,width:Math.max(bw,2),height:22,fill:cx,rx:4}));
+      svg.appendChild(txt(left+bw+7,y+21,a[2].toFixed(1)+' h','dlabel'));
+      svg.appendChild(txt(left,y+42,a[1]+'  ·  '+a[3].toFixed(1)+'% activated','tick'));
+    });
+    svg.appendChild(el('line',{x1:left,y1:top0,x2:left,y2:top0+arms.length*rowH-6,stroke:cv('--border'),'stroke-width':1}));
+  })();
+
+  // ---------- genre chart ----------
+  (function(){
+    var svg=document.getElementById('genreChart'); var W=440,H=250,left=104,right=58,top0=8,rowH=33,maxV=40;
+    genres.forEach(function(g,i){
+      var y=top0+i*rowH;
+      var bw=(W-left-right)*(g[1]/maxV);
+      var isDev=g[0]==='Devotional';
+      svg.appendChild(txt(left-8,y+rowH/2+2,g[0],'axl','end'));
+      svg.appendChild(el('rect',{x:left,y:y+3,width:Math.max(bw,2),height:20,fill:isDev?cv('--c4'):cv('--accent'),rx:4,opacity:g[0]==='Other'?0.4:1}));
+      var lab=g[1].toFixed(1)+'h'+(g[2]?('  ·  '+g[2]+'u'):'');
+      svg.appendChild(txt(left+bw+7,y+18,lab,'dlabel'));
+    });
+  })();
+
+  // ---------- activation line ----------
+  (function(){
+    var svg=document.getElementById('actChart'); var W=900,H=240,left=38,right=54,top0=14,bot=H-30;
+    var maxV=50,minV=15;
+    function X(i){return left+(W-left-right)*(i/(act.length-1));}
+    function Y(v){return bot-(bot-top0)*((v-minV)/(maxV-minV));}
+    [20,30,40,50].forEach(function(g){var y=Y(g);svg.appendChild(el('line',{x1:left,y1:y,x2:W-right,y2:y,stroke:cv('--grid'),'stroke-width':1}));svg.appendChild(txt(left-6,y+3,g+'%','tick','end'));});
+    act.forEach(function(d,i){ if(i%2===0||i===act.length-1) svg.appendChild(txt(X(i),bot+14,'Jul '+d[0],'tick','middle')); });
+    function line(idx,col){
+      var dstr=act.map(function(d,i){return (i?'L':'M')+X(i).toFixed(1)+' '+Y(d[idx]).toFixed(1);}).join(' ');
+      svg.appendChild(el('path',{d:dstr,fill:'none',stroke:col,'stroke-width':2.4,'stroke-linejoin':'round','stroke-linecap':'round'}));
+      act.forEach(function(d,i){svg.appendChild(el('circle',{cx:X(i),cy:Y(d[idx]),r:2.6,fill:col}));});
+    }
+    line(2,cv('--c2')); line(1,cv('--c1'));
+    var last=act.length-1;
+    svg.appendChild(txt(X(last)+6,Y(act[last][1]),'New','dlabel')).setAttribute('fill',cv('--c1'));
+    svg.appendChild(txt(X(last)+6,Y(act[last][2]),'Repeat','dlabel')).setAttribute('fill',cv('--c2'));
+  })();
+
+  // ---------- jul20 genre extra hours (diverging) ----------
+  (function(){
+    var svg=document.getElementById('j20genre'); var W=440,H=220,left=96,right=50,top0=10,rowH=32,maxV=7;
+    var zeroX=left+ (W-left-right)*(1/(1+maxV))*0 ; // zero at left since mostly positive; handle neg
+    var scale=(W-left-right- 40)/maxV; var x0=left+40;
+    j20genre.forEach(function(g,i){
+      var y=top0+i*rowH, v=g[1];
+      var bw=v*scale; var pos=v>=0;
+      svg.appendChild(txt(left-6,y+rowH/2+2,g[0],'axl','end'));
+      svg.appendChild(el('rect',{x:pos?x0:x0+bw,y:y+4,width:Math.abs(bw)||2,height:19,fill:pos?cv('--accent'):cv('--faint'),rx:4}));
+      svg.appendChild(txt(pos?(x0+bw+6):(x0+bw-6),y+18,(v>0?'+':'')+v.toFixed(2)+'h','dlabel',pos?'start':'end'));
+    });
+    svg.appendChild(el('line',{x1:x0,y1:top0,x2:x0,y2:top0+j20genre.length*rowH,stroke:cv('--border'),'stroke-width':1.4}));
+  })();
+
+  // ---------- jul20 table ----------
+  (function(){
+    var tb=document.getElementById('j20tbl');
+    j20tbl.forEach(function(r){
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td class="l">'+r[0]+'</td><td><span class="gpill">'+r[1]+'</span></td>'+
+        '<td class="num">'+r[2].toFixed(2)+'</td><td class="num" style="color:var(--muted)">'+r[3].toFixed(2)+'</td>'+
+        '<td class="num" style="color:var(--green);font-weight:700">+'+r[4].toFixed(2)+'</td>'+
+        '<td class="num">'+(r[5]>0?'+':'')+r[5].toFixed(1)+'</td>';
+      tb.appendChild(tr);
+    });
+  })();
+
+  // ---------- benchmark Panel A ----------
+  (function(){
+    var svg=document.getElementById('benchA'); var W=440,H=210,left=8,right=48,top0=10,rowH=46,maxV=30;
+    var barX=196; // label area width
+    var rows=[
+      ['Meta TOF ad — completion',4.2,'avg view ~5s · creatives 0.5–13%',cv('--c3'),false],
+      ['Meta BOF ad — completion',1.5,'avg view ~2.3s',cv('--c3'),false],
+      ['Meta retargeting — completion',1.3,'avg view ~2.1s',cv('--c3'),false],
+      ['App · first-launch ≥60s',26.6,'new users · N=1,763',cv('--accent'),true]
+    ];
+    // axis gridlines
+    [0,10,20,30].forEach(function(g){var x=barX+(W-barX-right)*(g/maxV);
+      svg.appendChild(el('line',{x1:x,y1:top0,x2:x,y2:top0+rows.length*rowH-8,stroke:cv('--grid'),'stroke-width':1}));
+      svg.appendChild(txt(x,top0+rows.length*rowH+2,g+'%','tick','middle'));});
+    rows.forEach(function(r,i){
+      var y=top0+i*rowH;
+      var bw=(W-barX-right)*(r[1]/maxV);
+      svg.appendChild(txt(left,y+18,r[0],'axl'));
+      svg.appendChild(txt(left,y+31,r[2],'tick'));
+      svg.appendChild(el('rect',{x:barX,y:y+4,width:Math.max(bw,2),height:20,fill:r[3],rx:4,opacity:r[4]?1:0.9}));
+      var lab=txt(barX+bw+6,y+19,r[1].toFixed(1)+'%','dlabel'); lab.setAttribute('fill',r[4]?cv('--accent'):cv('--ink')); svg.appendChild(lab);
+    });
+  })();
+
+  // ---------- benchmark Panel B ----------
+  (function(){
+    var svg=document.getElementById('benchB'); var W=440,H=210,left=8,right=44,top0=32,rowH=52,maxV=100;
+    var barX=150;
+    function X(v){return barX+(W-barX-right)*(v/maxV);}
+    // YouTube band 44 -> 71 — dashed guides for each retention point...
+    svg.appendChild(el('rect',{x:X(44),y:top0-14,width:X(71)-X(44),height:2*rowH+18,fill:cv('--purple'),opacity:0.13}));
+    [44,65,71].forEach(function(v){
+      var x=X(v);
+      svg.appendChild(el('line',{x1:x,y1:top0-14,x2:x,y2:top0+2*rowH+4,stroke:cv('--purple'),'stroke-width':1,'stroke-dasharray':'3 3',opacity:.6}));
+    });
+    // ...but label edges growing OUTWARD + a compact middle tick, so they never collide
+    var bl;
+    bl=txt(X(44)-3,top0-17,'Ret@100 44%','tick','end');   bl.setAttribute('fill',cv('--purple')); svg.appendChild(bl);
+    bl=txt(X(65),  top0-17,'65%','tick','middle');        bl.setAttribute('fill',cv('--purple')); svg.appendChild(bl);
+    bl=txt(X(71)+3,top0-17,'avg 71%','tick','start');     bl.setAttribute('fill',cv('--purple')); svg.appendChild(bl);
+    [0,25,50,75,100].forEach(function(g){svg.appendChild(txt(X(g),top0+2*rowH+18,g+'%','tick','middle'));});
+    var rows=[
+      ['Installed / ATH repeat',73.0,'N=74 return-days',cv('--c4')],
+      ['wiom-net portal repeat',24.3,'N=502 return-days',cv('--c2')]
+    ];
+    rows.forEach(function(r,i){
+      var y=top0+i*rowH;
+      svg.appendChild(txt(left,y+18,r[0],'axl'));
+      svg.appendChild(txt(left,y+31,r[2],'tick'));
+      var bw=X(r[1])-barX;
+      svg.appendChild(el('rect',{x:barX,y:y+6,width:Math.max(bw,2),height:22,fill:r[3],rx:4}));
+      svg.appendChild(txt(barX+bw+6,y+22,r[1].toFixed(1)+'%','dlabel'));
+    });
+    // overall repeat marker note
+    svg.appendChild(txt(left,top0+2*rowH+18,'Overall repeat: 37.6%','tick'));
+  })();
+
+  // ---------- top20 table ----------
+  (function(){
+    var tb=document.getElementById('topTbl'); var maxG=40;
+    top.forEach(function(r){
+      var tr=document.createElement('tr');
+      var badge=r[9]?'<span class="badge">LANDING · '+r[9]+'</span>':'';
+      var d=r[5]-r[8]; var dcol=d>0?'var(--green)':(d<0?'var(--red)':'var(--muted)');
+      var w1=Math.round(140*r[6]/maxG*(r[7]/(r[6]||1))), w2=Math.round(140*r[6]/maxG*(r[8]/(r[6]||1)));
+      var bar='<span class="mbar" style="width:'+Math.max(140*r[5]/maxG,8)+'px">'+
+        '<i style="flex:'+r[7]+';background:var(--c3)"></i><i style="flex:'+r[8]+';background:var(--c1)"></i></span>';
+      tr.innerHTML='<td class="rank num">'+r[0]+'</td>'+
+        '<td class="l">'+r[1]+badge+'</td>'+
+        '<td><span class="gpill">'+r[2]+'</span></td>'+
+        '<td class="num" style="color:var(--muted)">'+r[3]+'</td>'+
+        '<td class="num">'+r[4].toFixed(1)+'</td>'+
+        '<td class="num" style="font-weight:800">'+r[5]+'</td>'+
+        '<td class="num">'+r[6]+'</td>'+
+        '<td class="num">'+r[7]+'</td>'+
+        '<td class="l">'+bar+'</td>'+
+        '<td class="num" style="color:'+dcol+';font-weight:700">'+(d>0?'+':'')+d+'</td>';
+      tb.appendChild(tr);
+    });
+  })();
+})();
+</script>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV · JTBD-1 Final — A1 grid + A2 rail (with analytics)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161021; --card:#352D42; --border:#443152; --text:#FAF9FC; --muted:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFB2E4; --pink100:#FFE5F6;
+    --green:#008043; --green100:#E1FAED; --amber:#FF8000; --amber200:#FFE6CC;
+    --purple:#6D17CE; --info100:#F1E5FF; --page:#FAF9FC; --ink:#161021; --slate:#665E75;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--page);color:var(--ink);
+       -webkit-font-smoothing:antialiased;padding:34px 22px 90px}
+  .wrap{max-width:1180px;margin:0 auto}
+  .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+          color:var(--accent);background:var(--pink100);padding:5px 12px;border-radius:999px}
+  h1{font-size:30px;font-weight:800;margin:14px 0 6px;letter-spacing:-.01em}
+  .sub{font-size:15px;color:var(--slate);max-width:760px;line-height:1.55}
+  .sub b{color:var(--ink)}
+
+  .section{margin-top:54px;display:grid;grid-template-columns:320px 1fr;gap:40px;align-items:start}
+  @media(max-width:820px){.section{grid-template-columns:1fr;gap:28px}}
+  .sechead{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .sechead h2{font-size:22px;font-weight:800}
+  .badge{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:7px}
+  .badge.final{background:var(--green100);color:var(--green)}
+  .badge.prop{background:var(--info100);color:var(--purple)}
+  .secnote{grid-column:1/-1;font-size:14px;color:var(--slate);line-height:1.55;margin:-2px 0 10px;max-width:820px}
+  .secnote b{color:var(--ink)}
+
+  /* ---- phone frame ---- */
+  .phone{width:300px;height:620px;background:#000;border-radius:42px;padding:11px;
+         box-shadow:0 24px 60px rgba(22,16,33,.28),0 4px 12px rgba(22,16,33,.12);position:relative}
+  .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:24px;
+         background:#000;border-radius:0 0 16px 16px;z-index:50}
+  .screen{width:100%;height:100%;border-radius:32px;overflow:hidden;position:relative;background:var(--bg)}
+  .video{position:absolute;inset:0;background:
+        radial-gradient(120% 80% at 70% 20%, #6D17CE33 0%, transparent 55%),
+        radial-gradient(100% 70% at 20% 90%, #D9008D33 0%, transparent 50%),
+        linear-gradient(160deg,#241a33 0%,#161021 70%)}
+  .video::after{content:"";position:absolute;inset:0;
+        background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 2px,transparent 2px 4px)}
+  .topbar{position:absolute;top:34px;left:0;right:0;z-index:20;display:flex;align-items:center;
+          justify-content:space-between;padding:0 16px}
+  .logo{font-weight:800;font-size:15px;color:var(--text);letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text);
+        background:rgba(0,0,0,.4);padding:4px 9px;border-radius:999px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #00804333}
+  .now{position:absolute;bottom:18px;left:16px;z-index:15;color:var(--text)}
+  .now .ch{font-size:13px;font-weight:700}
+  .now .pg{font-size:11px;color:var(--accent-soft)}
+
+  /* ===== A1 grid overlay (FINAL) ===== */
+  .scrim{position:absolute;inset:0;z-index:25;background:linear-gradient(180deg,rgba(22,16,33,.6) 0%,rgba(22,16,33,.92) 55%)}
+  .ovl{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;justify-content:flex-end;padding:0 16px 18px}
+  .ovl .k{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--accent-soft);text-transform:uppercase}
+  .ovl h2{color:var(--text);font-size:22px;font-weight:800;margin:6px 0 3px;line-height:1.15}
+  .ovl .s{color:var(--muted);font-size:12px;margin-bottom:15px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .gc{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:11px 5px 9px;text-align:center}
+  .gc.hot{border-color:var(--accent);background:linear-gradient(160deg,#3a2342,#352D42);
+          box-shadow:0 0 0 1px var(--accent),0 6px 16px #d9008d22}
+  .gc .e{font-size:22px;line-height:1}
+  .gc .n{font-size:11.5px;font-weight:700;color:var(--text);margin-top:6px}
+  .gc .c{font-size:9px;color:var(--muted);margin-top:1px}
+  .anything{margin-top:14px;width:100%;border:none;border-radius:15px;padding:13px;cursor:pointer;
+            background:linear-gradient(135deg,#D9008D,#B0006F);color:#fff;display:flex;align-items:center;
+            justify-content:center;gap:9px;box-shadow:0 8px 22px #d9008d44}
+  .anything .lbl{font-size:15px;font-weight:800}
+  .anything .sub2{font-size:9.5px;font-weight:600;opacity:.85;display:block;margin-top:1px}
+  .anything .ico{font-size:18px}
+
+  /* ===== A2 rail ===== */
+  .nudge{position:absolute;bottom:74px;left:16px;z-index:30;font-size:12px;font-weight:600;color:var(--text);
+         background:rgba(0,0,0,.5);padding:6px 12px;border-radius:999px;border:1px solid rgba(217,0,141,.5)}
+  .rail{position:absolute;bottom:18px;left:0;right:0;z-index:30;display:flex;gap:9px;padding:0 16px;
+        overflow:hidden;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent)}
+  .chip{flex:0 0 auto;display:flex;align-items:center;gap:7px;background:rgba(53,45,66,.85);
+        backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:999px;padding:9px 14px;
+        font-size:12.5px;font-weight:600;color:var(--text);white-space:nowrap}
+  .chip.any{background:linear-gradient(135deg,#D9008D,#B0006F);border-color:var(--accent);color:#fff;font-weight:800}
+  .chip .e{font-size:15px}
+
+  /* ---- analytics panel ---- */
+  .apanel{background:#fff;border:1px solid #D7D3E0;border-radius:18px;padding:24px 26px}
+  .apanel h3{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:4px}
+  .apanel .ah{font-size:18px;font-weight:800;margin-bottom:14px}
+  .evt{display:flex;gap:12px;padding:12px 0;border-top:1px solid #ECE8F2}
+  .evt:first-of-type{border-top:none}
+  .evt .ed{flex:0 0 8px;height:8px;border-radius:50%;margin-top:6px;background:var(--accent)}
+  .evt.fire .ed{background:var(--green)} .evt.choice .ed{background:var(--accent)}
+  .evt.escape .ed{background:var(--amber)} .evt.done .ed{background:var(--purple)} .evt.miss .ed{background:var(--slate)}
+  .evt .ename{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;font-weight:700;color:var(--ink)}
+  .evt .ewhen{font-size:12.5px;color:var(--slate);margin:2px 0 5px;line-height:1.45}
+  .evt .epay{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--purple);
+             background:#F6F2FB;border:1px solid #E7DFF3;border-radius:7px;padding:5px 9px;display:inline-block;
+             word-break:break-word}
+  .funnel{margin-top:18px;background:var(--page);border:1px solid #E7DFF3;border-radius:14px;padding:16px 18px}
+  .funnel .ft{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:10px}
+  .fsteps{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:12px;font-weight:700}
+  .fstep{background:#fff;border:1px solid #D7D3E0;border-radius:8px;padding:6px 10px;color:var(--ink)}
+  .fstep.k{border-color:var(--accent);color:var(--accent);background:var(--pink100)}
+  .farrow{color:var(--muted);font-weight:800}
+  .cohort{margin-top:14px;font-size:13px;color:#3a3447;line-height:1.6}
+  .cohort b{color:var(--ink)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--green100);color:var(--green)}
+  .tag.new{background:var(--amber200);color:#9a4d00}
+  .note{margin-top:14px;background:var(--green100);border:1px solid #00804333;border-radius:12px;padding:12px 14px;
+        font-size:12.5px;color:#0a5c33;line-height:1.5}
+  .note b{color:var(--green)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="kicker">Wiom TV · JTBD-1 — "Orient me" · Mobile</span>
+  <h1>A1 grid (final) + A2 rail — with on-screen analytics</h1>
+  <p class="sub">A1 is locked: <b>no skip</b> — instead a <b>"कुछ भी चलाओ"</b> button turns the only exit into a positive, lean-back action (we pick the best channel). Every interaction on these screens is instrumented and rolls into a <b>per-variant cohort funnel</b>. A2 carries the same pattern, plus a rail-ignored counter.</p>
+
+  <!-- ================= A1 ================= -->
+  <div class="section">
+    <div class="sechead"><h2>A1 · Genre grid overlay</h2><span class="badge final">Final — Arm A</span></div>
+    <p class="secnote">Full-screen genre menu over the playing (muted) video. <b>Two ways out, no dead-end:</b> tap a genre → its strongest channel, or tap <b>कुछ भी चलाओ</b> → we auto-play the most-watched channel right now. Either path reaches content, so completion ≈ 100% by design.</p>
+
+    <div class="phone"><div class="notch"></div><div class="screen">
+      <div class="video"></div>
+      <div class="topbar"><div class="logo">wiom<span>.tv</span></div></div>
+      <div class="scrim"></div>
+      <div class="ovl">
+        <div class="k">250 चैनल · 9 जॉनर</div>
+        <h2>आज क्या देखेंगे?</h2>
+        <div class="s">जॉनर चुनें — चैनल सीधे चलने लगेगा</div>
+        <div class="grid">
+          <div class="gc hot"><div class="e">🎬</div><div class="n">फिल्में</div><div class="c">42 चैनल</div></div>
+          <div class="gc"><div class="e">📺</div><div class="n">मनोरंजन</div><div class="c">38</div></div>
+          <div class="gc"><div class="e">📰</div><div class="n">समाचार</div><div class="c">26</div></div>
+          <div class="gc"><div class="e">🎵</div><div class="n">संगीत</div><div class="c">22</div></div>
+          <div class="gc"><div class="e">🙏</div><div class="n">भक्ति</div><div class="c">19</div></div>
+          <div class="gc"><div class="e">🧸</div><div class="n">बच्चे</div><div class="c">14</div></div>
+          <div class="gc"><div class="e">🏏</div><div class="n">खेल</div><div class="c">11</div></div>
+          <div class="gc"><div class="e">😂</div><div class="n">कॉमेडी</div><div class="c">17</div></div>
+          <div class="gc"><div class="e">✨</div><div class="n">लाइफ़</div><div class="c">13</div></div>
+        </div>
+        <button class="anything">
+          <span class="ico">▶</span>
+          <span><span class="lbl">सीधे शुरू करें</span><span class="sub2">जो अभी चल रहा है वही देखें</span></span>
+        </button>
+      </div>
+    </div></div>
+
+    <div class="apanel">
+      <h3>Analytics on this screen</h3>
+      <div class="ah">Arm A · <code>screen = genre_grid</code></div>
+
+      <div class="evt fire">
+        <div class="ed"></div>
+        <div><div class="ename">intro_shown</div>
+          <div class="ewhen">Overlay renders on first launch (new uid, bucket A). Denominator for the whole funnel.</div>
+          <div class="epay">{ variant:"A", screen:"genre_grid", n_genres:9 }</div></div>
+      </div>
+      <div class="evt choice">
+        <div class="ed"></div>
+        <div><div class="ename">genre_select</div>
+          <div class="ewhen">User taps a genre tile → lands on that genre's hero channel.</div>
+          <div class="epay">{ variant:"A", cat:"movies", pos:0, target_ch:201 }</div></div>
+      </div>
+      <div class="evt escape">
+        <div class="ed"></div>
+        <div><div class="ename">start_direct <span class="tag new">new</span></div>
+          <div class="ewhen">User taps <b>सीधे शुरू करें</b> → dismiss the menu, keep the channel already playing (the <b>standard flow</b>), unmute. Replaces the old skip — and still completes.</div>
+          <div class="epay">{ variant:"A", via:"direct", lands:"current_channel" }</div></div>
+      </div>
+      <div class="evt done">
+        <div class="ed"></div>
+        <div><div class="ename">intro_complete</div>
+          <div class="ewhen">Content starts after either path. Carries which route + time-to-first-content.</div>
+          <div class="epay">{ variant:"A", via:"genre" | "direct", ttfc_ms:1840 }</div></div>
+      </div>
+
+      <div class="funnel">
+        <div class="ft">Per-variant cohort funnel</div>
+        <div class="fsteps">
+          <span class="fstep k">intro_shown</span><span class="farrow">→</span>
+          <span class="fstep">genre_select / start_direct</span><span class="farrow">→</span>
+          <span class="fstep">intro_complete</span><span class="farrow">→</span>
+          <span class="fstep">activated (≥60s)</span><span class="farrow">→</span>
+          <span class="fstep">D1</span><span class="farrow">→</span><span class="fstep">D7</span>
+        </div>
+      </div>
+
+      <div class="cohort">
+        <b>Cohort tracking.</b> Sticky <code>variant</code> (hash of <code>uid</code>) stamped on every event + first-seen logged in <code>devices</code>. Cohort = <b>new uids in bucket A, by first-seen day</b>. <code>/api/cohorts</code> + <code>/api/stats</code> gain a <code>variant</code> filter so every headline metric — <span class="tag">activation</span> <span class="tag">avg time/user</span> <span class="tag">switches</span> — splits A vs B vs C. <b>Path mix</b> (genre vs सीधे शुरू) is read from <code>intro_complete.via</code>.
+      </div>
+
+      <div class="note"><b>Why no skip:</b> a skip leaves the user stranded with no signal — a silent activation loss we couldn't attribute. <b>सीधे शुरू करें</b> keeps the already-playing channel (the standard flow) and logs it, so the funnel has no dark leak.</div>
+    </div>
+  </div>
+
+  <!-- ================= A2 ================= -->
+  <div class="section">
+    <div class="sechead"><h2>A2 · Genre rail</h2><span class="badge prop">Proposal — alt for Arm A</span></div>
+    <p class="secnote">Non-blocking: the video plays full-screen while a genre chip-strip peeks at the bottom, led by a <b>कुछ भी</b> chip. Lowest friction — but because it's ignorable, we add a <b>rail_ignored</b> counter to measure how often users tune past it without engaging.</p>
+
+    <div class="phone"><div class="notch"></div><div class="screen">
+      <div class="video"></div>
+      <div class="topbar"><div class="logo">wiom<span>.tv</span></div>
+        <div class="live"><span class="dot"></span>LIVE</div></div>
+      <div class="now"><div class="ch">DD National</div><div class="pg">अभी · समाचार</div></div>
+      <div class="nudge">जॉनर चुनें ↓</div>
+      <div class="rail">
+        <div class="chip any"><span class="e">🔀</span>कुछ भी</div>
+        <div class="chip"><span class="e">🎬</span>फिल्में</div>
+        <div class="chip"><span class="e">📺</span>मनोरंजन</div>
+        <div class="chip"><span class="e">📰</span>समाचार</div>
+        <div class="chip"><span class="e">🎵</span>संगीत</div>
+      </div>
+    </div></div>
+
+    <div class="apanel">
+      <h3>Analytics on this screen</h3>
+      <div class="ah">Arm A (alt) · <code>screen = genre_rail</code></div>
+
+      <div class="evt fire">
+        <div class="ed"></div>
+        <div><div class="ename">intro_shown</div>
+          <div class="ewhen">Rail peeks up on first launch (new uid, bucket A). Funnel denominator.</div>
+          <div class="epay">{ variant:"A", screen:"genre_rail", n_genres:9 }</div></div>
+      </div>
+      <div class="evt choice">
+        <div class="ed"></div>
+        <div><div class="ename">genre_select</div>
+          <div class="ewhen">Taps a genre chip from the rail → hero channel of that genre.</div>
+          <div class="epay">{ variant:"A", cat:"movies", pos:1, via:"rail" }</div></div>
+      </div>
+      <div class="evt escape">
+        <div class="ed"></div>
+        <div><div class="ename">anything_tap <span class="tag new">new</span></div>
+          <div class="ewhen">Taps the <b>कुछ भी</b> chip → auto-play most-watched channel.</div>
+          <div class="epay">{ variant:"A", target_ch:201, picked_by:"top_watch_now" }</div></div>
+      </div>
+      <div class="evt miss">
+        <div class="ed"></div>
+        <div><div class="ename">rail_ignored <span class="tag new">new</span></div>
+          <div class="ewhen">Rail was shown but the user tuned via up/down/normal nav without touching it. The cost of "ignorable" — the key A2-vs-A1 diagnostic.</div>
+          <div class="epay">{ variant:"A", first_action:"manual_tune" }</div></div>
+      </div>
+      <div class="evt done">
+        <div class="ed"></div>
+        <div><div class="ename">intro_complete</div>
+          <div class="ewhen">First sustained playback. <code>via</code> tells us rail / कुछ भी / ignored-then-manual.</div>
+          <div class="epay">{ variant:"A", via:"rail"|"anything"|"manual", ttfc_ms:620 }</div></div>
+      </div>
+
+      <div class="funnel">
+        <div class="ft">Per-variant cohort funnel</div>
+        <div class="fsteps">
+          <span class="fstep k">intro_shown</span><span class="farrow">→</span>
+          <span class="fstep">genre_select / anything / <i>rail_ignored</i></span><span class="farrow">→</span>
+          <span class="fstep">intro_complete</span><span class="farrow">→</span>
+          <span class="fstep">activated (≥60s)</span><span class="farrow">→</span>
+          <span class="fstep">D1</span><span class="farrow">→</span><span class="fstep">D7</span>
+        </div>
+      </div>
+
+      <div class="cohort">
+        <b>Cohort tracking.</b> Same sticky <code>variant</code> + <code>devices</code> first-seen model as A1, same <code>variant</code>-filtered <code>/api/stats</code> &amp; <code>/api/cohorts</code>. The <b>extra read for A2</b> is <span class="tag new">rail engagement rate</span> = 1 − (rail_ignored ÷ intro_shown) — directly answers "is a non-blocking nudge enough, or does orientation need to block (A1)?"
+      </div>
+
+      <div class="note"><b>Same no-dead-end rule:</b> the rail leads with <b>कुछ भी</b> so even a passive user has a one-tap path to good content — and <code>rail_ignored</code> makes the silent-pass-through visible instead of lost.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

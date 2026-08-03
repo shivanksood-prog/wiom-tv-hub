@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashverse Intro Call — Playbook</title>
+<style>
+  :root{
+    --brand:#D9008D; --brand2:#443152; --brand300:#FFB2E4; --brand100:#FFE5F6;
+    --ink:#161021; --muted:#665E75; --label:#A7A1B2; --line:#D7D3E0;
+    --bg:#FAF9FC; --card:#FFFFFF; --zebra:#F1EDF7;
+    --green:#008043; --greenbg:#E1FAED; --red:#E01E00; --redbg:#FFE9E5;
+    --amber:#FF8000; --info:#6D17CE; --infobg:#F1E5FF;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    line-height:1.5;font-size:16px;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+  header.hero{
+    background:linear-gradient(135deg,#D9008D 0%,#443152 100%);
+    color:#fff;padding:28px 20px 24px;border-radius:0 0 22px 22px;margin-bottom:18px;
+  }
+  .hero h1{margin:0 0 4px;font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .hero p{margin:0;font-size:13px;opacity:.92}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;margin-top:10px}
+
+  .glance{background:var(--brand100);border:1.5px solid var(--brand300);border-radius:16px;
+    padding:16px 16px 6px;margin-bottom:22px}
+  .glance h2{margin:0 0 10px;font-size:13px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.6px}
+  .glance .row{margin-bottom:11px;font-size:14px}
+  .glance .k{font-weight:700;color:var(--brand2)}
+
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:4px 18px 16px;margin-bottom:14px;box-shadow:0 1px 3px rgba(22,16,33,.04)}
+  details{border:none}
+  summary{list-style:none;cursor:pointer;padding:14px 0 12px;display:flex;align-items:center;gap:10px;
+    font-weight:800;font-size:16px;letter-spacing:-.2px}
+  summary::-webkit-details-marker{display:none}
+  summary .num{flex:0 0 26px;height:26px;border-radius:8px;background:var(--brand);color:#fff;
+    display:grid;place-items:center;font-size:13px;font-weight:800}
+  summary .chev{margin-left:auto;color:var(--label);transition:transform .2s;font-size:13px}
+  details[open] summary .chev{transform:rotate(90deg)}
+  .body{padding-top:2px}
+
+  .lead{color:var(--muted);font-size:14.5px;margin:0 0 12px}
+  .say{background:var(--zebra);border-left:3px solid var(--brand);border-radius:0 10px 10px 0;
+    padding:11px 13px;margin:10px 0;font-size:15px;font-style:italic}
+  .say b{font-style:normal}
+  .note{font-size:13px;color:var(--muted);margin:6px 0 2px}
+  .beat{margin:9px 0}
+  .beat .bk{font-weight:700;color:var(--brand2);font-size:13.5px;display:block;margin-bottom:2px}
+  ul.q{list-style:none;padding:0;margin:8px 0}
+  ul.q li{background:var(--zebra);border-radius:10px;padding:9px 12px;margin-bottom:7px;font-size:14.5px;font-style:italic}
+  .grp{font-size:12px;font-weight:800;color:var(--info);text-transform:uppercase;letter-spacing:.5px;margin:12px 0 4px}
+
+  .branch{border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin:8px 0;background:var(--bg)}
+  .branch .if{font-weight:700;font-size:13.5px;color:var(--brand2);margin-bottom:4px}
+  .branch .then{font-size:14px;font-style:italic;color:var(--ink)}
+
+  .obj{border-left:3px solid var(--amber);background:#fff7f0;border-radius:0 10px 10px 0;padding:10px 12px;margin:9px 0}
+  .obj .silent{font-weight:700;font-size:13.5px;color:#9a5200;margin-bottom:4px}
+  .obj .resp{font-size:14px;font-style:italic}
+
+  ul.land{list-style:none;padding:0;margin:6px 0}
+  ul.land li{padding:8px 10px 8px 30px;position:relative;font-size:14px;border-bottom:1px solid var(--line)}
+  ul.land li:last-child{border-bottom:none}
+  ul.land li::before{content:"✕";position:absolute;left:8px;top:8px;color:var(--red);font-weight:800;font-size:13px}
+  ul.land b{color:var(--ink)}
+
+  .pill{display:inline-block;background:var(--greenbg);color:var(--green);font-size:11px;font-weight:700;
+    padding:2px 8px;border-radius:999px;margin-left:4px;vertical-align:middle}
+  footer{text-align:center;color:var(--label);font-size:12px;margin-top:20px}
+  @media(max-width:480px){ body{font-size:15px} .hero h1{font-size:20px} }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap" style="padding:0">
+    <h1>Dashverse — Intro Call Playbook</h1>
+    <p>Sensing &amp; positioning. Pull, not push. Talk like a person, not a deck.</p>
+    <span class="tag">Starting lines, not a script — react to what they say</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- GLANCE CARD -->
+  <div class="glance">
+    <h2>⚡ One-screen glance</h2>
+    <div class="row"><span class="k">Hold the frame:</span> you're the distribution they can't easily reach. Sensing fit, relaxed either way. Ask more than you pitch. Fine with a "no."</div>
+    <div class="row"><span class="k">Flow:</span> light Wiom intro → researched ₹499 question → sachet insight → let them talk → pull out what's redistributable → small reversible ask.</div>
+    <div class="row"><span class="k">Open:</span> affordable internet for the India that can't afford it → <i>Wiom Net ₹10 unlimited for anyone</i> + <i>RWGKN ₹20/day flexible home net, unlimited, any devices</i> → next-billion users, pay small &amp; flexible → ~1M users/month → Satyam's "being online lets people get ahead."</div>
+    <div class="row"><span class="k">Bridge:</span> "₹499/month, higher on iOS — am I right? Only paid offering?" → "Our audience lives sachet-style — they'll pay a few rupees a day, not ₹499/month."</div>
+    <div class="row"><span class="k">The ask:</span> "Pick a few titles, let us test with one pilot group for a few weeks. You keep everything, nothing exclusive. Worth a try?"</div>
+    <div class="row"><span class="k">Don'ts:</span> over-thank · "we'd love to" · beg for titles · over-explain tech · monologue · bank a reflexive yes · quote splits · fill silence.</div>
+  </div>
+
+  <!-- 1 FRAME -->
+  <section><details open>
+    <summary><span class="num">1</span> The Frame <span class="chev">▸</span></summary>
+    <div class="body">
+      <p class="lead">You're not asking for content. You're the distribution into an audience they can't easily reach — people who'll spend a few rupees a day but never commit to ₹499/month. You're here to figure out fit, and you've got other partners already in pilots, so you're relaxed either way. Don't <i>say</i> any of this — just hold it: ask more than you pitch, don't oversell, be fine with a "no."</p>
+      <div class="say"><b>Internal reminder:</b> They're qualifying to get on the rail. Not the other way around.</div>
+    </div>
+  </details></section>
+
+  <!-- 2 OPENING -->
+  <section><details open>
+    <summary><span class="num">2</span> Opening — introduce Wiom, lightly <span class="chev">▸</span></summary>
+    <div class="body">
+      <p class="lead">Short and warm — who we are, what we do, who for, the why. Not a vision speech.</p>
+      <div class="beat"><span class="bk">What we are</span><div class="say">"Quick intro to us — Wiom's basically making the internet affordable for the part of India that mostly can't afford it today."</div></div>
+      <div class="beat"><span class="bk">The offering (two things)</span><div class="say">"We've got two things really. <b>Wiom Net</b> — unlimited internet for anyone for just ten rupees. And <b>recharge wala ghar ka net</b> — flexible recharges on home internet, starts at twenty rupees for a day, unlimited usage, as many devices as you want."</div></div>
+      <div class="beat"><span class="bk">Who it's for</span><div class="say">"Our users are the next set of Indians coming online — they don't think in monthly plans, they pay small and flexible, when they feel like it."</div></div>
+      <div class="beat"><span class="bk">Where we are</span><div class="say">"We're at about a million users a month right now. Plan's a lot bigger, but that's where we are today."</div></div>
+      <div class="beat"><span class="bk">Origin (light)</span><div class="say">"It started with a simple belief our founder Satyam had — being online is what lets people get ahead, and most of India's still locked out of it. That's the itch we've been scratching."</div></div>
+      <p class="note">Then pause — let them react or ask. Don't roll into Wiom TV unless pulled.</p>
+    </div>
+  </details></section>
+
+  <!-- 3 BRIDGE -->
+  <section><details open>
+    <summary><span class="num">3</span> Bridge to them — researched question + sachet insight <span class="chev">▸</span></summary>
+    <div class="body">
+      <p class="lead">Don't open on their funnel drop-off (too pointed). Open with your homework, as a respectful check.</p>
+      <div class="say">"Before this, I spent a bit of time on DashReels. From what I could tell, your paid plans start around <b>₹499 a month, and a bit higher on iOS</b>. Am I right? Is that the only paid content offering you've got, or is there more to it?"</div>
+      <p class="note">→ Let them confirm/correct. Respectful homework, not a trap.</p>
+      <div class="say">"Got it. So here's why this is interesting for us. The audience we serve lives life <b>sachet-style</b> — whether it's shampoo, detergent, or their internet recharge, they buy in tiny amounts. A ₹499 monthly commitment just isn't how they spend. But the same person will happily pay a few rupees a day for something they actually like."</div>
+      <p class="note">Sets up fit cleanly: not "your model fails," but "there's a whole audience priced differently." Let it breathe.</p>
+    </div>
+  </details></section>
+
+  <!-- 4 WIOM TV -->
+  <section><details>
+    <summary><span class="num">4</span> Wiom TV — only when pulled <span class="chev">▸</span></summary>
+    <div class="body">
+      <p class="lead">Don't deliver as a block. Drop one beat when the conversation asks.</p>
+      <div class="beat"><span class="bk">What it is</span><div class="say">"On top of all that, we've started building an entertainment layer for these users — we call it Wiom TV. Free live TV to replace their cable, and short-form stuff on top of it."</div></div>
+      <div class="beat"><span class="bk">Status (underclaim it)</span><div class="say">"It's early — genuinely still in pilots. I'd rather not oversell something half-built."</div></div>
+      <div class="beat"><span class="bk">Why now (practical)</span><div class="say">"We're testing content over the next month or so — honestly why I wanted to talk now, rather do it while we're actually trying things than in theory later."</div></div>
+      <div class="beat"><span class="bk">The honest interest</span><div class="say">"My real question is just — could some of your content work for these users. That's the thing I want to figure out."</div></div>
+    </div>
+  </details></section>
+
+  <!-- 5 DISCOVERY -->
+  <section><details>
+    <summary><span class="num">5</span> Discovery — let them reveal <span class="chev">▸</span></summary>
+    <div class="body">
+      <p class="lead">Ask, then go quiet. Reflect back with "it sounds like…"</p>
+      <div class="grp">Open them up</div>
+      <ul class="q">
+        <li>"Walk me through how you think about your content — DashReels, the toons, the creation stuff. Where's the energy going right now?"</li>
+        <li>"What's actually working best with your audience — the Indian dramas, the AI ones, the C and K dramas? Anything surprise you?"</li>
+      </ul>
+      <div class="grp">Sourcing (your homework, not prying)</div>
+      <ul class="q">
+        <li>"How much of this is yours, made in-house, versus stuff you source or plug in from others? Just trying to understand what's even yours to move around."</li>
+        <li>"Sounds like you've actually built a content engine, not just a library — is that right?"</li>
+      </ul>
+      <div class="grp">The redistribution reveal (make them propose it)</div>
+      <ul class="q">
+        <li>"If you wanted to reach people who'll never pay your ₹499 but would happily watch every day — what part of your catalogue would you even want out there?"</li>
+        <li>"What would have to be true for you to be comfortable with some of your content living on a screen you don't own?"</li>
+        <li>"How do you think about stuff that's already made its money in your funnel and is just sitting there now?"</li>
+      </ul>
+      <div class="grp">Reflect it back (pilot becomes their idea)</div>
+      <ul class="q">
+        <li>"So it sounds like the C-dramas and maybe a bit of the AI stuff are what you'd be most okay testing first — that right?"</li>
+      </ul>
+    </div>
+  </details></section>
+
+  <!-- 6 ASK -->
+  <section><details>
+    <summary><span class="num">6</span> The Ask — small test, said casually <span class="chev">▸</span></summary>
+    <div class="body">
+      <div class="say">"Honestly, the easiest thing — pick a few titles you're okay with, let us put them in front of one pilot group for a few weeks. You keep everything, nothing exclusive, and you get to see how a totally different audience responds. If nothing happens, no harm. If it works, we figure out the rest. <b>Worth a try?</b>"</div>
+      <p class="note">Timing nudge (only if true, said offhand):</p>
+      <div class="say">"We're sorting out launch partners over the next few weeks anyway, so the timing kind of works."</div>
+      <p class="note">If they hesitate:</p>
+      <div class="say">"Is now a bad time to run something small like this?" <span class="pill">easy "no, now's fine"</span></div>
+    </div>
+  </details></section>
+
+  <!-- 7 REACTIVE -->
+  <section><details>
+    <summary><span class="num">7</span> Reactive flow — if they say X, you say Y <span class="chev">▸</span></summary>
+    <div class="body">
+      <div class="branch"><div class="if">"Show me the product / what exactly is Wiom TV?"</div><div class="then">"It's early — still in pilots. Two screens, mobile and a TV one that replaces cable. I'd rather not oversell something half-built. What's real today is the audience and the reach — the content layer is what I'm figuring out, which is why I'm here."</div></div>
+      <div class="branch"><div class="if">They go quiet / "tell me more"</div><div class="then">Turn it back: "What's your read — does an audience like that even sound useful to you, or is your whole game the premium funnel?"</div></div>
+      <div class="branch"><div class="if">They get enthusiastic fast — "let's do it"</div><div class="then">Don't bank it. Pin it: "Love that. What would actually be the first thing — which titles, and who on your side would I work with?"</div></div>
+      <div class="branch"><div class="if">They push on money / "what's the split"</div><div class="then">"Happy to get there — but it's premature. Let's see if the audience even responds first. If it works, the economics are an easy conversation."</div></div>
+      <div class="branch"><div class="if">They're guarded / skeptical</div><div class="then">Label it: "Sounds like you've been burned by distribution deals before, or it's just not a priority right now — either's fine. What's the hesitation?" Then listen.</div></div>
+      <div class="branch"><div class="if">"Let me think about it"</div><div class="then">"Totally. Can I ask what you'd want to see to feel good about even a small test?"</div></div>
+    </div>
+  </details></section>
+
+  <!-- 8 OBJECTIONS -->
+  <section><details>
+    <summary><span class="num">8</span> Objections — the unspoken ones <span class="chev">▸</span></summary>
+    <div class="body">
+      <div class="obj"><div class="silent">"You're tiny and early — waste of our time?"</div><div class="resp">"We are early, fair. That's exactly why it's a small reversible test, not a big bet. We do the work to prove the audience exists, on our cost, you keep every right. Worst case you learn something cheap."</div></div>
+      <div class="obj"><div class="silent">"Microdrama is mobile, not TV."</div><div class="resp">"You're right it started on mobile — so mobile's your home with us, the TV thing is just upside. You don't have to buy the TV idea to try the mobile pilot."</div></div>
+      <div class="obj"><div class="silent">"Why not just keep it in our own app?"</div><div class="resp">"Because these people aren't in your app and won't be — they're not paying ₹499. So it's not your audience moving, it's a new one you weren't reaching. Your app keeps your payers."</div></div>
+      <div class="obj"><div class="silent">"Won't this eat our autopay revenue?"</div><div class="resp">"Shouldn't — different people, different price, different screen. Stuff that's already made its money in your funnel just gets a second life with an audience that was never going to pay you anyway. If anything it's awareness that feeds your premium product later."</div></div>
+    </div>
+  </details></section>
+
+  <!-- 9 LANDMINES -->
+  <section><details>
+    <summary><span class="num">9</span> Landmines <span class="chev">▸</span></summary>
+    <div class="body">
+      <ul class="land">
+        <li><b>Don't over-thank</b> — once is enough.</li>
+        <li><b>Don't say "we'd love to" / "would you be open to…"</b> — say "here's what I'd suggest."</li>
+        <li><b>Don't beg for titles</b> — pull them with the §5 questions.</li>
+        <li><b>Don't over-explain the tech</b> — "early, in pilots" is the whole answer.</li>
+        <li><b>Don't feature-dump</b> — intro is light; Wiom TV only when pulled.</li>
+        <li><b>Don't monologue</b> — them talking 60–70%. After ~3 sentences, ask something.</li>
+        <li><b>Don't chase a yes</b> — the only real yes has a next step attached.</li>
+        <li><b>Don't quote terms / splits</b> — push commercials to "after the test."</li>
+        <li><b>Say the million-a-month number once.</b></li>
+        <li><b>Don't fill silence</b> — the pull lives in the pause.</li>
+      </ul>
+    </div>
+  </details></section>
+
+  <footer>Wiom · Pitch Coach playbook · sensing call, not a close</footer>
+</div>
+</body>
+</html>

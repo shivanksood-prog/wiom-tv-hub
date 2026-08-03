@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiom TV — Pin to Home (Accessibility) walkthrough</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#D9008D; --brand300:#FFB2E4; --brand100:#FFE5F6;
+    --ink:#161021; --muted:#665E75; --n500:#A7A1B2; --n300:#D7D3E0; --n100:#F1EDF7;
+    --page:#FAF9FC; --green:#008043; --green100:#E1FAED; --amber:#FF8000; --amber200:#FFE6CC; --secondary:#443152;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans','Noto Sans Devanagari',system-ui,sans-serif;background:var(--page);color:var(--ink);line-height:1.55;padding:24px 18px 60px}
+  .wrap{max-width:1120px;margin:0 auto}
+  .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+  .kicker{color:var(--brand);font-weight:700;font-size:12px;letter-spacing:2px}
+  h1{font-size:25px;font-weight:800;margin:6px 0}
+  .sub{color:var(--muted);font-size:15px;max-width:640px}
+  .lang{display:flex;gap:3px;background:var(--n100);border:1px solid var(--n300);border-radius:999px;padding:3px;flex:0 0 auto}
+  .lang button{border:none;background:transparent;font-family:inherit;font-weight:700;font-size:13px;color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .lang button.on{background:var(--brand);color:#fff}
+
+  .stage{display:grid;grid-template-columns:1fr 330px;gap:26px;margin-top:22px;align-items:start}
+  @media(max-width:820px){.stage{grid-template-columns:1fr}}
+
+  /* TV */
+  .tvwrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .tv{width:100%;max-width:660px;aspect-ratio:16/9;background:#0d0a14;border-radius:16px;padding:10px;box-shadow:0 26px 60px rgba(22,16,33,.28);position:relative}
+  .screen{width:100%;height:100%;border-radius:9px;overflow:hidden;position:relative;background:#120c1e}
+  .stand{width:120px;height:10px;background:#0d0a14;border-radius:0 0 10px 10px;margin-top:-2px}
+  .remotehint{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .rk{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 7px;border:1px solid var(--n300);border-radius:6px;background:#fff;font-weight:700;font-size:11px}
+
+  /* generic tv screen content */
+  .scr{position:absolute;inset:0;display:flex;flex-direction:column;padding:22px 26px;color:#FAF9FC}
+  .scr .hd{font-size:12px;letter-spacing:2px;color:var(--brand300);font-weight:700}
+  .scr h2{font-size:26px;font-weight:800;margin:10px 0 6px;line-height:1.2}
+  .scr p{color:#c9c3d6;font-size:14px;max-width:70%}
+  .tvbtn{margin-top:auto;align-self:flex-start;background:var(--brand);color:#fff;border:none;border-radius:11px;padding:12px 22px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer}
+  .tvbtn:hover{background:#b60078}
+  .center{align-items:center;justify-content:center;text-align:center}
+  .okbadge{width:60px;height:60px;border-radius:50%;background:var(--green100);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;margin-bottom:6px}
+
+  /* settings screen */
+  .setwrap{position:absolute;inset:0;background:#161021;display:flex;flex-direction:column;padding:20px 26px}
+  .settitle{font-size:16px;font-weight:800;color:#fff;margin-bottom:14px}
+  .setrow{display:flex;align-items:center;justify-content:space-between;background:#241b38;border-radius:10px;padding:13px 16px;margin-bottom:9px;border:2px solid transparent}
+  .setrow.focus{border-color:var(--brand300);box-shadow:0 0 0 3px rgba(217,0,141,.3)}
+  .setrow .nm{color:#fff;font-weight:600;font-size:14px}
+  .setrow .nm small{display:block;color:var(--n500);font-weight:400;font-size:11px}
+  .toggle{width:44px;height:24px;border-radius:999px;background:#4a3f5e;position:relative;transition:.25s;flex:0 0 auto}
+  .toggle b{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.25s}
+  .toggle.on{background:var(--green)} .toggle.on b{left:23px}
+  .hintbar{margin-top:auto;background:var(--brand);color:#fff;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center}
+
+  /* allow dialog */
+  .dim{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+  .dialog{background:#241b38;border-radius:14px;padding:20px;width:76%;max-width:420px;color:#fff}
+  .dialog h3{font-size:17px;font-weight:800;margin-bottom:8px}
+  .dialog p{color:#c9c3d6;font-size:12.5px}
+  .dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+  .dgbtn{border:none;border-radius:9px;padding:9px 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer}
+  .dgbtn.no{background:transparent;color:var(--n500)} .dgbtn.yes{background:var(--brand);color:#fff}
+
+  /* home + favourites row */
+  .home{position:absolute;inset:0;background:linear-gradient(160deg,#241833,#120c1e)}
+  .homebar{position:absolute;top:14px;left:22px;color:#fff;font-size:11px;font-weight:700;opacity:.8}
+  .favlabel{position:absolute;top:34%;left:22px;color:#c9c3d6;font-size:11px;font-weight:700}
+  .row{position:absolute;top:calc(34% + 18px);left:22px;right:12px;display:flex;gap:8px}
+  .tile{height:52px;min-width:78px;border-radius:9px;background:#2b2340;display:flex;align-items:center;justify-content:center;font-size:11px;color:#e8e2f2;font-weight:700;border:2px solid transparent;transition:all .45s ease;flex:0 0 auto;position:relative}
+  .tile.focus{border-color:var(--brand300);box-shadow:0 0 0 3px rgba(217,0,141,.35)}
+  .tile.plus{background:#221b34;color:#a99fc0;font-size:20px}
+  .tile.wiom{background:linear-gradient(135deg,#D9008D,#6D17CE);color:#fff}
+  .cap{position:absolute;bottom:14px;left:22px;right:22px;color:#c9c3d6;font-size:12.5px;min-height:16px}
+  /* picker panel */
+  .picker{position:absolute;top:0;right:0;bottom:0;width:46%;background:#1b1330;transform:translateX(100%);transition:transform .4s ease;padding:16px 14px;overflow:hidden}
+  .picker.show{transform:translateX(0)}
+  .picker .pt{color:#fff;font-weight:800;font-size:15px;margin-bottom:10px}
+  .pitem{display:flex;align-items:center;gap:9px;padding:8px 8px;border-radius:8px;color:#e8e2f2;font-size:12px;transition:.3s}
+  .pitem .ic{width:22px;height:22px;border-radius:5px;background:#3a2f52;flex:0 0 auto}
+  .pitem.focus{background:#2b2340}
+  .pitem.wiom .ic{background:linear-gradient(135deg,#D9008D,#6D17CE)}
+  /* move-mode buttons */
+  .movebar{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+  .mvb{background:#241b38;color:#fff;border-radius:8px;padding:8px 14px;font-size:11px;font-weight:700;border:2px solid transparent}
+  .mvb.focus{border-color:var(--brand300)} .mvb.dis{opacity:.4}
+
+  /* right rail */
+  .rail{display:flex;flex-direction:column;gap:16px}
+  .card{background:#fff;border:1px solid var(--n300);border-radius:16px;padding:16px}
+  .card h3{font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .steps{display:flex;flex-direction:column;gap:7px}
+  .step{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);padding:7px 9px;border-radius:9px}
+  .step.on{background:var(--brand100);color:var(--ink);font-weight:600}
+  .step.done{color:var(--green)}
+  .dot{width:18px;height:18px;border-radius:50%;background:var(--n300);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px}
+  .step.on .dot{background:var(--brand)} .step.done .dot{background:var(--green)}
+  .controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:6px}
+  .ctrl{border:1px solid var(--n300);background:#fff;border-radius:10px;padding:10px 14px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;color:var(--ink)}
+  .ctrl:hover{border-color:var(--brand);color:var(--brand)}
+  .ctrl.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .note{background:var(--amber200);color:#8a4b00;border-radius:11px;padding:11px 13px;font-size:12.5px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--n300)}
+  .kv:last-child{border:0}.kv b{font-weight:700;text-align:right}
+  .oneliner{background:var(--brand100);border-radius:12px;padding:13px 15px;font-size:14px;font-weight:700;color:var(--secondary)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div>
+      <div class="kicker">WIOM TV · PIN TO HOME · Accessibility (#3)</div>
+      <h1 id="pgTitle"></h1>
+      <p class="sub" id="pgSub"></p>
+    </div>
+    <div class="lang" id="pageLang"><button data-l="HI">हिं</button><button data-l="EN">EN</button></div>
+  </div>
+
+  <div class="stage">
+    <div class="tvwrap">
+      <div class="tv"><div class="screen" id="scr"></div></div>
+      <div class="stand"></div>
+      <div class="remotehint" id="remoteHint"></div>
+    </div>
+
+    <div class="rail">
+      <div class="card"><div class="oneliner" id="oneliner"></div></div>
+      <div class="card">
+        <h3 id="h_flow"></h3>
+        <div class="steps" id="steps"></div>
+        <div class="controls" id="controls"></div>
+      </div>
+      <div class="card">
+        <h3 id="h_meta"></h3>
+        <div class="kv"><span id="k_taps"></span><b id="v_taps">0</b></div>
+        <div class="kv"><span id="k_phone"></span><b style="color:var(--green)" id="v_phone"></b></div>
+        <div class="kv"><span id="k_cost"></span><b style="color:var(--green)">₹0</b></div>
+        <div class="note" id="frictionNote" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let LANG='HI';
+const T={
+  pgTitle:{HI:'होम पर पिन करें — यूज़र फ्लो', EN:'Pin to home — user flow'},
+  pgSub:{HI:'एक बार एक स्विच चालू करें → Wiom TV खुद सबसे आगे लग जाता है → फिर कभी कुछ नहीं करना। नीचे TV पर क्लिक करके चलाएं।',
+         EN:'Flip one switch once → Wiom TV places itself first → never touch it again. Click through on the TV below.'},
+  h_flow:{HI:'फ्लो की स्थिति',EN:'Flow state'}, h_meta:{HI:'हिसाब',EN:'The tally'},
+  k_taps:{HI:'यूज़र के प्रेस (एक बार)',EN:'User presses (one-time)'},
+  k_phone:{HI:'फ़ोन चाहिए?',EN:'Phone needed?'}, v_phone:{HI:'नहीं',EN:'No'},
+  k_cost:{HI:'खर्च',EN:'Cost'},
+  oneliner:{HI:'एक स्विच चालू करें → Wiom TV खुद सबसे पहले लगे → फिर कभी हाथ न लगाएं।',
+            EN:'Flip one switch → watch Wiom TV place itself first → never touch it again.'},
+  frictionNote:{HI:'असली मेहनत सिर्फ स्टेप 2 में — एक स्विच चालू करना और “स्क्रीन कंट्रोल की अनुमति दें” पर OK। (नए TV/Android 13+ पर एक extra “Allow restricted settings” टैप, जिसे स्क्रीन पर गाइड किया जाता है।) बाकी सब अपने आप।',
+                EN:'The only real effort is Step 2 — flip one switch and OK the “allow to control screen” box. (On newer TVs/Android 13+, one extra guided “Allow restricted settings” tap.) Everything else is automatic.'},
+  // remote hints per state
+  rhOffer:{HI:'रिमोट पर',EN:'On the remote'},
+  // steps
+  s1:{HI:'ऑफ़र — “होम पर पिन करें”',EN:'Offer — “Pin to home”'},
+  s2:{HI:'एक बार ‘Wiom Pinner’ चालू करें',EN:'Turn on ‘Wiom Pinner’ once'},
+  s3:{HI:'Wiom TV खुद जुड़े + सबसे आगे आए',EN:'Wiom TV adds + moves itself to front'},
+  s4:{HI:'Wiom TV हमेशा सबसे पहले',EN:'Wiom TV first — forever'},
+  // controls
+  cRestart:{HI:'↻ फिर से',EN:'↻ Restart'},
+  // screen copy
+  offTitle:{HI:'Wiom TV को होम पर सबसे ऊपर लगाएं?',EN:'Put Wiom TV at the top of your home?'},
+  offSub:{HI:'एक बार चालू करें — फिर यह हमेशा सबसे पहले रहेगा।',EN:'Turn it on once — then it’s always first.'},
+  offBtn:{HI:'होम पर पिन करें',EN:'Pin to home'},
+  setTitle:{HI:'Settings › Accessibility',EN:'Settings › Accessibility'},
+  setHint:{HI:'‘Wiom Pinner’ चुनें और चालू करें',EN:'Select ‘Wiom Pinner’ and switch it On'},
+  pinnerName:{HI:'Wiom Pinner',EN:'Wiom Pinner'},
+  pinnerSub:{HI:'Wiom TV को होम पर पिन करता है, फिर खुद बंद हो जाता है',EN:'Pins Wiom TV to home, then turns itself off'},
+  otherA11y:{HI:'Captions',EN:'Captions'},
+  allowTitle:{HI:'Wiom Pinner को स्क्रीन कंट्रोल करने दें?',EN:'Allow Wiom Pinner to control your screen?'},
+  allowSub:{HI:'यह सिर्फ होम स्क्रीन पढ़कर Wiom TV को जोड़ता है और आगे लाता है।',EN:'It only reads the home screen to add Wiom TV and move it to the front.'},
+  deny:{HI:'मना करें',EN:'Deny'}, allow:{HI:'अनुमति दें',EN:'Allow'},
+  homeBar:{HI:'HOME',EN:'HOME'}, favLabel:{HI:'Favourite apps',EN:'Favourite apps'},
+  pickTitle:{HI:'Select app',EN:'Select app'},
+  doneTitle:{HI:'हो गया! Wiom TV अब सबसे पहले है।',EN:'Done! Wiom TV is now first.'},
+  doneSub:{HI:'Wiom Pinner खुद बंद हो गया।',EN:'Wiom Pinner switched itself off.'},
+  everyTitle:{HI:'अब हर दिन',EN:'Every day from now'},
+  everyCap:{HI:'TV चालू करें → Wiom TV सबसे पहले → OK दबाएं। बस।',EN:'Turn on the TV → Wiom TV first → press OK. That’s it.'},
+  // auto captions
+  ca1:{HI:'“Add app” की लिस्ट खोल रहे हैं…',EN:'Opening the “add app” list…'},
+  ca2:{HI:'लिस्ट में Wiom TV ढूँढ रहे हैं…',EN:'Finding Wiom TV in the list…'},
+  ca3:{HI:'Wiom TV मिल गया — जोड़ रहे हैं ✓',EN:'Found Wiom TV — adding it ✓'},
+  ca4:{HI:'अब इसे सबसे आगे ला रहे हैं…',EN:'Now moving it to the front…'},
+  ca5:{HI:'Wiom TV अब सबसे पहले है ✓',EN:'Wiom TV is now first ✓'},
+  offEnv:{HI:'ऐप इंस्टॉल होने के ठीक बाद, TV पर',EN:'Right after the app installs, on the TV'},
+};
+const tt=k=>(T[k]?.[LANG]??T[k]?.EN??k);
+
+const BASE=['Netflix','Prime','YouTube','Play Movies','TV','Play Store'];
+let taps=0, timers=[], cur='OFFER';
+const clr=()=>{timers.forEach(clearTimeout);timers=[]};
+
+// ---------- screen renderers ----------
+function rowHtml(order, focusIdx, opts={}){
+  return `<div class="row">`+order.map((n,i)=>{
+    const cls = n==='+'?'plus':(n==='Wiom TV'?'wiom':'');
+    const foc = i===focusIdx?'focus':'';
+    const label = n==='+'?'+':(n==='Wiom TV'?'Wiom':n);
+    return `<div class="tile ${cls} ${foc}">${label}</div>`;
+  }).join('')+`</div>`;
+}
+
+function render(state){
+  clr(); cur=state;
+  const s=document.getElementById('scr');
+  const rh=document.getElementById('remoteHint');
+  rh.innerHTML='';
+
+  if(state==='OFFER'){
+    s.innerHTML=`<div class="scr"><div class="hd">WIOM TV</div>
+      <h2>${tt('offTitle')}</h2><p>${tt('offSub')}</p>
+      <button class="tvbtn" id="go">${tt('offBtn')} ›</button></div>`;
+    rh.innerHTML=`${tt('rhOffer')}: <span class="rk">OK</span>`;
+    document.getElementById('go').onclick=()=>{taps++;go('SETTINGS');};
+  }
+
+  else if(state==='SETTINGS'){
+    s.innerHTML=`<div class="setwrap">
+      <div class="settitle">${tt('setTitle')}</div>
+      <div class="setrow"><div class="nm">${tt('otherA11y')}</div><div class="toggle"><b></b></div></div>
+      <div class="setrow focus" id="pinnerRow"><div class="nm">${tt('pinnerName')}<small>${tt('pinnerSub')}</small></div><div class="toggle" id="tg"><b></b></div></div>
+      <div class="hintbar">👉 ${tt('setHint')}</div></div>`;
+    rh.innerHTML=`<span class="rk">▼</span> <span class="rk">OK</span> ${LANG==='HI'?'से चालू करें':'to switch on'}`;
+    document.getElementById('pinnerRow').onclick=()=>{
+      document.getElementById('tg').classList.add('on'); taps++;
+      setTimeout(()=>go('ALLOW'),450);
+    };
+  }
+
+  else if(state==='ALLOW'){
+    s.innerHTML=`<div class="setwrap">
+      <div class="settitle">${tt('setTitle')}</div>
+      <div class="setrow"><div class="nm">${tt('pinnerName')}</div><div class="toggle on"><b></b></div></div>
+      <div class="dim"><div class="dialog"><h3>${tt('allowTitle')}</h3><p>${tt('allowSub')}</p>
+        <div class="row"><button class="dgbtn no" id="deny">${tt('deny')}</button><button class="dgbtn yes" id="allow">${tt('allow')}</button></div>
+      </div></div></div>`;
+    rh.innerHTML=`<span class="rk">OK</span> → ${tt('allow')}`;
+    document.getElementById('allow').onclick=()=>{taps++;go('AUTO');};
+    document.getElementById('deny').onclick=()=>go('SETTINGS');
+  }
+
+  else if(state==='AUTO'){ runAuto(); rh.innerHTML=`👀 ${LANG==='HI'?'बस देखिए — अपने आप':'Just watch — automatic'}`; }
+
+  else if(state==='DONE'){
+    const order=['Wiom TV',...BASE,'+'];
+    s.innerHTML=`<div class="home"><div class="homebar">${tt('homeBar')}</div>
+      <div class="favlabel">${tt('favLabel')}</div>${rowHtml(order,0)}
+      <div class="dim"><div class="dialog center" style="text-align:center"><div class="okbadge" style="margin:0 auto 8px">✓</div>
+        <h3>${tt('doneTitle')}</h3><p style="max-width:none">${tt('doneSub')}</p></div></div></div>`;
+    rh.innerHTML='';
+  }
+
+  else if(state==='EVERYDAY'){
+    const order=['Wiom TV',...BASE,'+'];
+    s.innerHTML=`<div class="home"><div class="homebar">${tt('homeBar')} · ${tt('everyTitle')}</div>
+      <div class="favlabel">${tt('favLabel')}</div>${rowHtml(order,0)}
+      <div class="cap">${tt('everyCap')}</div></div>`;
+    rh.innerHTML=`<span class="rk">⏻</span> → <span class="rk">OK</span>`;
+  }
+
+  renderSteps(state); renderMeta(); renderControls();
+}
+
+// ---------- the automatic pinning animation ----------
+function runAuto(){
+  const s=document.getElementById('scr');
+  const order=[...BASE,'+'];               // Wiom not yet in favourites
+  const plusIdx=order.length-1;
+  const draw=(ord,focus,extra='')=>{
+    s.innerHTML=`<div class="home"><div class="homebar">${tt('homeBar')}</div>
+      <div class="favlabel">${tt('favLabel')}</div>${rowHtml(ord,focus)}
+      ${extra}<div class="cap" id="cap"></div></div>`;
+  };
+  const cap=k=>{const c=document.getElementById('cap'); if(c)c.textContent=tt(k);};
+  const pickerList=(hi)=>`<div class="picker show"><div class="pt">${tt('pickTitle')}</div>`+
+     ['AirScreen','AnyDesk','Browser','Gallery','Help','JioHotstar','Play Games','Wiom TV']
+       .map((n,i)=>`<div class="pitem ${n==='Wiom TV'?'wiom':''} ${i===hi?'focus':''}"><span class="ic"></span>${n}</div>`).join('')+`</div>`;
+
+  // sequence
+  draw(order, plusIdx); cap('ca1');
+  timers.push(setTimeout(()=>{ draw(order, plusIdx, pickerList(0)); cap('ca2'); },900));
+  timers.push(setTimeout(()=>{ draw(order, plusIdx, pickerList(4)); },1700));
+  timers.push(setTimeout(()=>{ draw(order, plusIdx, pickerList(7)); cap('ca3'); },2500));
+  // added at end (before +)
+  timers.push(setTimeout(()=>{ draw([...BASE,'Wiom TV','+'], BASE.length); cap('ca4'); },3400));
+  // move-mode: slide left step by step
+  let steps=[...BASE,'Wiom TV','+'];
+  const moveBar=`<div class="movebar"><div class="mvb focus">‹ Move left</div><div class="mvb">Move right ›</div><div class="mvb">✓ Done</div></div>`;
+  for(let k=0;k<BASE.length;k++){
+    timers.push(setTimeout(()=>{
+      const arr=[...BASE]; // rebuild with Wiom moved k+1 from its added spot
+      const pos=BASE.length-1-k;
+      const withW=[...BASE]; withW.splice(pos,0,'Wiom TV'); withW.push('+');
+      draw(withW, pos, moveBar); cap('ca4');
+    }, 3900+k*420));
+  }
+  // dropped at front
+  timers.push(setTimeout(()=>{ draw(['Wiom TV',...BASE,'+'],0); cap('ca5'); }, 3900+BASE.length*420+300));
+  timers.push(setTimeout(()=>go('DONE'), 3900+BASE.length*420+1500));
+}
+
+// ---------- rail ----------
+const STEPS=[['s1','OFFER'],['s2','SET'],['s3','AUTO'],['s4','DONE']];
+const stepOf={OFFER:'OFFER',SETTINGS:'SET',ALLOW:'SET',AUTO:'AUTO',DONE:'DONE',EVERYDAY:'DONE'};
+function renderSteps(state){
+  const cur=stepOf[state], idx=STEPS.findIndex(s=>s[1]===cur);
+  document.getElementById('steps').innerHTML=STEPS.map((s,i)=>{
+    const cls=i<idx?'done':i===idx?'on':''; const mark=i<idx?'✓':(i+1);
+    return `<div class="step ${cls}"><div class="dot">${mark}</div><div>${tt(s[0])}</div></div>`;
+  }).join('');
+}
+function renderMeta(){
+  document.getElementById('v_taps').textContent = (cur==='OFFER'?0:taps);
+}
+function renderControls(){
+  const c=document.getElementById('controls');
+  const nextMap={OFFER:'SETTINGS',SETTINGS:'ALLOW',ALLOW:'AUTO',AUTO:'DONE',DONE:'EVERYDAY',EVERYDAY:'OFFER'};
+  c.innerHTML=`<button class="ctrl primary" data-j="OFFER">${tt('cRestart')}</button>
+    <button class="ctrl" data-j="${nextMap[cur]}">${LANG==='HI'?'अगला ›':'Next ›'}</button>`;
+  c.querySelectorAll('.ctrl').forEach(b=>b.onclick=()=>{ if(b.getAttribute('data-j')==='OFFER')taps=0; go(b.getAttribute('data-j')); });
+}
+
+function go(state){ if(state==='OFFER')taps=0; render(state); }
+
+function applyLang(){
+  document.getElementById('pgTitle').textContent=tt('pgTitle');
+  document.getElementById('pgSub').innerHTML=tt('pgSub');
+  document.getElementById('h_flow').textContent=tt('h_flow');
+  document.getElementById('h_meta').textContent=tt('h_meta');
+  document.getElementById('oneliner').textContent=tt('oneliner');
+  document.getElementById('k_taps').textContent=tt('k_taps');
+  document.getElementById('k_phone').textContent=tt('k_phone');
+  document.getElementById('v_phone').textContent=tt('v_phone');
+  document.getElementById('k_cost').textContent=tt('k_cost');
+  document.getElementById('frictionNote').textContent=tt('frictionNote');
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.getAttribute('data-l')===LANG));
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{LANG=b.getAttribute('data-l');applyLang();render(cur);});
+
+applyLang(); go('OFFER');
+</script>
+</body>
+</html>

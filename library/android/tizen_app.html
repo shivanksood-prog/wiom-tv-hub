@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Fixed 1920 viewport: TV Chromium scales to panel; all layout in px against 1920x1080 -->
+  <meta name="viewport" content="width=1920, user-scalable=no">
+  <title>Wiom TV</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Video layer. AVPlay renders into the <object>; hls.js dev path uses the <video>.
+         Both sit full-screen behind every overlay. -->
+    <div id="video-root">
+      <object id="av-player" type="application/avplayer"></object>
+      <video id="html-player" autoplay playsinline></video>
+    </div>
+
+    <!-- Overlays, z-order bottom→top. All pre-created; JS only toggles classes. -->
+
+    <!-- ZapCover: full-black cut while current.id != renderedChannelId -->
+    <div id="zap-cover" class="overlay hidden">
+      <div class="zap-center">
+        <div id="zap-logo-chip" class="logo-chip logo-chip-lg"><img id="zap-logo-img" alt=""><span id="zap-initials" class="initials"></span></div>
+        <div id="zap-name" class="zap-name"></div>
+        <div class="cue-row"><div class="spinner"></div><span class="cue-text">चैनल लोड हो रहा है…</span></div>
+      </div>
+    </div>
+
+    <!-- ChannelBug: bottom-left card, auto-hide 3500ms after first frame -->
+    <div id="channel-bug" class="hidden">
+      <div class="bug-accent"></div>
+      <div id="bug-logo-chip" class="logo-chip logo-chip-sm"><img id="bug-logo-img" alt=""><span id="bug-initials" class="initials"></span></div>
+      <div class="bug-text">
+        <div id="bug-name" class="bug-name"></div>
+        <div class="bug-sub"><span id="bug-genre" class="bug-genre"></span><span class="bug-hint">&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;OK = सभी चैनल&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;▲▼ बदलें</span></div>
+      </div>
+    </div>
+
+    <!-- BufferingCue: centered pill after 1500ms steady rebuffer -->
+    <div id="buffering-cue" class="pill hidden"><div class="spinner spinner-sm"></div><span>बफ़र हो रहा है…</span></div>
+
+    <!-- LogoGrid: full-screen channel grid (built by logoGrid.js) -->
+    <div id="logo-grid" class="overlay hidden">
+      <div class="grid-header">
+        <img src="assets/img/wiom_logo_white.png" class="grid-wordmark" alt="Wiom">
+        <div class="grid-divider"></div>
+        <span class="grid-title">सभी चैनल · All Channels</span>
+        <span id="grid-version" class="grid-version hidden"></span>
+      </div>
+      <div id="grid-body" class="grid-body"></div>
+    </div>
+
+    <!-- BootSplash: above grid, below reconnect/force-update -->
+    <div id="boot-splash" class="overlay">
+      <img src="assets/img/wiom_tv_lockup_white.png" class="splash-lockup" alt="Wiom TV">
+      <div id="splash-cue" class="cue-row splash-cue hidden"><div class="spinner"></div><span class="cue-text">लाइव टीवी शुरू हो रहा है…</span></div>
+    </div>
+
+    <!-- ReconnectOverlay -->
+    <div id="reconnect-overlay" class="overlay reconnect hidden">
+      <img src="assets/img/wiom_logo_white.png" class="reconnect-logo" alt="Wiom">
+      <div class="cue-row"><div class="spinner"></div><span class="cue-text">इंटरनेट फिर से जोड़ रहे हैं…</span></div>
+      <div class="reconnect-en">Reconnecting…</div>
+    </div>
+
+    <!-- ForceUpdateOverlay: topmost, undismissable -->
+    <div id="force-update" class="overlay hidden">
+      <img src="assets/img/wiom_tv_lockup_white.png" class="update-lockup" alt="Wiom TV">
+      <div id="update-message" class="update-message"></div>
+      <div class="update-sub">Update to continue</div>
+      <div id="update-cta" class="update-cta focused">अभी अपडेट करें · Update Now</div>
+      <div id="update-url" class="update-url"></div>
+    </div>
+
+    <!-- Exit toast -->
+    <div id="exit-toast" class="pill toast hidden">बाहर निकलने के लिए BACK फिर से दबाएं</div>
+  </div>
+
+  <script src="vendor/hls.min.js"></script>
+  <script src="js/version.js"></script>
+  <script src="js/constants.js"></script>
+  <script src="js/strings.js"></script>
+  <script src="js/channels.js"></script>
+  <script src="js/configPoller.js"></script>
+  <script src="js/tvState.js"></script>
+  <script src="js/qoeLog.js"></script>
+  <script src="js/telemetry.js"></script>
+  <script src="js/keys.js"></script>
+  <script src="js/player/backendAvplay.js"></script>
+  <script src="js/player/backendHlsjs.js"></script>
+  <script src="js/player/playerController.js"></script>
+  <script src="js/ui/overlays.js"></script>
+  <script src="js/ui/logoGrid.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

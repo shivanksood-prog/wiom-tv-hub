@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV · JTBD-1 (Orient me) — Mobile Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161021; --card:#352D42; --border:#443152; --text:#FAF9FC; --muted:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFB2E4; --pink100:#FFE5F6;
+    --green:#008043; --amber:#FF8000; --purple:#6D17CE;
+    --page:#FAF9FC; --ink:#161021;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans',system-ui,sans-serif;background:var(--page);color:var(--ink);
+       -webkit-font-smoothing:antialiased;padding:32px 20px 80px}
+  .head{max-width:1200px;margin:0 auto 8px}
+  .kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+          color:var(--accent);background:var(--pink100);padding:5px 12px;border-radius:999px}
+  h1{font-size:30px;font-weight:800;margin:14px 0 6px;letter-spacing:-.01em}
+  .sub{font-size:15px;color:#665E75;max-width:720px;line-height:1.5}
+  .sub b{color:var(--ink)}
+  .gallery{max-width:1200px;margin:40px auto 0;display:flex;flex-wrap:wrap;gap:40px 36px;justify-content:center}
+  figure{width:300px;display:flex;flex-direction:column;align-items:center}
+
+  /* ---- phone frame ---- */
+  .phone{width:300px;height:620px;background:#000;border-radius:42px;padding:11px;
+         box-shadow:0 24px 60px rgba(22,16,33,.28),0 4px 12px rgba(22,16,33,.12);position:relative}
+  .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:24px;
+         background:#000;border-radius:0 0 16px 16px;z-index:50}
+  .screen{width:100%;height:100%;border-radius:32px;overflow:hidden;position:relative;background:var(--bg)}
+
+  /* faux live video behind everything */
+  .video{position:absolute;inset:0;background:
+        radial-gradient(120% 80% at 70% 20%, #6D17CE33 0%, transparent 55%),
+        radial-gradient(100% 70% at 20% 90%, #D9008D33 0%, transparent 50%),
+        linear-gradient(160deg,#241a33 0%,#161021 70%)}
+  .video::after{content:"";position:absolute;inset:0;
+        background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 2px,transparent 2px 4px)}
+  .topbar{position:absolute;top:34px;left:0;right:0;z-index:20;display:flex;align-items:center;
+          justify-content:space-between;padding:0 16px}
+  .logo{font-weight:800;font-size:15px;color:var(--text);letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text);
+        background:rgba(0,0,0,.4);padding:4px 9px;border-radius:999px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #00804333}
+  .now{position:absolute;bottom:18px;left:16px;z-index:15;color:var(--text)}
+  .now .ch{font-size:13px;font-weight:700}
+  .now .pg{font-size:11px;color:var(--accent-soft)}
+
+  .skip{position:absolute;top:34px;right:16px;z-index:40;font-size:12px;font-weight:600;color:var(--text);
+        background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15);padding:6px 12px;border-radius:999px}
+
+  /* ===== A1 grid overlay ===== */
+  .scrim{position:absolute;inset:0;z-index:25;background:linear-gradient(180deg,rgba(22,16,33,.62) 0%,rgba(22,16,33,.9) 60%)}
+  .ovl{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;justify-content:flex-end;padding:0 18px 26px}
+  .ovl .k{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--accent-soft);text-transform:uppercase}
+  .ovl h2{color:var(--text);font-size:23px;font-weight:800;margin:6px 0 3px;line-height:1.15}
+  .ovl .s{color:var(--muted);font-size:12.5px;margin-bottom:18px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .gc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:13px 6px 11px;
+      text-align:center}
+  .gc.hot{border-color:var(--accent);background:linear-gradient(160deg,#3a2342,#352D42);
+          box-shadow:0 0 0 1px var(--accent),0 6px 16px #d9008d22}
+  .gc .e{font-size:24px;line-height:1}
+  .gc .n{font-size:12px;font-weight:700;color:var(--text);margin-top:7px}
+  .gc .c{font-size:9.5px;color:var(--muted);margin-top:1px}
+
+  /* ===== A2 rail ===== */
+  .nudge{position:absolute;bottom:78px;left:16px;z-index:30;font-size:12px;font-weight:600;color:var(--text);
+         background:rgba(0,0,0,.5);padding:6px 12px;border-radius:999px;border:1px solid rgba(217,0,141,.5)}
+  .rail{position:absolute;bottom:18px;left:0;right:0;z-index:30;display:flex;gap:9px;padding:0 16px;
+        overflow:hidden;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent)}
+  .chip{flex:0 0 auto;display:flex;align-items:center;gap:7px;background:rgba(53,45,66,.82);
+        backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:999px;padding:9px 14px;
+        font-size:12.5px;font-weight:600;color:var(--text);white-space:nowrap}
+  .chip.hot{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip .e{font-size:15px}
+
+  /* ===== A3 grouped guide bottom sheet ===== */
+  .sheet{position:absolute;left:0;right:0;bottom:0;height:74%;z-index:30;background:var(--bg);
+         border-radius:22px 22px 0 0;border-top:1px solid var(--border);
+         box-shadow:0 -14px 40px rgba(0,0,0,.5);display:flex;flex-direction:column}
+  .sheet .grab{width:38px;height:4px;border-radius:99px;background:var(--border);margin:9px auto 6px}
+  .search{margin:4px 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:12px;
+          padding:10px 14px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .glist{overflow:hidden;padding:0 12px}
+  .ghead{display:flex;align-items:center;justify-content:space-between;padding:11px 8px;font-size:13px;
+         font-weight:700;color:var(--text);border-top:1px solid var(--border)}
+  .ghead .cnt{font-size:11px;color:var(--muted);font-weight:600}
+  .ghead.open{color:var(--accent-soft)}
+  .crow{display:flex;align-items:center;gap:11px;padding:9px 8px 9px 14px}
+  .crow .num{font-size:11px;font-weight:700;color:var(--accent);width:22px}
+  .crow .tn{width:42px;height:28px;border-radius:6px;background:linear-gradient(135deg,#3a2342,#241a33);
+            border:1px solid var(--border);flex:0 0 auto}
+  .crow .cn{font-size:12.5px;font-weight:600;color:var(--text)}
+  .crow .cd{font-size:10px;color:var(--muted)}
+
+  /* ===== A4 carousel ===== */
+  .car{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center}
+  .cstage{position:absolute;inset:0;display:flex;align-items:center}
+  .cpeek{position:absolute;top:18%;bottom:18%;width:26px;border-radius:14px;background:rgba(53,45,66,.55)}
+  .cpeek.l{left:-12px}.cpeek.r{right:-12px}
+  .ccard{position:absolute;top:14%;bottom:18%;left:26px;right:26px;border-radius:22px;overflow:hidden;
+         border:1px solid var(--border);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+  .ccard .thumb{position:absolute;inset:0;background:
+        radial-gradient(120% 80% at 30% 20%, #D9008D40 0%, transparent 55%),
+        linear-gradient(160deg,#3a2342 0%,#1d1529 100%)}
+  .ccard .thumb::after{content:"";position:absolute;inset:0;
+        background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 2px,transparent 2px 4px)}
+  .clive{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px;font-size:10px;
+         font-weight:700;color:#fff;background:rgba(0,0,0,.5);padding:4px 9px;border-radius:999px}
+  .cbody{position:absolute;left:16px;right:16px;bottom:16px;color:var(--text)}
+  .cbody .ce{font-size:34px}
+  .cbody .ct{font-size:24px;font-weight:800;margin-top:4px;line-height:1.1}
+  .cbody .cs{font-size:12px;color:var(--accent-soft);margin-top:4px;font-weight:600}
+  .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;
+        border-radius:50%;background:rgba(217,0,141,.92);display:flex;align-items:center;justify-content:center;
+        color:#fff;font-size:20px;box-shadow:0 6px 20px #d9008d66}
+  .dots{position:absolute;bottom:8%;left:0;right:0;z-index:31;display:flex;gap:6px;justify-content:center}
+  .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3)}
+  .dots i.on{background:var(--accent);width:18px;border-radius:99px}
+  .swipe{position:absolute;bottom:4%;left:0;right:0;z-index:31;text-align:center;font-size:11px;
+         color:var(--muted);font-weight:600}
+
+  /* ---- caption ---- */
+  figcaption{margin-top:20px;width:100%;text-align:left}
+  .ctag{display:inline-block;font-size:11px;font-weight:700;color:var(--accent);background:var(--pink100);
+        padding:3px 10px;border-radius:6px}
+  figcaption h3{font-size:17px;font-weight:800;margin:9px 0 5px}
+  figcaption p{font-size:13px;color:#665E75;line-height:1.5;margin-bottom:10px}
+  .meta{display:flex;flex-wrap:wrap;gap:6px}
+  .pill{font-size:10.5px;font-weight:600;padding:4px 9px;border-radius:999px;border:1px solid #D7D3E0;color:#665E75}
+  .pill.good{color:var(--green);border-color:#00804355;background:#E1FAED}
+  .pill.warn{color:var(--amber);border-color:#FF800055;background:#FFE6CC}
+  .pill.rec{color:#fff;background:var(--accent);border-color:var(--accent)}
+  .legend{max-width:1200px;margin:48px auto 0;background:#fff;border:1px solid #D7D3E0;border-radius:16px;padding:22px 24px}
+  .legend h4{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px}
+  .legend p{font-size:13px;color:#3a3447;line-height:1.6}
+  .legend b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+  <div class="head">
+    <span class="kicker">Wiom TV · JTBD-1 — "Orient me, fast"</span>
+    <h1>Show me what's on. Get me to my mood.</h1>
+    <p class="sub">Four ways to answer the genre-discovery job on first launch — mocked on <b>mobile, our largest surface</b>. In every option the channel is already playing (muted) behind the UI, so nothing feels like loading. Pick one to become <b>Arm A</b>.</p>
+  </div>
+
+  <div class="gallery">
+
+    <!-- ============ A1 GRID OVERLAY ============ -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div></div>
+        <div class="skip">अभी नहीं ✕</div>
+        <div class="scrim"></div>
+        <div class="ovl">
+          <div class="k">250 चैनल · 9 जॉनर</div>
+          <h2>आज क्या देखेंगे?</h2>
+          <div class="s">जॉनर चुनें — चैनल सीधे चलने लगेगा</div>
+          <div class="grid">
+            <div class="gc hot"><div class="e">🎬</div><div class="n">फिल्में</div><div class="c">42 चैनल</div></div>
+            <div class="gc"><div class="e">📺</div><div class="n">मनोरंजन</div><div class="c">38</div></div>
+            <div class="gc"><div class="e">📰</div><div class="n">समाचार</div><div class="c">26</div></div>
+            <div class="gc"><div class="e">🎵</div><div class="n">संगीत</div><div class="c">22</div></div>
+            <div class="gc"><div class="e">🙏</div><div class="n">भक्ति</div><div class="c">19</div></div>
+            <div class="gc"><div class="e">🧸</div><div class="n">बच्चे</div><div class="c">14</div></div>
+            <div class="gc"><div class="e">🏏</div><div class="n">खेल</div><div class="c">11</div></div>
+            <div class="gc"><div class="e">😂</div><div class="n">कॉमेडी</div><div class="c">17</div></div>
+            <div class="gc"><div class="e">✨</div><div class="n">लाइफस्टाइल</div><div class="c">13</div></div>
+          </div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag">A1</span>
+        <h3>Genre grid overlay</h3>
+        <p>Full-screen menu of genres over the playing video. One tap → land on that genre's strongest channel. The clearest "here's the whole menu" mental model.</p>
+        <div class="meta">
+          <span class="pill rec">Recommended</span>
+          <span class="pill">1 tap to content</span>
+          <span class="pill good">Highest comprehension</span>
+          <span class="pill warn">Blocks 1 screen</span>
+          <span class="pill">Effort: M</span>
+        </div>
+      </figcaption>
+    </figure>
+
+    <!-- ============ A2 RAIL ============ -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div>
+          <div class="live"><span class="dot"></span>LIVE</div></div>
+        <div class="now"><div class="ch">DD National</div><div class="pg">अभी · समाचार बुलेटिन</div></div>
+        <div class="nudge">नीचे से जॉनर चुनें ↓</div>
+        <div class="rail">
+          <div class="chip hot"><span class="e">🎬</span>फिल्में</div>
+          <div class="chip"><span class="e">📺</span>मनोरंजन</div>
+          <div class="chip"><span class="e">📰</span>समाचार</div>
+          <div class="chip"><span class="e">🎵</span>संगीत</div>
+          <div class="chip"><span class="e">🙏</span>भक्ति</div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag">A2</span>
+        <h3>Genre rail (non-blocking)</h3>
+        <p>Video keeps playing full-screen; a genre chip-strip peeks at the bottom with a one-line nudge. Lowest friction — but easy to miss, so the discovery signal is weaker.</p>
+        <div class="meta">
+          <span class="pill good">Zero block</span>
+          <span class="pill">1 tap</span>
+          <span class="pill warn">Easy to ignore</span>
+          <span class="pill">Effort: S–M</span>
+        </div>
+      </figcaption>
+    </figure>
+
+    <!-- ============ A3 GROUPED GUIDE ============ -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video" style="filter:brightness(.5)"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div></div>
+        <div class="sheet">
+          <div class="grab"></div>
+          <div class="search">🔍 चैनल या जॉनर खोजें</div>
+          <div class="glist">
+            <div class="ghead"><span>🎬 फिल्में</span><span class="cnt">42 ›</span></div>
+            <div class="ghead open"><span>📺 मनोरंजन</span><span class="cnt">38 ⌄</span></div>
+            <div class="crow"><span class="num">12</span><span class="tn"></span><div><div class="cn">Sony SAB</div><div class="cd">तारक मेहता…</div></div></div>
+            <div class="crow"><span class="num">13</span><span class="tn"></span><div><div class="cn">Star Bharat</div><div class="cd">धारावाहिक</div></div></div>
+            <div class="crow"><span class="num">14</span><span class="tn"></span><div><div class="cn">Colors</div><div class="cd">रियलिटी शो</div></div></div>
+            <div class="ghead"><span>📰 समाचार</span><span class="cnt">26 ›</span></div>
+            <div class="ghead"><span>🎵 संगीत</span><span class="cnt">22 ›</span></div>
+          </div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag">A3</span>
+        <h3>Genre-grouped guide, auto-opened</h3>
+        <p>Reuses the existing guide but regroups it under collapsible genre headers and auto-opens it on first launch. Directly fixes "I don't understand the guide" — still a list, not a menu.</p>
+        <div class="meta">
+          <span class="pill good">Reuses guide</span>
+          <span class="pill">2 taps</span>
+          <span class="pill warn">List, not menu</span>
+          <span class="pill">Effort: M</span>
+        </div>
+      </figcaption>
+    </figure>
+
+    <!-- ============ A4 CAROUSEL ============ -->
+    <figure>
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="video"></div>
+        <div class="topbar"><div class="logo">wiom<span>.tv</span></div></div>
+        <div class="skip">अभी नहीं ✕</div>
+        <div class="car">
+          <div class="cpeek l"></div>
+          <div class="cpeek r"></div>
+          <div class="ccard">
+            <div class="thumb"></div>
+            <div class="clive"><span class="dot"></span>LIVE · 42 चैनल</div>
+            <div class="play">▶</div>
+            <div class="cbody">
+              <div class="ce">🎬</div>
+              <div class="ct">फिल्में</div>
+              <div class="cs">अभी: सूर्यवंशम · Zee Cinema +41</div>
+            </div>
+          </div>
+          <div class="dots"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+          <div class="swipe">← स्वाइप करके जॉनर बदलें →</div>
+        </div>
+      </div></div>
+      <figcaption>
+        <span class="ctag">A4</span>
+        <h3>Genre carousel w/ live preview</h3>
+        <p>Swipeable cards, one genre each, showing a live thumbnail of a top channel. Most TV-native and visual — but multiple video previews risk bandwidth/perf on 2G–3G, and it's the heaviest build.</p>
+        <div class="meta">
+          <span class="pill good">Most visual</span>
+          <span class="pill warn">2G perf risk</span>
+          <span class="pill warn">Heavy build</span>
+          <span class="pill">Effort: L</span>
+        </div>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <div class="legend">
+    <h4>How to read these for the test</h4>
+    <p><b>A1</b> maximises comprehension-per-effort and gives the cleanest read on "did orienting them lift activation" → my pick for <b>Arm A</b>. <b>A2</b> is the low-friction fallback if A1's one-screen block hurts time-to-first-content. <b>A3</b> is the safe play if we'd rather fix the existing guide than add an overlay. <b>A4</b> is the aspirational version — revisit once we've confirmed orientation moves the metric and have headroom on performance. All four emit the same instrumentation: <b>intro_shown → genre_select → intro_complete</b> (vs <b>intro_skip</b>), so any of them slots straight into the measurement spec.</p>
+  </div>
+
+</body>
+</html>

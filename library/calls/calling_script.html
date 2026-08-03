@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiom TV — Customer Calling Script</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#D9008D; --brand-2:#443152; --brand-300:#FFB2E4; --brand-100:#FFE5F6;
+    --n900:#161021; --n700:#665E75; --n500:#A7A1B2; --n300:#D7D3E0; --n100:#F1EDF7; --white:#FAF9FC;
+    --green:#008043; --green-bg:#E1FAED; --red:#E01E00; --red-bg:#FFE9E5;
+    --amber:#FF8000; --amber-bg:#FFE6CC; --purple:#6D17CE; --purple-bg:#F1E5FF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--white); color:var(--n900);
+    font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:32px 24px 96px;}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(120deg,var(--brand) 0%,#b00074 100%);
+    color:#fff; border-radius:20px; padding:34px 34px 30px; margin-bottom:24px;
+    box-shadow:0 12px 30px -12px rgba(217,0,141,.45);
+  }
+  .hero .eyebrow{font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.85;}
+  .hero h1{margin:8px 0 6px; font-size:30px; font-weight:800; line-height:1.15;}
+  .hero p{margin:0; font-size:15px; opacity:.95; max-width:640px;}
+  .hero .arc{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .hero .arc span{
+    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.25);
+    padding:6px 12px; border-radius:999px; font-size:12.5px; font-weight:600;
+  }
+  .hero .arc span b{font-weight:800;}
+
+  /* Rules */
+  .rules{
+    background:var(--brand-100); border:1px solid var(--brand-300); border-radius:16px;
+    padding:22px 24px; margin-bottom:28px;
+  }
+  .rules h2{margin:0 0 4px; font-size:16px; color:var(--brand-2); display:flex; align-items:center; gap:8px;}
+  .rules .sub{font-size:12.5px; color:var(--n700); margin:0 0 14px;}
+  .rules ol{margin:0; padding-left:20px;}
+  .rules li{margin:7px 0; font-size:14px; color:var(--n900);}
+  .rules li b{color:var(--brand-2);}
+
+  /* Section */
+  .sec{margin-bottom:30px;}
+  .sec-head{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .sec-num{
+    flex:0 0 auto; width:34px; height:34px; border-radius:10px; background:var(--brand-2);
+    color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center;
+  }
+  .sec-title{font-size:19px; font-weight:800; color:var(--n900); margin:0; line-height:1.2;}
+  .sec-tag{font-size:12px; font-weight:600; color:var(--brand); display:block; margin-top:2px;}
+
+  /* Question card */
+  .q{
+    background:#fff; border:1px solid var(--n300); border-radius:14px;
+    padding:16px 18px; margin:10px 0; box-shadow:0 2px 8px -6px rgba(22,16,33,.25);
+  }
+  .q .en{font-size:15px; font-weight:600; color:var(--n900); margin:0;}
+  .q .hi{
+    font-family:'Noto Sans Devanagari',sans-serif; font-size:14.5px; color:var(--brand-2);
+    margin:7px 0 0; padding-top:7px; border-top:1px dashed var(--n300); font-weight:500;
+  }
+  .q .hi::before{content:"🗣 "; }
+
+  /* Listener note callout */
+  .note{
+    display:flex; gap:10px; align-items:flex-start;
+    background:var(--purple-bg); border-left:3px solid var(--purple); border-radius:8px;
+    padding:11px 14px; margin:10px 0 2px; font-size:13px; color:#3d2a5c;
+  }
+  .note b{color:var(--purple);}
+  .note .ico{flex:0 0 auto; font-size:15px; line-height:1.3;}
+  .captures{display:flex; flex-wrap:wrap; gap:6px; margin-top:11px; padding-top:9px; border-top:1px dashed var(--n300);}
+  .captures b{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--n500); align-self:center; margin-right:2px;}
+  .captures span{background:var(--brand-100); color:var(--brand-2); border:1px solid var(--brand-300); font-size:11px; font-weight:600; padding:2px 9px; border-radius:999px;}
+  .followup{font-size:12.5px; color:var(--purple); margin:8px 0 0; font-weight:500;}
+  .followup::before{content:"\21B3 follow-up · "; opacity:.7;}
+
+  /* Capture block */
+  .capture{
+    background:var(--green-bg); border:1px solid #b8ebcf; border-radius:16px;
+    padding:22px 24px; margin-top:34px;
+  }
+  .capture h2{margin:0 0 4px; font-size:17px; color:var(--green); display:flex; align-items:center; gap:8px;}
+  .capture .sub{font-size:12.5px; color:var(--n700); margin:0 0 14px;}
+  .capture ul{margin:0; padding-left:4px; list-style:none;}
+  .capture li{
+    font-size:14px; margin:9px 0; padding-left:30px; position:relative; color:var(--n900);
+  }
+  .capture li::before{
+    content:"☐"; position:absolute; left:0; top:-1px; font-size:18px; color:var(--green);
+  }
+  .capture li b{color:#0a5c33;}
+
+  /* CSV / sheet view */
+  .sheet-sec{margin-top:34px;}
+  .sheet-sec h2{margin:0 0 4px; font-size:17px; color:var(--brand-2); display:flex; align-items:center; gap:8px;}
+  .sheet-sec .sub{font-size:12.5px; color:var(--n700); margin:0 0 14px;}
+  .sheet-scroll{
+    overflow-x:auto; border:1px solid var(--n300); border-radius:14px;
+    box-shadow:0 2px 10px -6px rgba(22,16,33,.3); -webkit-overflow-scrolling:touch;
+  }
+  .sheet{border-collapse:separate; border-spacing:0; min-width:1700px; width:100%; font-size:12.5px;}
+  .sheet th, .sheet td{
+    padding:10px 12px; text-align:left; border-bottom:1px solid var(--n300);
+    border-right:1px solid var(--n300); vertical-align:top; white-space:nowrap;
+  }
+  .sheet thead th{
+    background:var(--brand-2); color:#fff; font-weight:600; position:sticky; top:0; z-index:2;
+    white-space:normal; min-width:140px;
+  }
+  .sheet thead th small{display:block; font-weight:400; opacity:.75; font-size:10.5px; margin-top:2px;}
+  .sheet tbody tr:nth-child(even) td{background:var(--n100);}
+  .sheet td.ex{white-space:normal; min-width:200px; color:var(--n700); font-style:italic;}
+  /* frozen first column */
+  .sheet th:first-child, .sheet td:first-child{
+    position:sticky; left:0; z-index:1; min-width:64px; box-shadow:1px 0 0 var(--n300);
+  }
+  .sheet thead th:first-child{z-index:3; background:#332544;}
+  .sheet tbody td:first-child{background:#fff; font-weight:700; color:var(--brand-2);}
+  .sheet tbody tr:nth-child(even) td:first-child{background:var(--n100);}
+  .sheet tr.example td{background:var(--brand-100)!important; color:#5c2348;}
+  .sheet tr.example td:first-child{background:var(--brand-100)!important;}
+  .sheet td.lc,.sheet th.lc{text-align:right; background:#FFF3FA;}
+  .sheet td.wc,.sheet th.wc{text-align:right; background:#F3ECFB;}
+  .sheet td.num,.sheet th.num{text-align:right; font-weight:600;}
+  .sheet tbody tr:nth-child(even) td.lc{background:#ffe9f5;}
+  .sheet tbody tr:nth-child(even) td.wc{background:#ebe1f7;}
+  .sheet thead th.lc{background:#7a2d5e;}
+  .sheet thead th.wc{background:#4d2f73;}
+  .sheet-hint{font-size:11.5px; color:var(--n500); margin:8px 2px 0; display:flex; align-items:center; gap:6px;}
+
+  .footer{margin-top:30px; text-align:center; font-size:12px; color:var(--n500);}
+
+  @media print{
+    body{background:#fff;}
+    .hero{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .q,.rules,.capture,.note,.hero{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">Wiom TV · Customer Calls</div>
+    <h1>"What's working well?"<br>Calling Script</h1>
+    <p>Find the <b>job</b> Wiom TV is hired to do — the need it fulfils and what users genuinely love — so we can go after the single biggest needle-moving JTBD.</p>
+    <div class="arc">
+      <span><b>JTBD</b> "Switch" interview</span>
+      <span>structured by the <b>Four Forces</b></span>
+      <span>asked with <b>Mom Test</b> discipline</span>
+    </div>
+  </div>
+
+  <!-- GOLDEN RULES -->
+  <div class="rules">
+    <h2>⚑ Golden rules — read before every call</h2>
+    <p class="sub">The discipline matters more than the questions. Break these and the data is noise.</p>
+    <ol>
+      <li><b>Past &amp; specific, never hypothetical.</b> "Tell me about the last time you watched" — not "would you watch more if…". Real memories are data; future opinions are noise.</li>
+      <li><b>Don't pitch, don't lead, don't sell.</b> The moment you explain or defend a feature, the answer is contaminated. Be a curious journalist.</li>
+      <li><b>Let silence work.</b> After they answer, wait. The second sentence is the honest one.</li>
+      <li><b>Dig on emotion &amp; effort.</b> When they light up ("bachche khush") or mention work they did (told a friend, removed cable), stop and ask <b>"why"</b> 2–3 times.</li>
+      <li><b>Anchor every claim to a moment.</b> "I watch daily" → "When exactly? What time? Who was in the room? What did you put on first?"</li>
+      <li><b>Write channel &amp; show names verbatim.</b> Exact titles are the strongest signal of the job.</li>
+    </ol>
+  </div>
+
+  <!-- CORE QUESTIONS -->
+  <div class="sec">
+    <div class="sec-head">
+      <div class="sec-num">Q</div>
+      <div><h3 class="sec-title">6 core questions <span class="sec-tag">lean flow · each bundles several probes · ~10–12 min</span></h3></div>
+    </div>
+    <div class="q">
+      <p class="en">Who all watch TV at home — and before Wiom TV, how did everyone watch TV / shows?</p>
+      <p class="hi">घर में TV कौन-कौन देखता है — और Wiom TV से पहले सब TV या शो कैसे देखते थे? (cable, mobile, YouTube?)</p>
+      <div class="captures"><b>captures</b><span>household</span><span>old way</span></div>
+    </div>
+    <div class="q">
+      <p class="en">Take me back to when you first got Wiom TV — what made you try it, and what were you hoping it would do for the family?</p>
+      <p class="hi">याद कीजिए जब पहली बार Wiom TV लिया — try करने की वजह क्या थी, और परिवार के लिए क्या उम्मीद थी?</p>
+      <div class="captures"><b>captures</b><span>push</span><span>pull</span><span>hoped-for job</span></div>
+    </div>
+    <div class="q">
+      <p class="en">Tell me about the last time you watched — when was it, who was in the room, what did you put on first, and what does everyone enjoy most? <i>(note channels verbatim)</i></p>
+      <p class="hi">पिछली बार जब देखा — कब था, कमरे में कौन था, सबसे पहले क्या लगाया, और सबको सबसे ज़्यादा क्या अच्छा लगता है? (channel के नाम लिखें)</p>
+      <div class="captures"><b>captures</b><span>who / when / what-first</span><span>loved channels</span><span>habit</span></div>
+    </div>
+    <div class="q">
+      <p class="en">What does Wiom TV let you do that you couldn't before — and why does that matter to you?</p>
+      <p class="hi">Wiom TV से ऐसा क्या कर पाते हैं जो पहले नहीं कर पाते थे — और वो आपके लिए क्यों ज़रूरी है?</p>
+      <div class="captures"><b>captures</b><span>the need</span><span>human outcome</span></div>
+    </div>
+    <div class="q">
+      <p class="en">If Wiom TV stopped working tomorrow, what would you do instead — and what would you miss the most?</p>
+      <p class="hi">अगर कल Wiom TV बंद हो जाए, तो उसकी जगह क्या करेंगे — और सबसे ज़्यादा किसकी कमी खलेगी?</p>
+      <p class="followup">Any worry that it might stop or change?  ·  कोई चिंता कि ये बंद/बदल सकता है?</p>
+      <div class="captures"><b>captures</b><span>competitor</span><span>importance</span><span>emotion</span><span>anxiety</span></div>
+    </div>
+    <div class="q">
+      <p class="en">Have you told anyone else about Wiom TV, or changed anything at home because of it — removed cable, moved the TV, bought something?</p>
+      <p class="hi">किसी और को Wiom TV के बारे में बताया, या इसकी वजह से घर में कुछ बदला — cable हटवाया, TV जगह बदली, कुछ खरीदा?</p>
+      <div class="captures"><b>captures</b><span>advocacy</span><span>costly action</span></div>
+    </div>
+    <div class="note"><span class="ico">💡</span><span>The job hides in <b>Q3</b> (who + when + what-first + the feeling word) and <b>Q5</b> (what they'd switch back to + emotion). Push <b>"why is that good for you?"</b> 2–3 times until you hit a human outcome.</span></div>
+  </div>
+
+  <!-- CLOSE -->
+  <div class="sec">
+    <div class="sec-head">
+      <div class="sec-num">✓</div>
+      <div><h3 class="sec-title">Close <span class="sec-tag">open-ended · catch the unexpected</span></h3></div>
+    </div>
+    <div class="q">
+      <p class="en">If you could add one thing to Wiom TV, what would it be? <i>(note it — don't promise anything)</i></p>
+      <p class="hi">अगर एक चीज़ Wiom TV में जोड़ सकते, तो क्या जोड़ते?</p>
+      <div class="captures"><b>captures</b><span>gap</span><span>magic wand</span></div>
+    </div>
+    <div class="q"><p class="en">Anything I didn't ask about that you want to tell me?</p><p class="hi">कुछ और जो मैंने नहीं पूछा पर आप बताना चाहें?</p></div>
+  </div>
+
+  <!-- CAPTURE -->
+  <div class="capture">
+    <h2>✓ After the call — capture immediately (3 min, while fresh)</h2>
+    <p class="sub">Log this for every call. Keep buckets emergent — don't pre-assign categories; themes get mined across all calls later.</p>
+    <ul>
+      <li><b>Job statement:</b> "When ___ (situation), I want to ___ (motivation), so I can ___ (outcome)."</li>
+      <li><b>Old way it replaced</b> + <b>what they'd switch back to</b> (the real competitor)</li>
+      <li><b>Channels / shows named</b> — verbatim</li>
+      <li><b>Strongest emotion word</b> they used (in their language)</li>
+      <li><b>2–3 raw verbatim quotes</b> — don't paraphrase</li>
+      <li><b>Push / Pull / Habit / Anxiety</b> — one line each</li>
+      <li><b>Who watches + when + what-first</b></li>
+    </ul>
+  </div>
+
+  <!-- CSV SHEET VIEW -->
+  <div class="sheet-sec">
+    <h2>▦ Nov-2025 cohort — monthly active detail</h2>
+    <p class="sub">Live behavioural lookup (62 users) from <code>clevertap/data/monthly_active_detail.csv</code>. <b>L·</b> = launches/month, <b>W·</b> = watch-minutes/month. Scroll sideways to see all months; phone column &amp; header stay pinned. Use it to look up a respondent's history while on the call.</p>
+    <div class="sheet-scroll">
+      <table class="sheet">
+        <thead>
+          <tr><th class="">phone</th><th class="">tv install</th><th class="">customer</th><th class="">plan type</th><th class="">last plan expiry</th><th class="">plan status</th><th class="num">recharges</th><th class="lc">Nov<small>launches</small></th><th class="lc">Dec<small>launches</small></th><th class="lc">Jan<small>launches</small></th><th class="lc">Feb<small>launches</small></th><th class="lc">Mar<small>launches</small></th><th class="lc">Apr<small>launches</small></th><th class="lc">May<small>launches</small></th><th class="lc">Jun<small>launches</small></th><th class="wc">Nov<small>watch min</small></th><th class="wc">Dec<small>watch min</small></th><th class="wc">Jan<small>watch min</small></th><th class="wc">Feb<small>watch min</small></th><th class="wc">Mar<small>watch min</small></th><th class="wc">Apr<small>watch min</small></th><th class="wc">May<small>watch min</small></th><th class="wc">Jun<small>watch min</small></th><th class="num">total launches</th><th class="num">total watch min</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="">+919418713092</td><td class="">2025-11-17</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">7</td><td class="lc">11</td><td class="lc">7</td><td class="lc">13</td><td class="lc">17</td><td class="lc">9</td><td class="lc">10</td><td class="lc">1</td><td class="wc">29</td><td class="wc">91</td><td class="wc">38</td><td class="wc">39</td><td class="wc">70</td><td class="wc">54</td><td class="wc">28</td><td class="wc">7</td><td class="num">75</td><td class="num">356</td></tr>
+          <tr><td class="">+917065944202</td><td class="">2025-11-10</td><td class="">Yes</td><td class="">Home</td><td class="">2026-07-02</td><td class="">active</td><td class="num">9</td><td class="lc">8</td><td class="lc">1</td><td class="lc">5</td><td class="lc">4</td><td class="lc">15</td><td class="lc">1</td><td class="lc">4</td><td class="lc">0</td><td class="wc">182</td><td class="wc">3</td><td class="wc">233</td><td class="wc">48</td><td class="wc">475</td><td class="wc">29</td><td class="wc">51</td><td class="wc">0</td><td class="num">38</td><td class="num">1021</td></tr>
+          <tr><td class="">+917978638546</td><td class="">2025-11-13</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">8</td><td class="lc">1</td><td class="lc">11</td><td class="lc">3</td><td class="lc">6</td><td class="lc">2</td><td class="lc">3</td><td class="lc">0</td><td class="wc">218</td><td class="wc">4</td><td class="wc">53</td><td class="wc">41</td><td class="wc">29</td><td class="wc">17</td><td class="wc">42</td><td class="wc">0</td><td class="num">34</td><td class="num">404</td></tr>
+          <tr><td class="">(anonymous)</td><td class="">2025-11-17</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">6</td><td class="lc">10</td><td class="lc">18</td><td class="lc">12</td><td class="lc">12</td><td class="lc">25</td><td class="lc">16</td><td class="lc">0</td><td class="wc">824</td><td class="wc">211</td><td class="wc">851</td><td class="wc">240</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="num">99</td><td class="num">2126</td></tr>
+          <tr><td class="">+919873062072</td><td class="">2025-11-17</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">10</td><td class="lc">54</td><td class="lc">44</td><td class="lc">18</td><td class="lc">44</td><td class="lc">23</td><td class="lc">40</td><td class="lc">2</td><td class="wc">316</td><td class="wc">2081</td><td class="wc">1047</td><td class="wc">799</td><td class="wc">1287</td><td class="wc">1312</td><td class="wc">532</td><td class="wc">16</td><td class="num">235</td><td class="num">7390</td></tr>
+          <tr><td class="">+918882523768</td><td class="">2025-11-29</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">1</td><td class="lc">18</td><td class="lc">30</td><td class="lc">12</td><td class="lc">19</td><td class="lc">9</td><td class="lc">9</td><td class="lc">4</td><td class="wc">4</td><td class="wc">361</td><td class="wc">748</td><td class="wc">276</td><td class="wc">202</td><td class="wc">63</td><td class="wc">111</td><td class="wc">24</td><td class="num">102</td><td class="num">1789</td></tr>
+          <tr><td class="">+918826885863</td><td class="">2025-11-16</td><td class="">Yes</td><td class="">WiomNet</td><td class="">2025-11-09</td><td class="">expired</td><td class="num">9</td><td class="lc">7</td><td class="lc">4</td><td class="lc">7</td><td class="lc">2</td><td class="lc">10</td><td class="lc">2</td><td class="lc">1</td><td class="lc">0</td><td class="wc">254</td><td class="wc">172</td><td class="wc">253</td><td class="wc">34</td><td class="wc">253</td><td class="wc">28</td><td class="wc">8</td><td class="wc">0</td><td class="num">33</td><td class="num">1002</td></tr>
+          <tr><td class="">+919711684794</td><td class="">2025-12-02</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-28</td><td class="">active</td><td class="num">8</td><td class="lc">12</td><td class="lc">13</td><td class="lc">10</td><td class="lc">9</td><td class="lc">22</td><td class="lc">8</td><td class="lc">9</td><td class="lc">0</td><td class="wc">465</td><td class="wc">367</td><td class="wc">216</td><td class="wc">56</td><td class="wc">289</td><td class="wc">130</td><td class="wc">171</td><td class="wc">0</td><td class="num">83</td><td class="num">1694</td></tr>
+          <tr><td class="">+918112519011</td><td class="">2025-11-13</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">6</td><td class="lc">1</td><td class="lc">3</td><td class="lc">3</td><td class="lc">2</td><td class="lc">3</td><td class="lc">2</td><td class="lc">0</td><td class="wc">85</td><td class="wc">3</td><td class="wc">49</td><td class="wc">3</td><td class="wc">8</td><td class="wc">30</td><td class="wc">3</td><td class="wc">0</td><td class="num">20</td><td class="num">181</td></tr>
+          <tr><td class="">+917248460691</td><td class="">2025-11-09</td><td class="">Yes</td><td class="">Home</td><td class="">2026-07-02</td><td class="">active</td><td class="num">8</td><td class="lc">4</td><td class="lc">13</td><td class="lc">12</td><td class="lc">14</td><td class="lc">27</td><td class="lc">25</td><td class="lc">25</td><td class="lc">0</td><td class="wc">298</td><td class="wc">846</td><td class="wc">71</td><td class="wc">69</td><td class="wc">102</td><td class="wc">305</td><td class="wc">91</td><td class="wc">0</td><td class="num">120</td><td class="num">1782</td></tr>
+          <tr><td class="">+917763023981</td><td class=""></td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">199</td><td class="lc">505</td><td class="lc">6</td><td class="lc">1</td><td class="lc">9</td><td class="lc">7</td><td class="lc">26</td><td class="lc">1</td><td class="wc">1635</td><td class="wc">1365</td><td class="wc">62</td><td class="wc">49</td><td class="wc">121</td><td class="wc">17</td><td class="wc">65</td><td class="wc">40</td><td class="num">754</td><td class="num">3354</td></tr>
+          <tr><td class="">+918433066601</td><td class="">2026-05-13</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">17</td><td class="lc">25</td><td class="lc">24</td><td class="lc">10</td><td class="lc">14</td><td class="lc">10</td><td class="lc">18</td><td class="lc">2</td><td class="wc">135</td><td class="wc">99</td><td class="wc">174</td><td class="wc">33</td><td class="wc">68</td><td class="wc">18</td><td class="wc">46</td><td class="wc">4</td><td class="num">120</td><td class="num">577</td></tr>
+          <tr><td class="">+918887671317</td><td class="">2025-10-27</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">7</td><td class="lc">15</td><td class="lc">8</td><td class="lc">5</td><td class="lc">24</td><td class="lc">24</td><td class="lc">32</td><td class="lc">11</td><td class="wc">249</td><td class="wc">381</td><td class="wc">197</td><td class="wc">115</td><td class="wc">443</td><td class="wc">607</td><td class="wc">1203</td><td class="wc">215</td><td class="num">126</td><td class="num">3410</td></tr>
+          <tr><td class="">+919837156716</td><td class="">2026-05-26</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">16</td><td class="lc">20</td><td class="lc">17</td><td class="lc">5</td><td class="lc">6</td><td class="lc">3</td><td class="lc">2</td><td class="lc">0</td><td class="wc">458</td><td class="wc">199</td><td class="wc">237</td><td class="wc">36</td><td class="wc">41</td><td class="wc">40</td><td class="wc">42</td><td class="wc">0</td><td class="num">69</td><td class="num">1053</td></tr>
+          <tr><td class="">+919717260140</td><td class="">2025-11-26</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-20</td><td class="">active</td><td class="num">8</td><td class="lc">11</td><td class="lc">48</td><td class="lc">70</td><td class="lc">73</td><td class="lc">95</td><td class="lc">95</td><td class="lc">87</td><td class="lc">12</td><td class="wc">291</td><td class="wc">966</td><td class="wc">2643</td><td class="wc">1740</td><td class="wc">3710</td><td class="wc">3125</td><td class="wc">2685</td><td class="wc">271</td><td class="num">491</td><td class="num">15431</td></tr>
+          <tr><td class="">+917011368621</td><td class="">2025-11-25</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-16</td><td class="">active</td><td class="num">28</td><td class="lc">11</td><td class="lc">6</td><td class="lc">7</td><td class="lc">7</td><td class="lc">41</td><td class="lc">44</td><td class="lc">54</td><td class="lc">7</td><td class="wc">223</td><td class="wc">103</td><td class="wc">140</td><td class="wc">161</td><td class="wc">1198</td><td class="wc">1329</td><td class="wc">1534</td><td class="wc">171</td><td class="num">177</td><td class="num">4859</td></tr>
+          <tr><td class="">+918585988280</td><td class="">2025-11-23</td><td class="">Yes</td><td class="">Home</td><td class="">2026-05-20</td><td class="">expired</td><td class="num">7</td><td class="lc">13</td><td class="lc">48</td><td class="lc">30</td><td class="lc">33</td><td class="lc">47</td><td class="lc">12</td><td class="lc">4</td><td class="lc">2</td><td class="wc">932</td><td class="wc">2490</td><td class="wc">829</td><td class="wc">907</td><td class="wc">2475</td><td class="wc">243</td><td class="wc">41</td><td class="wc">6</td><td class="num">189</td><td class="num">7923</td></tr>
+          <tr><td class="">+919162387565</td><td class="">2025-12-08</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">12</td><td class="lc">11</td><td class="lc">12</td><td class="lc">10</td><td class="lc">2</td><td class="lc">1</td><td class="lc">2</td><td class="lc">0</td><td class="wc">129</td><td class="wc">13</td><td class="wc">52</td><td class="wc">22</td><td class="wc">5</td><td class="wc">2</td><td class="wc">4</td><td class="wc">0</td><td class="num">50</td><td class="num">227</td></tr>
+          <tr><td class="">+919911334587</td><td class="">2025-11-01</td><td class="">Yes</td><td class="">Home</td><td class="">2026-01-23</td><td class="">expired</td><td class="num">3</td><td class="lc">13</td><td class="lc">23</td><td class="lc">30</td><td class="lc">31</td><td class="lc">33</td><td class="lc">15</td><td class="lc">16</td><td class="lc">1</td><td class="wc">729</td><td class="wc">472</td><td class="wc">559</td><td class="wc">1049</td><td class="wc">713</td><td class="wc">175</td><td class="wc">215</td><td class="wc">0</td><td class="num">162</td><td class="num">3912</td></tr>
+          <tr><td class="">+918750967997</td><td class="">2026-03-22</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-28</td><td class="">active</td><td class="num">23</td><td class="lc">12</td><td class="lc">12</td><td class="lc">12</td><td class="lc">23</td><td class="lc">22</td><td class="lc">10</td><td class="lc">10</td><td class="lc">1</td><td class="wc">357</td><td class="wc">70</td><td class="wc">128</td><td class="wc">214</td><td class="wc">159</td><td class="wc">56</td><td class="wc">53</td><td class="wc">0</td><td class="num">102</td><td class="num">1037</td></tr>
+          <tr><td class="">+918376043209</td><td class="">2025-11-22</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-06</td><td class="">active</td><td class="num">7</td><td class="lc">3</td><td class="lc">17</td><td class="lc">12</td><td class="lc">6</td><td class="lc">6</td><td class="lc">3</td><td class="lc">7</td><td class="lc">0</td><td class="wc">22</td><td class="wc">349</td><td class="wc">345</td><td class="wc">177</td><td class="wc">74</td><td class="wc">12</td><td class="wc">326</td><td class="wc">0</td><td class="num">54</td><td class="num">1305</td></tr>
+          <tr><td class="">+919711357425</td><td class="">2026-05-05</td><td class="">Yes</td><td class="">Home</td><td class="">2025-12-06</td><td class="">expired</td><td class="num">11</td><td class="lc">4</td><td class="lc">1</td><td class="lc">2</td><td class="lc">9</td><td class="lc">2</td><td class="lc">1</td><td class="lc">5</td><td class="lc">0</td><td class="wc">149</td><td class="wc">1</td><td class="wc">20</td><td class="wc">131</td><td class="wc">65</td><td class="wc">14</td><td class="wc">78</td><td class="wc">0</td><td class="num">24</td><td class="num">458</td></tr>
+          <tr><td class="">(anonymous)</td><td class="">2025-11-19</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">12</td><td class="lc">13</td><td class="lc">8</td><td class="lc">12</td><td class="lc">27</td><td class="lc">4</td><td class="lc">1</td><td class="lc">0</td><td class="wc">439</td><td class="wc">587</td><td class="wc">283</td><td class="wc">428</td><td class="wc">2434</td><td class="wc">99</td><td class="wc">28</td><td class="wc">0</td><td class="num">77</td><td class="num">4298</td></tr>
+          <tr><td class="">+917078924649</td><td class="">2025-11-15</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-20</td><td class="">active</td><td class="num">18</td><td class="lc">57</td><td class="lc">43</td><td class="lc">37</td><td class="lc">26</td><td class="lc">7</td><td class="lc">6</td><td class="lc">3</td><td class="lc">0</td><td class="wc">1369</td><td class="wc">1003</td><td class="wc">824</td><td class="wc">571</td><td class="wc">28</td><td class="wc">14</td><td class="wc">16</td><td class="wc">0</td><td class="num">179</td><td class="num">3825</td></tr>
+          <tr><td class="">+919312038414</td><td class="">2026-06-03</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">3</td><td class="lc">26</td><td class="lc">28</td><td class="lc">50</td><td class="lc">58</td><td class="lc">17</td><td class="lc">24</td><td class="lc">8</td><td class="wc">297</td><td class="wc">541</td><td class="wc">1094</td><td class="wc">1690</td><td class="wc">2269</td><td class="wc">208</td><td class="wc">240</td><td class="wc">26</td><td class="num">214</td><td class="num">6365</td></tr>
+          <tr><td class="">+919555383774</td><td class="">2025-11-07</td><td class="">Yes</td><td class="">Home</td><td class="">2025-06-18</td><td class="">expired</td><td class="num">1</td><td class="lc">26</td><td class="lc">15</td><td class="lc">25</td><td class="lc">61</td><td class="lc">87</td><td class="lc">55</td><td class="lc">41</td><td class="lc">5</td><td class="wc">767</td><td class="wc">167</td><td class="wc">433</td><td class="wc">811</td><td class="wc">1394</td><td class="wc">904</td><td class="wc">683</td><td class="wc">61</td><td class="num">315</td><td class="num">5220</td></tr>
+          <tr><td class="">+917065161440</td><td class="">2026-04-18</td><td class="">Yes</td><td class="">Home</td><td class="">2026-01-30</td><td class="">expired</td><td class="num">3</td><td class="lc">3</td><td class="lc">4</td><td class="lc">3</td><td class="lc">7</td><td class="lc">3</td><td class="lc">2</td><td class="lc">1</td><td class="lc">0</td><td class="wc">50</td><td class="wc">90</td><td class="wc">127</td><td class="wc">77</td><td class="wc">52</td><td class="wc">6</td><td class="wc">27</td><td class="wc">0</td><td class="num">23</td><td class="num">429</td></tr>
+          <tr><td class="">+918130545519</td><td class="">2025-10-31</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-27</td><td class="">active</td><td class="num">9</td><td class="lc">35</td><td class="lc">26</td><td class="lc">87</td><td class="lc">50</td><td class="lc">93</td><td class="lc">76</td><td class="lc">88</td><td class="lc">22</td><td class="wc">2186</td><td class="wc">1409</td><td class="wc">3855</td><td class="wc">2460</td><td class="wc">5728</td><td class="wc">3987</td><td class="wc">3728</td><td class="wc">862</td><td class="num">477</td><td class="num">24215</td></tr>
+          <tr><td class="">+918700562117</td><td class="">2025-11-01</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">46</td><td class="lc">50</td><td class="lc">11</td><td class="lc">3</td><td class="lc">3</td><td class="lc">3</td><td class="lc">4</td><td class="lc">0</td><td class="wc">2110</td><td class="wc">1504</td><td class="wc">169</td><td class="wc">122</td><td class="wc">51</td><td class="wc">71</td><td class="wc">31</td><td class="wc">0</td><td class="num">120</td><td class="num">4058</td></tr>
+          <tr><td class="">+917042697611</td><td class="">2025-11-09</td><td class="">Yes</td><td class="">Home</td><td class="">2026-07-02</td><td class="">active</td><td class="num">8</td><td class="lc">2</td><td class="lc">1</td><td class="lc">3</td><td class="lc">1</td><td class="lc">7</td><td class="lc">7</td><td class="lc">4</td><td class="lc">1</td><td class="wc">9</td><td class="wc">10</td><td class="wc">600</td><td class="wc">7</td><td class="wc">156</td><td class="wc">113</td><td class="wc">3</td><td class="wc">0</td><td class="num">26</td><td class="num">898</td></tr>
+          <tr><td class="">+917988492869</td><td class="">2026-01-25</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">6</td><td class="lc">11</td><td class="lc">4</td><td class="lc">5</td><td class="lc">4</td><td class="lc">3</td><td class="lc">12</td><td class="lc">2</td><td class="wc">55</td><td class="wc">83</td><td class="wc">35</td><td class="wc">31</td><td class="wc">8</td><td class="wc">20</td><td class="wc">108</td><td class="wc">6</td><td class="num">47</td><td class="num">346</td></tr>
+          <tr><td class="">+919911679071</td><td class="">2025-11-14</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">2</td><td class="lc">2</td><td class="lc">5</td><td class="lc">4</td><td class="lc">19</td><td class="lc">4</td><td class="lc">1</td><td class="lc">0</td><td class="wc">321</td><td class="wc">152</td><td class="wc">118</td><td class="wc">197</td><td class="wc">539</td><td class="wc">15</td><td class="wc">3</td><td class="wc">0</td><td class="num">37</td><td class="num">1345</td></tr>
+          <tr><td class="">+918448120665</td><td class="">2025-10-29</td><td class="">Yes</td><td class="">Home</td><td class="">2026-05-18</td><td class="">expired</td><td class="num">12</td><td class="lc">23</td><td class="lc">18</td><td class="lc">11</td><td class="lc">12</td><td class="lc">21</td><td class="lc">11</td><td class="lc">7</td><td class="lc">0</td><td class="wc">1844</td><td class="wc">429</td><td class="wc">570</td><td class="wc">436</td><td class="wc">685</td><td class="wc">210</td><td class="wc">116</td><td class="wc">0</td><td class="num">103</td><td class="num">4290</td></tr>
+          <tr><td class="">+919756629894</td><td class=""></td><td class="">Yes</td><td class="">Home</td><td class="">2026-07-07</td><td class="">active</td><td class="num">8</td><td class="lc">22</td><td class="lc">13</td><td class="lc">3</td><td class="lc">13</td><td class="lc">31</td><td class="lc">24</td><td class="lc">22</td><td class="lc">6</td><td class="wc">361</td><td class="wc">131</td><td class="wc">39</td><td class="wc">284</td><td class="wc">1637</td><td class="wc">593</td><td class="wc">767</td><td class="wc">205</td><td class="num">134</td><td class="num">4017</td></tr>
+          <tr><td class="">+918269052577</td><td class="">2026-05-11</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">69</td><td class="lc">84</td><td class="lc">42</td><td class="lc">14</td><td class="lc">1</td><td class="lc">1</td><td class="lc">1</td><td class="lc">0</td><td class="wc">49</td><td class="wc">56</td><td class="wc">28</td><td class="wc">9</td><td class="wc">1</td><td class="wc">2</td><td class="wc">2</td><td class="wc">0</td><td class="num">212</td><td class="num">147</td></tr>
+          <tr><td class="">+917532802327</td><td class="">2025-11-12</td><td class="">Yes</td><td class="">Home</td><td class="">2026-12-22</td><td class="">active</td><td class="num">1</td><td class="lc">10</td><td class="lc">8</td><td class="lc">30</td><td class="lc">13</td><td class="lc">26</td><td class="lc">33</td><td class="lc">31</td><td class="lc">9</td><td class="wc">76</td><td class="wc">185</td><td class="wc">293</td><td class="wc">86</td><td class="wc">322</td><td class="wc">218</td><td class="wc">239</td><td class="wc">75</td><td class="num">160</td><td class="num">1494</td></tr>
+          <tr><td class="">+918077765753</td><td class="">2025-11-17</td><td class="">Yes</td><td class="">Home</td><td class="">2026-05-02</td><td class="">expired</td><td class="num">6</td><td class="lc">25</td><td class="lc">39</td><td class="lc">12</td><td class="lc">12</td><td class="lc">23</td><td class="lc">41</td><td class="lc">47</td><td class="lc">2</td><td class="wc">215</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="wc">0</td><td class="num">201</td><td class="num">215</td></tr>
+          <tr><td class="">+917042428867</td><td class="">2026-01-10</td><td class="">Yes</td><td class="">WiomNet</td><td class="">2025-12-29</td><td class="">expired</td><td class="num">1</td><td class="lc">6</td><td class="lc">8</td><td class="lc">8</td><td class="lc">4</td><td class="lc">5</td><td class="lc">9</td><td class="lc">2</td><td class="lc">0</td><td class="wc">288</td><td class="wc">448</td><td class="wc">456</td><td class="wc">151</td><td class="wc">167</td><td class="wc">266</td><td class="wc">11</td><td class="wc">0</td><td class="num">42</td><td class="num">1787</td></tr>
+          <tr><td class="">+919810538011</td><td class="">2025-11-10</td><td class="">Yes</td><td class="">Home</td><td class="">2026-04-14</td><td class="">expired</td><td class="num">24</td><td class="lc">6</td><td class="lc">13</td><td class="lc">7</td><td class="lc">1</td><td class="lc">15</td><td class="lc">16</td><td class="lc">19</td><td class="lc">5</td><td class="wc">187</td><td class="wc">290</td><td class="wc">129</td><td class="wc">13</td><td class="wc">408</td><td class="wc">361</td><td class="wc">431</td><td class="wc">113</td><td class="num">82</td><td class="num">1932</td></tr>
+          <tr><td class="">+919968544652</td><td class="">2025-11-22</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-10</td><td class="">active</td><td class="num">13</td><td class="lc">12</td><td class="lc">29</td><td class="lc">25</td><td class="lc">31</td><td class="lc">27</td><td class="lc">29</td><td class="lc">36</td><td class="lc">0</td><td class="wc">139</td><td class="wc">768</td><td class="wc">667</td><td class="wc">1489</td><td class="wc">1210</td><td class="wc">1330</td><td class="wc">1915</td><td class="wc">0</td><td class="num">189</td><td class="num">7518</td></tr>
+          <tr><td class="">+919386331444</td><td class="">2026-04-05</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">25</td><td class="lc">20</td><td class="lc">4</td><td class="lc">3</td><td class="lc">1</td><td class="lc">5</td><td class="lc">3</td><td class="lc">0</td><td class="wc">265</td><td class="wc">792</td><td class="wc">26</td><td class="wc">1027</td><td class="wc">4</td><td class="wc">48</td><td class="wc">11</td><td class="wc">0</td><td class="num">61</td><td class="num">2173</td></tr>
+          <tr><td class="">+917065495366</td><td class="">2025-11-28</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-10</td><td class="">active</td><td class="num">7</td><td class="lc">2</td><td class="lc">3</td><td class="lc">1</td><td class="lc">1</td><td class="lc">10</td><td class="lc">2</td><td class="lc">2</td><td class="lc">1</td><td class="wc">24</td><td class="wc">63</td><td class="wc">0</td><td class="wc">43</td><td class="wc">204</td><td class="wc">51</td><td class="wc">95</td><td class="wc">20</td><td class="num">22</td><td class="num">500</td></tr>
+          <tr><td class="">+919917744817</td><td class="">2025-11-14</td><td class="">Yes</td><td class="">Home</td><td class="">2025-11-22</td><td class="">expired</td><td class="num">6</td><td class="lc">15</td><td class="lc">5</td><td class="lc">23</td><td class="lc">6</td><td class="lc">39</td><td class="lc">41</td><td class="lc">38</td><td class="lc">2</td><td class="wc">265</td><td class="wc">23</td><td class="wc">326</td><td class="wc">195</td><td class="wc">317</td><td class="wc">340</td><td class="wc">382</td><td class="wc">39</td><td class="num">169</td><td class="num">1887</td></tr>
+          <tr><td class="">+919990119921</td><td class="">2026-03-29</td><td class="">Yes</td><td class="">WiomNet</td><td class="">2024-02-01</td><td class="">expired</td><td class="num">1</td><td class="lc">4</td><td class="lc">5</td><td class="lc">3</td><td class="lc">3</td><td class="lc">4</td><td class="lc">3</td><td class="lc">1</td><td class="lc">0</td><td class="wc">88</td><td class="wc">124</td><td class="wc">34</td><td class="wc">12</td><td class="wc">30</td><td class="wc">38</td><td class="wc">12</td><td class="wc">0</td><td class="num">23</td><td class="num">338</td></tr>
+          <tr><td class="">+917506482855</td><td class="">2025-11-04</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-29</td><td class="">active</td><td class="num">11</td><td class="lc">17</td><td class="lc">14</td><td class="lc">12</td><td class="lc">12</td><td class="lc">25</td><td class="lc">21</td><td class="lc">7</td><td class="lc">4</td><td class="wc">438</td><td class="wc">352</td><td class="wc">208</td><td class="wc">255</td><td class="wc">398</td><td class="wc">314</td><td class="wc">154</td><td class="wc">41</td><td class="num">112</td><td class="num">2160</td></tr>
+          <tr><td class="">+919702745802</td><td class="">2025-11-27</td><td class="">Yes</td><td class="">Home</td><td class="">2025-12-25</td><td class="">expired</td><td class="num">1</td><td class="lc">8</td><td class="lc">49</td><td class="lc">15</td><td class="lc">5</td><td class="lc">2</td><td class="lc">1</td><td class="lc">1</td><td class="lc">0</td><td class="wc">122</td><td class="wc">1272</td><td class="wc">343</td><td class="wc">78</td><td class="wc">17</td><td class="wc">3</td><td class="wc">14</td><td class="wc">0</td><td class="num">81</td><td class="num">1849</td></tr>
+          <tr><td class="">+918743025833</td><td class="">2025-11-21</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-30</td><td class="">active</td><td class="num">8</td><td class="lc">1</td><td class="lc">3</td><td class="lc">2</td><td class="lc">3</td><td class="lc">1</td><td class="lc">1</td><td class="lc">1</td><td class="lc">0</td><td class="wc">9</td><td class="wc">29</td><td class="wc">11</td><td class="wc">4</td><td class="wc">15</td><td class="wc">9</td><td class="wc">3</td><td class="wc">0</td><td class="num">12</td><td class="num">80</td></tr>
+          <tr><td class="">+919311331395</td><td class="">2026-05-05</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">10</td><td class="lc">32</td><td class="lc">17</td><td class="lc">13</td><td class="lc">8</td><td class="lc">3</td><td class="lc">1</td><td class="lc">0</td><td class="wc">161</td><td class="wc">121</td><td class="wc">76</td><td class="wc">21</td><td class="wc">41</td><td class="wc">4</td><td class="wc">1</td><td class="wc">0</td><td class="num">84</td><td class="num">425</td></tr>
+          <tr><td class="">+919563706918</td><td class="">2026-01-06</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">4</td><td class="lc">6</td><td class="lc">8</td><td class="lc">2</td><td class="lc">1</td><td class="lc">1</td><td class="lc">2</td><td class="lc">0</td><td class="wc">53</td><td class="wc">37</td><td class="wc">14</td><td class="wc">8</td><td class="wc">7</td><td class="wc">3</td><td class="wc">2</td><td class="wc">0</td><td class="num">24</td><td class="num">124</td></tr>
+          <tr><td class="">+917990942513</td><td class="">2026-01-22</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">6</td><td class="lc">4</td><td class="lc">14</td><td class="lc">11</td><td class="lc">26</td><td class="lc">7</td><td class="lc">1</td><td class="lc">0</td><td class="wc">45</td><td class="wc">11</td><td class="wc">77</td><td class="wc">481</td><td class="wc">412</td><td class="wc">45</td><td class="wc">22</td><td class="wc">0</td><td class="num">69</td><td class="num">1093</td></tr>
+          <tr><td class="">+918755576641</td><td class="">2026-05-17</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">1</td><td class="lc">4</td><td class="lc">11</td><td class="lc">2</td><td class="lc">3</td><td class="lc">3</td><td class="lc">1</td><td class="lc">0</td><td class="wc">13</td><td class="wc">12</td><td class="wc">77</td><td class="wc">4</td><td class="wc">12</td><td class="wc">15</td><td class="wc">5</td><td class="wc">0</td><td class="num">25</td><td class="num">138</td></tr>
+          <tr><td class="">+919451647876</td><td class="">2025-11-25</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-30</td><td class="">active</td><td class="num">8</td><td class="lc">11</td><td class="lc">43</td><td class="lc">13</td><td class="lc">13</td><td class="lc">30</td><td class="lc">23</td><td class="lc">29</td><td class="lc">0</td><td class="wc">1492</td><td class="wc">7553</td><td class="wc">2375</td><td class="wc">1280</td><td class="wc">4246</td><td class="wc">2450</td><td class="wc">1447</td><td class="wc">0</td><td class="num">162</td><td class="num">20843</td></tr>
+          <tr><td class="">+918755070673</td><td class="">2025-10-27</td><td class="">Yes</td><td class="">Home</td><td class="">2026-04-12</td><td class="">expired</td><td class="num">6</td><td class="lc">2</td><td class="lc">3</td><td class="lc">12</td><td class="lc">5</td><td class="lc">25</td><td class="lc">8</td><td class="lc">2</td><td class="lc">4</td><td class="wc">82</td><td class="wc">39</td><td class="wc">229</td><td class="wc">83</td><td class="wc">1734</td><td class="wc">166</td><td class="wc">82</td><td class="wc">87</td><td class="num">61</td><td class="num">2502</td></tr>
+          <tr><td class="">+918742983682</td><td class="">2025-11-23</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">1</td><td class="lc">9</td><td class="lc">3</td><td class="lc">1</td><td class="lc">3</td><td class="lc">1</td><td class="lc">1</td><td class="lc">1</td><td class="wc">1</td><td class="wc">46</td><td class="wc">39</td><td class="wc">1</td><td class="wc">3</td><td class="wc">13</td><td class="wc">3</td><td class="wc">1</td><td class="num">20</td><td class="num">107</td></tr>
+          <tr><td class="">+919999310939</td><td class="">2025-11-03</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-14</td><td class="">active</td><td class="num">16</td><td class="lc">15</td><td class="lc">17</td><td class="lc">10</td><td class="lc">5</td><td class="lc">13</td><td class="lc">14</td><td class="lc">5</td><td class="lc">1</td><td class="wc">508</td><td class="wc">303</td><td class="wc">162</td><td class="wc">63</td><td class="wc">344</td><td class="wc">222</td><td class="wc">34</td><td class="wc">12</td><td class="num">80</td><td class="num">1648</td></tr>
+          <tr><td class="">+919354990896</td><td class="">2025-10-30</td><td class="">Yes</td><td class="">WiomNet</td><td class="">2025-07-09</td><td class="">expired</td><td class="num">1</td><td class="lc">7</td><td class="lc">18</td><td class="lc">18</td><td class="lc">11</td><td class="lc">30</td><td class="lc">28</td><td class="lc">8</td><td class="lc">3</td><td class="wc">307</td><td class="wc">223</td><td class="wc">798</td><td class="wc">139</td><td class="wc">702</td><td class="wc">464</td><td class="wc">112</td><td class="wc">34</td><td class="num">123</td><td class="num">2779</td></tr>
+          <tr><td class="">+919411650238</td><td class="">2025-11-02</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">2</td><td class="lc">6</td><td class="lc">4</td><td class="lc">1</td><td class="lc">1</td><td class="lc">3</td><td class="lc">3</td><td class="lc">0</td><td class="wc">132</td><td class="wc">88</td><td class="wc">59</td><td class="wc">22</td><td class="wc">19</td><td class="wc">38</td><td class="wc">100</td><td class="wc">0</td><td class="num">20</td><td class="num">458</td></tr>
+          <tr><td class="">+919810303419</td><td class="">2025-10-28</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">13</td><td class="lc">9</td><td class="lc">1</td><td class="lc">1</td><td class="lc">2</td><td class="lc">1</td><td class="lc">3</td><td class="lc">0</td><td class="wc">3763</td><td class="wc">329</td><td class="wc">32</td><td class="wc">1</td><td class="wc">34</td><td class="wc">4</td><td class="wc">8</td><td class="wc">0</td><td class="num">30</td><td class="num">4171</td></tr>
+          <tr><td class="">+919718587035</td><td class="">2025-10-28</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">22</td><td class="lc">50</td><td class="lc">32</td><td class="lc">22</td><td class="lc">17</td><td class="lc">21</td><td class="lc">26</td><td class="lc">7</td><td class="wc">3417</td><td class="wc">1559</td><td class="wc">2109</td><td class="wc">1745</td><td class="wc">877</td><td class="wc">585</td><td class="wc">1992</td><td class="wc">673</td><td class="num">197</td><td class="num">12957</td></tr>
+          <tr><td class="">+919711356510</td><td class="">2025-11-03</td><td class="">Yes</td><td class="">Home</td><td class="">2026-06-15</td><td class="">active</td><td class="num">9</td><td class="lc">13</td><td class="lc">11</td><td class="lc">4</td><td class="lc">4</td><td class="lc">14</td><td class="lc">12</td><td class="lc">11</td><td class="lc">2</td><td class="wc">385</td><td class="wc">263</td><td class="wc">340</td><td class="wc">141</td><td class="wc">535</td><td class="wc">253</td><td class="wc">466</td><td class="wc">5</td><td class="num">71</td><td class="num">2388</td></tr>
+          <tr><td class="">+919990232996</td><td class="">2025-11-18</td><td class="">Yes</td><td class="">Home</td><td class="">2026-04-01</td><td class="">expired</td><td class="num">5</td><td class="lc">12</td><td class="lc">13</td><td class="lc">10</td><td class="lc">8</td><td class="lc">7</td><td class="lc">4</td><td class="lc">13</td><td class="lc">6</td><td class="wc">584</td><td class="wc">568</td><td class="wc">262</td><td class="wc">364</td><td class="wc">272</td><td class="wc">64</td><td class="wc">216</td><td class="wc">122</td><td class="num">73</td><td class="num">2452</td></tr>
+          <tr><td class="">+919795137313</td><td class="">2025-11-02</td><td class="">No</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="num">0</td><td class="lc">10</td><td class="lc">24</td><td class="lc">24</td><td class="lc">17</td><td class="lc">29</td><td class="lc">11</td><td class="lc">13</td><td class="lc">3</td><td class="wc">254</td><td class="wc">515</td><td class="wc">711</td><td class="wc">392</td><td class="wc">620</td><td class="wc">255</td><td class="wc">222</td><td class="wc">61</td><td class="num">131</td><td class="num">3030</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sheet-hint">↔ Scroll horizontally · phone column &amp; header pinned · pink-tint = launches, blue-tint = watch-minutes</p>
+  </div>
+
+  <div class="footer">Wiom TV · EiR Mission · Customer Calls sub-project — start from what's loved, find the job.</div>
+
+</div>
+</body>
+</html>

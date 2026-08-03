@@ -1,0 +1,195 @@
+<title>Wiom TV — news demand, one slide</title>
+<style>
+  @page{size:1920px 1080px; margin:0}
+  *{box-sizing:border-box; margin:0; padding:0}
+  :root{
+    --bg:#161021; --card:#241C31; --ink:#FAF9FC; --muted:#A7A1B2; --faint:#7E7690;
+    --rule:#443152; --accent:#FF5FB8; --news:#F53FA5; --rest:#A06BFF;
+    --grid:rgba(250,249,252,.10);
+  }
+  html,body{width:1920px; height:1080px; overflow:hidden}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; flex-direction:column;
+  }
+  .mono{font-family:ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace; font-variant-numeric:tabular-nums}
+
+  /* accent hairline at very top */
+  .topbar{height:7px; background:linear-gradient(90deg,#D9008D 0%,#FF5FB8 42%,#A06BFF 100%); flex:0 0 auto}
+
+  header{padding:38px 76px 22px; flex:0 0 auto}
+  .eyebrow{
+    font-family:ui-monospace,Consolas,monospace; font-size:19px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:16px;
+  }
+  .eyebrow span{color:var(--faint); font-weight:400; letter-spacing:.14em}
+  h1{
+    font-size:60px; line-height:1.07; font-weight:700; letter-spacing:-.028em;
+    max-width:26ch;
+  }
+  h1 em{font-style:normal; color:var(--accent)}
+  .sub{margin-top:14px; font-size:25px; line-height:1.42; color:var(--muted); max-width:92ch}
+  .sub b{color:var(--ink); font-weight:700}
+
+  main{flex:1 1 auto; display:grid; grid-template-columns:1180px 1fr; gap:34px; padding:0 76px; min-height:0}
+
+  /* chart panel */
+  .panel{background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:26px 28px 20px; display:flex; flex-direction:column}
+  .ptop{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:14px}
+  .ptitle{font-size:23px; font-weight:700; letter-spacing:-.01em}
+  .psub{font-size:16px; color:var(--muted); margin-top:4px}
+  .legend{display:flex; gap:22px; font-size:17px; color:var(--muted); white-space:nowrap}
+  .legend span{display:inline-flex; align-items:center; gap:9px}
+  .sw{width:15px; height:15px; border-radius:3px; display:block}
+
+  /* kpi rail */
+  .rail{display:flex; flex-direction:column; gap:14px}
+  .kpi{
+    background:var(--card); border:1px solid var(--rule); border-radius:10px;
+    padding:18px 24px; display:flex; align-items:baseline; gap:20px; flex:1;
+  }
+  .kpi .v{font-family:ui-monospace,Consolas,monospace; font-size:52px; font-weight:700; letter-spacing:-.03em; color:var(--accent); line-height:1; min-width:190px}
+  .kpi .t{display:flex; flex-direction:column; gap:3px}
+  .kpi .t b{font-size:22px; font-weight:700; line-height:1.2}
+  .kpi .t span{font-size:17px; color:var(--muted); font-family:ui-monospace,Consolas,monospace}
+  .kpi.flat{border-color:var(--rule); background:transparent}
+  .kpi.flat .v{color:var(--faint)}
+  .kpi.flat .t b{color:var(--muted)}
+
+  footer{
+    flex:0 0 auto; padding:20px 76px 26px; display:flex; justify-content:space-between;
+    align-items:center; gap:40px;
+  }
+  .punch{font-size:23px; font-weight:700; letter-spacing:-.012em; max-width:62ch}
+  .punch em{display:block; font-style:normal; font-size:15px; font-weight:400; color:var(--faint);
+    font-family:ui-monospace,Consolas,monospace; margin-top:7px}
+  .punch b{color:var(--accent)}
+  .link{
+    font-family:ui-monospace,Consolas,monospace; font-size:17px; color:var(--muted);
+    text-align:right; line-height:1.55; white-space:nowrap;
+  }
+  .link b{color:var(--ink); display:block; font-size:19px}
+</style>
+
+<div class="topbar"></div>
+
+<header>
+  <div class="eyebrow">wiom.tv &nbsp;·&nbsp; the 20–25 July news shock &nbsp;<span>· validated 27 Jul 2026</span></div>
+  <h1>The CJP protest turned wiom.tv into a <em>news screen</em>.</h1>
+  <p class="sub">
+    Two national news events — the 20 July Delhi march, the 25 July resignation — with no product change
+    in between. Watch time <b>+73%</b>. New users <b>+2.3%</b>. The demand was already there; we just
+    finally saw its ceiling.
+  </p>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="ptop">
+      <div>
+        <div class="ptitle">Daily watch hours — News vs rest of catalogue</div>
+        <div class="psub">6–26 Jul 2026 · IST · uid-attributed dwell, winsorised at 4 h/tune</div>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--news)"></i>News</span>
+        <span><i class="sw" style="background:var(--rest)"></i>Rest</span>
+      </div>
+    </div>
+    <svg id="c" role="img" aria-label="Daily watch hours on wiom.tv, 6 to 26 July 2026, with news split out. News rises sharply from 20 July and peaks at 25.7 hours on 25 July when total watch hit 48.7 hours."></svg>
+  </div>
+
+  <div class="rail">
+    <div class="kpi">
+      <span class="v">+215%</span>
+      <span class="t"><b>News watch hours / day</b><span>3.85 → 12.13 h</span></span>
+    </div>
+    <div class="kpi">
+      <span class="v">+58%</span>
+      <span class="t"><b>P90 watch min / user-day</b><span>4.74 → 7.49 min</span></span>
+    </div>
+    <div class="kpi">
+      <span class="v">+78%</span>
+      <span class="t"><b>Users watching 15 min+</b><span>3.37% → 6.01% of DAU</span></span>
+    </div>
+    <div class="kpi">
+      <span class="v">+149%</span>
+      <span class="t"><b>Repeat-user watch hours</b><span>5.7 → 14.2 h / day</span></span>
+    </div>
+    <div class="kpi flat">
+      <span class="v">+2.3%</span>
+      <span class="t"><b>New users arriving / day</b><span>222 → 227 · no acquisition</span></span>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="punch">
+    <b>74%</b> of the extra hours came from repeat users — who are only <b>27%</b> of DAU.
+    Same shape on the Android app: +38% watch, +44% news.
+    <em>7-day averages, 13–19 vs 20–26 Jul · DAU = distinct uid that tuned a channel · both windows post-PR#8</em>
+  </div>
+  <div class="link">
+    <b>Full analysis · charts · caveats</b>
+    claude.ai/code/artifact/0df78950
+  </div>
+</footer>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  // [day, totalHours, newsHours]
+  var D=[[6,14.31,4.07],[7,22.09,1.74],[8,20.03,2.08],[9,19.08,4.32],[10,21.80,7.61],
+  [11,23.06,4.61],[12,32.15,9.49],[13,12.81,1.34],[14,22.02,5.52],[15,19.72,7.59],
+  [16,8.29,2.40],[17,15.24,4.50],[18,14.09,2.58],[19,17.80,3.00],[20,26.62,12.01],
+  [21,25.73,6.74],[22,19.13,11.25],[23,18.90,7.67],[24,29.39,13.71],[25,48.75,25.66],
+  [26,21.46,7.86]];
+  var css=function(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); };
+  function el(t,a){ var n=document.createElementNS(NS,t); for(var k in a) n.setAttribute(k,a[k]); return n; }
+  function txt(s,x,y,str,anchor,size,color,weight){
+    var t=el('text',{x:x,y:y,'text-anchor':anchor||'middle','font-size':size,fill:color,
+      'font-family':'ui-monospace,Consolas,Menlo,monospace'});
+    if(weight) t.setAttribute('font-weight',weight);
+    t.textContent=str; s.appendChild(t);
+  }
+  function bar(s,x,y,w,h,fill,round){
+    var r=Math.min(round?6:0,w/2,Math.max(h,0));
+    var d=r>0 ? 'M'+x+','+(y+h)+' L'+x+','+(y+r)+' Q'+x+','+y+' '+(x+r)+','+y+
+                ' L'+(x+w-r)+','+y+' Q'+(x+w)+','+y+' '+(x+w)+','+(y+r)+' L'+(x+w)+','+(y+h)+' Z'
+              : 'M'+x+','+y+' h'+w+' v'+Math.max(h,0)+' h'+(-w)+' Z';
+    s.appendChild(el('path',{d:d,fill:fill}));
+  }
+
+  var svg=document.getElementById('c');
+  var W=1124, H=500, mL=62, mR=10, mT=70, mB=42;
+  svg.setAttribute('width',W); svg.setAttribute('height',H); svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  var pw=W-mL-mR, ph=H-mT-mB, max=50, band=pw/D.length, bw=Math.min(38,band-10);
+  var Y=function(v){ return mT+ph-(v/max)*ph; };
+
+  [0,10,20,30,40,50].forEach(function(g){
+    svg.appendChild(el('line',{x1:mL,x2:W-mR,y1:Y(g),y2:Y(g),
+      stroke:g?css('--grid'):css('--rule'),'stroke-width':g?1:1.5}));
+    txt(svg,mL-14,Y(g)+7,g,'end',18,css('--faint'));
+  });
+  txt(svg,mL-14,mT-16,'hrs','end',16,css('--faint'));
+
+  D.forEach(function(r,i){
+    var x=mL+i*band+(band-bw)/2, news=r[2], rest=r[1]-r[2];
+    bar(svg,x,Y(news),bw,(news/max)*ph,css('--news'),false);
+    bar(svg,x,Y(r[1]),bw,Math.max(0,(rest/max)*ph-3),css('--rest'),true);
+    txt(svg,x+bw/2,H-14,r[0],'middle',17,css('--faint'));
+  });
+
+  // event annotations — labels live in their own row above the plot, clear of the bars
+  [[20,'20 JUL · MARCH'],[25,'25 JUL · RESIGNS']].forEach(function(a){
+    var i=D.findIndex(function(r){return r[0]===a[0];}), r=D[i], cx=mL+i*band+band/2;
+    svg.appendChild(el('line',{x1:cx,x2:cx,y1:Y(r[1])-26,y2:mT-14,
+      stroke:css('--accent'),'stroke-width':1.5,'stroke-dasharray':'4 4'}));
+    txt(svg,cx,mT-24,a[1],'middle',17,css('--accent'),700);
+  });
+
+  // peak callout — sits between the bar top and the annotation row
+  var pi=D.findIndex(function(r){return r[0]===25;});
+  txt(svg,mL+pi*band+band/2,Y(48.75)-9,'48.7 h','middle',19,css('--ink'),700);
+})();
+</script>

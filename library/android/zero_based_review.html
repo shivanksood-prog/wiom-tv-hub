@@ -1,0 +1,553 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero-Based TV — Review</title>
+<style>
+:root{--brand:#D9008D;--brand100:#FFE5F6;--bg:#FAF9FC;--ink:#161021;--muted:#665E75;
+--line:#D7D3E0;--zebra:#F1EDF7;--green:#008043;--amber:#FF8000;--purple:#6D17CE;--sec:#443152;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:120px}
+.wrap{max-width:920px;margin:0 auto;padding:28px 20px 60px}
+h1{color:var(--brand);font-size:30px;margin:.2em 0 .1em}
+h2{color:var(--sec);font-size:22px;margin:1.6em 0 .4em;border-bottom:2px solid var(--brand100);padding-bottom:.2em}
+h3{color:var(--brand);font-size:17px;margin:1.3em 0 .3em}
+p{margin:.5em 0}
+code{background:var(--zebra);padding:1px 5px;border-radius:5px;font-size:.9em}
+blockquote{margin:.6em 0;padding:.5em .9em;background:var(--brand100);border-left:4px solid var(--brand);border-radius:6px;color:#5a2d4d}
+hr{border:0;border-top:1px solid var(--line);margin:1.4em 0}
+ul,ol{margin:.5em 0 .5em 1.2em;padding:0}
+li{margin:.25em 0}
+.tablewrap{overflow-x:auto;margin:.6em 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--sec);color:#fff}
+tbody tr:nth-child(even){background:var(--zebra)}
+.card.el{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0;box-shadow:0 1px 3px rgba(22,16,33,.05)}
+.el-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.num{background:var(--brand);color:#fff;font-weight:700;border-radius:7px;padding:2px 9px;font-size:13px}
+.el-title{font-weight:700;font-size:16px}
+.badge{margin-left:auto;font-size:12px;font-weight:600;padding:2px 9px;border-radius:20px}
+.badge.decided{background:#E1FAED;color:var(--green)}
+.badge.assumed{background:#FFE6CC;color:var(--amber)}
+.badge.open{background:#F1E5FF;color:var(--purple)}
+.field{display:grid;grid-template-columns:108px 1fr;gap:10px;padding:4px 0;border-top:1px dashed var(--line)}
+.field .k{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.02em}
+.field .v{font-size:14px}
+.fb{margin-top:12px;background:var(--zebra);border:1px solid var(--line);border-radius:9px;padding:10px}
+.fb-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.opt{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;padding:4px 10px;border-radius:20px;border:1px solid var(--line);background:#fff;cursor:pointer}
+.opt input{accent-color:var(--brand);margin:0}
+.opt.approve:has(input:checked){background:#E1FAED;border-color:var(--green)}
+.opt.revise:has(input:checked){background:#FFE6CC;border-color:var(--amber)}
+.opt.question:has(input:checked){background:#F1E5FF;border-color:var(--purple)}
+textarea{width:100%;min-height:54px;border:1px solid var(--line);border-radius:7px;padding:8px;font:inherit;font-size:13.5px;resize:vertical;background:#fff}
+.bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;gap:16px;justify-content:center;box-shadow:0 -2px 8px rgba(22,16,33,.06);z-index:9}
+.bar .count{font-size:13px;color:var(--muted)}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:9px;padding:11px 22px;font-weight:700;font-size:15px;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.help{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:9px;padding:12px 16px;margin:14px 0 6px}
+.help b{color:var(--brand)}
+</style></head><body><div class="wrap">
+<div class="help"><b>How to review:</b> for each section and decision below, set a status
+(✅ Approve / ✏️ Revise / ❓ Question) and add any comments. When done, click
+<b>Download feedback</b> (bottom bar) → save the file as <code>zero_based_app/review_feedback.md</code>
+→ tell Claude "review done". Your feedback is keyed by section ID so it's applied to the exact row.</div>
+<h1>Zero-Based TV — Decision Framework</h1>
+<blockquote><strong>Business line, not a project.</strong> &quot;Zero-based&quot; = we re-derive every <em>decision</em> from the objective — and the codebase too: <strong>Phase 1 is greenfield</strong> (no inherited app). We keep prior <em>learnings</em>, not prior code. This doc is the <strong>source of truth</strong>: every element traces to a user/operator job and a ranked objective. Decision status — <strong>Decided</strong> (grounded) · <strong>Assumed</strong> (hypothesis + validation trigger) · <strong>Open</strong> (still owed).</blockquote>
+<hr>
+<h2 id="layer-0-reference-everything-below-points-here">Layer 0 — Reference (everything below points here)</h2>
+<div class="fb" data-id="layer-0-reference-everything-below-points-here" data-title="Layer 0 — Reference (everything below points here)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_layer-0-reference-everything-below-points-here" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_layer-0-reference-everything-below-points-here" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_layer-0-reference-everything-below-points-here" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Layer 0 — Reference (everything below points here)…"></textarea>
+</div>
+<h3 id="0-0-the-objective">0.0 The Objective</h3>
+<p><strong>Make Wiom the default entertainment access layer for first-time-internet households across Bharat.</strong></p>
+<ul><li><strong>Wedge:</strong> linear TV. <strong>Prize:</strong> the platform — a distribution surface we can later sell multiple services/content on, and a relationship with the &quot;dreamers&quot; our pipes don&#x27;t physically reach yet.</li><li><strong>New business line</strong>, not a sweetener for the internet business.</li><li>The benefit to Wiom&#x27;s internet business (selling &quot;Recharge-wala Ghar ka Net&quot; / RWGKN, WiFi stickiness) is <strong>real but explicitly secondary</strong>. We do <strong>not</strong> optimize Phase 1 for it. It is a guardrail metric, never a target.</li><li><strong>Not bundled, not gated.</strong> &quot;Bundled&quot; would mean merely sweetening the deal for an existing Wiom user. We reject that. There is <strong>no gating to a Wiom plan</strong>. The goal is to be the household&#x27;s <strong>primary</strong> entertainment.</li></ul>
+<div class="fb" data-id="0-0-the-objective" data-title="0.0 The Objective">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-0-the-objective" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-0-the-objective" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-0-the-objective" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.0 The Objective…"></textarea>
+</div>
+<h3 id="0-0a-phase-1-25-days">0.0a Phase 1 (25 days)</h3>
+<div class="tablewrap"><table><thead><tr><th>Rule</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>Coverage</strong></td><td>Wiom-coverage households only</td></tr><tr><td><strong>No acquisition spend</strong></td><td>We do not spend to acquire users in Phase 1</td></tr><tr><td><strong>Build on existing</strong></td><td>Reuse prior <em>learnings</em> (not the app — <strong>greenfield</strong>); don&#x27;t reinvent the thinking</td></tr><tr><td><strong>Solo + agents</strong></td><td>One-founder company; built by you with agents → ruthless scope, automate, reuse</td></tr><tr><td><strong>Beachhead</strong></td><td>The slice already in our base: <strong>Post-WiFi + Connected-TV</strong> households (ship onto the smart TV they already own — no hardware, no marketing)</td></tr></tbody></table></div>
+<div class="fb" data-id="0-0a-phase-1-25-days" data-title="0.0a Phase 1 (25 days)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-0a-phase-1-25-days" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-0a-phase-1-25-days" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-0a-phase-1-25-days" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.0a Phase 1 (25 days)…"></textarea>
+</div>
+<h3 id="0-1-primary-jtbd-the-household">0.1 Primary JTBD (the household)</h3>
+<blockquote><strong>When</strong> anyone in my home wants to watch something, <strong>I want to</strong> turn on the screen and immediately find something worth watching — in my language, no juggling apps/logins, no extra cost — <strong>so</strong> Wiom becomes the screen we just default to.</blockquote>
+<p>&quot;Default to&quot; encodes the objective: primary entertainment, not an occasional extra. Every element JTBD must ladder up to this.</p>
+<div class="fb" data-id="0-1-primary-jtbd-the-household" data-title="0.1 Primary JTBD (the household)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-1-primary-jtbd-the-household" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-1-primary-jtbd-the-household" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-1-primary-jtbd-the-household" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.1 Primary JTBD (the household)…"></textarea>
+</div>
+<h3 id="0-2-audience-the-2-2-all-quadrants-valued-equally">0.2 Audience — the 2×2 (all quadrants valued <strong>equally</strong>)</h3>
+<div class="tablewrap"><table><thead><tr><th></th><th><strong>Connected TV</strong></th><th><strong>No Connected TV</strong></th></tr></thead><tbody><tr><td><strong>Post-WiFi</strong></td><td>Has WiFi + Smart TV — <strong>★ Phase 1 beachhead</strong></td><td>Has WiFi, no connected TV</td></tr><tr><td><strong>Pre-WiFi</strong></td><td>Cable/DTH TV, no WiFi</td><td>Mobile-only, no WiFi, no TV</td></tr></tbody></table></div>
+<ul><li>The objective values a <strong>Pre-WiFi / No-TV</strong> person <strong>equally</strong> to a <strong>Post-WiFi / Connected-TV</strong> person. We are <strong>not</strong> optimizing for the unconnected household alone — and not for the connected one either.</li><li>Phase 1 <em>reaches</em> the ★ quadrant first only because it&#x27;s the zero-cost, zero-hardware path inside our base. The product vision is the whole grid; later phases add a device/path to reach the other three.</li></ul>
+<div class="fb" data-id="0-2-audience-the-2-2-all-quadrants-valued-equally" data-title="0.2 Audience — the 2×2 (all quadrants valued equally)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-2-audience-the-2-2-all-quadrants-valued-equally" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-2-audience-the-2-2-all-quadrants-valued-equally" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-2-audience-the-2-2-all-quadrants-valued-equally" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.2 Audience — the 2×2 (all quadrants valued equally)…"></textarea>
+</div>
+<h3 id="0-3-objectives-ranked-top-is-the-tiebreaker">0.3 Objectives (ranked — top is the tiebreaker)</h3>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Objective</th><th>How measured (target = placeholder)</th><th>Why it ranks here</th></tr></thead><tbody><tr><td><strong>NSM</strong></td><td><strong>Default-ness</strong> — Wiom TV is the household&#x27;s primary screen</td><td>Daily-active households · watch-time per household · <strong>sessions per household</strong></td><td>The literal objective: become the default entertainment access layer</td></tr><tr><td>O1</td><td>Frictionless, <strong>ungated</strong> access</td><td>Power-on → playing; TTFF; first-run completion; zero plan-gating</td><td>Anything that feels like a gated perk kills &quot;primary,&quot; not &quot;bonus&quot;</td></tr><tr><td>O2</td><td>The linear-TV wedge lands</td><td>Time/clicks home → watching; &quot;always something on&quot; usage</td><td>Wedge must feel like effortless lean-back TV (cable/DTH replacement)</td></tr><tr><td>O3</td><td>Reliable playback (QoE)</td><td>Rebuffer ratio, error rate, crash-free sessions on real Wiom lines</td><td>Trust dies on the first stutter</td></tr><tr><td>O4</td><td><strong>Platform-readiness</strong> (the prize)</td><td>Time-to-add a new service/content surface; quadrant-reach optionality</td><td>Linear TV is the wedge; the surface is the asset we&#x27;re really building</td></tr><tr><td>O5</td><td><strong>Zero-acq-spend reach</strong></td><td>Activation rate within existing Wiom base; cost per activated household ≈ 0</td><td>Phase 1 distribution must ride the base, not marketing</td></tr><tr><td>—</td><td><em>Guardrail (tracked, <strong>not</strong> optimized):</em> internet-business halo</td><td>RWGKN sell-through, WiFi churn delta</td><td>Real benefit — but <strong>never</strong> trade NSM/O1 for it</td></tr></tbody></table></div>
+<p><strong>Tiebreak:</strong> higher rank wins. <strong>Hard rule:</strong> never sacrifice default-ness / ungated primary-entertainment value to chase the internet-business halo.</p>
+<div class="fb" data-id="0-3-objectives-ranked-top-is-the-tiebreaker" data-title="0.3 Objectives (ranked — top is the tiebreaker)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-3-objectives-ranked-top-is-the-tiebreaker" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-3-objectives-ranked-top-is-the-tiebreaker" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-3-objectives-ranked-top-is-the-tiebreaker" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.3 Objectives (ranked — top is the tiebreaker)…"></textarea>
+</div>
+<h3 id="0-4-constraints-bound-every-decision">0.4 Constraints (bound every decision)</h3>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Constraint</th><th>Basis</th></tr></thead><tbody><tr><td>C1</td><td><strong>25 days to Phase 1</strong></td><td>Decided</td></tr><tr><td>C2</td><td>Solo founder + agents → ruthless scope, automate, reuse</td><td>Decided</td></tr><tr><td>C3</td><td>No acquisition spend in Phase 1</td><td>Decided</td></tr><tr><td>C4</td><td>Build on existing <strong>learnings</strong> (NN#1) — but <strong>greenfield the app</strong> (zero-base the codebase to fit objectives; no inherited baggage)</td><td>Decided</td></tr><tr><td>C5</td><td>Phase 1 reach = Wiom-coverage households; cleanest = WiFi + connected TV they already own</td><td>Decided</td></tr><tr><td>C6</td><td>Ungated — never gated/bundled to a Wiom plan</td><td>Decided</td></tr><tr><td>C7</td><td>Low-end hardware + variable/intermittent network; degrade gracefully</td><td>Decided</td></tr><tr><td>C8</td><td>Hindi-first + regional, low-literacy-safe, true 10-ft / D-pad UI</td><td>Decided</td></tr><tr><td>C9</td><td>Compliance: DPDP Act, content DRM/rights, child safety</td><td>Decided</td></tr></tbody></table></div>
+<hr>
+<div class="fb" data-id="0-4-constraints-bound-every-decision" data-title="0.4 Constraints (bound every decision)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-4-constraints-bound-every-decision" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-4-constraints-bound-every-decision" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-4-constraints-bound-every-decision" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.4 Constraints (bound every decision)…"></textarea>
+</div>
+<h2 id="0-5-non-negotiables">0.5 Non-negotiables</h2>
+<ol><li><strong>JTBD first, even though insights exist.</strong> Every design/build decision traces to a customer job. Existing insights are the start, not the end. Agents help <em>synthesize</em>; <strong>you</strong> do the customer conversations and judgment.</li><li><strong>You build it; agents are your hands.</strong> One-founder-company frame. <strong>You do:</strong> product judgment, JTBD discovery + customer conversations, content licensing/partnership negotiation, adoption-data interpretation, review + ship agent output. <strong>Agents do:</strong> code across all surfaces (phone/TV/web), UI/UX under your direction, test harnesses/deploy/telemetry, content-stream integration, UX iteration. <strong>Failure modes (forbidden):</strong> (a) writing specs and waiting on Wiom tech teams — <em>already failed once for this product</em>; (b) hiring contractors as the first move — agents first, humans only where agents genuinely can&#x27;t; (c) hand-coding out of habit — if it can be agent-built, it must be.</li><li><strong>Optimize for proof, not polish.</strong> No enterprise roadmap, no heavy process, no staged-release theatre. Ugly, narrow, embarrassing is fine <strong>if a real household — including its least tech-comfortable member (e.g. an elderly first-timer) — can use the linear-TV experience.</strong> Ship what moves adoption fastest. → <strong>Phase 1 done-definition.</strong></li><li><strong>One-way flow with Wiom OS.</strong> Wiom&#x27;s OS (State Machine, Customer Health, Metric Architecture) is WIP. This line <strong>informs</strong> Wiom&#x27;s thinking (PayG entertainment economics, multi-product platform mechanics, Bharat viewing signals); it does <strong>not</strong> derive from Wiom&#x27;s WIP OS. Use Wiom assets that help you ship faster; work around blockers and flag them as feedback. Platform-extending, not standalone.</li></ol>
+<div class="fb" data-id="0-5-non-negotiables" data-title="0.5 Non-negotiables">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-5-non-negotiables" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-5-non-negotiables" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-5-non-negotiables" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.5 Non-negotiables…"></textarea>
+</div>
+<h2 id="0-6-legal-classification-locked-in-phase-0">0.6 Legal classification — locked in Phase 0</h2>
+<p>Wiom operates under <strong>PM-WANI</strong> with VC investors and a CSP partner network. Distributing flagrantly illegal content <strong>via Wiom&#x27;s brand and platform</strong> is existential — regulatory standing, partner relationships, and investor confidence at once. Pick one classification, declare it, don&#x27;t drift. (Note: &quot;tier-3 OTT players&quot; = small/regional OTT companies — a <em>partnership</em> path, not the Red zone.)</p>
+<div class="tablewrap"><table><thead><tr><th>Class</th><th>Content sources</th><th>Risk</th><th>Acceptable?</th></tr></thead><tbody><tr><td><strong>Green — fully licensed</strong></td><td>Doordarshan/Prasar Bharati FTA + direct deals with smaller channels + AVoD aggregator licenses (MX Player, Watcho)</td><td>Zero legal risk; narrower catalog</td><td><strong>Yes — default</strong></td></tr><tr><td><strong>Amber — grey but defensible</strong></td><td>Public non-paywalled streams; embed-permitted streams; regulatory-undefined zones; tier-3 (small/regional) OTT partnerships</td><td>Low–medium; broader catalog</td><td><strong>Yes — with explicit per-source justification</strong></td></tr><tr><td><strong>Red — flagrantly illegal</strong></td><td>Scraped premium content, pirated streams, paywall bypass</td><td>Existential</td><td><strong>No — off limits</strong></td></tr></tbody></table></div>
+<p><strong>Decision (Phase 0 lock — for speed + insight):</strong></p>
+<ul><li><strong>Declared classification = Green</strong> is the default and the long-term destination.</li><li><strong>Amber is ACTIVE in Phase 1 (short-term)</strong>, on the branded in-home product — to move fast and gather real-world insight while we build the Green catalog. Governed by the discipline below so Amber never decays into Red.</li><li><strong>Per-source justification register</strong> — every Amber source logged with: owner, why it&#x27;s defensible, and a takedown response. <em>&quot;Not behind a paywall&quot; ≠ &quot;licensed to redistribute&quot; — judge each source.</em></li><li><strong>Red stays off-limits</strong> even with Amber on: scraped premium content, pirated streams, and paywall-bypass are Red, not Amber — never shipped.</li><li><strong>Content kill-switch</strong> — every Amber source must be remotely pullable (ties to remote config / §Layer-1 #7) so a problem source is dark within minutes, not a release cycle.</li><li><strong>Contain + time-box</strong> — bound Amber exposure (pilot cohort, not the full base, while it&#x27;s the riskiest) and set a <strong>hard exit trigger to Green</strong> before broad scale, monetization, or Phase 2.</li></ul>
+<p><strong>Why Amber now:</strong> short-term, for speed + insight while the Green catalog is built — not sustainable long-term, so the exit-to-Green trigger and discipline above bound it. <strong>Risk noted (so it&#x27;s never forgotten):</strong> the existential exposure is specifically on-brand-in-home — which is why the per-source register, kill-switch, and containment are mandatory, not optional.</p>
+<div class="fb" data-id="0-6-legal-classification-locked-in-phase-0" data-title="0.6 Legal classification — locked in Phase 0">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-6-legal-classification-locked-in-phase-0" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-6-legal-classification-locked-in-phase-0" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-6-legal-classification-locked-in-phase-0" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.6 Legal classification — locked in Phase 0…"></textarea>
+</div>
+<h2 id="0-7-phase-1-definition-of-done">0.7 Phase 1 — Definition of Done</h2>
+<p>The bar for &quot;Phase 1 shipped.&quot; <strong>Surface = TV</strong> (linear-TV wedge; &quot;up/down surfing&quot; = remote channel-surf on the connected TV they already own). Proof, not polish (NN#3). Every deliverable traces to Layer 0.</p>
+<div class="tablewrap"><table><thead><tr><th>Deliverable</th><th>Traces to</th><th>Notes / dependency</th></tr></thead><tbody><tr><td>Working product on TV — <strong>channel list + channel-surf (up/down feel) + full-screen playback</strong></td><td>O2 wedge · O1 · elements #5, #6, #11</td><td>The core loop. &quot;Up/down feel&quot; = cable-replacement surfing</td></tr><tr><td><strong>Live channels in declared classification — start 20–40, don&#x27;t chase 100</strong></td><td>O2 · elements #2, #9</td><td>Green default + Amber active (§0.6); <strong>kill-switch + per-source register must be live before any Amber channel ships.</strong> Breadth is not the goal</td></tr><tr><td><strong>Onboarding so anyone in the household can self-start — tested with a REAL household</strong></td><td>O1 · NN#1, NN#3 · element #10</td><td>External validation. The <strong>binding deliverable</strong> — must work for the household&#x27;s least tech-comfortable member (e.g. an elderly first-timer)</td></tr><tr><td><strong>First tier-3 OTT partnership conversation initiated</strong></td><td>O4 (platform/breadth) · element #2</td><td>A <strong>you-do</strong> (NN#2: licensing/negotiation is yours, not an agent&#x27;s)</td></tr><tr><td><strong>Crash + latency telemetry built in from the start</strong></td><td>O3 · O6 · element #7</td><td>Non-negotiable from the beginning; also powers the Amber kill-switch</td></tr><tr><td><strong>Internal household usage test (you + family)</strong></td><td>NN#3 (proof/dogfood)</td><td>Continuous dogfood</td></tr></tbody></table></div>
+<p><strong>Build sequence (dependency order, not dates):</strong> telemetry + Amber kill-switch first → working core loop on TV + 20–40 channels → real-household onboarding test → internal family dogfood. The partnership conversation runs in parallel (it&#x27;s a you-do, off the build path).</p>
+<p><strong>What this list forces into Phase 1 scope (was &quot;later&quot;):</strong> the onboarding element (#10), the channel-surf interaction (#11), and the Amber content kill-switch (remote-config slice of #7). These are no longer deferrable.</p>
+<hr>
+<div class="fb" data-id="0-7-phase-1-definition-of-done" data-title="0.7 Phase 1 — Definition of Done">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_0-7-phase-1-definition-of-done" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_0-7-phase-1-definition-of-done" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_0-7-phase-1-definition-of-done" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for 0.7 Phase 1 — Definition of Done…"></textarea>
+</div>
+<h2 id="layer-1-frozen-decision-bank-frozen-2026-06-08">Layer 1 — Frozen Decision Bank (frozen 2026-06-08)</h2>
+<blockquote>The authoritative bank, in the agreed schema. The <strong>Basis</strong> column is the status: <strong>Decided</strong> (locked) · <strong>Assumed</strong> (locked direction — confirm in the existing-app audit / content sourcing) · <strong>Open</strong>.</blockquote>
+<p>Schema: <strong>Element → JTBD (User/Operator) → Objective(s) → Learning so far (source) → Decision → Basis → Rationale / alts rejected → Reversibility</strong></p>
+<div class="card el" id="el-1">
+  <div class="el-head"><span class="num">#1</span><span class="el-title"><strong>Platform / distribution (Phase 1)</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When my family gets WiFi for the first time, I want a simple, familiar way to make it useful in our daily life, so the investment feels worthwhile.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O1·O5·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">Pre-WiFi households coming to Wiom have used <strong>Cable TV for the longest time</strong> — the TV is their existing entertainment habit and cable is the familiar mental model; meeting them there is how new WiFi proves its worth. <em>(Verify: smart-TV penetration + OS mix in the base — sizes the beachhead.)</em></span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Phase 1: deliver on the TV the household already watches</strong> (sideloaded / CSP-assisted install onto their Android-based smart TV). Own-STB + non-Android TVs deferred</span></div><div class="field"><span class="k">Rationale</span><span class="v">TV is the household&#x27;s existing, familiar entertainment surface (lifelong cable users) → fastest path to &quot;WiFi feels worthwhile.&quot; Self-install is impossible for this persona → CSP-assisted. <strong>STB-vs-no-STB is a distribution mechanic, not the rationale</strong></span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-1" data-title="Element #1 Platform / distribution (Phase 1)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-1" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-1" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-1" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #1 Platform / distribution (Phase 1)…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-2">
+  <div class="el-head"><span class="num">#2</span><span class="el-title"><strong>Content posture</strong></span><span class="badge decided"><strong>Decided</strong> (wedge) / Open (genre weighting)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;I want channels that feel familiar to what I watched on TV — the same kind of entertainment and genres — so it feels like my TV, not something new.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">NSM·O2</span></div><div class="field"><span class="k">Learning</span><span class="v">Lifelong cable households recognize <strong>genres</strong>, not catalogs. We often can&#x27;t license the exact premium channels (Red), but we <strong>can match the genre</strong> (Hindi serials, movies, music, devotional, regional, news) via Green/Amber</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Wedge = 20–40 linear channels chosen to mirror the household&#x27;s familiar TV genres, weighted to entertainment.</strong> Familiarity of genre/experience over exact-channel or count. On-demand/premium later</span></div><div class="field"><span class="k">Rationale</span><span class="v">Rejected VOD-first (not their habit), breadth-first (count ≠ familiarity), and exact-premium-channel matching (unlicensable → Red; match the genre, not the locked brand)</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-2" data-title="Element #2 Content posture">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-2" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-2" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-2" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #2 Content posture…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-3">
+  <div class="el-head"><span class="num">#3</span><span class="el-title"><strong>Monetization</strong></span><span class="badge decided"><strong>Decided</strong> (Phase 1)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;We already pay for the WiFi — I want it to unlock something new and familiar like TV, so that spend does more for us.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O1·O4·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">The WiFi is <strong>already paid for</strong>; for a pre-WiFi household, TV-on-internet is a <strong>new use case and the entry point</strong> to experiencing OTT. Free Phase 1 keeps that on-ramp wide — and the on-ramp is the platform prize</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Phase 1: free + ungated. No paywall.</strong> Wiom TV rides the already-paid WiFi as a new use case; monetization is a later platform play</span></div><div class="field"><span class="k">Rationale</span><span class="v">The WiFi is already paid → TV is the value unlock / entry point, not a thing to bill separately; charging would block the on-ramp and reintroduce cable-bill friction. Rejected paid packs / gating</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-3" data-title="Element #3 Monetization">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-3" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-3" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-3" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #3 Monetization…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-4">
+  <div class="el-head"><span class="num">#4</span><span class="el-title"><strong>Entitlement / access</strong></span><span class="badge decided"><strong>Decided</strong> (no-login) / <strong>Assumed</strong> (network-ID mechanism — pending Wiom network team)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When my home gets Wiom, the TV is just there and ready — like cable was. Nothing to log into.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O1·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">Login is the #1 TV-app drop-off. Phase 1 = Wiom WiFi homes → the TV sits on <strong>Wiom&#x27;s own network</strong>, so we may resolve the subscriber from the connection (server-side whoami / CPE mapping) with zero user action. <em>Caveats: CGNAT shared IPs aren&#x27;t unique; Android limits local MAC/ARP reads; needs a Wiom network-team hook (NN#4) + a DPDP basis (C9)</em></span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>No user login, ever. Progressive, non-blocking identity:</strong> (1) network-based subscriber lookup on Wiom WiFi, (2) CSP-install tag, (3) <strong>device-only fallback</strong>. Ship Phase 1 on device-only so identity never gates the build; add network household-ID as an enhancement once Wiom network confirms</span></div><div class="field"><span class="k">Rationale</span><span class="v">Cable had no login (familiar bar); owning the pipe lets us ID the home invisibly — but per NN#4 we don&#x27;t wait on Wiom tech, device-only ships regardless. Rejected OTP/app-store login, plan-gating (C6)</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-4" data-title="Element #4 Entitlement / access">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-4" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-4" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-4" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #4 Entitlement / access…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-5">
+  <div class="el-head"><span class="num">#5</span><span class="el-title"><strong>Home / IA (10-ft)</strong></span><span class="badge decided"><strong>Decided</strong> (frozen F6)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When I switch on, my TV is already playing — like it never left — and I can pull up the channels if I want.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">NSM·O2</span></div><div class="field"><span class="k">Learning</span><span class="v">A home screen is friction; cable just plays. Cable resumes the <strong>last-watched channel</strong> (familiar). First-ever boot has no history → derive from objective</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>No home screen. Boots into the last-watched channel</strong> (cable-like). On first-ever boot, land on the <strong>region/language-matched highest-engagement channel</strong> (remote-config, telemetry-tuned). <strong>Logo grid + Favorites overlay <em>on top</em> of live video</strong>, never replacing it</span></div><div class="field"><span class="k">Rationale</span><span class="v">Derived from objective: O2/familiarity → resume-last (cable behavior); NSM/default-entertainment → first impression maximizes &quot;start watching or start surfing&quot; → highest-pull channel, not a fixed news channel. Rejected hardcoded default, setup screen, blank, full-screen menus that pause playback</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-5" data-title="Element #5 Home / IA (10-ft)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-5" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-5" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-5" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #5 Home / IA (10-ft)…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-6">
+  <div class="el-head"><span class="num">#6</span><span class="el-title"><strong>Playback / TTFF + channel-switch</strong></span><span class="badge assumed"><strong>Assumed</strong> — tune on real device + network</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When I change channels it switches fast like my old TV and never stutters, so it feels like real TV.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O1·O3·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">Cable switches in &lt;1s; internet has inherent latency → <strong>channel-switch time, not just initial TTFF, is the make-or-break metric</strong>. On weak lines + cheap TVs, smoothness &gt; sharpness</span></div><div class="field"><span class="k">Decision</span><span class="v">Media3/ExoPlayer; <strong>ABR biased to avoid rebuffering over resolution</strong>; fast-start (low initial buffer); <strong>instant visual feedback on switch</strong> (logo/last-frame + spinner); <strong>adaptive pre-buffering of adjacent channels only when bandwidth headroom exists</strong>; budgets for TTFF + <strong>channel-switch time</strong> + rebuffer ratio</span></div><div class="field"><span class="k">Rationale</span><span class="v">Derived from objective: familiarity = cable&#x27;s instant switch; default-entertainment needs surfing to feel fast; C7 → smoothness beats resolution. Rejected off-the-shelf default ABR (untuned) and always-pre-buffer (hurts low-bw active stream)</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way (tunable)</span></div></div>
+  <div class="fb" data-id="el-6" data-title="Element #6 Playback / TTFF + channel-switch">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-6" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-6" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-6" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #6 Playback / TTFF + channel-switch…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-7">
+  <div class="el-head"><span class="num">#7</span><span class="el-title"><strong>Observability / QoE</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;I can see, remotely, both whether the app is becoming a household&#x27;s default <em>and</em> whether any install or channel is misbehaving — and fix it before the user notices.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O3·O6</span></div><div class="field"><span class="k">Learning</span><span class="v">Proof-first → telemetry must measure the NSM + the decisions we&#x27;re validating, and trigger the Amber kill-switch. Unit = <strong>the app install on the household&#x27;s own TV (no STB in Phase 1)</strong>; CleverTap already in use (C5)</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Two-layer, day one: (a) adoption</strong> (CleverTap: DAU-households, session length, watch time, channel popularity, surf depth) → measures NSM + tunes #2/#5/#10; <strong>(b) QoE/reliability</strong> (custom + Crashlytics: TTFF, channel-switch, rebuffer, errors, crash-free) → measures O3 + <strong>fires the Amber kill-switch</strong>. Privacy-minimal (C9)</span></div><div class="field"><span class="k">Rationale</span><span class="v">Designed around the objective + decisions to validate (proof scorecard) + kill-switch trigger; rejected generic post-launch analytics</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-7" data-title="Element #7 Observability / QoE">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-7" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-7" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-7" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #7 Observability / QoE…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-8">
+  <div class="el-head"><span class="num">#8</span><span class="el-title"><strong>Platform extensibility</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;When we want to add a new service/content surface, the app already supports it, so we ship in days not months.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O4</span></div><div class="field"><span class="k">Learning</span><span class="v">The prize is the surface; but real extensibility for unvalidated services is polish (NN#3) → buy it <strong>only at the one-way doors</strong></span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Phase 1 buys extensibility only at one-way doors:</strong> content/shell separation + a config-driven, <strong>not-channel-hardcoded</strong> content model (mostly free via F14). <strong>Defer</strong> actual second surfaces (VOD/commerce/other), plugin frameworks, multi-tenant until a use case is validated</span></div><div class="field"><span class="k">Rationale</span><span class="v">Derived from O4 vs NN#3: keep the cheap structural doors open; building real extensibility now is polish. Rejected both single-purpose linear-only (forecloses prize) and full-platform-now (over-engineering)</span></div><div class="field"><span class="k">Reversibility</span><span class="v">One-way-ish (architecture)</span></div></div>
+  <div class="fb" data-id="el-8" data-title="Element #8 Platform extensibility">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-8" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-8" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-8" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #8 Platform extensibility…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-9">
+  <div class="el-head"><span class="num">#9</span><span class="el-title"><strong>Content legality / sourcing</strong></span><span class="badge decided"><strong>Decided in Phase 0</strong> — Amber short-term, for speed + insight</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;When we put content on Wiom&#x27;s brand in someone&#x27;s home, it must never put Wiom&#x27;s standing at risk, so the platform survives.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">NSM·O4</span></div><div class="field"><span class="k">Learning</span><span class="v">Amber is a <strong>short-term, insight-gathering play</strong> for speed; Green is the destination. Sourcing serves the #2 genre mix (Green-first per genre, Amber only to fill gaps). Discipline keeps Amber from decaying into Red (§0.6)</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Phase 1 = Green default + Amber ACTIVE (short-term, for insight)</strong> on the branded product, governed by: per-source register / channel catalog, content kill-switch, contain + time-box, hard exit-to-Green. <strong>Red never.</strong> Sourcing maps to the familiar genres. <strong>Content discovery is an agentic internet search</strong> — agents find candidate streams per genre and classify each Green/Amber (with source + justification) into <code>channel_catalog.md</code>, <strong>never Red</strong>; the <strong>founder approves legality + handles any licensing/partnership (NN#2)</strong>. Nothing goes live until approved</span></div><div class="field"><span class="k">Rationale</span><span class="v">Amber buys breadth + real-world insight fast while we build the Green catalog; bounded by register + kill-switch + exit-to-Green. Not sustainable long-term → migrate to Green</span></div><div class="field"><span class="k">Reversibility</span><span class="v">One-way (reputational) — mitigated by kill-switch + register + containment</span></div></div>
+  <div class="fb" data-id="el-9" data-title="Element #9 Content legality / sourcing">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-9" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-9" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-9" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #9 Content legality / sourcing…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-10">
+  <div class="el-head"><span class="num">#10</span><span class="el-title"><strong>Onboarding (first-time household, zero-setup)</strong></span><span class="badge decided"><strong>Decided</strong> (design) — confirm in the real-household test</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;We didn&#x27;t set anything up — anyone at home can sit down and the TV is already showing something, and we change channels ourselves.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O1·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">Onboarding <strong>dissolves</strong> into #1 (CSP installs) + #4 (no login) + #5 (boots into a playing channel) → the household does nothing. Design to the <strong>least tech-comfortable member</strong> so it works for everyone</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>No user onboarding flow.</strong> CSP installs + binds + leaves it playing (operator-side); user-side = one dismissable Hindi hint (&quot;▲▼ चैनल बदलें&quot;) over live video. Success = <strong>anyone in the household — including its least tech-comfortable member — can surf and land on something</strong></span></div><div class="field"><span class="k">Rationale</span><span class="v">Built for the <strong>household</strong>, not a single persona; the hardest-case member (e.g. an elderly first-timer) is a design stress-test, not the target. Complexity absorbed by the CSP, not the user (NN#3); rejected app-store/OTP setup, multi-step account, wizards</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-10" data-title="Element #10 Onboarding (first-time household, zero-setup)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-10" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-10" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-10" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #10 Onboarding (first-time household, zero-setup)…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-11">
+  <div class="el-head"><span class="num">#11</span><span class="el-title"><strong>Channel-surf + jump UX (no number pad)</strong></span><span class="badge decided"><strong>Decided</strong> (design) — confirm in household test</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When I press up/down the channel just changes like my old TV; and when I want a channel I already remember, I jump straight to it — my remote has no number keys.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O2·NSM·O1</span></div><div class="field"><span class="k">Learning</span><span class="v">Wedge = cable-replacement; <strong>most remotes have NO number pad</strong> → numeric entry is out; low-literacy / first-time viewers recognize channels by <strong>logo</strong> (recognition &gt; recall). <strong>Stable order = position memory; genre grouping invites surf-discovery (#7)</strong></span></div><div class="field"><span class="k">Decision</span><span class="v">▲▼ = instant sequential surf through a <strong>stable, genre-grouped</strong> lineup; <strong>OK → genre-organized channel logo grid overlay</strong> (on live video, per #5) to jump by recognizing the logo; <strong>&quot;मेरे चैनल&quot; auto-built from viewing</strong> (no manual curation); voice optional if remote has a mic</span></div><div class="field"><span class="k">Rationale</span><span class="v">Stable order = cable position-memory; genre grouping invites surf-discovery; auto-favorites = zero effort for the persona. Rejected numeric keypad, on-screen numpad, EPG-first, manual-pin-first, unordered lineup</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-11" data-title="Element #11 Channel-surf + jump UX (no number pad)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-11" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-11" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-11" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #11 Channel-surf + jump UX (no number pad)…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-12">
+  <div class="el-head"><span class="num">#12</span><span class="el-title"><strong>Language</strong></span><span class="badge decided"><strong>Decided</strong> (frozen F5)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When I watch, it&#x27;s in my language and the few words on screen make sense, so it feels made for me.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">C8·O1·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">For low literacy, <strong>removing text beats translating it</strong> — logos/icons/color/position carry meaning. Regional channels carry their own language (live TV, nothing to translate)</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Content: Hindi-primary + regional channels in-language.</strong> <strong>Interface: text-minimal</strong> — logos/icons/color/position carry meaning; the few unavoidable words Hindi-first with English alongside</span></div><div class="field"><span class="k">Rationale</span><span class="v">Removing text beats translating it; bilingual only where words are unavoidable. Rejected text-heavy UI, English-first, single-regional-first, auto-by-region</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-12" data-title="Element #12 Language">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-12" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-12" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-12" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #12 Language…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-13">
+  <div class="el-head"><span class="num">#13</span><span class="el-title"><strong>Build &amp; ship workflow</strong></span><span class="badge decided"><strong>Decided</strong> (frozen F18)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;When agents produce code, it lands in one place I can review and ship, so I stay the bottleneck of judgment, not typing.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">NN#2</span></div><div class="field"><span class="k">Learning</span><span class="v">Proof-first → <strong>&quot;done&quot; = works on a real TV, not &quot;builds green&quot;</strong>; remote config keeps content off the release path</span></div><div class="field"><span class="k">Decision</span><span class="v">Fresh repo; <code>.env</code> (stream URLs, telemetry keys, config endpoint); <strong>remote JSON config for channels + kill-switch (no rebuild)</strong>; agents build → install on a <strong>reference low-end Android TV + emulator</strong> → <strong>founder reviews on-device behavior</strong> → sideload to pilot. Minimal CI</span></div><div class="field"><span class="k">Rationale</span><span class="v">&quot;Done = works on the real TV&quot; (NN#3); remote config keeps content/kill-switch off the release path; founder reviews behavior, agents type. Rejected spec-and-wait (failed once), contractors-first, hand-coding, heavy CI/CD</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-13" data-title="Element #13 Build & ship workflow">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-13" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-13" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-13" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #13 Build & ship workflow…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-14">
+  <div class="el-head"><span class="num">#14</span><span class="el-title"><strong>Reuse vs greenfield</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;When I start building, I build clean to our objectives — no inherited baggage.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">C1·NN#2·NN#1</span></div><div class="field"><span class="k">Learning</span><span class="v">The old app carries its own assumptions/bias; reusing it risks re-importing them and re-creating the Wiom-tech dependency that failed once</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Greenfield.</strong> Zero-base the build to fit our objectives; <strong>keep the customer <em>learnings</em> (NN#1), discard the old codebase/design</strong></span></div><div class="field"><span class="k">Rationale</span><span class="v">Founder call: avoid the old project&#x27;s baggage/bias/assumptions; greenfield also satisfies NN#2 (independently buildable by us + agents). <strong>Existing-app audit no longer gates the build</strong></span></div><div class="field"><span class="k">Reversibility</span><span class="v">One-way-ish (foundational)</span></div></div>
+  <div class="fb" data-id="el-14" data-title="Element #14 Reuse vs greenfield">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-14" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-14" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-14" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #14 Reuse vs greenfield…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-15">
+  <div class="el-head"><span class="num">#15</span><span class="el-title"><strong>Tech stack</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;A stack that plays video well on cheap TVs, so playback is reliable.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O3·C7</span></div><div class="field"><span class="k">Learning</span><span class="v">Greenfield (#14) → free to pick the best stack for low-end TV playback, no inherited constraint</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Native Android (Kotlin + Media3/ExoPlayer)</strong></span></div><div class="field"><span class="k">Rationale</span><span class="v">Native = best low-end playback/TTFF control (O3, #6); greenfield removes any inherited-stack constraint. Rejected Flutter/RN/web-on-TV (less playback control on low-end)</span></div><div class="field"><span class="k">Reversibility</span><span class="v">One-way-ish (foundational)</span></div></div>
+  <div class="fb" data-id="el-15" data-title="Element #15 Tech stack">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-15" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-15" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-15" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #15 Tech stack…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-16">
+  <div class="el-head"><span class="num">#16</span><span class="el-title"><strong>Dead-stream handling</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When a channel won&#x27;t play, the TV just moves on like cable did — it never feels broken.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O3·NSM</span></div><div class="field"><span class="k">Learning</span><span class="v">Public FTA/Amber streams fail constantly; a dead channel reads as &quot;app broken&quot;</span></div><div class="field"><span class="k">Decision</span><span class="v">Detect stalled/failed stream (timeout/error) → <strong>auto-skip to next working channel</strong>; brief unobtrusive notice; log <code>stream_dead</code> (feeds kill-switch)</span></div><div class="field"><span class="k">Rationale</span><span class="v">Cable-like (dead channels skipped); never strand on a black screen. Rejected hard error, leaving user on a dead channel</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-16" data-title="Element #16 Dead-stream handling">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-16" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-16" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-16" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #16 Dead-stream handling…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-17">
+  <div class="el-head"><span class="num">#17</span><span class="el-title"><strong>Network-loss / reconnect</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;When the internet hiccups, the TV waits calmly and comes back on its own.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O3·C7</span></div><div class="field"><span class="k">Learning</span><span class="v">Wiom lines reboot/drop mid-evening (C7)</span></div><div class="field"><span class="k">Decision</span><span class="v">Detect offline → calm <strong>&quot;reconnecting…&quot;</strong> state (not an error) → <strong>auto-resume last channel</strong> on reconnect; backoff retries</span></div><div class="field"><span class="k">Rationale</span><span class="v">Variable Wiom networks are the norm; panic errors break trust. Rejected hard error screens, manual retry</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-17" data-title="Element #17 Network-loss / reconnect">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-17" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-17" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-17" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #17 Network-loss / reconnect…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-18">
+  <div class="el-head"><span class="num">#18</span><span class="el-title"><strong>Channel config schema</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;The app reads channels from one machine feed, so I add/pull channels without a rebuild.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">F14·O6·#8</span></div><div class="field"><span class="k">Learning</span><span class="v"><code>channel_catalog.md</code> is the human register; the app needs a machine contract</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Versioned remote JSON</strong>: array of <code>{id, name, logoUrl, genre, order, streamUrl, format, classification, enabled}</code>; <code>enabled:false</code> = kill-switch</span></div><div class="field"><span class="k">Rationale</span><span class="v">One contract drives list/order/grid/kill-switch; not-channel-hardcoded (#8). Rejected hardcoded list, in-APK config</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-18" data-title="Element #18 Channel config schema">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-18" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-18" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-18" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #18 Channel config schema…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-19">
+  <div class="el-head"><span class="num">#19</span><span class="el-title"><strong>Remote key map</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;Every button does the obvious thing, and I never get dumped out of the TV by mistake.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O1·NN#3·C8</span></div><div class="field"><span class="k">Learning</span><span class="v">A wrong <strong>Back</strong> mapping strands the user on the Android launcher</span></div><div class="field"><span class="k">Decision</span><span class="v">▲▼ = surf · OK = logo grid · Back = close overlay; <strong>at full-screen, Back does NOT exit to launcher</strong> (stay in app / confirm-exit guard) · Home = OS default</span></div><div class="field"><span class="k">Rationale</span><span class="v">Don&#x27;t strand the persona; minimal predictable mapping. Rejected Back-exits-to-launcher, complex multi-function keys</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-19" data-title="Element #19 Remote key map">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-19" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-19" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-19" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #19 Remote key map…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-20">
+  <div class="el-head"><span class="num">#20</span><span class="el-title"><strong>Config refresh cadence</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;When I pull a channel, it goes dark on every TV within minutes, not a release cycle.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">§0.6·O6</span></div><div class="field"><span class="k">Learning</span><span class="v">Kill-switch is only as fast as config propagation</span></div><div class="field"><span class="k">Decision</span><span class="v">Poll remote config every few minutes + on app foreground; pulled / <code>enabled:false</code> channels disappear next refresh</span></div><div class="field"><span class="k">Rationale</span><span class="v">Bounds kill-switch latency (§0.6 mandate). Rejected config baked into APK, manual push</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-20" data-title="Element #20 Config refresh cadence">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-20" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-20" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-20" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #20 Config refresh cadence…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-21">
+  <div class="el-head"><span class="num">#21</span><span class="el-title"><strong>Clear-HLS-only scope</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;Phase 1 plays simple clear streams so the player stays reliable and fast to build.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">O3·C1</span></div><div class="field"><span class="k">Learning</span><span class="v">DRM (Widevine) adds big complexity; Green FTA/AVoD are largely clear HLS</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Phase 1 = clear (non-DRM) HLS only</strong>; DRM-protected sources deferred; agentic search filters to clear streams</span></div><div class="field"><span class="k">Rationale</span><span class="v">Simpler player, faster to proof (25-day clock). Rejected DRM in Phase 1</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way (add DRM later)</span></div></div>
+  <div class="fb" data-id="el-21" data-title="Element #21 Clear-HLS-only scope">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-21" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-21" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-21" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #21 Clear-HLS-only scope…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-22">
+  <div class="el-head"><span class="num">#22</span><span class="el-title"><strong>Reference device / min-SDK</strong></span><span class="badge decided"><strong>Decided</strong> — confirm exact device when procured</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;I build against the cheap TV our households actually have, so it runs smoothly there.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">C7·#15</span></div><div class="field"><span class="k">Learning</span><span class="v">Low-end Android TV is the target hardware</span></div><div class="field"><span class="k">Decision</span><span class="v">Target ~<strong>Android TV 9 (API 28)</strong>, <strong>1GB-RAM class</strong> reference device; verify on a real one</span></div><div class="field"><span class="k">Rationale</span><span class="v">Build to the real low-end, not a flagship. Rejected targeting high-end TVs</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-22" data-title="Element #22 Reference device / min-SDK">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-22" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-22" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-22" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #22 Reference device / min-SDK…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-23">
+  <div class="el-head"><span class="num">#23</span><span class="el-title"><strong>Telemetry event taxonomy</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;I capture the few events that tell me default-ness + reliability, from day one.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">#7·O3·O6</span></div><div class="field"><span class="k">Learning</span><span class="v">Proof scorecard needs a defined event set</span></div><div class="field"><span class="k">Decision</span><span class="v"><code>app_open · channel_change · view_start(channel,genre) · buffering(ms) · playback_error · stream_dead · session_start/end(duration) · surf_depth</code></span></div><div class="field"><span class="k">Rationale</span><span class="v">Minimal set covering NSM + QoE + kill-switch signal. Rejected generic/over-broad analytics</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-23" data-title="Element #23 Telemetry event taxonomy">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-23" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-23" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-23" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #23 Telemetry event taxonomy…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-24">
+  <div class="el-head"><span class="num">#24</span><span class="el-title"><strong>App auto-start + crash recovery</strong></span><span class="badge open"><strong>Parked</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;The TV comes on already playing and recovers itself if it crashes, so it&#x27;s truly unattended.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">#5·NN#3·O3</span></div><div class="field"><span class="k">Learning</span><span class="v">No one relaunches an app; for a true always-on appliance this matters</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>PARKED for Phase 1</strong> — auto-launch-on-boot + playback watchdog deferred; revisit before pilot scale / when unattended-reliability becomes the gap</span></div><div class="field"><span class="k">Rationale</span><span class="v">Skipped now to protect the 25-day proof; kept visible so it&#x27;s not forgotten (manual relaunch acceptable in the small monitored pilot)</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-24" data-title="Element #24 App auto-start + crash recovery">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-24" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-24" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-24" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #24 App auto-start + crash recovery…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-25">
+  <div class="el-head"><span class="num">#25</span><span class="el-title"><strong>Brand: name, icon, launch screen</strong></span><span class="badge decided"><strong>Decided</strong> (method) / Open (name + visuals — due before household test)</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;I spot &#x27;my TV&#x27; instantly among the apps, and it feels trustworthy — opening it just brings up the TV.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">NSM·O1·§0.6</span></div><div class="field"><span class="k">Learning</span><span class="v">Auto-start parked (#24) → the <strong>launcher icon is the Phase-1 entry point</strong> (recognition-critical). All of it depends on the app name/brand (open)</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Method + timing locked; visuals deferred.</strong> Placeholder icon/splash for the build; <strong>finalize before the real-household test.</strong> Icon = logo-first, Wiom-branded, low-literacy-recognizable; launch = minimal, fast, <strong>dissolves straight into live video</strong>. Agents generate options, founder picks (NN#2)</span></div><div class="field"><span class="k">Rationale</span><span class="v">Two-way door, off the proof path (NN#3) → decide late; recognition-first; carries the Wiom brand into the home (§0.6). Rejected polishing brand before the app works</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-25" data-title="Element #25 Brand: name, icon, launch screen">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-25" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-25" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-25" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #25 Brand: name, icon, launch screen…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-26">
+  <div class="el-head"><span class="num">#26</span><span class="el-title"><strong>Design language</strong></span><span class="badge decided"><strong>Decided</strong> (direction) — <strong>we have access (public repo)</strong>; confirm dark-theme + TV-focus at integration</span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(User)</em> &quot;It looks like a proper TV — clean, easy to see from the sofa, and clearly &#x27;Wiom&#x27; — so I trust it and can use it from across the room.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">C8·NSM·O1·§0.6</span></div><div class="field"><span class="k">Learning</span><span class="v">Design system <strong>suggested by Ashish Agrawal (WIOM Design Head)</strong>; authoritative repo = <strong><code>abhishekgarg-wiom/wiom-ds-android</code></strong> (the <code>wiom-design-system</code> URL 404s) — <strong>public, Jetpack Compose, JitPack-installable</strong>: element-first tokens (<code>bg/text/stroke/icon.*</code>), <strong>Noto Sans</strong> (Devanagari → Hindi #12), Material 3 Icons Rounded, <strong>15 components</strong>, Adoption Kit. <strong>Mobile-first, not TV-native</strong>; web repo (<code>4e1-coder</code>) = light/desktop fallback</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Adopt <code>wiom-ds-android</code> v2.0.0 (JitPack) as source of truth + define the 10-ft TV layer on top:</strong> Compose-for-TV (<code>androidx.tv</code>) for focus/D-pad; reuse Wiom tokens/Noto Sans/icons; dark surfaces; <strong>focus-first</strong> (selected item glows brand accent); content-first overlay-on-video (#5). Drop in the DS Adoption-Kit CLAUDE.md so agents follow it</span></div><div class="field"><span class="k">Rationale</span><span class="v">Use the design head&#x27;s authoritative Compose system (brand consistency §0.6; our exact stack #15) via a Gradle dep — no re-invention, no clone; adapt to TV (mobile-first ≠ TV-native) with Compose-for-TV. Rejected light/desktop web repo as primary, re-inventing tokens</span></div><div class="field"><span class="k">Reversibility</span><span class="v">Two-way</span></div></div>
+  <div class="fb" data-id="el-26" data-title="Element #26 Design language">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-26" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-26" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-26" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #26 Design language…"></textarea>
+</div>
+</div>
+<div class="card el" id="el-27">
+  <div class="el-head"><span class="num">#27</span><span class="el-title"><strong>App identity &amp; secrets</strong></span><span class="badge decided"><strong>Decided</strong></span></div>
+  <div class="el-body"><div class="field"><span class="k">JTBD</span><span class="v"><em>(Operator)</em> &quot;The new app measures itself cleanly and never touches the live app&#x27;s data or users.&quot;</span></div><div class="field"><span class="k">Objective</span><span class="v">NSM·O6·NN#3</span></div><div class="field"><span class="k">Learning</span><span class="v">The CleverTap keys in <code>~/.env</code> are the <strong>LIVE Play Store app&#x27;s</strong> — reusing them would pollute the proof scorecard (#7) and could trigger the live app&#x27;s production campaigns</span></div><div class="field"><span class="k">Decision</span><span class="v"><strong>Fresh identity end-to-end, isolated from the live app:</strong> NEW applicationId + NEW CleverTap project + NEW Firebase/Crashlytics project. Secrets in <code>.env</code> (gitignored) + <code>google-services.json</code> gitignored + signing keystore out of repo; commit <code>.env.example</code> only. CleverTap/Firebase = you-dos before Slice 3</span></div><div class="field"><span class="k">Rationale</span><span class="v">Clean measurement for the proof scorecard (#7) + zero risk to the live app&#x27;s prod data/campaigns; matches zero-base (#14). Rejected reusing live app&#x27;s projects, committing secrets</span></div><div class="field"><span class="k">Reversibility</span><span class="v">One-way-ish (identity) / Two-way (keys rotatable)</span></div></div>
+  <div class="fb" data-id="el-27" data-title="Element #27 App identity & secrets">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_el-27" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_el-27" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_el-27" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Element #27 App identity & secrets…"></textarea>
+</div>
+</div>
+<p><strong>Phase 1 scope-out (NN#3):</strong> VOD · search · recommendations · profiles · parental controls · payments · phone/web · accounts/login — out, to protect proof-not-polish.</p>
+<p><em>Later phases: live/EPG, parental controls, DRM-protected sources, full backend (entitlement/catalog services), and the device path for the No-Connected-TV quadrants. <strong>Parked:</strong> #24 auto-start + crash recovery.</em></p>
+<hr>
+<div class="fb" data-id="layer-1-frozen-decision-bank-frozen-2026-06-08" data-title="Layer 1 — Frozen Decision Bank (frozen 2026-06-08)">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_layer-1-frozen-decision-bank-frozen-2026-06-08" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_layer-1-frozen-decision-bank-frozen-2026-06-08" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_layer-1-frozen-decision-bank-frozen-2026-06-08" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for Layer 1 — Frozen Decision Bank (frozen 2026-06-08)…"></textarea>
+</div>
+<h2 id="how-this-drives-the-business-line">How this drives the business line</h2>
+<ul><li><strong>Decided</strong> → build (acceptance criteria = the objective&#x27;s measure).</li><li><strong>Assumed</strong> → validate before building; sweat the <strong>one-way</strong> doors first (#8 architecture, #4 entitlement model).</li><li><strong>Open</strong> → decisions still owed (catalog depth; later-phase device path).</li><li>Ranked objectives → draw the <strong>Phase 1 line</strong> at &quot;minimum that makes Wiom TV the <em>default</em> screen for the ★ beachhead, ungated, in 25 days, zero acq spend.&quot;</li><li><strong>Guardrail:</strong> the internet-business halo is measured, never optimized for.</li></ul>
+<div class="fb" data-id="how-this-drives-the-business-line" data-title="How this drives the business line">
+  <div class="fb-row">
+    <label class="opt approve"><input type="radio" name="st_how-this-drives-the-business-line" value="approve"><span>✅ Approve</span></label>
+    <label class="opt revise"><input type="radio" name="st_how-this-drives-the-business-line" value="revise"><span>✏️ Revise</span></label>
+    <label class="opt question"><input type="radio" name="st_how-this-drives-the-business-line" value="question"><span>❓ Question</span></label>
+  </div>
+  <textarea placeholder="Comments / changes for How this drives the business line…"></textarea>
+</div>
+</div>
+<div class="bar">
+  <span class="count" id="count">No feedback yet</span>
+  <button class="btn" onclick="dl()">⬇ Download feedback</button>
+</div>
+<script>
+function tally(){
+  let a=0,r=0,q=0,c=0;
+  document.querySelectorAll('.fb').forEach(f=>{
+    let s=f.querySelector('input:checked'); let t=f.querySelector('textarea').value.trim();
+    if(s&&s.value=='approve')a++; else if(s&&s.value=='revise')r++; else if(s&&s.value=='question')q++;
+    if(t)c++;
+  });
+  document.getElementById('count').textContent=`✅ ${a}  ·  ✏️ ${r}  ·  ❓ ${q}  ·  💬 ${c} commented`;
+}
+document.addEventListener('input',tally); document.addEventListener('change',tally); tally();
+function dl(){
+  let a=0,r=0,q=0; let body='';
+  document.querySelectorAll('.fb').forEach(f=>{
+    let s=f.querySelector('input:checked'); let st=s?s.value:null;
+    let t=f.querySelector('textarea').value.trim();
+    if(!st&&!t)return;
+    let lab={approve:'✅ APPROVE',revise:'✏️ REVISE',question:'❓ QUESTION'}[st]||'💬 COMMENT';
+    if(st=='approve')a++; if(st=='revise')r++; if(st=='question')q++;
+    body+=`## [${f.dataset.id}] ${f.dataset.title} — ${lab}\n`;
+    if(t)body+=t+'\n';
+    body+='\n';
+  });
+  let head=`# Review Feedback — Zero-Based TV Framework\n\n`+
+           `Approve: ${a} · Revise: ${r} · Question: ${q}\n\n---\n\n`;
+  let out=head+(body||'_No feedback entered._\n');
+  let blob=new Blob([out],{type:'text/markdown'});
+  let url=URL.createObjectURL(blob);
+  let el=document.createElement('a'); el.href=url; el.download='review_feedback.md'; el.click();
+  URL.revokeObjectURL(url);
+}
+</script></body></html>

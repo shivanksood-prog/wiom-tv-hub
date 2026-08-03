@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wiom TV · Funnel & Engagement Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#161021;--card:#352D42;--card2:#1a1128;--border:#443152;--text:#FAF9FC;
+  --muted:#A7A1B2;--muted2:#665E75;--accent:#D9008D;--accent300:#FFB2E4;--accent500:#FF66C9;
+  --green:#008043;--red:#E01E00;--amber:#FF8000;--purple:#6D17CE;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.5;padding-bottom:60px}
+.header{background:linear-gradient(135deg,#5E003D,#443152);padding:22px 28px}
+.header h1{font-size:24px;font-weight:800;color:var(--accent300)}
+.header h1 span{color:var(--accent)}
+.header p{color:var(--accent300);opacity:.85;font-size:13px;margin-top:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 28px}
+.section-title{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin:32px 0 14px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--card2);border:1px solid #2d2240;border-radius:14px;padding:22px}
+.card.wide{grid-column:1/-1}
+.card h3{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted2);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.big-num{font-size:40px;font-weight:800;color:var(--accent);line-height:1}
+.big-sub{font-size:13px;color:var(--muted2);margin-top:6px}
+.badge{font-size:10px;font-weight:800;letter-spacing:.5px;padding:3px 9px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
+.b-ok{background:rgba(0,128,67,.18);color:#3ddc84;border:1px solid rgba(0,128,67,.4)}
+.b-gap{background:rgba(224,30,0,.16);color:#ff6b52;border:1px solid rgba(224,30,0,.4)}
+.b-partial{background:rgba(255,128,0,.16);color:#ffa64d;border:1px solid rgba(255,128,0,.4)}
+.chart-box{position:relative;height:280px}
+.chart-box.tall{height:340px}
+/* scorecard */
+.score{display:grid;grid-template-columns:1.4fr .8fr 1.6fr .9fr;gap:0;border:1px solid #2d2240;border-radius:14px;overflow:hidden}
+.score>div{padding:13px 16px;border-bottom:1px solid #2d2240;font-size:13.5px;display:flex;align-items:center}
+.score .h{background:var(--card);color:var(--accent300);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.score .q{font-weight:600}
+.score .need{color:var(--muted);font-size:12.5px}
+/* funnel */
+.funnel{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.fstep{display:flex;align-items:center;gap:14px}
+.fbar{flex:1;height:46px;border-radius:10px;display:flex;align-items:center;padding:0 16px;font-weight:700;color:#fff;position:relative;overflow:hidden}
+.fbar.gap{background:repeating-linear-gradient(45deg,#3a2440,#3a2440 10px,#241526 10px,#241526 20px);color:var(--muted);border:1px dashed var(--red)}
+.fmeta{width:150px;text-align:right;font-size:13px;color:var(--muted)}
+.fmeta b{color:var(--text);font-size:16px;display:block}
+.drop{font-size:11px;color:var(--red);margin-left:8px}
+.note{background:rgba(224,30,0,.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:8px;font-size:13px;color:#ffb3a3;margin-top:14px}
+.note.amber{background:rgba(255,128,0,.08);border-left-color:var(--amber);color:#ffce99}
+.note.ok{background:rgba(0,128,67,.08);border-left-color:var(--green);color:#9be8bd}
+.note code{background:#2d2240;padding:1px 7px;border-radius:5px;color:var(--accent300);font-size:12px}
+.blueprint{border:1px dashed var(--border);border-radius:10px;padding:18px;background:repeating-linear-gradient(45deg,transparent,transparent 14px,rgba(217,0,141,.02) 14px,rgba(217,0,141,.02) 28px)}
+.bp-bars{display:flex;align-items:flex-end;gap:14px;height:150px;margin:14px 0}
+.bp-bar{flex:1;background:linear-gradient(180deg,#3a2440,#241526);border:1px dashed var(--accent);border-radius:6px 6px 0 0;display:flex;align-items:flex-end;justify-content:center;color:var(--muted);font-size:11px;padding-bottom:6px;position:relative}
+.bp-bar span{position:absolute;bottom:-22px;color:var(--muted2);font-size:11px}
+.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1f1834;font-size:13px}
+.kv:last-child{border:none}
+.kv b{color:var(--accent300)}
+.fix{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:#0f0a18;border:1px solid #2d2240;border-radius:8px;padding:12px 14px;color:#c9c2d6;overflow-x:auto;white-space:pre;margin-top:10px}
+.fix .c{color:#6fcf97}.fix .k{color:var(--accent300)}.fix .s{color:#ffce99}
+.foot{color:var(--muted2);font-size:12px;text-align:center;margin-top:36px}
+.proxy-tag{font-size:10px;color:var(--amber);font-weight:700}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1><span>Wiom</span> TV · Funnel &amp; Engagement Dashboard</h1>
+  <p>Launch → Unmute → Switch behaviour · built on the wiom.tv beacon · data window: last 30 days (snapshot 2026-06-24)</p>
+</div>
+
+<div class="wrap">
+
+  <!-- ===================== TRACKABILITY SCORECARD ===================== -->
+  <div class="section-title">① Do we track what these questions need?</div>
+  <div class="score">
+    <div class="h">Question</div><div class="h">Status</div><div class="h">What's needed / missing</div><div class="h">Source event</div>
+
+    <div class="q">Funnel: Launch → Unmute → Switch</div>
+    <div><span class="badge b-gap">Blocked</span></div>
+    <div class="need">Launch ✓ &amp; Switch ✓, but the <b style="color:#ff6b52">Unmute step is never beaconed</b> — funnel has a hole in the middle.</div>
+    <div class="need"><code style="font-size:11px">session_start</code> · <s>unmute</s> · <code style="font-size:11px">tune</code></div>
+
+    <div class="q">Switch-count buckets × users<br><span style="color:var(--muted2);font-size:11px">split: unmute-once vs never-unmute</span></div>
+    <div><span class="badge b-gap">Blocked</span></div>
+    <div class="need">Needs (a) the missing <b style="color:#ff6b52">unmute</b> event for the split, and (b) a <b>per-user switch-count histogram</b> — captured at event level (uid on every <code>tune</code>) but <b>not exposed</b> by <code>/api/stats</code>.</div>
+    <div class="need"><code style="font-size:11px">tune</code> grouped by <code style="font-size:11px">uid</code> + unmute</div>
+
+    <div class="q">Users by first channel launched</div>
+    <div><span class="badge b-partial">Data exists</span></div>
+    <div class="need">Captured (first <code>playback_start</code> per <code>uid</code>) but needs a <b>first-event-per-user</b> query. Today only "users who ever tuned to ch" exists (proxy below).</div>
+    <div class="need"><code style="font-size:11px">playback_start</code> first per <code>uid</code></div>
+  </div>
+  <div class="note">
+    <b>One fix unblocks everything:</b> the player has unmute handlers in 3 places (overlay tap, keyboard <code>m</code>, post-unmute rebind) — none fires a beacon. Add one line and the funnel + the unmute/never-unmute segmentation both become answerable:
+    <div class="fix"><span class="c">// inside each unmute handler (overlay onclick, key 'm', btn-mute)</span>
+<span class="k">beacon</span>(<span class="s">'unmute'</span>, { via: <span class="s">'tap'</span> <span class="c">/* | 'key' | 'btn' */</span>, ch: cur, t_since_launch: Date.now() - sessionStart });</div>
+  </div>
+
+  <!-- ===================== Q1 FUNNEL ===================== -->
+  <div class="section-title">② Funnel — Launch → Unmute → Channel switch</div>
+  <div class="grid">
+    <div class="card wide">
+      <h3>Target funnel <span class="badge b-gap">Unmute step not tracked</span></h3>
+      <div class="funnel">
+        <div class="fstep">
+          <div class="fbar" style="background:linear-gradient(90deg,#D9008D,#FF66C9);width:100%">Launch &nbsp;·&nbsp; app opened</div>
+          <div class="fmeta"><b id="f-launch">—</b>session_start</div>
+        </div>
+        <div class="fstep">
+          <div class="fbar gap" style="width:70%">Unmute &nbsp;·&nbsp; ⚠ not instrumented — value unknown</div>
+          <div class="fmeta"><b style="color:var(--red)">?</b>missing event</div>
+        </div>
+        <div class="fstep">
+          <div class="fbar" style="background:linear-gradient(90deg,#6D17CE,#a855f7);width:45%">Engaged switch &nbsp;·&nbsp; watched a channel</div>
+          <div class="fmeta"><b id="f-engaged">—</b>engaged tune</div>
+        </div>
+      </div>
+      <div class="note amber">Without the unmute event we can't tell whether the <b id="f-dropoff">—</b> drop from launch → engaged happens <i>at the audio wall</i> (users never unmute) or <i>after</i> it (unmuted but didn't commit). That distinction is the whole point of this funnel.</div>
+    </div>
+
+    <div class="card">
+      <h3>What we CAN see today <span class="badge b-ok">Live</span></h3>
+      <div class="chart-box"><canvas id="realFunnel"></canvas></div>
+      <div class="big-sub" style="margin-top:8px">Real funnel from <code style="font-size:11px;background:#2d2240;padding:1px 6px;border-radius:5px;color:var(--accent300)">/api/stats</code>: opens → playback_start → engaged.</div>
+    </div>
+    <div class="card">
+      <h3>Engagement overview · 30d <span class="badge b-ok">Live</span></h3>
+      <div class="kv"><span>Unique users</span><b id="o-users">—</b></div>
+      <div class="kv"><span>Channel switches (tunes)</span><b id="o-tunes">—</b></div>
+      <div class="kv"><span>Total watch time</span><b id="o-watch">—</b></div>
+      <div class="kv"><span>Avg session on a channel</span><b id="o-avg">—</b></div>
+      <div class="kv"><span>Returning users</span><b id="o-ret">—</b></div>
+      <div class="big-sub" style="margin-top:10px">Note: <b>0 returning users</b> — uid retention is captured but the cohort is brand-new / window-limited.</div>
+    </div>
+  </div>
+
+  <!-- ===================== Q2 SWITCH BUCKETS ===================== -->
+  <div class="section-title">③ Channel-switch buckets × number of users</div>
+  <div class="grid">
+    <div class="card wide">
+      <h3>Switches-per-user distribution, split by unmute behaviour <span class="badge b-gap">Needs per-user query + unmute event</span></h3>
+      <div class="blueprint">
+        <div style="color:var(--muted);font-size:13px;margin-bottom:6px">Target view — two series per bucket: <b style="color:var(--accent300)">unmute-once users</b> vs <b style="color:var(--amber)">never-unmute users</b></div>
+        <div class="bp-bars">
+          <div class="bp-bar" style="height:30%">?<span>0 switches</span></div>
+          <div class="bp-bar" style="height:70%">?<span>1</span></div>
+          <div class="bp-bar" style="height:55%">?<span>2–3</span></div>
+          <div class="bp-bar" style="height:38%">?<span>4–6</span></div>
+          <div class="bp-bar" style="height:22%">?<span>7–10</span></div>
+          <div class="bp-bar" style="height:14%">?<span>11+</span></div>
+        </div>
+      </div>
+      <div class="note">Data to compute this <b>exists in the event store</b> (every <code>tune</code> carries <code>uid</code>), but <code>/api/stats</code> only returns aggregates — no per-user distribution, and no unmute flag. Two additions needed:
+        <div class="fix"><span class="c">-- 1. per-user switch count → bucket histogram</span>
+<span class="k">SELECT</span> bucket, count(*) users <span class="k">FROM</span> (
+  <span class="k">SELECT</span> uid,
+    <span class="k">CASE</span> <span class="k">WHEN</span> n=0 <span class="k">THEN</span> <span class="s">'0'</span> <span class="k">WHEN</span> n=1 <span class="k">THEN</span> <span class="s">'1'</span>
+         <span class="k">WHEN</span> n&lt;=3 <span class="k">THEN</span> <span class="s">'2-3'</span> <span class="k">WHEN</span> n&lt;=6 <span class="k">THEN</span> <span class="s">'4-6'</span>
+         <span class="k">WHEN</span> n&lt;=10 <span class="k">THEN</span> <span class="s">'7-10'</span> <span class="k">ELSE</span> <span class="s">'11+'</span> <span class="k">END</span> bucket,
+    <span class="k">MAX</span>(unmuted) unmuted          <span class="c">-- 2. needs the unmute event joined per uid</span>
+  <span class="k">FROM</span> events <span class="k">WHERE</span> event=<span class="s">'tune'</span> <span class="k">GROUP BY</span> uid
+) <span class="k">GROUP BY</span> bucket, unmuted;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Q3 FIRST CHANNEL ===================== -->
+  <div class="section-title">④ Users by first channel launched</div>
+  <div class="grid">
+    <div class="card wide">
+      <h3>First channel per user <span class="badge b-partial">Proxy shown · needs first-event query</span></h3>
+      <div class="chart-box tall"><canvas id="firstCh"></canvas></div>
+      <div class="note amber"><span class="proxy-tag">PROXY</span> &nbsp;This shows <b>unique users who ever tuned to each channel</b> (from <code>channelLeaderboard</code>), not strictly the <i>first</i> channel. It's a close proxy because the app boots into the last/default channel — <b>&amp;TV International (ch 1)</b> dominates at <b id="ch1-users">—</b> users, almost certainly the default landing channel. For the true metric, take the <b>first <code>playback_start</code> per <code>uid</code></b>:
+        <div class="fix"><span class="k">SELECT</span> ch, name, <span class="k">count</span>(<span class="k">DISTINCT</span> uid) users <span class="k">FROM</span> (
+  <span class="k">SELECT</span> uid, ch, name,
+    <span class="k">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> uid <span class="k">ORDER BY</span> ts) rn
+  <span class="k">FROM</span> events <span class="k">WHERE</span> event=<span class="s">'playback_start'</span>
+) <span class="k">WHERE</span> rn=1 <span class="k">GROUP BY</span> ch, name <span class="k">ORDER BY</span> users <span class="k">DESC</span>;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SUPPORTING REAL PANELS ===================== -->
+  <div class="section-title">⑤ Context — fully tracked today</div>
+  <div class="grid">
+    <div class="card"><h3>Device mix <span class="badge b-ok">Live</span></h3><div class="chart-box"><canvas id="device"></canvas></div></div>
+    <div class="card"><h3>Language demand <span class="badge b-ok">Live</span></h3><div class="chart-box"><canvas id="lang"></canvas></div></div>
+    <div class="card"><h3>Startup quality (TTFF) by network <span class="badge b-ok">Live</span></h3><div class="chart-box"><canvas id="net"></canvas></div></div>
+    <div class="card wide"><h3>Most error-prone channels (playback_error) <span class="badge b-ok">Live</span></h3><div class="chart-box"><canvas id="errors"></canvas></div></div>
+  </div>
+
+  <div class="foot">Built from the wiom.tv first-party beacon (8 events: session_start · playback_start · playback_error · tune · session_end · install_shown · pwa_install · install_dismiss).<br>Gap to close for this dashboard: add <b>unmute</b> event + 2 per-user aggregation queries. · Snapshot 2026-06-24, 30-day window.</div>
+</div>
+
+<script id="data" type="application/json">{"overview": {"unique_users": 2787, "total_tunes": 3543, "total_watch_min": 5780.2, "avg_duration_sec": 97.9}, "funnel": {"opens": 264, "playback": 216, "engaged": 56}, "retention": {"new_users": 264, "returning_users": 0}, "liveNow": 2, "perf": {"avg_ttff_ms": 2351, "samples": 1024}, "deviceBreakdown": [{"device": "mobile", "users": 2635}, {"device": "desktop", "users": 145}], "netBreakdown": [{"net": "4g", "starts": 941, "avg_ttff_ms": 2266}, {"net": "unknown", "starts": 46, "avg_ttff_ms": 1881}, {"net": "3g", "starts": 36, "avg_ttff_ms": 5007}, {"net": "2g", "starts": 1, "avg_ttff_ms": 8783}], "languageBreakdown": [{"lang": "Hindi", "tunes": 3170, "unique_users": 1519, "watch_min": 4117.5}, {"lang": "English", "tunes": 124, "unique_users": 59, "watch_min": 1466}, {"lang": "Bhojpuri", "tunes": 59, "unique_users": 43, "watch_min": 95.6}, {"lang": "Punjabi", "tunes": 114, "unique_users": 67, "watch_min": 67.2}, {"lang": "Marathi", "tunes": 60, "unique_users": 36, "watch_min": 26.3}, {"lang": "Urdu", "tunes": 16, "unique_users": 13, "watch_min": 7.6}], "categoryBreakdown": [{"cat": "Entertainment", "tunes": 2276, "unique_users": 1416, "watch_min": 2575.2}, {"cat": "Music", "tunes": 303, "unique_users": 142, "watch_min": 246.3}, {"cat": "News", "tunes": 489, "unique_users": 112, "watch_min": 175.9}, {"cat": "Movies", "tunes": 107, "unique_users": 65, "watch_min": 119.8}, {"cat": "Devotional", "tunes": 159, "unique_users": 48, "watch_min": 22.7}, {"cat": "Classic", "tunes": 38, "unique_users": 37, "watch_min": 17.5}, {"cat": "Undefined", "tunes": 50, "unique_users": 30, "watch_min": 1027.6}, {"cat": "DD", "tunes": 60, "unique_users": 22, "watch_min": 137.6}], "channelLeaderboard": [{"ch": 225, "name": "The Pet Collective", "cat": "Family", "lang": "English", "tunes": 3, "unique_users": 3, "watch_min": 1430.7}, {"ch": 205, "name": "Shekinah TV", "cat": "Undefined", "lang": "Hindi", "tunes": 15, "unique_users": 14, "watch_min": 1015.5}, {"ch": 1, "name": "&TV International", "cat": "Entertainment", "lang": "Hindi", "tunes": 916, "unique_users": 887, "watch_min": 937.8}, {"ch": 2, "name": "Dangal TV", "cat": "Entertainment", "lang": "Hindi", "tunes": 476, "unique_users": 420, "watch_min": 851.2}, {"ch": 8, "name": "Zee Cine Classic", "cat": "Entertainment", "lang": "Hindi", "tunes": 64, "unique_users": 52, "watch_min": 210.2}, {"ch": 97, "name": "DD Goa", "cat": "DD", "lang": "Hindi", "tunes": 7, "unique_users": 7, "watch_min": 130.5}, {"ch": 3, "name": "Dangal 2", "cat": "Entertainment", "lang": "Hindi", "tunes": 143, "unique_users": 131, "watch_min": 129.7}, {"ch": 5, "name": "Zee Comedy Nation", "cat": "Entertainment", "lang": "Hindi", "tunes": 89, "unique_users": 84, "watch_min": 114.5}, {"ch": 29, "name": "9X Jhakaas", "cat": "Music", "lang": "Hindi", "tunes": 18, "unique_users": 17, "watch_min": 104.1}, {"ch": 24, "name": "Bhojpuri Cinema", "cat": "Movies", "lang": "Bhojpuri", "tunes": 18, "unique_users": 18, "watch_min": 67.6}, {"ch": 41, "name": "ABP News", "cat": "News", "lang": "Hindi", "tunes": 22, "unique_users": 18, "watch_min": 66.4}, {"ch": 14, "name": "Mango TV", "cat": "Entertainment", "lang": "Hindi", "tunes": 21, "unique_users": 18, "watch_min": 62.1}, {"ch": 7, "name": "Zee Horror Nights", "cat": "Entertainment", "lang": "Hindi", "tunes": 62, "unique_users": 60, "watch_min": 44.9}, {"ch": 37, "name": "Punjabi Hits", "cat": "Music", "lang": "Punjabi", "tunes": 25, "unique_users": 20, "watch_min": 43.8}, {"ch": 4, "name": "Epic TV", "cat": "Entertainment", "lang": "Hindi", "tunes": 111, "unique_users": 107, "watch_min": 34.8}], "errorBoard": [{"ch": 10, "name": "History TV18 HD", "cat": "Entertainment", "errors": 43, "starts": 0}, {"ch": 15, "name": "NDTV Good Times", "cat": "Entertainment", "errors": 39, "starts": 0}, {"ch": 16, "name": "Travelxp HD", "cat": "Entertainment", "errors": 33, "starts": 0}, {"ch": 14, "name": "Mango TV", "cat": "Entertainment", "errors": 29, "starts": 0}, {"ch": 23, "name": "B4U Kadak", "cat": "Movies", "errors": 26, "starts": 0}, {"ch": 12, "name": "Abzy Movies", "cat": "Entertainment", "errors": 22, "starts": 0}, {"ch": 19, "name": "Filamchi Bhojpuri", "cat": "Entertainment", "errors": 17, "starts": 1}, {"ch": 2, "name": "Dangal TV", "cat": "Entertainment", "errors": 13, "starts": 248}], "dailyTrend": [{"day": "2026-06-12", "users": 40, "tunes": 161, "watch_min": 121.1}, {"day": "2026-06-15", "users": 4, "tunes": 18, "watch_min": 1.4}, {"day": "2026-06-16", "users": 22, "tunes": 48, "watch_min": 154.7}, {"day": "2026-06-17", "users": 15, "tunes": 40, "watch_min": 13.5}, {"day": "2026-06-18", "users": 9, "tunes": 26, "watch_min": 9.5}, {"day": "2026-06-19", "users": 412, "tunes": 725, "watch_min": 307.6}, {"day": "2026-06-20", "users": 553, "tunes": 618, "watch_min": 563.8}, {"day": "2026-06-21", "users": 648, "tunes": 620, "watch_min": 685}, {"day": "2026-06-22", "users": 447, "tunes": 376, "watch_min": 442.6}, {"day": "2026-06-23", "users": 432, "tunes": 636, "watch_min": 2953.5}, {"day": "2026-06-24", "users": 207, "tunes": 275, "watch_min": 527.5}]}</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const C = {accent:'#D9008D',a500:'#FF66C9',a300:'#FFB2E4',purple:'#a855f7',green:'#3ddc84',amber:'#ffa64d',red:'#ff6b52',muted:'#665E75',grid:'#2d2240'};
+const PALETTE=['#D9008D','#FF66C9','#FFB2E4','#6D17CE','#a855f7','#00c853','#ff8000','#0080c8'];
+Chart.defaults.color='#A7A1B2';Chart.defaults.font.family="'Segoe UI',system-ui";
+const fmt=n=>n.toLocaleString();
+const fmtMin=m=>m>=60?(m/60).toFixed(1)+' h':Math.round(m)+' min';
+
+// overview
+document.getElementById('o-users').textContent=fmt(D.overview.unique_users);
+document.getElementById('o-tunes').textContent=fmt(D.overview.total_tunes);
+document.getElementById('o-watch').textContent=fmtMin(D.overview.total_watch_min);
+document.getElementById('o-avg').textContent=D.overview.avg_duration_sec+' s';
+document.getElementById('o-ret').textContent=fmt(D.retention.returning_users);
+
+// funnel headline numbers
+document.getElementById('f-launch').textContent=fmt(D.funnel.opens);
+document.getElementById('f-engaged').textContent=fmt(D.funnel.engaged);
+const dropPct=Math.round((1-D.funnel.engaged/D.funnel.opens)*100);
+document.getElementById('f-dropoff').textContent=dropPct+'%';
+
+// real funnel (opens -> playback -> engaged)
+new Chart(document.getElementById('realFunnel'),{type:'bar',
+  data:{labels:['Opens','Playback start','Engaged'],datasets:[{
+    data:[D.funnel.opens,D.funnel.playback,D.funnel.engaged],
+    backgroundColor:[C.accent,C.purple,C.green],borderRadius:8}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>fmt(c.raw)+' users'}}},
+    scales:{x:{grid:{color:C.grid}},y:{grid:{display:false}}}}});
+
+// first channel proxy (users per channel)
+const lb=D.channelLeaderboard.slice().sort((a,b)=>b.unique_users-a.unique_users).slice(0,12);
+document.getElementById('ch1-users').textContent=fmt((lb[0]||{}).unique_users||0);
+new Chart(document.getElementById('firstCh'),{type:'bar',
+  data:{labels:lb.map(c=>'ch'+c.ch+' '+c.name),datasets:[{
+    data:lb.map(c=>c.unique_users),
+    backgroundColor:lb.map((_,i)=>i===0?C.accent:C.a500),borderRadius:6}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>fmt(c.raw)+' users (proxy: ever-tuned)'}}},
+    scales:{x:{grid:{color:C.grid}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+
+// device
+new Chart(document.getElementById('device'),{type:'doughnut',
+  data:{labels:D.deviceBreakdown.map(d=>d.device),datasets:[{
+    data:D.deviceBreakdown.map(d=>d.users),backgroundColor:PALETTE,borderColor:'#1a1128',borderWidth:2}]},
+  options:{plugins:{legend:{position:'bottom'}}}});
+
+// language
+const lg=D.languageBreakdown.slice().sort((a,b)=>b.unique_users-a.unique_users);
+new Chart(document.getElementById('lang'),{type:'bar',
+  data:{labels:lg.map(l=>l.lang),datasets:[{label:'Users',data:lg.map(l=>l.unique_users),backgroundColor:C.accent,borderRadius:6}]},
+  options:{plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:C.grid}}}}});
+
+// network ttff
+new Chart(document.getElementById('net'),{type:'bar',
+  data:{labels:D.netBreakdown.map(n=>n.net),datasets:[{
+    label:'Avg TTFF (ms)',data:D.netBreakdown.map(n=>n.avg_ttff_ms),
+    backgroundColor:D.netBreakdown.map(n=>n.avg_ttff_ms>4000?C.red:n.avg_ttff_ms>2500?C.amber:C.green),borderRadius:6}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{afterLabel:c=>D.netBreakdown[c.dataIndex].starts+' starts'}}},
+    scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},title:{display:true,text:'ms to first frame'}}}}});
+
+// errors
+const eb=D.errorBoard.slice(0,8);
+new Chart(document.getElementById('errors'),{type:'bar',
+  data:{labels:eb.map(e=>'ch'+e.ch+' '+e.name),datasets:[{label:'Errors',data:eb.map(e=>e.errors),backgroundColor:C.red,borderRadius:6}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:C.grid}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+</script>
+</body>
+</html>

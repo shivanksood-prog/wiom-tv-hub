@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiom TV — Analytics Strategy: Ours vs Production vs Gold Standard</title>
+<style>
+  :root{
+    --bg:#161021; --card:#352D42; --card2:#241c30; --border:#443152; --text:#FAF9FC;
+    --muted:#A7A1B2; --faint:#736C82; --accent:#D9008D; --accent2:#FFB2E4;
+    --green:#008043; --green-bg:#0c3a24; --red:#E01E00; --red-bg:#3a1410;
+    --amber:#FF8000; --amber-bg:#3a2608; --purple:#6D17CE; --purple-bg:#23004E; --info-bg:#1d1530;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Noto Sans','Segoe UI',system-ui,sans-serif;
+    line-height:1.55;padding:32px 20px 80px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto}
+  .eyebrow{color:var(--accent2);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  h1{font-size:34px;font-weight:800;line-height:1.15;margin:8px 0 10px;
+    background:linear-gradient(90deg,#fff,var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  h2{font-size:23px;font-weight:800;margin:42px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  h3{font-size:17px;font-weight:700;margin:22px 0 8px;color:var(--accent2)}
+  p{color:var(--text);margin:9px 0}
+  .sub{color:var(--muted);font-size:15px;max-width:760px}
+  .meta{color:var(--faint);font-size:13px;margin-top:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px}
+  .card.dim{background:var(--card2)}
+  .verdict{background:linear-gradient(135deg,#2a1430,#1d1530);border:1px solid var(--accent);border-radius:18px;padding:24px 26px;margin:22px 0}
+  .verdict h3{color:#fff;margin-top:0;font-size:19px}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+  .p-good{background:var(--green-bg);color:#7fe0ad;border:1px solid #0f5e34}
+  .p-bad{background:var(--red-bg);color:#ff9d8c;border:1px solid #7a2418}
+  .p-mid{background:var(--amber-bg);color:#ffc078;border:1px solid #7a4a10}
+  .p-info{background:var(--purple-bg);color:#d6b2ff;border:1px solid #4a1f8a}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--accent2);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  td.dim{color:var(--muted)}
+  tr td:first-child{font-weight:600;color:#fff;width:21%}
+  .col-ours{background:rgba(0,128,67,.07)}
+  .col-prod{background:rgba(255,128,0,.06)}
+  code{background:#0e0a16;color:var(--accent2);padding:1px 6px;border-radius:5px;font-size:12.5px;font-family:'SF Mono',Consolas,monospace}
+  ul{margin:8px 0 8px 4px;padding-left:18px}
+  li{margin:5px 0;color:var(--text)}
+  li.muted{color:var(--muted)}
+  .layer{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:12px 0}
+  .layer .num{flex:0 0 44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;background:var(--accent);color:#fff}
+  .layer.l2 .num{background:var(--purple)} .layer.l3 .num{background:var(--amber)} .layer.l4 .num{background:var(--green)}
+  .layer .body{flex:1}
+  .layer h3{margin:0 0 4px;color:#fff}
+  .tag{font-size:12px;color:var(--faint)}
+  .flow{background:var(--card2);border:1px dashed var(--border);border-radius:14px;padding:18px;text-align:center;font-size:14px;color:var(--muted);margin:16px 0}
+  .flow b{color:var(--accent2)}
+  .star{color:var(--accent)}
+  .kbar{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+  .kpi{flex:1;min-width:150px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+  .kpi .n{font-size:26px;font-weight:800;color:#fff}
+  .kpi .l{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .note{font-size:13px;color:var(--faint);margin-top:6px}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}h1{font-size:27px}tr td:first-child{width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Wiom TV · Analytics Strategy</div>
+  <h1>How we measure the app — ours vs production, and the gold standard</h1>
+  <p class="sub">A code-level comparison of the analytics in our zero-based app (<code>com.wiom.tv.zb</code>, v1.3-pilot) and Ashutosh's live production app (<code>com.wiomtv.android.prod</code>, v11.0.2), then a recommended target architecture. Direct answer to: <em>"should we rely on CleverTap alone for everything?"</em></p>
+  <p class="meta">2026-06-30 · grounded in both codebases + the existing production deep-dive</p>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h3>The one-line verdict</h3>
+    <p style="color:#fff;font-size:16px"><b>CleverTap is the right <span class="star">engagement</span> layer — but "CleverTap for everything" is the wrong frame for a streaming app running on Wiom's own ISP.</b></p>
+    <p style="color:var(--muted)">CleverTap is elite at <em>who watches, how often, and how to message them</em>. It is the wrong tool for <em>does the video play smoothly at fleet scale</em> (QoE), <em>did it crash</em> (stability), and <em>can I join watch-behaviour to our router/household graph in Snowflake</em> (ownership). The gold standard keeps CleverTap for engagement and adds three thin, purpose-built layers behind the single <code>Telemetry</code> façade we already have.</p>
+  </div>
+
+  <div class="kbar">
+    <div class="kpi"><div class="n">~20</div><div class="l">events in ours (clean taxonomy, hashed PII)</div></div>
+    <div class="kpi"><div class="n">~31</div><div class="l">events in production (richer QoE, ~6 dead/unwired)</div></div>
+    <div class="kpi"><div class="n">2</div><div class="l">backends each (CleverTap + Crashlytics) — <span style="color:#ff9d8c">neither owns its data</span></div></div>
+    <div class="kpi"><div class="n">0</div><div class="l">warehouse / Wiom-graph join on either side</div></div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <h2>1 · Side-by-side</h2>
+  <table>
+    <thead><tr><th style="width:20%">Dimension</th><th class="col-ours" style="width:40%">Ours — <code>com.wiom.tv.zb</code></th><th class="col-prod" style="width:40%">Production — <code>com.wiomtv.android.prod</code></th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Backends</td>
+        <td class="col-ours">CleverTap 8.3.0 + Firebase Crashlytics. <span class="pill p-good">newer SDK</span></td>
+        <td class="col-prod">CleverTap 7.5.2 + Crashlytics + Firebase Remote Config. Firebase Analytics declared but <b>never called</b>.</td>
+      </tr>
+      <tr>
+        <td>Architecture</td>
+        <td class="col-ours">Single <code>Telemetry</code> façade → all events route through one seam (+ logcat mirror + offline queue). <span class="pill p-good">multi-sink ready</span></td>
+        <td class="col-prod">Hand-wired: every event is a direct <code>cleverTap.pushEvent</code> in one 1000-line <code>CleverTapManager</code>. <span class="pill p-bad">no abstraction</span></td>
+      </tr>
+      <tr>
+        <td>QoE / playback depth</td>
+        <td class="col-ours">TTFF (+preloaded split), stall (READY→BUFFERING, flap-filtered), stream_dead, reconnect pair. <span class="pill p-mid">computed well, flat schema</span></td>
+        <td class="col-prod"><b>Richest area:</b> play_attempted / first_framed / rebuffered / play_error (error_bucket + stage + code) / play_stopped / recovery_actioned+resulted / quality_changed. <span class="pill p-good">strong schema</span></td>
+      </tr>
+      <tr>
+        <td>Network-context session</td>
+        <td class="col-ours">Not captured as an event. <span class="pill p-bad">gap</span></td>
+        <td class="col-prod"><code>session_started</code> with <code>is_on_wiom_net, ssid, bssid_hash, rssi, link_speed, ethernet, city, partner_id</code>. <span class="pill p-good">excellent for a Wiom ISP app</span></td>
+      </tr>
+      <tr>
+        <td>Identity</td>
+        <td class="col-ours"><code>onUserLogin</code> merge: <code>tv_&lt;ANDROID_ID&gt;</code> → <code>ph_&lt;sha256&gt;</code> after login. <span class="pill p-good">proper merge, hashed</span></td>
+        <td class="col-prod">CleverTap auto-id + Google Ad-ID; <b>no onUserLogin</b>. <code>user_id/city/partner_id</code> stubbed (<code>anonymous/unknown/default</code>). <span class="pill p-bad">weak + stubs</span></td>
+      </tr>
+      <tr>
+        <td>CRM profile richness</td>
+        <td class="col-ours">Minimal (identity + auth_source). <span class="pill p-mid">thin</span></td>
+        <td class="col-prod">~50 profile props: device, network, watch aggregates, segment, engagement_score, retention_status… <span class="pill p-good">CRM-grade (where populated)</span></td>
+      </tr>
+      <tr>
+        <td>Crash / ANR</td>
+        <td class="col-ours">Crashlytics auto-capture. <span class="pill p-mid">crashes ok, ANR/non-fatal not wired</span></td>
+        <td class="col-prod">Crashlytics + custom non-fatal video/network logging. CleverTap crash/ANR mirror <b>defined but never wired</b> (no uncaught handler / ANR watchdog). <span class="pill p-mid">partly dead</span></td>
+      </tr>
+      <tr>
+        <td>Data ownership / warehouse</td>
+        <td class="col-ours" colspan="1">None — data lives in CleverTap. <span class="pill p-bad">no own pipe</span></td>
+        <td class="col-prod">None — no heartbeat / watch-history / REST event endpoint. All behaviour → CleverTap only. <span class="pill p-bad">no own pipe</span></td>
+      </tr>
+      <tr>
+        <td>Privacy &amp; secrets</td>
+        <td class="col-ours">Phone hashed before any sink; keys in gitignored <code>local.properties</code>. <span class="pill p-good">clean</span></td>
+        <td class="col-prod"><b>Plaintext phone</b> on every OTP/login event; CleverTap keys hardcoded in manifest; <code>google-services.json</code> committed; cleartext traffic on; a live force-crash test left in the build. <span class="pill p-bad">several leaks</span></td>
+      </tr>
+      <tr>
+        <td>Dead / aspirational code</td>
+        <td class="col-ours">None — every event has a real call site. <span class="pill p-good">honest</span></td>
+        <td class="col-prod"><code>performance_metrics, content_preferences, feature_usage</code> + CleverTap crash/ANR = defined, no production caller. <span class="pill p-mid">scaffolding</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>What production does better</h3>
+      <ul>
+        <li><b>QoE event schema</b> — error_bucket / error_stage / error_code taxonomy, and the <code>recovery_actioned → recovery_resulted</code> pair (with <code>time_to_recover_ms</code>).</li>
+        <li><b>Network-context session</b> — <code>is_on_wiom_net</code>, SSID, RSSI, link-speed, ethernet, partner_id. This is gold for a Wiom-ISP app and we don't capture it.</li>
+        <li><b>CRM profile</b> — rich per-household properties enabling segmentation/messaging.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>What we do better</h3>
+      <ul>
+        <li><b>One façade, many sinks</b> — instrument once, route anywhere. Theirs is welded to CleverTap.</li>
+        <li><b>Privacy-correct</b> — hashed phone, no committed secrets, no force-crash in the build.</li>
+        <li><b>No dead events</b> — newer SDK, durable offline queue (just added), honest taxonomy.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- WHY NOT CLEVERTAP ONLY -->
+  <h2>2 · Why CleverTap-only is not enough</h2>
+  <p class="sub">CleverTap-only forces one tool to do four jobs. It is genuinely excellent at one of them.</p>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card dim">
+      <h3 style="color:#ff9d8c">QoE doesn't fit the event model</h3>
+      <p class="note" style="color:var(--muted)">Streaming health is <b>rates &amp; percentiles</b> — rebuffer ratio, video-start-failure %, p95 TTFF, exit-before-video-start. CleverTap is an event/funnel CRM; pushing per-segment telemetry into it explodes event volume &amp; cost and still gives you no Conviva/Mux-style QoE dashboard. Production already strains this — it pushes raw <code>rebuffered</code>/<code>play_error</code> events into a CRM.</p>
+    </div>
+    <div class="card dim">
+      <h3 style="color:#ff9d8c">It can't do crashes/ANRs</h3>
+      <p class="note" style="color:var(--muted)">Both apps still need Crashlytics — proof that "CleverTap for everything" is already false in practice. ANRs and non-fatals need a stability backend, not a CRM.</p>
+    </div>
+    <div class="card dim">
+      <h3 style="color:#ff9d8c">You don't own the data</h3>
+      <p class="note" style="color:var(--muted)">Raw events live in CleverTap's platform. Arbitrary SQL, long-horizon retention, and joins to the rest of Wiom's data are limited and export-gated. If we ever drop the vendor, the history is hard to take with us.</p>
+    </div>
+    <div class="card dim">
+      <h3 style="color:#7fe0ad">…but engagement is its home turf</h3>
+      <p class="note" style="color:var(--muted)">Active users, retention cohorts, RFM, segments, and — crucially — <b>push / in-app campaigns</b> back to the TV. Keep CleverTap for exactly this. Don't rip it out; <b>scope</b> it.</p>
+    </div>
+  </div>
+
+  <!-- GOLD STANDARD -->
+  <h2>3 · The gold standard — one façade, four purpose-built layers</h2>
+  <p class="sub">We already have the hard part: a single <code>Telemetry</code> seam. The gold standard is to make that seam a typed event router that fans out to the right backend per event class — instead of dumping everything into one CRM.</p>
+
+  <div class="flow">
+    app code → <b>one typed Telemetry façade</b> (durable offline queue, consistent household-id, PII hashed)<br>
+    ↓ &nbsp; routes by event class &nbsp; ↓<br>
+    <b>CleverTap</b> · <b>QoE pipe</b> · <b>Crashlytics</b> · <b>Wiom warehouse (Snowflake)</b>
+  </div>
+
+  <div class="layer l1">
+    <div class="num">1</div>
+    <div class="body">
+      <h3>Engagement → CleverTap <span class="tag">(keep — already have it)</span></h3>
+      <p>Only the events that drive segmentation &amp; messaging: <code>app_open</code>, <code>channel_view</code>(duration+genre), login funnel, favourites, DAU/WAU, retention. This is what unlocks push/in-app campaigns back to the household later. <b>Stop</b> sending it the QoE firehose.</p>
+    </div>
+  </div>
+  <div class="layer l2">
+    <div class="num">2</div>
+    <div class="body">
+      <h3>QoE / streaming → dedicated path <span class="tag">(build now on our own events; buy Mux/Conviva later if scale demands)</span></h3>
+      <p>Video-start-time, video-start-failures, rebuffer ratio, error taxonomy, per-channel health. <b>Adopt production's schema</b> — <code>error_bucket/error_stage/error_code</code> + the <code>recovery_actioned/resulted</code> pair. We already compute TTFF/stall in <code>QoeLog</code>; aggregate client-side (per-session, not per-segment) and land it in the warehouse. Dashboards live in <b>Metabase</b> — the tool you already use. <em>This layer is how we prove the smoothness work at fleet scale.</em></p>
+    </div>
+  </div>
+  <div class="layer l3">
+    <div class="num">3</div>
+    <div class="body">
+      <h3>Stability → Crashlytics <span class="tag">(keep + finish wiring)</span></h3>
+      <p>Crashes already auto-capture. <b>Add</b> what production only stubbed: an ANR watchdog and non-fatal logging for <code>stream_dead</code> / decoder failures with channel context. Set the Crashlytics user-id to the same household-id used everywhere else.</p>
+    </div>
+  </div>
+  <div class="layer l4">
+    <div class="num">4</div>
+    <div class="body">
+      <h3>Ownership → our own warehouse firehose → Snowflake <span class="tag">(the differentiator — neither app has it)</span></h3>
+      <p>A durable, batched, append-only event stream to a cheap collector (HTTP → object store → Snowflake). Gives full data ownership, unlimited retention, arbitrary SQL, no per-event vendor cost — and one capability <b>no third-party SDK can give us:</b></p>
+      <p style="background:var(--info-bg);border:1px solid var(--purple);border-radius:12px;padding:12px 14px;margin-top:10px">
+        <span class="star">★ The Wiom superpower:</span> the TV runs on Wiom's own router. Land watch-behaviour next to <code>DAILY_DATA_USAGE_DT (ROUTER_MAC ↔ MOBILE)</code> and you can join <b>what a household watches → which router → which partner → billing</b>. That graph is impossible through CleverTap/Mux and is the single strongest reason not to be CleverTap-only.
+      </p>
+    </div>
+  </div>
+
+  <h3>Non-negotiable design principles (carry from our app, fix from theirs)</h3>
+  <div class="grid2">
+    <div class="card">
+      <ul>
+        <li><b>Instrument once</b> — typed event taxonomy (sealed classes) behind the façade; the router decides the sink.</li>
+        <li><b>Durable offline queue</b> — cheap TVs + flaky AirFiber drop events; Room/WorkManager-backed retry + batching.</li>
+        <li><b>One identity everywhere</b> — same hashed household-id in CleverTap, QoE, Crashlytics, warehouse, so all four join.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul>
+        <li><b>Sample the firehose</b> — aggregate high-frequency QoE per-session client-side; never per-segment to a CRM.</li>
+        <li><b>PII hashed, secrets out of VCS</b> — keep our discipline; never repeat production's plaintext phone / committed keys.</li>
+        <li><b>No aspirational dead events</b> — an event exists only if something fires it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <h2>4 · What this means for our app (phased)</h2>
+  <table>
+    <thead><tr><th style="width:14%">Phase</th><th style="width:43%">Do</th><th style="width:43%">Why now</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Now</b><br>(pilot)</td>
+        <td class="dim">Keep CleverTap (engagement) + Crashlytics. <b>Upgrade QoE events</b> to production's schema (error_bucket/stage, recovery pair). <b>Add</b> a <code>session_started</code> event with the Wiom network context (is_on_wiom_net, ssid, rssi). Wire ANR + non-fatals.</td>
+        <td class="dim">Cheap, all behind the existing façade, and it closes our only real gaps vs production — without inheriting their mess.</td>
+      </tr>
+      <tr>
+        <td><b>Next</b><br>(scale prep)</td>
+        <td class="dim">Stand up the warehouse firehose (own collector → Snowflake) and <b>dual-write</b> engagement + QoE to it via the façade router. Build QoE + watch dashboards in Metabase.</td>
+        <td class="dim">Ownership + the router/household join. This is the layer that makes the data usable by <em>you</em>, in the tools you already live in.</td>
+      </tr>
+      <tr>
+        <td><b>Later</b><br>(if needed)</td>
+        <td class="dim">Only if QoE scale/turnkey dashboards justify it: add Mux Data / Conviva for streaming analytics. Otherwise keep QoE on Snowflake+Metabase.</td>
+        <td class="dim">Buy vs build decision deferred until volume proves it — no premature vendor cost.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="meta" style="margin-top:30px">Sources: <code>app/src/main/java/com/wiom/tv/{Telemetry,QoeLog,WiomTvApp,MainActivity}.kt</code> (ours) · <code>comparison_ashutosh/data/…/analytics/{CleverTapManager,UserProfileManager,CrashReporter}.kt</code> &amp; <code>VideoPlayer.kt</code> (production) · <code>comparison_ashutosh/reports/comparison_deep_dive.md</code> (Bucket 8).</p>
+
+</div>
+</body>
+</html>

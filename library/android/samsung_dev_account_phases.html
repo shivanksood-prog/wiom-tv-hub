@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiom TV on Samsung — Account, Approval & Signing Path</title>
+<style>
+  :root {
+    --brand: #D9008D; --brand-secondary: #443152; --brand-300: #FFB2E4; --brand-100: #FFE5F6;
+    --n900: #161021; --n800: #352D42; --n700: #665E75; --n500: #A7A1B2; --n300: #D7D3E0; --n100: #F1EDF7; --white: #FAF9FC;
+    --pos: #008043; --pos-100: #E1FAED; --neg: #E01E00; --neg-100: #FFE9E5;
+    --warn: #FF8000; --warn-200: #FFE6CC; --info: #6D17CE; --info-100: #F1E5FF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--white); color: var(--n900); line-height: 1.5;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+
+  /* Hero */
+  .hero { border-left: 6px solid var(--brand); padding-left: 20px; margin-bottom: 12px; }
+  .hero h1 { font-size: 28px; letter-spacing: -0.3px; }
+  .hero p { color: var(--n700); font-size: 15px; margin-top: 6px; max-width: 640px; }
+  .hero .kicker { color: var(--brand); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .keyline {
+    background: var(--brand-100); border-radius: 12px; padding: 14px 18px; margin: 24px 0 40px;
+    font-size: 14.5px; color: var(--n900);
+  }
+  .keyline strong { color: var(--brand); }
+
+  /* Timeline */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 23px; top: 12px; bottom: 12px;
+    width: 2px; background: var(--n300);
+  }
+  .phase { position: relative; padding-left: 68px; margin-bottom: 36px; }
+  .phase-dot {
+    position: absolute; left: 0; top: 0; width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 18px; color: #fff; background: var(--brand);
+    box-shadow: 0 0 0 4px var(--white);
+  }
+  .phase.gate .phase-dot { background: var(--brand-secondary); }
+
+  .phase-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .phase-head h2 { font-size: 20px; }
+  .chip {
+    font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+  }
+  .chip.now  { background: var(--pos-100); color: var(--pos); }
+  .chip.wait { background: var(--warn-200); color: #9a5200; }
+  .chip.bd   { background: var(--info-100); color: var(--info); }
+  .phase-meta { color: var(--n700); font-size: 13.5px; margin-bottom: 12px; }
+  .phase-meta b { color: var(--n900); }
+
+  .card {
+    background: #fff; border: 1px solid var(--n300); border-radius: 14px; padding: 18px 20px;
+  }
+  .card ol { margin: 0 0 0 18px; }
+  .card li { margin-bottom: 8px; font-size: 14.5px; }
+  .card li:last-child { margin-bottom: 0; }
+  .card code {
+    background: var(--n100); border-radius: 5px; padding: 1px 6px;
+    font-size: 13px; font-family: 'Cascadia Code', Consolas, monospace; color: var(--brand-secondary);
+  }
+
+  .callout { border-radius: 10px; padding: 11px 14px; font-size: 13.5px; margin-top: 12px; }
+  .callout.warn { background: var(--warn-200); }
+  .callout.risk { background: var(--neg-100); }
+  .callout.good { background: var(--pos-100); }
+  .callout b { display: inline; }
+
+  .outcome {
+    margin-top: 12px; font-size: 13.5px; color: var(--pos); font-weight: 700;
+  }
+  .outcome::before { content: '→ '; }
+
+  /* Sequence table */
+  h3.section { font-size: 18px; margin: 44px 0 14px; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--n300); border-radius: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; background: #fff; }
+  th { background: var(--n100); text-align: left; padding: 11px 16px; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--n700); }
+  td { padding: 11px 16px; border-top: 1px solid var(--n100); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--white); }
+  .foot { color: var(--n500); font-size: 12.5px; margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">Wiom TV · Samsung Smart TV</div>
+    <h1>Developer Account → Samsung Approval → Signed App</h1>
+    <p>Five phases from zero to the Samsung TV store. Signing happens twice: once by us (dev &amp; upload), once by Samsung (at release).</p>
+  </div>
+
+  <div class="keyline">
+    <strong>The one thing to know:</strong> Phases 1–2 need no approval from anyone — the app is signed and running on our own Samsung TV in about an hour. The only genuinely uncertain step is <strong>Phase 4</strong>: India distribution requires a Samsung partnership contract, which is a BD motion, not paperwork.
+  </div>
+
+  <div class="timeline">
+
+    <!-- Phase 1 -->
+    <div class="phase">
+      <div class="phase-dot">1</div>
+      <div class="phase-head"><h2>Samsung Account</h2><span class="chip now">Do now · 10 min</span></div>
+      <div class="phase-meta">Owner: <b>us</b> · Cost: <b>free</b> · Approval: <b>none</b></div>
+      <div class="card">
+        <ol>
+          <li>Create a Samsung account at <code>account.samsung.com</code> using a <b>company-controlled email</b> (e.g. samsung@wiom.in) — never a personal one.</li>
+          <li>Verify email. This single account powers every later phase: certificates, Seller Office, the partnership.</li>
+        </ol>
+        <div class="outcome">One company account that everything chains from</div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase">
+      <div class="phase-dot">2</div>
+      <div class="phase-head"><h2>Dev Certificates — Sign It Ourselves</h2><span class="chip now">Do now · 30–45 min</span></div>
+      <div class="phase-meta">Owner: <b>us</b> · Cost: <b>free</b> · Approval: <b>none</b> · Tool: <b>Tizen Studio Certificate Manager</b></div>
+      <div class="card">
+        <ol>
+          <li>Get the TV's <b>DUID</b>: TV → Apps → type <code>12345</code> → Developer-mode popup shows it.</li>
+          <li>Certificate Manager → new profile, type <b>Samsung</b> (plain "Tizen" type won't install on a real Samsung TV).</li>
+          <li><b>Author certificate</b> — org = Wiom Broadband Pvt Ltd, sign in with the Samsung account → <code>author.p12</code>.</li>
+          <li><b>Distributor certificate</b> — level Public, enroll the TV's DUID (up to ~50 TVs) → <code>distributor.p12</code>.</li>
+          <li>Name the profile <code>WiomTV</code>; put the issued package ID into <code>config.xml</code>.</li>
+          <li>Build &amp; install: <code>tools/build.sh</code> → signed <code>WiomTV.wgt</code> → <code>TV_IP=… tools/deploy.sh</code>.</li>
+        </ol>
+        <div class="callout risk">⚠ <b>Back up author.p12 + password like a production keystore.</b> Every future update — including store releases — must be signed with this exact certificate. Losing it is the Play-Store upload-key incident all over again.</div>
+        <div class="outcome">App signed &amp; running on our Samsung TV — hardware validation unblocked</div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase">
+      <div class="phase-dot">3</div>
+      <div class="phase-head"><h2>Seller Office — Public Seller</h2><span class="chip now">Parallel · 1–2 days</span></div>
+      <div class="phase-meta">Owner: <b>us + finance</b> (entity docs) · Cost: <b>free</b> · Approval: <b>automatic</b></div>
+      <div class="card">
+        <ol>
+          <li>Sign in at <code>seller.samsungapps.com/tv</code> with the same account → accept terms → <b>Public Seller</b>.</li>
+          <li>Create the <b>company group</b> (Membership menu): legal entity + business registration details. Rights attach to the group, not the individual.</li>
+        </ol>
+        <div class="callout warn">⚠ Public Seller can launch apps in the <b>United States only</b>. Useful as a dry run of Samsung's pre-test + review pipeline — not for reach in India.</div>
+        <div class="outcome">Submission pipeline available; US dry-run listing possible</div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase gate">
+      <div class="phase-dot">4</div>
+      <div class="phase-head"><h2>Partner Seller — The India Gate</h2><span class="chip bd">BD motion · weeks–months</span></div>
+      <div class="phase-meta">Owner: <b>founder-level</b> · Cost: <b>offline contract</b> · Approval: <b>Samsung Content Manager</b></div>
+      <div class="card">
+        <ol>
+          <li>Seller Office → <b>Membership → Partnership</b> — the form requires an assigned <b>Samsung Content Manager's email</b>.</li>
+          <li>No contact yet → request one via the <b>1:1 Q&amp;A</b> menu, and in parallel work any Wiom ↔ <b>Samsung India</b> BD channel (the warmer path).</li>
+          <li>Sign the <b>offline contract</b> with Samsung HQ / Samsung India.</li>
+          <li>Content Manager approves → group becomes <b>Partner Seller</b> → India + other countries unlock.</li>
+        </ol>
+        <div class="callout risk">⚠ This is a content-rights review. The store build must ship a <b>Green-only channel lineup</b> (a config edit, not a code change) — walking in with unlicensed feeds ends the conversation.</div>
+        <div class="callout good">✦ Prep that strengthens the pitch: app validated on real hardware (Phase 2), Android-side adoption numbers, Green lineup ready.</div>
+        <div class="outcome">India distribution unlocked</div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase">
+      <div class="phase-dot">5</div>
+      <div class="phase-head"><h2>Submission — Samsung Signs &amp; Ships</h2><span class="chip wait">After 4 · 2–4+ weeks review</span></div>
+      <div class="phase-meta">Owner: <b>us</b> · Samsung's release signing: <b>automatic on approval</b></div>
+      <div class="card">
+        <ol>
+          <li>Applications → create app entry (name, type = video, default language).</li>
+          <li>Upload the <code>.wgt</code> (signed with <b>our author cert</b>) → automated <b>pre-test</b> runs instantly; fix flags.</li>
+          <li>Listing assets: icons <b>1920×1080</b> + <b>512×423</b>, screenshots, descriptions, content rating, privacy-policy URL, countries, TV model groups. Optional beta track first.</li>
+          <li><b>Request release</b> → human review + on-device verification. Pre-empt the Return-key question: document our double-press-exit in review notes.</li>
+          <li>On approval, <b>Samsung re-signs the package with its distribution certificate</b> and publishes — the final signature, automatic once approved.</li>
+        </ol>
+        <div class="callout warn">Updates repeat steps 2→4 — always with the same author certificate. Channel lineup changes need no store release (remote config); only code changes do.</div>
+        <div class="outcome">Wiom TV live on Samsung's store</div>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="section">Recommended sequence</h3>
+  <div class="tablewrap">
+    <table>
+      <tr><th>When</th><th>Action</th><th>Blocked on</th></tr>
+      <tr><td><b>This week</b></td><td>Phase 1 + 2 → app signed, on our TV, hardware validation starts</td><td>Us, ~1 hour</td></tr>
+      <tr><td><b>This week, parallel</b></td><td>Phase 3 signup + company group docs</td><td>Finance docs</td></tr>
+      <tr><td><b>After founder sign-off</b></td><td>Phase 4 partnership motion with Samsung India</td><td>BD decision</td></tr>
+      <tr><td><b>After partnership + Green lineup</b></td><td>Phase 5 India submission</td><td>Phases 2–4</td></tr>
+    </table>
+  </div>
+
+  <p class="foot">Wiom TV · Samsung Tizen track · prepared 29 Jul 2026 · sources: Samsung TV Seller Office documentation (publication process, partnership, registration)</p>
+
+</div>
+</body>
+</html>

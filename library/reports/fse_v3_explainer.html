@@ -1,0 +1,799 @@
+<title>fse_v3 — cross-genre ordering, explained (+ open questions)</title>
+<style>
+  :root{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0; --grid:#E7E2EF;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --g-news:#3E6FA8; --g-movies:#D9008D; --g-ent:#B08A1E; --g-music:#6D17CE; --g-dev:#008043;
+    --s-today:#3E6FA8; --s-new:#D9008D;
+    --good-fg:#008043; --good-bg:#E1FAED;
+    --warn-fg:#B45B00; --warn-bg:#FFE6CC;
+    --bad-fg:#E01E00;  --bad-bg:#FFE9E5;
+    --info-fg:#6D17CE; --info-bg:#F1E5FF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152; --grid:#3E3550;
+      --ink:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+      --accent:#F033AE; --accent-soft:rgba(217,0,141,.16);
+      --g-news:#5B93D6; --g-movies:#F033AE; --g-ent:#B4881F; --g-music:#9D5CFF; --g-dev:#22A868;
+      --s-today:#4E88C6; --s-new:#F033AE;
+      --good-fg:#4ADE97; --good-bg:rgba(0,128,67,.22);
+      --warn-fg:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+      --bad-fg:#FF7A66;  --bad-bg:rgba(224,30,0,.18);
+      --info-fg:#C9A2FF; --info-bg:rgba(109,23,206,.22);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161021; --card:#352D42; --subtle:#2A2336; --border:#443152; --grid:#3E3550;
+    --ink:#FAF9FC; --muted:#A7A1B2; --faint:#665E75;
+    --accent:#F033AE; --accent-soft:rgba(217,0,141,.16);
+    --g-news:#5B93D6; --g-movies:#F033AE; --g-ent:#B4881F; --g-music:#9D5CFF; --g-dev:#22A868;
+    --s-today:#4E88C6; --s-new:#F033AE;
+    --good-fg:#4ADE97; --good-bg:rgba(0,128,67,.22);
+    --warn-fg:#FFA64D; --warn-bg:rgba(255,128,0,.16);
+    --bad-fg:#FF7A66;  --bad-bg:rgba(224,30,0,.18);
+    --info-fg:#C9A2FF; --info-bg:rgba(109,23,206,.22);
+  }
+  :root[data-theme="light"]{
+    --bg:#FAF9FC; --card:#FFFFFF; --subtle:#F1EDF7; --border:#D7D3E0; --grid:#E7E2EF;
+    --ink:#161021; --muted:#665E75; --faint:#A7A1B2;
+    --accent:#D9008D; --accent-soft:#FFE5F6;
+    --g-news:#3E6FA8; --g-movies:#D9008D; --g-ent:#B08A1E; --g-music:#6D17CE; --g-dev:#008043;
+    --s-today:#3E6FA8; --s-new:#D9008D;
+    --good-fg:#008043; --good-bg:#E1FAED;
+    --warn-fg:#B45B00; --warn-bg:#FFE6CC;
+    --bad-fg:#E01E00;  --bad-bg:#FFE9E5;
+    --info-fg:#6D17CE; --info-bg:#F1E5FF;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink); margin:0; padding:36px 20px 72px;
+    font-family:"Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height:1.55; font-size:15px;
+  }
+  .wrap{max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:22px;}
+  .eyebrow{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  h1{font-size:31px; line-height:1.14; margin:6px 0 0; font-weight:800; text-wrap:balance; letter-spacing:-.01em;}
+  .lede{font-size:15.5px; color:var(--muted); max-width:68ch; margin-top:11px;}
+  .lede b{color:var(--ink); font-weight:600;}
+  h2{font-size:18px; font-weight:700; margin:0; letter-spacing:-.01em;}
+  h3{font-size:14px; font-weight:700; margin:0;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px;}
+  .sub{font-size:13.5px; color:var(--muted); margin:4px 0 0; max-width:74ch;}
+  p{margin:0;}
+  .p+.p{margin-top:11px;}
+  .sect-eyebrow{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); font-weight:700; margin-bottom:5px;}
+  code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:12.5px;
+       background:var(--subtle); padding:1px 5px; border-radius:4px; border:1px solid var(--border);}
+  b,strong{font-weight:650;}
+  a{color:var(--accent);}
+
+  .topbar{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
+  .toggle{background:var(--card); border:1px solid var(--border); color:var(--muted);
+          border-radius:999px; padding:7px 14px; font-size:12px; font-weight:600; cursor:pointer;
+          font-family:inherit; white-space:nowrap;}
+  .toggle:hover{border-color:var(--accent); color:var(--accent);}
+
+  .pill{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700;
+        padding:3px 10px; border-radius:999px; letter-spacing:.02em;}
+  .pill.draft{background:var(--warn-bg); color:var(--warn-fg);}
+  .pill.done{background:var(--good-bg); color:var(--good-fg);}
+  .pill.info{background:var(--info-bg); color:var(--info-fg);}
+
+  .hero{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:820px){.hero{grid-template-columns:1fr;}}
+  .stat{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 20px;}
+  .stat.accent{border-left:4px solid var(--accent);}
+  .stat .n{font-size:33px; font-weight:800; font-variant-numeric:tabular-nums; letter-spacing:-.025em; line-height:1.1;}
+  .stat .n small{font-size:15px; font-weight:700; color:var(--muted);}
+  .stat .l{font-size:13px; color:var(--muted); margin-top:6px; max-width:38ch;}
+
+  table{border-collapse:collapse; width:100%; font-size:13.5px; margin-top:14px;}
+  th{text-align:left; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+     color:var(--faint); font-weight:700; padding:0 10px 7px 0; border-bottom:1px solid var(--border);}
+  td{padding:9px 10px 9px 0; border-bottom:1px solid var(--grid); vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td.num,th.num{text-align:right; font-variant-numeric:tabular-nums; padding-right:0;}
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+
+  .chip{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:650;
+        padding:2px 9px; border-radius:6px; border:1px solid var(--border); background:var(--subtle);
+        color:var(--muted); white-space:nowrap;}
+  .dot{width:9px; height:9px; border-radius:3px; flex:none;}
+
+  /* slot strip */
+  .strip{display:flex; flex-wrap:wrap; gap:4px; margin-top:10px;}
+  .slot{font-size:11px; font-weight:650; padding:4px 8px; border-radius:6px; color:#fff;
+        white-space:nowrap; border:1px solid transparent;}
+  .slot .i{opacity:.72; font-weight:600; margin-right:4px; font-variant-numeric:tabular-nums;}
+  .slot.other{background:repeating-linear-gradient(135deg,var(--subtle),var(--subtle) 4px,var(--grid) 4px,var(--grid) 8px);
+              color:var(--muted); border-color:var(--border);}
+  .striplabel{font-size:12px; color:var(--muted); font-weight:650; margin-top:16px;}
+
+  .arms{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px;}
+  @media (max-width:820px){.arms{grid-template-columns:1fr;}}
+  .arm{background:var(--subtle); border:1px solid var(--border); border-radius:10px; padding:16px;}
+  .arm.ctrl{border-left:4px solid var(--muted);}
+  .arm.t1{border-left:4px solid var(--accent);}
+  .arm.t2{border-left:4px solid var(--info-fg);}
+  .arm .k{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); font-weight:700;}
+  .arm .t{font-size:15px; font-weight:700; margin-top:3px;}
+  .arm .d{font-size:13px; color:var(--muted); margin-top:8px;}
+
+  .callout{border-radius:10px; padding:15px 17px; font-size:13.5px; display:flex; gap:11px; align-items:flex-start;}
+  .callout .ic{font-weight:800; flex:none; font-size:13px; line-height:1.5;}
+  .callout.warn{background:var(--warn-bg); color:var(--warn-fg);}
+  .callout.info{background:var(--info-bg); color:var(--info-fg);}
+  .callout.good{background:var(--good-bg); color:var(--good-fg);}
+  .callout b{color:inherit;}
+
+  ol.steps{margin:12px 0 0; padding-left:20px; font-size:13.5px; color:var(--muted);}
+  ol.steps li{margin-bottom:7px;}
+  ol.steps li b{color:var(--ink);}
+  ul.tight{margin:10px 0 0; padding-left:20px; font-size:13.5px; color:var(--muted);}
+  ul.tight li{margin-bottom:6px;}
+  ul.tight li b{color:var(--ink);}
+
+  /* charts */
+  .chart{margin-top:16px; position:relative;}
+  .legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin-bottom:10px;}
+  .legend span{display:inline-flex; align-items:center; gap:7px; font-weight:600;}
+  svg{display:block; width:100%; height:auto; overflow:visible;}
+  .ax{font-size:10.5px; fill:var(--faint); font-weight:600;}
+  .axlab{font-size:11px; fill:var(--muted); font-weight:650;}
+  .gridline{stroke:var(--grid); stroke-width:1;}
+  .dlabel{font-size:11.5px; font-weight:700;}
+  .tip{position:absolute; pointer-events:none; opacity:0; transition:opacity .1s;
+       background:var(--ink); color:var(--bg); font-size:11.5px; font-weight:600;
+       padding:6px 9px; border-radius:6px; white-space:nowrap; transform:translate(-50%,-135%); z-index:5;}
+  .hit{fill:transparent; cursor:crosshair;}
+
+  /* open questions */
+  .q{border:1px solid var(--border); border-radius:11px; padding:18px 20px; background:var(--card);}
+  .q + .q{margin-top:12px;}
+  .q .qh{display:flex; gap:11px; align-items:baseline; flex-wrap:wrap;}
+  .q .qnum{font-size:12px; font-weight:800; color:var(--accent); font-variant-numeric:tabular-nums;
+          background:var(--accent-soft); border-radius:6px; padding:2px 8px; flex:none;}
+  .q .qt{font-size:15px; font-weight:700; letter-spacing:-.01em;}
+  .q .qb{font-size:13.5px; color:var(--muted); margin-top:9px;}
+  .q .qb b{color:var(--ink);}
+  .rec{margin-top:11px; font-size:13px; padding:10px 13px; border-radius:8px;
+       background:var(--subtle); border-left:3px solid var(--accent); color:var(--muted);}
+  .rec b{color:var(--ink);}
+  .rec .tag{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+            font-weight:700; display:block; margin-bottom:3px;}
+  .stakes{font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; flex:none;}
+  .stakes.low{background:var(--good-bg); color:var(--good-fg);}
+  .stakes.med{background:var(--warn-bg); color:var(--warn-fg);}
+  .stakes.high{background:var(--bad-bg); color:var(--bad-fg);}
+
+  footer{font-size:12px; color:var(--faint); border-top:1px solid var(--border); padding-top:16px; margin-top:6px;}
+  footer b{color:var(--muted);}
+</style>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div>
+      <div class="eyebrow">wiom.tv · experiment 3</div>
+      <h1>fse_v3 — making the catalogue traversable</h1>
+      <p class="lede">
+        fse_v2 settled <b>where</b> a new user lands: News. It said nothing about what happens after
+        the first flick, because in every arm the user was trapped in one genre. fse_v3 tests whether
+        making 20 genres reachable changes anything — and whether letting the shelf <b>re-narrow</b>
+        once a preference shows is better than either extreme.
+      </p>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="pill done">All 10 questions decided</span>
+        <span class="pill done">Code: decisions applied · 66/66 E2E green</span>
+        <span class="pill info">Not deployed · not pushed</span>
+      </div>
+    </div>
+    <button class="toggle" id="tt">Toggle theme</button>
+  </div>
+
+  <div class="hero">
+    <div class="stat accent">
+      <div class="n">1 <small>genre</small></div>
+      <div class="l">Genres a user reaches after <b>eleven</b> flicks today. Entertainment leads the list
+        and you cannot flick out of it until slot 12.</div>
+    </div>
+    <div class="stat">
+      <div class="n">38<small>%</small></div>
+      <div class="l">of first-session users make <b>exactly one tune</b>. 54.5% make two or fewer.
+        The honest limit on any ordering treatment.</div>
+    </div>
+    <div class="stat">
+      <div class="n">28 <small>days</small></div>
+      <div class="l">21 days of enrolment + 7 days ripening. Three arms at ~250 new uids/day
+        ≈ <b>1,750 per arm</b>.</div>
+    </div>
+  </div>
+
+  <!-- ============ 1. where we are ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 1</div>
+    <h2>What fse_v2 decided, and the asterisk on it</h2>
+    <p class="sub">Everything fse_v3 assumes rests on this, so it is worth being precise about what was
+      and was not proven.</p>
+
+    <div class="scroll"><table style="min-width:620px;">
+      <colgroup><col style="width:30%"><col style="width:20%"><col style="width:24%"><col style="width:26%"></colgroup>
+      <thead><tr><th>Metric</th><th>Status</th><th>Result at n=3,291</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>First-session activation</b></td>
+          <td><span class="chip">pre-registered primary</span></td>
+          <td>best arm +1.3pp<br><span style="color:var(--faint)">against a 4.5pp MDE</span></td>
+          <td style="color:var(--bad-fg); font-weight:650;">No arm cleared</td>
+        </tr>
+        <tr>
+          <td><b>Attended P95-winsorized<br>7-day watch minutes</b></td>
+          <td><span class="chip">secondary</span></td>
+          <td>LN +0.38 min<br><span style="color:var(--faint)">+27% vs the LE control</span></td>
+          <td style="color:var(--good-fg); font-weight:650;">Survived every<br>robustness check</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout warn" style="margin-top:18px;">
+      <span class="ic">!</span>
+      <div><b>News is being promoted on a secondary after a null primary.</b> That is a real protocol
+        deviation, and fse_v3's own rule 3 says the opposite — the incumbent wins all ambiguity. The
+        secondary is a good one (it survived whale-trimming, winsorization, attended-only and
+        split-half), and shipping it is defensible. What is not defensible is leaving it unrecorded and
+        discovering the inconsistency during the fse_v3 readout. It is written into the code comment
+        and the commit body, and <b>ratified as a deliberate deviation (Q1)</b>.</div>
+    </div>
+
+    <p class="sub" style="margin-top:16px;">
+      Consequence for fse_v3: the News landing is no longer an experiment, it is <b>the product</b>.
+      Every first session lands on the News hero — all three arms, and even users the experiment
+      excludes. The landing is held constant so that <b>nothing but ordering</b> varies between arms.
+    </p>
+  </div>
+
+  <!-- ============ 2. the trap ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 2</div>
+    <h2>The trap: one genre, and no way out of it</h2>
+    <p class="sub">The channel list is 20 genres and 224 channels laid out in blocks. Surfing walks that
+      flat list one slot at a time, so the first block absorbs every early flick. This is not a finding
+      about taste — it is a finding about shelf layout.</p>
+
+    <div class="chart" id="c1">
+      <div class="legend">
+        <span><span class="dot" style="background:var(--s-new)"></span>Interleaved (Arms RI · RL)</span>
+        <span><span class="dot" style="background:var(--s-today)"></span>Today (Arm RC)</span>
+      </div>
+      <svg viewBox="0 0 720 250" role="img" aria-label="Distinct genres reached after k flicks: interleaved rises 1 to 5 by the fifth slot; today stays flat at 1 until slot 12.">
+        <g id="c1grid"></g>
+        <g id="c1marks"></g>
+      </svg>
+      <div class="tip" id="c1tip"></div>
+      <p class="sub" style="margin-top:8px; font-size:12.5px;">
+        Distinct genres reached after k slots, measured by running the shipped ordering code against
+        production data (<code>scripts/exp3_interleave_sim.js</code>, 14-day window).
+      </p>
+    </div>
+
+    <div class="striplabel">What the first 16 slots look like — today</div>
+    <div class="strip" id="stripToday"></div>
+    <div class="striplabel">…and interleaved</div>
+    <div class="strip" id="stripNew"></div>
+
+    <div class="callout warn" style="margin-top:20px;">
+      <span class="ic">!</span>
+      <div><b>The counter-fact, stated up front: most users never flick far enough for this to exist.</b>
+        38% of first-session users make exactly one tune; only a quarter reach five. The treatment is
+        invisible to the majority of the cohort by construction. A null result here may mean
+        "nobody looked", not "it does not work" — and no amount of sample fixes that.
+        <b>Q5: the primary stays intention-to-treat, with a pre-registered, explicitly non-causal ≥2-tune cut alongside it</b> — so we can tell "no effect" apart from "no exposure".</div>
+    </div>
+
+    <div class="chart" id="c2">
+      <p class="sub" style="margin-bottom:4px; font-weight:650; color:var(--ink); font-size:13.5px;">
+        First-session flick depth — 14 days, new uids</p>
+      <svg viewBox="0 0 720 250" role="img" aria-label="Distribution of tunes per first session: 38% make one tune, falling steeply; 14.7% make ten or more.">
+        <g id="c2marks"></g>
+      </svg>
+      <div class="tip" id="c2tip"></div>
+    </div>
+  </div>
+
+  <!-- ============ 3. arms ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 3</div>
+    <h2>Three arms</h2>
+    <p class="sub">Assignment is <code>hash(uid + '|fse_v3') % 3</code> — sticky, client-side,
+      <b>new uids only</b>. The landing hero is identical in all three.</p>
+
+    <div class="arms">
+      <div class="arm ctrl">
+        <div class="k">Arm RC</div>
+        <div class="t">Pinned control</div>
+        <div class="d">News landing + within-genre health-gated sort. Exactly what the winning fse_v2
+          arm serves today, flagged <code>meta.control:1</code>. <b>Do not improve this arm.</b>
+          fse_v2's near-miss was four treatments and no true baseline; RC exists so the answer can be
+          "keep what we have".</div>
+      </div>
+      <div class="arm t1">
+        <div class="k">Arm RI</div>
+        <div class="t">Cross-genre interleave</div>
+        <div class="d">The flat list is rebuilt as a round-robin across genres. Within-genre order is
+          untouched — the health-gated ranking still decides who is #1 of each genre.
+          <b>Interleaving only.</b></div>
+      </div>
+      <div class="arm t2">
+        <div class="k">Arm RL</div>
+        <div class="t">Interleave, then lock</div>
+        <div class="d">Starts byte-identical to RI, then locks to the genre the user demonstrably sticks
+          in and puts that genre next. Persists across sessions. A <b>compound</b> treatment — declared,
+          not hidden.</div>
+      </div>
+    </div>
+
+    <div class="callout info" style="margin-top:18px;">
+      <span class="ic">i</span>
+      <div>Arms are labelled <code>RC</code>/<code>RI</code>/<code>RL</code>, not A/B/C, because A, B and
+        C are fse_v1's arm labels and are still sitting in the events table. Any query filtering on
+        <code>variant</code> without also filtering <code>experiment</code> would have silently pooled
+        July's cohort into this one.</div>
+    </div>
+  </div>
+
+  <!-- ============ 4. RI logic ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 4</div>
+    <h2>Arm RI — how the round-robin actually works</h2>
+
+    <ol class="steps">
+      <li><b>Sort within each genre first.</b> The existing health-gated ranking runs unchanged
+        (Wilson-lower-bound stick rate on chosen tunes, broken channels pinned to the bottom of their
+        genre). RI consumes that output — it never reorders inside a genre.</li>
+      <li><b>Then deal one channel per genre, in cycle order.</b> News#1, Movies#1, Entertainment#1,
+        Music#1, Devotional#1, News#2, Movies#2, … Cycle order is set by 14-day hold-30 on chosen
+        tunes: <b>News 10.9% → Movies 9.0% → Entertainment 6.5% → Music 6.4% → Devotional 3.6%.</b>
+        Those five hold 176 of 224 channels and 93% of tune volume.</li>
+      <li><b>Genre entry gate.</b> A genre only joins the rotation if it has at least one channel that
+        passed the health floor (start-coverage ≥ 0.5, errors/tune ≤ 0.05). A genre whose entire block
+        is condemned is appended after the rotation, never rotated into slot 2.</li>
+      <li><b>The <code>Other</code> bucket</b> — the 15 remaining genres merged — takes one slot every
+        third cycle, landing first at slot 16. Leftovers are appended once the cycle genres run dry.</li>
+      <li><b>A genre exhausts, the rotation carries on without it.</b> Movies has 12 channels, so from
+        cycle 13 the rotation is four-wide, then three, and News (76 channels) runs longest.</li>
+    </ol>
+
+    <div class="callout warn" style="margin-top:18px;">
+      <span class="ic">!</span>
+      <div><b>Spec correction.</b> spec_6 describes the <code>Other</code> genres as "1–4 channels each".
+        They are not: DD has 18 and Undefined has 11, so <code>Other</code> is <b>~50 channels — 22% of
+        the catalogue</b>. Thin rotation weight is still the right call, but for a different reason than
+        the spec gives: those genres earn only <b>7.1% of tunes and 4.3% of watch minutes, at a 5.4%
+        hold-30 against the cycle-five's 8.2%</b>. <b>Q2: kept at one slot every third cycle.</b></div>
+    </div>
+
+    <div class="callout good" style="margin-top:12px;">
+      <span class="ic">✓</span>
+      <div><b>The guide does NOT interleave — decided, and coded.</b> Only surfing rotates across
+        genres; the guide keeps its genre blocks in all three arms, so a deliberate browse stays
+        scannable and the filter chips behave exactly as they do today. The two orders therefore
+        disagree about what “next” means — accepted knowingly. Mechanically the guide renders from its
+        own list, snapshotted after the within-genre sort and before the interleave, holding the same
+        channel objects so tapping a row still tunes the right channel.</div>
+    </div>
+  </div>
+
+  <!-- ============ 5. RL logic ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 5</div>
+    <h2>Arm RL — how the lock works</h2>
+    <p class="sub">The prior behind this arm is the strongest number in the whole design: of users with
+      two sessions, <b>44.9% returned to the genre they last held</b>, against a 20.8% chance baseline
+      from genre tune-share. Genre affinity is real at <b>2.2× chance</b>.</p>
+
+    <ol class="steps">
+      <li><b>Two triggers, whichever fires first</b> — a single tune held ≥ 60s, or ≥ 90s cumulative
+        dwell in one genre across the session.</li>
+      <li><b>Checked on a 5-second ticker, not only at the flick.</b> This matters: the list ahead has
+        to already be re-sorted <i>before</i> the user presses down, otherwise the lock lands one flick
+        late and the arm measures nothing.</li>
+      <li><b>Re-sort only the slots ahead of the user.</b> The locked genre's remaining channels move to
+        the front of the tail; the rotation resumes behind them. <b>Nothing at or behind the current
+        position ever moves.</b> This is the one bug that would invalidate the arm — the playing channel
+        is an array index, so mutating behind it would silently retarget what is on screen.</li>
+      <li><b>Persist and honour.</b> The genre is written to <code>localStorage</code>; a returning user
+        gets that genre first. They still boot to their <b>last-watched channel</b>, not the genre hero
+        — a deliberate deviation from spec_6, see Q4.</li>
+      <li><b>One re-lock per session, maximum.</b> If a different genre later crosses the cumulative
+        bar, the lock moves once and then stops. Thrash guard.</li>
+    </ol>
+
+    <div class="callout warn" style="margin-top:18px;">
+      <span class="ic">!</span>
+      <div><b>Declared confound.</b> RL is cross-genre discovery <b>plus</b> personalised persistence.
+        If it wins we will not know which half did it. That is accepted knowingly — it is the behaviour
+        the product would actually ship — and a win pre-commits us to a decomposition follow-up
+        (RL vs RL-without-persistence), not to a claim about mechanism.</div>
+    </div>
+  </div>
+
+  <!-- ============ 6. what decides it ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 6</div>
+    <h2>What decides it — and what merely gets reported</h2>
+
+    <div class="scroll"><table>
+      <thead><tr><th>Tier</th><th>Metric</th><th>When</th><th>Power</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="chip">Gate</span></td>
+          <td><b>% of first-session users touching ≥ 2 genres</b><br>
+            <span style="color:var(--muted)">baseline 28.9% · RI and RL must each show ≥ +10pp vs RC</span></td>
+          <td><b>Day 5</b><br><span style="color:var(--muted)">mechanism only</span></td>
+          <td class="num">421/arm</td>
+        </tr>
+        <tr>
+          <td><span class="chip" style="color:var(--accent); border-color:var(--accent)">Primary</span></td>
+          <td><b>Attended, P95-winsorized 7-day watch minutes per user</b><br>
+            <span style="color:var(--muted)">RI vs RC and RL vs RC · Bonferroni α = 0.025</span></td>
+          <td><b>Day 28</b><br><span style="color:var(--muted)">the decision</span></td>
+          <td class="num">1,698/arm<br>MDE 0.261 min</td>
+        </tr>
+        <tr>
+          <td><span class="chip">Secondary</span></td>
+          <td>&gt;15-min-day head-count · any watch on days 1–6 · strict D1/D7 returner ·
+            median 7-day watch · genres reached · lock fire rate and time-to-lock</td>
+          <td>Day 28</td>
+          <td class="num">directional<br>never decisive</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <p class="sub" style="margin-top:16px;"><b>Guardrails — any breach pauses the experiment:</b>
+      playback errors/tune more than 25% relative above RC · day-0 activation more than 2pp below RC ·
+      landing wait p90 more than 500ms above RC · SRM χ² p &lt; 0.01 · <code>algo:'v3'</code> handshake
+      below 95% of enrolled.</p>
+
+    <div class="callout good" style="margin-top:16px;">
+      <span class="ic">✓</span>
+      <div><b>Exactly two looks: day 5 and day 28.</b> No outcome peeking in between. fse_v1's arm B led
+        by +7.9pp at day 5 and finished at +0.1pp — that is the entire reason this rule exists.</div>
+    </div>
+  </div>
+
+  <!-- ============ 7. safety ============ -->
+  <div class="card">
+    <div class="sect-eyebrow">Section 7</div>
+    <h2>What happens if the code sits on GitHub un-deployed</h2>
+    <p class="sub">The client is static and goes live on <code>git pull</code>; the server only changes
+      after <code>reload-wiom-tv</code>. In July that gap silently destroyed four days of attribution.
+      It cannot happen again, and this has been verified against the real old server.</p>
+
+    <ul class="tight">
+      <li><b>The client refuses to enrol anyone</b> until <code>/api/order</code> returns
+        <code>algo:'v3'</code>. Until then: nobody enrolled, nothing stamped, no interleave.</li>
+      <li><b>The News landing still works</b> — <code>heroByGenre</code> has shipped since fse_v2 — so an
+        un-deployed merge degrades to exactly Arm RC, which is the incumbent experience.</li>
+      <li><b>Failure mode is clean exclusion, never corrupted attribution</b>, and it self-heals the
+        moment the server reloads.</li>
+      <li>Verified by running the new client against <code>origin/main</code>'s actual old server:
+        5 checks, all green, inside a 61/61 E2E suite.</li>
+    </ul>
+  </div>
+
+  <!-- ============ OPEN QUESTIONS ============ -->
+  <div class="card" style="border-color:var(--accent); border-width:1.5px;">
+    <div class="sect-eyebrow" style="color:var(--accent)">Resolved 28 July 2026</div>
+    <h2>Decisions</h2>
+    <p class="sub">All ten settled. Nine went with the recommendation; <b>Q6 did not</b> — the guide keeps
+      its genre blocks. Everything here is applied in code on <code>exp/fse-v3-cross-genre</code>.</p>
+
+    <div style="margin-top:18px;">
+
+      <div class="q">
+        <div class="qh"><span class="qnum">01</span><span class="qt">Do we ratify promoting News on a secondary?</span><span class="stakes high">Highest stakes</span></div>
+        <div class="qb">fse_v2's pre-registered primary returned nothing; News won on watch minutes.
+          Shipping it is a judgement call we have effectively already made — the code hardcodes News.
+          The question is whether it goes on the record as a <b>deliberate deviation</b>, or whether we
+          would rather re-open it. If we ratify, fse_v3's rule 3 ("the incumbent wins all ambiguity")
+          needs a sentence explaining why the same standard was not applied to fse_v2.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>Ratify, in writing, in the fse_v2 readout.</b> The effect survived every robustness check
+          and the cost of being wrong is low (News vs Entertainment as a landing). But write down that
+          it was a secondary — otherwise the next person reads fse_v3's rule 3 and concludes we do not
+          follow our own protocol.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">02</span><span class="qt">What weight does the <code>Other</code> bucket get?</span><span class="stakes low">Low stakes</span></div>
+        <div class="qb">The spec's stated reason was wrong (they are 52 channels, not "1–4 each"), but
+          the conclusion still holds on the numbers. And the choice barely matters where anyone looks:
+          <div class="scroll"><table style="margin-top:12px;">
+            <thead><tr><th>Weight</th><th class="num">First <code>Other</code> slot</th><th class="num"><code>Other</code> channels in top 50</th></tr></thead>
+            <tbody>
+              <tr><td>Every 2 cycles</td><td class="num">11</td><td class="num">4</td></tr>
+              <tr><td><b>Every 3 cycles</b> <span class="chip" style="margin-left:6px">as coded</span></td><td class="num"><b>16</b></td><td class="num"><b>3</b></td></tr>
+              <tr><td>Every 4 cycles</td><td class="num">21</td><td class="num">2</td></tr>
+              <tr><td>Never rotate</td><td class="num">194</td><td class="num">0</td></tr>
+            </tbody>
+          </table></div>
+          One slot in the top 50 separates the live options, and three-quarters of first sessions never
+          pass slot 5.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>Keep 1-in-3 and stop analysing it.</b> It is server-owned (<code>ORDER_V3</code> on
+          <code>/api/order</code>), so it can be retuned on a reload without a client deploy.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">03</span><span class="qt">Arm RL's memory dies when localStorage is cleared. Accept?</span><span class="stakes low">Low stakes</span></div>
+        <div class="qb">It genuinely cannot survive a clear — there is no server-side identity to hang
+          it on, so the lock is device-scoped and under-counts. The fix is not to make it survive; it is
+          to stop guessing how much is lost.</div>
+        <div class="rec"><span class="tag">Decided — already coded</span>
+          <b>Accept device-scoped, but measure the loss.</b> Every returning session now emits a
+          <code>session_order</code> beacon carrying <code>{lock, honoured}</code>. A user who locked and
+          returned with storage intact reports <code>honoured:1</code>; one whose storage cleared reports
+          <code>lock:null</code>. The gap between <code>genre_lock</code> fires and honoured returns
+          <i>is</i> the under-count — observed, not estimated.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">04</span><span class="qt">On return, should a locked user boot to the genre hero or their last-watched channel?</span><span class="stakes med">Medium stakes</span></div>
+        <div class="qb">spec_6 says the hero. The code currently does <b>last-watched</b>, and I want
+          that deviation to be a decision rather than a default. Last-watched is already inside the
+          locked genre — that is what they locked on — and is a strictly better guess than the genre's
+          population hero. Overriding it adds a third component to an arm that is already compound, and
+          regresses behaviour for exactly the users the arm exists to help.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>Keep last-watched.</b> One constant flips it (<code>RL_RETURN_HERO</code>) if you disagree.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">05</span><span class="qt">Three-quarters of the cohort never flick far enough to see the treatment. Do we proceed anyway?</span><span class="stakes high">Highest stakes</span></div>
+        <div class="qb">This is the risk the spec does not name. spec_6 worries that same-genre hopping
+          might be preference rather than adjacency; the sharper worry is <b>exposure</b>: 38% of first
+          sessions are one tune long. For them RI and RC are byte-identical experiences, and they sit in
+          the denominator of the primary, diluting any true effect toward zero.
+          <br><br>Three ways out: <b>(a)</b> run it as specified and accept the dilution — the effect we
+          are powered for (+27%-sized) was measured on the same diluted population, so it is not fatal;
+          <b>(b)</b> pre-register a secondary analysis on the ≥ 2-tune subgroup, knowing it is
+          post-randomisation conditioning and therefore not causal; <b>(c)</b> pair fse_v3 with something
+          that increases flicking at all — which would confound it.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>(a) plus (b), stated in advance.</b> Primary stays all-enrolled and intention-to-treat.
+          Add the ≥ 2-tune subgroup as a pre-registered <i>descriptive</i> cut, explicitly labelled
+          non-causal — so we can tell "no effect" apart from "no exposure" without pretending the
+          subgroup is a clean comparison.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">06</span><span class="qt">Is a mixed-genre default guide acceptable UX?</span><span class="stakes med">Medium stakes</span></div>
+        <div class="qb">Under RI the guide's default scroll would have stopped being genre blocks and
+          become a rotating mix. Every row keeps its genre label and the filter chips still narrow to
+          one genre, so nothing would have been lost — but "scroll to the News block" becomes "tap
+          News". For a user who came for one genre that is a tax; for a user who does not know what is
+          on offer it is the point of the arm.</div>
+        <div class="rec" style="border-left-color:var(--warn-fg);"><span class="tag" style="color:var(--warn-fg);">Decided — against the recommendation</span>
+          <b>Interleave the surf order only; the guide keeps genre blocks.</b> A deliberate browse stays
+          scannable by genre in every arm. The trade accepted: surf order and guide now disagree about
+          what "next" means, and the treatment is confined to passive flicking rather than both
+          surfaces. Coded — and it cost the E2E suite its observable, since the guide DOM was how the
+          tests read the list under test; there is now a localhost-only <code>__surfOrder</code> seam
+          behind the same guard as <code>?_arm</code>.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">07</span><span class="qt">Does Devotional keep its slot in the cycle?</span><span class="stakes low">Low stakes</span></div>
+        <div class="qb">Devotional is 41 channels at a <b>3.6% hold-30</b> — the weakest of the five —
+          yet round-robin gives it slot 5 of every cycle, which means it appears in the first five slots
+          every user sees. The health gate limits the damage (only verified channels can lead it), but
+          it is the most expensive slot in the design going to the weakest genre.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>Keep it for the day-5 look, then decide with data.</b> If the day-5 read shows Devotional
+          slots bleeding, drop it into <code>Other</code> and record it as a protocol deviation. Removing
+          it pre-emptively would bias the rotation toward what we already believe.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">08</span><span class="qt">Three arms for 28 days, or two arms for 21?</span><span class="stakes med">Medium stakes</span></div>
+        <div class="qb">At ~250 new uids/day, three arms is ~83/arm/day and a 28-day clock. Dropping RL
+          and running RC vs RI at α = 0.05 reaches the same MDE in 21 days — a week faster, and the
+          result would be causally cleaner because RI is a single-component treatment.
+          <br><br>Against that: RL carries the only mechanistic prior in the design (44.9% return
+          affinity at 2.2× chance) and is the only arm aimed at the returner gap, which News did not
+          close.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>Keep three.</b> The week is worth the arm that targets retention. But this is a genuine
+          trade and worth your call rather than mine — if the next thing in the queue is time-critical,
+          two arms is the defensible choice.</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">10</span><span class="qt">Music's and Movies' #1 was a channel-number artefact</span><span class="stakes med">Found late</span></div>
+        <div class="qb">Not in the original spec — it surfaced while auditing how the list is sorted
+          today. The health gate condemns <b>46% of the catalogue</b> and parks most survivors in the
+          exploration tier at the genre <b>median</b>, so scores tie in bulk:
+          <div class="scroll"><table style="min-width:520px; margin-top:12px;">
+            <thead><tr><th>Genre</th><th class="num">Channels</th><th class="num">Condemned</th><th class="num">Truly ranked</th><th class="num">Tied at median</th></tr></thead>
+            <tbody>
+              <tr><td>News</td><td class="num">76</td><td class="num">31</td><td class="num">8</td><td class="num">37</td></tr>
+              <tr><td>Entertainment</td><td class="num">35</td><td class="num">18</td><td class="num">11</td><td class="num">6</td></tr>
+              <tr><td>Movies</td><td class="num">12</td><td class="num">6</td><td class="num">2</td><td class="num">4</td></tr>
+              <tr><td><b>Music</b></td><td class="num">30</td><td class="num"><b>25</b></td><td class="num"><b>1</b></td><td class="num">4</td></tr>
+              <tr><td>Devotional</td><td class="num">41</td><td class="num">23</td><td class="num">—</td><td class="num">—</td></tr>
+            </tbody>
+          </table></div>
+          Music's visible top five all carried the identical score, so their order fell to the
+          tie-break on <b>channel number</b>. Buried at slot 47 that was harmless; under a rotation that
+          lifts each genre's #1 to slot 4 for every user, it is not.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>Ties now break on observed stick rate, then reach, then channel number.</b> Raw stick rate
+          stays <i>out</i> of the score itself — no confidence penalty is exactly what the Wilson lower
+          bound defends against — but between channels that already tie it costs nothing. Near-free for
+          the control, since it only moves slots past 47. Effect on live data: Devotional's head moves
+          from <code>#57 Aastha</code> (numerically first) to <code>#202 Satsang TV</code> (earned).</div>
+      </div>
+
+      <div class="q">
+        <div class="qh"><span class="qnum">09</span><span class="qt">Pre-flight: re-run the stream probe before enrolment opens?</span><span class="stakes low">Low stakes</span></div>
+        <div class="qb">Cross-genre rotation promotes each genre's top channel into the first five
+          slots. A thin genre with a broken head would inject a guaranteed failure into slot 2 for every
+          single user. The last probe ran on 24 July.</div>
+        <div class="rec"><span class="tag">Decided</span>
+          <b>No re-probe — the 24 July run stands. 21 channels stripped in this PR.</b> Every one of the
+          21 FAILED the probe (404 manifest, not-HLS, no segments, dead segments) <i>and</i> is
+          independently flagged unhealthy by the event data, so this is not a ranking judgement — they
+          cannot play at all. Catalogue 245 &rarr; 224. Two that mattered for the rotation:
+          <code>#223 The Movie Club</code> sat in Movies' visible top six, and four dead channels
+          occupied early Entertainment slots.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <b>Sources.</b> Ordering and reach figures produced by running the shipped ranking code verbatim
+    against production <code>analytics.db</code> (<code>~/wiom_tv/scripts/exp3_interleave_sim.js</code>,
+    14-day window, 28 July 2026). Behavioural figures from the same database over the same window.
+    Design: <code>~/wiom_tv/specs/spec_6_fse_v3_cross_genre.md</code> (draft) and
+    <code>spec_5_ordering_algo.md</code>. Implementation on branch
+    <code>exp/fse-v3-cross-genre</code> (2 commits), 66/66 E2E checks green, not deployed and not
+    pushed. Dead-channel list from the 24 July <code>stream_probe.py</code> run.
+  </footer>
+
+</div>
+
+<script>
+  // theme toggle
+  document.getElementById('tt').onclick = () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const sysDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', cur ? (cur === 'dark' ? 'light' : 'dark') : (sysDark ? 'light' : 'dark'));
+    draw();
+  };
+
+  const CYCLE = [
+    { g: 'News',          v: 'var(--g-news)'   },
+    { g: 'Movies',        v: 'var(--g-movies)' },
+    { g: 'Entertainment', v: 'var(--g-ent)'    },
+    { g: 'Music',         v: 'var(--g-music)'  },
+    { g: 'Devotional',    v: 'var(--g-dev)'    }
+  ];
+  const COLOR = Object.fromEntries(CYCLE.map(c => [c.g, c.v]));
+
+  // ---- slot strips ---------------------------------------------------------
+  // Today: the flat list opens with the Entertainment block (34 channels).
+  const todaySlots = Array.from({ length: 16 }, (_, i) => i < 11 ? 'Entertainment' : i < 14 ? 'Movies' : 'Music');
+  // Interleaved: round-robin, Other every 3rd cycle -> slot 16.
+  const newSlots = [];
+  for (let cyc = 1; newSlots.length < 16; cyc++) {
+    for (const c of CYCLE) { if (newSlots.length < 16) newSlots.push(c.g); }
+    if (cyc % 3 === 0 && newSlots.length < 16) newSlots.push('Other');
+  }
+  function strip(id, arr) {
+    document.getElementById(id).innerHTML = arr.map((g, i) => {
+      const other = g === 'Other';
+      const st = other ? '' : `background:${COLOR[g]}`;
+      return `<span class="slot${other ? ' other' : ''}" style="${st}"><span class="i">${i + 1}</span>${g}</span>`;
+    }).join('');
+  }
+  strip('stripToday', todaySlots);
+  strip('stripNew', newSlots);
+
+  // ---- chart 1: reach curve ------------------------------------------------
+  const reachToday = [1,1,1,1,1,1,1,1,1,1,1,2];
+  const reachNew   = [1,2,3,4,5,5,5,5,5,5,5,5];
+
+  function draw() {
+    const cs = getComputedStyle(document.documentElement);
+    const cNew = cs.getPropertyValue('--s-new').trim();
+    const cToday = cs.getPropertyValue('--s-today').trim();
+
+    // ---- reach curve
+    const W = 720, H = 250, L = 44, R = 168, T = 24, B = 48;
+    const px = i => L + i * (W - L - R) / 11;
+    const py = v => T + (5 - v) * (H - T - B) / 4.4;
+    let grid = '';
+    for (let v = 1; v <= 5; v++) {
+      grid += `<line class="gridline" x1="${L}" y1="${py(v)}" x2="${W - R}" y2="${py(v)}"/>`;
+      grid += `<text class="ax" x="${L - 9}" y="${py(v) + 4}" text-anchor="end">${v}</text>`;
+    }
+    for (let i = 0; i < 12; i += 2) grid += `<text class="ax" x="${px(i)}" y="${H - B + 18}" text-anchor="middle">${i + 1}</text>`;
+    grid += `<text class="axlab" x="${L}" y="${H - 4}" text-anchor="start">slots walked from the landing channel →</text>`;
+    grid += `<text class="axlab" x="${L}" y="${T - 9}" text-anchor="start">distinct genres reached</text>`;
+    document.getElementById('c1grid').innerHTML = grid;
+
+    const path = a => a.map((v, i) => `${i ? 'L' : 'M'}${px(i)},${py(v)}`).join(' ');
+    let m = '';
+    m += `<path d="${path(reachToday)}" fill="none" stroke="${cToday}" stroke-width="2" stroke-linecap="round"/>`;
+    m += `<path d="${path(reachNew)}" fill="none" stroke="${cNew}" stroke-width="2" stroke-linecap="round"/>`;
+    reachNew.forEach((v, i) => { if (i < 5) m += `<circle cx="${px(i)}" cy="${py(v)}" r="4.5" fill="${cNew}" stroke="var(--bg)" stroke-width="2"/>`; });
+    m += `<circle cx="${px(11)}" cy="${py(reachToday[11])}" r="4.5" fill="${cToday}" stroke="var(--bg)" stroke-width="2"/>`;
+    m += `<text class="dlabel" x="${W - R + 12}" y="${py(5)}" fill="${cNew}">Interleaved</text>`;
+    m += `<text class="ax" x="${W - R + 12}" y="${py(5) + 15}">5 genres by slot 5</text>`;
+    m += `<text class="dlabel" x="${W - R + 12}" y="${py(1)}" fill="${cToday}">Today</text>`;
+    m += `<text class="ax" x="${W - R + 12}" y="${py(1) + 15}">still 1 genre at slot 11</text>`;
+    for (let i = 0; i < 12; i++) {
+      m += `<rect class="hit" x="${px(i) - 14}" y="${T}" width="28" height="${H - T - B}"
+             data-tip="Slot ${i + 1} — interleaved: ${reachNew[i]} genre${reachNew[i] > 1 ? 's' : ''} · today: 1 genre"
+             data-x="${px(i)}" data-y="${py(reachNew[i])}"></rect>`;
+    }
+    document.getElementById('c1marks').innerHTML = m;
+
+    // ---- chart 2: flick depth
+    const depth = [
+      { b: '1', n: 1151, p: 38.0 }, { b: '2', n: 499, p: 16.5 }, { b: '3', n: 272, p: 9.0 },
+      { b: '4', n: 218, p: 7.2 },  { b: '5', n: 139, p: 4.6 },  { b: '6', n: 99, p: 3.3 },
+      { b: '7', n: 85, p: 2.8 },   { b: '8', n: 69, p: 2.3 },   { b: '9', n: 52, p: 1.7 },
+      { b: '10+', n: 445, p: 14.7 }
+    ];
+    const W2 = 720, H2 = 250, L2 = 44, R2 = 20, T2 = 12, B2 = 42;
+    const bw = (W2 - L2 - R2) / depth.length;
+    const maxP = 40;
+    const by = p => T2 + (1 - p / maxP) * (H2 - T2 - B2);
+    let m2 = '';
+    for (let v = 0; v <= 40; v += 10) {
+      m2 += `<line class="gridline" x1="${L2}" y1="${by(v)}" x2="${W2 - R2}" y2="${by(v)}"/>`;
+      m2 += `<text class="ax" x="${L2 - 9}" y="${by(v) + 4}" text-anchor="end">${v}%</text>`;
+    }
+    depth.forEach((d, i) => {
+      const x = L2 + i * bw + 3, w = bw - 6, y = by(d.p), h = by(0) - y;
+      const hi = i < 2;
+      m2 += `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" ry="4"
+              fill="${cNew}" opacity="${hi ? 1 : .45}"/>`;
+      m2 += `<rect x="${x}" y="${by(0) - 4}" width="${w}" height="4" fill="${cNew}" opacity="${hi ? 1 : .45}"/>`;
+      m2 += `<text class="ax" x="${x + w / 2}" y="${H2 - B2 + 20}" text-anchor="middle">${d.b}</text>`;
+      if (hi || d.b === '10+') m2 += `<text class="dlabel" x="${x + w / 2}" y="${y - 7}" text-anchor="middle" fill="var(--ink)">${d.p}%</text>`;
+      m2 += `<rect class="hit" x="${x - 3}" y="${T2}" width="${bw}" height="${H2 - T2 - B2}"
+              data-tip="${d.b} tune${d.b === '1' ? '' : 's'} — ${d.n.toLocaleString()} users (${d.p}%)"
+              data-x="${x + w / 2}" data-y="${y}"></rect>`;
+    });
+    m2 += `<text class="axlab" x="${L2}" y="${H2 - 4}" text-anchor="start">tunes in the first session →</text>`;
+    document.getElementById('c2marks').innerHTML = m2;
+
+    wireTips('c1', 'c1tip', 720, 250);
+    wireTips('c2', 'c2tip', 720, 250);
+  }
+
+  function wireTips(chartId, tipId, vbW, vbH) {
+    const host = document.getElementById(chartId);
+    const tip = document.getElementById(tipId);
+    const svg = host.querySelector('svg');
+    host.querySelectorAll('.hit').forEach(r => {
+      r.onmouseenter = r.onmousemove = () => {
+        const rect = svg.getBoundingClientRect();
+        const sx = rect.width / vbW, sy = rect.height / vbH;
+        tip.textContent = r.dataset.tip;
+        tip.style.left = (svg.offsetLeft + (+r.dataset.x) * sx) + 'px';
+        tip.style.top = (svg.offsetTop + (+r.dataset.y) * sy) + 'px';
+        tip.style.opacity = 1;
+      };
+      r.onmouseleave = () => { tip.style.opacity = 0; };
+    });
+  }
+
+  draw();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+</script>
