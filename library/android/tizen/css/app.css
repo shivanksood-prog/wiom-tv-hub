@@ -1,0 +1,136 @@
+/* Wiom TV Tizen — design tokens from WiomTvTheme.kt (dark 10-ft layer) */
+
+@font-face { font-family: 'Noto Sans'; font-weight: 400; src: url('../assets/fonts/notosans_regular.ttf'); }
+@font-face { font-family: 'Noto Sans'; font-weight: 500; src: url('../assets/fonts/notosans_medium.ttf'); }
+@font-face { font-family: 'Noto Sans'; font-weight: 700; src: url('../assets/fonts/notosans_bold.ttf'); }
+@font-face { font-family: 'Noto Sans Devanagari'; font-weight: 400; src: url('../assets/fonts/NotoSansDevanagari-Regular.ttf'); }
+@font-face { font-family: 'Noto Sans Devanagari'; font-weight: 700; src: url('../assets/fonts/NotoSansDevanagari-Bold.ttf'); }
+
+:root {
+  --bg: #161021;            /* bg.default (Neutral_950) */
+  --card: #352D42;          /* bg.subtle */
+  --border-subtle: #473F55; /* stroke.subtle */
+  --accent: #D9008D;        /* Brand_600: spinners, accent bar, focus */
+  --brand-on-dark: #FFB2E4; /* Brand_300: brand text on dark */
+  --text: #FAF9FC;
+  --muted: #A7A1B2;
+  --scrim: rgba(22, 16, 33, 0.80); /* #CC161021 */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+body {
+  font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+  color: var(--text);
+  cursor: none;
+}
+
+#app { position: absolute; inset: 0; }
+
+/* Video layer — full-bleed, letterbox bars pure black (Android TextureView parity) */
+#video-root { position: absolute; inset: 0; background: #000; }
+#av-player, #html-player { position: absolute; inset: 0; width: 100%; height: 100%; }
+#html-player { object-fit: contain; display: none; }
+
+.hidden { display: none !important; }
+
+/* ---- shared primitives ---- */
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.spinner {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 3px solid rgba(217, 0, 141, 0.25); border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+}
+.spinner-sm { width: 20px; height: 20px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.cue-row { display: flex; align-items: center; gap: 14px; }
+.cue-text { font-size: 22px; color: var(--muted); }
+.pill {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 12px;
+  background: var(--scrim); border-radius: 999px; padding: 14px 26px; font-size: 21px;
+}
+.initials { font-size: 26px; font-weight: 700; color: var(--text); }
+.logo-chip { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.logo-chip img { width: 100%; height: 100%; object-fit: contain; display: none; }
+
+.fade-in { animation: fadeIn 0.4s ease both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---- BootSplash (splash_window.xml + BootSplash parity) ---- */
+#boot-splash { background: var(--bg); z-index: 60; }
+.splash-lockup { width: 507px; height: 87px; } /* 338x58dp @1.5x for 1920 canvas */
+.splash-cue { position: absolute; top: calc(50% + 108px); left: 50%; transform: translateX(-50%); }
+
+/* ---- ZapCover ---- */
+#zap-cover { background: var(--bg); z-index: 30; }
+.zap-center { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.logo-chip-lg { width: 180px; height: 180px; border-radius: 24px; }
+.zap-name { font-size: 30px; font-weight: 500; }
+
+/* ---- ChannelBug ---- */
+#channel-bug {
+  position: absolute; left: 60px; bottom: 60px; z-index: 20;
+  display: flex; align-items: center;
+  background: var(--scrim); border-radius: 21px; overflow: hidden;
+  padding-right: 28px;
+}
+.bug-accent { width: 8px; align-self: stretch; background: var(--accent); }
+.logo-chip-sm { width: 69px; height: 69px; border-radius: 12px; margin: 16px 18px; background: var(--card); }
+.logo-chip-sm .initials { font-size: 22px; }
+.bug-name { font-size: 27px; font-weight: 700; }
+.bug-sub { font-size: 19px; margin-top: 2px; }
+.bug-genre { color: var(--brand-on-dark); }
+.bug-hint { color: var(--muted); }
+
+/* ---- BufferingCue ---- */
+#buffering-cue { z-index: 25; }
+
+/* ---- ReconnectOverlay ---- */
+#reconnect-overlay.reconnect { background: rgba(22, 16, 33, 0.96); z-index: 50; gap: 26px; }
+.reconnect-logo { width: 206px; height: 45px; } /* 137x30dp @1.5x */
+.reconnect-en { font-size: 19px; color: var(--muted); }
+
+/* ---- ForceUpdateOverlay ---- */
+#force-update { background: var(--bg); z-index: 70; gap: 22px; }
+.update-lockup { width: 438px; height: 75px; } /* 292x50dp @1.5x */
+.update-message { font-size: 28px; max-width: 900px; text-align: center; }
+.update-sub { font-size: 19px; color: var(--muted); }
+.update-cta {
+  padding: 16px 42px; border-radius: 999px; font-size: 24px; font-weight: 500;
+  border: 3px solid var(--border-subtle);
+}
+.update-cta.focused { background: var(--accent); border-color: var(--accent); color: #fff; }
+.update-url { font-size: 17px; color: var(--muted); }
+
+/* ---- Exit toast ---- */
+.toast { top: auto; bottom: 90px; transform: translateX(-50%); z-index: 65; }
+
+/* ---- LogoGrid ---- */
+#logo-grid { background: rgba(22, 16, 33, 0.94); z-index: 40; justify-content: flex-start; align-items: stretch; }
+.grid-header {
+  display: flex; align-items: center; gap: 20px;
+  padding: 48px 60px 24px 60px; /* 32/40dp @1.5x */
+}
+.grid-wordmark { width: 177px; height: 39px; } /* 118x26dp @1.5x */
+.grid-divider { width: 2px; height: 36px; background: var(--border-subtle); }
+.grid-title { font-size: 24px; color: var(--muted); }
+.grid-version { margin-left: auto; font-size: 16px; color: var(--muted); }
+.grid-body { flex: 1; overflow: hidden; padding: 0 60px 36px 60px; }
+.genre-row { margin-bottom: 30px; }
+.genre-label { font-size: 21px; color: var(--brand-on-dark); margin-bottom: 12px; }
+.tile-row { display: flex; gap: 21px; overflow: hidden; }
+.tile { width: 246px; flex-shrink: 0; }
+.tile-img {
+  width: 225px; height: 132px; border-radius: 18px; /* 150x88dp @1.5x */
+  border: 2px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  transition: transform 0.12s ease;
+}
+.tile-img img { width: 100%; height: 100%; object-fit: contain; display: none; }
+.tile.focused .tile-img { border: 5px solid var(--accent); transform: scale(1.12); }
+.tile-name {
+  font-size: 19px; color: var(--muted); margin-top: 10px; max-width: 225px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tile.focused .tile-name { color: var(--text); }
