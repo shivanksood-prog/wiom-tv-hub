@@ -59,45 +59,109 @@ border-radius:5px;border:1px solid var(--border);background:var(--subtle);color:
 footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);padding-top:13px}
 </style>
 <div class="wrap">
-<header><div class="eyebrow">Wiom TV · Experiment 3 · fse_v3 cross-genre ordering</div>
+<header><div class="eyebrow">Wiom TV · Experiment 3 · fse_v3 cross-genre ordering · day 0.1</div>
 <h1>Does a traversable catalogue change anything?</h1>
-<div class="meta">Checked hourly · this page will populate itself within an hour of the deploy.
-Last check time is in <code>hub_exp3_refresh.log</code>.</div></header>
+<div class="meta">Clean cohort <b>37 users</b> (RC 8 · RI 11 · RL 18) ·
+cutoff <b>2026-08-06 07:50:54</b> · snapshot 2026-08-06 10:47:03 · auto-refreshed hourly ·
+the News landing is held <b>identical in all three arms</b>, so only ordering varies ·
+<b>RC is a true control</b> — it is what the site serves today, so a null result means
+"keep what we have"</div></header>
 
-<section class="card verdict">
-  <div class="eyebrow">Status</div><div class="word">AWAITING DEPLOY</div>
-  <div class="why">No user carries an <code>fse_v3</code> arm yet. That is the expected state until
-  the branch is merged, rsynced and <code>reload-wiom-tv</code> has run.
-  <b>This is not a failure mode</b> — the client refuses to enrol anyone until
-  <code>/api/order</code> proves the server is reloaded (<code>algo:'v3'</code>), so an un-deployed
-  or half-deployed state produces a clean exclusion rather than corrupted attribution. Until then
-  every new user silently gets Arm RC's experience, which is the incumbent.</div>
-  <div class="dates">Cohort start auto-derives from the first stamped arm — no manual cutoff to
-  set, nothing to remember on deploy day. Schema probe: <code>flat_pos</code> column
-  present.</div>
+<section class="card verdict warn">
+  <div class="eyebrow">Verdict</div><div class="word">ACCRUING — manipulation gate at day 5</div>
+  <div class="why">Day 0.1. No outcome metrics are read before day 28. Genre reach so far: RC 25.0% · RI 45.5% · RL 38.9% (&ge;2 genres in the first session).</div>
+  <div class="dates">Gate <b>Aug 11</b> (mechanism only) · enrolment closes <b>Aug 27</b> · decision <b>Sep 3</b> (Bonferroni &alpha;=0.025)</div>
 </section>
 
 <section class="card">
-  <h2>What will be measured</h2>
-  <p class="sub">Pre-registered before launch. Two looks, and only the second one decides.</p>
-  <div class="scroll"><table>
-  <thead><tr><th>Look</th><th>Metric</th><th>Rule</th></tr></thead><tbody>
-  <tr><td><b>Day 5</b><br><span class="chip">gate</span></td>
-      <td>% of first-session users touching <b>&ge;2 genres</b><br>
-      <span class="sub">baseline 28.9%</span></td>
-      <td>RI <b>and</b> RL must each show <b>&ge; +10pp vs RC</b>.
-      If neither clears, <b>abort</b> — the arms are not doing what they claim.
-      Outcome metrics are not examined at this look.</td></tr>
-  <tr><td><b>Day 28</b><br><span class="chip" style="color:var(--accent);border-color:var(--accent)">primary</span></td>
-      <td>Attended, P95-winsorized <b>7-day watch minutes</b> per user</td>
-      <td>RI vs RC and RL vs RC at <b>Bonferroni &alpha;=0.025</b>. Enrolment closes day
-      21. Ties and near-misses mean <b>keep RC</b>.</td></tr>
+  <h2>Integrity gate</h2>
+  <p class="sub">Checked before any effect is read. A lift on invalid data is worthless.</p>
+  <div class="chips"><span class="chip ok">&check; Sample ratio 1:1:1 <b>&chi;&sup2;=4.27, p=0.118</b></span><span class="chip ok">&check; Sticky <b>0 cross-arm</b></span><span class="chip ok">&check; Hash audit <b>0/37</b></span><span class="chip ok">&check; Landing fallback <b>worst 0.0%</b></span><span class="chip ok">&check; Landing identical <b>News</b></span><span class="chip ok">&check; Instrumentation</span><span class="chip info">flat_pos column <b>live</b></span></div>
+  
+</section>
+
+<section class="card">
+  <h2>Day-5 manipulation gate — is the rotation actually reaching people?</h2>
+  <p class="sub">% of first-session users touching &ge;2 genres. Pre-launch baseline
+  28.9%. Both treatments must clear <b>+10pp vs RC</b> or the
+  experiment aborts. This look is on the mechanism only — no outcome metric is examined here.</p>
+  <div class="big">
+    <div class="stat rc"><div class="n">25.0%</div><div class="l">RC · control</div></div>
+    <div class="stat ri"><div class="n">45.5%</div>
+      <div class="l">RI · +20.5pp vs RC · clears the gate</div></div>
+    <div class="stat rl"><div class="n">38.9%</div>
+      <div class="l">RL · +13.9pp vs RC · clears the gate</div></div>
+  </div>
+  <p class="note">Median genres reached in the first session: RC 1 ·
+  RI 1 · RL 1. Median distinct channels:
+  RC 2 · RI 1 · RL 1.</p>
+</section>
+
+<section class="card">
+  <h2>Primary — attended, P95-winsorized 7-day watch minutes</h2>
+  <p class="sub">The only metric that decides anything, and only on day 28.
+  Zero-watch users are kept in the denominator. Days where a single tune is &ge;90%
+  of the day's minutes <i>and</i> the user never unmuted are dropped as TV-left-running
+  (<b>0</b> uid-days dropped so far). Each user is then capped at the pooled P95
+  (<b>0.00</b> min).</p>
+  <div class="scroll"><table style="min-width:680px">
+  <thead><tr><th>Metric</th><th class="num">RC<br><span style="color:var(--faint)">n=0</span></th><th class="num">RI<br><span style="color:var(--faint)">n=0</span></th><th class="num">RL<br><span style="color:var(--faint)">n=0</span></th>
+  <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
+  <tbody>
+    <tr><td><b>Attended P95-winsorized 7-day watch (mean min)</b><br>
+    <span class="sub">PRIMARY · &alpha;=0.025 per comparison · MDE 0.000 min at n&asymp;0/arm</span></td>
+    <td class="num">0.000</td><td class="num">0.000</td><td class="num">0.000</td><td class="num"><span class="p">1.000</span></td><td class="num"><span class="p">1.000</span></td></tr>
+    <tr><td>Median first-session watch (min)<br><span class="sub">the number that should embarrass us</span></td>
+    <td class="num">0.12</td><td class="num">0.37</td><td class="num">0.36</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>Median first-session switches</td>
+    <td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">—</td><td class="num">—</td></tr>
   </tbody></table></div>
-  <p class="note">Guardrails, checked at every refresh once data exists: playback errors per tune,
-  day-0 activation, landing wait p90, sample-ratio mismatch, and the <code>algo:'v3'</code>
-  handshake rate. Any breach pauses the experiment.</p>
+  <p class="note"><span class="chip"><span class="dot" style="background:var(--rc)"></span>RC — control (News landing, genre blocks)</span> · <span class="chip"><span class="dot" style="background:var(--ri)"></span>RI — cross-genre interleave</span> · <span class="chip"><span class="dot" style="background:var(--rl)"></span>RL — interleave + genre lock</span></p>
+  <p class="note"><b>Whale rule:</b> no hours-based number is reported alone. The winsorization
+  above is that rule applied per-user; in fse_v2 half of LN's 49.4 hours came from three people.</p>
+</section>
+
+<section class="card">
+  <h2>Secondary — reported, never decisive</h2>
+  <p class="sub">Uncorrected p-values vs RC, shown at &alpha;=0.05. These corroborate; they do not
+  decide.</p>
+  <div class="scroll"><table style="min-width:680px">
+  <thead><tr><th>Metric</th><th class="num">RC · n=8</th><th class="num">RI · n=11</th><th class="num">RL · n=18</th>
+  <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
+  <tbody><tr><td><b>Any watch on days 1–6</b><br><span class="sub">the returner gap News did not close</span></td><td class="num">0 · 0.0%</td><td class="num">0 · 0.0%</td><td class="num">0 · 0.0%</td><td class="num"><span class="p">1.000</span></td><td class="num"><span class="p">1.000</span></td></tr><tr><td><b>Strict D1 returner</b><br><span class="sub">&ge;30 min gap or later IST day</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="p">1.000</span></td><td class="num"><span class="p">1.000</span></td></tr><tr><td><b>Strict D7 returner</b></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="p">1.000</span></td><td class="num"><span class="p">1.000</span></td></tr><tr><td><b>Installed / standalone</b><br><span class="sub">returner-only behaviour in practice</span></td><td class="num">0 · 0.0%</td><td class="num">0 · 0.0%</td><td class="num">1 · 5.6%</td><td class="num"><span class="p">1.000</span></td><td class="num"><span class="p">0.497</span></td></tr></tbody></table></div>
+</section>
+
+<section class="card">
+  <h2>Exposure cut — users who flicked at least twice</h2>
+  <p class="sub"><b>Not causal, and can never win the experiment.</b> This conditions on
+  post-randomisation behaviour. It is pre-registered for one reason only: 38% of first sessions are
+  a single tune, for whom RC and RI are byte-identical, so a null primary is ambiguous between
+  "no effect" and "no exposure". This cut tells those apart. It does not measure a treatment effect.</p>
+  <div class="scroll"><table style="min-width:680px">
+  <thead><tr><th>Metric</th><th class="num">RC · n=0</th><th class="num">RI · n=0</th><th class="num">RL · n=0</th>
+  <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
+  <tbody><tr><td><b>Attended P95-winsorized 7-day watch (mean min)</b><br>
+  <span class="sub">&ge;2 first-session tunes only · descriptive</span></td>
+  <td class="num">0.000</td><td class="num">0.000</td><td class="num">0.000</td>
+  <td class="num"><span class="p">1.000</span></td><td class="num"><span class="p">1.000</span></td></tr></tbody></table></div>
+</section>
+
+<section class="card">
+  <h2>Arm RL — did the lock work?</h2>
+  <p class="sub">Mechanism diagnostics. RL is a compound treatment (discovery + persistence); if it
+  wins, these numbers say how it was used, not which half caused it.</p>
+  <div class="big"><div class="stat rl"><div class="n">38.9%</div><div class="l">of RL users ever hit a lock (7 of 18)</div></div><div class="stat rl"><div class="n">76<span style="font-size:14px">s</span></div><div class="l">median time from session start to lock</div></div><div class="stat rl"><div class="n">100%</div><div class="l">of locked users had it honoured on a later session (1/1) — the rest lost localStorage</div></div></div><p class="note">Locked genres: <b>News</b> 5 · <b>Classic</b> 1 · <b>Entertainment</b> 1</p>
+</section>
+
+<section class="card">
+  <h2>Guardrails</h2>
+  <p class="sub">Any breach pauses the experiment.</p>
+  <div class="scroll"><table>
+  <thead><tr><th>Guardrail</th><th>Reading</th><th class="num">Status</th></tr></thead>
+  <tbody><tr><td><b>RI: playback errors / tune</b></td><td>17.19% vs RC 0.00% = <b>+0.0%</b> relative (trip: +25%)</td><td class="num"><span class="chip bad">&times; tripped</span></td></tr><tr><td><b>RI: day-0 activation</b></td><td>+0.0pp vs RC (trip: &minus;2pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RI: landing wait p90</b></td><td>2231ms vs RC 24615ms (trip: +500ms)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: playback errors / tune</b></td><td>0.85% vs RC 0.00% = <b>+0.0%</b> relative (trip: +25%)</td><td class="num"><span class="chip bad">&times; tripped</span></td></tr><tr><td><b>RL: day-0 activation</b></td><td>+16.7pp vs RC (trip: &minus;2pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: landing wait p90</b></td><td>5845ms vs RC 24615ms (trip: +500ms)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sample ratio 1:1:1</b></td><td>&chi;&sup2;=4.27, p=0.118</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Landing identical across arms</b></td><td>RC:News · RI:News · RL:News</td><td class="num"><span class="chip ok">&check; ok</span></td></tr></tbody></table></div>
 </section>
 
 <footer>Generated by <code>hub_exp3_render.py</code> from a read-only extract of production
-<code>analytics.db</code>. Spec: <code>~/wiom_tv/specs/spec_6_fse_v3_cross_genre.md</code>.</footer>
+<code>analytics.db</code>. Spec: <code>~/wiom_tv/specs/spec_6_fse_v3_cross_genre.md</code> ·
+decisions ratified 2026-07-28 · carryover excluded: 0 uids.</footer>
 </div>
