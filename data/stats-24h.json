@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-08T22:13:22Z",
+  "fetched_at": "2026-08-08T22:50:51Z",
   "data": {
     "period": "24h",
-    "liveNow": 4,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 4908,
-      "total_tunes": 12729,
-      "total_watch_min": 90826.5,
-      "avg_duration_sec": 389.1
+      "unique_users": 4899,
+      "total_tunes": 12737,
+      "total_watch_min": 90835.6,
+      "avg_duration_sec": 388.9
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5032,
-        "unique_users": 3936,
-        "watch_min": 2320.9
+        "tunes": 5036,
+        "unique_users": 3935,
+        "watch_min": 2325.3
       },
       {
         "ch": 169,
@@ -33,18 +33,18 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 557,
-        "unique_users": 449,
-        "watch_min": 282.2
+        "tunes": 558,
+        "unique_users": 450,
+        "watch_min": 283.4
       },
       {
         "ch": 24,
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 180,
-        "unique_users": 131,
-        "watch_min": 234.7
+        "tunes": 178,
+        "unique_users": 130,
+        "watch_min": 234.3
       },
       {
         "ch": 41,
@@ -60,9 +60,9 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 272,
-        "unique_users": 222,
-        "watch_min": 192.3
+        "tunes": 273,
+        "unique_users": 223,
+        "watch_min": 192.6
       },
       {
         "ch": 7,
@@ -245,6 +245,15 @@
         "watch_min": 22.1
       },
       {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 67,
+        "unique_users": 49,
+        "watch_min": 22.1
+      },
+      {
         "ch": 9,
         "name": "Zee South Flix",
         "cat": "Entertainment",
@@ -252,15 +261,6 @@
         "tunes": 67,
         "unique_users": 52,
         "watch_min": 22
-      },
-      {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 66,
-        "unique_users": 48,
-        "watch_min": 21.8
       },
       {
         "ch": 106,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 8382,
-        "unique_users": 4261,
-        "watch_min": 4574.1
+        "tunes": 8389,
+        "unique_users": 4259,
+        "watch_min": 4581.9
       },
       {
         "cat": "Entertainment",
-        "tunes": 1093,
-        "unique_users": 244,
-        "watch_min": 415.2
+        "tunes": 1095,
+        "unique_users": 245,
+        "watch_min": 416.1
       },
       {
         "cat": "Music",
@@ -302,7 +302,7 @@
       },
       {
         "cat": "Movies",
-        "tunes": 577,
+        "tunes": 576,
         "unique_users": 229,
         "watch_min": 387.9
       },
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 11311,
-        "unique_users": 4398,
-        "watch_min": 5478.7
+        "tunes": 11320,
+        "unique_users": 4396,
+        "watch_min": 5487.3
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 252,
-        "unique_users": 158,
-        "watch_min": 338
+        "tunes": 250,
+        "unique_users": 157,
+        "watch_min": 337.6
       },
       {
         "lang": "Punjabi",
-        "tunes": 544,
-        "unique_users": 199,
-        "watch_min": 133.3
+        "tunes": 545,
+        "unique_users": 200,
+        "watch_min": 133.9
       },
       {
         "lang": "English",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-07 22:00",
-        "users": 37,
-        "tunes": 92
+        "users": 12,
+        "tunes": 66
       },
       {
         "hour": "2026-08-07 23:00",
@@ -564,28 +564,28 @@
       },
       {
         "hour": "2026-08-08 22:00",
-        "users": 19,
-        "tunes": 49
+        "users": 35,
+        "tunes": 83
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-07",
-        "users": 64,
-        "tunes": 181,
-        "watch_min": 118.3
+        "users": 39,
+        "tunes": 155,
+        "watch_min": 113.3
       },
       {
         "day": "2026-08-08",
-        "users": 4844,
-        "tunes": 12548,
-        "watch_min": 90708.2
+        "users": 4860,
+        "tunes": 12582,
+        "watch_min": 90722.3
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 4835
+        "users": 4826
       },
       {
         "device": "desktop",
@@ -593,13 +593,13 @@
       }
     ],
     "funnel": {
-      "opens": 2238,
-      "playback": 1882,
+      "opens": 2236,
+      "playback": 1880,
       "engaged": 306
     },
     "retention": {
       "new_users": 1979,
-      "returning_users": 271
+      "returning_users": 269
     },
     "errorBoard": [
       {
@@ -607,7 +607,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 137,
-        "starts": 3318
+        "starts": 3312
       },
       {
         "ch": 44,
@@ -789,7 +789,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 5,
-        "starts": 149
+        "starts": 148
       },
       {
         "ch": 52,
@@ -885,12 +885,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 5026,
-      "samples": 8530
+      "samples": 8528
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 7769,
+        "starts": 7767,
         "avg_ttff_ms": 3726
       },
       {
@@ -915,10 +915,10 @@
       }
     ],
     "engagement": {
-      "sessions": 4908,
+      "sessions": 4899,
       "avg_channels": 2.1,
       "avg_session_sec": 66,
-      "bounce_pct": 70.2,
+      "bounce_pct": 70.1,
       "zap_pct": 46.6
     },
     "survey": {
