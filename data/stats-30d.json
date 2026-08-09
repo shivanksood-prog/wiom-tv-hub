@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-09T20:55:26Z",
+  "fetched_at": "2026-08-09T21:34:51Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 7,
     "overview": {
-      "unique_users": 47003,
-      "total_tunes": 151784,
-      "total_watch_min": 3912933.4,
-      "avg_duration_sec": 1397.6
+      "unique_users": 47020,
+      "total_tunes": 151812,
+      "total_watch_min": 3912941.8,
+      "avg_duration_sec": 1397.4
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 20353,
-        "unique_users": 15989,
-        "watch_min": 10364.6
+        "tunes": 20377,
+        "unique_users": 16007,
+        "watch_min": 10371.5
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 9195,
-        "unique_users": 7131,
-        "watch_min": 9164.7
+        "tunes": 9197,
+        "unique_users": 7133,
+        "watch_min": 9164.9
       },
       {
         "ch": 29,
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8296,
-        "unique_users": 6623,
-        "watch_min": 5307.2
+        "tunes": 8294,
+        "unique_users": 6621,
+        "watch_min": 5307.1
       },
       {
         "ch": 118,
@@ -78,9 +78,9 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2710,
-        "unique_users": 2182,
-        "watch_min": 1767.9
+        "tunes": 2712,
+        "unique_users": 2184,
+        "watch_min": 1768.5
       },
       {
         "ch": 226,
@@ -123,8 +123,8 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2281,
-        "unique_users": 1839,
+        "tunes": 2282,
+        "unique_users": 1840,
         "watch_min": 981.7
       },
       {
@@ -213,9 +213,9 @@
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "lang": "Bhojpuri",
-        "tunes": 1094,
-        "unique_users": 846,
-        "watch_min": 741.7
+        "tunes": 1092,
+        "unique_users": 845,
+        "watch_min": 741.6
       },
       {
         "ch": 241,
@@ -258,9 +258,9 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1271,
-        "unique_users": 994,
-        "watch_min": 512.1
+        "tunes": 1270,
+        "unique_users": 993,
+        "watch_min": 511.8
       },
       {
         "ch": 249,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 59927,
-        "unique_users": 24119,
-        "watch_min": 35279.3
+        "tunes": 59958,
+        "unique_users": 24137,
+        "watch_min": 35287.7
       },
       {
         "cat": "Music",
-        "tunes": 26213,
+        "tunes": 26212,
         "unique_users": 8966,
-        "watch_min": 14211.5
+        "watch_min": 14211.8
       },
       {
         "cat": "Entertainment",
-        "tunes": 31533,
-        "unique_users": 9721,
-        "watch_min": 13163.4
+        "tunes": 31531,
+        "unique_users": 9719,
+        "watch_min": 13163
       },
       {
         "cat": "Movies",
@@ -406,20 +406,20 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 123931,
-        "unique_users": 39789,
-        "watch_min": 68766.1
+        "tunes": 123960,
+        "unique_users": 39804,
+        "watch_min": 68774.5
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 6606,
-        "unique_users": 4315,
+        "tunes": 6604,
+        "unique_users": 4314,
         "watch_min": 4217.1
       },
       {
         "lang": "Punjabi",
-        "tunes": 8961,
-        "unique_users": 3816,
+        "tunes": 8962,
+        "unique_users": 3817,
         "watch_min": 3160.1
       },
       {
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-10 20:00",
-        "users": 1,
-        "tunes": 1
-      },
-      {
         "hour": "2026-07-10 21:00",
-        "users": 5,
-        "tunes": 7
+        "users": 1,
+        "tunes": 3
       },
       {
         "hour": "2026-07-10 22:00",
@@ -4026,14 +4021,19 @@
         "hour": "2026-08-09 20:00",
         "users": 36,
         "tunes": 67
+      },
+      {
+        "hour": "2026-08-09 21:00",
+        "users": 22,
+        "tunes": 33
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-10",
-        "users": 12,
-        "tunes": 16,
-        "watch_min": 15.1
+        "users": 7,
+        "tunes": 11,
+        "watch_min": 14.6
       },
       {
         "day": "2026-07-11",
@@ -4211,15 +4211,15 @@
       },
       {
         "day": "2026-08-09",
-        "users": 5882,
-        "tunes": 14821,
-        "watch_min": 124385.9
+        "users": 5904,
+        "tunes": 14854,
+        "watch_min": 124394.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 45874
+        "users": 45891
       },
       {
         "device": "desktop",
@@ -4227,13 +4227,13 @@
       }
     ],
     "funnel": {
-      "opens": 20653,
-      "playback": 17699,
-      "engaged": 3083
+      "opens": 20656,
+      "playback": 17702,
+      "engaged": 3085
     },
     "retention": {
-      "new_users": 20211,
-      "returning_users": 539
+      "new_users": 20215,
+      "returning_users": 538
     },
     "errorBoard": [
       {
@@ -4262,7 +4262,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 633,
-        "starts": 13309
+        "starts": 13324
       },
       {
         "ch": 16,
@@ -4297,7 +4297,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 282,
-        "starts": 6131
+        "starts": 6129
       },
       {
         "ch": 29,
@@ -4311,7 +4311,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 238,
-        "starts": 7158
+        "starts": 7160
       },
       {
         "ch": 118,
@@ -4374,7 +4374,7 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 101,
-        "starts": 2315
+        "starts": 2317
       },
       {
         "ch": 27,
@@ -4416,7 +4416,7 @@
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "errors": 79,
-        "starts": 574
+        "starts": 573
       },
       {
         "ch": 125,
@@ -4500,7 +4500,7 @@
         "name": "Steelbird Music",
         "cat": "Music",
         "errors": 52,
-        "starts": 648
+        "starts": 649
       },
       {
         "ch": 25,
@@ -4518,13 +4518,13 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6892,
-      "samples": 93165
+      "avg_ttff_ms": 6891,
+      "samples": 93184
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 83017,
+        "starts": 83031,
         "avg_ttff_ms": 6566
       },
       {
@@ -4534,8 +4534,8 @@
       },
       {
         "net": "unknown",
-        "starts": 3019,
-        "avg_ttff_ms": 2879
+        "starts": 3024,
+        "avg_ttff_ms": 2877
       },
       {
         "net": "2g",
@@ -4549,7 +4549,7 @@
       }
     ],
     "engagement": {
-      "sessions": 47003,
+      "sessions": 47020,
       "avg_channels": 2.6,
       "avg_session_sec": 110,
       "bounce_pct": 63.6,
