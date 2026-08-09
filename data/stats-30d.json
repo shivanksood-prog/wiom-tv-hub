@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-08T23:30:38Z",
+  "fetched_at": "2026-08-09T00:00:01Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 7,
     "overview": {
-      "unique_users": 41617,
-      "total_tunes": 139767,
-      "total_watch_min": 3821817.6,
+      "unique_users": 41628,
+      "total_tunes": 139770,
+      "total_watch_min": 3821819,
       "avg_duration_sec": 1480.3
     },
     "channelLeaderboard": [
@@ -24,9 +24,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 14109,
-        "unique_users": 11088,
-        "watch_min": 7331.6
+        "tunes": 14123,
+        "unique_users": 11101,
+        "watch_min": 7333.3
       },
       {
         "ch": 29,
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8495,
-        "unique_users": 6817,
-        "watch_min": 5318.2
+        "tunes": 8492,
+        "unique_users": 6814,
+        "watch_min": 5318.1
       },
       {
         "ch": 118,
@@ -141,9 +141,9 @@
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1380,
-        "unique_users": 1068,
-        "watch_min": 981.9
+        "tunes": 1379,
+        "unique_users": 1067,
+        "watch_min": 981.8
       },
       {
         "ch": 185,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 50245,
-        "unique_users": 18978,
-        "watch_min": 30934.5
+        "tunes": 50259,
+        "unique_users": 18991,
+        "watch_min": 30936.3
       },
       {
         "cat": "Music",
@@ -296,14 +296,14 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 31651,
-        "unique_users": 9820,
-        "watch_min": 13557.3
+        "tunes": 31642,
+        "unique_users": 9817,
+        "watch_min": 13557
       },
       {
         "cat": "Movies",
-        "tunes": 15770,
-        "unique_users": 7427,
+        "tunes": 15768,
+        "unique_users": 7425,
         "watch_min": 9193
       },
       {
@@ -406,14 +406,14 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 112983,
-        "unique_users": 34858,
-        "watch_min": 64083.1
+        "tunes": 112987,
+        "unique_users": 34867,
+        "watch_min": 64084.6
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 6443,
-        "unique_users": 4208,
+        "tunes": 6442,
+        "unique_users": 4207,
         "watch_min": 4198.6
       },
       {
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-09 23:00",
-        "users": 4,
-        "tunes": 11
-      },
       {
         "hour": "2026-07-10 00:00",
         "users": 7,
@@ -4024,17 +4019,11 @@
       },
       {
         "hour": "2026-08-08 23:00",
-        "users": 32,
-        "tunes": 116
+        "users": 47,
+        "tunes": 130
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-09",
-        "users": 4,
-        "tunes": 11,
-        "watch_min": 0.3
-      },
       {
         "day": "2026-07-10",
         "users": 521,
@@ -4211,28 +4200,28 @@
       },
       {
         "day": "2026-08-08",
-        "users": 4893,
-        "tunes": 12699,
-        "watch_min": 90840.4
+        "users": 4908,
+        "tunes": 12713,
+        "watch_min": 90842.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 40530
+        "users": 40540
       },
       {
         "device": "desktop",
-        "users": 573
+        "users": 574
       }
     ],
     "funnel": {
-      "opens": 18588,
-      "playback": 15870,
+      "opens": 18589,
+      "playback": 15874,
       "engaged": 2769
     },
     "retention": {
-      "new_users": 18147,
+      "new_users": 18148,
       "returning_users": 537
     },
     "errorBoard": [
@@ -4240,14 +4229,14 @@
         "ch": 10,
         "name": "History TV18 HD",
         "cat": "Entertainment",
-        "errors": 750,
+        "errors": 749,
         "starts": 0
       },
       {
         "ch": 15,
         "name": "NDTV Good Times",
         "cat": "Entertainment",
-        "errors": 687,
+        "errors": 686,
         "starts": 0
       },
       {
@@ -4261,14 +4250,14 @@
         "ch": 16,
         "name": "Travelxp HD",
         "cat": "Entertainment",
-        "errors": 586,
+        "errors": 585,
         "starts": 0
       },
       {
         "ch": 14,
         "name": "Mango TV",
         "cat": "Entertainment",
-        "errors": 555,
+        "errors": 554,
         "starts": 0
       },
       {
@@ -4283,7 +4272,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 437,
-        "starts": 9260
+        "starts": 9273
       },
       {
         "ch": 13,
@@ -4296,7 +4285,7 @@
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
-        "errors": 285,
+        "errors": 284,
         "starts": 6300
       },
       {
@@ -4311,7 +4300,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 216,
-        "starts": 6533
+        "starts": 6534
       },
       {
         "ch": 118,
@@ -4342,18 +4331,18 @@
         "starts": 1862
       },
       {
-        "ch": 23,
-        "name": "B4U Kadak",
-        "cat": "Movies",
-        "errors": 141,
-        "starts": 0
-      },
-      {
         "ch": 44,
         "name": "NDTV India",
         "cat": "News",
         "errors": 140,
         "starts": 1189
+      },
+      {
+        "ch": 23,
+        "name": "B4U Kadak",
+        "cat": "Movies",
+        "errors": 139,
+        "starts": 0
       },
       {
         "ch": 52,
@@ -4518,14 +4507,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6992,
-      "samples": 84900
+      "avg_ttff_ms": 6991,
+      "samples": 84914
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 75277,
-        "avg_ttff_ms": 6831
+        "starts": 75291,
+        "avg_ttff_ms": 6830
       },
       {
         "net": "3g",
@@ -4549,7 +4538,7 @@
       }
     ],
     "engagement": {
-      "sessions": 41617,
+      "sessions": 41628,
       "avg_channels": 2.7,
       "avg_session_sec": 118,
       "bounce_pct": 62.5,
