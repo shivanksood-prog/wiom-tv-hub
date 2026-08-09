@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-09T22:02:07Z",
+  "fetched_at": "2026-08-09T22:46:46Z",
   "data": {
     "period": "30d",
-    "liveNow": 6,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 47028,
-      "total_tunes": 151861,
-      "total_watch_min": 3913096.8,
-      "avg_duration_sec": 1397
+      "unique_users": 47046,
+      "total_tunes": 151890,
+      "total_watch_min": 3913096.4,
+      "avg_duration_sec": 1396.7
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 20385,
-        "unique_users": 16014,
-        "watch_min": 10373.2
+        "tunes": 20410,
+        "unique_users": 16033,
+        "watch_min": 10377.2
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 9198,
-        "unique_users": 7134,
-        "watch_min": 9165
+        "tunes": 9200,
+        "unique_users": 7136,
+        "watch_min": 9165.1
       },
       {
         "ch": 29,
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8293,
-        "unique_users": 6620,
-        "watch_min": 5306.9
+        "tunes": 8290,
+        "unique_users": 6617,
+        "watch_min": 5306.7
       },
       {
         "ch": 118,
@@ -78,9 +78,9 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2712,
-        "unique_users": 2184,
-        "watch_min": 1768.5
+        "tunes": 2714,
+        "unique_users": 2186,
+        "watch_min": 1768.6
       },
       {
         "ch": 226,
@@ -123,9 +123,9 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2282,
-        "unique_users": 1840,
-        "watch_min": 981.7
+        "tunes": 2283,
+        "unique_users": 1841,
+        "watch_min": 981.8
       },
       {
         "ch": 7,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 59983,
-        "unique_users": 24144,
-        "watch_min": 35290.3
+        "tunes": 60015,
+        "unique_users": 24163,
+        "watch_min": 35294.6
       },
       {
         "cat": "Music",
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 31529,
-        "unique_users": 9719,
-        "watch_min": 13162.8
+        "tunes": 31526,
+        "unique_users": 9716,
+        "watch_min": 13162.5
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 124003,
-        "unique_users": 39811,
-        "watch_min": 68781.1
+        "tunes": 124032,
+        "unique_users": 39827,
+        "watch_min": 68785.1
       },
       {
         "lang": "Bhojpuri",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-10 22:00",
-        "users": 3,
-        "tunes": 3
-      },
       {
         "hour": "2026-07-10 23:00",
         "users": 3,
@@ -4024,16 +4019,16 @@
       },
       {
         "hour": "2026-08-09 22:00",
-        "users": 3,
-        "tunes": 2
+        "users": 24,
+        "tunes": 34
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-10",
-        "users": 6,
-        "tunes": 8,
-        "watch_min": 5
+        "users": 3,
+        "tunes": 5,
+        "watch_min": 0.3
       },
       {
         "day": "2026-07-11",
@@ -4211,28 +4206,28 @@
       },
       {
         "day": "2026-08-09",
-        "users": 5913,
-        "tunes": 14906,
-        "watch_min": 124559.3
+        "users": 5934,
+        "tunes": 14938,
+        "watch_min": 124563.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 45899
+        "users": 45916
       },
       {
         "device": "desktop",
-        "users": 574
+        "users": 575
       }
     ],
     "funnel": {
-      "opens": 20657,
-      "playback": 17704,
+      "opens": 20666,
+      "playback": 17712,
       "engaged": 3086
     },
     "retention": {
-      "new_users": 20216,
+      "new_users": 20225,
       "returning_users": 538
     },
     "errorBoard": [
@@ -4262,7 +4257,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 633,
-        "starts": 13329
+        "starts": 13344
       },
       {
         "ch": 16,
@@ -4297,7 +4292,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 282,
-        "starts": 6128
+        "starts": 6125
       },
       {
         "ch": 29,
@@ -4311,7 +4306,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 238,
-        "starts": 7161
+        "starts": 7162
       },
       {
         "ch": 118,
@@ -4374,7 +4369,7 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 101,
-        "starts": 2317
+        "starts": 2319
       },
       {
         "ch": 27,
@@ -4388,7 +4383,7 @@
         "name": "Republic Bharat",
         "cat": "News",
         "errors": 90,
-        "starts": 1514
+        "starts": 1515
       },
       {
         "ch": 37,
@@ -4409,7 +4404,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 82,
-        "starts": 1276
+        "starts": 1275
       },
       {
         "ch": 32,
@@ -4518,14 +4513,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6890,
-      "samples": 93200
+      "avg_ttff_ms": 6889,
+      "samples": 93217
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 83047,
-        "avg_ttff_ms": 6565
+        "starts": 83066,
+        "avg_ttff_ms": 6564
       },
       {
         "net": "3g",
@@ -4534,7 +4529,7 @@
       },
       {
         "net": "unknown",
-        "starts": 3024,
+        "starts": 3022,
         "avg_ttff_ms": 2877
       },
       {
@@ -4549,7 +4544,7 @@
       }
     ],
     "engagement": {
-      "sessions": 47028,
+      "sessions": 47046,
       "avg_channels": 2.6,
       "avg_session_sec": 110,
       "bounce_pct": 63.6,
