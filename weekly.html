@@ -58,7 +58,7 @@ td.dim{color:var(--dim)}
 <div class="header">
   <div>
     <h1><span>Wiom</span> TV · Weekly Scorecard</h1>
-    <div class="sub">Wed→Tue weeks since 1 Jul (IST) · the Wednesday-meeting rollup · data through 9 Aug · refreshed 2026-08-10 07:33:07 UTC · auto-refreshes hourly</div>
+    <div class="sub">Wed→Tue weeks since 1 Jul (IST) · the Wednesday-meeting rollup · data through 9 Aug · refreshed 2026-08-10 11:33:07 UTC · auto-refreshes hourly</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
     <a class="btn" href="scorecard.html">Daily Scorecard</a>
@@ -83,7 +83,7 @@ td.dim{color:var(--dim)}
     </div>
     <div class="card">
       <h3>D15 retention · Wk4 cohort</h3>
-      <div class="hero-num">1.3%</div>
+      <div class="hero-num">1.4%</div>
       <div class="hero-sub"><span class="chip c-warn" title="Written before this week opened — the numbers above have moved on">note written 20 Jul · predates Wk6</span><br>Set against ~8–9% D1, this is the shape of the funnel: most first sessions never return, and of those that do, four in five are gone within a fortnight. Each week's D15 becomes readable 16 days after it opens.</div>
       <div class="spark"><canvas id="sparkRet"></canvas></div>
     </div>
@@ -132,7 +132,7 @@ td.dim{color:var(--dim)}
         </tr>
         <tr>
           <td>D15 retention <span class="note">returned on/after day 15 (unbounded)</span></td>
-          <td>3.9%<span class="note">69 of 1,763 eligible</span></td><td>1.3%<span class="note">12 of 953 eligible</span></td><td class="dim">—<span class="note">not measurable · readable 14 Aug</span></td><td class="dim">—<span class="note">not measurable · readable 21 Aug</span></td><td><span class="chip c-flat">— <span style="font-weight:400">no comparison yet</span></span></td>
+          <td>3.9%<span class="note">69 of 1,763 eligible</span></td><td>1.4%<span class="note">13 of 953 eligible</span></td><td class="dim">—<span class="note">not measurable · readable 14 Aug</span></td><td class="dim">—<span class="note">not measurable · readable 21 Aug</span></td><td><span class="chip c-flat">— <span style="font-weight:400">no comparison yet</span></span></td>
         </tr>
         <tr>
           <td>Add-to-Home in first session <span class="note">% of new uids · pwa_install = answered the native prompt (upper bound)</span></td>
@@ -162,12 +162,12 @@ td.dim{color:var(--dim)}
     <b>Watch treatments, hours/day:</b> excluded &gt;4h (primary) 14.8 → 20.7 → 32.8 → 89.2 · winsorized at 4h/tune 18.2 → 24.7 → 38.5 → 97.2 · raw weekly totals 178.2h → 202.3h → 299.2h → 536.5h (33 tunes over 4h in this window).<br>
     <b>How the chips are decided:</b> rates backed by counts (retention, A2HS, error rates) use a two-proportion z-test; per-day counts and ratios (DAU, watch hours, sessions/user, watch-min/session) use Welch's t across the daily series, because day-to-day spread is much wider than a pooled proportion test would admit; percentiles are compared by bootstrap 95% CI overlap and never given a σ. |z| ≥ 3 = SIGNAL, 2–3 = borderline, &lt; 2 = noise.<br>
     <b>Definitions:</b> Day = IST; weeks are Wed→Tue, numbered from 1 Jul. Watch = tune-dwell only (session_end dwell known-broken, unused; playback_stall writes ms into duration_sec and is never summed). User = device uid (localStorage). D1/D15 use the devices first-seen ledger; storage-clearing devices deflate both. Part-weeks are labelled — per-day and rate figures stay comparable, weekly totals do not.<br>
-    Computed read-only from analytics.db (2026-08-10 07:33:07 UTC) · auto-refreshed hourly by <code>hub_weekly_refresh.sh</code>; prose lives in <code>hub_weekly_notes.json</code>. Do not hand-edit this page.
+    Computed read-only from analytics.db (2026-08-10 11:33:07 UTC) · auto-refreshed hourly by <code>hub_weekly_refresh.sh</code>; prose lives in <code>hub_weekly_notes.json</code>. Do not hand-edit this page.
   </div>
 </div>
 
 <script>
-const DATA = {"generated_utc":"2026-08-10 07:33:07","last_full":"2026-08-09","daily_ept":[{"d":"2026-07-15","ept":10.9},{"d":"2026-07-16","ept":11.6},{"d":"2026-07-17","ept":13.9},{"d":"2026-07-18","ept":11},{"d":"2026-07-19","ept":13},{"d":"2026-07-20","ept":10.4},{"d":"2026-07-21","ept":12.6},{"d":"2026-07-22","ept":11.7},{"d":"2026-07-23","ept":11.8},{"d":"2026-07-24","ept":10.6},{"d":"2026-07-25","ept":13.6},{"d":"2026-07-26","ept":11.6},{"d":"2026-07-27","ept":9.9},{"d":"2026-07-28","ept":10.7},{"d":"2026-07-29","ept":11.4},{"d":"2026-07-30","ept":11.6},{"d":"2026-07-31","ept":9.8},{"d":"2026-08-01","ept":6.3},{"d":"2026-08-02","ept":7.9},{"d":"2026-08-03","ept":7.1},{"d":"2026-08-04","ept":7.5},{"d":"2026-08-05","ept":6.4},{"d":"2026-08-06","ept":5.3},{"d":"2026-08-07","ept":5.5},{"d":"2026-08-08","ept":5},{"d":"2026-08-09","ept":3.9}],"watch_spark":[{"l":"Wk3 Jul 15–21","v":14.8},{"l":"Wk4 Jul 22–28","v":20.7},{"l":"Wk5 Jul 29–Aug 4","v":32.8},{"l":"Wk6 Aug 5–11*","v":89.2}],"ret_spark":[{"l":"D1","v":8.1},{"l":"D15","v":1.3}],"eras":[{"date":"2026-07-03","l":"E2"},{"date":"2026-07-07","l":"E3"},{"date":"2026-07-13","l":"E4"}]};
+const DATA = {"generated_utc":"2026-08-10 11:33:07","last_full":"2026-08-09","daily_ept":[{"d":"2026-07-15","ept":10.9},{"d":"2026-07-16","ept":11.6},{"d":"2026-07-17","ept":13.9},{"d":"2026-07-18","ept":11},{"d":"2026-07-19","ept":13},{"d":"2026-07-20","ept":10.4},{"d":"2026-07-21","ept":12.6},{"d":"2026-07-22","ept":11.7},{"d":"2026-07-23","ept":11.8},{"d":"2026-07-24","ept":10.6},{"d":"2026-07-25","ept":13.6},{"d":"2026-07-26","ept":11.6},{"d":"2026-07-27","ept":9.9},{"d":"2026-07-28","ept":10.7},{"d":"2026-07-29","ept":11.4},{"d":"2026-07-30","ept":11.6},{"d":"2026-07-31","ept":9.8},{"d":"2026-08-01","ept":6.3},{"d":"2026-08-02","ept":7.9},{"d":"2026-08-03","ept":7.1},{"d":"2026-08-04","ept":7.5},{"d":"2026-08-05","ept":6.4},{"d":"2026-08-06","ept":5.3},{"d":"2026-08-07","ept":5.5},{"d":"2026-08-08","ept":5},{"d":"2026-08-09","ept":3.9}],"watch_spark":[{"l":"Wk3 Jul 15–21","v":14.8},{"l":"Wk4 Jul 22–28","v":20.7},{"l":"Wk5 Jul 29–Aug 4","v":32.8},{"l":"Wk6 Aug 5–11*","v":89.2}],"ret_spark":[{"l":"D1","v":8.1},{"l":"D15","v":1.4}],"eras":[{"date":"2026-07-03","l":"E2"},{"date":"2026-07-07","l":"E3"},{"date":"2026-07-13","l":"E4"}]};
 
 /* theme */
 const themeBtn = document.getElementById('theme-toggle');
