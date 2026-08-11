@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-11T22:58:59Z",
+  "fetched_at": "2026-08-11T23:51:48Z",
   "data": {
     "period": "30d",
-    "liveNow": 7,
+    "liveNow": 4,
     "overview": {
-      "unique_users": 56262,
-      "total_tunes": 174051,
-      "total_watch_min": 4123920,
-      "avg_duration_sec": 1287.4
+      "unique_users": 56278,
+      "total_tunes": 174087,
+      "total_watch_min": 4123972.9,
+      "avg_duration_sec": 1287.2
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 31471,
-        "unique_users": 24720,
-        "watch_min": 16582.2
+        "tunes": 31491,
+        "unique_users": 24734,
+        "watch_min": 16587.3
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 10178,
-        "unique_users": 7926,
-        "watch_min": 9861.6
+        "tunes": 10179,
+        "unique_users": 7927,
+        "watch_min": 9861.7
       },
       {
         "ch": 29,
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 7877,
-        "unique_users": 6247,
-        "watch_min": 4540.6
+        "tunes": 7875,
+        "unique_users": 6246,
+        "watch_min": 4540.4
       },
       {
         "ch": 118,
@@ -69,9 +69,9 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 3309,
-        "unique_users": 2666,
-        "watch_min": 1900.2
+        "tunes": 3311,
+        "unique_users": 2668,
+        "watch_min": 1900.4
       },
       {
         "ch": 30,
@@ -114,9 +114,9 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2844,
-        "unique_users": 2299,
-        "watch_min": 1206
+        "tunes": 2846,
+        "unique_users": 2301,
+        "watch_min": 1206.2
       },
       {
         "ch": 8,
@@ -231,9 +231,9 @@
         "name": "Zee Uttar Pradesh/Uttarakhand",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1192,
-        "unique_users": 1031,
-        "watch_min": 562.4
+        "tunes": 1194,
+        "unique_users": 1032,
+        "watch_min": 562.5
       },
       {
         "ch": 45,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 76901,
-        "unique_users": 32991,
-        "watch_min": 42550.5
+        "tunes": 76939,
+        "unique_users": 33007,
+        "watch_min": 42557.3
       },
       {
         "cat": "Music",
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 31225,
-        "unique_users": 9517,
-        "watch_min": 13239.1
+        "tunes": 31223,
+        "unique_users": 9516,
+        "watch_min": 13239
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 144333,
-        "unique_users": 48206,
-        "watch_min": 76293.7
+        "tunes": 144365,
+        "unique_users": 48219,
+        "watch_min": 76299.8
       },
       {
         "lang": "Bhojpuri",
@@ -430,9 +430,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 3344,
-        "unique_users": 1982,
-        "watch_min": 1005.8
+        "tunes": 3348,
+        "unique_users": 1984,
+        "watch_min": 1006.3
       },
       {
         "lang": "Urdu",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-12 23:00",
-        "users": 1,
-        "tunes": 2
-      },
       {
         "hour": "2026-07-13 00:00",
         "users": 2,
@@ -4021,15 +4016,14 @@
         "hour": "2026-08-11 22:00",
         "users": 52,
         "tunes": 118
+      },
+      {
+        "hour": "2026-08-11 23:00",
+        "users": 17,
+        "tunes": 38
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-12",
-        "users": 1,
-        "tunes": 2,
-        "watch_min": 0.2
-      },
       {
         "day": "2026-07-13",
         "users": 447,
@@ -4206,15 +4200,15 @@
       },
       {
         "day": "2026-08-11",
-        "users": 5332,
-        "tunes": 13994,
-        "watch_min": 177225.1
+        "users": 5349,
+        "tunes": 14032,
+        "watch_min": 177278.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 55056
+        "users": 55072
       },
       {
         "device": "desktop",
@@ -4222,12 +4216,12 @@
       }
     ],
     "funnel": {
-      "opens": 24180,
-      "playback": 20746,
+      "opens": 24187,
+      "playback": 20752,
       "engaged": 3641
     },
     "retention": {
-      "new_users": 23697,
+      "new_users": 23704,
       "returning_users": 584
     },
     "errorBoard": [
@@ -4236,7 +4230,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 958,
-        "starts": 20752
+        "starts": 20763
       },
       {
         "ch": 10,
@@ -4292,7 +4286,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 259,
-        "starts": 8016
+        "starts": 8017
       },
       {
         "ch": 29,
@@ -4306,7 +4300,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 254,
-        "starts": 5827
+        "starts": 5826
       },
       {
         "ch": 44,
@@ -4355,14 +4349,14 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 113,
-        "starts": 2850
+        "starts": 2852
       },
       {
         "ch": 185,
         "name": "Republic Bharat",
         "cat": "News",
         "errors": 107,
-        "starts": 1893
+        "starts": 1895
       },
       {
         "ch": 52,
@@ -4467,7 +4461,7 @@
         "name": "News Nation",
         "cat": "News",
         "errors": 60,
-        "starts": 1270
+        "starts": 1272
       },
       {
         "ch": 42,
@@ -4509,23 +4503,23 @@
         "name": "Zee Uttar Pradesh/Uttarakhand",
         "cat": "News",
         "errors": 53,
-        "starts": 829
+        "starts": 830
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6931,
-      "samples": 108560
+      "avg_ttff_ms": 6930,
+      "samples": 108585
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 97275,
-        "avg_ttff_ms": 6687
+        "starts": 97299,
+        "avg_ttff_ms": 6686
       },
       {
         "net": "3g",
-        "starts": 7338,
-        "avg_ttff_ms": 9884
+        "starts": 7339,
+        "avg_ttff_ms": 9883
       },
       {
         "net": "unknown",
@@ -4544,9 +4538,9 @@
       }
     ],
     "engagement": {
-      "sessions": 56262,
+      "sessions": 56278,
       "avg_channels": 2.5,
-      "avg_session_sec": 102,
+      "avg_session_sec": 101,
       "bounce_pct": 65,
       "zap_pct": 47.7
     },
