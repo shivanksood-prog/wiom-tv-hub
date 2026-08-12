@@ -1,243 +1,133 @@
 {
-  "fetched_at": "2026-08-12T23:05:18Z",
+  "fetched_at": "2026-08-12T23:55:37Z",
   "data": {
     "period": "1h",
-    "liveNow": 1,
+    "liveNow": 5,
     "overview": {
-      "unique_users": 24,
-      "total_tunes": 38,
-      "total_watch_min": 38.9,
-      "avg_duration_sec": 59.8
+      "unique_users": 27,
+      "total_tunes": 32,
+      "total_watch_min": 5.7,
+      "avg_duration_sec": 10.6
     },
     "channelLeaderboard": [
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 21.5
-      },
       {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 22,
-        "unique_users": 20,
-        "watch_min": 3.3
+        "tunes": 29,
+        "unique_users": 23,
+        "watch_min": 5.3
       },
       {
-        "ch": 226,
-        "name": "Times Now Navbharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.8
-      },
-      {
-        "ch": 34,
-        "name": "PTC Music",
+        "ch": 251,
+        "name": "Zoom",
         "cat": "Music",
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 72,
-        "name": "Aastha Prime 1",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 249,
-        "name": "Zee Uttar Pradesh/Uttarakhand",
-        "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
       },
       {
-        "ch": 231,
-        "name": "TV9 Bharatvarsh",
-        "cat": "News",
+        "ch": 241,
+        "name": "YRF Music",
+        "cat": "Music",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
       },
       {
-        "ch": 185,
-        "name": "Republic Bharat",
-        "cat": "News",
-        "lang": "Hindi",
+        "ch": 182,
+        "name": "Qello Concerts by Stingray",
+        "cat": "Music",
+        "lang": "English",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
-      },
-      {
-        "ch": 167,
-        "name": "News Nation",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 73,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 41,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 133,
-        "name": "India Daily Live",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
-        "cat": "Entertainment",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 21.5
-      },
-      {
         "cat": "News",
-        "tunes": 33,
-        "unique_users": 20,
-        "watch_min": 4.7
+        "tunes": 29,
+        "unique_users": 23,
+        "watch_min": 5.3
       },
       {
         "cat": "Music",
-        "tunes": 2,
+        "tunes": 3,
         "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "cat": "Devotional",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
+        "watch_min": 0.3
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 36,
-        "unique_users": 22,
-        "watch_min": 26.4
+        "tunes": 31,
+        "unique_users": 23,
+        "watch_min": 5.6
       },
       {
-        "lang": "Punjabi",
-        "tunes": 2,
+        "lang": "English",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.4
+        "watch_min": 0.1
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-12 22:00",
-        "users": 23,
-        "tunes": 38
-      },
-      {
         "hour": "2026-08-12 23:00",
-        "users": 1,
-        "tunes": 0
+        "users": 27,
+        "tunes": 32
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-12",
-        "users": 24,
-        "tunes": 38,
-        "watch_min": 38.9
+        "users": 27,
+        "tunes": 32,
+        "watch_min": 5.7
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 23
+        "users": 27
       }
     ],
     "funnel": {
-      "opens": 8,
-      "playback": 6,
-      "engaged": 1
+      "opens": 13,
+      "playback": 11,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 5,
-      "returning_users": 4
+      "new_users": 11,
+      "returning_users": 2
     },
-    "errorBoard": [
-      {
-        "ch": 226,
-        "name": "Times Now Navbharat",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      }
-    ],
+    "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 53193,
+      "avg_ttff_ms": 2223,
       "samples": 26
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 26,
-        "avg_ttff_ms": 53193
+        "starts": 25,
+        "avg_ttff_ms": 2071
+      },
+      {
+        "net": "unknown",
+        "starts": 1,
+        "avg_ttff_ms": 6036
       }
     ],
     "engagement": {
-      "sessions": 24,
-      "avg_channels": 1.4,
-      "avg_session_sec": 17,
-      "bounce_pct": 87.5,
-      "zap_pct": 50
+      "sessions": 27,
+      "avg_channels": 1,
+      "avg_session_sec": 15,
+      "bounce_pct": 77.8,
+      "zap_pct": 31.3
     },
     "survey": {
       "very": null,
