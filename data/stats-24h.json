@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-13T23:06:28Z",
+  "fetched_at": "2026-08-13T23:55:30Z",
   "data": {
     "period": "24h",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 4685,
-      "total_tunes": 13164,
-      "total_watch_min": 85325.3,
-      "avg_duration_sec": 356.4
+      "unique_users": 4667,
+      "total_tunes": 13147,
+      "total_watch_min": 85322.5,
+      "avg_duration_sec": 356.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5059,
-        "unique_users": 3941,
-        "watch_min": 1753.3
+        "tunes": 5039,
+        "unique_users": 3924,
+        "watch_min": 1750.1
       },
       {
         "ch": 232,
@@ -42,8 +42,8 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 434,
-        "unique_users": 355,
+        "tunes": 435,
+        "unique_users": 356,
         "watch_min": 782.8
       },
       {
@@ -204,9 +204,9 @@
         "name": "Stingray Easy Listening",
         "cat": "Music",
         "lang": "English",
-        "tunes": 114,
-        "unique_users": 84,
-        "watch_min": 41.1
+        "tunes": 116,
+        "unique_users": 86,
+        "watch_min": 41.5
       },
       {
         "ch": 119,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 8229,
-        "unique_users": 4052,
-        "watch_min": 5291.2
+        "tunes": 8210,
+        "unique_users": 4036,
+        "watch_min": 5288.1
       },
       {
         "cat": "DD",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 1277,
-        "unique_users": 299,
-        "watch_min": 439.5
+        "tunes": 1279,
+        "unique_users": 300,
+        "watch_min": 439.8
       },
       {
         "cat": "Movies",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 11673,
-        "unique_users": 4165,
-        "watch_min": 5301.3
+        "tunes": 11653,
+        "unique_users": 4149,
+        "watch_min": 5298.1
       },
       {
         "lang": "English",
-        "tunes": 551,
-        "unique_users": 192,
-        "watch_min": 879.3
+        "tunes": 553,
+        "unique_users": 193,
+        "watch_min": 879.7
       },
       {
         "lang": "Marathi",
@@ -430,8 +430,8 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 478,
-        "unique_users": 179,
+        "tunes": 479,
+        "unique_users": 180,
         "watch_min": 98.6
       },
       {
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-12 23:00",
-        "users": 27,
-        "tunes": 33
+        "users": 1,
+        "tunes": 1
       },
       {
         "hour": "2026-08-13 00:00",
@@ -564,28 +564,28 @@
       },
       {
         "hour": "2026-08-13 23:00",
-        "users": 1,
-        "tunes": 2
+        "users": 9,
+        "tunes": 17
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-12",
-        "users": 27,
-        "tunes": 33,
-        "watch_min": 5.9
+        "users": 1,
+        "tunes": 1,
+        "watch_min": 0.2
       },
       {
         "day": "2026-08-13",
-        "users": 4658,
-        "tunes": 13131,
-        "watch_min": 85319.5
+        "users": 4666,
+        "tunes": 13146,
+        "watch_min": 85322.3
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 4621
+        "users": 4603
       },
       {
         "device": "desktop",
@@ -593,13 +593,13 @@
       }
     ],
     "funnel": {
-      "opens": 2134,
-      "playback": 1755,
+      "opens": 2125,
+      "playback": 1747,
       "engaged": 304
     },
     "retention": {
-      "new_users": 1823,
-      "returning_users": 319
+      "new_users": 1815,
+      "returning_users": 318
     },
     "errorBoard": [
       {
@@ -607,7 +607,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 170,
-        "starts": 3245
+        "starts": 3229
       },
       {
         "ch": 44,
@@ -620,7 +620,7 @@
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
-        "errors": 17,
+        "errors": 18,
         "starts": 368
       },
       {
@@ -884,13 +884,13 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 3635,
-      "samples": 8288
+      "avg_ttff_ms": 3636,
+      "samples": 8274
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 7481,
+        "starts": 7468,
         "avg_ttff_ms": 3035
       },
       {
@@ -900,8 +900,8 @@
       },
       {
         "net": "unknown",
-        "starts": 147,
-        "avg_ttff_ms": 2279
+        "starts": 146,
+        "avg_ttff_ms": 2253
       },
       {
         "net": "2g",
@@ -915,7 +915,7 @@
       }
     ],
     "engagement": {
-      "sessions": 4685,
+      "sessions": 4667,
       "avg_channels": 2.2,
       "avg_session_sec": 76,
       "bounce_pct": 68.9,
