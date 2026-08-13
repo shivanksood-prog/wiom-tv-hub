@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-13T22:11:14Z",
+  "fetched_at": "2026-08-13T23:06:28Z",
   "data": {
     "period": "24h",
     "liveNow": 1,
     "overview": {
-      "unique_users": 4692,
-      "total_tunes": 13170,
-      "total_watch_min": 85306.1,
-      "avg_duration_sec": 356.2
+      "unique_users": 4685,
+      "total_tunes": 13164,
+      "total_watch_min": 85325.3,
+      "avg_duration_sec": 356.4
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5062,
-        "unique_users": 3947,
-        "watch_min": 1752.7
+        "tunes": 5059,
+        "unique_users": 3941,
+        "watch_min": 1753.3
       },
       {
         "ch": 232,
@@ -182,15 +182,6 @@
         "watch_min": 58.5
       },
       {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 133,
-        "unique_users": 99,
-        "watch_min": 53
-      },
-      {
         "ch": 24,
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
@@ -263,6 +254,15 @@
         "watch_min": 32.6
       },
       {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 134,
+        "unique_users": 99,
+        "watch_min": 31.6
+      },
+      {
         "ch": 57,
         "name": "Aastha",
         "cat": "Devotional",
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 8234,
-        "unique_users": 4059,
-        "watch_min": 5291.4
+        "tunes": 8229,
+        "unique_users": 4052,
+        "watch_min": 5291.2
       },
       {
         "cat": "DD",
@@ -296,21 +296,21 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 1148,
+        "tunes": 1149,
         "unique_users": 250,
-        "watch_min": 576.4
+        "watch_min": 555
       },
       {
         "cat": "Devotional",
-        "tunes": 939,
-        "unique_users": 185,
-        "watch_min": 541.5
+        "tunes": 937,
+        "unique_users": 183,
+        "watch_min": 541.3
       },
       {
         "cat": "Music",
         "tunes": 1277,
         "unique_users": 299,
-        "watch_min": 439.6
+        "watch_min": 439.5
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 11677,
-        "unique_users": 4172,
-        "watch_min": 5322.8
+        "tunes": 11673,
+        "unique_users": 4165,
+        "watch_min": 5301.3
       },
       {
         "lang": "English",
@@ -430,9 +430,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 480,
-        "unique_users": 180,
-        "watch_min": 99
+        "tunes": 478,
+        "unique_users": 179,
+        "watch_min": 98.6
       },
       {
         "lang": "Bhojpuri",
@@ -443,13 +443,8 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-12 22:00",
-        "users": 20,
-        "tunes": 23
-      },
-      {
         "hour": "2026-08-12 23:00",
-        "users": 28,
+        "users": 27,
         "tunes": 33
       },
       {
@@ -564,28 +559,33 @@
       },
       {
         "hour": "2026-08-13 22:00",
+        "users": 14,
+        "tunes": 20
+      },
+      {
+        "hour": "2026-08-13 23:00",
         "users": 1,
-        "tunes": 5
+        "tunes": 2
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-12",
-        "users": 48,
-        "tunes": 56,
-        "watch_min": 43.2
+        "users": 27,
+        "tunes": 33,
+        "watch_min": 5.9
       },
       {
         "day": "2026-08-13",
-        "users": 4644,
-        "tunes": 13114,
-        "watch_min": 85262.9
+        "users": 4658,
+        "tunes": 13131,
+        "watch_min": 85319.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 4626
+        "users": 4621
       },
       {
         "device": "desktop",
@@ -593,13 +593,13 @@
       }
     ],
     "funnel": {
-      "opens": 2131,
-      "playback": 1752,
+      "opens": 2134,
+      "playback": 1755,
       "engaged": 304
     },
     "retention": {
-      "new_users": 1820,
-      "returning_users": 320
+      "new_users": 1823,
+      "returning_users": 319
     },
     "errorBoard": [
       {
@@ -607,7 +607,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 170,
-        "starts": 3247
+        "starts": 3245
       },
       {
         "ch": 44,
@@ -747,7 +747,7 @@
         "name": "B4U Music",
         "cat": "Music",
         "errors": 6,
-        "starts": 73
+        "starts": 74
       },
       {
         "ch": 211,
@@ -884,14 +884,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 3791,
-      "samples": 8292
+      "avg_ttff_ms": 3635,
+      "samples": 8288
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 7486,
-        "avg_ttff_ms": 3207
+        "starts": 7481,
+        "avg_ttff_ms": 3035
       },
       {
         "net": "3g",
@@ -900,8 +900,8 @@
       },
       {
         "net": "unknown",
-        "starts": 146,
-        "avg_ttff_ms": 2275
+        "starts": 147,
+        "avg_ttff_ms": 2279
       },
       {
         "net": "2g",
@@ -915,10 +915,10 @@
       }
     ],
     "engagement": {
-      "sessions": 4692,
+      "sessions": 4685,
       "avg_channels": 2.2,
       "avg_session_sec": 76,
-      "bounce_pct": 69,
+      "bounce_pct": 68.9,
       "zap_pct": 46.9
     },
     "survey": {
