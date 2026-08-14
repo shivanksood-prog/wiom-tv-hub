@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-14T21:36:50Z",
+  "fetched_at": "2026-08-14T21:57:37Z",
   "data": {
     "period": "7d",
-    "liveNow": 10,
+    "liveNow": 6,
     "overview": {
-      "unique_users": 34832,
-      "total_tunes": 91737,
-      "total_watch_min": 1275118.6,
+      "unique_users": 34842,
+      "total_tunes": 91749,
+      "total_watch_min": 1275302.5,
       "avg_duration_sec": 759.2
     },
     "channelLeaderboard": [
@@ -15,17 +15,17 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 37144,
-        "unique_users": 29134,
-        "watch_min": 19202.8
+        "tunes": 37152,
+        "unique_users": 29140,
+        "watch_min": 19208.4
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 3644,
-        "unique_users": 2958,
+        "tunes": 3643,
+        "unique_users": 2957,
         "watch_min": 2670
       },
       {
@@ -98,7 +98,7 @@
         "lang": "Hindi",
         "tunes": 2202,
         "unique_users": 1800,
-        "watch_min": 755.5
+        "watch_min": 755.4
       },
       {
         "ch": 185,
@@ -132,9 +132,9 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 439,
-        "unique_users": 338,
-        "watch_min": 620
+        "tunes": 440,
+        "unique_users": 339,
+        "watch_min": 620.2
       },
       {
         "ch": 27,
@@ -231,8 +231,8 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 890,
-        "unique_users": 759,
+        "tunes": 891,
+        "unique_users": 760,
         "watch_min": 321.1
       },
       {
@@ -240,8 +240,8 @@
         "name": "News 24",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1098,
-        "unique_users": 945,
+        "tunes": 1099,
+        "unique_users": 946,
         "watch_min": 317.7
       },
       {
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 59678,
-        "unique_users": 30419,
-        "watch_min": 30825
+        "tunes": 59687,
+        "unique_users": 30424,
+        "watch_min": 30830.3
       },
       {
         "cat": "Entertainment",
-        "tunes": 7830,
-        "unique_users": 1846,
-        "watch_min": 5571.6
+        "tunes": 7831,
+        "unique_users": 1847,
+        "watch_min": 5571.8
       },
       {
         "cat": "Music",
@@ -314,8 +314,8 @@
       },
       {
         "cat": "DD",
-        "tunes": 1349,
-        "unique_users": 413,
+        "tunes": 1350,
+        "unique_users": 414,
         "watch_min": 1120.5
       },
       {
@@ -355,16 +355,16 @@
         "watch_min": 43.2
       },
       {
+        "cat": "Sports",
+        "tunes": 129,
+        "unique_users": 112,
+        "watch_min": 33
+      },
+      {
         "cat": "Classic",
         "tunes": 279,
         "unique_users": 218,
         "watch_min": 30.6
-      },
-      {
-        "cat": "Sports",
-        "tunes": 128,
-        "unique_users": 111,
-        "watch_min": 28.4
       },
       {
         "cat": "Legislative",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 81979,
-        "unique_users": 31340,
-        "watch_min": 40102.9
+        "tunes": 81991,
+        "unique_users": 31346,
+        "watch_min": 40113
       },
       {
         "lang": "English",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-07 21:00",
-        "users": 7,
-        "tunes": 11
-      },
       {
         "hour": "2026-08-07 22:00",
         "users": 42,
@@ -1284,16 +1279,16 @@
       },
       {
         "hour": "2026-08-14 21:00",
-        "users": 56,
-        "tunes": 156
+        "users": 73,
+        "tunes": 179
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-07",
-        "users": 76,
-        "tunes": 250,
-        "watch_min": 129.6
+        "users": 69,
+        "tunes": 239,
+        "watch_min": 127.1
       },
       {
         "day": "2026-08-08",
@@ -1333,15 +1328,15 @@
       },
       {
         "day": "2026-08-14",
-        "users": 4444,
-        "tunes": 11956,
-        "watch_min": 372293.6
+        "users": 4461,
+        "tunes": 11979,
+        "watch_min": 372480.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 34365
+        "users": 34375
       },
       {
         "device": "desktop",
@@ -1349,21 +1344,21 @@
       }
     ],
     "funnel": {
-      "opens": 14456,
-      "playback": 12332,
-      "engaged": 2124
+      "opens": 14458,
+      "playback": 12336,
+      "engaged": 2125
     },
     "retention": {
-      "new_users": 13691,
-      "returning_users": 805
+      "new_users": 13692,
+      "returning_users": 806
     },
     "errorBoard": [
       {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
-        "errors": 1099,
-        "starts": 24606
+        "errors": 1100,
+        "starts": 24616
       },
       {
         "ch": 44,
@@ -1398,14 +1393,14 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 68,
-        "starts": 1931
+        "starts": 1930
       },
       {
         "ch": 167,
         "name": "News Nation",
         "cat": "News",
         "errors": 63,
-        "starts": 1371
+        "starts": 1372
       },
       {
         "ch": 185,
@@ -1608,7 +1603,7 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "errors": 19,
-        "starts": 313
+        "starts": 314
       },
       {
         "ch": 182,
@@ -1640,14 +1635,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 5895,
-      "samples": 60042
+      "avg_ttff_ms": 5894,
+      "samples": 60052
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 54597,
-        "avg_ttff_ms": 5295
+        "starts": 54606,
+        "avg_ttff_ms": 5294
       },
       {
         "net": "3g",
@@ -1656,8 +1651,8 @@
       },
       {
         "net": "unknown",
-        "starts": 1342,
-        "avg_ttff_ms": 3147
+        "starts": 1343,
+        "avg_ttff_ms": 3146
       },
       {
         "net": "2g",
@@ -1671,7 +1666,7 @@
       }
     ],
     "engagement": {
-      "sessions": 34832,
+      "sessions": 34842,
       "avg_channels": 2.1,
       "avg_session_sec": 83,
       "bounce_pct": 69.5,
