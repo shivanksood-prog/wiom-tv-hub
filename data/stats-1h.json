@@ -1,15 +1,24 @@
 {
-  "fetched_at": "2026-08-15T23:07:33Z",
+  "fetched_at": "2026-08-15T23:33:18Z",
   "data": {
     "period": "1h",
-    "liveNow": 3,
+    "liveNow": 8,
     "overview": {
-      "unique_users": 27,
-      "total_tunes": 130,
-      "total_watch_min": 73.8,
-      "avg_duration_sec": 26.9
+      "unique_users": 33,
+      "total_tunes": 131,
+      "total_watch_min": 88,
+      "avg_duration_sec": 31.4
     },
     "channelLeaderboard": [
+      {
+        "ch": 38,
+        "name": "ZB Music",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 14.2
+      },
       {
         "ch": 159,
         "name": "NDTV Profit",
@@ -24,9 +33,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 24,
-        "unique_users": 21,
-        "watch_min": 4.2
+        "tunes": 30,
+        "unique_users": 26,
+        "watch_min": 5.1
       },
       {
         "ch": 192,
@@ -51,27 +60,9 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 5,
-        "watch_min": 1
-      },
-      {
-        "ch": 185,
-        "name": "Republic Bharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 5,
+        "tunes": 4,
         "unique_users": 4,
-        "watch_min": 0.7
-      },
-      {
-        "ch": 38,
-        "name": "ZB Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.7
+        "watch_min": 0.8
       },
       {
         "ch": 66,
@@ -110,13 +101,22 @@
         "watch_min": 0.5
       },
       {
-        "ch": 25,
-        "name": "ZB Cinema",
-        "cat": "Movies",
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
+        "tunes": 6,
+        "unique_users": 4,
         "watch_min": 0.5
+      },
+      {
+        "ch": 226,
+        "name": "Times Now Navbharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 5,
+        "unique_users": 5,
+        "watch_min": 0.4
       },
       {
         "ch": 119,
@@ -155,12 +155,12 @@
         "watch_min": 0.3
       },
       {
-        "ch": 226,
-        "name": "Times Now Navbharat",
+        "ch": 185,
+        "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 5,
+        "tunes": 2,
+        "unique_users": 2,
         "watch_min": 0.3
       },
       {
@@ -197,15 +197,6 @@
         "lang": "Punjabi",
         "tunes": 2,
         "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 6,
-        "unique_users": 5,
         "watch_min": 0.3
       },
       {
@@ -279,9 +270,24 @@
         "tunes": 3,
         "unique_users": 3,
         "watch_min": 0.2
+      },
+      {
+        "ch": 55,
+        "name": "Zee Business",
+        "cat": "Business",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.2
       }
     ],
     "categoryBreakdown": [
+      {
+        "cat": "Music",
+        "tunes": 20,
+        "unique_users": 2,
+        "watch_min": 18.2
+      },
       {
         "cat": "Business",
         "tunes": 4,
@@ -290,21 +296,15 @@
       },
       {
         "cat": "News",
-        "tunes": 61,
-        "unique_users": 22,
-        "watch_min": 8.2
-      },
-      {
-        "cat": "Music",
-        "tunes": 19,
-        "unique_users": 2,
-        "watch_min": 4.7
+        "tunes": 62,
+        "unique_users": 28,
+        "watch_min": 8.8
       },
       {
         "cat": "Movies",
-        "tunes": 12,
-        "unique_users": 2,
-        "watch_min": 2.3
+        "tunes": 11,
+        "unique_users": 1,
+        "watch_min": 2
       },
       {
         "cat": "Devotional",
@@ -364,9 +364,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 108,
-        "unique_users": 24,
-        "watch_min": 31
+        "tunes": 109,
+        "unique_users": 30,
+        "watch_min": 44.9
       },
       {
         "lang": "English",
@@ -402,64 +402,56 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-15 22:00",
-        "users": 25,
-        "tunes": 125
+        "users": 15,
+        "tunes": 105
       },
       {
         "hour": "2026-08-15 23:00",
-        "users": 3,
-        "tunes": 5
+        "users": 19,
+        "tunes": 26
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-15",
-        "users": 27,
-        "tunes": 130,
-        "watch_min": 73.8
+        "users": 33,
+        "tunes": 131,
+        "watch_min": 88
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 27
+        "users": 31
       }
     ],
     "funnel": {
-      "opens": 18,
+      "opens": 16,
       "playback": 16,
-      "engaged": 2
+      "engaged": 3
     },
     "retention": {
-      "new_users": 14,
-      "returning_users": 4
+      "new_users": 11,
+      "returning_users": 6
     },
-    "errorBoard": [
-      {
-        "ch": 47,
-        "name": "Sudarshan News",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      }
-    ],
+    "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2293,
-      "samples": 99
+      "avg_ttff_ms": 2150,
+      "samples": 104
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 99,
-        "avg_ttff_ms": 2293
+        "starts": 104,
+        "avg_ttff_ms": 2150
       }
     ],
     "engagement": {
-      "sessions": 27,
-      "avg_channels": 4,
-      "avg_session_sec": 79,
-      "bounce_pct": 59.3,
-      "zap_pct": 41.5
+      "sessions": 33,
+      "avg_channels": 3.2,
+      "avg_session_sec": 87,
+      "bounce_pct": 72.7,
+      "zap_pct": 40
     },
     "survey": {
       "very": null,
