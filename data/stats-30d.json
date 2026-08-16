@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-16T20:24:04Z",
+  "fetched_at": "2026-08-16T20:48:57Z",
   "data": {
     "period": "30d",
-    "liveNow": 8,
+    "liveNow": 6,
     "overview": {
-      "unique_users": 77325,
-      "total_tunes": 225512,
-      "total_watch_min": 5173700.9,
+      "unique_users": 77340,
+      "total_tunes": 225529,
+      "total_watch_min": 5173706.6,
       "avg_duration_sec": 1249.1
     },
     "channelLeaderboard": [
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 56016,
-        "unique_users": 43970,
-        "watch_min": 30118.9
+        "tunes": 56035,
+        "unique_users": 43984,
+        "watch_min": 30124.7
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 12151,
-        "unique_users": 9502,
-        "watch_min": 11455.9
+        "tunes": 12152,
+        "unique_users": 9503,
+        "watch_min": 11456
       },
       {
         "ch": 118,
@@ -60,9 +60,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 5213,
-        "unique_users": 3780,
-        "watch_min": 2953.7
+        "tunes": 5212,
+        "unique_users": 3779,
+        "watch_min": 2953.6
       },
       {
         "ch": 7,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 113874,
-        "unique_users": 52499,
-        "watch_min": 61368
+        "tunes": 113894,
+        "unique_users": 52513,
+        "watch_min": 61373.9
       },
       {
         "cat": "Entertainment",
-        "tunes": 33760,
-        "unique_users": 10073,
-        "watch_min": 15684.7
+        "tunes": 33758,
+        "unique_users": 10072,
+        "watch_min": 15684.6
       },
       {
         "cat": "Music",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 19289,
-        "unique_users": 8616,
-        "watch_min": 10370.9
+        "tunes": 19288,
+        "unique_users": 8615,
+        "watch_min": 10370.8
       },
       {
         "cat": "Devotional",
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 191708,
-        "unique_users": 67439,
-        "watch_min": 99699.9
+        "tunes": 191728,
+        "unique_users": 67453,
+        "watch_min": 99705.8
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 7793,
-        "unique_users": 4830,
-        "watch_min": 4198.8
+        "tunes": 7792,
+        "unique_users": 4829,
+        "watch_min": 4198.7
       },
       {
         "lang": "Punjabi",
-        "tunes": 11140,
-        "unique_users": 4751,
-        "watch_min": 3948.9
+        "tunes": 11138,
+        "unique_users": 4750,
+        "watch_min": 3948.8
       },
       {
         "lang": "English",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-07-17 20:00",
-        "users": 3,
-        "tunes": 4
+        "users": 1,
+        "tunes": 1
       },
       {
         "hour": "2026-07-17 21:00",
@@ -4029,16 +4029,16 @@
       },
       {
         "hour": "2026-08-16 20:00",
-        "users": 30,
-        "tunes": 82
+        "users": 47,
+        "tunes": 102
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-17",
-        "users": 17,
-        "tunes": 45,
-        "watch_min": 140.6
+        "users": 15,
+        "tunes": 42,
+        "watch_min": 140.4
       },
       {
         "day": "2026-07-18",
@@ -4216,15 +4216,15 @@
       },
       {
         "day": "2026-08-16",
-        "users": 4863,
-        "tunes": 12505,
-        "watch_min": 109076.9
+        "users": 4880,
+        "tunes": 12525,
+        "watch_min": 109082.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 75904
+        "users": 75919
       },
       {
         "device": "desktop",
@@ -4232,12 +4232,12 @@
       }
     ],
     "funnel": {
-      "opens": 31907,
-      "playback": 27445,
-      "engaged": 4840
+      "opens": 31913,
+      "playback": 27450,
+      "engaged": 4842
     },
     "retention": {
-      "new_users": 31381,
+      "new_users": 31387,
       "returning_users": 630
     },
     "errorBoard": [
@@ -4245,8 +4245,8 @@
         "ch": 43,
         "name": "India TV",
         "cat": "News",
-        "errors": 1720,
-        "starts": 37028
+        "errors": 1721,
+        "starts": 37040
       },
       {
         "ch": 10,
@@ -4302,7 +4302,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 334,
-        "starts": 9661
+        "starts": 9662
       },
       {
         "ch": 13,
@@ -4358,7 +4358,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 149,
-        "starts": 4039
+        "starts": 4038
       },
       {
         "ch": 30,
@@ -4524,18 +4524,18 @@
     ],
     "perf": {
       "avg_ttff_ms": 6529,
-      "samples": 142456
+      "samples": 142467
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 128765,
+        "starts": 128777,
         "avg_ttff_ms": 6265
       },
       {
         "net": "3g",
-        "starts": 9335,
-        "avg_ttff_ms": 9651
+        "starts": 9334,
+        "avg_ttff_ms": 9652
       },
       {
         "net": "unknown",
@@ -4554,7 +4554,7 @@
       }
     ],
     "engagement": {
-      "sessions": 77325,
+      "sessions": 77340,
       "avg_channels": 2.3,
       "avg_session_sec": 98,
       "bounce_pct": 66.5,
