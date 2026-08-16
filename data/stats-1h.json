@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-16T21:33:03Z",
+  "fetched_at": "2026-08-16T21:53:16Z",
   "data": {
     "period": "1h",
-    "liveNow": 7,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 38,
-      "total_tunes": 79,
-      "total_watch_min": 48,
-      "avg_duration_sec": 32.4
+      "unique_users": 25,
+      "total_tunes": 64,
+      "total_watch_min": 42.9,
+      "avg_duration_sec": 34.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 39,
-        "unique_users": 31,
-        "watch_min": 12.4
+        "tunes": 25,
+        "unique_users": 21,
+        "watch_min": 7.4
       },
       {
         "ch": 7,
@@ -141,8 +141,8 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
+        "tunes": 1,
+        "unique_users": 1,
         "watch_min": 0.1
       },
       {
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 46,
-        "unique_users": 32,
-        "watch_min": 12.8
+        "tunes": 31,
+        "unique_users": 22,
+        "watch_min": 7.7
       },
       {
         "cat": "Entertainment",
@@ -340,9 +340,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 65,
-        "unique_users": 33,
-        "watch_min": 17.3
+        "tunes": 50,
+        "unique_users": 23,
+        "watch_min": 12.1
       },
       {
         "lang": "English",
@@ -378,8 +378,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-16 20:00",
-        "users": 22,
-        "tunes": 25
+        "users": 9,
+        "tunes": 10
       },
       {
         "hour": "2026-08-16 21:00",
@@ -390,36 +390,36 @@
     "dailyTrend": [
       {
         "day": "2026-08-16",
-        "users": 38,
-        "tunes": 79,
-        "watch_min": 48
+        "users": 25,
+        "tunes": 64,
+        "watch_min": 42.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 37
+        "users": 24
       }
     ],
     "funnel": {
-      "opens": 22,
-      "playback": 20,
-      "engaged": 4
+      "opens": 15,
+      "playback": 15,
+      "engaged": 2
     },
     "retention": {
-      "new_users": 17,
-      "returning_users": 5
+      "new_users": 12,
+      "returning_users": 3
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2255,
-      "samples": 56
+      "avg_ttff_ms": 2276,
+      "samples": 45
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 38,
-        "avg_ttff_ms": 2555
+        "starts": 27,
+        "avg_ttff_ms": 2714
       },
       {
         "net": "unknown",
@@ -428,11 +428,11 @@
       }
     ],
     "engagement": {
-      "sessions": 38,
-      "avg_channels": 1.7,
-      "avg_session_sec": 29,
-      "bounce_pct": 65.8,
-      "zap_pct": 45.6
+      "sessions": 25,
+      "avg_channels": 2.2,
+      "avg_session_sec": 30,
+      "bounce_pct": 68,
+      "zap_pct": 46.9
     },
     "survey": {
       "very": null,
