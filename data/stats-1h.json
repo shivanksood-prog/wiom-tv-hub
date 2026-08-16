@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-16T22:47:34Z",
+  "fetched_at": "2026-08-16T23:01:30Z",
   "data": {
     "period": "1h",
-    "liveNow": 0,
+    "liveNow": 4,
     "overview": {
-      "unique_users": 5,
-      "total_tunes": 5,
-      "total_watch_min": 0.9,
-      "avg_duration_sec": 11.2
+      "unique_users": 11,
+      "total_tunes": 19,
+      "total_watch_min": 2.7,
+      "avg_duration_sec": 8.6
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,54 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.8
+        "tunes": 11,
+        "unique_users": 8,
+        "watch_min": 2.2
+      },
+      {
+        "ch": 226,
+        "name": "Times Now Navbharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 185,
+        "name": "Republic Bharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 73,
+        "name": "ABP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 62,
+        "name": "ABP Ganga",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       },
       {
         "ch": 2,
@@ -27,14 +72,32 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "ch": 167,
+        "name": "News Nation",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 41,
+        "name": "ABP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.8
+        "tunes": 18,
+        "unique_users": 8,
+        "watch_min": 2.6
       },
       {
         "cat": "Entertainment",
@@ -46,59 +109,59 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 4,
-        "watch_min": 0.9
+        "tunes": 19,
+        "unique_users": 9,
+        "watch_min": 2.7
       }
     ],
     "hourlyTrend": [
       {
         "hour": "2026-08-16 22:00",
-        "users": 5,
-        "tunes": 5
+        "users": 11,
+        "tunes": 19
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-16",
-        "users": 5,
-        "tunes": 5,
-        "watch_min": 0.9
+        "users": 11,
+        "tunes": 19,
+        "watch_min": 2.7
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 5
+        "users": 11
       }
     ],
     "funnel": {
-      "opens": 4,
-      "playback": 3,
+      "opens": 7,
+      "playback": 6,
       "engaged": 0
     },
     "retention": {
-      "new_users": 2,
+      "new_users": 5,
       "returning_users": 2
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2474,
-      "samples": 4
+      "avg_ttff_ms": 1630,
+      "samples": 17
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 4,
-        "avg_ttff_ms": 2474
+        "starts": 17,
+        "avg_ttff_ms": 1630
       }
     ],
     "engagement": {
-      "sessions": 5,
-      "avg_channels": 0.8,
-      "avg_session_sec": 12,
-      "bounce_pct": 80,
-      "zap_pct": 40
+      "sessions": 11,
+      "avg_channels": 1.5,
+      "avg_session_sec": 14,
+      "bounce_pct": 63.6,
+      "zap_pct": 42.1
     },
     "survey": {
       "very": null,
