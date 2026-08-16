@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-16T20:48:57Z",
+  "fetched_at": "2026-08-16T21:07:14Z",
   "data": {
     "period": "30d",
-    "liveNow": 6,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 77340,
-      "total_tunes": 225529,
-      "total_watch_min": 5173706.6,
-      "avg_duration_sec": 1249.1
+      "unique_users": 77352,
+      "total_tunes": 225543,
+      "total_watch_min": 5173673,
+      "avg_duration_sec": 1249
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 56035,
-        "unique_users": 43984,
-        "watch_min": 30124.7
+        "tunes": 56050,
+        "unique_users": 43997,
+        "watch_min": 30129.3
       },
       {
         "ch": 40,
@@ -150,9 +150,9 @@
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1929,
-        "unique_users": 1570,
-        "watch_min": 1194.3
+        "tunes": 1928,
+        "unique_users": 1569,
+        "watch_min": 1191.8
       },
       {
         "ch": 73,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 113894,
-        "unique_users": 52513,
-        "watch_min": 61373.9
+        "tunes": 113908,
+        "unique_users": 52525,
+        "watch_min": 61376
       },
       {
         "cat": "Entertainment",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 191728,
-        "unique_users": 67453,
-        "watch_min": 99705.8
+        "tunes": 191742,
+        "unique_users": 67465,
+        "watch_min": 99707.9
       },
       {
         "lang": "Bhojpuri",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-17 20:00",
-        "users": 1,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-17 21:00",
         "users": 5,
@@ -4029,16 +4024,21 @@
       },
       {
         "hour": "2026-08-16 20:00",
-        "users": 47,
-        "tunes": 102
+        "users": 56,
+        "tunes": 112
+      },
+      {
+        "hour": "2026-08-16 21:00",
+        "users": 4,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-17",
-        "users": 15,
-        "tunes": 42,
-        "watch_min": 140.4
+        "users": 14,
+        "tunes": 41,
+        "watch_min": 102.2
       },
       {
         "day": "2026-07-18",
@@ -4216,28 +4216,28 @@
       },
       {
         "day": "2026-08-16",
-        "users": 4880,
-        "tunes": 12525,
-        "watch_min": 109082.8
+        "users": 4893,
+        "tunes": 12540,
+        "watch_min": 109087.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 75919
+        "users": 75932
       },
       {
         "device": "desktop",
-        "users": 706
+        "users": 705
       }
     ],
     "funnel": {
-      "opens": 31913,
-      "playback": 27450,
+      "opens": 31918,
+      "playback": 27455,
       "engaged": 4842
     },
     "retention": {
-      "new_users": 31387,
+      "new_users": 31392,
       "returning_users": 630
     },
     "errorBoard": [
@@ -4246,7 +4246,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1721,
-        "starts": 37040
+        "starts": 37053
       },
       {
         "ch": 10,
@@ -4288,7 +4288,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 356,
-        "starts": 1190
+        "starts": 1189
       },
       {
         "ch": 12,
@@ -4523,19 +4523,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6529,
-      "samples": 142467
+      "avg_ttff_ms": 6528,
+      "samples": 142479
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 128777,
+        "starts": 128790,
         "avg_ttff_ms": 6265
       },
       {
         "net": "3g",
-        "starts": 9334,
-        "avg_ttff_ms": 9652
+        "starts": 9333,
+        "avg_ttff_ms": 9644
       },
       {
         "net": "unknown",
@@ -4554,7 +4554,7 @@
       }
     ],
     "engagement": {
-      "sessions": 77340,
+      "sessions": 77352,
       "avg_channels": 2.3,
       "avg_session_sec": 98,
       "bounce_pct": 66.5,
