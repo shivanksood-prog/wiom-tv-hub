@@ -1,68 +1,23 @@
 {
-  "fetched_at": "2026-08-16T22:22:41Z",
+  "fetched_at": "2026-08-16T22:47:34Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 8,
-      "total_tunes": 14,
-      "total_watch_min": 4,
-      "avg_duration_sec": 13.5
+      "unique_users": 5,
+      "total_tunes": 5,
+      "total_watch_min": 0.9,
+      "avg_duration_sec": 11.2
     },
     "channelLeaderboard": [
-      {
-        "ch": 7,
-        "name": "Zee Horror Nights",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 1.7
-      },
       {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 7,
-        "unique_users": 6,
-        "watch_min": 1.4
-      },
-      {
-        "ch": 8,
-        "name": "Zee Cine Classic",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 212,
-        "name": "Stingray Easy Listening",
-        "cat": "Music",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 41,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 0.8
       },
       {
         "ch": 2,
@@ -76,19 +31,13 @@
     ],
     "categoryBreakdown": [
       {
-        "cat": "Entertainment",
-        "tunes": 4,
-        "unique_users": 1,
-        "watch_min": 2.2
-      },
-      {
         "cat": "News",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 1.5
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 0.8
       },
       {
-        "cat": "Music",
+        "cat": "Entertainment",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
@@ -97,70 +46,59 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 13,
-        "unique_users": 6,
-        "watch_min": 3.8
-      },
-      {
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
+        "tunes": 5,
+        "unique_users": 4,
+        "watch_min": 0.9
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-16 21:00",
-        "users": 8,
-        "tunes": 14
+        "hour": "2026-08-16 22:00",
+        "users": 5,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-16",
-        "users": 8,
-        "tunes": 14,
-        "watch_min": 4
+        "users": 5,
+        "tunes": 5,
+        "watch_min": 0.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 8
+        "users": 5
       }
     ],
     "funnel": {
-      "opens": 5,
-      "playback": 5,
-      "engaged": 1
+      "opens": 4,
+      "playback": 3,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 4,
-      "returning_users": 1
+      "new_users": 2,
+      "returning_users": 2
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2062,
-      "samples": 12
+      "avg_ttff_ms": 2474,
+      "samples": 4
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 11,
-        "avg_ttff_ms": 1994
-      },
-      {
-        "net": "unknown",
-        "starts": 1,
-        "avg_ttff_ms": 2810
+        "starts": 4,
+        "avg_ttff_ms": 2474
       }
     ],
     "engagement": {
-      "sessions": 8,
-      "avg_channels": 1.5,
-      "avg_session_sec": 29,
-      "bounce_pct": 62.5,
-      "zap_pct": 35.7
+      "sessions": 5,
+      "avg_channels": 0.8,
+      "avg_session_sec": 12,
+      "bounce_pct": 80,
+      "zap_pct": 40
     },
     "survey": {
       "very": null,

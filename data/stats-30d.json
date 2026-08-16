@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-16T22:22:41Z",
+  "fetched_at": "2026-08-16T22:47:34Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 77356,
-      "total_tunes": 225556,
-      "total_watch_min": 5173609.3,
-      "avg_duration_sec": 1248.9
+      "unique_users": 77360,
+      "total_tunes": 225560,
+      "total_watch_min": 5173610.2,
+      "avg_duration_sec": 1248.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 56060,
-        "unique_users": 44005,
-        "watch_min": 30132.1
+        "tunes": 56064,
+        "unique_users": 44008,
+        "watch_min": 30132.9
       },
       {
         "ch": 40,
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8133,
-        "unique_users": 6369,
-        "watch_min": 4359.6
+        "tunes": 8134,
+        "unique_users": 6370,
+        "watch_min": 4359.7
       },
       {
         "ch": 29,
@@ -96,9 +96,9 @@
         "name": "9X Tashan",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 2790,
-        "unique_users": 2204,
-        "watch_min": 1773
+        "tunes": 2789,
+        "unique_users": 2203,
+        "watch_min": 1772.8
       },
       {
         "ch": 8,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 113922,
-        "unique_users": 52532,
-        "watch_min": 61378.9
+        "tunes": 113926,
+        "unique_users": 52535,
+        "watch_min": 61379.8
       },
       {
         "cat": "Entertainment",
-        "tunes": 33747,
-        "unique_users": 10070,
+        "tunes": 33748,
+        "unique_users": 10071,
         "watch_min": 15686.1
       },
       {
         "cat": "Music",
-        "tunes": 32191,
-        "unique_users": 10516,
-        "watch_min": 14516.8
+        "tunes": 32190,
+        "unique_users": 10515,
+        "watch_min": 14516.6
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 191753,
-        "unique_users": 67469,
-        "watch_min": 99712
+        "tunes": 191757,
+        "unique_users": 67472,
+        "watch_min": 99712.8
       },
       {
         "lang": "Bhojpuri",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-07-17 22:00",
-        "users": 3,
-        "tunes": 3
+        "users": 2,
+        "tunes": 2
       },
       {
         "hour": "2026-07-17 23:00",
@@ -4026,14 +4026,19 @@
         "hour": "2026-08-16 21:00",
         "users": 16,
         "tunes": 54
+      },
+      {
+        "hour": "2026-08-16 22:00",
+        "users": 5,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-17",
-        "users": 6,
-        "tunes": 5,
-        "watch_min": 0.3
+        "users": 5,
+        "tunes": 4,
+        "watch_min": 0.1
       },
       {
         "day": "2026-07-18",
@@ -4211,15 +4216,15 @@
       },
       {
         "day": "2026-08-16",
-        "users": 4905,
-        "tunes": 12589,
-        "watch_min": 109125.7
+        "users": 4910,
+        "tunes": 12594,
+        "watch_min": 109126.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 75937
+        "users": 75941
       },
       {
         "device": "desktop",
@@ -4227,12 +4232,12 @@
       }
     ],
     "funnel": {
-      "opens": 31922,
-      "playback": 27459,
+      "opens": 31923,
+      "playback": 27460,
       "engaged": 4842
     },
     "retention": {
-      "new_users": 31395,
+      "new_users": 31396,
       "returning_users": 631
     },
     "errorBoard": [
@@ -4241,7 +4246,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1721,
-        "starts": 37061
+        "starts": 37064
       },
       {
         "ch": 10,
@@ -4311,7 +4316,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 269,
-        "starts": 6005
+        "starts": 6006
       },
       {
         "ch": 29,
@@ -4360,7 +4365,7 @@
         "name": "9X Tashan",
         "cat": "Music",
         "errors": 133,
-        "starts": 1870
+        "starts": 1869
       },
       {
         "ch": 106,
@@ -4519,12 +4524,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 6528,
-      "samples": 142488
+      "samples": 142491
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 128781,
+        "starts": 128784,
         "avg_ttff_ms": 6265
       },
       {
@@ -4549,7 +4554,7 @@
       }
     ],
     "engagement": {
-      "sessions": 77356,
+      "sessions": 77360,
       "avg_channels": 2.3,
       "avg_session_sec": 98,
       "bounce_pct": 66.5,
