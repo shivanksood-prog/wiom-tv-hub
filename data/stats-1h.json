@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-17T22:32:00Z",
+  "fetched_at": "2026-08-17T22:57:43Z",
   "data": {
     "period": "1h",
     "liveNow": 2,
     "overview": {
-      "unique_users": 17,
-      "total_tunes": 34,
-      "total_watch_min": 156.1,
-      "avg_duration_sec": 260.2
+      "unique_users": 15,
+      "total_tunes": 30,
+      "total_watch_min": 113.5,
+      "avg_duration_sec": 219.6
     },
     "channelLeaderboard": [
       {
@@ -26,7 +26,7 @@
         "lang": "Hindi",
         "tunes": 14,
         "unique_users": 11,
-        "watch_min": 3.1
+        "watch_min": 2.9
       },
       {
         "ch": 185,
@@ -36,15 +36,6 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 1.5
-      },
-      {
-        "ch": 231,
-        "name": "TV9 Bharatvarsh",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.4
       },
       {
         "ch": 167,
@@ -83,15 +74,6 @@
         "watch_min": 0.4
       },
       {
-        "ch": 55,
-        "name": "Zee Business",
-        "cat": "Business",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
         "ch": 46,
         "name": "News 24",
         "cat": "News",
@@ -128,8 +110,8 @@
         "watch_min": 0.1
       },
       {
-        "ch": 226,
-        "name": "Times Now Navbharat",
+        "ch": 231,
+        "name": "TV9 Bharatvarsh",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
@@ -137,8 +119,8 @@
         "watch_min": 0.1
       },
       {
-        "ch": 158,
-        "name": "NDTV Madhya Pradesh Chhattisgarh",
+        "ch": 226,
+        "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
@@ -171,29 +153,14 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
-      },
-      {
-        "ch": 53,
-        "name": "AmarUjala",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 32,
-        "unique_users": 14,
-        "watch_min": 50.8
-      },
-      {
-        "cat": "Business",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
+        "tunes": 29,
+        "unique_users": 12,
+        "watch_min": 50.2
       },
       {
         "cat": "Entertainment",
@@ -205,44 +172,44 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 34,
-        "unique_users": 15,
-        "watch_min": 51.2
+        "tunes": 30,
+        "unique_users": 13,
+        "watch_min": 50.4
       }
     ],
     "hourlyTrend": [
       {
         "hour": "2026-08-17 21:00",
-        "users": 5,
-        "tunes": 8
+        "users": 1,
+        "tunes": 1
       },
       {
         "hour": "2026-08-17 22:00",
-        "users": 12,
-        "tunes": 26
+        "users": 14,
+        "tunes": 29
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-17",
-        "users": 17,
-        "tunes": 34,
-        "watch_min": 156.1
+        "users": 15,
+        "tunes": 30,
+        "watch_min": 113.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 16
+        "users": 14
       }
     ],
     "funnel": {
-      "opens": 11,
-      "playback": 8,
+      "opens": 9,
+      "playback": 7,
       "engaged": 3
     },
     "retention": {
-      "new_users": 6,
+      "new_users": 4,
       "returning_users": 5
     },
     "errorBoard": [
@@ -251,36 +218,31 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1,
-        "starts": 7
+        "starts": 8
       }
     ],
     "perf": {
-      "avg_ttff_ms": 1913,
-      "samples": 25
+      "avg_ttff_ms": 1909,
+      "samples": 22
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 23,
+        "starts": 21,
         "avg_ttff_ms": 1946
       },
       {
         "net": "3g",
         "starts": 1,
         "avg_ttff_ms": 1134
-      },
-      {
-        "net": "unknown",
-        "starts": 1,
-        "avg_ttff_ms": 1928
       }
     ],
     "engagement": {
-      "sessions": 17,
+      "sessions": 15,
       "avg_channels": 1.8,
       "avg_session_sec": 29,
-      "bounce_pct": 70.6,
-      "zap_pct": 26.5
+      "bounce_pct": 73.3,
+      "zap_pct": 23.3
     },
     "survey": {
       "very": null,

@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-17T22:32:00Z",
+  "fetched_at": "2026-08-17T22:57:43Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 80487,
-      "total_tunes": 233793,
-      "total_watch_min": 5266599.3,
+      "unique_users": 80488,
+      "total_tunes": 233792,
+      "total_watch_min": 5266599.1,
       "avg_duration_sec": 1226.3
     },
     "channelLeaderboard": [
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 59756,
-        "unique_users": 46895,
-        "watch_min": 33496.2
+        "tunes": 59759,
+        "unique_users": 46897,
+        "watch_min": 33496.4
       },
       {
         "ch": 40,
@@ -132,9 +132,9 @@
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1932,
-        "unique_users": 1574,
-        "watch_min": 1476
+        "tunes": 1931,
+        "unique_users": 1573,
+        "watch_min": 1475.7
       },
       {
         "ch": 58,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 119559,
-        "unique_users": 55434,
-        "watch_min": 65903.7
+        "tunes": 119558,
+        "unique_users": 55435,
+        "watch_min": 65903.5
       },
       {
         "cat": "Entertainment",
@@ -407,8 +407,8 @@
       {
         "lang": "Hindi",
         "tunes": 199406,
-        "unique_users": 70325,
-        "watch_min": 106311
+        "unique_users": 70326,
+        "watch_min": 106310.8
       },
       {
         "lang": "Bhojpuri",
@@ -418,8 +418,8 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 11324,
-        "unique_users": 4818,
+        "tunes": 11323,
+        "unique_users": 4817,
         "watch_min": 4045.3
       },
       {
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-18 22:00",
-        "users": 1,
-        "tunes": 4
-      },
       {
         "hour": "2026-07-18 23:00",
         "users": 7,
@@ -4029,16 +4024,16 @@
       },
       {
         "hour": "2026-08-17 22:00",
-        "users": 12,
-        "tunes": 26
+        "users": 14,
+        "tunes": 29
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-18",
-        "users": 8,
-        "tunes": 16,
-        "watch_min": 1.6
+        "users": 7,
+        "tunes": 12,
+        "watch_min": 1.1
       },
       {
         "day": "2026-07-19",
@@ -4216,15 +4211,15 @@
       },
       {
         "day": "2026-08-17",
-        "users": 3548,
-        "tunes": 10236,
-        "watch_min": 107094.8
+        "users": 3550,
+        "tunes": 10239,
+        "watch_min": 107095
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 79045
+        "users": 79046
       },
       {
         "device": "desktop",
@@ -4237,8 +4232,8 @@
       "engaged": 5022
     },
     "retention": {
-      "new_users": 32563,
-      "returning_users": 648
+      "new_users": 32562,
+      "returning_users": 649
     },
     "errorBoard": [
       {
@@ -4246,7 +4241,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1840,
-        "starts": 39522
+        "starts": 39524
       },
       {
         "ch": 10,
@@ -4288,7 +4283,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 373,
-        "starts": 1163
+        "starts": 1162
       },
       {
         "ch": 40,
@@ -4554,7 +4549,7 @@
       }
     ],
     "engagement": {
-      "sessions": 80487,
+      "sessions": 80488,
       "avg_channels": 2.3,
       "avg_session_sec": 99,
       "bounce_pct": 66.6,

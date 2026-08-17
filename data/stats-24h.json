@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-17T22:32:00Z",
+  "fetched_at": "2026-08-17T22:57:43Z",
   "data": {
     "period": "24h",
     "liveNow": 2,
     "overview": {
-      "unique_users": 3565,
-      "total_tunes": 10280,
-      "total_watch_min": 107114.2,
-      "avg_duration_sec": 563.7
+      "unique_users": 3563,
+      "total_tunes": 10278,
+      "total_watch_min": 107113.8,
+      "avg_duration_sec": 563.8
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 3712,
-        "unique_users": 2909,
-        "watch_min": 3365.2
+        "tunes": 3711,
+        "unique_users": 2908,
+        "watch_min": 3364.8
       },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 136,
-        "unique_users": 109,
-        "watch_min": 819.5
+        "tunes": 135,
+        "unique_users": 108,
+        "watch_min": 819.4
       },
       {
         "ch": 57,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 6186,
-        "unique_users": 3029,
-        "watch_min": 4698.3
+        "tunes": 6185,
+        "unique_users": 3028,
+        "watch_min": 4697.9
       },
       {
         "cat": "Entertainment",
-        "tunes": 1117,
-        "unique_users": 267,
-        "watch_min": 1274.4
+        "tunes": 1116,
+        "unique_users": 266,
+        "watch_min": 1274.3
       },
       {
         "cat": "Devotional",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 9206,
-        "unique_users": 3166,
-        "watch_min": 7355.5
+        "tunes": 9204,
+        "unique_users": 3164,
+        "watch_min": 7355
       },
       {
         "lang": "Punjabi",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-16 22:00",
-        "users": 7,
-        "tunes": 15
+        "users": 3,
+        "tunes": 10
       },
       {
         "hour": "2026-08-16 23:00",
@@ -564,28 +564,28 @@
       },
       {
         "hour": "2026-08-17 22:00",
-        "users": 12,
-        "tunes": 26
+        "users": 14,
+        "tunes": 29
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-16",
-        "users": 17,
-        "tunes": 44,
-        "watch_min": 19.4
+        "users": 13,
+        "tunes": 39,
+        "watch_min": 18.7
       },
       {
         "day": "2026-08-17",
-        "users": 3548,
-        "tunes": 10236,
-        "watch_min": 107094.8
+        "users": 3550,
+        "tunes": 10239,
+        "watch_min": 107095
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3516
+        "users": 3514
       },
       {
         "device": "desktop",
@@ -593,13 +593,13 @@
       }
     ],
     "funnel": {
-      "opens": 1754,
-      "playback": 1442,
+      "opens": 1753,
+      "playback": 1441,
       "engaged": 272
     },
     "retention": {
-      "new_users": 1407,
-      "returning_users": 350
+      "new_users": 1404,
+      "returning_users": 352
     },
     "errorBoard": [
       {
@@ -607,7 +607,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 121,
-        "starts": 2470
+        "starts": 2469
       },
       {
         "ch": 185,
@@ -782,7 +782,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 5,
-        "starts": 108
+        "starts": 107
       },
       {
         "ch": 176,
@@ -884,14 +884,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 13516,
-      "samples": 6400
+      "avg_ttff_ms": 13519,
+      "samples": 6398
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 5801,
-        "avg_ttff_ms": 14458
+        "starts": 5799,
+        "avg_ttff_ms": 14462
       },
       {
         "net": "3g",
@@ -915,7 +915,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3565,
+      "sessions": 3563,
       "avg_channels": 2.3,
       "avg_session_sec": 99,
       "bounce_pct": 67.4,
