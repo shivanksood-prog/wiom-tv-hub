@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-17T21:36:57Z",
+  "fetched_at": "2026-08-17T21:57:59Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 3,
     "overview": {
-      "unique_users": 80478,
-      "total_tunes": 233774,
-      "total_watch_min": 5266544.2,
+      "unique_users": 80481,
+      "total_tunes": 233780,
+      "total_watch_min": 5266500.6,
       "avg_duration_sec": 1226.4
     },
     "channelLeaderboard": [
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 59742,
-        "unique_users": 46884,
-        "watch_min": 33493.1
+        "tunes": 59746,
+        "unique_users": 46887,
+        "watch_min": 33493.5
       },
       {
         "ch": 40,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 119529,
-        "unique_users": 55422,
-        "watch_min": 65854.4
+        "tunes": 119536,
+        "unique_users": 55427,
+        "watch_min": 65855.3
       },
       {
         "cat": "Entertainment",
-        "tunes": 34336,
-        "unique_users": 10206,
-        "watch_min": 16735.4
+        "tunes": 34335,
+        "unique_users": 10205,
+        "watch_min": 16734.8
       },
       {
         "cat": "Music",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 14084,
-        "unique_users": 3526,
-        "watch_min": 9315.7
+        "tunes": 14083,
+        "unique_users": 3525,
+        "watch_min": 9315.6
       },
       {
         "cat": "DD",
@@ -326,9 +326,9 @@
       },
       {
         "cat": "Business",
-        "tunes": 1963,
-        "unique_users": 1259,
-        "watch_min": 387.7
+        "tunes": 1964,
+        "unique_users": 1260,
+        "watch_min": 388
       },
       {
         "cat": "Culture",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 199382,
-        "unique_users": 70315,
-        "watch_min": 106274
+        "tunes": 199389,
+        "unique_users": 70319,
+        "watch_min": 106275
       },
       {
         "lang": "Bhojpuri",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 11328,
-        "unique_users": 4821,
-        "watch_min": 4046.1
+        "tunes": 11327,
+        "unique_users": 4820,
+        "watch_min": 4045.5
       },
       {
         "lang": "English",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-07-18 21:00",
-        "users": 3,
-        "tunes": 4
+        "users": 1,
+        "tunes": 2
       },
       {
         "hour": "2026-07-18 22:00",
@@ -4029,16 +4029,16 @@
       },
       {
         "hour": "2026-08-17 21:00",
-        "users": 17,
-        "tunes": 58
+        "users": 22,
+        "tunes": 66
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-18",
-        "users": 15,
-        "tunes": 31,
-        "watch_min": 102.7
+        "users": 13,
+        "tunes": 29,
+        "watch_min": 16.1
       },
       {
         "day": "2026-07-19",
@@ -4216,15 +4216,15 @@
       },
       {
         "day": "2026-08-17",
-        "users": 3532,
-        "tunes": 10202,
-        "watch_min": 106938.6
+        "users": 3537,
+        "tunes": 10210,
+        "watch_min": 106981.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 79036
+        "users": 79039
       },
       {
         "device": "desktop",
@@ -4232,12 +4232,12 @@
       }
     ],
     "funnel": {
-      "opens": 33103,
-      "playback": 28485,
+      "opens": 33105,
+      "playback": 28487,
       "engaged": 5022
     },
     "retention": {
-      "new_users": 32558,
+      "new_users": 32560,
       "returning_users": 649
     },
     "errorBoard": [
@@ -4246,7 +4246,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1839,
-        "starts": 39515
+        "starts": 39517
       },
       {
         "ch": 10,
@@ -4523,14 +4523,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6675,
-      "samples": 147796
+      "avg_ttff_ms": 6674,
+      "samples": 147800
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 133670,
-        "avg_ttff_ms": 6443
+        "starts": 133673,
+        "avg_ttff_ms": 6442
       },
       {
         "net": "3g",
@@ -4539,7 +4539,7 @@
       },
       {
         "net": "unknown",
-        "starts": 3561,
+        "starts": 3562,
         "avg_ttff_ms": 3201
       },
       {
@@ -4554,7 +4554,7 @@
       }
     ],
     "engagement": {
-      "sessions": 80478,
+      "sessions": 80481,
       "avg_channels": 2.3,
       "avg_session_sec": 99,
       "bounce_pct": 66.6,
