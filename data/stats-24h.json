@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-17T23:29:58Z",
+  "fetched_at": "2026-08-17T23:51:37Z",
   "data": {
     "period": "24h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 3566,
-      "total_tunes": 10265,
-      "total_watch_min": 107098.9,
-      "avg_duration_sec": 564.4
+      "unique_users": 3564,
+      "total_tunes": 10267,
+      "total_watch_min": 107218.8,
+      "avg_duration_sec": 564.9
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 3715,
-        "unique_users": 2910,
-        "watch_min": 3358.4
+        "tunes": 3712,
+        "unique_users": 2907,
+        "watch_min": 3357.7
       },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 137,
-        "unique_users": 110,
-        "watch_min": 819
+        "tunes": 138,
+        "unique_users": 111,
+        "watch_min": 819.1
       },
       {
         "ch": 57,
@@ -168,9 +168,9 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 90,
-        "unique_users": 71,
-        "watch_min": 36.4
+        "tunes": 92,
+        "unique_users": 72,
+        "watch_min": 37.1
       },
       {
         "ch": 37,
@@ -213,8 +213,8 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 96,
-        "unique_users": 68,
+        "tunes": 97,
+        "unique_users": 69,
         "watch_min": 28.1
       },
       {
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 6171,
-        "unique_users": 3030,
-        "watch_min": 4683.9
+        "tunes": 6168,
+        "unique_users": 3027,
+        "watch_min": 4683.2
       },
       {
         "cat": "Entertainment",
-        "tunes": 1116,
-        "unique_users": 268,
-        "watch_min": 1273.9
+        "tunes": 1121,
+        "unique_users": 269,
+        "watch_min": 1274.9
       },
       {
         "cat": "Devotional",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 9192,
-        "unique_users": 3168,
-        "watch_min": 7340.7
+        "tunes": 9194,
+        "unique_users": 3166,
+        "watch_min": 7341
       },
       {
         "lang": "Punjabi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-16 23:00",
-        "users": 3,
-        "tunes": 3
-      },
       {
         "hour": "2026-08-17 00:00",
         "users": 32,
@@ -564,28 +559,22 @@
       },
       {
         "hour": "2026-08-17 23:00",
-        "users": 13,
-        "tunes": 23
+        "users": 14,
+        "tunes": 28
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-08-16",
-        "users": 3,
-        "tunes": 3,
-        "watch_min": 0.7
-      },
-      {
         "day": "2026-08-17",
-        "users": 3563,
-        "tunes": 10262,
-        "watch_min": 107098.3
+        "users": 3564,
+        "tunes": 10267,
+        "watch_min": 107218.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 3516
+        "users": 3515
       },
       {
         "device": "desktop",
@@ -593,13 +582,13 @@
       }
     ],
     "funnel": {
-      "opens": 1747,
+      "opens": 1746,
       "playback": 1436,
       "engaged": 270
     },
     "retention": {
-      "new_users": 1401,
-      "returning_users": 350
+      "new_users": 1400,
+      "returning_users": 349
     },
     "errorBoard": [
       {
@@ -607,7 +596,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 121,
-        "starts": 2469
+        "starts": 2468
       },
       {
         "ch": 185,
@@ -782,7 +771,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 5,
-        "starts": 108
+        "starts": 109
       },
       {
         "ch": 176,
@@ -884,19 +873,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 13548,
-      "samples": 6383
+      "avg_ttff_ms": 13545,
+      "samples": 6385
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 5782,
-        "avg_ttff_ms": 14500
+        "starts": 5781,
+        "avg_ttff_ms": 14502
       },
       {
         "net": "3g",
-        "starts": 397,
-        "avg_ttff_ms": 5103
+        "starts": 400,
+        "avg_ttff_ms": 5087
       },
       {
         "net": "unknown",
@@ -915,7 +904,7 @@
       }
     ],
     "engagement": {
-      "sessions": 3566,
+      "sessions": 3564,
       "avg_channels": 2.3,
       "avg_session_sec": 99,
       "bounce_pct": 67.4,

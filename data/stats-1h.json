@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-17T23:29:58Z",
+  "fetched_at": "2026-08-17T23:51:37Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
       "unique_users": 16,
-      "total_tunes": 26,
-      "total_watch_min": 3.5,
-      "avg_duration_sec": 8.1
+      "total_tunes": 31,
+      "total_watch_min": 124,
+      "avg_duration_sec": 232.6
     },
     "channelLeaderboard": [
       {
@@ -18,6 +18,15 @@
         "tunes": 16,
         "unique_users": 11,
         "watch_min": 2.8
+      },
+      {
+        "ch": 5,
+        "name": "Zee Comedy Nation",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.7
       },
       {
         "ch": 66,
@@ -33,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.2
+        "tunes": 4,
+        "unique_users": 4,
+        "watch_min": 0.3
       },
       {
         "ch": 68,
@@ -50,6 +59,15 @@
         "ch": 57,
         "name": "Aastha",
         "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 6,
+        "name": "Zee Dil Se",
+        "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
@@ -90,6 +108,15 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
+      },
+      {
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
@@ -100,16 +127,16 @@
         "watch_min": 2.9
       },
       {
+        "cat": "Entertainment",
+        "tunes": 8,
+        "unique_users": 4,
+        "watch_min": 1.2
+      },
+      {
         "cat": "Kids",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.3
-      },
-      {
-        "cat": "Entertainment",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.2
       },
       {
         "cat": "Music",
@@ -127,50 +154,50 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 26,
-        "unique_users": 14,
-        "watch_min": 3.5
+        "tunes": 31,
+        "unique_users": 15,
+        "watch_min": 4.5
       }
     ],
     "hourlyTrend": [
       {
         "hour": "2026-08-17 22:00",
-        "users": 3,
+        "users": 2,
         "tunes": 3
       },
       {
         "hour": "2026-08-17 23:00",
-        "users": 13,
-        "tunes": 23
+        "users": 14,
+        "tunes": 28
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-17",
         "users": 16,
-        "tunes": 26,
-        "watch_min": 3.5
+        "tunes": 31,
+        "watch_min": 124
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 15
+        "users": 16
       }
     ],
     "funnel": {
-      "opens": 8,
-      "playback": 7,
+      "opens": 9,
+      "playback": 8,
       "engaged": 0
     },
     "retention": {
-      "new_users": 4,
+      "new_users": 5,
       "returning_users": 4
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2418,
-      "samples": 21
+      "avg_ttff_ms": 2488,
+      "samples": 24
     },
     "netBreakdown": [
       {
@@ -179,22 +206,22 @@
         "avg_ttff_ms": 2174
       },
       {
+        "net": "3g",
+        "starts": 4,
+        "avg_ttff_ms": 2786
+      },
+      {
         "net": "slow-2g",
         "starts": 1,
         "avg_ttff_ms": 7276
-      },
-      {
-        "net": "3g",
-        "starts": 1,
-        "avg_ttff_ms": 2210
       }
     ],
     "engagement": {
-      "sessions": 15,
-      "avg_channels": 1.4,
-      "avg_session_sec": 15,
-      "bounce_pct": 60,
-      "zap_pct": 42.3
+      "sessions": 16,
+      "avg_channels": 1.6,
+      "avg_session_sec": 18,
+      "bounce_pct": 56.3,
+      "zap_pct": 38.7
     },
     "survey": {
       "very": null,
