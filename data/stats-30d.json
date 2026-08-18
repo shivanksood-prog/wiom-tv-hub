@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-18T22:41:20Z",
+  "fetched_at": "2026-08-18T23:05:22Z",
   "data": {
     "period": "30d",
-    "liveNow": 3,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 81829,
-      "total_tunes": 237394,
-      "total_watch_min": 5309623.1,
-      "avg_duration_sec": 1218.2
+      "unique_users": 81832,
+      "total_tunes": 237402,
+      "total_watch_min": 5309623.8,
+      "avg_duration_sec": 1218.1
     },
     "channelLeaderboard": [
       {
@@ -15,8 +15,8 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 61594,
-        "unique_users": 48276,
+        "tunes": 61595,
+        "unique_users": 48277,
         "watch_min": 34405.4
       },
       {
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8202,
-        "unique_users": 6430,
-        "watch_min": 5080.8
+        "tunes": 8203,
+        "unique_users": 6431,
+        "watch_min": 5081
       },
       {
         "ch": 29,
@@ -195,9 +195,9 @@
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "lang": "Bhojpuri",
-        "tunes": 1738,
-        "unique_users": 1330,
-        "watch_min": 996.5
+        "tunes": 1740,
+        "unique_users": 1332,
+        "watch_min": 996.6
       },
       {
         "ch": 84,
@@ -258,8 +258,8 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1780,
-        "unique_users": 1468,
+        "tunes": 1778,
+        "unique_users": 1466,
         "watch_min": 779.8
       },
       {
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 122477,
-        "unique_users": 56732,
+        "tunes": 122476,
+        "unique_users": 56731,
         "watch_min": 68144.6
       },
       {
         "cat": "Entertainment",
-        "tunes": 34263,
-        "unique_users": 10247,
-        "watch_min": 17736.8
+        "tunes": 34270,
+        "unique_users": 10249,
+        "watch_min": 17737.4
       },
       {
         "cat": "Music",
-        "tunes": 33096,
-        "unique_users": 10686,
-        "watch_min": 14489
+        "tunes": 33098,
+        "unique_users": 10688,
+        "watch_min": 14489.1
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 203075,
-        "unique_users": 71542,
-        "watch_min": 110371.4
+        "tunes": 203081,
+        "unique_users": 71543,
+        "watch_min": 110372
       },
       {
         "lang": "Punjabi",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 7819,
-        "unique_users": 4807,
-        "watch_min": 4060.4
+        "tunes": 7821,
+        "unique_users": 4809,
+        "watch_min": 4060.5
       },
       {
         "lang": "English",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-19 22:00",
-        "users": 2,
-        "tunes": 2
-      },
       {
         "hour": "2026-07-19 23:00",
         "users": 2,
@@ -4029,16 +4024,21 @@
       },
       {
         "hour": "2026-08-18 22:00",
-        "users": 17,
-        "tunes": 70
+        "users": 21,
+        "tunes": 80
+      },
+      {
+        "hour": "2026-08-18 23:00",
+        "users": 1,
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-19",
-        "users": 4,
-        "tunes": 5,
-        "watch_min": 0.3
+        "users": 2,
+        "tunes": 3,
+        "watch_min": 0.2
       },
       {
         "day": "2026-07-20",
@@ -4216,15 +4216,15 @@
       },
       {
         "day": "2026-08-18",
-        "users": 1937,
-        "tunes": 7149,
-        "watch_min": 78415.9
+        "users": 1942,
+        "tunes": 7159,
+        "watch_min": 78416.7
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 80388
+        "users": 80391
       },
       {
         "device": "desktop",
@@ -4316,7 +4316,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 266,
-        "starts": 6061
+        "starts": 6062
       },
       {
         "ch": 29,
@@ -4435,14 +4435,14 @@
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "errors": 83,
-        "starts": 949
+        "starts": 951
       },
       {
         "ch": 226,
         "name": "Times Now Navbharat",
         "cat": "News",
         "errors": 83,
-        "starts": 1120
+        "starts": 1118
       },
       {
         "ch": 47,
@@ -4524,23 +4524,23 @@
     ],
     "perf": {
       "avg_ttff_ms": 6784,
-      "samples": 150779
+      "samples": 150783
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 136453,
+        "starts": 136458,
         "avg_ttff_ms": 6574
       },
       {
         "net": "3g",
-        "starts": 9822,
-        "avg_ttff_ms": 9397
+        "starts": 9823,
+        "avg_ttff_ms": 9396
       },
       {
         "net": "unknown",
-        "starts": 3574,
-        "avg_ttff_ms": 3187
+        "starts": 3572,
+        "avg_ttff_ms": 3188
       },
       {
         "net": "2g",
@@ -4554,7 +4554,7 @@
       }
     ],
     "engagement": {
-      "sessions": 81829,
+      "sessions": 81832,
       "avg_channels": 2.3,
       "avg_session_sec": 100,
       "bounce_pct": 66.6,

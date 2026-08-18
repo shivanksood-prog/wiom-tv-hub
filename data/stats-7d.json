@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-18T22:41:20Z",
+  "fetched_at": "2026-08-18T23:05:22Z",
   "data": {
     "period": "7d",
-    "liveNow": 2,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 28853,
-      "total_tunes": 79769,
-      "total_watch_min": 1463155.7,
-      "avg_duration_sec": 998.6
+      "unique_users": 28846,
+      "total_tunes": 79746,
+      "total_watch_min": 1463074.5,
+      "avg_duration_sec": 998.9
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 30368,
-        "unique_users": 23759,
-        "watch_min": 17908.7
+        "tunes": 30351,
+        "unique_users": 23749,
+        "watch_min": 17890.1
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2911,
-        "unique_users": 2336,
-        "watch_min": 2082.3
+        "tunes": 2909,
+        "unique_users": 2334,
+        "watch_min": 2081.9
       },
       {
         "ch": 2,
@@ -51,9 +51,9 @@
         "name": "Goldmines",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 1438,
-        "unique_users": 1008,
-        "watch_min": 1664
+        "tunes": 1437,
+        "unique_users": 1007,
+        "watch_min": 1663.9
       },
       {
         "ch": 7,
@@ -69,9 +69,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 550,
-        "unique_users": 393,
-        "watch_min": 927.1
+        "tunes": 552,
+        "unique_users": 395,
+        "watch_min": 927.2
       },
       {
         "ch": 232,
@@ -159,9 +159,9 @@
         "name": "Goldmines 2",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 652,
-        "unique_users": 463,
-        "watch_min": 485.3
+        "tunes": 651,
+        "unique_users": 462,
+        "watch_min": 485.1
       },
       {
         "ch": 113,
@@ -258,9 +258,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 832,
-        "unique_users": 605,
-        "watch_min": 285.5
+        "tunes": 830,
+        "unique_users": 604,
+        "watch_min": 285.2
       },
       {
         "ch": 82,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 49635,
-        "unique_users": 24668,
-        "watch_min": 28015.1
+        "tunes": 49614,
+        "unique_users": 24658,
+        "watch_min": 27996
       },
       {
         "cat": "Entertainment",
-        "tunes": 7692,
-        "unique_users": 1968,
-        "watch_min": 6871.8
+        "tunes": 7700,
+        "unique_users": 1970,
+        "watch_min": 6872.3
       },
       {
         "cat": "Devotional",
@@ -302,15 +302,15 @@
       },
       {
         "cat": "Movies",
-        "tunes": 4697,
-        "unique_users": 1679,
-        "watch_min": 3095.4
+        "tunes": 4685,
+        "unique_users": 1678,
+        "watch_min": 3093.5
       },
       {
         "cat": "Music",
-        "tunes": 8131,
-        "unique_users": 2144,
-        "watch_min": 2706.2
+        "tunes": 8133,
+        "unique_users": 2146,
+        "watch_min": 2706.3
       },
       {
         "cat": "DD",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 71301,
-        "unique_users": 25765,
-        "watch_min": 41731.5
+        "tunes": 71281,
+        "unique_users": 25757,
+        "watch_min": 41711.7
       },
       {
         "lang": "English",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "Marathi",
-        "tunes": 849,
-        "unique_users": 498,
-        "watch_min": 949.7
+        "tunes": 848,
+        "unique_users": 497,
+        "watch_min": 949.6
       },
       {
         "lang": "Punjabi",
@@ -436,17 +436,12 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1670,
-        "unique_users": 926,
-        "watch_min": 579.7
+        "tunes": 1668,
+        "unique_users": 927,
+        "watch_min": 579.3
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-11 22:00",
-        "users": 13,
-        "tunes": 35
-      },
       {
         "hour": "2026-08-11 23:00",
         "users": 20,
@@ -1284,16 +1279,21 @@
       },
       {
         "hour": "2026-08-18 22:00",
-        "users": 16,
-        "tunes": 68
+        "users": 21,
+        "tunes": 80
+      },
+      {
+        "hour": "2026-08-18 23:00",
+        "users": 1,
+        "tunes": 0
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-11",
-        "users": 33,
-        "tunes": 75,
-        "watch_min": 142.8
+        "users": 20,
+        "tunes": 40,
+        "watch_min": 60.6
       },
       {
         "day": "2026-08-12",
@@ -1333,15 +1333,15 @@
       },
       {
         "day": "2026-08-18",
-        "users": 1936,
-        "tunes": 7147,
-        "watch_min": 78415.8
+        "users": 1942,
+        "tunes": 7159,
+        "watch_min": 78416.7
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 28419
+        "users": 28412
       },
       {
         "device": "desktop",
@@ -1349,12 +1349,12 @@
       }
     ],
     "funnel": {
-      "opens": 12319,
-      "playback": 10386,
-      "engaged": 1846
+      "opens": 12314,
+      "playback": 10383,
+      "engaged": 1845
     },
     "retention": {
-      "new_users": 11222,
+      "new_users": 11217,
       "returning_users": 1132
     },
     "errorBoard": [
@@ -1363,7 +1363,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 937,
-        "starts": 20094
+        "starts": 20084
       },
       {
         "ch": 44,
@@ -1377,7 +1377,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 110,
-        "starts": 2412
+        "starts": 2410
       },
       {
         "ch": 45,
@@ -1391,7 +1391,7 @@
         "name": "Goldmines",
         "cat": "Movies",
         "errors": 79,
-        "starts": 903
+        "starts": 902
       },
       {
         "ch": 185,
@@ -1412,7 +1412,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 54,
-        "starts": 881
+        "starts": 882
       },
       {
         "ch": 106,
@@ -1475,14 +1475,14 @@
         "name": "Goldmines 2",
         "cat": "Movies",
         "errors": 30,
-        "starts": 427
+        "starts": 426
       },
       {
         "ch": 25,
         "name": "ZB Cinema",
         "cat": "Movies",
         "errors": 29,
-        "starts": 276
+        "starts": 275
       },
       {
         "ch": 27,
@@ -1636,23 +1636,23 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "errors": 19,
-        "starts": 422
+        "starts": 424
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6449,
-      "samples": 51167
+      "avg_ttff_ms": 6450,
+      "samples": 51151
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 46545,
-        "avg_ttff_ms": 6321
+        "starts": 46529,
+        "avg_ttff_ms": 6323
       },
       {
         "net": "3g",
-        "starts": 3289,
-        "avg_ttff_ms": 8894
+        "starts": 3290,
+        "avg_ttff_ms": 8892
       },
       {
         "net": "unknown",
@@ -1661,8 +1661,8 @@
       },
       {
         "net": "2g",
-        "starts": 196,
-        "avg_ttff_ms": 5991
+        "starts": 195,
+        "avg_ttff_ms": 5960
       },
       {
         "net": "slow-2g",
@@ -1671,7 +1671,7 @@
       }
     ],
     "engagement": {
-      "sessions": 28853,
+      "sessions": 28846,
       "avg_channels": 2.2,
       "avg_session_sec": 101,
       "bounce_pct": 67.5,
@@ -1680,8 +1680,8 @@
     "survey": {
       "very": 85,
       "somewhat": 21,
-      "not_disappointed": 26,
-      "responses": 132
+      "not_disappointed": 25,
+      "responses": 131
     }
   }
 }
