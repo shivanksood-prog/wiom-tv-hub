@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-18T22:09:19Z",
+  "fetched_at": "2026-08-18T22:41:20Z",
   "data": {
     "period": "1h",
-    "liveNow": 7,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 26,
-      "total_tunes": 79,
-      "total_watch_min": 17.4,
-      "avg_duration_sec": 12.4
+      "unique_users": 24,
+      "total_tunes": 76,
+      "total_watch_min": 17.9,
+      "avg_duration_sec": 13.2
     },
     "channelLeaderboard": [
       {
@@ -15,18 +15,27 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 21,
-        "unique_users": 18,
-        "watch_min": 2.7
+        "tunes": 19,
+        "unique_users": 14,
+        "watch_min": 3
       },
       {
         "ch": 5,
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 2
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 1.9
+      },
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 9,
+        "unique_users": 4,
+        "watch_min": 1.6
       },
       {
         "ch": 73,
@@ -38,22 +47,22 @@
         "watch_min": 1.4
       },
       {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
+        "ch": 251,
+        "name": "Zoom",
+        "cat": "Music",
         "lang": "Hindi",
-        "tunes": 6,
-        "unique_users": 3,
-        "watch_min": 1.4
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.7
       },
       {
-        "ch": 17,
-        "name": "Shemaroo Josh",
-        "cat": "Entertainment",
+        "ch": 245,
+        "name": "Zee Delhi NCR Haryana",
+        "cat": "News",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.4
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.3
       },
       {
         "ch": 185,
@@ -74,15 +83,6 @@
         "watch_min": 0.3
       },
       {
-        "ch": 245,
-        "name": "Zee Delhi NCR Haryana",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
         "ch": 226,
         "name": "Times Now Navbharat",
         "cat": "News",
@@ -92,13 +92,49 @@
         "watch_min": 0.2
       },
       {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
+        "ch": 250,
+        "name": "ZillarBarta News",
+        "cat": "Classic",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 249,
+        "name": "Zee Uttar Pradesh/Uttarakhand",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 248,
+        "name": "Zee Rajasthan",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 246,
+        "name": "Zee Madhya Pradesh Chhattisgarh",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 243,
+        "name": "Zee 24 Kalak",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       },
       {
         "ch": 167,
@@ -173,15 +209,6 @@
         "watch_min": 0.1
       },
       {
-        "ch": 55,
-        "name": "Zee Business",
-        "cat": "Business",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
         "ch": 53,
         "name": "AmarUjala",
         "cat": "News",
@@ -218,48 +245,12 @@
         "watch_min": 0.1
       },
       {
-        "ch": 25,
-        "name": "ZB Cinema",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 18,
-        "name": "Desi Channel",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 8,
-        "name": "Zee Cine Classic",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
         "ch": 7,
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
+        "tunes": 1,
+        "unique_users": 1,
         "watch_min": 0.1
       },
       {
@@ -267,9 +258,18 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
+        "tunes": 2,
+        "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "ch": 247,
+        "name": "Zee Punjab Haryana Himachal",
+        "cat": "News",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       },
       {
         "ch": 170,
@@ -284,21 +284,27 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 44,
-        "unique_users": 19,
-        "watch_min": 5.9
+        "tunes": 48,
+        "unique_users": 16,
+        "watch_min": 6.5
       },
       {
         "cat": "Entertainment",
-        "tunes": 24,
-        "unique_users": 3,
-        "watch_min": 4.6
+        "tunes": 18,
+        "unique_users": 4,
+        "watch_min": 3.9
+      },
+      {
+        "cat": "Music",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.7
       },
       {
         "cat": "Movies",
-        "tunes": 6,
-        "unique_users": 2,
-        "watch_min": 0.3
+        "tunes": 4,
+        "unique_users": 1,
+        "watch_min": 0.1
       },
       {
         "cat": "Devotional",
@@ -307,8 +313,8 @@
         "watch_min": 0.1
       },
       {
-        "cat": "Business",
-        "tunes": 2,
+        "cat": "Classic",
+        "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
       },
@@ -322,24 +328,18 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 76,
-        "unique_users": 22,
-        "watch_min": 10.8
+        "tunes": 73,
+        "unique_users": 18,
+        "watch_min": 11.3
       },
       {
         "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
+        "tunes": 2,
+        "unique_users": 2,
         "watch_min": 0.1
       },
       {
         "lang": "Marathi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
@@ -348,48 +348,48 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-18 21:00",
-        "users": 19,
-        "tunes": 34
+        "users": 8,
+        "tunes": 12
       },
       {
         "hour": "2026-08-18 22:00",
-        "users": 7,
-        "tunes": 45
+        "users": 16,
+        "tunes": 64
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-18",
-        "users": 26,
-        "tunes": 79,
-        "watch_min": 17.4
+        "users": 24,
+        "tunes": 76,
+        "watch_min": 17.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 26
+        "users": 24
       }
     ],
     "funnel": {
-      "opens": 16,
-      "playback": 12,
+      "opens": 17,
+      "playback": 9,
       "engaged": 2
     },
     "retention": {
-      "new_users": 11,
-      "returning_users": 5
+      "new_users": 13,
+      "returning_users": 4
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2077,
-      "samples": 64
+      "avg_ttff_ms": 1885,
+      "samples": 60
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 41,
-        "avg_ttff_ms": 1997
+        "starts": 37,
+        "avg_ttff_ms": 1678
       },
       {
         "net": "unknown",
@@ -398,11 +398,11 @@
       }
     ],
     "engagement": {
-      "sessions": 26,
-      "avg_channels": 2.4,
-      "avg_session_sec": 28,
-      "bounce_pct": 69.2,
-      "zap_pct": 54.4
+      "sessions": 24,
+      "avg_channels": 2.3,
+      "avg_session_sec": 31,
+      "bounce_pct": 62.5,
+      "zap_pct": 53.9
     },
     "survey": {
       "very": null,
