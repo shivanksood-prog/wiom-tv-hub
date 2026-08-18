@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-18T21:26:32Z",
+  "fetched_at": "2026-08-18T21:49:42Z",
   "data": {
     "period": "24h",
-    "liveNow": 3,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 1944,
-      "total_tunes": 7133,
-      "total_watch_min": 78677.9,
-      "avg_duration_sec": 604.2
+      "unique_users": 1945,
+      "total_tunes": 7129,
+      "total_watch_min": 78635.1,
+      "avg_duration_sec": 604.3
     },
     "channelLeaderboard": [
       {
@@ -33,9 +33,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 64,
-        "unique_users": 52,
-        "watch_min": 701.4
+        "tunes": 62,
+        "unique_users": 51,
+        "watch_min": 701.2
       },
       {
         "ch": 48,
@@ -69,9 +69,9 @@
         "name": "TV9 Bharatvarsh",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 56,
-        "unique_users": 49,
-        "watch_min": 189.2
+        "tunes": 55,
+        "unique_users": 48,
+        "watch_min": 188.9
       },
       {
         "ch": 40,
@@ -141,9 +141,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 144,
-        "unique_users": 129,
-        "watch_min": 55.3
+        "tunes": 143,
+        "unique_users": 128,
+        "watch_min": 55
       },
       {
         "ch": 148,
@@ -168,9 +168,9 @@
         "name": "Zee Business",
         "cat": "Business",
         "lang": "Hindi",
-        "tunes": 49,
+        "tunes": 50,
         "unique_users": 41,
-        "watch_min": 50.5
+        "watch_min": 50.4
       },
       {
         "ch": 229,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 3838,
-        "unique_users": 1503,
-        "watch_min": 2467.6
+        "tunes": 3836,
+        "unique_users": 1502,
+        "watch_min": 2467.2
       },
       {
         "cat": "Entertainment",
-        "tunes": 900,
-        "unique_users": 253,
-        "watch_min": 1277.8
+        "tunes": 897,
+        "unique_users": 252,
+        "watch_min": 1277.3
       },
       {
         "cat": "Movies",
@@ -320,9 +320,9 @@
       },
       {
         "cat": "Business",
-        "tunes": 67,
+        "tunes": 68,
         "unique_users": 46,
-        "watch_min": 52.2
+        "watch_min": 52.1
       },
       {
         "cat": "DD",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 6308,
-        "unique_users": 1679,
-        "watch_min": 4856.4
+        "tunes": 6304,
+        "unique_users": 1678,
+        "watch_min": 4855.4
       },
       {
         "lang": "English",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-17 21:00",
-        "users": 6,
-        "tunes": 11
+        "users": 4,
+        "tunes": 5
       },
       {
         "hour": "2026-08-17 22:00",
@@ -564,28 +564,28 @@
       },
       {
         "hour": "2026-08-18 21:00",
-        "users": 9,
-        "tunes": 20
+        "users": 12,
+        "tunes": 22
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-17",
-        "users": 34,
-        "tunes": 68,
-        "watch_min": 280.6
+        "users": 32,
+        "tunes": 62,
+        "watch_min": 237.7
       },
       {
         "day": "2026-08-18",
-        "users": 1910,
-        "tunes": 7065,
-        "watch_min": 78397.3
+        "users": 1913,
+        "tunes": 7067,
+        "watch_min": 78397.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1901
+        "users": 1902
       },
       {
         "device": "desktop",
@@ -593,13 +593,13 @@
       }
     ],
     "funnel": {
-      "opens": 1227,
-      "playback": 969,
+      "opens": 1228,
+      "playback": 968,
       "engaged": 175
     },
     "retention": {
-      "new_users": 889,
-      "returning_users": 350
+      "new_users": 888,
+      "returning_users": 352
     },
     "errorBoard": [
       {
@@ -628,7 +628,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 6,
-        "starts": 109
+        "starts": 108
       },
       {
         "ch": 118,
@@ -884,14 +884,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8644,
-      "samples": 4850
+      "avg_ttff_ms": 8647,
+      "samples": 4846
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 4417,
-        "avg_ttff_ms": 9092
+        "starts": 4413,
+        "avg_ttff_ms": 9096
       },
       {
         "net": "3g",
@@ -915,10 +915,10 @@
       }
     ],
     "engagement": {
-      "sessions": 1944,
+      "sessions": 1945,
       "avg_channels": 2.9,
       "avg_session_sec": 136,
-      "bounce_pct": 59.4,
+      "bounce_pct": 59.5,
       "zap_pct": 47.4
     },
     "survey": {
