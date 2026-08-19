@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-19T21:57:48Z",
+  "fetched_at": "2026-08-19T22:32:45Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 3,
     "overview": {
-      "unique_users": 83044,
-      "total_tunes": 240942,
-      "total_watch_min": 4558960.5,
-      "avg_duration_sec": 1030.4
+      "unique_users": 83050,
+      "total_tunes": 240958,
+      "total_watch_min": 4558966.6,
+      "avg_duration_sec": 1030.3
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 63237,
-        "unique_users": 49488,
-        "watch_min": 35676.8
+        "tunes": 63242,
+        "unique_users": 49492,
+        "watch_min": 35698.8
       },
       {
         "ch": 40,
@@ -26,7 +26,7 @@
         "lang": "Hindi",
         "tunes": 12832,
         "unique_users": 10081,
-        "watch_min": 11687
+        "watch_min": 11686.9
       },
       {
         "ch": 118,
@@ -60,9 +60,9 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "lang": "Bhojpuri",
-        "tunes": 5121,
-        "unique_users": 3715,
-        "watch_min": 2798.7
+        "tunes": 5122,
+        "unique_users": 3716,
+        "watch_min": 2798.8
       },
       {
         "ch": 7,
@@ -78,18 +78,18 @@
         "name": "9XM",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 3074,
-        "unique_users": 2236,
-        "watch_min": 2330.1
+        "tunes": 3076,
+        "unique_users": 2238,
+        "watch_min": 2330.2
       },
       {
         "ch": 41,
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5348,
-        "unique_users": 4339,
-        "watch_min": 2326.2
+        "tunes": 5349,
+        "unique_users": 4340,
+        "watch_min": 2326.4
       },
       {
         "ch": 185,
@@ -114,9 +114,9 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2453,
-        "unique_users": 1801,
-        "watch_min": 1905.3
+        "tunes": 2454,
+        "unique_users": 1802,
+        "watch_min": 1906.7
       },
       {
         "ch": 3,
@@ -231,9 +231,9 @@
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1791,
-        "unique_users": 1349,
-        "watch_min": 939.6
+        "tunes": 1792,
+        "unique_users": 1350,
+        "watch_min": 940.1
       },
       {
         "ch": 232,
@@ -284,27 +284,27 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 125108,
-        "unique_users": 57903,
-        "watch_min": 70705.3
+        "tunes": 125114,
+        "unique_users": 57906,
+        "watch_min": 70727.4
       },
       {
         "cat": "Entertainment",
-        "tunes": 34274,
-        "unique_users": 10272,
-        "watch_min": 18148.6
+        "tunes": 34280,
+        "unique_users": 10273,
+        "watch_min": 18151.3
       },
       {
         "cat": "Music",
-        "tunes": 33272,
-        "unique_users": 10744,
-        "watch_min": 14549
+        "tunes": 33273,
+        "unique_users": 10745,
+        "watch_min": 14529.8
       },
       {
         "cat": "Movies",
-        "tunes": 19862,
-        "unique_users": 8786,
-        "watch_min": 11524.3
+        "tunes": 19865,
+        "unique_users": 8787,
+        "watch_min": 11524.8
       },
       {
         "cat": "Devotional",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 206617,
-        "unique_users": 72641,
-        "watch_min": 112599
+        "tunes": 206631,
+        "unique_users": 72645,
+        "watch_min": 112604.9
       },
       {
         "lang": "English",
@@ -424,14 +424,14 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 7770,
-        "unique_users": 4784,
-        "watch_min": 4036
+        "tunes": 7771,
+        "unique_users": 4785,
+        "watch_min": 4036.1
       },
       {
         "lang": "Marathi",
-        "tunes": 3738,
-        "unique_users": 2200,
+        "tunes": 3739,
+        "unique_users": 2201,
         "watch_min": 1777.7
       },
       {
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-07-20 22:00",
-        "users": 8,
-        "tunes": 22
+        "users": 6,
+        "tunes": 20
       },
       {
         "hour": "2026-07-20 23:00",
@@ -4024,16 +4024,21 @@
       },
       {
         "hour": "2026-08-19 21:00",
-        "users": 26,
-        "tunes": 103
+        "users": 27,
+        "tunes": 104
+      },
+      {
+        "hour": "2026-08-19 22:00",
+        "users": 8,
+        "tunes": 17
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-20",
-        "users": 10,
-        "tunes": 24,
-        "watch_min": 48.8
+        "users": 8,
+        "tunes": 22,
+        "watch_min": 29.3
       },
       {
         "day": "2026-07-21",
@@ -4211,15 +4216,15 @@
       },
       {
         "day": "2026-08-19",
-        "users": 1678,
-        "tunes": 6666,
-        "watch_min": 58531.8
+        "users": 1686,
+        "tunes": 6684,
+        "watch_min": 58557.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 81588
+        "users": 81595
       },
       {
         "device": "desktop",
@@ -4227,12 +4232,12 @@
       }
     ],
     "funnel": {
-      "opens": 34262,
-      "playback": 29443,
-      "engaged": 5203
+      "opens": 34265,
+      "playback": 29448,
+      "engaged": 5204
     },
     "retention": {
-      "new_users": 33671,
+      "new_users": 33674,
       "returning_users": 693
     },
     "errorBoard": [
@@ -4241,7 +4246,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1950,
-        "starts": 41726
+        "starts": 41730
       },
       {
         "ch": 10,
@@ -4290,7 +4295,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 362,
-        "starts": 10222
+        "starts": 10221
       },
       {
         "ch": 12,
@@ -4346,14 +4351,14 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 184,
-        "starts": 4633
+        "starts": 4634
       },
       {
         "ch": 24,
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 147,
-        "starts": 3972
+        "starts": 3973
       },
       {
         "ch": 106,
@@ -4472,7 +4477,7 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "errors": 78,
-        "starts": 1847
+        "starts": 1848
       },
       {
         "ch": 25,
@@ -4519,17 +4524,17 @@
     ],
     "perf": {
       "avg_ttff_ms": 6722,
-      "samples": 153037
+      "samples": 153046
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 138502,
+        "starts": 138510,
         "avg_ttff_ms": 6513
       },
       {
         "net": "3g",
-        "starts": 10027,
+        "starts": 10028,
         "avg_ttff_ms": 9330
       },
       {
@@ -4549,17 +4554,17 @@
       }
     ],
     "engagement": {
-      "sessions": 83044,
+      "sessions": 83050,
       "avg_channels": 2.3,
       "avg_session_sec": 100,
       "bounce_pct": 66.5,
       "zap_pct": 46.7
     },
     "survey": {
-      "very": 248,
+      "very": 249,
       "somewhat": 53,
       "not_disappointed": 75,
-      "responses": 376
+      "responses": 377
     }
   }
 }
