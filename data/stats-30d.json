@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-19T23:29:59Z",
+  "fetched_at": "2026-08-19T23:52:08Z",
   "data": {
     "period": "30d",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 83056,
-      "total_tunes": 241021,
-      "total_watch_min": 4558992,
+      "unique_users": 83057,
+      "total_tunes": 241022,
+      "total_watch_min": 4559016.1,
       "avg_duration_sec": 1030.1
     },
     "channelLeaderboard": [
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 63261,
-        "unique_users": 49504,
-        "watch_min": 35711.1
+        "tunes": 63263,
+        "unique_users": 49506,
+        "watch_min": 35712.9
       },
       {
         "ch": 40,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 125165,
-        "unique_users": 57918,
-        "watch_min": 70744.8
+        "tunes": 125167,
+        "unique_users": 57920,
+        "watch_min": 70746.6
       },
       {
         "cat": "Entertainment",
@@ -367,16 +367,16 @@
         "watch_min": 100.4
       },
       {
-        "cat": "Family",
-        "tunes": 300,
-        "unique_users": 238,
-        "watch_min": 62.3
-      },
-      {
         "cat": "Legislative",
         "tunes": 346,
         "unique_users": 156,
         "watch_min": 43.4
+      },
+      {
+        "cat": "Family",
+        "tunes": 299,
+        "unique_users": 237,
+        "watch_min": 41.2
       },
       {
         "cat": "Lifestyle",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 206693,
-        "unique_users": 72651,
-        "watch_min": 112621.7
+        "tunes": 206695,
+        "unique_users": 72653,
+        "watch_min": 112623.5
       },
       {
         "lang": "English",
-        "tunes": 10325,
-        "unique_users": 4222,
-        "watch_min": 4547
+        "tunes": 10324,
+        "unique_users": 4221,
+        "watch_min": 4525.9
       },
       {
         "lang": "Punjabi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-20 23:00",
-        "users": 1,
-        "tunes": 1
-      },
       {
         "hour": "2026-07-21 00:00",
         "users": 1,
@@ -4029,17 +4024,11 @@
       },
       {
         "hour": "2026-08-19 23:00",
-        "users": 5,
-        "tunes": 56
+        "users": 7,
+        "tunes": 58
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-20",
-        "users": 1,
-        "tunes": 1,
-        "watch_min": 21.1
-      },
       {
         "day": "2026-07-21",
         "users": 472,
@@ -4216,15 +4205,15 @@
       },
       {
         "day": "2026-08-19",
-        "users": 1699,
-        "tunes": 6768,
-        "watch_min": 58590.9
+        "users": 1701,
+        "tunes": 6770,
+        "watch_min": 58636.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 81601
+        "users": 81603
       },
       {
         "device": "desktop",
@@ -4232,12 +4221,12 @@
       }
     ],
     "funnel": {
-      "opens": 34266,
-      "playback": 29450,
+      "opens": 34267,
+      "playback": 29451,
       "engaged": 5206
     },
     "retention": {
-      "new_users": 33675,
+      "new_users": 33676,
       "returning_users": 693
     },
     "errorBoard": [
@@ -4246,7 +4235,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1950,
-        "starts": 41739
+        "starts": 41741
       },
       {
         "ch": 10,
@@ -4524,13 +4513,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 6721,
-      "samples": 153078
+      "samples": 153079
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 138545,
-        "avg_ttff_ms": 6512
+        "starts": 138546,
+        "avg_ttff_ms": 6511
       },
       {
         "net": "3g",
@@ -4554,7 +4543,7 @@
       }
     ],
     "engagement": {
-      "sessions": 83056,
+      "sessions": 83057,
       "avg_channels": 2.3,
       "avg_session_sec": 100,
       "bounce_pct": 66.5,
