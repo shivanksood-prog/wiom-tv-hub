@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-19T22:57:45Z",
+  "fetched_at": "2026-08-19T23:29:59Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 16,
-      "total_tunes": 46,
-      "total_watch_min": 36.9,
-      "avg_duration_sec": 48.2
+      "unique_users": 15,
+      "total_tunes": 91,
+      "total_watch_min": 34.8,
+      "avg_duration_sec": 22.4
     },
     "channelLeaderboard": [
       {
@@ -15,22 +15,22 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 18,
+        "tunes": 19,
         "unique_users": 12,
-        "watch_min": 29.4
-      },
-      {
-        "ch": 8,
-        "name": "Zee Cine Classic",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 1.4
+        "watch_min": 12.3
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 1.9
+      },
+      {
+        "ch": 231,
+        "name": "TV9 Bharatvarsh",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 2,
@@ -38,30 +38,21 @@
         "watch_min": 1.2
       },
       {
-        "ch": 231,
-        "name": "TV9 Bharatvarsh",
+        "ch": 245,
+        "name": "Zee Delhi NCR Haryana",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 1.1
-      },
-      {
-        "ch": 9,
-        "name": "Zee South Flix",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.5
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.4
       },
       {
         "ch": 25,
         "name": "ZB Cinema",
         "cat": "Movies",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
+        "tunes": 2,
+        "unique_users": 2,
         "watch_min": 0.4
       },
       {
@@ -74,31 +65,40 @@
         "watch_min": 0.4
       },
       {
-        "ch": 245,
-        "name": "Zee Delhi NCR Haryana",
-        "cat": "News",
+        "ch": 5,
+        "name": "Zee Comedy Nation",
+        "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.3
+        "watch_min": 0.4
       },
       {
         "ch": 167,
         "name": "News Nation",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
+        "tunes": 2,
+        "unique_users": 2,
         "watch_min": 0.3
       },
       {
-        "ch": 41,
-        "name": "ABP News",
+        "ch": 249,
+        "name": "Zee Uttar Pradesh/Uttarakhand",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 2,
         "unique_users": 2,
-        "watch_min": 0.3
+        "watch_min": 0.2
+      },
+      {
+        "ch": 213,
+        "name": "Stingray Naturescape",
+        "cat": "Music",
+        "lang": "English",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.2
       },
       {
         "ch": 55,
@@ -110,11 +110,38 @@
         "watch_min": 0.2
       },
       {
-        "ch": 249,
-        "name": "Zee Uttar Pradesh/Uttarakhand",
+        "ch": 46,
+        "name": "News 24",
         "cat": "News",
         "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 251,
+        "name": "Zoom",
+        "cat": "Music",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 235,
+        "name": "Vedic",
+        "cat": "Devotional",
+        "lang": "Hindi",
         "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 228,
+        "name": "Total Bhakti",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 2,
         "unique_users": 1,
         "watch_min": 0.1
       },
@@ -128,12 +155,21 @@
         "watch_min": 0.1
       },
       {
-        "ch": 185,
-        "name": "Republic Bharat",
+        "ch": 218,
+        "name": "Swadesh News",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 185,
+        "name": "Republic Bharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
         "watch_min": 0.1
       },
       {
@@ -146,9 +182,36 @@
         "watch_min": 0.1
       },
       {
+        "ch": 152,
+        "name": "Metro TV",
+        "cat": "DD",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 150,
+        "name": "MediBizTV",
+        "cat": "Education",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
         "ch": 133,
         "name": "India Daily Live",
         "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 78,
+        "name": "Andy Haryana",
+        "cat": "Culture",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
@@ -168,8 +231,8 @@
         "name": "ABP Ganga",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
+        "tunes": 2,
+        "unique_users": 2,
         "watch_min": 0.1
       },
       {
@@ -177,16 +240,34 @@
         "name": "Aastha",
         "cat": "Devotional",
         "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 41,
+        "name": "ABP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 32,
+        "name": "B4U Bhojpuri",
+        "cat": "Music",
+        "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
       },
       {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
+        "ch": 29,
+        "name": "9X Jhakaas",
+        "cat": "Music",
         "lang": "Hindi",
-        "tunes": 1,
+        "tunes": 2,
         "unique_users": 1,
         "watch_min": 0.1
       },
@@ -198,71 +279,44 @@
         "tunes": 2,
         "unique_users": 2,
         "watch_min": 0.1
-      },
-      {
-        "ch": 26,
-        "name": "Shemaroo Marathi Bana",
-        "cat": "Movies",
-        "lang": "Marathi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 20,
-        "name": "Gangaur TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 17,
-        "name": "Shemaroo Josh",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 11,
-        "name": "Shubh Cinema",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 33,
+        "tunes": 51,
         "unique_users": 12,
-        "watch_min": 33.4
+        "watch_min": 17.5
       },
       {
         "cat": "Entertainment",
-        "tunes": 6,
-        "unique_users": 1,
-        "watch_min": 2.6
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 1
+      },
+      {
+        "cat": "Music",
+        "tunes": 12,
+        "unique_users": 3,
+        "watch_min": 0.7
       },
       {
         "cat": "Movies",
-        "tunes": 3,
-        "unique_users": 1,
+        "tunes": 4,
+        "unique_users": 2,
         "watch_min": 0.5
+      },
+      {
+        "cat": "Devotional",
+        "tunes": 11,
+        "unique_users": 2,
+        "watch_min": 0.4
+      },
+      {
+        "cat": "DD",
+        "tunes": 4,
+        "unique_users": 1,
+        "watch_min": 0.2
       },
       {
         "cat": "Business",
@@ -271,24 +325,42 @@
         "watch_min": 0.2
       },
       {
-        "cat": "Music",
+        "cat": "Education",
         "tunes": 2,
-        "unique_users": 2,
+        "unique_users": 1,
         "watch_min": 0.1
       },
       {
-        "cat": "Devotional",
+        "cat": "Culture",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "cat": "Kids",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 44,
+        "tunes": 83,
         "unique_users": 14,
-        "watch_min": 36.8
+        "watch_min": 20.2
+      },
+      {
+        "lang": "English",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "lang": "Bhojpuri",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.2
       },
       {
         "lang": "Marathi",
@@ -297,70 +369,71 @@
         "watch_min": 0.1
       },
       {
-        "lang": "Bhojpuri",
+        "lang": "Urdu",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0
+      },
+      {
+        "lang": "Punjabi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-19 21:00",
-        "users": 1,
-        "tunes": 1
+        "hour": "2026-08-19 22:00",
+        "users": 10,
+        "tunes": 35
       },
       {
-        "hour": "2026-08-19 22:00",
-        "users": 16,
-        "tunes": 45
+        "hour": "2026-08-19 23:00",
+        "users": 5,
+        "tunes": 56
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-19",
-        "users": 16,
-        "tunes": 46,
-        "watch_min": 36.9
+        "users": 15,
+        "tunes": 91,
+        "watch_min": 34.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 16
+        "users": 14
       }
     ],
     "funnel": {
-      "opens": 12,
-      "playback": 10,
-      "engaged": 4
+      "opens": 9,
+      "playback": 7,
+      "engaged": 3
     },
     "retention": {
-      "new_users": 8,
-      "returning_users": 4
+      "new_users": 7,
+      "returning_users": 2
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2858,
-      "samples": 29
+      "avg_ttff_ms": 2003,
+      "samples": 50
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 28,
-        "avg_ttff_ms": 2741
-      },
-      {
-        "net": "3g",
-        "starts": 1,
-        "avg_ttff_ms": 6135
+        "starts": 50,
+        "avg_ttff_ms": 2003
       }
     ],
     "engagement": {
-      "sessions": 16,
-      "avg_channels": 2.5,
-      "avg_session_sec": 138,
-      "bounce_pct": 62.5,
-      "zap_pct": 32.6
+      "sessions": 15,
+      "avg_channels": 5.2,
+      "avg_session_sec": 85,
+      "bounce_pct": 46.7,
+      "zap_pct": 59.3
     },
     "survey": {
       "very": 1,
