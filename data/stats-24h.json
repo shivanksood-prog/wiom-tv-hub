@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-19T21:34:03Z",
+  "fetched_at": "2026-08-19T21:57:48Z",
   "data": {
     "period": "24h",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 1714,
-      "total_tunes": 6874,
-      "total_watch_min": 58584.5,
-      "avg_duration_sec": 458.6
+      "unique_users": 1707,
+      "total_tunes": 6866,
+      "total_watch_min": 58583.2,
+      "avg_duration_sec": 459.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1701,
-        "unique_users": 1260,
-        "watch_min": 1309.3
+        "tunes": 1698,
+        "unique_users": 1256,
+        "watch_min": 1308.8
       },
       {
         "ch": 48,
@@ -96,9 +96,9 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 236,
-        "unique_users": 199,
-        "watch_min": 77.4
+        "tunes": 235,
+        "unique_users": 198,
+        "watch_min": 77.3
       },
       {
         "ch": 53,
@@ -114,8 +114,8 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 189,
-        "unique_users": 158,
+        "tunes": 188,
+        "unique_users": 157,
         "watch_min": 69.8
       },
       {
@@ -141,9 +141,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 109,
-        "unique_users": 75,
-        "watch_min": 60.8
+        "tunes": 106,
+        "unique_users": 74,
+        "watch_min": 60.1
       },
       {
         "ch": 231,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 3737,
-        "unique_users": 1357,
-        "watch_min": 3268.5
+        "tunes": 3732,
+        "unique_users": 1353,
+        "watch_min": 3267.8
       },
       {
         "cat": "Entertainment",
-        "tunes": 811,
-        "unique_users": 193,
-        "watch_min": 595
+        "tunes": 808,
+        "unique_users": 192,
+        "watch_min": 594.3
       },
       {
         "cat": "Devotional",
@@ -400,9 +400,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 6022,
-        "unique_users": 1466,
-        "watch_min": 3986.6
+        "tunes": 6014,
+        "unique_users": 1461,
+        "watch_min": 3985.2
       },
       {
         "lang": "English",
@@ -436,11 +436,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-18 21:00",
-        "users": 8,
-        "tunes": 12
-      },
       {
         "hour": "2026-08-18 22:00",
         "users": 21,
@@ -558,28 +553,28 @@
       },
       {
         "hour": "2026-08-19 21:00",
-        "users": 25,
-        "tunes": 99
+        "users": 26,
+        "tunes": 103
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-18",
-        "users": 37,
-        "tunes": 212,
-        "watch_min": 53.2
+        "users": 29,
+        "tunes": 200,
+        "watch_min": 51.3
       },
       {
         "day": "2026-08-19",
-        "users": 1677,
-        "tunes": 6662,
-        "watch_min": 58531.3
+        "users": 1678,
+        "tunes": 6666,
+        "watch_min": 58531.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1667
+        "users": 1660
       },
       {
         "device": "desktop",
@@ -587,13 +582,13 @@
       }
     ],
     "funnel": {
-      "opens": 1066,
-      "playback": 814,
+      "opens": 1061,
+      "playback": 812,
       "engaged": 180
     },
     "retention": {
-      "new_users": 778,
-      "returning_users": 302
+      "new_users": 776,
+      "returning_users": 299
     },
     "errorBoard": [
       {
@@ -601,7 +596,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 73,
-        "starts": 1052
+        "starts": 1050
       },
       {
         "ch": 44,
@@ -615,7 +610,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 13,
-        "starts": 184
+        "starts": 183
       },
       {
         "ch": 118,
@@ -636,7 +631,7 @@
         "name": "ABP News",
         "cat": "News",
         "errors": 8,
-        "starts": 157
+        "starts": 156
       },
       {
         "ch": 226,
@@ -878,14 +873,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 3224,
-      "samples": 4227
+      "avg_ttff_ms": 3227,
+      "samples": 4222
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 3775,
-        "avg_ttff_ms": 2916
+        "starts": 3770,
+        "avg_ttff_ms": 2919
       },
       {
         "net": "3g",
@@ -909,10 +904,10 @@
       }
     ],
     "engagement": {
-      "sessions": 1714,
+      "sessions": 1707,
       "avg_channels": 3.2,
-      "avg_session_sec": 164,
-      "bounce_pct": 57.7,
+      "avg_session_sec": 165,
+      "bounce_pct": 57.6,
       "zap_pct": 50.2
     },
     "survey": {

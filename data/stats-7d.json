@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-19T21:34:03Z",
+  "fetched_at": "2026-08-19T21:57:48Z",
   "data": {
     "period": "7d",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 26111,
-      "total_tunes": 75274,
-      "total_watch_min": 1205026.8,
-      "avg_duration_sec": 871.3
+      "unique_users": 26099,
+      "total_tunes": 75265,
+      "total_watch_min": 1205025.9,
+      "avg_duration_sec": 871.4
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 27241,
-        "unique_users": 21237,
-        "watch_min": 15771.2
+        "tunes": 27233,
+        "unique_users": 21227,
+        "watch_min": 15770.5
       },
       {
         "ch": 40,
@@ -60,9 +60,9 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 775,
-        "unique_users": 519,
-        "watch_min": 1140.7
+        "tunes": 774,
+        "unique_users": 518,
+        "watch_min": 1140.5
       },
       {
         "ch": 48,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 45842,
-        "unique_users": 22146,
-        "watch_min": 26741.9
+        "tunes": 45834,
+        "unique_users": 22136,
+        "watch_min": 26741.2
       },
       {
         "cat": "Entertainment",
-        "tunes": 7574,
-        "unique_users": 1902,
-        "watch_min": 5640.6
+        "tunes": 7573,
+        "unique_users": 1901,
+        "watch_min": 5640.5
       },
       {
         "cat": "Devotional",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 67095,
-        "unique_users": 23216,
-        "watch_min": 38552.6
+        "tunes": 67086,
+        "unique_users": 23205,
+        "watch_min": 38551.7
       },
       {
         "lang": "English",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-12 21:00",
-        "users": 14,
-        "tunes": 13
-      },
       {
         "hour": "2026-08-12 22:00",
         "users": 23,
@@ -1284,16 +1279,16 @@
       },
       {
         "hour": "2026-08-19 21:00",
-        "users": 25,
-        "tunes": 99
+        "users": 26,
+        "tunes": 103
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-12",
-        "users": 64,
-        "tunes": 84,
-        "watch_min": 46.1
+        "users": 51,
+        "tunes": 71,
+        "watch_min": 44.7
       },
       {
         "day": "2026-08-13",
@@ -1333,29 +1328,29 @@
       },
       {
         "day": "2026-08-19",
-        "users": 1677,
-        "tunes": 6662,
-        "watch_min": 58531.3
+        "users": 1678,
+        "tunes": 6666,
+        "watch_min": 58531.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 25705
+        "users": 25693
       },
       {
         "device": "desktop",
-        "users": 177
+        "users": 176
       }
     ],
     "funnel": {
-      "opens": 11356,
+      "opens": 11354,
       "playback": 9534,
       "engaged": 1745
     },
     "retention": {
-      "new_users": 10275,
-      "returning_users": 1116
+      "new_users": 10273,
+      "returning_users": 1117
     },
     "errorBoard": [
       {
@@ -1363,7 +1358,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 863,
-        "starts": 17870
+        "starts": 17866
       },
       {
         "ch": 44,
@@ -1594,7 +1589,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 20,
-        "starts": 598
+        "starts": 597
       },
       {
         "ch": 24,
@@ -1641,13 +1636,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 6416,
-      "samples": 47974
+      "samples": 47969
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 43746,
-        "avg_ttff_ms": 6230
+        "starts": 43741,
+        "avg_ttff_ms": 6231
       },
       {
         "net": "3g",
@@ -1671,7 +1666,7 @@
       }
     ],
     "engagement": {
-      "sessions": 26111,
+      "sessions": 26099,
       "avg_channels": 2.3,
       "avg_session_sec": 106,
       "bounce_pct": 66.7,

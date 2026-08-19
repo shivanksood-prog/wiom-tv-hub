@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-19T21:34:03Z",
+  "fetched_at": "2026-08-19T21:57:48Z",
   "data": {
     "period": "1h",
-    "liveNow": 0,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 34,
-      "total_tunes": 128,
-      "total_watch_min": 151.6,
-      "avg_duration_sec": 65.4
+      "unique_users": 26,
+      "total_tunes": 103,
+      "total_watch_min": 138.6,
+      "avg_duration_sec": 73.6
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 44,
-        "unique_users": 31,
-        "watch_min": 12.7
+        "tunes": 37,
+        "unique_users": 24,
+        "watch_min": 7.8
       },
       {
         "ch": 231,
@@ -29,85 +29,22 @@
         "watch_min": 1.6
       },
       {
-        "ch": 133,
-        "name": "India Daily Live",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 7,
-        "unique_users": 4,
-        "watch_min": 0.9
-      },
-      {
-        "ch": 185,
-        "name": "Republic Bharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 5,
-        "watch_min": 0.8
-      },
-      {
         "ch": 41,
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 5,
-        "watch_min": 0.8
-      },
-      {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 5,
-        "unique_users": 4,
-        "watch_min": 0.7
-      },
-      {
-        "ch": 167,
-        "name": "News Nation",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 7,
-        "unique_users": 4,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 62,
-        "name": "ABP Ganga",
-        "cat": "News",
-        "lang": "Hindi",
         "tunes": 4,
         "unique_users": 4,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 6,
-        "unique_users": 5,
-        "watch_min": 0.4
+        "watch_min": 0.5
       },
       {
         "ch": 2,
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
+        "tunes": 1,
+        "unique_users": 1,
         "watch_min": 0.4
-      },
-      {
-        "ch": 249,
-        "name": "Zee Uttar Pradesh/Uttarakhand",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.3
       },
       {
         "ch": 213,
@@ -119,11 +56,38 @@
         "watch_min": 0.3
       },
       {
+        "ch": 185,
+        "name": "Republic Bharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 4,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 40,
+        "name": "Aaj Tak HD",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 5,
+        "unique_users": 4,
+        "watch_min": 0.3
+      },
+      {
         "ch": 251,
         "name": "Zoom",
         "cat": "Music",
         "lang": "Hindi",
         "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 249,
+        "name": "Zee Uttar Pradesh/Uttarakhand",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 3,
         "unique_users": 2,
         "watch_min": 0.2
       },
@@ -137,6 +101,15 @@
         "watch_min": 0.2
       },
       {
+        "ch": 167,
+        "name": "News Nation",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 3,
+        "watch_min": 0.2
+      },
+      {
         "ch": 132,
         "name": "IBC 24",
         "cat": "News",
@@ -146,12 +119,30 @@
         "watch_min": 0.2
       },
       {
+        "ch": 62,
+        "name": "ABP Ganga",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 3,
+        "watch_min": 0.2
+      },
+      {
         "ch": 55,
         "name": "Zee Business",
         "cat": "Business",
         "lang": "Hindi",
         "tunes": 3,
         "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 46,
+        "name": "News 24",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 3,
         "watch_min": 0.2
       },
       {
@@ -200,6 +191,15 @@
         "watch_min": 0.1
       },
       {
+        "ch": 133,
+        "name": "India Daily Live",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 3,
+        "watch_min": 0.1
+      },
+      {
         "ch": 129,
         "name": "High News",
         "cat": "News",
@@ -245,24 +245,6 @@
         "watch_min": 0.1
       },
       {
-        "ch": 5,
-        "name": "Zee Comedy Nation",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
         "ch": 245,
         "name": "Zee Delhi NCR Haryana",
         "cat": "News",
@@ -279,14 +261,32 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
+      },
+      {
+        "ch": 189,
+        "name": "Sadhna Plus News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 181,
+        "name": "PTC Simran",
+        "cat": "Devotional",
+        "lang": "Punjabi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 99,
-        "unique_users": 31,
-        "watch_min": 19.5
+        "tunes": 77,
+        "unique_users": 24,
+        "watch_min": 11.9
       },
       {
         "cat": "Music",
@@ -296,9 +296,9 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 9,
-        "unique_users": 2,
-        "watch_min": 0.8
+        "tunes": 6,
+        "unique_users": 1,
+        "watch_min": 0.6
       },
       {
         "cat": "Devotional",
@@ -334,9 +334,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 120,
-        "unique_users": 33,
-        "watch_min": 21.1
+        "tunes": 95,
+        "unique_users": 25,
+        "watch_min": 13.3
       },
       {
         "lang": "English",
@@ -365,49 +365,44 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-19 20:00",
-        "users": 9,
-        "tunes": 29
-      },
-      {
         "hour": "2026-08-19 21:00",
-        "users": 25,
-        "tunes": 99
+        "users": 26,
+        "tunes": 103
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-19",
-        "users": 34,
-        "tunes": 128,
-        "watch_min": 151.6
+        "users": 26,
+        "tunes": 103,
+        "watch_min": 138.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 34
+        "users": 26
       }
     ],
     "funnel": {
-      "opens": 20,
-      "playback": 18,
-      "engaged": 3
+      "opens": 15,
+      "playback": 13,
+      "engaged": 2
     },
     "retention": {
-      "new_users": 16,
-      "returning_users": 4
+      "new_users": 15,
+      "returning_users": 0
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1402,
-      "samples": 102
+      "avg_ttff_ms": 1280,
+      "samples": 79
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 101,
-        "avg_ttff_ms": 1385
+        "starts": 78,
+        "avg_ttff_ms": 1257
       },
       {
         "net": "unknown",
@@ -416,11 +411,11 @@
       }
     ],
     "engagement": {
-      "sessions": 34,
-      "avg_channels": 3,
-      "avg_session_sec": 41,
-      "bounce_pct": 47.1,
-      "zap_pct": 51.6
+      "sessions": 26,
+      "avg_channels": 3.2,
+      "avg_session_sec": 36,
+      "bounce_pct": 42.3,
+      "zap_pct": 56.3
     },
     "survey": {
       "very": null,
