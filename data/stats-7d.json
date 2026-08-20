@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-20T22:48:45Z",
+  "fetched_at": "2026-08-20T23:12:25Z",
   "data": {
     "period": "7d",
     "liveNow": 0,
     "overview": {
-      "unique_users": 22881,
-      "total_tunes": 67780,
-      "total_watch_min": 1693667.2,
-      "avg_duration_sec": 1355.6
+      "unique_users": 22879,
+      "total_tunes": 67771,
+      "total_watch_min": 1693612,
+      "avg_duration_sec": 1355.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 23660,
-        "unique_users": 18355,
-        "watch_min": 16949.2
+        "tunes": 23658,
+        "unique_users": 18354,
+        "watch_min": 16948
       },
       {
         "ch": 57,
@@ -276,17 +276,17 @@
         "name": "B4U Music",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 666,
-        "unique_users": 490,
-        "watch_min": 244.7
+        "tunes": 664,
+        "unique_users": 489,
+        "watch_min": 244.4
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 40733,
-        "unique_users": 19219,
-        "watch_min": 25709.5
+        "tunes": 40731,
+        "unique_users": 19218,
+        "watch_min": 25708.4
       },
       {
         "cat": "Entertainment",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 7388,
-        "unique_users": 1930,
-        "watch_min": 2894.7
+        "tunes": 7381,
+        "unique_users": 1927,
+        "watch_min": 2893.8
       },
       {
         "cat": "Movies",
@@ -406,21 +406,21 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 60334,
-        "unique_users": 20274,
-        "watch_min": 37944.3
+        "tunes": 60329,
+        "unique_users": 20272,
+        "watch_min": 37942.8
       },
       {
         "lang": "English",
-        "tunes": 2426,
-        "unique_users": 1141,
-        "watch_min": 1520.5
+        "tunes": 2423,
+        "unique_users": 1139,
+        "watch_min": 1520
       },
       {
         "lang": "Punjabi",
-        "tunes": 2444,
-        "unique_users": 1125,
-        "watch_min": 1182.5
+        "tunes": 2443,
+        "unique_users": 1124,
+        "watch_min": 1182.4
       },
       {
         "lang": "Bhojpuri",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-13 22:00",
-        "users": 1,
-        "tunes": 0
-      },
-      {
         "hour": "2026-08-13 23:00",
-        "users": 10,
-        "tunes": 18
+        "users": 5,
+        "tunes": 5
       },
       {
         "hour": "2026-08-14 00:00",
@@ -1284,16 +1279,16 @@
       },
       {
         "hour": "2026-08-20 22:00",
-        "users": 4,
-        "tunes": 8
+        "users": 8,
+        "tunes": 12
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-13",
-        "users": 11,
-        "tunes": 18,
-        "watch_min": 56.4
+        "users": 5,
+        "tunes": 5,
+        "watch_min": 0.7
       },
       {
         "day": "2026-08-14",
@@ -1333,15 +1328,15 @@
       },
       {
         "day": "2026-08-20",
-        "users": 1467,
-        "tunes": 5611,
-        "watch_min": 573847.7
+        "users": 1471,
+        "tunes": 5615,
+        "watch_min": 573848.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 22507
+        "users": 22505
       },
       {
         "device": "desktop",
@@ -1350,7 +1345,7 @@
     ],
     "funnel": {
       "opens": 10291,
-      "playback": 8605,
+      "playback": 8603,
       "engaged": 1616
     },
     "retention": {
@@ -1363,7 +1358,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 742,
-        "starts": 15529
+        "starts": 15527
       },
       {
         "ch": 44,
@@ -1468,7 +1463,7 @@
         "name": "B4U Music",
         "cat": "Music",
         "errors": 28,
-        "starts": 390
+        "starts": 389
       },
       {
         "ch": 57,
@@ -1559,14 +1554,14 @@
         "name": "YRF Music",
         "cat": "Music",
         "errors": 19,
-        "starts": 249
+        "starts": 248
       },
       {
         "ch": 212,
         "name": "Stingray Easy Listening",
         "cat": "Music",
         "errors": 18,
-        "starts": 223
+        "starts": 221
       },
       {
         "ch": 32,
@@ -1615,7 +1610,7 @@
         "name": "Punjabi Hits",
         "cat": "Music",
         "errors": 17,
-        "starts": 401
+        "starts": 400
       },
       {
         "ch": 24,
@@ -1641,13 +1636,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 7088,
-      "samples": 43247
+      "samples": 43239
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 39305,
-        "avg_ttff_ms": 7011
+        "starts": 39297,
+        "avg_ttff_ms": 7012
       },
       {
         "net": "3g",
@@ -1671,7 +1666,7 @@
       }
     ],
     "engagement": {
-      "sessions": 22881,
+      "sessions": 22879,
       "avg_channels": 2.4,
       "avg_session_sec": 119,
       "bounce_pct": 65.6,
