@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-20T20:50:06Z",
+  "fetched_at": "2026-08-20T21:16:46Z",
   "data": {
     "period": "30d",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
       "unique_users": 84053,
-      "total_tunes": 244695,
-      "total_watch_min": 4182739.3,
+      "total_tunes": 244696,
+      "total_watch_min": 4182643.3,
       "avg_duration_sec": 930.8
     },
     "channelLeaderboard": [
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8182,
-        "unique_users": 6393,
-        "watch_min": 5123.7
+        "tunes": 8183,
+        "unique_users": 6394,
+        "watch_min": 5123.9
       },
       {
         "ch": 29,
@@ -132,18 +132,9 @@
         "name": "Aastha Bhajan",
         "cat": "Devotional",
         "lang": "Hindi",
-        "tunes": 945,
-        "unique_users": 810,
+        "tunes": 946,
+        "unique_users": 811,
         "watch_min": 1628.7
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1936,
-        "unique_users": 1584,
-        "watch_min": 1513.1
       },
       {
         "ch": 30,
@@ -153,6 +144,15 @@
         "tunes": 2645,
         "unique_users": 2101,
         "watch_min": 1460.3
+      },
+      {
+        "ch": 44,
+        "name": "NDTV India",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1934,
+        "unique_users": 1583,
+        "watch_min": 1418.6
       },
       {
         "ch": 5,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 127715,
-        "unique_users": 58928,
-        "watch_min": 74563.3
+        "tunes": 127710,
+        "unique_users": 58926,
+        "watch_min": 74466.7
       },
       {
         "cat": "Entertainment",
-        "tunes": 34351,
-        "unique_users": 10304,
-        "watch_min": 18193.7
+        "tunes": 34352,
+        "unique_users": 10305,
+        "watch_min": 18193.9
       },
       {
         "cat": "Music",
-        "tunes": 33718,
-        "unique_users": 10818,
-        "watch_min": 15142.6
+        "tunes": 33721,
+        "unique_users": 10821,
+        "watch_min": 15142.9
       },
       {
         "cat": "Movies",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 15046,
-        "unique_users": 3729,
-        "watch_min": 8170.4
+        "tunes": 15047,
+        "unique_users": 3730,
+        "watch_min": 8170.5
       },
       {
         "cat": "DD",
@@ -356,8 +356,8 @@
       },
       {
         "cat": "Classic",
-        "tunes": 837,
-        "unique_users": 643,
+        "tunes": 838,
+        "unique_users": 644,
         "watch_min": 113.5
       },
       {
@@ -406,14 +406,14 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 210105,
-        "unique_users": 73556,
-        "watch_min": 116033.9
+        "tunes": 210107,
+        "unique_users": 73558,
+        "watch_min": 115937.9
       },
       {
         "lang": "English",
-        "tunes": 10442,
-        "unique_users": 4271,
+        "tunes": 10441,
+        "unique_users": 4270,
         "watch_min": 4535.2
       },
       {
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-21 20:00",
-        "users": 1,
-        "tunes": 3
-      },
-      {
         "hour": "2026-07-21 21:00",
-        "users": 15,
-        "tunes": 57
+        "users": 11,
+        "tunes": 54
       },
       {
         "hour": "2026-07-21 22:00",
@@ -4029,16 +4024,21 @@
       },
       {
         "hour": "2026-08-20 20:00",
-        "users": 25,
-        "tunes": 60
+        "users": 27,
+        "tunes": 62
+      },
+      {
+        "hour": "2026-08-20 21:00",
+        "users": 3,
+        "tunes": 5
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-21",
-        "users": 24,
-        "tunes": 153,
-        "watch_min": 159.5
+        "users": 19,
+        "tunes": 147,
+        "watch_min": 62.9
       },
       {
         "day": "2026-07-22",
@@ -4216,9 +4216,9 @@
       },
       {
         "day": "2026-08-20",
-        "users": 1446,
-        "tunes": 5574,
-        "watch_min": 573838.4
+        "users": 1451,
+        "tunes": 5581,
+        "watch_min": 573839.1
       }
     ],
     "deviceBreakdown": [
@@ -4232,12 +4232,12 @@
       }
     ],
     "funnel": {
-      "opens": 34744,
-      "playback": 29830,
-      "engaged": 5295
+      "opens": 34745,
+      "playback": 29829,
+      "engaged": 5293
     },
     "retention": {
-      "new_users": 34147,
+      "new_users": 34148,
       "returning_users": 697
     },
     "errorBoard": [
@@ -4281,7 +4281,7 @@
         "name": "NDTV India",
         "cat": "News",
         "errors": 388,
-        "starts": 1140
+        "starts": 1139
       },
       {
         "ch": 40,
@@ -4421,7 +4421,7 @@
         "name": "Times Now Navbharat",
         "cat": "News",
         "errors": 87,
-        "starts": 1117
+        "starts": 1116
       },
       {
         "ch": 52,
@@ -4523,8 +4523,8 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6703,
-      "samples": 155495
+      "avg_ttff_ms": 6667,
+      "samples": 155494
     },
     "netBreakdown": [
       {
@@ -4544,8 +4544,8 @@
       },
       {
         "net": "2g",
-        "starts": 585,
-        "avg_ttff_ms": 15791
+        "starts": 584,
+        "avg_ttff_ms": 6118
       },
       {
         "net": "slow-2g",
