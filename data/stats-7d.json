@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-20T21:48:13Z",
+  "fetched_at": "2026-08-20T22:11:42Z",
   "data": {
     "period": "7d",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 22899,
-      "total_tunes": 67801,
-      "total_watch_min": 1693704,
-      "avg_duration_sec": 1355.2
+      "unique_users": 22890,
+      "total_tunes": 67788,
+      "total_watch_min": 1693669.6,
+      "avg_duration_sec": 1355.5
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 23675,
-        "unique_users": 18369,
-        "watch_min": 16952.9
+        "tunes": 23667,
+        "unique_users": 18362,
+        "watch_min": 16951.5
       },
       {
         "ch": 57,
@@ -51,9 +51,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1101,
-        "unique_users": 833,
-        "watch_min": 1291.4
+        "tunes": 1100,
+        "unique_users": 832,
+        "watch_min": 1290.9
       },
       {
         "ch": 48,
@@ -87,8 +87,8 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 511,
-        "unique_users": 379,
+        "tunes": 510,
+        "unique_users": 378,
         "watch_min": 821
       },
       {
@@ -222,18 +222,18 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 580,
-        "unique_users": 421,
-        "watch_min": 328
+        "tunes": 579,
+        "unique_users": 420,
+        "watch_min": 327.9
       },
       {
         "ch": 32,
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "lang": "Bhojpuri",
-        "tunes": 573,
-        "unique_users": 445,
-        "watch_min": 303.1
+        "tunes": 572,
+        "unique_users": 444,
+        "watch_min": 302.9
       },
       {
         "ch": 24,
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 40747,
-        "unique_users": 19233,
-        "watch_min": 25713.2
+        "tunes": 40739,
+        "unique_users": 19226,
+        "watch_min": 25711.8
       },
       {
         "cat": "Entertainment",
-        "tunes": 7093,
-        "unique_users": 1834,
-        "watch_min": 5241.2
+        "tunes": 7089,
+        "unique_users": 1833,
+        "watch_min": 5240.6
       },
       {
         "cat": "Devotional",
@@ -302,9 +302,9 @@
       },
       {
         "cat": "Music",
-        "tunes": 7389,
-        "unique_users": 1931,
-        "watch_min": 2895
+        "tunes": 7388,
+        "unique_users": 1930,
+        "watch_min": 2894.7
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 60354,
-        "unique_users": 20290,
-        "watch_min": 37948.7
+        "tunes": 60342,
+        "unique_users": 20282,
+        "watch_min": 37946.7
       },
       {
         "lang": "English",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1472,
-        "unique_users": 846,
-        "watch_min": 628.1
+        "tunes": 1471,
+        "unique_users": 845,
+        "watch_min": 627.9
       },
       {
         "lang": "Marathi",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-13 21:00",
-        "users": 8,
-        "tunes": 9
-      },
-      {
         "hour": "2026-08-13 22:00",
-        "users": 14,
-        "tunes": 20
+        "users": 13,
+        "tunes": 15
       },
       {
         "hour": "2026-08-13 23:00",
@@ -1286,14 +1281,19 @@
         "hour": "2026-08-20 21:00",
         "users": 15,
         "tunes": 27
+      },
+      {
+        "hour": "2026-08-20 22:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-13",
-        "users": 32,
-        "tunes": 47,
-        "watch_min": 86.2
+        "users": 23,
+        "tunes": 33,
+        "watch_min": 59.5
       },
       {
         "day": "2026-08-14",
@@ -1333,15 +1333,15 @@
       },
       {
         "day": "2026-08-20",
-        "users": 1463,
-        "tunes": 5603,
-        "watch_min": 573846.8
+        "users": 1464,
+        "tunes": 5604,
+        "watch_min": 573846.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 22524
+        "users": 22516
       },
       {
         "device": "desktop",
@@ -1349,12 +1349,12 @@
       }
     ],
     "funnel": {
-      "opens": 10298,
-      "playback": 8612,
+      "opens": 10295,
+      "playback": 8609,
       "engaged": 1617
     },
     "retention": {
-      "new_users": 9197,
+      "new_users": 9193,
       "returning_users": 1138
     },
     "errorBoard": [
@@ -1363,7 +1363,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 742,
-        "starts": 15542
+        "starts": 15538
       },
       {
         "ch": 44,
@@ -1412,7 +1412,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 48,
-        "starts": 826
+        "starts": 825
       },
       {
         "ch": 106,
@@ -1573,7 +1573,7 @@
         "name": "B4U Bhojpuri",
         "cat": "Music",
         "errors": 18,
-        "starts": 308
+        "starts": 307
       },
       {
         "ch": 245,
@@ -1640,19 +1640,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 7086,
-      "samples": 43263
+      "avg_ttff_ms": 7087,
+      "samples": 43256
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 39319,
-        "avg_ttff_ms": 7009
+        "starts": 39313,
+        "avg_ttff_ms": 7010
       },
       {
         "net": "3g",
-        "starts": 2675,
-        "avg_ttff_ms": 9134
+        "starts": 2674,
+        "avg_ttff_ms": 9136
       },
       {
         "net": "unknown",
@@ -1671,7 +1671,7 @@
       }
     ],
     "engagement": {
-      "sessions": 22898,
+      "sessions": 22890,
       "avg_channels": 2.4,
       "avg_session_sec": 119,
       "bounce_pct": 65.6,

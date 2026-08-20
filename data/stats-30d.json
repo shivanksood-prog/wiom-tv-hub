@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-20T21:48:13Z",
+  "fetched_at": "2026-08-20T22:11:42Z",
   "data": {
     "period": "30d",
-    "liveNow": 1,
+    "liveNow": 0,
     "overview": {
       "unique_users": 84056,
-      "total_tunes": 244686,
-      "total_watch_min": 4182631.8,
-      "avg_duration_sec": 930.8
+      "total_tunes": 244659,
+      "total_watch_min": 4182615.5,
+      "avg_duration_sec": 930.9
     },
     "channelLeaderboard": [
       {
@@ -15,8 +15,8 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 64714,
-        "unique_users": 50557,
+        "tunes": 64715,
+        "unique_users": 50558,
         "watch_min": 38591.8
       },
       {
@@ -42,9 +42,9 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 8179,
+        "tunes": 8177,
         "unique_users": 6391,
-        "watch_min": 5123.6
+        "watch_min": 5123.3
       },
       {
         "ch": 29,
@@ -105,9 +105,9 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2517,
+        "tunes": 2514,
         "unique_users": 1848,
-        "watch_min": 1918.3
+        "watch_min": 1917.7
       },
       {
         "ch": 57,
@@ -159,9 +159,9 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2197,
+        "tunes": 2194,
         "unique_users": 1629,
-        "watch_min": 1291.1
+        "watch_min": 1278.5
       },
       {
         "ch": 48,
@@ -186,7 +186,7 @@
         "name": "Zee Dil Se",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1428,
+        "tunes": 1427,
         "unique_users": 1125,
         "watch_min": 1097.5
       },
@@ -195,9 +195,9 @@
         "name": "NK TV 24x7",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 354,
-        "unique_users": 295,
-        "watch_min": 1073.6
+        "tunes": 353,
+        "unique_users": 294,
+        "watch_min": 1073.5
       },
       {
         "ch": 32,
@@ -231,9 +231,9 @@
         "name": "Zee South Flix",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1793,
+        "tunes": 1791,
         "unique_users": 1352,
-        "watch_min": 961.9
+        "watch_min": 961.3
       },
       {
         "ch": 232,
@@ -249,9 +249,9 @@
         "name": "Hindi Khabar",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 342,
-        "unique_users": 299,
-        "watch_min": 869.5
+        "tunes": 341,
+        "unique_users": 298,
+        "watch_min": 869.3
       },
       {
         "ch": 34,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 127724,
+        "tunes": 127715,
         "unique_users": 58933,
-        "watch_min": 74471.3
+        "watch_min": 74470.3
       },
       {
         "cat": "Entertainment",
-        "tunes": 34328,
+        "tunes": 34314,
         "unique_users": 10302,
-        "watch_min": 18191.5
+        "watch_min": 18177.4
       },
       {
         "cat": "Music",
-        "tunes": 33719,
+        "tunes": 33718,
         "unique_users": 10820,
-        "watch_min": 15138.5
+        "watch_min": 15138.3
       },
       {
         "cat": "Movies",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 15051,
-        "unique_users": 3731,
-        "watch_min": 8170.7
+        "tunes": 15050,
+        "unique_users": 3730,
+        "watch_min": 8170.5
       },
       {
         "cat": "DD",
@@ -356,9 +356,9 @@
       },
       {
         "cat": "Classic",
-        "tunes": 838,
-        "unique_users": 644,
-        "watch_min": 113.5
+        "tunes": 836,
+        "unique_users": 643,
+        "watch_min": 113.1
       },
       {
         "cat": "Sports",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 210103,
-        "unique_users": 73563,
-        "watch_min": 115938.6
+        "tunes": 210079,
+        "unique_users": 73564,
+        "watch_min": 115922.9
       },
       {
         "lang": "English",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Punjabi",
-        "tunes": 11363,
+        "tunes": 11360,
         "unique_users": 4825,
-        "watch_min": 4114.9
+        "watch_min": 4114.6
       },
       {
         "lang": "Marathi",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-07-21 21:00",
-        "users": 2,
-        "tunes": 22
-      },
-      {
         "hour": "2026-07-21 22:00",
         "users": 4,
-        "tunes": 76
+        "tunes": 70
       },
       {
         "hour": "2026-07-21 23:00",
@@ -4031,14 +4026,19 @@
         "hour": "2026-08-20 21:00",
         "users": 15,
         "tunes": 27
+      },
+      {
+        "hour": "2026-08-20 22:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-07-21",
-        "users": 10,
-        "tunes": 115,
-        "watch_min": 43.6
+        "users": 9,
+        "tunes": 87,
+        "watch_min": 27.2
       },
       {
         "day": "2026-07-22",
@@ -4216,15 +4216,15 @@
       },
       {
         "day": "2026-08-20",
-        "users": 1463,
-        "tunes": 5603,
-        "watch_min": 573846.8
+        "users": 1464,
+        "tunes": 5604,
+        "watch_min": 573846.9
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 82592
+        "users": 82591
       },
       {
         "device": "desktop",
@@ -4232,12 +4232,12 @@
       }
     ],
     "funnel": {
-      "opens": 34747,
-      "playback": 29833,
+      "opens": 34746,
+      "playback": 29834,
       "engaged": 5294
     },
     "retention": {
-      "new_users": 34151,
+      "new_users": 34150,
       "returning_users": 696
     },
     "errorBoard": [
@@ -4246,7 +4246,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 1996,
-        "starts": 42630
+        "starts": 42631
       },
       {
         "ch": 10,
@@ -4323,7 +4323,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 258,
-        "starts": 6042
+        "starts": 6040
       },
       {
         "ch": 118,
@@ -4477,7 +4477,7 @@
         "name": "Zee Cine Classic",
         "cat": "Entertainment",
         "errors": 77,
-        "starts": 1897
+        "starts": 1895
       },
       {
         "ch": 25,
@@ -4519,18 +4519,18 @@
         "name": "ZillarBarta News",
         "cat": "Classic",
         "errors": 66,
-        "starts": 320
+        "starts": 319
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6667,
-      "samples": 155486
+      "avg_ttff_ms": 6668,
+      "samples": 155461
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 140646,
-        "avg_ttff_ms": 6492
+        "starts": 140621,
+        "avg_ttff_ms": 6493
       },
       {
         "net": "3g",
@@ -4563,8 +4563,8 @@
     "survey": {
       "very": 253,
       "somewhat": 54,
-      "not_disappointed": 77,
-      "responses": 384
+      "not_disappointed": 76,
+      "responses": 383
     }
   }
 }

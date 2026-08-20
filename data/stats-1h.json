@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-20T21:48:13Z",
+  "fetched_at": "2026-08-20T22:11:42Z",
   "data": {
     "period": "1h",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 18,
-      "total_tunes": 30,
-      "total_watch_min": 8.6,
-      "avg_duration_sec": 17.1
+      "unique_users": 13,
+      "total_tunes": 23,
+      "total_watch_min": 7.8,
+      "avg_duration_sec": 20.5
     },
     "channelLeaderboard": [
       {
@@ -29,15 +29,6 @@
         "watch_min": 2.6
       },
       {
-        "ch": 251,
-        "name": "Zoom",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
@@ -45,24 +36,6 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.2
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 250,
-        "name": "ZillarBarta News",
-        "cat": "Classic",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
       },
       {
         "ch": 228,
@@ -92,33 +65,6 @@
         "watch_min": 0.1
       },
       {
-        "ch": 38,
-        "name": "ZB Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 249,
-        "name": "Zee Uttar Pradesh/Uttarakhand",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
-        "ch": 58,
-        "name": "Aastha Bhajan",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0
-      },
-      {
         "ch": 57,
         "name": "Aastha",
         "cat": "Devotional",
@@ -131,9 +77,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 18,
-        "unique_users": 11,
-        "watch_min": 5.2
+        "tunes": 17,
+        "unique_users": 10,
+        "watch_min": 5.1
       },
       {
         "cat": "Business",
@@ -142,83 +88,65 @@
         "watch_min": 2.6
       },
       {
-        "cat": "Music",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Entertainment",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
         "cat": "Devotional",
-        "tunes": 5,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "cat": "Classic",
-        "tunes": 1,
+        "tunes": 4,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.2
       }
     ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 30,
-        "unique_users": 15,
-        "watch_min": 8.6
+        "tunes": 23,
+        "unique_users": 11,
+        "watch_min": 7.8
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-20 20:00",
-        "users": 3,
-        "tunes": 3
+        "hour": "2026-08-20 21:00",
+        "users": 12,
+        "tunes": 22
       },
       {
-        "hour": "2026-08-20 21:00",
-        "users": 15,
-        "tunes": 27
+        "hour": "2026-08-20 22:00",
+        "users": 1,
+        "tunes": 1
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-20",
-        "users": 18,
-        "tunes": 30,
-        "watch_min": 8.6
+        "users": 13,
+        "tunes": 23,
+        "watch_min": 7.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 17
+        "users": 13
       }
     ],
     "funnel": {
-      "opens": 10,
-      "playback": 9,
+      "opens": 8,
+      "playback": 8,
       "engaged": 2
     },
     "retention": {
-      "new_users": 8,
+      "new_users": 6,
       "returning_users": 2
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1817,
-      "samples": 20
+      "avg_ttff_ms": 2056,
+      "samples": 19
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 16,
-        "avg_ttff_ms": 1853
+        "starts": 15,
+        "avg_ttff_ms": 2158
       },
       {
         "net": "3g",
@@ -227,11 +155,11 @@
       }
     ],
     "engagement": {
-      "sessions": 18,
-      "avg_channels": 1.3,
-      "avg_session_sec": 32,
-      "bounce_pct": 66.7,
-      "zap_pct": 46.7
+      "sessions": 13,
+      "avg_channels": 1.2,
+      "avg_session_sec": 42,
+      "bounce_pct": 61.5,
+      "zap_pct": 43.5
     },
     "survey": {
       "very": null,
