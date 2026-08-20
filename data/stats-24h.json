@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-20T21:16:46Z",
+  "fetched_at": "2026-08-20T21:48:13Z",
   "data": {
     "period": "24h",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
       "unique_users": 1487,
-      "total_tunes": 5723,
-      "total_watch_min": 574041.5,
-      "avg_duration_sec": 5383.3
+      "total_tunes": 5711,
+      "total_watch_min": 573951.7,
+      "avg_duration_sec": 5395.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1509,
-        "unique_users": 1088,
-        "watch_min": 2935.5
+        "tunes": 1505,
+        "unique_users": 1086,
+        "watch_min": 2935
       },
       {
         "ch": 248,
@@ -42,8 +42,8 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 258,
-        "unique_users": 196,
+        "tunes": 256,
+        "unique_users": 195,
         "watch_min": 341.3
       },
       {
@@ -114,18 +114,18 @@
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 185,
-        "unique_users": 148,
-        "watch_min": 37.6
+        "tunes": 184,
+        "unique_users": 147,
+        "watch_min": 37.5
       },
       {
         "ch": 185,
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 152,
-        "unique_users": 114,
-        "watch_min": 32.9
+        "tunes": 151,
+        "unique_users": 113,
+        "watch_min": 32.8
       },
       {
         "ch": 118,
@@ -150,9 +150,9 @@
         "name": "ABP Ganga",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 108,
-        "unique_users": 85,
-        "watch_min": 24.5
+        "tunes": 106,
+        "unique_users": 83,
+        "watch_min": 24.4
       },
       {
         "ch": 95,
@@ -186,9 +186,9 @@
         "name": "News 24",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 112,
-        "unique_users": 91,
-        "watch_min": 22.4
+        "tunes": 110,
+        "unique_users": 89,
+        "watch_min": 22.3
       },
       {
         "ch": 245,
@@ -231,9 +231,9 @@
         "name": "Aastha",
         "cat": "Devotional",
         "lang": "Hindi",
-        "tunes": 55,
-        "unique_users": 50,
-        "watch_min": 17.6
+        "tunes": 56,
+        "unique_users": 51,
+        "watch_min": 17.7
       },
       {
         "ch": 119,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 3175,
-        "unique_users": 1156,
-        "watch_min": 4265.2
+        "tunes": 3157,
+        "unique_users": 1153,
+        "watch_min": 4263.9
       },
       {
         "cat": "Music",
@@ -314,9 +314,9 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 391,
-        "unique_users": 112,
-        "watch_min": 45.8
+        "tunes": 395,
+        "unique_users": 113,
+        "watch_min": 45.9
       },
       {
         "cat": "DD",
@@ -326,9 +326,9 @@
       },
       {
         "cat": "Business",
-        "tunes": 66,
-        "unique_users": 43,
-        "watch_min": 6
+        "tunes": 68,
+        "unique_users": 44,
+        "watch_min": 8.6
       },
       {
         "cat": "Undefined",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 4963,
-        "unique_users": 1254,
-        "watch_min": 4718.2
+        "tunes": 4951,
+        "unique_users": 1252,
+        "watch_min": 4719.7
       },
       {
         "lang": "Punjabi",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-19 21:00",
-        "users": 14,
-        "tunes": 39
+        "users": 2,
+        "tunes": 5
       },
       {
         "hour": "2026-08-19 22:00",
@@ -564,28 +564,28 @@
       },
       {
         "hour": "2026-08-20 21:00",
-        "users": 3,
-        "tunes": 5
+        "users": 15,
+        "tunes": 27
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-19",
-        "users": 36,
-        "tunes": 142,
-        "watch_min": 202.5
+        "users": 24,
+        "tunes": 108,
+        "watch_min": 104.8
       },
       {
         "day": "2026-08-20",
-        "users": 1451,
-        "tunes": 5581,
-        "watch_min": 573839.1
+        "users": 1463,
+        "tunes": 5603,
+        "watch_min": 573846.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1451
+        "users": 1453
       },
       {
         "device": "desktop",
@@ -593,13 +593,13 @@
       }
     ],
     "funnel": {
-      "opens": 968,
-      "playback": 736,
-      "engaged": 161
+      "opens": 970,
+      "playback": 738,
+      "engaged": 162
     },
     "retention": {
-      "new_users": 740,
-      "returning_users": 238
+      "new_users": 743,
+      "returning_users": 236
     },
     "errorBoard": [
       {
@@ -621,7 +621,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 6,
-        "starts": 213
+        "starts": 211
       },
       {
         "ch": 49,
@@ -642,7 +642,7 @@
         "name": "News 24",
         "cat": "News",
         "errors": 5,
-        "starts": 59
+        "starts": 57
       },
       {
         "ch": 25,
@@ -670,7 +670,7 @@
         "name": "Zee Business",
         "cat": "Business",
         "errors": 4,
-        "starts": 24
+        "starts": 25
       },
       {
         "ch": 2,
@@ -684,14 +684,14 @@
         "name": "Republic Bharat",
         "cat": "News",
         "errors": 4,
-        "starts": 105
+        "starts": 104
       },
       {
         "ch": 41,
         "name": "ABP News",
         "cat": "News",
         "errors": 4,
-        "starts": 164
+        "starts": 163
       },
       {
         "ch": 4,
@@ -747,7 +747,7 @@
         "name": "Zee Uttar Pradesh/Uttarakhand",
         "cat": "News",
         "errors": 3,
-        "starts": 29
+        "starts": 28
       },
       {
         "ch": 241,
@@ -782,7 +782,7 @@
         "name": "ABP Ganga",
         "cat": "News",
         "errors": 3,
-        "starts": 94
+        "starts": 93
       },
       {
         "ch": 165,
@@ -884,19 +884,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8407,
-      "samples": 3594
+      "avg_ttff_ms": 8423,
+      "samples": 3587
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 3077,
-        "avg_ttff_ms": 8801
+        "starts": 3066,
+        "avg_ttff_ms": 8829
       },
       {
         "net": "3g",
-        "starts": 258,
-        "avg_ttff_ms": 9411
+        "starts": 262,
+        "avg_ttff_ms": 9293
       },
       {
         "net": "unknown",
@@ -918,7 +918,7 @@
       "sessions": 1487,
       "avg_channels": 3,
       "avg_session_sec": 162,
-      "bounce_pct": 58.1,
+      "bounce_pct": 58.3,
       "zap_pct": 50.4
     },
     "survey": {
