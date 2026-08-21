@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-21T22:57:57Z",
+  "fetched_at": "2026-08-21T23:31:00Z",
   "data": {
     "period": "7d",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 19924,
-      "total_tunes": 62947,
-      "total_watch_min": 1369065.3,
-      "avg_duration_sec": 1179.5
+      "unique_users": 19912,
+      "total_tunes": 62932,
+      "total_watch_min": 1369035.9,
+      "avg_duration_sec": 1179.8
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 20416,
-        "unique_users": 15672,
-        "watch_min": 15013.9
+        "tunes": 20410,
+        "unique_users": 15666,
+        "watch_min": 15012.9
       },
       {
         "ch": 57,
@@ -33,18 +33,18 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 1097,
-        "unique_users": 830,
-        "watch_min": 1424.1
+        "tunes": 1096,
+        "unique_users": 829,
+        "watch_min": 1423.6
       },
       {
         "ch": 40,
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2381,
-        "unique_users": 1895,
-        "watch_min": 1390
+        "tunes": 2379,
+        "unique_users": 1893,
+        "watch_min": 1389.8
       },
       {
         "ch": 118,
@@ -78,9 +78,9 @@
         "name": "Dangal 2",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 507,
-        "unique_users": 382,
-        "watch_min": 836.9
+        "tunes": 506,
+        "unique_users": 381,
+        "watch_min": 836.8
       },
       {
         "ch": 7,
@@ -240,9 +240,9 @@
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 573,
-        "unique_users": 420,
-        "watch_min": 289.7
+        "tunes": 570,
+        "unique_users": 418,
+        "watch_min": 289.4
       },
       {
         "ch": 73,
@@ -284,21 +284,21 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 36964,
-        "unique_users": 16501,
-        "watch_min": 24708.2
+        "tunes": 36956,
+        "unique_users": 16494,
+        "watch_min": 24707
       },
       {
         "cat": "Entertainment",
-        "tunes": 6817,
-        "unique_users": 1796,
-        "watch_min": 5036.7
+        "tunes": 6812,
+        "unique_users": 1794,
+        "watch_min": 5035.8
       },
       {
         "cat": "Devotional",
-        "tunes": 4381,
-        "unique_users": 1134,
-        "watch_min": 3474.9
+        "tunes": 4380,
+        "unique_users": 1133,
+        "watch_min": 3474.3
       },
       {
         "cat": "Music",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 3934,
-        "unique_users": 1433,
-        "watch_min": 2553.8
+        "tunes": 3933,
+        "unique_users": 1432,
+        "watch_min": 2553.6
       },
       {
         "cat": "DD",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 55765,
-        "unique_users": 17540,
-        "watch_min": 36249.2
+        "tunes": 55751,
+        "unique_users": 17530,
+        "watch_min": 36246.4
       },
       {
         "lang": "English",
@@ -424,9 +424,9 @@
       },
       {
         "lang": "Bhojpuri",
-        "tunes": 1468,
-        "unique_users": 817,
-        "watch_min": 380.8
+        "tunes": 1467,
+        "unique_users": 816,
+        "watch_min": 380.6
       },
       {
         "lang": "Marathi",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-14 22:00",
-        "users": 5,
-        "tunes": 4
-      },
-      {
         "hour": "2026-08-14 23:00",
-        "users": 18,
-        "tunes": 20
+        "users": 5,
+        "tunes": 3
       },
       {
         "hour": "2026-08-15 00:00",
@@ -1286,14 +1281,19 @@
         "hour": "2026-08-21 22:00",
         "users": 8,
         "tunes": 141
+      },
+      {
+        "hour": "2026-08-21 23:00",
+        "users": 6,
+        "tunes": 6
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-14",
-        "users": 23,
-        "tunes": 24,
-        "watch_min": 31.3
+        "users": 5,
+        "tunes": 3,
+        "watch_min": 0.7
       },
       {
         "day": "2026-08-15",
@@ -1333,15 +1333,15 @@
       },
       {
         "day": "2026-08-21",
-        "users": 1551,
-        "tunes": 7274,
-        "watch_min": 48236.9
+        "users": 1557,
+        "tunes": 7280,
+        "watch_min": 48238
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 19577
+        "users": 19566
       },
       {
         "device": "desktop",
@@ -1349,13 +1349,13 @@
       }
     ],
     "funnel": {
-      "opens": 9356,
-      "playback": 7721,
+      "opens": 9349,
+      "playback": 7714,
       "engaged": 1513
     },
     "retention": {
-      "new_users": 8219,
-      "returning_users": 1171
+      "new_users": 8215,
+      "returning_users": 1168
     },
     "errorBoard": [
       {
@@ -1363,7 +1363,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 673,
-        "starts": 13223
+        "starts": 13216
       },
       {
         "ch": 44,
@@ -1377,7 +1377,7 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "errors": 77,
-        "starts": 1961
+        "starts": 1959
       },
       {
         "ch": 185,
@@ -1405,7 +1405,7 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 53,
-        "starts": 809
+        "starts": 808
       },
       {
         "ch": 118,
@@ -1566,7 +1566,7 @@
         "name": "Bhojpuri Cinema",
         "cat": "Movies",
         "errors": 19,
-        "starts": 556
+        "starts": 555
       },
       {
         "ch": 15,
@@ -1640,19 +1640,19 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 8494,
-      "samples": 39891
+      "avg_ttff_ms": 8495,
+      "samples": 39877
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 35955,
-        "avg_ttff_ms": 8777
+        "starts": 35944,
+        "avg_ttff_ms": 8778
       },
       {
         "net": "3g",
-        "starts": 2647,
-        "avg_ttff_ms": 6366
+        "starts": 2644,
+        "avg_ttff_ms": 6358
       },
       {
         "net": "unknown",
@@ -1671,7 +1671,7 @@
       }
     ],
     "engagement": {
-      "sessions": 19923,
+      "sessions": 19912,
       "avg_channels": 2.5,
       "avg_session_sec": 137,
       "bounce_pct": 63.9,
