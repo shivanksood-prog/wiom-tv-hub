@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-21T23:31:00Z",
+  "fetched_at": "2026-08-21T23:57:00Z",
   "data": {
     "period": "30d",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
       "unique_users": 85103,
-      "total_tunes": 249149,
-      "total_watch_min": 4170836,
-      "avg_duration_sec": 911.8
+      "total_tunes": 249159,
+      "total_watch_min": 4170839.5,
+      "avg_duration_sec": 911.7
     },
     "channelLeaderboard": [
       {
@@ -60,9 +60,9 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2822,
-        "unique_users": 2045,
-        "watch_min": 2794.8
+        "tunes": 2823,
+        "unique_users": 2046,
+        "watch_min": 2795.1
       },
       {
         "ch": 24,
@@ -195,9 +195,9 @@
         "name": "B4U Music",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 2205,
-        "unique_users": 1609,
-        "watch_min": 1102.4
+        "tunes": 2207,
+        "unique_users": 1610,
+        "watch_min": 1102.7
       },
       {
         "ch": 6,
@@ -290,21 +290,21 @@
       },
       {
         "cat": "Entertainment",
-        "tunes": 34418,
-        "unique_users": 10334,
-        "watch_min": 18510.2
+        "tunes": 34420,
+        "unique_users": 10335,
+        "watch_min": 18510.9
       },
       {
         "cat": "Music",
-        "tunes": 34144,
-        "unique_users": 10882,
-        "watch_min": 15828
+        "tunes": 34149,
+        "unique_users": 10883,
+        "watch_min": 15828.9
       },
       {
         "cat": "Movies",
-        "tunes": 20125,
-        "unique_users": 8866,
-        "watch_min": 11595.9
+        "tunes": 20127,
+        "unique_users": 8867,
+        "watch_min": 11596.3
       },
       {
         "cat": "Devotional",
@@ -320,9 +320,9 @@
       },
       {
         "cat": "Undefined",
-        "tunes": 2301,
-        "unique_users": 1158,
-        "watch_min": 758.4
+        "tunes": 2302,
+        "unique_users": 1159,
+        "watch_min": 758.7
       },
       {
         "cat": "Culture",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 214250,
-        "unique_users": 74487,
-        "watch_min": 118298.8
+        "tunes": 214257,
+        "unique_users": 74488,
+        "watch_min": 118300.6
       },
       {
         "lang": "English",
-        "tunes": 10584,
-        "unique_users": 4328,
-        "watch_min": 5060.9
+        "tunes": 10587,
+        "unique_users": 4329,
+        "watch_min": 5061.5
       },
       {
         "lang": "Punjabi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-22 23:00",
-        "users": 1,
-        "tunes": 0
-      },
       {
         "hour": "2026-07-23 00:00",
         "users": 7,
@@ -4034,17 +4029,11 @@
       },
       {
         "hour": "2026-08-21 23:00",
-        "users": 6,
-        "tunes": 6
+        "users": 7,
+        "tunes": 16
       }
     ],
     "dailyTrend": [
-      {
-        "day": "2026-07-22",
-        "users": 1,
-        "tunes": 0,
-        "watch_min": 0
-      },
       {
         "day": "2026-07-23",
         "users": 504,
@@ -4221,9 +4210,9 @@
       },
       {
         "day": "2026-08-21",
-        "users": 1557,
-        "tunes": 7280,
-        "watch_min": 48238
+        "users": 1558,
+        "tunes": 7290,
+        "watch_min": 48241.5
       }
     ],
     "deviceBreakdown": [
@@ -4237,13 +4226,13 @@
       }
     ],
     "funnel": {
-      "opens": 35296,
+      "opens": 35295,
       "playback": 30266,
       "engaged": 5403
     },
     "retention": {
       "new_users": 34694,
-      "returning_users": 700
+      "returning_users": 699
     },
     "errorBoard": [
       {
@@ -4405,14 +4394,14 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 104,
-        "starts": 2043
+        "starts": 2044
       },
       {
         "ch": 84,
         "name": "B4U Music",
         "cat": "Music",
         "errors": 96,
-        "starts": 1349
+        "starts": 1350
       },
       {
         "ch": 19,
@@ -4529,13 +4518,13 @@
     ],
     "perf": {
       "avg_ttff_ms": 6933,
-      "samples": 158459
+      "samples": 158468
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 143219,
-        "avg_ttff_ms": 6791
+        "starts": 143228,
+        "avg_ttff_ms": 6790
       },
       {
         "net": "3g",

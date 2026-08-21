@@ -1,92 +1,101 @@
 {
-  "fetched_at": "2026-08-21T23:31:00Z",
+  "fetched_at": "2026-08-21T23:57:00Z",
   "data": {
     "period": "1h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 10,
-      "total_tunes": 18,
-      "total_watch_min": 19.6,
-      "avg_duration_sec": 56.1
+      "unique_users": 7,
+      "total_tunes": 16,
+      "total_watch_min": 4.6,
+      "avg_duration_sec": 13.9
     },
     "channelLeaderboard": [
-      {
-        "ch": 241,
-        "name": "YRF Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 8.1
-      },
       {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 10,
-        "unique_users": 7,
-        "watch_min": 3.3
+        "tunes": 6,
+        "unique_users": 5,
+        "watch_min": 1.1
       },
       {
-        "ch": 182,
-        "name": "Qello Concerts by Stingray",
-        "cat": "Music",
-        "lang": "English",
+        "ch": 83,
+        "name": "Aryan TV National",
+        "cat": "Undefined",
+        "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.4
       },
       {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
+        "ch": 18,
+        "name": "Desi Channel",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.4
+      },
+      {
+        "ch": 213,
+        "name": "Stingray Naturescape",
+        "cat": "Music",
+        "lang": "English",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.3
       },
       {
-        "ch": 234,
-        "name": "Ultimate TV",
+        "ch": 84,
+        "name": "B4U Music",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 1,
+        "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.3
       },
       {
-        "ch": 192,
-        "name": "Sana Plus",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 168,
-        "name": "Nireekshana TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 91,
-        "name": "Chardikla Time TV",
-        "cat": "News",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
+        "ch": 7,
+        "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 224,
+        "name": "The Movie Club +2",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 215,
+        "name": "Stingray Today's KPOP",
+        "cat": "Music",
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "ch": 216,
+        "name": "Studio One +",
+        "cat": "Movies",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 214,
+        "name": "Stingray The Spa",
+        "cat": "Music",
+        "lang": "English",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
@@ -94,107 +103,90 @@
     ],
     "categoryBreakdown": [
       {
-        "cat": "Music",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 8.7
-      },
-      {
         "cat": "News",
-        "tunes": 11,
-        "unique_users": 8,
-        "watch_min": 3.4
+        "tunes": 6,
+        "unique_users": 5,
+        "watch_min": 1.1
       },
       {
-        "cat": "Movies",
-        "tunes": 1,
+        "cat": "Music",
+        "tunes": 5,
         "unique_users": 1,
-        "watch_min": 0.3
+        "watch_min": 0.9
       },
       {
         "cat": "Entertainment",
-        "tunes": 1,
+        "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.7
       },
       {
-        "cat": "Devotional",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      }
-    ],
-    "languageBreakdown": [
-      {
-        "lang": "Hindi",
-        "tunes": 15,
-        "unique_users": 9,
-        "watch_min": 11.8
-      },
-      {
-        "lang": "English",
+        "cat": "Undefined",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.4
       },
       {
-        "lang": "Bhojpuri",
-        "tunes": 1,
+        "cat": "Movies",
+        "tunes": 2,
         "unique_users": 1,
-        "watch_min": 0.3
+        "watch_min": 0.4
+      }
+    ],
+    "languageBreakdown": [
+      {
+        "lang": "Hindi",
+        "tunes": 13,
+        "unique_users": 6,
+        "watch_min": 2.9
       },
       {
-        "lang": "Punjabi",
-        "tunes": 1,
+        "lang": "English",
+        "tunes": 3,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.6
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-21 22:00",
-        "users": 4,
-        "tunes": 12
-      },
-      {
         "hour": "2026-08-21 23:00",
-        "users": 6,
-        "tunes": 6
+        "users": 7,
+        "tunes": 16
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-21",
-        "users": 10,
-        "tunes": 18,
-        "watch_min": 19.6
+        "users": 7,
+        "tunes": 16,
+        "watch_min": 4.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 9
+        "users": 7
       }
     ],
     "funnel": {
-      "opens": 8,
-      "playback": 8,
-      "engaged": 2
+      "opens": 6,
+      "playback": 5,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 4,
-      "returning_users": 5
+      "new_users": 2,
+      "returning_users": 4
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 2566,
+      "avg_ttff_ms": 2284,
       "samples": 13
     },
     "netBreakdown": [
       {
         "net": "4g",
         "starts": 12,
-        "avg_ttff_ms": 2568
+        "avg_ttff_ms": 2263
       },
       {
         "net": "3g",
@@ -203,11 +195,11 @@
       }
     ],
     "engagement": {
-      "sessions": 10,
-      "avg_channels": 1.5,
-      "avg_session_sec": 26,
-      "bounce_pct": 60,
-      "zap_pct": 22.2
+      "sessions": 7,
+      "avg_channels": 2,
+      "avg_session_sec": 28,
+      "bounce_pct": 71.4,
+      "zap_pct": 18.8
     },
     "survey": {
       "very": null,

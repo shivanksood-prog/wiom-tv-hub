@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-21T23:31:00Z",
+  "fetched_at": "2026-08-21T23:57:00Z",
   "data": {
     "period": "24h",
-    "liveNow": 2,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 1560,
-      "total_tunes": 7282,
-      "total_watch_min": 48238.5,
-      "avg_duration_sec": 357.7
+      "unique_users": 1558,
+      "total_tunes": 7290,
+      "total_watch_min": 48241.5,
+      "avg_duration_sec": 357.2
     },
     "channelLeaderboard": [
       {
@@ -24,18 +24,18 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1558,
-        "unique_users": 1102,
-        "watch_min": 766.4
+        "tunes": 1556,
+        "unique_users": 1100,
+        "watch_min": 765.9
       },
       {
         "ch": 213,
         "name": "Stingray Naturescape",
         "cat": "Music",
         "lang": "English",
-        "tunes": 78,
-        "unique_users": 61,
-        "watch_min": 495.7
+        "tunes": 79,
+        "unique_users": 62,
+        "watch_min": 496
       },
       {
         "ch": 2,
@@ -87,9 +87,9 @@
         "name": "B4U Music",
         "cat": "Music",
         "lang": "Hindi",
-        "tunes": 78,
-        "unique_users": 59,
-        "watch_min": 70.8
+        "tunes": 80,
+        "unique_users": 60,
+        "watch_min": 71
       },
       {
         "ch": 41,
@@ -186,9 +186,9 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 80,
-        "unique_users": 70,
-        "watch_min": 27.1
+        "tunes": 81,
+        "unique_users": 71,
+        "watch_min": 27.5
       },
       {
         "ch": 119,
@@ -284,27 +284,27 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 3757,
-        "unique_users": 1198,
-        "watch_min": 2501.4
+        "tunes": 3755,
+        "unique_users": 1196,
+        "watch_min": 2500.9
       },
       {
         "cat": "Music",
-        "tunes": 974,
-        "unique_users": 227,
-        "watch_min": 811.4
+        "tunes": 979,
+        "unique_users": 228,
+        "watch_min": 812.3
       },
       {
         "cat": "Entertainment",
-        "tunes": 911,
-        "unique_users": 228,
-        "watch_min": 504.9
+        "tunes": 913,
+        "unique_users": 229,
+        "watch_min": 505.6
       },
       {
         "cat": "Movies",
-        "tunes": 474,
-        "unique_users": 172,
-        "watch_min": 154.7
+        "tunes": 476,
+        "unique_users": 173,
+        "watch_min": 155
       },
       {
         "cat": "Devotional",
@@ -332,9 +332,9 @@
       },
       {
         "cat": "Undefined",
-        "tunes": 88,
-        "unique_users": 39,
-        "watch_min": 8.9
+        "tunes": 89,
+        "unique_users": 40,
+        "watch_min": 9.3
       },
       {
         "cat": "Culture",
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 6236,
-        "unique_users": 1333,
-        "watch_min": 3472.4
+        "tunes": 6241,
+        "unique_users": 1332,
+        "watch_min": 3473.7
       },
       {
         "lang": "English",
-        "tunes": 302,
-        "unique_users": 138,
-        "watch_min": 542.4
+        "tunes": 305,
+        "unique_users": 139,
+        "watch_min": 543
       },
       {
         "lang": "Bhojpuri",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-20 23:00",
-        "users": 3,
-        "tunes": 2
-      },
       {
         "hour": "2026-08-21 00:00",
         "users": 24,
@@ -564,28 +559,22 @@
       },
       {
         "hour": "2026-08-21 23:00",
-        "users": 6,
-        "tunes": 6
+        "users": 7,
+        "tunes": 16
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-08-20",
-        "users": 3,
-        "tunes": 2,
-        "watch_min": 0.5
-      },
-      {
         "day": "2026-08-21",
-        "users": 1557,
-        "tunes": 7280,
-        "watch_min": 48238
+        "users": 1558,
+        "tunes": 7290,
+        "watch_min": 48241.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1525
+        "users": 1523
       },
       {
         "device": "desktop",
@@ -593,12 +582,12 @@
       }
     ],
     "funnel": {
-      "opens": 1009,
+      "opens": 1007,
       "playback": 769,
       "engaged": 181
     },
     "retention": {
-      "new_users": 781,
+      "new_users": 779,
       "returning_users": 232
     },
     "errorBoard": [
@@ -606,8 +595,8 @@
         "ch": 43,
         "name": "India TV",
         "cat": "News",
-        "errors": 54,
-        "starts": 941
+        "errors": 53,
+        "starts": 940
       },
       {
         "ch": 2,
@@ -698,7 +687,7 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "errors": 5,
-        "starts": 56
+        "starts": 57
       },
       {
         "ch": 73,
@@ -845,7 +834,7 @@
         "name": "B4U Music",
         "cat": "Music",
         "errors": 3,
-        "starts": 55
+        "starts": 56
       },
       {
         "ch": 3,
@@ -884,14 +873,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 14230,
-      "samples": 4651
+      "avg_ttff_ms": 14209,
+      "samples": 4659
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 4010,
-        "avg_ttff_ms": 15609
+        "starts": 4018,
+        "avg_ttff_ms": 15582
       },
       {
         "net": "3g",
@@ -915,10 +904,10 @@
       }
     ],
     "engagement": {
-      "sessions": 1560,
+      "sessions": 1558,
       "avg_channels": 3.7,
-      "avg_session_sec": 135,
-      "bounce_pct": 53.4,
+      "avg_session_sec": 136,
+      "bounce_pct": 53.3,
       "zap_pct": 51.6
     },
     "survey": {
