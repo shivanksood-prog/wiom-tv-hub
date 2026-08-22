@@ -1,15 +1,24 @@
 {
-  "fetched_at": "2026-08-22T23:33:52Z",
+  "fetched_at": "2026-08-22T23:54:43Z",
   "data": {
     "period": "1h",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 10,
-      "total_tunes": 54,
-      "total_watch_min": 134.3,
-      "avg_duration_sec": 136.5
+      "unique_users": 11,
+      "total_tunes": 59,
+      "total_watch_min": 137.4,
+      "avg_duration_sec": 128.8
     },
     "channelLeaderboard": [
+      {
+        "ch": 43,
+        "name": "India TV",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 12,
+        "unique_users": 8,
+        "watch_min": 4.6
+      },
       {
         "ch": 41,
         "name": "ABP News",
@@ -18,15 +27,6 @@
         "tunes": 5,
         "unique_users": 3,
         "watch_min": 2.1
-      },
-      {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 8,
-        "watch_min": 1.7
       },
       {
         "ch": 224,
@@ -42,9 +42,9 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 4,
+        "tunes": 5,
         "unique_users": 2,
-        "watch_min": 0.6
+        "watch_min": 0.7
       },
       {
         "ch": 55,
@@ -74,6 +74,15 @@
         "watch_min": 0.4
       },
       {
+        "ch": 226,
+        "name": "Times Now Navbharat",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.3
+      },
+      {
         "ch": 73,
         "name": "ABP News",
         "cat": "News",
@@ -94,15 +103,6 @@
       {
         "ch": 245,
         "name": "Zee Delhi NCR Haryana",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 226,
-        "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 3,
@@ -212,9 +212,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 34,
+        "tunes": 39,
         "unique_users": 8,
-        "watch_min": 5.5
+        "watch_min": 8.6
       },
       {
         "cat": "Movies",
@@ -250,9 +250,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 50,
+        "tunes": 55,
         "unique_users": 9,
-        "watch_min": 8.1
+        "watch_min": 11.2
       },
       {
         "lang": "English",
@@ -270,33 +270,33 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-22 22:00",
-        "users": 4,
-        "tunes": 15
+        "users": 3,
+        "tunes": 14
       },
       {
         "hour": "2026-08-22 23:00",
-        "users": 7,
-        "tunes": 39
+        "users": 9,
+        "tunes": 45
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-22",
-        "users": 10,
-        "tunes": 54,
-        "watch_min": 134.3
+        "users": 11,
+        "tunes": 59,
+        "watch_min": 137.4
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 10
+        "users": 11
       }
     ],
     "funnel": {
       "opens": 8,
       "playback": 7,
-      "engaged": 2
+      "engaged": 3
     },
     "retention": {
       "new_users": 7,
@@ -319,14 +319,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 1550,
-      "samples": 44
+      "avg_ttff_ms": 1486,
+      "samples": 45
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 43,
-        "avg_ttff_ms": 1436
+        "starts": 44,
+        "avg_ttff_ms": 1373
       },
       {
         "net": "3g",
@@ -335,11 +335,11 @@
       }
     ],
     "engagement": {
-      "sessions": 10,
-      "avg_channels": 3.8,
-      "avg_session_sec": 53,
-      "bounce_pct": 70,
-      "zap_pct": 55.6
+      "sessions": 11,
+      "avg_channels": 3.5,
+      "avg_session_sec": 66,
+      "bounce_pct": 54.5,
+      "zap_pct": 50.8
     },
     "survey": {
       "very": null,

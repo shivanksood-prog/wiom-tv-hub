@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-22T23:33:52Z",
+  "fetched_at": "2026-08-22T23:54:43Z",
   "data": {
     "period": "24h",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 1466,
-      "total_tunes": 7497,
-      "total_watch_min": 82881,
-      "avg_duration_sec": 594.8
+      "unique_users": 1467,
+      "total_tunes": 7492,
+      "total_watch_min": 82880.6,
+      "avg_duration_sec": 595.5
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1386,
-        "unique_users": 985,
-        "watch_min": 3809.3
+        "tunes": 1390,
+        "unique_users": 986,
+        "watch_min": 3812.4
       },
       {
         "ch": 40,
@@ -33,9 +33,9 @@
         "name": "Republic Bharat",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 164,
+        "tunes": 165,
         "unique_users": 134,
-        "watch_min": 699.2
+        "watch_min": 699.3
       },
       {
         "ch": 73,
@@ -123,9 +123,9 @@
         "name": "Zee Horror Nights",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 126,
-        "unique_users": 77,
-        "watch_min": 92.6
+        "tunes": 125,
+        "unique_users": 76,
+        "watch_min": 92.3
       },
       {
         "ch": 103,
@@ -284,27 +284,27 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 3470,
-        "unique_users": 1084,
-        "watch_min": 6280.3
+        "tunes": 3475,
+        "unique_users": 1085,
+        "watch_min": 6283.4
       },
       {
         "cat": "Entertainment",
-        "tunes": 1152,
-        "unique_users": 234,
-        "watch_min": 843
+        "tunes": 1150,
+        "unique_users": 233,
+        "watch_min": 842.3
       },
       {
         "cat": "Movies",
-        "tunes": 591,
-        "unique_users": 209,
-        "watch_min": 530
+        "tunes": 589,
+        "unique_users": 208,
+        "watch_min": 529.7
       },
       {
         "cat": "Music",
-        "tunes": 1054,
-        "unique_users": 231,
-        "watch_min": 477.6
+        "tunes": 1049,
+        "unique_users": 230,
+        "watch_min": 476.7
       },
       {
         "cat": "Devotional",
@@ -320,9 +320,9 @@
       },
       {
         "cat": "Undefined",
-        "tunes": 116,
-        "unique_users": 53,
-        "watch_min": 26.4
+        "tunes": 115,
+        "unique_users": 52,
+        "watch_min": 26.1
       },
       {
         "cat": "Animation",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 6310,
+        "tunes": 6308,
         "unique_users": 1224,
-        "watch_min": 8099.6
+        "watch_min": 8101
       },
       {
         "lang": "Marathi",
@@ -418,9 +418,9 @@
       },
       {
         "lang": "English",
-        "tunes": 373,
-        "unique_users": 136,
-        "watch_min": 117.7
+        "tunes": 370,
+        "unique_users": 135,
+        "watch_min": 117.1
       },
       {
         "lang": "Punjabi",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-08-21 23:00",
-        "users": 1,
-        "tunes": 10
-      },
       {
         "hour": "2026-08-22 00:00",
         "users": 22,
@@ -564,28 +559,22 @@
       },
       {
         "hour": "2026-08-22 23:00",
-        "users": 7,
-        "tunes": 40
+        "users": 9,
+        "tunes": 45
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-08-21",
-        "users": 1,
-        "tunes": 10,
-        "watch_min": 3.5
-      },
-      {
         "day": "2026-08-22",
-        "users": 1465,
-        "tunes": 7487,
-        "watch_min": 82877.5
+        "users": 1467,
+        "tunes": 7492,
+        "watch_min": 82880.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1438
+        "users": 1439
       },
       {
         "device": "desktop",
@@ -595,11 +584,11 @@
     "funnel": {
       "opens": 923,
       "playback": 713,
-      "engaged": 182
+      "engaged": 183
     },
     "retention": {
-      "new_users": 685,
-      "returning_users": 243
+      "new_users": 686,
+      "returning_users": 242
     },
     "errorBoard": [
       {
@@ -607,7 +596,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 52,
-        "starts": 831
+        "starts": 832
       },
       {
         "ch": 231,
@@ -677,7 +666,7 @@
         "name": "Studio One +",
         "cat": "Movies",
         "errors": 5,
-        "starts": 19
+        "starts": 18
       },
       {
         "ch": 27,
@@ -884,14 +873,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 6405,
-      "samples": 4603
+      "avg_ttff_ms": 6412,
+      "samples": 4595
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 4083,
-        "avg_ttff_ms": 6664
+        "starts": 4075,
+        "avg_ttff_ms": 6672
       },
       {
         "net": "3g",
@@ -915,7 +904,7 @@
       }
     ],
     "engagement": {
-      "sessions": 1466,
+      "sessions": 1467,
       "avg_channels": 4,
       "avg_session_sec": 201,
       "bounce_pct": 52.4,

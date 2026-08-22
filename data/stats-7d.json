@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-22T23:33:52Z",
+  "fetched_at": "2026-08-22T23:54:43Z",
   "data": {
     "period": "7d",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 16632,
-      "total_tunes": 57362,
-      "total_watch_min": 1058428.3,
+      "unique_users": 16631,
+      "total_tunes": 57363,
+      "total_watch_min": 1058430.8,
       "avg_duration_sec": 998.7
     },
     "channelLeaderboard": [
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 16916,
-        "unique_users": 12829,
-        "watch_min": 15347.3
+        "tunes": 16917,
+        "unique_users": 12828,
+        "watch_min": 15349.8
       },
       {
         "ch": 40,
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 32342,
-        "unique_users": 13553,
-        "watch_min": 26464.3
+        "tunes": 32343,
+        "unique_users": 13552,
+        "watch_min": 26466.8
       },
       {
         "cat": "Entertainment",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 50372,
-        "unique_users": 14500,
-        "watch_min": 37927.4
+        "tunes": 50373,
+        "unique_users": 14499,
+        "watch_min": 37929.9
       },
       {
         "lang": "English",
@@ -444,8 +444,8 @@
     "hourlyTrend": [
       {
         "hour": "2026-08-15 23:00",
-        "users": 9,
-        "tunes": 10
+        "users": 6,
+        "tunes": 7
       },
       {
         "hour": "2026-08-16 00:00",
@@ -1284,16 +1284,16 @@
       },
       {
         "hour": "2026-08-22 23:00",
-        "users": 7,
-        "tunes": 41
+        "users": 9,
+        "tunes": 45
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-15",
-        "users": 9,
-        "tunes": 10,
-        "watch_min": 7.7
+        "users": 6,
+        "tunes": 7,
+        "watch_min": 7.1
       },
       {
         "day": "2026-08-16",
@@ -1333,15 +1333,15 @@
       },
       {
         "day": "2026-08-22",
-        "users": 1465,
-        "tunes": 7488,
-        "watch_min": 82877.6
+        "users": 1467,
+        "tunes": 7492,
+        "watch_min": 82880.6
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 16328
+        "users": 16325
       },
       {
         "device": "desktop",
@@ -1349,13 +1349,13 @@
       }
     ],
     "funnel": {
-      "opens": 8201,
-      "playback": 6731,
+      "opens": 8200,
+      "playback": 6729,
       "engaged": 1347
     },
     "retention": {
-      "new_users": 7141,
-      "returning_users": 1088
+      "new_users": 7139,
+      "returning_users": 1089
     },
     "errorBoard": [
       {
@@ -1363,7 +1363,7 @@
         "name": "India TV",
         "cat": "News",
         "errors": 553,
-        "starts": 10888
+        "starts": 10884
       },
       {
         "ch": 44,
@@ -1641,12 +1641,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 8388,
-      "samples": 36416
+      "samples": 36412
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 32695,
+        "starts": 32691,
         "avg_ttff_ms": 8687
       },
       {
@@ -1671,7 +1671,7 @@
       }
     ],
     "engagement": {
-      "sessions": 16632,
+      "sessions": 16630,
       "avg_channels": 2.7,
       "avg_session_sec": 158,
       "bounce_pct": 62.2,
