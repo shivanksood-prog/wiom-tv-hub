@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-23T21:48:17Z",
+  "fetched_at": "2026-08-23T22:02:43Z",
   "data": {
     "period": "1h",
     "liveNow": 0,
     "overview": {
-      "unique_users": 17,
-      "total_tunes": 122,
-      "total_watch_min": 25.8,
-      "avg_duration_sec": 11.4
+      "unique_users": 13,
+      "total_tunes": 116,
+      "total_watch_min": 22.8,
+      "avg_duration_sec": 10.5
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 13,
-        "unique_users": 8,
-        "watch_min": 6.3
+        "tunes": 9,
+        "unique_users": 6,
+        "watch_min": 4.3
       },
       {
         "ch": 7,
@@ -83,30 +83,12 @@
         "watch_min": 0.6
       },
       {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.5
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.5
-      },
-      {
         "ch": 5,
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 3,
+        "tunes": 4,
+        "unique_users": 4,
         "watch_min": 0.5
       },
       {
@@ -141,8 +123,8 @@
         "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
+        "tunes": 3,
+        "unique_users": 3,
         "watch_min": 0.3
       },
       {
@@ -279,20 +261,38 @@
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
+      },
+      {
+        "ch": 99,
+        "name": "DD Himachal Pradesh",
+        "cat": "DD",
+        "lang": "Hindi",
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 95,
+        "name": "DD Bihar",
+        "cat": "DD",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
       }
     ],
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 47,
-        "unique_users": 8,
-        "watch_min": 9.1
+        "tunes": 39,
+        "unique_users": 6,
+        "watch_min": 6.1
       },
       {
         "cat": "Entertainment",
-        "tunes": 21,
-        "unique_users": 10,
-        "watch_min": 5
+        "tunes": 24,
+        "unique_users": 11,
+        "watch_min": 5.1
       },
       {
         "cat": "DD",
@@ -308,9 +308,9 @@
       },
       {
         "cat": "Movies",
-        "tunes": 6,
-        "unique_users": 5,
-        "watch_min": 0.9
+        "tunes": 5,
+        "unique_users": 4,
+        "watch_min": 0.8
       },
       {
         "cat": "Music",
@@ -358,15 +358,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 108,
-        "unique_users": 15,
-        "watch_min": 19
+        "tunes": 103,
+        "unique_users": 13,
+        "watch_min": 16
       },
       {
         "lang": "English",
-        "tunes": 9,
-        "unique_users": 3,
-        "watch_min": 0.7
+        "tunes": 8,
+        "unique_users": 2,
+        "watch_min": 0.6
       },
       {
         "lang": "Punjabi",
@@ -389,43 +389,38 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-23 20:00",
-        "users": 3,
-        "tunes": 8
-      },
-      {
         "hour": "2026-08-23 21:00",
-        "users": 14,
-        "tunes": 114
+        "users": 13,
+        "tunes": 116
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-23",
-        "users": 17,
-        "tunes": 122,
-        "watch_min": 25.8
+        "users": 13,
+        "tunes": 116,
+        "watch_min": 22.8
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 17
+        "users": 13
       }
     ],
     "funnel": {
-      "opens": 11,
-      "playback": 9,
-      "engaged": 3
+      "opens": 8,
+      "playback": 7,
+      "engaged": 2
     },
     "retention": {
-      "new_users": 8,
-      "returning_users": 3
+      "new_users": 6,
+      "returning_users": 2
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1540,
-      "samples": 90
+      "avg_ttff_ms": 1491,
+      "samples": 86
     },
     "netBreakdown": [
       {
@@ -435,8 +430,8 @@
       },
       {
         "net": "4g",
-        "starts": 13,
-        "avg_ttff_ms": 1653
+        "starts": 9,
+        "avg_ttff_ms": 1234
       },
       {
         "net": "slow-2g",
@@ -445,11 +440,11 @@
       }
     ],
     "engagement": {
-      "sessions": 17,
-      "avg_channels": 5.7,
-      "avg_session_sec": 75,
-      "bounce_pct": 41.2,
-      "zap_pct": 54.9
+      "sessions": 13,
+      "avg_channels": 7.2,
+      "avg_session_sec": 79,
+      "bounce_pct": 30.8,
+      "zap_pct": 57.8
     },
     "survey": {
       "very": 1,
