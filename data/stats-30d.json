@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-23T22:35:07Z",
+  "fetched_at": "2026-08-23T22:55:36Z",
   "data": {
     "period": "30d",
     "liveNow": 0,
     "overview": {
       "unique_users": 87343,
-      "total_tunes": 260267,
-      "total_watch_min": 4191889.6,
-      "avg_duration_sec": 876.5
+      "total_tunes": 260250,
+      "total_watch_min": 4191883.1,
+      "avg_duration_sec": 876.6
     },
     "channelLeaderboard": [
       {
@@ -284,15 +284,15 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 136489,
+        "tunes": 136486,
         "unique_users": 61973,
-        "watch_min": 85060.5
+        "watch_min": 85058.5
       },
       {
         "cat": "Entertainment",
-        "tunes": 35483,
+        "tunes": 35480,
         "unique_users": 10556,
-        "watch_min": 19770.2
+        "watch_min": 19770
       },
       {
         "cat": "Music",
@@ -308,15 +308,15 @@
       },
       {
         "cat": "Devotional",
-        "tunes": 16433,
+        "tunes": 16429,
         "unique_users": 4060,
-        "watch_min": 8518.8
+        "watch_min": 8517.7
       },
       {
         "cat": "DD",
-        "tunes": 4374,
+        "tunes": 4371,
         "unique_users": 1294,
-        "watch_min": 1740.5
+        "watch_min": 1738.9
       },
       {
         "cat": "Undefined",
@@ -326,9 +326,9 @@
       },
       {
         "cat": "Culture",
-        "tunes": 1031,
+        "tunes": 1030,
         "unique_users": 768,
-        "watch_min": 523.5
+        "watch_min": 522.6
       },
       {
         "cat": "Business",
@@ -350,9 +350,9 @@
       },
       {
         "cat": "Education",
-        "tunes": 990,
+        "tunes": 988,
         "unique_users": 675,
-        "watch_min": 150.1
+        "watch_min": 149.4
       },
       {
         "cat": "Classic",
@@ -362,8 +362,8 @@
       },
       {
         "cat": "Sports",
-        "tunes": 431,
-        "unique_users": 355,
+        "tunes": 430,
+        "unique_users": 354,
         "watch_min": 121
       },
       {
@@ -406,15 +406,15 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 224001,
+        "tunes": 223986,
         "unique_users": 76442,
-        "watch_min": 130733.2
+        "watch_min": 130726.9
       },
       {
         "lang": "English",
-        "tunes": 11074,
+        "tunes": 11072,
         "unique_users": 4517,
-        "watch_min": 5189.2
+        "watch_min": 5189
       },
       {
         "lang": "Bhojpuri",
@@ -442,11 +442,6 @@
       }
     ],
     "hourlyTrend": [
-      {
-        "hour": "2026-07-24 22:00",
-        "users": 1,
-        "tunes": 17
-      },
       {
         "hour": "2026-07-24 23:00",
         "users": 2,
@@ -4041,9 +4036,9 @@
     "dailyTrend": [
       {
         "day": "2026-07-24",
-        "users": 3,
-        "tunes": 17,
-        "watch_min": 6.5
+        "users": 2,
+        "tunes": 0,
+        "watch_min": 0
       },
       {
         "day": "2026-07-25",
@@ -4264,7 +4259,7 @@
         "ch": 15,
         "name": "NDTV Good Times",
         "cat": "Entertainment",
-        "errors": 450,
+        "errors": 449,
         "starts": 0
       },
       {
@@ -4299,7 +4294,7 @@
         "ch": 16,
         "name": "Travelxp HD",
         "cat": "Entertainment",
-        "errors": 316,
+        "errors": 315,
         "starts": 0
       },
       {
@@ -4529,12 +4524,12 @@
     ],
     "perf": {
       "avg_ttff_ms": 6756,
-      "samples": 165551
+      "samples": 165550
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 149399,
+        "starts": 149398,
         "avg_ttff_ms": 6622
       },
       {
