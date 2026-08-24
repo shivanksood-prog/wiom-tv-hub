@@ -1,13 +1,13 @@
 {
-  "fetched_at": "2026-08-23T23:46:55Z",
+  "fetched_at": "2026-08-24T00:01:07Z",
   "data": {
     "period": "1h",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 17,
-      "total_tunes": 39,
-      "total_watch_min": 39.4,
-      "avg_duration_sec": 59
+      "unique_users": 18,
+      "total_tunes": 40,
+      "total_watch_min": 39.7,
+      "avg_duration_sec": 58.1
     },
     "channelLeaderboard": [
       {
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 19,
-        "unique_users": 14,
-        "watch_min": 5.7
+        "tunes": 20,
+        "unique_users": 15,
+        "watch_min": 6.1
       },
       {
         "ch": 231,
@@ -113,9 +113,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 37,
-        "unique_users": 16,
-        "watch_min": 15
+        "tunes": 38,
+        "unique_users": 17,
+        "watch_min": 15.4
       },
       {
         "cat": "Devotional",
@@ -133,9 +133,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 38,
-        "unique_users": 17,
-        "watch_min": 15.1
+        "tunes": 39,
+        "unique_users": 18,
+        "watch_min": 15.4
       },
       {
         "lang": "Punjabi",
@@ -146,22 +146,28 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-23 22:00",
-        "users": 1,
-        "tunes": 1
-      },
-      {
         "hour": "2026-08-23 23:00",
         "users": 16,
-        "tunes": 38
+        "tunes": 37
+      },
+      {
+        "hour": "2026-08-24 00:00",
+        "users": 2,
+        "tunes": 3
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-23",
-        "users": 17,
-        "tunes": 39,
-        "watch_min": 39.4
+        "users": 16,
+        "tunes": 37,
+        "watch_min": 39.2
+      },
+      {
+        "day": "2026-08-24",
+        "users": 2,
+        "tunes": 3,
+        "watch_min": 0.5
       }
     ],
     "deviceBreakdown": [
@@ -171,13 +177,13 @@
       }
     ],
     "funnel": {
-      "opens": 10,
-      "playback": 10,
+      "opens": 12,
+      "playback": 12,
       "engaged": 3
     },
     "retention": {
-      "new_users": 5,
-      "returning_users": 6
+      "new_users": 6,
+      "returning_users": 7
     },
     "errorBoard": [
       {
@@ -189,14 +195,14 @@
       }
     ],
     "perf": {
-      "avg_ttff_ms": 2033,
+      "avg_ttff_ms": 2105,
       "samples": 28
     },
     "netBreakdown": [
       {
         "net": "4g",
         "starts": 26,
-        "avg_ttff_ms": 1638
+        "avg_ttff_ms": 1716
       },
       {
         "net": "3g",
@@ -205,11 +211,11 @@
       }
     ],
     "engagement": {
-      "sessions": 17,
+      "sessions": 18,
       "avg_channels": 1.9,
-      "avg_session_sec": 55,
-      "bounce_pct": 58.8,
-      "zap_pct": 51.3
+      "avg_session_sec": 49,
+      "bounce_pct": 61.1,
+      "zap_pct": 47.5
     },
     "survey": {
       "very": null,

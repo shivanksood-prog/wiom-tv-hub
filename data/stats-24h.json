@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-23T23:46:55Z",
+  "fetched_at": "2026-08-24T00:01:07Z",
   "data": {
     "period": "24h",
-    "liveNow": 0,
+    "liveNow": 2,
     "overview": {
-      "unique_users": 1776,
-      "total_tunes": 8749,
-      "total_watch_min": 88751.1,
+      "unique_users": 1775,
+      "total_tunes": 8745,
+      "total_watch_min": 88715.3,
       "avg_duration_sec": 532.1
     },
     "channelLeaderboard": [
@@ -15,9 +15,9 @@
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1750,
-        "unique_users": 1216,
-        "watch_min": 3065.2
+        "tunes": 1747,
+        "unique_users": 1215,
+        "watch_min": 3064.9
       },
       {
         "ch": 25,
@@ -137,15 +137,6 @@
         "watch_min": 86.1
       },
       {
-        "ch": 41,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 241,
-        "unique_users": 189,
-        "watch_min": 70.1
-      },
-      {
         "ch": 104,
         "name": "DD National HD",
         "cat": "Entertainment",
@@ -245,6 +236,15 @@
         "watch_min": 34.9
       },
       {
+        "ch": 41,
+        "name": "ABP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 240,
+        "unique_users": 188,
+        "watch_min": 34.5
+      },
+      {
         "ch": 172,
         "name": "Oscar Movies Bhojpuri",
         "cat": "Movies",
@@ -284,9 +284,9 @@
     "categoryBreakdown": [
       {
         "cat": "News",
-        "tunes": 3993,
-        "unique_users": 1337,
-        "watch_min": 4297.1
+        "tunes": 3989,
+        "unique_users": 1336,
+        "watch_min": 4261.3
       },
       {
         "cat": "Movies",
@@ -406,9 +406,9 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 7444,
-        "unique_users": 1517,
-        "watch_min": 7423.9
+        "tunes": 7440,
+        "unique_users": 1515,
+        "watch_min": 7388.1
       },
       {
         "lang": "Bhojpuri",
@@ -443,14 +443,9 @@
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-22 23:00",
-        "users": 3,
-        "tunes": 6
-      },
-      {
         "hour": "2026-08-23 00:00",
-        "users": 11,
-        "tunes": 20
+        "users": 10,
+        "tunes": 19
       },
       {
         "hour": "2026-08-23 01:00",
@@ -566,26 +561,31 @@
         "hour": "2026-08-23 23:00",
         "users": 16,
         "tunes": 38
+      },
+      {
+        "hour": "2026-08-24 00:00",
+        "users": 2,
+        "tunes": 3
       }
     ],
     "dailyTrend": [
       {
-        "day": "2026-08-22",
-        "users": 3,
-        "tunes": 6,
-        "watch_min": 0.8
-      },
-      {
         "day": "2026-08-23",
         "users": 1773,
-        "tunes": 8743,
-        "watch_min": 88750.3
+        "tunes": 8742,
+        "watch_min": 88714.7
+      },
+      {
+        "day": "2026-08-24",
+        "users": 2,
+        "tunes": 3,
+        "watch_min": 0.5
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 1710
+        "users": 1709
       },
       {
         "device": "desktop",
@@ -915,9 +915,9 @@
       }
     ],
     "engagement": {
-      "sessions": 1776,
+      "sessions": 1775,
       "avg_channels": 3.8,
-      "avg_session_sec": 180,
+      "avg_session_sec": 178,
       "bounce_pct": 49.4,
       "zap_pct": 50.2
     },
