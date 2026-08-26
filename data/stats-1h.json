@@ -1,50 +1,32 @@
 {
-  "fetched_at": "2026-08-25T23:42:25Z",
+  "fetched_at": "2026-08-26T00:02:33Z",
   "data": {
     "period": "1h",
-    "liveNow": 3,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 5,
-      "total_tunes": 54,
-      "total_watch_min": 31.8,
-      "avg_duration_sec": 32.3
+      "unique_users": 9,
+      "total_tunes": 14,
+      "total_watch_min": 2.2,
+      "avg_duration_sec": 9.5
     },
     "channelLeaderboard": [
       {
-        "ch": 59,
-        "name": "Channel Divya",
-        "cat": "Devotional",
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 6.5
-      },
-      {
-        "ch": 58,
-        "name": "Aastha Bhajan",
-        "cat": "Devotional",
+        "ch": 43,
+        "name": "India TV",
+        "cat": "News",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 5.5
+        "tunes": 4,
+        "unique_users": 3,
+        "watch_min": 1
       },
       {
-        "ch": 57,
-        "name": "Aastha",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.6
-      },
-      {
-        "ch": 39,
-        "name": "Steelbird Music",
-        "cat": "Music",
+        "ch": 5,
+        "name": "Zee Comedy Nation",
+        "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.5
+        "watch_min": 0.4
       },
       {
         "ch": 92,
@@ -56,161 +38,8 @@
         "watch_min": 0.3
       },
       {
-        "ch": 61,
-        "name": "ZB Bhakti",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 27,
-        "name": "9XM",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 69,
-        "name": "Aaryaa TV",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 60,
-        "name": "Chardikla Gurbani",
-        "cat": "Devotional",
-        "lang": "Punjabi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 41,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 38,
-        "name": "ZB Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 30,
-        "name": "9X Tashan",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 29,
-        "name": "9X Jhakaas",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 131,
-        "name": "Hindu Dharmam",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 71,
-        "name": "Aastha Bhajan",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 70,
-        "name": "Aaseervatham TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 68,
-        "name": "7S Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 67,
-        "name": "4TV News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 66,
-        "name": "ZB Cartoon",
-        "cat": "Kids",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 65,
-        "name": "NDTV Marathi",
-        "cat": "News",
-        "lang": "Marathi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 64,
-        "name": "Zee 24 Taas",
-        "cat": "News",
-        "lang": "Marathi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 63,
-        "name": "ABP Asmita",
-        "cat": "News",
-        "lang": "Marathi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 53,
-        "name": "AmarUjala",
+        "ch": 231,
+        "name": "TV9 Bharatvarsh",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
@@ -218,26 +47,8 @@
         "watch_min": 0.1
       },
       {
-        "ch": 49,
-        "name": "WION",
-        "cat": "News",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 48,
-        "name": "India Today",
-        "cat": "News",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 47,
-        "name": "Sudarshan News",
+        "ch": 226,
+        "name": "Times Now Navbharat",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
@@ -245,8 +56,8 @@
         "watch_min": 0.1
       },
       {
-        "ch": 42,
-        "name": "Zee News",
+        "ch": 86,
+        "name": "Bharat Samachar",
         "cat": "News",
         "lang": "Hindi",
         "tunes": 1,
@@ -258,146 +69,123 @@
         "name": "Aaj Tak HD",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 1,
-        "watch_min": 0.1
-      },
-      {
-        "ch": 37,
-        "name": "Punjabi Hits",
-        "cat": "Music",
-        "lang": "Punjabi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
       },
       {
-        "ch": 34,
-        "name": "PTC Music",
-        "cat": "Music",
-        "lang": "Punjabi",
+        "ch": 3,
+        "name": "Dangal 2",
+        "cat": "Entertainment",
+        "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0.1
-      }
-    ],
-    "categoryBreakdown": [
-      {
-        "cat": "Devotional",
-        "tunes": 15,
-        "unique_users": 1,
-        "watch_min": 13.4
       },
       {
-        "cat": "Music",
-        "tunes": 12,
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "lang": "Hindi",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 1.8
+        "watch_min": 0.1
       },
       {
+        "ch": 41,
+        "name": "ABP News",
         "cat": "News",
-        "tunes": 24,
-        "unique_users": 2,
-        "watch_min": 1.4
-      },
-      {
-        "cat": "Kids",
-        "tunes": 2,
+        "lang": "Hindi",
+        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0
       },
       {
-        "cat": "Business",
+        "ch": 6,
+        "name": "Zee Dil Se",
+        "cat": "Entertainment",
+        "lang": "Hindi",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
       }
     ],
+    "categoryBreakdown": [
+      {
+        "cat": "News",
+        "tunes": 10,
+        "unique_users": 4,
+        "watch_min": 1.6
+      },
+      {
+        "cat": "Entertainment",
+        "tunes": 4,
+        "unique_users": 1,
+        "watch_min": 0.6
+      }
+    ],
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 35,
-        "unique_users": 1,
-        "watch_min": 9.1
+        "tunes": 13,
+        "unique_users": 4,
+        "watch_min": 2
       },
       {
         "lang": "Punjabi",
-        "tunes": 7,
-        "unique_users": 2,
-        "watch_min": 7.1
-      },
-      {
-        "lang": "Marathi",
-        "tunes": 6,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "lang": "English",
-        "tunes": 5,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "lang": "Bhojpuri",
         "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.1
+        "watch_min": 0.3
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-08-25 22:00",
-        "users": 1,
-        "tunes": 53
-      },
-      {
         "hour": "2026-08-25 23:00",
-        "users": 4,
-        "tunes": 1
+        "users": 9,
+        "tunes": 14
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-08-25",
-        "users": 5,
-        "tunes": 54,
-        "watch_min": 31.8
+        "users": 9,
+        "tunes": 14,
+        "watch_min": 2.2
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 4
+        "users": 9
       }
     ],
     "funnel": {
-      "opens": 4,
-      "playback": 1,
-      "engaged": 1
+      "opens": 9,
+      "playback": 3,
+      "engaged": 0
     },
     "retention": {
-      "new_users": 1,
-      "returning_users": 4
+      "new_users": 3,
+      "returning_users": 6
     },
     "errorBoard": [],
     "perf": {
-      "avg_ttff_ms": 1832,
-      "samples": 44
+      "avg_ttff_ms": 1805,
+      "samples": 10
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 44,
-        "avg_ttff_ms": 1832
+        "starts": 10,
+        "avg_ttff_ms": 1805
       }
     ],
     "engagement": {
-      "sessions": 5,
-      "avg_channels": 7.8,
-      "avg_session_sec": 131,
-      "bounce_pct": 80,
-      "zap_pct": 59.3
+      "sessions": 9,
+      "avg_channels": 1.4,
+      "avg_session_sec": 27,
+      "bounce_pct": 66.7,
+      "zap_pct": 35.7
     },
     "survey": {
       "very": null,
