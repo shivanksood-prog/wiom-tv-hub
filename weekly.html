@@ -63,7 +63,7 @@ body[data-theme="dark"] .banner b{color:#FFB2E4}
 <div class="header">
   <div>
     <h1><span>Wiom</span> TV · Weekly Scorecard</h1>
-    <div class="sub">Wed→Tue weeks since 1 Jul (IST) · the Wednesday-meeting rollup · data through 30 Aug · refreshed 2026-08-31 14:33:15 UTC · auto-refreshes hourly</div>
+    <div class="sub">Wed→Tue weeks since 1 Jul (IST) · the Wednesday-meeting rollup · data through 31 Aug · refreshed 2026-09-01 06:33:14 UTC · auto-refreshes hourly</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
     <a class="btn" href="scorecard.html">Daily Scorecard</a>
@@ -88,13 +88,13 @@ body[data-theme="dark"] .banner b{color:#FFB2E4}
     </div>
     <div class="card">
       <h3>Watch time · hours per day (excl. tunes &gt;4h)</h3>
-      <div class="hero-num">51.8 <span class="arrow">→</span> 56.9 <span class="arrow">→</span> 46.7 <span class="arrow">→</span> 51.2</div>
+      <div class="hero-num">51.8 <span class="arrow">→</span> 56.9 <span class="arrow">→</span> 46.7 <span class="arrow">→</span> 52.4</div>
       <div class="hero-sub"><span class="chip c-warn" title="Written before this week opened — the numbers above have moved on">note written 20 Jul · predates Wk9</span><br>Depth per session has been roughly flat, so week-on-week moves in total watch have been volume, not engagement: they track DAU and new uids rather than watch-min/session.</div>
       <div class="spark"><canvas id="sparkWatch"></canvas></div>
     </div>
     <div class="card">
       <h3>D15 retention · Wk7 cohort</h3>
-      <div class="hero-num">1.2%</div>
+      <div class="hero-num">1.3%</div>
       <div class="hero-sub"><span class="chip c-warn" title="Written before this week opened — the numbers above have moved on">note written 20 Jul · predates Wk9</span><br>Set against ~8–9% D1, this is the shape of the funnel: most first sessions never return, and of those that do, four in five are gone within a fortnight. Each week's D15 becomes readable 16 days after it opens.</div>
       <div class="spark"><canvas id="sparkRet"></canvas></div>
     </div>
@@ -104,63 +104,63 @@ body[data-theme="dark"] .banner b{color:#FFB2E4}
     <h3>Week-on-Week · all metrics</h3>
     <div class="table-wrap">
     <table>
-      <thead><tr><th>Metric</th><th>Wk6 · Aug 5–11<span class="note" title="cx-app promo-card previews excluded — numbers re-based 13 Aug (web-only) and 20 Aug (tap-throughs added back)">previews excluded · re-based</span></th><th>Wk7 · Aug 12–18</th><th>Wk8 · Aug 19–25</th><th>Wk9 · Aug 26–Sep 1 <span style="font-weight:400">(5 of 7 days)</span></th><th>Δ Wk9 vs Wk8</th></tr></thead>
+      <thead><tr><th>Metric</th><th>Wk6 · Aug 5–11<span class="note" title="cx-app promo-card previews excluded — numbers re-based 13 Aug (web-only) and 20 Aug (tap-throughs added back)">previews excluded · re-based</span></th><th>Wk7 · Aug 12–18</th><th>Wk8 · Aug 19–25</th><th>Wk9 · Aug 26–Sep 1 <span style="font-weight:400">(6 of 7 days)</span></th><th>Δ Wk9 vs Wk8</th></tr></thead>
       <tbody>
         <tr class="sect"><td colspan="6">Scale · total watch = DAU × sessions/user × watch-min/session</td></tr>
         <tr>
           <td>Watch hours / week <span class="note">tune dwell, excl. tunes &gt;4h (primary) · raw &amp; winsorized variants in footnote 1</span></td>
-          <td>362.9<span class="note">51.8/day</span></td><td>398.2<span class="note">56.9/day</span></td><td>326.7<span class="note">46.7/day</span></td><td><b>255.9</b><span class="note">51.2/day · 5 days</span></td><td><span class="chip c-flat">≈ +9.6% · noise (0.6σ)</span><span class="note">compared per day, so a part-week is still comparable</span></td>
+          <td>362.9<span class="note">51.8/day</span></td><td>398.2<span class="note">56.9/day</span></td><td>326.7<span class="note">46.7/day</span></td><td><b>314.1</b><span class="note">52.4/day · 6 days</span></td><td><span class="chip c-flat">≈ +12.2% · noise (0.9σ)</span><span class="note">compared per day, so a part-week is still comparable</span></td>
         </tr>
         <tr>
           <td>Users / day (DAU) </td>
-          <td>927</td><td>939</td><td>620</td><td><b>630</b><span class="note">5 of 7 days</span></td><td><span class="chip c-flat">≈ +1.6% · noise (0.3σ)</span></td>
+          <td>927</td><td>939</td><td>620</td><td><b>632</b><span class="note">6 of 7 days</span></td><td><span class="chip c-flat">≈ +1.9% · noise (0.4σ)</span></td>
         </tr>
         <tr>
           <td>Sessions / user / day <span class="note">session_start events; reloads inflate ~25% vs real visits</span></td>
-          <td>1.54</td><td>1.55</td><td>1.48</td><td><b>1.47</b><span class="note">5 of 7 days</span></td><td><span class="chip c-flat">≈ -0.7% · noise (0.2σ)</span></td>
+          <td>1.54</td><td>1.55</td><td>1.48</td><td><b>1.49</b><span class="note">6 of 7 days</span></td><td><span class="chip c-flat">≈ +0.7% · noise (0.4σ)</span></td>
         </tr>
         <tr>
           <td>Watch min / session <span class="note">excl. tunes &gt;4h, consistent with the primary watch row</span></td>
-          <td>2.18</td><td>2.35</td><td>3.05</td><td><b>3.31</b><span class="note">5 of 7 days</span></td><td><span class="chip c-flat">≈ +8.5% · noise (0.7σ)</span></td>
+          <td>2.18</td><td>2.35</td><td>3.05</td><td><b>3.34</b><span class="note">6 of 7 days</span></td><td><span class="chip c-flat">≈ +9.5% · noise (0.9σ)</span></td>
         </tr>
         <tr>
           <td>New uids / week </td>
-          <td>4,881<span class="note">697/day</span></td><td>4,754<span class="note">679/day</span></td><td>2,943<span class="note">420/day</span></td><td><b>2,149</b><span class="note">430/day · 5 days</span></td><td><span class="chip c-flat">≈ +2.4% · noise (0.4σ)</span></td>
+          <td>4,881<span class="note">697/day</span></td><td>4,754<span class="note">679/day</span></td><td>2,943<span class="note">420/day</span></td><td><b>2,598</b><span class="note">433/day · 6 days</span></td><td><span class="chip c-flat">≈ +3.1% · noise (0.5σ)</span></td>
         </tr>
         <tr class="sect"><td colspan="6">Depth · per-user distribution (uid-days with ≥1 tune)</td></tr>
         <tr>
           <td>P75 watch min / uid-day <span class="note">tune dwell summed per uid per IST day, excl. tunes &gt;4h</span></td>
-          <td>1.6<span class="note">95% CI 1.54–1.77</span></td><td>1.8<span class="note">95% CI 1.67–1.88</span></td><td>2.5<span class="note">95% CI 2.32–2.75</span></td><td><b>2.4</b><span class="note">95% CI 2.13–2.65</span></td><td><span class="chip c-flat">≈ -4.0% · CIs overlap</span><span class="note">bootstrap 95% CI, not a z-test</span></td>
+          <td>1.6<span class="note">95% CI 1.54–1.77</span></td><td>1.8<span class="note">95% CI 1.67–1.88</span></td><td>2.5<span class="note">95% CI 2.32–2.75</span></td><td><b>2.3</b><span class="note">95% CI 2.15–2.59</span></td><td><span class="chip c-flat">≈ -8.0% · CIs overlap</span><span class="note">bootstrap 95% CI, not a z-test</span></td>
         </tr>
         <tr>
           <td>P90 watch min / uid-day <span class="note">tune dwell summed per uid per IST day, excl. tunes &gt;4h</span></td>
-          <td>6.1<span class="note">95% CI 5.55–6.7</span></td><td>7.1<span class="note">95% CI 6.32–7.64</span></td><td>8.9<span class="note">95% CI 7.96–10.44</span></td><td><b>8.5</b><span class="note">95% CI 7.51–9.95</span></td><td><span class="chip c-flat">≈ -4.5% · CIs overlap</span><span class="note">bootstrap 95% CI, not a z-test</span></td>
+          <td>6.1<span class="note">95% CI 5.55–6.7</span></td><td>7.1<span class="note">95% CI 6.32–7.64</span></td><td>8.9<span class="note">95% CI 7.96–10.44</span></td><td><b>8.9</b><span class="note">95% CI 7.8–10.07</span></td><td><span class="chip c-flat">≈ +0.0% · CIs overlap</span><span class="note">bootstrap 95% CI, not a z-test</span></td>
         </tr>
         <tr class="sect"><td colspan="6">Commitment</td></tr>
         <tr>
           <td>D1 retention <span class="note">returned the next IST day · complete windows only</span></td>
-          <td>7.9%<span class="note">388 of 4,881 eligible</span></td><td>7.4%<span class="note">352 of 4,754 eligible</span></td><td>8.5%<span class="note">251 of 2,943 eligible</span></td><td><b>7.4%</b><span class="note">122 of 1,640 eligible</span></td><td><span class="chip c-flat">≈ -1.1pp · noise (1.3σ)</span></td>
+          <td>7.9%<span class="note">388 of 4,881 eligible</span></td><td>7.4%<span class="note">352 of 4,754 eligible</span></td><td>8.5%<span class="note">251 of 2,943 eligible</span></td><td><b>7.6%</b><span class="note">164 of 2,149 eligible</span></td><td><span class="chip c-flat">≈ -0.9pp · noise (1.2σ)</span></td>
         </tr>
         <tr>
           <td>D15 retention <span class="note">returned on/after day 15 (unbounded)</span></td>
-          <td>2.1%<span class="note">102 of 4,881 eligible</span></td><td>1.2%<span class="note">34 of 2,945 eligible</span></td><td class="dim">—<span class="note">not measurable · readable 4 Sep</span></td><td class="dim">—<span class="note">not measurable · readable 11 Sep</span></td><td><span class="chip c-flat">— <span style="font-weight:400">no comparison yet</span></span></td>
+          <td>2.2%<span class="note">105 of 4,881 eligible</span></td><td>1.3%<span class="note">49 of 3,711 eligible</span></td><td class="dim">—<span class="note">not measurable · readable 4 Sep</span></td><td class="dim">—<span class="note">not measurable · readable 11 Sep</span></td><td><span class="chip c-flat">— <span style="font-weight:400">no comparison yet</span></span></td>
         </tr>
         <tr>
           <td>Add-to-Home in first session <span class="note">% of new uids · pwa_install = answered the native prompt (upper bound)</span></td>
-          <td>2.5%<span class="note">124 users</span></td><td>3.0%<span class="note">144 users</span></td><td>4.1%<span class="note">122 users</span></td><td><b>4.3%</b><span class="note">93 users</span></td><td><span class="chip c-flat">≈ +0.2pp · noise (0.3σ)</span></td>
+          <td>2.5%<span class="note">124 users</span></td><td>3.0%<span class="note">144 users</span></td><td>4.1%<span class="note">122 users</span></td><td><b>4.3%</b><span class="note">111 users</span></td><td><span class="chip c-flat">≈ +0.1pp · noise (0.2σ)</span></td>
         </tr>
         <tr class="sect"><td colspan="6">Reliability</td></tr>
         <tr>
           <td>Errors per 100 tunes <span class="note">playback_error / tune attempts</span></td>
-          <td>4.7<span class="note">2,701 / 57,174</span></td><td>4.6<span class="note">2,607 / 56,694</span></td><td>5.1<span class="note">2,180 / 43,129</span></td><td><b>5.1</b><span class="note">1,651 / 32,336</span></td><td><span class="chip c-flat">≈ +0.1pp · noise (0.3σ)</span></td>
+          <td>4.7<span class="note">2,701 / 57,174</span></td><td>4.6<span class="note">2,607 / 56,694</span></td><td>5.1<span class="note">2,180 / 43,129</span></td><td><b>5.1</b><span class="note">1,989 / 39,239</span></td><td><span class="chip c-flat">≈ +0.0pp · noise (0.1σ)</span></td>
         </tr>
         <tr>
           <td>Errors per 100 playback_starts </td>
-          <td>7.1<span class="note">2,701 / 37,885</span></td><td>7.1<span class="note">2,607 / 36,558</span></td><td>8.0<span class="note">2,180 / 27,332</span></td><td><b>8.2</b><span class="note">1,651 / 20,162</span></td><td><span class="chip c-flat">≈ +0.2pp · noise (0.8σ)</span></td>
+          <td>7.1<span class="note">2,701 / 37,885</span></td><td>7.1<span class="note">2,607 / 36,558</span></td><td>8.0<span class="note">2,180 / 27,332</span></td><td><b>8.1</b><span class="note">1,989 / 24,580</span></td><td><span class="chip c-flat">≈ +0.1pp · noise (0.5σ)</span></td>
         </tr>
         <tr>
           <td>Tunes reaching a playback_start <span class="note">playback_start / tune — did the attempt turn into a stream at all</span></td>
-          <td>66.3%<span class="note">37,885 / 57,174</span></td><td>64.5%<span class="note">36,558 / 56,694</span></td><td>63.4%<span class="note">27,332 / 43,129</span></td><td><b>62.4%</b><span class="note">20,162 / 32,336</span></td><td><span class="chip c-warn">▼ -1.0pp · borderline (2.9σ)</span></td>
+          <td>66.3%<span class="note">37,885 / 57,174</span></td><td>64.5%<span class="note">36,558 / 56,694</span></td><td>63.4%<span class="note">27,332 / 43,129</span></td><td><b>62.6%</b><span class="note">24,580 / 39,239</span></td><td><span class="chip c-warn">▼ -0.7pp · borderline (2.2σ)</span></td>
         </tr>
       </tbody>
     </table>
@@ -171,16 +171,16 @@ body[data-theme="dark"] .banner b{color:#FFB2E4}
     <b>Footnote 1 — watch-time outlier sensitivity.</b> Raw SUM(tune dwell) is meaningless here: Wk1 raw is polluted by a single 13.3-day (319h) null-uid tune row on Jul 1 plus 11 other >4h tunes. Two defensible treatments are shown — <b>excluding</b> tunes >4h (primary, used for every watch row above) and <b>winsorizing</b> at 4h/tune (footnote table below). Read direction, not level, and prefer weeks where the two agree.<br>
     <b>Footnote 2 — 20 July was a news-demand day, not a product change.</b> Activation hit 18.1% (vs 14.3% on the 19th) on the back of news landings converting at 34% against a 10–18% baseline: News long-tunes (≥60s) 96 vs 19, news dwell 720 min vs 180, Aaj Tak HD alone 125 min vs 12. Landing mix, launch-surface mix and acquisition were unchanged, and nothing shipped (the only 20 Jul commits sit on an unpushed local branch). It carries part of the Wk3 P90, watch hours and reliability gain — do not extrapolate.<br>
     <b>Footnote 3 — cx-app promo-card traffic excluded (re-based 13 Aug).</b> From <b>31 Jul</b> the Wiom customer app auto-played wiom.tv inside an invisible WebView promo card on its Unserviceable screen; every card impression fired full session/tune events at ~10× organic volume. Those are impressions, not visits — no human is watching — so every metric on this page is <b>web-classed traffic only</b> (classification: <code>lib_traffic_class.js</code>, rules in <code>DEFINITIONS.md</code>). App-origin uids are likewise excluded from new-uid counts and every retention/A2HS cohort. Weeks touching 29 Jul onward therefore read far lower than pre-13-Aug snapshots of this page — that is the correction, not a traffic collapse; nothing real exploded on 31 Jul either.<br>
-    <b>Watch treatments, hours/day:</b> excluded &gt;4h (primary) 51.8 → 56.9 → 46.7 → 51.2 · winsorized at 4h/tune 55.8 → 68.9 → 62.1 → 55.2 · raw weekly totals 442.1h → 595.4h → 628.4h → 300.1h (60 tunes over 4h in this window).<br>
+    <b>Watch treatments, hours/day:</b> excluded &gt;4h (primary) 51.8 → 56.9 → 46.7 → 52.4 · winsorized at 4h/tune 55.8 → 68.9 → 62.1 → 58.4 · raw weekly totals 442.1h → 595.4h → 628.4h → 13,870.6h (64 tunes over 4h in this window).<br>
     <b>How the chips are decided:</b> rates backed by counts (retention, A2HS, error rates) use a two-proportion z-test; per-day counts and ratios (DAU, watch hours, sessions/user, watch-min/session) use Welch's t across the daily series, because day-to-day spread is much wider than a pooled proportion test would admit; percentiles are compared by bootstrap 95% CI overlap and never given a σ. |z| ≥ 3 = SIGNAL, 2–3 = borderline, &lt; 2 = noise.<br>
     <b>Definitions:</b> Day = IST; weeks are Wed→Tue, numbered from 1 Jul. Watch = tune-dwell only (session_end dwell known-broken, unused; playback_stall writes ms into duration_sec and is never summed). User = device uid (localStorage). D1/D15 use the devices first-seen ledger; storage-clearing devices deflate both. Part-weeks are labelled — per-day and rate figures stay comparable, weekly totals do not.<br>
     <b>Era markers in this window:</b> <span class="era-chip"><b>E6</b> 2026-08-06 — embed tag deployed — card/tap split exact from here</span><br>
-    Computed read-only from analytics.db (2026-08-31 14:33:15 UTC) · auto-refreshed hourly by <code>hub_weekly_refresh.sh</code>; prose lives in <code>hub_weekly_notes.json</code>. Do not hand-edit this page.
+    Computed read-only from analytics.db (2026-09-01 06:33:14 UTC) · auto-refreshed hourly by <code>hub_weekly_refresh.sh</code>; prose lives in <code>hub_weekly_notes.json</code>. Do not hand-edit this page.
   </div>
 </div>
 
 <script>
-const DATA = {"generated_utc":"2026-08-31 14:33:15","last_full":"2026-08-30","daily_ept":[{"d":"2026-08-05","ept":10.9},{"d":"2026-08-06","ept":5.1},{"d":"2026-08-07","ept":5.9},{"d":"2026-08-08","ept":4.8},{"d":"2026-08-09","ept":3.5},{"d":"2026-08-10","ept":3.5},{"d":"2026-08-11","ept":3.7},{"d":"2026-08-12","ept":5},{"d":"2026-08-13","ept":4.1},{"d":"2026-08-14","ept":5.1},{"d":"2026-08-15","ept":5.1},{"d":"2026-08-16","ept":4.4},{"d":"2026-08-17","ept":4.9},{"d":"2026-08-18","ept":3.2},{"d":"2026-08-19","ept":5.2},{"d":"2026-08-20","ept":5.2},{"d":"2026-08-21","ept":4.7},{"d":"2026-08-22","ept":4.8},{"d":"2026-08-23","ept":4.6},{"d":"2026-08-24","ept":5.8},{"d":"2026-08-25","ept":5.3},{"d":"2026-08-26","ept":4.6},{"d":"2026-08-27","ept":5.1},{"d":"2026-08-28","ept":4.6},{"d":"2026-08-29","ept":6.3},{"d":"2026-08-30","ept":5}],"watch_spark":[{"l":"Wk6 Aug 5–11","v":51.8},{"l":"Wk7 Aug 12–18","v":56.9},{"l":"Wk8 Aug 19–25","v":46.7},{"l":"Wk9 Aug 26–Sep 1*","v":51.2}],"ret_spark":[{"l":"D1","v":7.4},{"l":"D15","v":1.2}],"eras":[{"date":"2026-07-03","l":"E2"},{"date":"2026-07-07","l":"E3"},{"date":"2026-07-13","l":"E4"},{"date":"2026-07-31","l":"E5"},{"date":"2026-08-06","l":"E6"}]};
+const DATA = {"generated_utc":"2026-09-01 06:33:14","last_full":"2026-08-31","daily_ept":[{"d":"2026-08-05","ept":10.9},{"d":"2026-08-06","ept":5.1},{"d":"2026-08-07","ept":5.9},{"d":"2026-08-08","ept":4.8},{"d":"2026-08-09","ept":3.5},{"d":"2026-08-10","ept":3.5},{"d":"2026-08-11","ept":3.7},{"d":"2026-08-12","ept":5},{"d":"2026-08-13","ept":4.1},{"d":"2026-08-14","ept":5.1},{"d":"2026-08-15","ept":5.1},{"d":"2026-08-16","ept":4.4},{"d":"2026-08-17","ept":4.9},{"d":"2026-08-18","ept":3.2},{"d":"2026-08-19","ept":5.2},{"d":"2026-08-20","ept":5.2},{"d":"2026-08-21","ept":4.7},{"d":"2026-08-22","ept":4.8},{"d":"2026-08-23","ept":4.6},{"d":"2026-08-24","ept":5.8},{"d":"2026-08-25","ept":5.3},{"d":"2026-08-26","ept":4.6},{"d":"2026-08-27","ept":5.1},{"d":"2026-08-28","ept":4.6},{"d":"2026-08-29","ept":6.3},{"d":"2026-08-30","ept":5},{"d":"2026-08-31","ept":4.9}],"watch_spark":[{"l":"Wk6 Aug 5–11","v":51.8},{"l":"Wk7 Aug 12–18","v":56.9},{"l":"Wk8 Aug 19–25","v":46.7},{"l":"Wk9 Aug 26–Sep 1*","v":52.4}],"ret_spark":[{"l":"D1","v":7.4},{"l":"D15","v":1.3}],"eras":[{"date":"2026-07-03","l":"E2"},{"date":"2026-07-07","l":"E3"},{"date":"2026-07-13","l":"E4"},{"date":"2026-07-31","l":"E5"},{"date":"2026-08-06","l":"E6"}]};
 
 /* theme */
 const themeBtn = document.getElementById('theme-toggle');
