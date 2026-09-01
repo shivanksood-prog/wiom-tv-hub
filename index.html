@@ -481,7 +481,7 @@ function route(){
   document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-'+tab));
   if (tab === 'dashboards'){
-    const SUBS = {live:'dashboard.html', newapp:'newapp.html', scorecard:'scorecard.html', weekly:'weekly.html', experiment1:'experiment1.html', experiment2:'experiment2.html', experiment3:'experiment3.html', a2hs:'a2hs.html', surfaces:'launch_surfaces.html', replica:'dashboard_replica.html'};
+    const SUBS = {live:'dashboard.html', newapp:'newapp.html', scorecard:'scorecard.html', weekly:'weekly.html', experiment1:'experiment1.html', experiment2:'experiment2.html', experiment3:'experiment3.html', zap:'zap.html', a2hs:'a2hs.html', surfaces:'launch_surfaces.html', replica:'dashboard_replica.html'};
     const s = SUBS[sub] ? sub : 'live';
     document.querySelectorAll('.subtab').forEach(b => b.classList.toggle('active', b.dataset.sub === s));
     Object.keys(SUBS).forEach(k => {
