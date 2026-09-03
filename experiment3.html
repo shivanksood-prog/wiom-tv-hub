@@ -59,24 +59,24 @@ border-radius:5px;border:1px solid var(--border);background:var(--subtle);color:
 footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);padding-top:13px}
 </style>
 <div class="wrap">
-<header><div class="eyebrow">Wiom TV · Experiment 3 · fse_v3 cross-genre ordering · day 27.3</div>
+<header><div class="eyebrow">Wiom TV · Experiment 3 · fse_v3 cross-genre ordering · day 28.0</div>
 <h1>Does a traversable catalogue change anything?</h1>
-<div class="meta">Clean cohort <b>5024 users</b> (RC 1643 · RI 1672 · RL 1709) ·
-cutoff <b>2026-08-06 07:50:54</b> · snapshot 2026-09-02 14:03:10 · auto-refreshed hourly ·
+<div class="meta">Clean cohort <b>5122 users</b> (RC 1667 · RI 1706 · RL 1749) ·
+cutoff <b>2026-08-06 07:50:54</b> · snapshot 2026-09-03 07:03:05 · auto-refreshed hourly ·
 the News landing is held <b>identical in all three arms</b>, so only ordering varies ·
 <b>RC is a true control</b> — it is what the site serves today, so a null result means
 "keep what we have"</div></header>
 
 <section class="card verdict warn">
   <div class="eyebrow">Verdict</div><div class="word">GATE PASSED — decision at day 28</div>
-  <div class="why">Day 27: the interleave is reaching users (RI +28.2pp, RL +25.5pp vs RC on genre reach). Outcome metrics are <b>not</b> examined until day 28 — fse_v1's arm B led by +7.9pp at its first look and finished at +0.1pp. Enrolment closes day 21.</div>
+  <div class="why">Day 28: the interleave is reaching users (RI +28.6pp, RL +25.5pp vs RC on genre reach). Outcome metrics are <b>not</b> examined until day 28 — fse_v1's arm B led by +7.9pp at its first look and finished at +0.1pp. Enrolment closes day 21.</div>
   <div class="dates">Gate <b>Aug 11</b> (mechanism only) · enrolment closes <b>Aug 27</b> · decision <b>Sep 3</b> (Bonferroni &alpha;=0.025)</div>
 </section>
 
 <section class="card">
   <h2>Integrity gate</h2>
   <p class="sub">Checked before any effect is read. A lift on invalid data is worthless.</p>
-  <div class="chips"><span class="chip ok">&check; Sample ratio 1:1:1 <b>&chi;&sup2;=1.31, p=0.520</b></span><span class="chip ok">&check; Sticky <b>0 cross-arm</b></span><span class="chip ok">&check; Hash audit <b>0/5024</b></span><span class="chip ok">&check; Landing fallback <b>worst 0.0%</b></span><span class="chip ok">&check; Landing identical <b>News</b></span><span class="chip ok">&check; Instrumentation</span><span class="chip info">flat_pos column <b>live</b></span></div>
+  <div class="chips"><span class="chip ok">&check; Sample ratio 1:1:1 <b>&chi;&sup2;=1.97, p=0.373</b></span><span class="chip ok">&check; Sticky <b>0 cross-arm</b></span><span class="chip ok">&check; Hash audit <b>0/5122</b></span><span class="chip ok">&check; Landing fallback <b>worst 0.0%</b></span><span class="chip ok">&check; Landing identical <b>News</b></span><span class="chip ok">&check; Instrumentation</span><span class="chip info">flat_pos column <b>live</b></span></div>
   
 </section>
 
@@ -87,8 +87,8 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   experiment aborts. This look is on the mechanism only — no outcome metric is examined here.</p>
   <div class="big">
     <div class="stat rc"><div class="n">21.1%</div><div class="l">RC · control</div></div>
-    <div class="stat ri"><div class="n">49.2%</div>
-      <div class="l">RI · +28.2pp vs RC · clears the gate</div></div>
+    <div class="stat ri"><div class="n">49.6%</div>
+      <div class="l">RI · +28.6pp vs RC · clears the gate</div></div>
     <div class="stat rl"><div class="n">46.6%</div>
       <div class="l">RL · +25.5pp vs RC · clears the gate</div></div>
   </div>
@@ -102,17 +102,17 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   <p class="sub">The only metric that decides anything, and only on day 28.
   Zero-watch users are kept in the denominator. Days where a single tune is &ge;90%
   of the day's minutes <i>and</i> the user never unmuted are dropped as TV-left-running
-  (<b>1181</b> uid-days dropped so far). Each user is then capped at the pooled P95
-  (<b>11.94</b> min).</p>
+  (<b>1218</b> uid-days dropped so far). Each user is then capped at the pooled P95
+  (<b>11.43</b> min).</p>
   <div class="scroll"><table style="min-width:680px">
-  <thead><tr><th>Metric</th><th class="num">RC<br><span style="color:var(--faint)">n=1283</span></th><th class="num">RI<br><span style="color:var(--faint)">n=1309</span></th><th class="num">RL<br><span style="color:var(--faint)">n=1347</span></th>
+  <thead><tr><th>Metric</th><th class="num">RC<br><span style="color:var(--faint)">n=1332</span></th><th class="num">RI<br><span style="color:var(--faint)">n=1340</span></th><th class="num">RL<br><span style="color:var(--faint)">n=1385</span></th>
   <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
   <tbody>
     <tr><td><b>Attended P95-winsorized 7-day watch (mean min)</b><br>
-    <span class="sub">PRIMARY · &alpha;=0.025 per comparison · MDE 0.352 min at n&asymp;1313/arm</span></td>
-    <td class="num">1.438</td><td class="num">1.532</td><td class="num">1.513</td><td class="num"><span class="p">0.414</span></td><td class="num"><span class="p">0.506</span></td></tr>
+    <span class="sub">PRIMARY · &alpha;=0.025 per comparison · MDE 0.334 min at n&asymp;1352/arm</span></td>
+    <td class="num">1.409</td><td class="num">1.498</td><td class="num">1.473</td><td class="num"><span class="p">0.415</span></td><td class="num"><span class="p">0.545</span></td></tr>
     <tr><td>Median first-session watch (min)<br><span class="sub">the number that should embarrass us</span></td>
-    <td class="num">0.22</td><td class="num">0.28</td><td class="num">0.27</td><td class="num">—</td><td class="num">—</td></tr>
+    <td class="num">0.22</td><td class="num">0.28</td><td class="num">0.28</td><td class="num">—</td><td class="num">—</td></tr>
     <tr><td>Median first-session switches</td>
     <td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num">—</td><td class="num">—</td></tr>
   </tbody></table></div>
@@ -126,9 +126,9 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   <p class="sub">Uncorrected p-values vs RC, shown at &alpha;=0.05. These corroborate; they do not
   decide.</p>
   <div class="scroll"><table style="min-width:680px">
-  <thead><tr><th>Metric</th><th class="num">RC · n=1643</th><th class="num">RI · n=1672</th><th class="num">RL · n=1709</th>
+  <thead><tr><th>Metric</th><th class="num">RC · n=1667</th><th class="num">RI · n=1706</th><th class="num">RL · n=1749</th>
   <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
-  <tbody><tr><td><b>Any watch on days 1–6</b><br><span class="sub">the returner gap News did not close</span></td><td class="num">207 · 12.6%</td><td class="num">203 · 12.1%</td><td class="num">212 · 12.4%</td><td class="num"><span class="p">0.689</span></td><td class="num"><span class="p">0.865</span></td></tr><tr><td><b>Strict D1 returner</b><br><span class="sub">&ge;30 min gap or later IST day</span></td><td class="num">147/1617 · 9.1%</td><td class="num">144/1645 · 8.8%</td><td class="num">152/1672 · 9.1%</td><td class="num"><span class="p">0.736</span></td><td class="num"><span class="p">1.000</span></td></tr><tr><td><b>Strict D7 returner</b></td><td class="num">96/1311 · 7.3%</td><td class="num">80/1328 · 6.0%</td><td class="num">76/1369 · 5.6%</td><td class="num"><span class="p">0.181</span></td><td class="num"><span class="p">0.061</span></td></tr><tr><td><b>Installed / standalone</b><br><span class="sub">returner-only behaviour in practice</span></td><td class="num">67 · 4.1%</td><td class="num">82 · 4.9%</td><td class="num">83 · 4.9%</td><td class="num"><span class="p">0.251</span></td><td class="num"><span class="p">0.276</span></td></tr></tbody></table></div>
+  <tbody><tr><td><b>Any watch on days 1–6</b><br><span class="sub">the returner gap News did not close</span></td><td class="num">209 · 12.5%</td><td class="num">205 · 12.0%</td><td class="num">221 · 12.6%</td><td class="num"><span class="p">0.645</span></td><td class="num"><span class="p">0.931</span></td></tr><tr><td><b>Strict D1 returner</b><br><span class="sub">&ge;30 min gap or later IST day</span></td><td class="num">149/1653 · 9.0%</td><td class="num">146/1688 · 8.6%</td><td class="num">158/1735 · 9.1%</td><td class="num"><span class="p">0.710</span></td><td class="num"><span class="p">0.925</span></td></tr><tr><td><b>Strict D7 returner</b></td><td class="num">98/1368 · 7.2%</td><td class="num">85/1369 · 6.2%</td><td class="num">78/1415 · 5.5%</td><td class="num"><span class="p">0.317</span></td><td class="num"><span class="p">0.074</span></td></tr><tr><td><b>Installed / standalone</b><br><span class="sub">returner-only behaviour in practice</span></td><td class="num">67 · 4.0%</td><td class="num">83 · 4.9%</td><td class="num">87 · 5.0%</td><td class="num"><span class="p">0.233</span></td><td class="num"><span class="p">0.179</span></td></tr></tbody></table></div>
 </section>
 
 <section class="card">
@@ -138,19 +138,19 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   a single tune, for whom RC and RI are byte-identical, so a null primary is ambiguous between
   "no effect" and "no exposure". This cut tells those apart. It does not measure a treatment effect.</p>
   <div class="scroll"><table style="min-width:680px">
-  <thead><tr><th>Metric</th><th class="num">RC · n=675</th><th class="num">RI · n=705</th><th class="num">RL · n=726</th>
+  <thead><tr><th>Metric</th><th class="num">RC · n=704</th><th class="num">RI · n=726</th><th class="num">RL · n=744</th>
   <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
   <tbody><tr><td><b>Attended P95-winsorized 7-day watch (mean min)</b><br>
   <span class="sub">&ge;2 first-session tunes only · descriptive</span></td>
-  <td class="num">2.288</td><td class="num">2.455</td><td class="num">2.396</td>
-  <td class="num"><span class="p">0.366</span></td><td class="num"><span class="p">0.547</span></td></tr></tbody></table></div>
+  <td class="num">2.242</td><td class="num">2.390</td><td class="num">2.345</td>
+  <td class="num"><span class="p">0.396</span></td><td class="num"><span class="p">0.541</span></td></tr></tbody></table></div>
 </section>
 
 <section class="card">
   <h2>Arm RL — did the lock work?</h2>
   <p class="sub">Mechanism diagnostics. RL is a compound treatment (discovery + persistence); if it
   wins, these numbers say how it was used, not which half caused it.</p>
-  <div class="big"><div class="stat rl"><div class="n">23.1%</div><div class="l">of RL users ever hit a lock (395 of 1709)</div></div><div class="stat rl"><div class="n">99<span style="font-size:14px">s</span></div><div class="l">median time from session start to lock</div></div><div class="stat rl"><div class="n">78%</div><div class="l">of locked users had it honoured on a later session (176/227) — the rest lost localStorage</div></div></div><p class="note">Locked genres: <b>News</b> 193 · <b>Movies</b> 63 · <b>Entertainment</b> 55 · <b>Music</b> 35 · <b>Devotional</b> 31</p>
+  <div class="big"><div class="stat rl"><div class="n">23.4%</div><div class="l">of RL users ever hit a lock (409 of 1749)</div></div><div class="stat rl"><div class="n">100<span style="font-size:14px">s</span></div><div class="l">median time from session start to lock</div></div><div class="stat rl"><div class="n">78%</div><div class="l">of locked users had it honoured on a later session (180/232) — the rest lost localStorage</div></div></div><p class="note">Locked genres: <b>News</b> 197 · <b>Movies</b> 65 · <b>Entertainment</b> 58 · <b>Music</b> 39 · <b>Devotional</b> 31</p>
 </section>
 
 <section class="card">
@@ -158,7 +158,7 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   <p class="sub">Any breach pauses the experiment.</p>
   <div class="scroll"><table>
   <thead><tr><th>Guardrail</th><th>Reading</th><th class="num">Status</th></tr></thead>
-  <tbody><tr><td><b>RI: playback errors / tune</b></td><td>6.39% vs RC 5.60% = <b>+14.2%</b> relative (trip: +25%)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RI: day-0 activation</b></td><td>+1.6pp vs RC (trip: &minus;2pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RI: landing wait p90</b></td><td>5663ms vs RC 6236ms (trip: +500ms)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: playback errors / tune</b></td><td>6.45% vs RC 5.60% = <b>+15.1%</b> relative (trip: +25%)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: day-0 activation</b></td><td>+3.1pp vs RC (trip: &minus;2pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: landing wait p90</b></td><td>6319ms vs RC 6236ms (trip: +500ms)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sample ratio 1:1:1</b></td><td>&chi;&sup2;=1.31, p=0.520</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Landing identical across arms</b></td><td>RC:News · RI:News · RL:News</td><td class="num"><span class="chip ok">&check; ok</span></td></tr></tbody></table></div>
+  <tbody><tr><td><b>RI: playback errors / tune</b></td><td>6.25% vs RC 5.58% = <b>+12.2%</b> relative (trip: +25%)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RI: day-0 activation</b></td><td>+1.7pp vs RC (trip: &minus;2pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RI: landing wait p90</b></td><td>5694ms vs RC 6180ms (trip: +500ms)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: playback errors / tune</b></td><td>6.51% vs RC 5.58% = <b>+16.8%</b> relative (trip: +25%)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: day-0 activation</b></td><td>+3.3pp vs RC (trip: &minus;2pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>RL: landing wait p90</b></td><td>6352ms vs RC 6180ms (trip: +500ms)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sample ratio 1:1:1</b></td><td>&chi;&sup2;=1.97, p=0.373</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Landing identical across arms</b></td><td>RC:News · RI:News · RL:News</td><td class="num"><span class="chip ok">&check; ok</span></td></tr></tbody></table></div>
 </section>
 
 <footer>Generated by <code>hub_exp3_render.py</code> from a read-only extract of production
