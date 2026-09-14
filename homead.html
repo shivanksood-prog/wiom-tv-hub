@@ -1,0 +1,111 @@
+<title>Home Ads (ch 23) — homead_v1</title>
+<style>
+:root{--bg:#FAF9FC;--card:#FFF;--subtle:#F1EDF7;--border:#D7D3E0;--grid:#E7E2EF;
+--ink:#161021;--muted:#665E75;--faint:#A7A1B2;--accent:#D9008D;--accent-soft:#FFE5F6;
+--hc:#665E75;--ha:#D9008D;
+--pass-fg:#008043;--pass-bg:#E1FAED;--warn-fg:#B45B00;--warn-bg:#FFE6CC;
+--fail-fg:#E01E00;--fail-bg:#FFE9E5;--info-fg:#6D17CE;--info-bg:#F1E5FF;}
+@media(prefers-color-scheme:dark){:root{--bg:#161021;--card:#352D42;--subtle:#2A2336;
+--border:#443152;--grid:#3E3550;--ink:#FAF9FC;--muted:#A7A1B2;--faint:#665E75;
+--accent:#F033AE;--accent-soft:rgba(217,0,141,.16);--hc:#A7A1B2;--ha:#F033AE;
+--pass-fg:#4ADE97;--pass-bg:rgba(0,128,67,.22);--warn-fg:#FFA64D;--warn-bg:rgba(255,128,0,.16);
+--fail-fg:#FF7A66;--fail-bg:rgba(224,30,0,.18);--info-fg:#C9A2FF;--info-bg:rgba(109,23,206,.22);}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:30px 18px 60px;line-height:1.5;
+font-family:"Noto Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px}
+.wrap{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:26px;line-height:1.15;margin:5px 0 0;font-weight:800;letter-spacing:-.01em}
+h2{font-size:16px;font-weight:700;margin:0}
+.meta{font-size:12.5px;color:var(--muted);margin-top:8px;max-width:96ch}
+.card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:19px}
+.sub{font-size:12.5px;color:var(--muted);margin:3px 0 0;max-width:88ch}
+p{margin:0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:var(--subtle);
+padding:1px 4px;border-radius:3px;border:1px solid var(--border)}
+.verdict{border-left:5px solid var(--warn-fg)}
+.verdict.pass{border-left-color:var(--pass-fg)}.verdict.fail{border-left-color:var(--fail-fg)}
+.verdict .word{font-size:20px;font-weight:800;color:var(--warn-fg)}
+.verdict.pass .word{color:var(--pass-fg)}.verdict.fail .word{color:var(--fail-fg)}
+.verdict .why{font-size:13px;max-width:74ch;margin-top:7px}
+.verdict .dates{font-size:12px;color:var(--muted);margin-top:11px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin-top:12px}
+th{text-align:left;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
+font-weight:700;padding:0 9px 6px 0;border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 9px 8px 0;border-bottom:1px solid var(--grid);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+.scroll{overflow-x:auto}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:650;padding:2px 8px;
+border-radius:5px;border:1px solid var(--border);background:var(--subtle);color:var(--muted);white-space:nowrap}
+.chip.ok{background:var(--pass-bg);color:var(--pass-fg);border-color:transparent}
+.chip.bad{background:var(--fail-bg);color:var(--fail-fg);border-color:transparent}
+.chip.warn{background:var(--warn-bg);color:var(--warn-fg);border-color:transparent}
+.chip.info{background:var(--info-bg);color:var(--info-fg);border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.dot{width:8px;height:8px;border-radius:2px;flex:none}
+.p{font-variant-numeric:tabular-nums;font-size:12px;padding:1px 6px;border-radius:4px;background:var(--subtle)}
+.p.sig{background:var(--pass-bg);color:var(--pass-fg);font-weight:700}
+.note{font-size:12px;color:var(--muted);margin-top:11px;max-width:88ch}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.big.four{grid-template-columns:repeat(4,1fr)}
+@media(max-width:800px){.big,.big.four{grid-template-columns:1fr}}
+.stat{border:1px solid var(--border);border-radius:9px;padding:14px 16px;background:var(--subtle)}
+.stat .n{font-size:25px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .l{font-size:12px;color:var(--muted);margin-top:3px}
+.stat.hc{border-left:4px solid var(--hc)}.stat.ha{border-left:4px solid var(--ha)}
+.funnel td:first-child{font-weight:600}
+.bar{height:6px;background:var(--grid);border-radius:3px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--ha)}
+.prereg li{margin:4px 0}
+footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);padding-top:13px}
+</style>
+<div class="wrap">
+<header><div class="eyebrow">Wiom TV · Home Ads · homead_v1 · channel 23 reel + skippable pre-roll + CTA</div>
+<h1>Can a free-TV viewer be sold Wiom Home?</h1>
+<div class="meta">Checked hourly · this page will populate itself within an hour of the deploy.
+Last check time is in <code>hub_homead_refresh.log</code>.</div></header>
+
+<section class="card verdict">
+  <div class="eyebrow">Status</div><div class="word">AWAITING DEPLOY</div>
+  <div class="why">No <code>homead_enrol</code> event exists yet. That is the expected state until the
+  two client files are copied to the server and <code>ads/ad_config.json</code> is reachable.
+  <b>This is not a failure mode</b> — the client refuses to enrol anyone until the config answers with
+  the right experiment id, so a half-deployed state is a clean exclusion, not corrupted attribution.
+  Until then every user gets HC's experience, which is the incumbent.</div>
+  <div class="dates">Cohort start auto-derives from the first enrol event — nothing to set on deploy day.
+  Schema probe: <code>meta</code> column present.</div>
+</section>
+
+<section class="card">
+  <h2>Pre-registration — written before the first user was enrolled</h2>
+  <p class="sub">Two looks, and only the second one decides. Nothing below changes after launch.</p>
+  <div class="scroll"><table>
+  <thead><tr><th>Item</th><th>Rule</th></tr></thead><tbody>
+  <tr><td><b>Unit · arms</b></td><td>wiom.tv uid, hash keyed on ctId when present, salt <code>homead_v1</code>,
+      50/50 sticky. HA = ads, HC = control. Orthogonal to fse_v3. Enrolment proof = <code>homead_enrol</code>
+      after <code>ad_config.json</code> loads; a client that cannot reach the config is excluded, never mis-stamped.</td></tr>
+  <tr><td><b>Cohort</b></td><td>Every uid with <code>homead_enrol</code> on/after the cutoff, intention-to-treat
+      (exposure not required). Primary cut = uids whose device is new since the cutoff; returners reported
+      separately. Both rails enrol; the readout is powered on the <b>phone (sachet) rail</b> only.
+      Prior Home customers (any OTP_VERIFIED or custGen payment before enrolment) excluded from both arms.</td></tr>
+  <tr><td><b>Primary</b> <span class="chip" style="color:var(--accent);border-color:var(--accent)">day 35</span></td>
+      <td><code>booking_fee_captured</code> within <b>14 d</b> of enrolment, phone rail, HA vs HC.
+      Baseline 0.95%. Powered for a <b>doubling</b> only (n = 2,442 per arm).</td></tr>
+  <tr><td><b>Surrogate</b> <span class="chip">day 10</span></td>
+      <td>CTA click &rarr; app open, needs the customer app to log install-referrer params into CleverTap.
+      Until then: CTA clicks per exposed uid, reported without a go/no-go.</td></tr>
+  <tr><td><b>Secondary</b></td><td>Install (OTP_VERIFIED) within 30 d · serviceability check · Home connection.
+      Reported, never decisive.</td></tr>
+  <tr><td><b>Guardrails</b></td><td>Median live watch-min HA &ge; 90% &times; HC ·
+      &ge;60 s session survival HA&minus;HC &ge; -2pp · strict D1/D7 returner HA&minus;HC &ge; -2pp ·
+      stream errors per tune HA &le; HC + 0.01 · sachet repurchase within 14 d HA &ge; HC -3% relative.</td></tr>
+  <tr><td><b>Kill</b></td><td>Surrogate lift &lt; +50% at the interim with CI excluding +100%, or any guardrail
+      breached on two consecutive refresh days. Remove the ads via the config flag.</td></tr>
+  <tr><td><b>Scale</b></td><td>Booking +100% with CI lower bound &gt; 0 on the phone rail at the decision date.
+      Roll to 100%, graduate per the Growth contract. Ties and near-misses mean <b>remove the ads</b>.</td></tr>
+  </tbody></table></div>
+</section>
+<footer>Generated by <code>hub_homead_render.py</code> from a read-only extract of production
+<code>analytics.db</code>. Plan: artifact 2c35e9b3 · decisions: artifact 198aeafc.</footer>
+</div>
