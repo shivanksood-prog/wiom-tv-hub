@@ -79,7 +79,7 @@ Last check time is in <code>hub_homead_refresh.log</code>.</div></header>
 
 <section class="card">
   <h2>Pre-registration — written before the first user was enrolled</h2>
-  <p class="sub">Two looks, and only the second one decides. Nothing below changes after launch.</p>
+  <p class="sub">Judged on installs (Home connections), read as a funnel from leading to lagging. Two looks; only the second decides. Nothing below changes after launch.</p>
   <div class="scroll"><table>
   <thead><tr><th>Item</th><th>Rule</th></tr></thead><tbody>
   <tr><td><b>Unit · arms</b></td><td>wiom.tv uid, hash keyed on ctId when present, salt <code>homead_v1</code>,
@@ -90,19 +90,21 @@ Last check time is in <code>hub_homead_refresh.log</code>.</div></header>
       separately. Both rails enrol; the readout is powered on the <b>phone (sachet) rail</b> only.
       Prior Home customers (any OTP_VERIFIED or custGen payment before enrolment) excluded from both arms.</td></tr>
   <tr><td><b>Primary</b> <span class="chip" style="color:var(--accent);border-color:var(--accent)">day 35</span></td>
-      <td><code>booking_fee_captured</code> within <b>14 d</b> of enrolment, phone rail, HA vs HC.
-      Baseline 0.95%. Powered for a <b>doubling</b> only (n = 2,442 per arm).</td></tr>
-  <tr><td><b>Surrogate</b> <span class="chip">day 10</span></td>
-      <td>CTA click &rarr; app open, needs the customer app to log install-referrer params into CleverTap.
-      Until then: CTA clicks per exposed uid, reported without a go/no-go.</td></tr>
-  <tr><td><b>Secondary</b></td><td>Install (OTP_VERIFIED) within 30 d · serviceability check · Home connection.
-      Reported, never decisive.</td></tr>
+      <td><b>Home connection live</b> (TASKVANILLA_AUDIT <code>OTP_VERIFIED</code>) within <b>14 d</b> of enrolment, phone rail, HA vs HC.
+      Baseline ~0.4%. This is the KRA; it is <b>not powerable</b> for a subtle lift on pilot traffic, so the scale rule below carries a booking fallback.</td></tr>
+  <tr><td><b>Leading funnel</b> <span class="chip">daily · day 10</span></td>
+      <td>Read in this order, HA vs HC: <b>CTA click</b> per enrolled uid &rarr; <b>app installed / launched</b> within 14 d (CleverTap, by MOBILE)
+      &rarr; <b>booking created</b> within 14 d &rarr; connection live within 14 d.
+      <b>Bookings are the early warning:</b> at the interim, if HA bookings are not above HC, the page says so loudly even though the decision waits.</td></tr>
+  <tr><td><b>Secondary</b></td><td>Serviceability check · sachet repurchase (guardrail) · P1 vs P0 pre-roll sub-split inside the unserviceable rail. Reported, never decisive.</td></tr>
   <tr><td><b>Guardrails</b></td><td>Median live watch-min HA &ge; 90% &times; HC ·
       &ge;60 s session survival HA&minus;HC &ge; -2pp · strict D1/D7 returner HA&minus;HC &ge; -2pp ·
       stream errors per tune HA &le; HC + 0.01 · sachet repurchase within 14 d HA &ge; HC -3% relative.</td></tr>
-  <tr><td><b>Kill</b></td><td>Surrogate lift &lt; +50% at the interim with CI excluding +100%, or any guardrail
-      breached on two consecutive refresh days. Remove the ads via the config flag.</td></tr>
-  <tr><td><b>Scale</b></td><td>Booking +100% with CI lower bound &gt; 0 on the phone rail at the decision date.
+  <tr><td><b>Kill</b></td><td>App-open lift (CTA click &rarr; app installed/launched) &lt; +50% at the interim with CI excluding +100%;
+      or any guardrail breached on two consecutive refresh days; or HA bookings <b>below</b> HC at the interim with CI excluding 0.
+      Remove the ads via the config flag.</td></tr>
+  <tr><td><b>Scale</b></td><td>At day 35, phone rail: connections HA &gt; HC with CI lower bound &gt; 0;
+      <b>or</b>, if connections are not yet mature, bookings +100% with CI lower bound &gt; 0 <b>and</b> app-open lift positive.
       Roll to 100%, graduate per the Growth contract. Ties and near-misses mean <b>remove the ads</b>.</td></tr>
   </tbody></table></div>
 </section>
