@@ -1,485 +1,159 @@
 {
-  "fetched_at": "2026-09-21T20:34:15Z",
+  "fetched_at": "2026-09-21T23:35:48Z",
   "data": {
     "period": "1h",
-    "liveNow": 4,
+    "liveNow": 0,
     "overview": {
-      "unique_users": 28,
-      "total_tunes": 133,
-      "total_watch_min": 1150.2,
-      "avg_duration_sec": 448.1
+      "unique_users": 8,
+      "total_tunes": 10,
+      "total_watch_min": 2.3,
+      "avg_duration_sec": 13.5
     },
     "channelLeaderboard": [
-      {
-        "ch": 26,
-        "name": "Shemaroo Marathi Bana",
-        "cat": "Movies",
-        "lang": "Marathi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 25.3
-      },
       {
         "ch": 43,
         "name": "India TV",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 24,
-        "unique_users": 17,
-        "watch_min": 12.2
-      },
-      {
-        "ch": 3,
-        "name": "Dangal 2",
-        "cat": "Entertainment",
-        "lang": "Hindi",
         "tunes": 5,
-        "unique_users": 3,
-        "watch_min": 1.1
-      },
-      {
-        "ch": 61,
-        "name": "ZB Bhakti",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 0.8
-      },
-      {
-        "ch": 234,
-        "name": "Ultimate TV",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 6,
-        "unique_users": 4,
-        "watch_min": 0.7
+        "unique_users": 5,
+        "watch_min": 1.4
       },
       {
         "ch": 41,
         "name": "ABP News",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.5
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.7
       },
       {
-        "ch": 18,
-        "name": "Desi Channel",
+        "ch": 2,
+        "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 0.5
-      },
-      {
-        "ch": 25,
-        "name": "ZB Cinema",
-        "cat": "Movies",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "ch": 214,
-        "name": "Stingray The Spa",
-        "cat": "Music",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 191,
-        "name": "Salvation TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 182,
-        "name": "Qello Concerts by Stingray",
-        "cat": "Music",
-        "lang": "English",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 160,
-        "name": "NDTV Rajasthan",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 155,
-        "name": "Mr. Bean Animated",
-        "cat": "Animation",
-        "lang": "English",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 137,
-        "name": "INWILD",
-        "cat": "Documentary",
-        "lang": "English",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 114,
-        "name": "Dheeran TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 4,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 29,
-        "name": "9X Jhakaas",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "ch": 225,
-        "name": "The Pet Collective",
-        "cat": "Family",
-        "lang": "English",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 205,
-        "name": "Shekinah TV",
-        "cat": "Undefined",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 151,
-        "name": "Mercy TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 139,
-        "name": "Ishwar Bhakti TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 138,
-        "name": "InWonder",
-        "cat": "Science",
-        "lang": "English",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 136,
-        "name": "INFAST",
-        "cat": "Lifestyle",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 85,
-        "name": "Bansal News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 80,
-        "name": "Apna Punjab TV",
-        "cat": "Entertainment",
-        "lang": "Punjabi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 76,
-        "name": "Anand TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 17,
-        "name": "Shemaroo Josh",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.2
-      },
-      {
-        "ch": 242,
-        "name": "Zainabia Channel",
-        "cat": "Devotional",
-        "lang": "Urdu",
         "tunes": 2,
         "unique_users": 1,
         "watch_min": 0.1
       },
       {
-        "ch": 237,
-        "name": "VIP News",
+        "ch": 167,
+        "name": "News Nation",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.1
-      }
-    ],
-    "categoryBreakdown": [
-      {
-        "cat": "Movies",
-        "tunes": 6,
-        "unique_users": 2,
-        "watch_min": 25.9
-      },
-      {
-        "cat": "News",
-        "tunes": 64,
-        "unique_users": 18,
-        "watch_min": 15.1
-      },
-      {
-        "cat": "Devotional",
-        "tunes": 17,
-        "unique_users": 3,
-        "watch_min": 2.4
-      },
-      {
-        "cat": "Entertainment",
-        "tunes": 15,
-        "unique_users": 4,
-        "watch_min": 2.3
-      },
-      {
-        "cat": "Music",
-        "tunes": 17,
-        "unique_users": 4,
-        "watch_min": 1.8
-      },
-      {
-        "cat": "Undefined",
-        "tunes": 3,
-        "unique_users": 1,
-        "watch_min": 0.4
-      },
-      {
-        "cat": "Documentary",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Animation",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Science",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "cat": "Lifestyle",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "cat": "Family",
-        "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 0.2
-      },
-      {
-        "cat": "Business",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
-      }
-    ],
-    "languageBreakdown": [
-      {
-        "lang": "Marathi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 25.4
-      },
-      {
-        "lang": "Hindi",
-        "tunes": 108,
-        "unique_users": 23,
-        "watch_min": 21.3
-      },
-      {
-        "lang": "English",
-        "tunes": 14,
-        "unique_users": 2,
-        "watch_min": 1.8
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 4,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "lang": "Urdu",
-        "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 0.2
-      }
-    ],
-    "hourlyTrend": [
-      {
-        "hour": "2026-09-21 19:00",
-        "users": 9,
-        "tunes": 12
-      },
-      {
-        "hour": "2026-09-21 20:00",
-        "users": 19,
-        "tunes": 121
-      }
-    ],
-    "dailyTrend": [
-      {
-        "day": "2026-09-21",
-        "users": 28,
-        "tunes": 133,
-        "watch_min": 1150.2
-      }
-    ],
-    "deviceBreakdown": [
-      {
-        "device": "mobile",
-        "users": 26
-      }
-    ],
-    "funnel": {
-      "opens": 23,
-      "playback": 16,
-      "engaged": 3
-    },
-    "retention": {
-      "new_users": 14,
-      "returning_users": 11
-    },
-    "errorBoard": [
-      {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
-        "errors": 2,
-        "starts": 1
-      },
-      {
-        "ch": 61,
-        "name": "ZB Bhakti",
-        "cat": "Devotional",
-        "errors": 1,
-        "starts": 1
       },
       {
         "ch": 3,
         "name": "Dangal 2",
         "cat": "Entertainment",
-        "errors": 1,
-        "starts": 3
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      }
+    ],
+    "categoryBreakdown": [
+      {
+        "cat": "News",
+        "tunes": 7,
+        "unique_users": 7,
+        "watch_min": 2.1
       },
       {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "errors": 1,
-        "starts": 14
+        "cat": "Entertainment",
+        "tunes": 3,
+        "unique_users": 1,
+        "watch_min": 0.1
+      }
+    ],
+    "languageBreakdown": [
+      {
+        "lang": "Hindi",
+        "tunes": 10,
+        "unique_users": 8,
+        "watch_min": 2.3
+      }
+    ],
+    "hourlyTrend": [
+      {
+        "hour": "2026-09-21 22:00",
+        "users": 5,
+        "tunes": 7
+      },
+      {
+        "hour": "2026-09-21 23:00",
+        "users": 3,
+        "tunes": 3
+      }
+    ],
+    "dailyTrend": [
+      {
+        "day": "2026-09-21",
+        "users": 8,
+        "tunes": 10,
+        "watch_min": 2.3
+      }
+    ],
+    "deviceBreakdown": [
+      {
+        "device": "mobile",
+        "users": 7
+      },
+      {
+        "device": "desktop",
+        "users": 1
+      }
+    ],
+    "funnel": {
+      "opens": 8,
+      "playback": 8,
+      "engaged": 0
+    },
+    "retention": {
+      "new_users": 7,
+      "returning_users": 1
+    },
+    "errorBoard": [
+      {
+        "ch": 2,
+        "name": "Dangal TV",
+        "cat": "Entertainment",
+        "errors": 2,
+        "starts": 0
       }
     ],
     "perf": {
-      "avg_ttff_ms": 2704,
-      "samples": 79
+      "avg_ttff_ms": 1537,
+      "samples": 8
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 77,
-        "avg_ttff_ms": 2601
+        "starts": 7,
+        "avg_ttff_ms": 1572
       },
       {
-        "net": "3g",
-        "starts": 2,
-        "avg_ttff_ms": 6665
+        "net": "unknown",
+        "starts": 1,
+        "avg_ttff_ms": 1294
       }
     ],
     "engagement": {
-      "sessions": 28,
-      "avg_channels": 3.9,
-      "avg_session_sec": 106,
-      "bounce_pct": 50,
-      "zap_pct": 45.1
+      "sessions": 8,
+      "avg_channels": 1.1,
+      "avg_session_sec": 16,
+      "bounce_pct": 87.5,
+      "zap_pct": 50
     },
     "survey": {
-      "very": 1,
-      "somewhat": 0,
-      "not_disappointed": 0,
-      "responses": 1
+      "very": null,
+      "somewhat": null,
+      "not_disappointed": null,
+      "responses": 0
     }
   }
 }
