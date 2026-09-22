@@ -1,5 +1,5 @@
 {
-"generated_utc": "2026-09-22T07:08:12.948Z",
+"generated_utc": "2026-09-22T08:08:12.519Z",
 "day": "2026-09-21",
 "deploy": {
 "sw_cache_name": "wiom-tv-v8-2026-08-20",
@@ -71,13 +71,13 @@
 "ttff_med": 1569,
 "ttff_p90": 4437,
 "gt5_pct": 7.8,
-"err_per_100": 3.56,
-"ttff_new_med": 1526,
+"err_per_100": 3.58,
+"ttff_new_med": 1544,
 "ttff_ret_med": 1577,
-"ret_swbuild_pct": 40,
+"ret_swbuild_pct": 39,
 "casc_sessions": 18,
 "holds": 0,
 "retries": 0
 },
-"slack_text": "*Wiom TV \u2014 PR #12 (sw.js) + PR #13 (fast zap) daily readout \u00b7 2026-09-21 IST*\nDeploy: *Both PRs LIVE* since 2026-09-01\n\u2022 Channel start (cold TTFF): median 1.54 s (\u221226 ms vs base \u2705) \u00b7 p90 4.8 s (+314 ms vs base \u26a0\ufe0f) \u00b7 >5 s 8.7% (+0.9pp vs base \u26a0\ufe0f)\n\u2022 New vs returning devices: 1.53 s vs 1.56 s median\n\u2022 Errors: 5.68 per 100 loads (+2.12 vs base \u26a0\ufe0f) \u00b7 cascade sessions 54 (43% of errors) \u00b7 net holds 30 \u00b7 retries 671 \u00b7 no-frame timeouts 332\n\u2022 Returning devices on current build: 62% (target ~90% after PR #12) \u00b7 on fast-zap build 98%\n\u2022 Warm zaps: 30% of starts \u00b7 warm 521 ms vs cold-on-fast-link 1.98 s\n\u2022 Pre-buffer data: 112 sessions \u00b7 p90 43646 KB/session \u00b7 on 2g/3g 17596 KB (must stay ~0)\n\u2022 Volume: 1714 human sessions \u00b7 18584 loads\nHub: https://shivanksood-prog.github.io/wiom-tv-hub/zap.html \u00b7 baseline = 7 full days before the deploy on 2026-09-01"
+"slack_text": "*Wiom TV \u2014 PR #12 (sw.js) + PR #13 (fast zap) daily readout \u00b7 2026-09-21 IST*\nDeploy: *Both PRs LIVE* since 2026-09-01\n\u2022 Channel start (cold TTFF): median 1.54 s (\u221226 ms vs base \u2705) \u00b7 p90 4.8 s (+314 ms vs base \u26a0\ufe0f) \u00b7 >5 s 8.7% (+0.9pp vs base \u26a0\ufe0f)\n\u2022 New vs returning devices: 1.53 s vs 1.56 s median\n\u2022 Errors: 5.68 per 100 loads (+2.1 vs base \u26a0\ufe0f) \u00b7 cascade sessions 54 (43% of errors) \u00b7 net holds 30 \u00b7 retries 671 \u00b7 no-frame timeouts 332\n\u2022 Returning devices on current build: 62% (target ~90% after PR #12) \u00b7 on fast-zap build 98%\n\u2022 Warm zaps: 30% of starts \u00b7 warm 521 ms vs cold-on-fast-link 1.98 s\n\u2022 Pre-buffer data: 112 sessions \u00b7 p90 43646 KB/session \u00b7 on 2g/3g 17596 KB (must stay ~0)\n\u2022 Volume: 1714 human sessions \u00b7 18584 loads\nHub: https://shivanksood-prog.github.io/wiom-tv-hub/zap.html \u00b7 baseline = 7 full days before the deploy on 2026-09-01"
 }
