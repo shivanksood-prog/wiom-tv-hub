@@ -1,221 +1,95 @@
 {
-  "fetched_at": "2026-09-24T17:18:40Z",
+  "fetched_at": "2026-09-24T20:33:43Z",
   "data": {
     "period": "1h",
-    "liveNow": 17,
+    "liveNow": 1,
     "overview": {
-      "unique_users": 179,
-      "total_tunes": 941,
-      "total_watch_min": 3829.9,
-      "avg_duration_sec": 211.4
+      "unique_users": 32,
+      "total_tunes": 73,
+      "total_watch_min": 190.1,
+      "avg_duration_sec": 144.4
     },
     "channelLeaderboard": [
-      {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 197,
-        "unique_users": 126,
-        "watch_min": 94.9
-      },
       {
         "ch": 5,
         "name": "Zee Comedy Nation",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 13,
-        "unique_users": 6,
-        "watch_min": 72.9
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 26.6
+      },
+      {
+        "ch": 43,
+        "name": "India TV",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 38,
+        "unique_users": 23,
+        "watch_min": 6.8
       },
       {
         "ch": 44,
         "name": "NDTV India",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 36,
-        "unique_users": 27,
-        "watch_min": 65.6
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 1
       },
       {
-        "ch": 3,
-        "name": "Dangal 2",
+        "ch": 2,
+        "name": "Dangal TV",
         "cat": "Entertainment",
         "lang": "Hindi",
-        "tunes": 17,
-        "unique_users": 9,
-        "watch_min": 38.8
-      },
-      {
-        "ch": 7,
-        "name": "Zee Horror Nights",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 21,
-        "unique_users": 10,
-        "watch_min": 24.9
-      },
-      {
-        "ch": 160,
-        "name": "NDTV Rajasthan",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 14,
-        "unique_users": 8,
-        "watch_min": 24.4
-      },
-      {
-        "ch": 17,
-        "name": "Shemaroo Josh",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 8,
-        "watch_min": 20.3
-      },
-      {
-        "ch": 8,
-        "name": "Zee Cine Classic",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 20,
-        "unique_users": 10,
-        "watch_min": 14.7
+        "tunes": 3,
+        "unique_users": 2,
+        "watch_min": 0.9
       },
       {
         "ch": 86,
         "name": "Bharat Samachar",
         "cat": "News",
         "lang": "Hindi",
-        "tunes": 15,
-        "unique_users": 10,
-        "watch_min": 11.3
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.4
       },
       {
-        "ch": 250,
-        "name": "ZillarBarta News",
-        "cat": "Classic",
-        "lang": "Hindi",
-        "tunes": 15,
-        "unique_users": 4,
-        "watch_min": 5.8
-      },
-      {
-        "ch": 231,
-        "name": "TV9 Bharatvarsh",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 13,
-        "unique_users": 7,
-        "watch_min": 5.6
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 24,
-        "unique_users": 20,
-        "watch_min": 5
-      },
-      {
-        "ch": 139,
-        "name": "Ishwar Bhakti TV",
+        "ch": 191,
+        "name": "Salvation TV",
         "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.3
+      },
+      {
+        "ch": 170,
+        "name": "NTC TV",
+        "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 3,
-        "unique_users": 2,
-        "watch_min": 4.2
+        "unique_users": 1,
+        "watch_min": 0.3
       },
       {
-        "ch": 114,
-        "name": "Dheeran TV",
-        "cat": "Devotional",
-        "lang": "Hindi",
-        "tunes": 20,
-        "unique_users": 17,
-        "watch_min": 4
-      },
-      {
-        "ch": 48,
-        "name": "India Today",
-        "cat": "News",
+        "ch": 137,
+        "name": "INWILD",
+        "cat": "Documentary",
         "lang": "English",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 3.6
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
       },
       {
-        "ch": 27,
-        "name": "9XM",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 13,
-        "unique_users": 9,
-        "watch_min": 3.2
-      },
-      {
-        "ch": 41,
-        "name": "ABP News",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 17,
-        "unique_users": 14,
-        "watch_min": 3
-      },
-      {
-        "ch": 59,
-        "name": "Channel Divya",
-        "cat": "Devotional",
-        "lang": "Punjabi",
-        "tunes": 4,
-        "unique_users": 4,
-        "watch_min": 2.8
-      },
-      {
-        "ch": 136,
-        "name": "INFAST",
-        "cat": "Lifestyle",
-        "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 2.6
-      },
-      {
-        "ch": 45,
-        "name": "Zee Bharat",
-        "cat": "News",
-        "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 5,
-        "watch_min": 2.6
-      },
-      {
-        "ch": 120,
-        "name": "GoodNews TV",
+        "ch": 61,
+        "name": "ZB Bhakti",
         "cat": "Devotional",
         "lang": "Hindi",
-        "tunes": 12,
-        "unique_users": 8,
-        "watch_min": 2.3
-      },
-      {
-        "ch": 24,
-        "name": "Bhojpuri Cinema",
-        "cat": "Movies",
-        "lang": "Bhojpuri",
-        "tunes": 12,
-        "unique_users": 9,
-        "watch_min": 2.3
-      },
-      {
-        "ch": 159,
-        "name": "NDTV Profit",
-        "cat": "Business",
-        "lang": "Hindi",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 2.2
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0.2
       },
       {
         "ch": 18,
@@ -223,175 +97,160 @@
         "cat": "Entertainment",
         "lang": "Hindi",
         "tunes": 2,
-        "unique_users": 2,
-        "watch_min": 2
-      },
-      {
-        "ch": 104,
-        "name": "DD National HD",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 9,
-        "unique_users": 7,
-        "watch_min": 1.7
-      },
-      {
-        "ch": 11,
-        "name": "Shubh Cinema",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 11,
-        "unique_users": 9,
-        "watch_min": 1.5
-      },
-      {
-        "ch": 2,
-        "name": "Dangal TV",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 7,
-        "unique_users": 7,
-        "watch_min": 1.5
-      },
-      {
-        "ch": 241,
-        "name": "YRF Music",
-        "cat": "Music",
-        "lang": "Hindi",
-        "tunes": 6,
-        "unique_users": 5,
-        "watch_min": 1.4
-      },
-      {
-        "ch": 32,
-        "name": "B4U Bhojpuri",
-        "cat": "Music",
-        "lang": "Bhojpuri",
-        "tunes": 6,
-        "unique_users": 5,
-        "watch_min": 1.4
-      },
-      {
-        "ch": 9,
-        "name": "Zee South Flix",
-        "cat": "Entertainment",
-        "lang": "Hindi",
-        "tunes": 7,
-        "unique_users": 5,
-        "watch_min": 1.2
-      }
-    ],
-    "categoryBreakdown": [
-      {
-        "cat": "News",
-        "tunes": 499,
-        "unique_users": 150,
-        "watch_min": 227.5
-      },
-      {
-        "cat": "Entertainment",
-        "tunes": 140,
-        "unique_users": 27,
-        "watch_min": 181.8
-      },
-      {
-        "cat": "Devotional",
-        "tunes": 96,
-        "unique_users": 32,
-        "watch_min": 17
-      },
-      {
-        "cat": "Music",
-        "tunes": 85,
-        "unique_users": 19,
-        "watch_min": 12
-      },
-      {
-        "cat": "Classic",
-        "tunes": 15,
-        "unique_users": 4,
-        "watch_min": 5.8
-      },
-      {
-        "cat": "Movies",
-        "tunes": 33,
-        "unique_users": 13,
-        "watch_min": 4.1
-      },
-      {
-        "cat": "Lifestyle",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 2.6
-      },
-      {
-        "cat": "Business",
-        "tunes": 8,
-        "unique_users": 6,
-        "watch_min": 2.6
-      },
-      {
-        "cat": "Education",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 1.2
-      },
-      {
-        "cat": "DD",
-        "tunes": 14,
-        "unique_users": 3,
-        "watch_min": 1.2
-      },
-      {
-        "cat": "Animation",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 1
-      },
-      {
-        "cat": "Undefined",
-        "tunes": 10,
-        "unique_users": 5,
-        "watch_min": 0.8
-      },
-      {
-        "cat": "Science",
-        "tunes": 4,
-        "unique_users": 3,
-        "watch_min": 0.4
-      },
-      {
-        "cat": "Documentary",
-        "tunes": 3,
-        "unique_users": 3,
-        "watch_min": 0.4
-      },
-      {
-        "cat": "Wiom",
-        "tunes": 1,
         "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Sports",
-        "tunes": 1,
-        "unique_users": 1,
-        "watch_min": 0.3
-      },
-      {
-        "cat": "Culture",
-        "tunes": 5,
-        "unique_users": 4,
         "watch_min": 0.2
       },
       {
-        "cat": "Weather",
-        "tunes": 4,
+        "ch": 176,
+        "name": "Prudent Media",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 173,
+        "name": "Peace TV Urdu",
+        "cat": "Devotional",
+        "lang": "Urdu",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 138,
+        "name": "InWonder",
+        "cat": "Science",
+        "lang": "English",
+        "tunes": 2,
         "unique_users": 2,
         "watch_min": 0.1
       },
       {
-        "cat": "Family",
+        "ch": 114,
+        "name": "Dheeran TV",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 3,
+        "unique_users": 3,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 76,
+        "name": "Anand TV",
+        "cat": "Devotional",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.1
+      },
+      {
+        "ch": 242,
+        "name": "Zainabia Channel",
+        "cat": "Devotional",
+        "lang": "Urdu",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 227,
+        "name": "TNP News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 2,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 160,
+        "name": "NDTV Rajasthan",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 159,
+        "name": "NDTV Profit",
+        "cat": "Business",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 158,
+        "name": "NDTV Madhya Pradesh Chhattisgarh",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 145,
+        "name": "Kashish News",
+        "cat": "News",
+        "lang": "Hindi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 65,
+        "name": "NDTV Marathi",
+        "cat": "News",
+        "lang": "Marathi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      },
+      {
+        "ch": 51,
+        "name": "RT India",
+        "cat": "News",
+        "lang": "English",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
+      }
+    ],
+    "categoryBreakdown": [
+      {
+        "cat": "Entertainment",
+        "tunes": 9,
+        "unique_users": 4,
+        "watch_min": 27.9
+      },
+      {
+        "cat": "News",
+        "tunes": 50,
+        "unique_users": 23,
+        "watch_min": 8.5
+      },
+      {
+        "cat": "Devotional",
+        "tunes": 10,
+        "unique_users": 3,
+        "watch_min": 0.8
+      },
+      {
+        "cat": "Documentary",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0.2
+      },
+      {
+        "cat": "Science",
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "cat": "Business",
         "tunes": 1,
         "unique_users": 1,
         "watch_min": 0
@@ -400,302 +259,106 @@
     "languageBreakdown": [
       {
         "lang": "Hindi",
-        "tunes": 792,
-        "unique_users": 160,
-        "watch_min": 439.1
+        "tunes": 66,
+        "unique_users": 26,
+        "watch_min": 37
       },
       {
         "lang": "English",
-        "tunes": 57,
-        "unique_users": 17,
-        "watch_min": 8.3
-      },
-      {
-        "lang": "Punjabi",
-        "tunes": 42,
-        "unique_users": 15,
-        "watch_min": 5.6
-      },
-      {
-        "lang": "Bhojpuri",
-        "tunes": 18,
-        "unique_users": 9,
-        "watch_min": 3.7
-      },
-      {
-        "lang": "Marathi",
-        "tunes": 23,
-        "unique_users": 11,
-        "watch_min": 1.9
+        "tunes": 4,
+        "unique_users": 2,
+        "watch_min": 0.3
       },
       {
         "lang": "Urdu",
-        "tunes": 9,
-        "unique_users": 6,
-        "watch_min": 0.6
+        "tunes": 2,
+        "unique_users": 2,
+        "watch_min": 0.1
+      },
+      {
+        "lang": "Marathi",
+        "tunes": 1,
+        "unique_users": 1,
+        "watch_min": 0
       }
     ],
     "hourlyTrend": [
       {
-        "hour": "2026-09-24 16:00",
-        "users": 130,
-        "tunes": 715
+        "hour": "2026-09-24 19:00",
+        "users": 27,
+        "tunes": 67
       },
       {
-        "hour": "2026-09-24 17:00",
-        "users": 52,
-        "tunes": 225
+        "hour": "2026-09-24 20:00",
+        "users": 6,
+        "tunes": 6
       }
     ],
     "dailyTrend": [
       {
         "day": "2026-09-24",
-        "users": 178,
-        "tunes": 940,
-        "watch_min": 3829.9
+        "users": 32,
+        "tunes": 73,
+        "watch_min": 190.1
       }
     ],
     "deviceBreakdown": [
       {
         "device": "mobile",
-        "users": 170
-      },
-      {
-        "device": "desktop",
-        "users": 1
+        "users": 31
       }
     ],
     "funnel": {
-      "opens": 135,
-      "playback": 110,
-      "engaged": 24
+      "opens": 26,
+      "playback": 20,
+      "engaged": 2
     },
     "retention": {
-      "new_users": 95,
-      "returning_users": 45
+      "new_users": 20,
+      "returning_users": 7
     },
     "errorBoard": [
       {
-        "ch": 43,
-        "name": "India TV",
-        "cat": "News",
-        "errors": 21,
-        "starts": 110
-      },
-      {
-        "ch": 44,
-        "name": "NDTV India",
-        "cat": "News",
-        "errors": 9,
-        "starts": 24
-      },
-      {
-        "ch": 46,
-        "name": "News 24",
-        "cat": "News",
-        "errors": 6,
-        "starts": 0
-      },
-      {
-        "ch": 136,
-        "name": "INFAST",
-        "cat": "Lifestyle",
-        "errors": 6,
-        "starts": 2
-      },
-      {
-        "ch": 86,
-        "name": "Bharat Samachar",
-        "cat": "News",
-        "errors": 6,
-        "starts": 4
-      },
-      {
-        "ch": 160,
-        "name": "NDTV Rajasthan",
-        "cat": "News",
-        "errors": 6,
-        "starts": 5
-      },
-      {
-        "ch": 114,
-        "name": "Dheeran TV",
-        "cat": "Devotional",
-        "errors": 6,
-        "starts": 10
-      },
-      {
-        "ch": 47,
-        "name": "Sudarshan News",
-        "cat": "News",
-        "errors": 4,
-        "starts": 2
-      },
-      {
-        "ch": 89,
-        "name": "BRK News",
-        "cat": "News",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 105,
-        "name": "DD National SD",
+        "ch": 2,
+        "name": "Dangal TV",
         "cat": "Entertainment",
         "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 118,
-        "name": "Goldmines",
-        "cat": "Movies",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 127,
-        "name": "Hebron TV",
-        "cat": "Devotional",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 142,
-        "name": "Jinvani Channel",
-        "cat": "Devotional",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 181,
-        "name": "PTC Simran",
-        "cat": "Devotional",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 185,
-        "name": "Republic Bharat",
-        "cat": "News",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 194,
-        "name": "Sangeet Marathi",
-        "cat": "Music",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 240,
-        "name": "Win TV",
-        "cat": "Undefined",
-        "errors": 2,
-        "starts": 0
-      },
-      {
-        "ch": 150,
-        "name": "MediBizTV",
-        "cat": "Education",
-        "errors": 2,
-        "starts": 2
-      },
-      {
-        "ch": 40,
-        "name": "Aaj Tak HD",
-        "cat": "News",
-        "errors": 2,
-        "starts": 18
-      },
-      {
-        "ch": 67,
-        "name": "4TV News",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 130,
-        "name": "Hindi Khabar",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 132,
-        "name": "IBC 24",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 166,
-        "name": "News Daily 24",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 177,
-        "name": "PTC Chakde",
-        "cat": "Music",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 218,
-        "name": "Swadesh News",
-        "cat": "News",
-        "errors": 1,
-        "starts": 0
-      },
-      {
-        "ch": 174,
-        "name": "Pravasi Channel",
-        "cat": "Undefined",
-        "errors": 1,
-        "starts": 3
+        "starts": 1
       }
     ],
     "perf": {
-      "avg_ttff_ms": 2507,
-      "samples": 532
+      "avg_ttff_ms": 2337,
+      "samples": 38
     },
     "netBreakdown": [
       {
         "net": "4g",
-        "starts": 464,
-        "avg_ttff_ms": 2227
+        "starts": 36,
+        "avg_ttff_ms": 2214
       },
       {
         "net": "3g",
-        "starts": 53,
-        "avg_ttff_ms": 4955
-      },
-      {
-        "net": "2g",
-        "starts": 8,
-        "avg_ttff_ms": 3476
+        "starts": 1,
+        "avg_ttff_ms": 5133
       },
       {
         "net": "unknown",
-        "starts": 7,
-        "avg_ttff_ms": 1435
+        "starts": 1,
+        "avg_ttff_ms": 3954
       }
     ],
     "engagement": {
-      "sessions": 176,
-      "avg_channels": 3.8,
-      "avg_session_sec": 113,
-      "bounce_pct": 44.9,
-      "zap_pct": 47
+      "sessions": 32,
+      "avg_channels": 1.6,
+      "avg_session_sec": 21,
+      "bounce_pct": 50,
+      "zap_pct": 42.5
     },
     "survey": {
-      "very": 1,
-      "somewhat": 0,
-      "not_disappointed": 1,
-      "responses": 2
+      "very": null,
+      "somewhat": null,
+      "not_disappointed": null,
+      "responses": 0
     }
   }
 }
