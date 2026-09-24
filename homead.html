@@ -61,20 +61,98 @@ border-radius:5px;border:1px solid var(--border);background:var(--subtle);color:
 footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);padding-top:13px}
 </style>
 <div class="wrap">
-<header><div class="eyebrow">Wiom TV · Home Ads · homead_v1 · channel 23 reel + skippable pre-roll + CTA</div>
+<header><div class="eyebrow">Wiom TV · Home Ads · homead_v1 · day 0.0</div>
 <h1>Can a free-TV viewer be sold Wiom Home?</h1>
-<div class="meta">Checked hourly · this page will populate itself within an hour of the deploy.
-Last check time is in <code>hub_homead_refresh.log</code>.</div></header>
+<div class="meta">Cohort <b>38 persons</b> (HA 21 · HC 17; new-device cut 14 · 13) ·
+cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-24 12:18:02 · auto-refreshed hourly · intention-to-treat ·
+<b>HC is a true control</b> — it is what the site serves today, so a null result means "remove the ads".</div></header>
 
-<section class="card verdict">
-  <div class="eyebrow">Status</div><div class="word">AWAITING DEPLOY</div>
-  <div class="why">No <code>homead_enrol</code> event exists yet. That is the expected state until the
-  two client files are copied to the server and <code>ads/ad_config.json</code> is reachable.
-  <b>This is not a failure mode</b> — the client refuses to enrol anyone until the config answers with
-  the right experiment id, so a half-deployed state is a clean exclusion, not corrupted attribution.
-  Until then every user gets HC's experience, which is the incumbent.</div>
-  <div class="dates">Cohort start auto-derives from the first enrol event — nothing to set on deploy day.
-  Schema probe: <code>meta</code> column present.</div>
+<section class="card verdict warn">
+  <div class="eyebrow">Verdict</div><div class="word">ACCRUING — interim at day 10 (Oct 4)</div>
+  <div class="why">Day 0.0. Exposure so far: 3/21 · 14.3% of HA saw an ad, 0/21 · 0.0% tapped a CTA. No outcome is read before the interim; fse_v1's arm B led by +7.9pp at its first look and finished at +0.1pp.</div>
+  <div class="dates">Interim <b>Oct 4</b> (surrogate + guardrails only) · decision <b>Oct 29</b> · phone-rail n so far 0 / 3 vs 2,442 per arm needed</div>
+</section>
+
+<section class="card">
+  <h2>Integrity gate</h2>
+  <p class="sub">Checked before any effect is read. A lift on invalid data is worthless.</p>
+  <div class="chips"><span class="chip ok">&check; Sample ratio 1:1 <b>&chi;&sup2;=0.42, p=0.516</b></span><span class="chip ok">&check; Sticky <b>0 cross-arm</b></span><span class="chip ok">&check; Hash audit <b>0/14</b> (uid-keyed only)</span><span class="chip ok">&check; HC clean <b>0 ad events</b></span><span class="chip ok">&check; HA impressions <b>7</b></span><span class="chip info">ctId de-dupe <b>0 uids folded</b></span><span class="chip info">ad load errors <b>0</b></span><span class="chip info">Snowflake join <b>ok</b></span></div>
+  <div class="scroll"><table style="max-width:520px">
+  <thead><tr><th>Rail</th><th class="num">HA</th><th class="num">HC</th><th class="num">HA share</th></tr></thead>
+  <tbody><tr><td>sachet</td><td class="num">1</td><td class="num">3</td><td class="num">25.0%</td></tr><tr><td>unsvc</td><td class="num">14</td><td class="num">7</td><td class="num">66.7%</td></tr><tr><td>organic</td><td class="num">6</td><td class="num">7</td><td class="num">46.2%</td></tr></tbody></table></div>
+  <p class="note">The hash is blind to rail, so each row should sit near 50%. cx-app persons are keyed on ctId; their
+  second uid is folded into the first above.</p>
+</section>
+
+<section class="card">
+  <h2>Exposure — what HA actually saw</h2>
+  <p class="sub">Intention-to-treat means HA includes people who never reached an ad. This is how many did.</p>
+  <div class="scroll"><table class="funnel" style="min-width:560px">
+  <thead><tr><th>Step</th><th class="num">Persons</th><th class="num" style="min-width:160px">of HA</th></tr></thead>
+  <tbody><tr><td>Enrolled in HA</td><td class="num">21</td><td class="num">100.0%<div class="bar"><i style="width:100.0%"></i></div></td></tr><tr><td>Saw any ad frame<br><span class=sub>ch 23 or pre-roll impression</span></td><td class="num">3</td><td class="num">14.3%<div class="bar"><i style="width:14.3%"></i></div></td></tr><tr><td>&nbsp;&nbsp;tuned to channel 23<br><span class=sub>2 tuners · median dwell 0.2 min</span></td><td class="num">2</td><td class="num">9.5%<div class="bar"><i style="width:9.5%"></i></div></td></tr><tr><td>&nbsp;&nbsp;got a pre-roll<br><span class=sub>2 pre-rolls · skip rate 0% · median skip at 0 s</span></td><td class="num">2</td><td class="num">9.5%<div class="bar"><i style="width:9.5%"></i></div></td></tr><tr><td>Heard an ad (unmuted impression)<br><span class=sub>the real exposure</span></td><td class="num">3</td><td class="num">14.3%<div class="bar"><i style="width:14.3%"></i></div></td></tr><tr><td>Consumed (&ge;50% or complete)<br><span class=sub>0 completed at least one</span></td><td class="num">1</td><td class="num">4.8%<div class="bar"><i style="width:4.8%"></i></div></td></tr><tr><td>Tapped a CTA<br><span class=sub>ch 23 bar 0 · pre-roll bar 0 · strip 0 · guide 0 taps</span></td><td class="num">0</td><td class="num">0.0%<div class="bar"><i style="width:0.0%"></i></div></td></tr></tbody></table></div>
+</section>
+
+<section class="card">
+  <h2>The funnel, leading &rarr; lagging — phone rail, Snowflake</h2>
+  <p class="sub">Clicks &rarr; app &rarr; booking &rarr; connection. Connection within 14 d decides on day 35; bookings are the early warning; the rest is reported.</p>
+  
+  <div class="scroll"><table style="min-width:640px">
+  <thead><tr><th>Metric</th><th class="num">HA · n=0</th><th class="num">HC · n=3</th><th class="num">HA vs HC</th><th class="num">p</th></tr></thead>
+  <tbody>
+  <tr><td>1 · Tapped a CTA<br><span class="sub">leading</span></td>
+      <td class="num">—</td><td class="num">0/3 · 0.0%</td>
+      <td class="num">+0.00pp</td><td class="num"><span class="p">1.000</span></td></tr>
+  <tr><td>2 · App installed / launched within 14 d<br><span class="sub">leading · CleverTap by MOBILE · kill rule reads this</span></td>
+      <td class="num">—</td><td class="num">0/3 · 0.0%</td>
+      <td class="num">+0.00pp · <b>+0%</b> rel<br><span class="sub">CI +0% to +0%</span></td><td class="num"><span class="p">1.000</span></td></tr>
+  <tr><td>3 · Booking created within 14 d<br><span class="sub">EARLY WARNING · mature (enrol &ge;14 d ago): 0 / 0</span></td>
+      <td class="num">—</td><td class="num">0/3 · 0.0%</td>
+      <td class="num">+0.00pp · <b>+0%</b> rel<br><span class="sub">CI +0.00 to +0.00pp</span></td><td class="num"><span class="p">1.000</span></td></tr>
+  <tr><td><b>4 · Connection live within 14 d</b><br><span class="sub">PRIMARY · OTP_VERIFIED · decides on day 35</span></td>
+      <td class="num">—</td><td class="num">0/3 · 0.0%</td>
+      <td class="num">+0.00pp<br><span class="sub">CI +0.00 to +0.00pp</span></td><td class="num"><span class="p">1.000</span></td></tr>
+  <tr><td>Connection within 30 d<br><span class="sub">secondary, longer window</span></td>
+      <td class="num">—</td><td class="num">0/3 · 0.0%</td>
+      <td class="num">+0.00pp · +0% rel</td><td class="num"><span class="p">1.000</span></td></tr>
+  <tr><td>Sachet repurchase within 14 d<br><span class="sub">guardrail</span></td>
+      <td class="num">—</td><td class="num">0/3 · 0.0%</td>
+      <td class="num">+0.0pp</td><td class="num"><span class="p">1.000</span></td></tr>
+  </tbody></table></div>
+  <p class="note">Phone rail only (sachet banner arrivals). 4 prior Home customers excluded from both arms.
+  Joined 2026-09-24 12:18:19 UTC · app = CLEVERTAP_EVENTS App Installed/Launched · booking = BOOKING_LOGS booking_fee_captured · connection = TASKVANILLA_AUDIT OTP_VERIFIED ·
+  Snowflake times are IST, shifted before comparison.</p>
+</section>
+
+<section class="card">
+  <h2>Guardrails — HA vs HC, whole cohort</h2>
+  <p class="sub">Breach on two consecutive refresh days pauses the experiment.</p>
+  <div class="scroll"><table>
+  <thead><tr><th>Guardrail</th><th>Reading</th><th class="num">Status</th></tr></thead>
+  <tbody><tr><td><b>Median live watch-min per user</b></td><td>HA 0.42 vs HC 0.43 = <b>-3.7%</b> (trip: below 90% of HC) · mean diff -0.13 min p=0.879</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>&ge;60 s session survival (any session)</b></td><td>HA 4/21 · 19.0% vs HC 2/17 · 11.8% = <b>+7.3pp</b> (trip: -2pp) p=0.540</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Strict D1 returner</b></td><td>HA — vs HC — = <b>+0.0pp</b> (trip: -2pp) p=1.000</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Strict D7 returner</b></td><td>HA — vs HC — = <b>+0.0pp</b> (trip: -2pp) p=1.000</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Stream errors per live tune</b></td><td>HA 12.68% vs HC 37.96% (trip: HC + 1pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sample ratio 1:1</b></td><td>&chi;&sup2;=0.42, p=0.516</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sachet repurchase within 14 d (cannibalisation)</b></td><td>awaiting Snowflake join</td><td class="num"><span class="chip ok">&check; ok</span></td></tr></tbody></table></div>
+  <p class="note"><span class="chip"><span class="dot" style="background:var(--ha)"></span>HA — ads (ch 23 reel + pre-roll + CTA)</span> · <span class="chip"><span class="dot" style="background:var(--hc)"></span>HC — control (today's wiom.tv)</span></p>
+</section>
+
+<section class="card">
+  <h2>Pre-roll sub-split — unserviceable rail inside HA (P1 got the pre-roll, P0 did not)</h2>
+  <p class="sub">Reported, never judged. Answers one question only: does the pre-roll hurt this cohort?</p>
+  <div class="scroll"><table style="max-width:720px">
+  <thead><tr><th>Metric</th><th class="num">P1 · n=4</th><th class="num">P0 · n=10</th></tr></thead>
+  <tbody>
+  <tr><td>Got a pre-roll</td><td class="num">1/4 · 25.0%</td><td class="num">0/10 · 0.0%</td></tr>
+  <tr><td>Median live watch-min</td><td class="num">0.32</td><td class="num">0.82</td></tr>
+  <tr><td>&ge;60 s session survival</td><td class="num">0/4 · 0.0%</td><td class="num">2/10 · 20.0%</td></tr>
+  <tr><td>Strict D1 returner</td><td class="num">—</td><td class="num">—</td></tr>
+  <tr><td>Stream errors per live tune</td><td class="num">7.14%</td><td class="num">16.07%</td></tr>
+  <tr><td>Tapped a CTA</td><td class="num">0/4 · 0.0%</td><td class="num">0/10 · 0.0%</td></tr>
+  </tbody></table></div>
+  <p class="note">The split is a second independent hash (salt <code>homead_v1|preroll</code>), stamped as <code>meta.ad_pre</code> on every event of these persons.</p>
+</section>
+
+<section class="card">
+  <h2>Enrolment by day (IST)</h2>
+  <div class="scroll"><table style="max-width:420px">
+  <thead><tr><th>Day</th><th class="num">HA</th><th class="num">HC</th></tr></thead>
+  <tbody><tr><td>2026-09-24</td><td class="num">21</td><td class="num">17</td></tr></tbody></table></div>
 </section>
 
 <section class="card">
@@ -109,5 +187,6 @@ Last check time is in <code>hub_homead_refresh.log</code>.</div></header>
   </tbody></table></div>
 </section>
 <footer>Generated by <code>hub_homead_render.py</code> from a read-only extract of production
-<code>analytics.db</code>. Plan: artifact 2c35e9b3 · decisions: artifact 198aeafc.</footer>
+<code>analytics.db</code> + Snowflake via Metabase. Plan: artifact 2c35e9b3 ·
+decisions: artifact 198aeafc · excluded (no config / off): 2 uids.</footer>
 </div>
