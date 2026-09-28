@@ -63,23 +63,23 @@ footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);pa
 <div class="wrap">
 <header><div class="eyebrow">Wiom TV · Home Ads · homead_v1 · day 4.0</div>
 <h1>Can a free-TV viewer be sold Wiom Home?</h1>
-<div class="meta">Cohort <b>3195 persons</b> (HA 1624 · HC 1571; new-device cut 1412 · 1334) ·
-cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refreshed hourly · intention-to-treat ·
+<div class="meta">Cohort <b>3234 persons</b> (HA 1643 · HC 1591; new-device cut 1427 · 1352) ·
+cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 12:18:01 · auto-refreshed hourly · intention-to-treat ·
 <b>HC is a true control</b> — it is what the site serves today, so a null result means "remove the ads".</div></header>
 
 <section class="card verdict fail">
   <div class="eyebrow">Verdict</div><div class="word">INTEGRITY ALERT — do not read effects</div>
-  <div class="why">SRM p=0.348, 0 cross-arm uids, 1 hash mismatches, 0 ad events leaked into HC. Fix the pipeline first.</div>
-  <div class="dates">Interim <b>Oct 4</b> (surrogate + guardrails only) · decision <b>Oct 29</b> · phone-rail n so far 377 / 376 vs 2,442 per arm needed</div>
+  <div class="why">SRM p=0.361, 0 cross-arm uids, 1 hash mismatches, 0 ad events leaked into HC. Fix the pipeline first.</div>
+  <div class="dates">Interim <b>Oct 4</b> (surrogate + guardrails only) · decision <b>Oct 29</b> · phone-rail n so far 381 / 379 vs 2,442 per arm needed</div>
 </section>
 
 <section class="card">
   <h2>Integrity gate</h2>
   <p class="sub">Checked before any effect is read. A lift on invalid data is worthless.</p>
-  <div class="chips"><span class="chip ok">&check; Sample ratio 1:1 <b>&chi;&sup2;=0.88, p=0.348</b></span><span class="chip ok">&check; Sticky <b>0 cross-arm</b></span><span class="chip bad">&times; Hash audit <b>1/969</b> (uid-keyed only)</span><span class="chip ok">&check; HC clean <b>0 ad events</b></span><span class="chip ok">&check; HA impressions <b>541</b></span><span class="chip info">ctId de-dupe <b>22 uids folded</b></span><span class="chip info">ad load errors <b>25</b></span><span class="chip info">Snowflake join <b>ok</b></span></div>
+  <div class="chips"><span class="chip ok">&check; Sample ratio 1:1 <b>&chi;&sup2;=0.84, p=0.361</b></span><span class="chip ok">&check; Sticky <b>0 cross-arm</b></span><span class="chip bad">&times; Hash audit <b>1/978</b> (uid-keyed only)</span><span class="chip ok">&check; HC clean <b>0 ad events</b></span><span class="chip ok">&check; HA impressions <b>548</b></span><span class="chip info">ctId de-dupe <b>22 uids folded</b></span><span class="chip info">ad load errors <b>25</b></span><span class="chip info">Snowflake join <b>ok</b></span></div>
   <div class="scroll"><table style="max-width:520px">
   <thead><tr><th>Rail</th><th class="num">HA</th><th class="num">HC</th><th class="num">HA share</th></tr></thead>
-  <tbody><tr><td>sachet</td><td class="num">428</td><td class="num">415</td><td class="num">50.8%</td></tr><tr><td>unsvc</td><td class="num">1092</td><td class="num">1006</td><td class="num">52.0%</td></tr><tr><td>organic</td><td class="num">104</td><td class="num">150</td><td class="num">40.9%</td></tr></tbody></table></div>
+  <tbody><tr><td>sachet</td><td class="num">432</td><td class="num">418</td><td class="num">50.8%</td></tr><tr><td>unsvc</td><td class="num">1104</td><td class="num">1024</td><td class="num">51.9%</td></tr><tr><td>organic</td><td class="num">107</td><td class="num">149</td><td class="num">41.8%</td></tr></tbody></table></div>
   <p class="note">The hash is blind to rail, so each row should sit near 50%. cx-app persons are keyed on ctId; their
   second uid is folded into the first above.</p>
 </section>
@@ -89,7 +89,7 @@ cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refres
   <p class="sub">Intention-to-treat means HA includes people who never reached an ad. This is how many did.</p>
   <div class="scroll"><table class="funnel" style="min-width:560px">
   <thead><tr><th>Step</th><th class="num">Persons</th><th class="num" style="min-width:160px">of HA</th></tr></thead>
-  <tbody><tr><td>Enrolled in HA</td><td class="num">1624</td><td class="num">100.0%<div class="bar"><i style="width:100.0%"></i></div></td></tr><tr><td>Saw any ad frame<br><span class=sub>ch 23 or pre-roll impression</span></td><td class="num">235</td><td class="num">14.5%<div class="bar"><i style="width:14.5%"></i></div></td></tr><tr><td>&nbsp;&nbsp;tuned to channel 23<br><span class=sub>149 tuners · median dwell 0.2 min</span></td><td class="num">165</td><td class="num">10.2%<div class="bar"><i style="width:10.2%"></i></div></td></tr><tr><td>&nbsp;&nbsp;got a pre-roll<br><span class=sub>151 pre-rolls · skip rate 12% · median skip at 6 s</span></td><td class="num">113</td><td class="num">7.0%<div class="bar"><i style="width:7.0%"></i></div></td></tr><tr><td>Heard an ad (unmuted impression)<br><span class=sub>the real exposure</span></td><td class="num">192</td><td class="num">11.8%<div class="bar"><i style="width:11.8%"></i></div></td></tr><tr><td>Consumed (&ge;50% or complete)<br><span class=sub>54 completed at least one</span></td><td class="num">93</td><td class="num">5.7%<div class="bar"><i style="width:5.7%"></i></div></td></tr><tr><td>Tapped a CTA<br><span class=sub>ch 23 bar 14 · pre-roll bar 7 · strip 0 · guide 0 taps</span></td><td class="num">25</td><td class="num">1.5%<div class="bar"><i style="width:1.5%"></i></div></td></tr></tbody></table></div>
+  <tbody><tr><td>Enrolled in HA</td><td class="num">1643</td><td class="num">100.0%<div class="bar"><i style="width:100.0%"></i></div></td></tr><tr><td>Saw any ad frame<br><span class=sub>ch 23 or pre-roll impression</span></td><td class="num">240</td><td class="num">14.6%<div class="bar"><i style="width:14.6%"></i></div></td></tr><tr><td>&nbsp;&nbsp;tuned to channel 23<br><span class=sub>151 tuners · median dwell 0.2 min</span></td><td class="num">167</td><td class="num">10.2%<div class="bar"><i style="width:10.2%"></i></div></td></tr><tr><td>&nbsp;&nbsp;got a pre-roll<br><span class=sub>154 pre-rolls · skip rate 14% · median skip at 6 s</span></td><td class="num">116</td><td class="num">7.1%<div class="bar"><i style="width:7.1%"></i></div></td></tr><tr><td>Heard an ad (unmuted impression)<br><span class=sub>the real exposure</span></td><td class="num">195</td><td class="num">11.9%<div class="bar"><i style="width:11.9%"></i></div></td></tr><tr><td>Consumed (&ge;50% or complete)<br><span class=sub>55 completed at least one</span></td><td class="num">94</td><td class="num">5.7%<div class="bar"><i style="width:5.7%"></i></div></td></tr><tr><td>Tapped a CTA<br><span class=sub>ch 23 bar 14 · pre-roll bar 7 · strip 0 · guide 0 taps</span></td><td class="num">25</td><td class="num">1.5%<div class="bar"><i style="width:1.5%"></i></div></td></tr></tbody></table></div>
 </section>
 
 <section class="card">
@@ -97,29 +97,29 @@ cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refres
   <p class="sub">Clicks &rarr; app &rarr; booking &rarr; connection. Connection within 14 d decides on day 35; bookings are the early warning; the rest is reported.</p>
   
   <div class="scroll"><table style="min-width:640px">
-  <thead><tr><th>Metric</th><th class="num">HA · n=377</th><th class="num">HC · n=376</th><th class="num">HA vs HC</th><th class="num">p</th></tr></thead>
+  <thead><tr><th>Metric</th><th class="num">HA · n=381</th><th class="num">HC · n=379</th><th class="num">HA vs HC</th><th class="num">p</th></tr></thead>
   <tbody>
   <tr><td>1 · Tapped a CTA<br><span class="sub">leading</span></td>
-      <td class="num">4/377 · 1.1%</td><td class="num">0/376 · 0.0%</td>
-      <td class="num">+1.06pp</td><td class="num"><span class="p sig">0.045</span></td></tr>
+      <td class="num">4/381 · 1.0%</td><td class="num">0/379 · 0.0%</td>
+      <td class="num">+1.05pp</td><td class="num"><span class="p sig">0.045</span></td></tr>
   <tr><td>2 · App installed / launched within 14 d<br><span class="sub">leading · CleverTap by MOBILE · kill rule reads this</span></td>
-      <td class="num">12/377 · 3.2%</td><td class="num">14/376 · 3.7%</td>
-      <td class="num">-0.54pp · <b>-15%</b> rel<br><span class="sub">CI -85% to +56%</span></td><td class="num"><span class="p">0.685</span></td></tr>
+      <td class="num">12/381 · 3.1%</td><td class="num">14/379 · 3.7%</td>
+      <td class="num">-0.54pp · <b>-15%</b> rel<br><span class="sub">CI -85% to +55%</span></td><td class="num"><span class="p">0.680</span></td></tr>
   <tr><td>3 · Booking created within 14 d<br><span class="sub">EARLY WARNING · mature (enrol &ge;14 d ago): 0 / 0</span></td>
-      <td class="num">2/377 · 0.5%</td><td class="num">2/376 · 0.5%</td>
-      <td class="num">-0.00pp · <b>-0%</b> rel<br><span class="sub">CI -1.04 to +1.04pp</span></td><td class="num"><span class="p">0.998</span></td></tr>
+      <td class="num">2/381 · 0.5%</td><td class="num">2/379 · 0.5%</td>
+      <td class="num">-0.00pp · <b>-1%</b> rel<br><span class="sub">CI -1.03 to +1.03pp</span></td><td class="num"><span class="p">0.996</span></td></tr>
   <tr><td><b>4 · Connection live within 14 d</b><br><span class="sub">PRIMARY · OTP_VERIFIED · decides on day 35</span></td>
-      <td class="num">0/377 · 0.0%</td><td class="num">1/376 · 0.3%</td>
-      <td class="num">-0.27pp<br><span class="sub">CI -0.79 to +0.25pp</span></td><td class="num"><span class="p">0.316</span></td></tr>
+      <td class="num">0/381 · 0.0%</td><td class="num">1/379 · 0.3%</td>
+      <td class="num">-0.26pp<br><span class="sub">CI -0.78 to +0.25pp</span></td><td class="num"><span class="p">0.316</span></td></tr>
   <tr><td>Connection within 30 d<br><span class="sub">secondary, longer window</span></td>
-      <td class="num">0/377 · 0.0%</td><td class="num">1/376 · 0.3%</td>
-      <td class="num">-0.27pp · -100% rel</td><td class="num"><span class="p">0.316</span></td></tr>
+      <td class="num">0/381 · 0.0%</td><td class="num">1/379 · 0.3%</td>
+      <td class="num">-0.26pp · -100% rel</td><td class="num"><span class="p">0.316</span></td></tr>
   <tr><td>Sachet repurchase within 14 d<br><span class="sub">guardrail</span></td>
-      <td class="num">89/377 · 23.6%</td><td class="num">86/376 · 22.9%</td>
-      <td class="num">+0.7pp</td><td class="num"><span class="p">0.811</span></td></tr>
+      <td class="num">92/381 · 24.1%</td><td class="num">88/379 · 23.2%</td>
+      <td class="num">+0.9pp</td><td class="num"><span class="p">0.764</span></td></tr>
   </tbody></table></div>
-  <p class="note">Phone rail only (sachet banner arrivals). 128 prior Home customers excluded from both arms.
-  Joined 2026-09-28 11:19:53 UTC · app = CLEVERTAP_EVENTS App Installed/Launched · booking = BOOKING_LOGS booking_fee_captured · connection = TASKVANILLA_AUDIT OTP_VERIFIED ·
+  <p class="note">Phone rail only (sachet banner arrivals). 130 prior Home customers excluded from both arms.
+  Joined 2026-09-28 12:18:48 UTC · app = CLEVERTAP_EVENTS App Installed/Launched · booking = BOOKING_LOGS booking_fee_captured · connection = TASKVANILLA_AUDIT OTP_VERIFIED ·
   Snowflake times are IST, shifted before comparison.</p>
 </section>
 
@@ -128,7 +128,7 @@ cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refres
   <p class="sub">Breach on two consecutive refresh days pauses the experiment.</p>
   <div class="scroll"><table>
   <thead><tr><th>Guardrail</th><th>Reading</th><th class="num">Status</th></tr></thead>
-  <tbody><tr><td><b>Median live watch-min per user</b></td><td>HA 0.70 vs HC 0.75 = <b>-6.7%</b> (trip: below 90% of HC) · mean diff -0.72 min p=0.746</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>&ge;60 s session survival (any session)</b></td><td>HA 274/1624 · 16.9% vs HC 311/1571 · 19.8% = <b>-2.9pp</b> (trip: -2pp) p=0.033</td><td class="num"><span class="chip bad">&times; tripped</span></td></tr><tr><td><b>Strict D1 returner</b></td><td>HA 129/1420 · 9.1% vs HC 116/1370 · 8.5% = <b>+0.6pp</b> (trip: -2pp) p=0.565</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Strict D7 returner</b></td><td>HA — vs HC — = <b>+0.0pp</b> (trip: -2pp) p=1.000</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Stream errors per live tune</b></td><td>HA 10.90% vs HC 12.59% (trip: HC + 1pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sample ratio 1:1</b></td><td>&chi;&sup2;=0.88, p=0.348</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sachet repurchase within 14 d (cannibalisation)</b></td><td>HA 89/377 · 23.6% vs HC 86/376 · 22.9% = <b>+3.2%</b> relative (trip: -3%) p=0.811</td><td class="num"><span class="chip ok">&check; ok</span></td></tr></tbody></table></div>
+  <tbody><tr><td><b>Median live watch-min per user</b></td><td>HA 0.70 vs HC 0.75 = <b>-6.7%</b> (trip: below 90% of HC) · mean diff -0.74 min p=0.737</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>&ge;60 s session survival (any session)</b></td><td>HA 278/1643 · 16.9% vs HC 313/1591 · 19.7% = <b>-2.8pp</b> (trip: -2pp) p=0.043</td><td class="num"><span class="chip bad">&times; tripped</span></td></tr><tr><td><b>Strict D1 returner</b></td><td>HA 134/1420 · 9.4% vs HC 118/1370 · 8.6% = <b>+0.8pp</b> (trip: -2pp) p=0.448</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Strict D7 returner</b></td><td>HA — vs HC — = <b>+0.0pp</b> (trip: -2pp) p=1.000</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Stream errors per live tune</b></td><td>HA 10.99% vs HC 12.65% (trip: HC + 1pp)</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sample ratio 1:1</b></td><td>&chi;&sup2;=0.84, p=0.361</td><td class="num"><span class="chip ok">&check; ok</span></td></tr><tr><td><b>Sachet repurchase within 14 d (cannibalisation)</b></td><td>HA 92/381 · 24.1% vs HC 88/379 · 23.2% = <b>+4.0%</b> relative (trip: -3%) p=0.764</td><td class="num"><span class="chip ok">&check; ok</span></td></tr></tbody></table></div>
   <p class="note"><span class="chip"><span class="dot" style="background:var(--ha)"></span>HA — ads (ch 23 reel + pre-roll + CTA)</span> · <span class="chip"><span class="dot" style="background:var(--hc)"></span>HC — control (today's wiom.tv)</span></p>
 </section>
 
@@ -136,14 +136,14 @@ cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refres
   <h2>Pre-roll sub-split — unserviceable rail inside HA (P1 got the pre-roll, P0 did not)</h2>
   <p class="sub">Reported, never judged. Answers one question only: does the pre-roll hurt this cohort?</p>
   <div class="scroll"><table style="max-width:720px">
-  <thead><tr><th>Metric</th><th class="num">P1 · n=538</th><th class="num">P0 · n=554</th></tr></thead>
+  <thead><tr><th>Metric</th><th class="num">P1 · n=545</th><th class="num">P0 · n=559</th></tr></thead>
   <tbody>
-  <tr><td>Got a pre-roll</td><td class="num">59/538 · 11.0%</td><td class="num">6/554 · 1.1%</td></tr>
-  <tr><td>Median live watch-min</td><td class="num">0.80</td><td class="num">0.75</td></tr>
-  <tr><td>&ge;60 s session survival</td><td class="num">85/538 · 15.8%</td><td class="num">104/554 · 18.8%</td></tr>
-  <tr><td>Strict D1 returner</td><td class="num">42/474 · 8.9%</td><td class="num">42/478 · 8.8%</td></tr>
-  <tr><td>Stream errors per live tune</td><td class="num">9.77%</td><td class="num">10.70%</td></tr>
-  <tr><td>Tapped a CTA</td><td class="num">13/538 · 2.4%</td><td class="num">7/554 · 1.3%</td></tr>
+  <tr><td>Got a pre-roll</td><td class="num">60/545 · 11.0%</td><td class="num">6/559 · 1.1%</td></tr>
+  <tr><td>Median live watch-min</td><td class="num">0.80</td><td class="num">0.77</td></tr>
+  <tr><td>&ge;60 s session survival</td><td class="num">86/545 · 15.8%</td><td class="num">104/559 · 18.6%</td></tr>
+  <tr><td>Strict D1 returner</td><td class="num">44/474 · 9.3%</td><td class="num">43/478 · 9.0%</td></tr>
+  <tr><td>Stream errors per live tune</td><td class="num">9.87%</td><td class="num">10.79%</td></tr>
+  <tr><td>Tapped a CTA</td><td class="num">13/545 · 2.4%</td><td class="num">7/559 · 1.3%</td></tr>
   </tbody></table></div>
   <p class="note">The split is a second independent hash (salt <code>homead_v1|preroll</code>), stamped as <code>meta.ad_pre</code> on every event of these persons.</p>
 </section>
@@ -152,7 +152,7 @@ cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refres
   <h2>Enrolment by day (IST)</h2>
   <div class="scroll"><table style="max-width:420px">
   <thead><tr><th>Day</th><th class="num">HA</th><th class="num">HC</th></tr></thead>
-  <tbody><tr><td>2026-09-24</td><td class="num">176</td><td class="num">176</td></tr><tr><td>2026-09-25</td><td class="num">407</td><td class="num">359</td></tr><tr><td>2026-09-26</td><td class="num">488</td><td class="num">479</td></tr><tr><td>2026-09-27</td><td class="num">502</td><td class="num">483</td></tr><tr><td>2026-09-28</td><td class="num">244</td><td class="num">252</td></tr></tbody></table></div>
+  <tbody><tr><td>2026-09-24</td><td class="num">176</td><td class="num">176</td></tr><tr><td>2026-09-25</td><td class="num">407</td><td class="num">359</td></tr><tr><td>2026-09-26</td><td class="num">488</td><td class="num">479</td></tr><tr><td>2026-09-27</td><td class="num">502</td><td class="num">483</td></tr><tr><td>2026-09-28</td><td class="num">268</td><td class="num">278</td></tr></tbody></table></div>
 </section>
 
 <section class="card">
@@ -188,5 +188,5 @@ cutoff <b>2026-09-24 11:25:47</b> · snapshot 2026-09-28 11:18:03 · auto-refres
 </section>
 <footer>Generated by <code>hub_homead_render.py</code> from a read-only extract of production
 <code>analytics.db</code> + Snowflake via Metabase. Plan: artifact 2c35e9b3 ·
-decisions: artifact 198aeafc · excluded (no config / off): 196 uids.</footer>
+decisions: artifact 198aeafc · excluded (no config / off): 198 uids.</footer>
 </div>
