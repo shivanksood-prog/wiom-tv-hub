@@ -62,7 +62,7 @@ footer{font-size:11.5px;color:var(--faint);border-top:1px solid var(--border);pa
 <header><div class="eyebrow">Wiom TV · Experiment 3 · fse_v3 cross-genre ordering · day 55.2</div>
 <h1>Does a traversable catalogue change anything?</h1>
 <div class="meta">Clean cohort <b>8521 users</b> (RC 2810 · RI 2881 · RL 2830) ·
-cutoff <b>2026-08-06 07:50:54</b> · snapshot 2026-09-30 11:33:02 · auto-refreshed hourly ·
+cutoff <b>2026-08-06 07:50:54</b> · snapshot 2026-09-30 12:33:03 · auto-refreshed hourly ·
 the News landing is held <b>identical in all three arms</b>, so only ordering varies ·
 <b>RC is a true control</b> — it is what the site serves today, so a null result means
 "keep what we have"</div></header>
@@ -102,15 +102,15 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   <p class="sub">The only metric that decides anything, and only on day 28.
   Zero-watch users are kept in the denominator. Days where a single tune is &ge;90%
   of the day's minutes <i>and</i> the user never unmuted are dropped as TV-left-running
-  (<b>2463</b> uid-days dropped so far). Each user is then capped at the pooled P95
-  (<b>12.07</b> min).</p>
+  (<b>2470</b> uid-days dropped so far). Each user is then capped at the pooled P95
+  (<b>12.05</b> min).</p>
   <div class="scroll"><table style="min-width:680px">
-  <thead><tr><th>Metric</th><th class="num">RC<br><span style="color:var(--faint)">n=2766</span></th><th class="num">RI<br><span style="color:var(--faint)">n=2832</span></th><th class="num">RL<br><span style="color:var(--faint)">n=2784</span></th>
+  <thead><tr><th>Metric</th><th class="num">RC<br><span style="color:var(--faint)">n=2769</span></th><th class="num">RI<br><span style="color:var(--faint)">n=2839</span></th><th class="num">RL<br><span style="color:var(--faint)">n=2784</span></th>
   <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
   <tbody>
     <tr><td><b>Attended P95-winsorized 7-day watch (mean min)</b><br>
-    <span class="sub">PRIMARY · &alpha;=0.025 per comparison · MDE 0.245 min at n&asymp;2794/arm</span></td>
-    <td class="num">1.447</td><td class="num">1.562</td><td class="num">1.601</td><td class="num"><span class="p">0.143</span></td><td class="num"><span class="p">0.051</span></td></tr>
+    <span class="sub">PRIMARY · &alpha;=0.025 per comparison · MDE 0.245 min at n&asymp;2797/arm</span></td>
+    <td class="num">1.446</td><td class="num">1.558</td><td class="num">1.600</td><td class="num"><span class="p">0.154</span></td><td class="num"><span class="p">0.051</span></td></tr>
     <tr><td>Median first-session watch (min)<br><span class="sub">the number that should embarrass us</span></td>
     <td class="num">0.23</td><td class="num">0.28</td><td class="num">0.28</td><td class="num">—</td><td class="num">—</td></tr>
     <tr><td>Median first-session switches</td>
@@ -128,7 +128,7 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   <div class="scroll"><table style="min-width:680px">
   <thead><tr><th>Metric</th><th class="num">RC · n=2810</th><th class="num">RI · n=2881</th><th class="num">RL · n=2830</th>
   <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
-  <tbody><tr><td><b>Any watch on days 1–6</b><br><span class="sub">the returner gap News did not close</span></td><td class="num">369 · 13.1%</td><td class="num">394 · 13.7%</td><td class="num">374 · 13.2%</td><td class="num"><span class="p">0.547</span></td><td class="num"><span class="p">0.926</span></td></tr><tr><td><b>Strict D1 returner</b><br><span class="sub">&ge;30 min gap or later IST day</span></td><td class="num">240/2810 · 8.5%</td><td class="num">256/2881 · 8.9%</td><td class="num">254/2830 · 9.0%</td><td class="num"><span class="p">0.645</span></td><td class="num"><span class="p">0.564</span></td></tr><tr><td><b>Strict D7 returner</b></td><td class="num">257/2790 · 9.2%</td><td class="num">257/2852 · 9.0%</td><td class="num">224/2805 · 8.0%</td><td class="num"><span class="p">0.794</span></td><td class="num"><span class="p">0.102</span></td></tr><tr><td><b>Installed / standalone</b><br><span class="sub">returner-only behaviour in practice</span></td><td class="num">137 · 4.9%</td><td class="num">156 · 5.4%</td><td class="num">154 · 5.4%</td><td class="num"><span class="p">0.357</span></td><td class="num"><span class="p">0.336</span></td></tr></tbody></table></div>
+  <tbody><tr><td><b>Any watch on days 1–6</b><br><span class="sub">the returner gap News did not close</span></td><td class="num">369 · 13.1%</td><td class="num">394 · 13.7%</td><td class="num">374 · 13.2%</td><td class="num"><span class="p">0.547</span></td><td class="num"><span class="p">0.926</span></td></tr><tr><td><b>Strict D1 returner</b><br><span class="sub">&ge;30 min gap or later IST day</span></td><td class="num">240/2810 · 8.5%</td><td class="num">256/2881 · 8.9%</td><td class="num">254/2830 · 9.0%</td><td class="num"><span class="p">0.645</span></td><td class="num"><span class="p">0.564</span></td></tr><tr><td><b>Strict D7 returner</b></td><td class="num">257/2790 · 9.2%</td><td class="num">258/2852 · 9.0%</td><td class="num">224/2805 · 8.0%</td><td class="num"><span class="p">0.829</span></td><td class="num"><span class="p">0.102</span></td></tr><tr><td><b>Installed / standalone</b><br><span class="sub">returner-only behaviour in practice</span></td><td class="num">137 · 4.9%</td><td class="num">156 · 5.4%</td><td class="num">154 · 5.4%</td><td class="num"><span class="p">0.357</span></td><td class="num"><span class="p">0.336</span></td></tr></tbody></table></div>
 </section>
 
 <section class="card">
@@ -138,12 +138,12 @@ the News landing is held <b>identical in all three arms</b>, so only ordering va
   a single tune, for whom RC and RI are byte-identical, so a null primary is ambiguous between
   "no effect" and "no exposure". This cut tells those apart. It does not measure a treatment effect.</p>
   <div class="scroll"><table style="min-width:680px">
-  <thead><tr><th>Metric</th><th class="num">RC · n=1484</th><th class="num">RI · n=1555</th><th class="num">RL · n=1532</th>
+  <thead><tr><th>Metric</th><th class="num">RC · n=1487</th><th class="num">RI · n=1558</th><th class="num">RL · n=1532</th>
   <th class="num">p · RI</th><th class="num">p · RL</th></tr></thead>
   <tbody><tr><td><b>Attended P95-winsorized 7-day watch (mean min)</b><br>
   <span class="sub">&ge;2 first-session tunes only · descriptive</span></td>
-  <td class="num">2.280</td><td class="num">2.474</td><td class="num">2.520</td>
-  <td class="num"><span class="p">0.123</span></td><td class="num"><span class="p">0.053</span></td></tr></tbody></table></div>
+  <td class="num">2.278</td><td class="num">2.469</td><td class="num">2.519</td>
+  <td class="num"><span class="p">0.127</span></td><td class="num"><span class="p">0.051</span></td></tr></tbody></table></div>
 </section>
 
 <section class="card">
