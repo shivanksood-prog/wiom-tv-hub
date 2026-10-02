@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-01T20:35:07Z",
+  "fetched_at": "2026-10-02T00:12:20Z",
   "data": {
     "offsets": [
       0,
@@ -12,12 +12,53 @@
     ],
     "grid": [
       {
-        "cohort": "2026-10-01",
-        "size": 1352,
+        "cohort": "2026-10-02",
+        "size": 2,
         "cells": [
           {
             "day": 0,
-            "users": 1352,
+            "users": 2,
+            "pct": 100
+          },
+          {
+            "day": 1,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 2,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 3,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 7,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 14,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 30,
+            "users": 0,
+            "pct": 0
+          }
+        ]
+      },
+      {
+        "cohort": "2026-10-01",
+        "size": 1409,
+        "cells": [
+          {
+            "day": 0,
+            "users": 1409,
             "pct": 100
           },
           {
@@ -155,7 +196,7 @@
           },
           {
             "day": 3,
-            "users": 32,
+            "users": 34,
             "pct": 2
           },
           {
@@ -324,7 +365,7 @@
           },
           {
             "day": 7,
-            "users": 13,
+            "users": 15,
             "pct": 1
           },
           {
@@ -863,47 +904,6 @@
           {
             "day": 14,
             "users": 4,
-            "pct": 0
-          },
-          {
-            "day": 30,
-            "users": 0,
-            "pct": 0
-          }
-        ]
-      },
-      {
-        "cohort": "2026-09-10",
-        "size": 862,
-        "cells": [
-          {
-            "day": 0,
-            "users": 862,
-            "pct": 100
-          },
-          {
-            "day": 1,
-            "users": 48,
-            "pct": 6
-          },
-          {
-            "day": 2,
-            "users": 23,
-            "pct": 3
-          },
-          {
-            "day": 3,
-            "users": 22,
-            "pct": 3
-          },
-          {
-            "day": 7,
-            "users": 10,
-            "pct": 1
-          },
-          {
-            "day": 14,
-            "users": 0,
             "pct": 0
           },
           {
