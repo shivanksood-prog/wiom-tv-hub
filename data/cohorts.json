@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-10-04T23:09:18Z",
+  "fetched_at": "2026-10-05T02:00:58Z",
   "data": {
     "offsets": [
       0,
@@ -12,17 +12,58 @@
     ],
     "grid": [
       {
-        "cohort": "2026-10-04",
-        "size": 2012,
+        "cohort": "2026-10-05",
+        "size": 51,
         "cells": [
           {
             "day": 0,
-            "users": 2012,
+            "users": 51,
             "pct": 100
           },
           {
             "day": 1,
             "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 2,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 3,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 7,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 14,
+            "users": 0,
+            "pct": 0
+          },
+          {
+            "day": 30,
+            "users": 0,
+            "pct": 0
+          }
+        ]
+      },
+      {
+        "cohort": "2026-10-04",
+        "size": 2021,
+        "cells": [
+          {
+            "day": 0,
+            "users": 2021,
+            "pct": 100
+          },
+          {
+            "day": 1,
+            "users": 7,
             "pct": 0
           },
           {
@@ -68,7 +109,7 @@
           },
           {
             "day": 2,
-            "users": 0,
+            "users": 2,
             "pct": 0
           },
           {
@@ -324,7 +365,7 @@
           },
           {
             "day": 7,
-            "users": 14,
+            "users": 15,
             "pct": 1
           },
           {
@@ -575,7 +616,7 @@
           },
           {
             "day": 14,
-            "users": 0,
+            "users": 2,
             "pct": 0
           },
           {
@@ -863,47 +904,6 @@
           {
             "day": 14,
             "users": 2,
-            "pct": 0
-          },
-          {
-            "day": 30,
-            "users": 0,
-            "pct": 0
-          }
-        ]
-      },
-      {
-        "cohort": "2026-09-13",
-        "size": 1988,
-        "cells": [
-          {
-            "day": 0,
-            "users": 1988,
-            "pct": 100
-          },
-          {
-            "day": 1,
-            "users": 90,
-            "pct": 5
-          },
-          {
-            "day": 2,
-            "users": 40,
-            "pct": 2
-          },
-          {
-            "day": 3,
-            "users": 39,
-            "pct": 2
-          },
-          {
-            "day": 7,
-            "users": 18,
-            "pct": 1
-          },
-          {
-            "day": 14,
-            "users": 4,
             "pct": 0
           },
           {
