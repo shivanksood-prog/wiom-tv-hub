@@ -1,5 +1,5 @@
 {
-"generated_utc": "2026-10-09T19:08:25.440Z",
+"generated_utc": "2026-10-09T20:08:29.099Z",
 "day": "2026-10-09",
 "deploy": {
 "sw_cache_name": "wiom-tv-v9-homead",
@@ -50,12 +50,12 @@
 "ret_swbuild_pct": 54,
 "ret_fzbuild_pct": 98,
 "all_fzbuild_pct": 100,
-"pf_sessions": 108,
+"pf_sessions": 109,
 "pf_kb_med": 6417,
 "pf_kb_p90": 42537,
-"pf_mb_total": 1528.6,
-"pf_slow_sessions": 5,
-"pf_slow_kb": 45702
+"pf_mb_total": 1569.1,
+"pf_slow_sessions": 6,
+"pf_slow_kb": 87212
 },
 "baseline": {
 "label": "7 full days before the deploy on 2026-09-01",
@@ -71,5 +71,5 @@
 "holds": null,
 "retries": null
 },
-"slack_text": "*Wiom TV \u2014 PR #12 (sw.js) + PR #13 (fast zap) daily readout \u00b7 2026-10-09 IST*\nDeploy: *Not live yet* \u2014 server still serves sw.js `wiom-tv-v9-homead`. Numbers below are pre-deploy baseline.\n\u26a0\ufe0f Action still pending on Satyam's side: `git pull` in /home/ubuntu/wiom-tv (or copy public/sw.js + public/wiom-tv.html from main). Nothing above will move until then.\n\u2022 Channel start (cold TTFF): median 1.44 s \u00b7 p90 4.3 s \u00b7 >5 s 7.1%\n\u2022 New vs returning devices: 1.44 s vs 1.43 s median\n\u2022 Errors: 5.9 per 100 loads \u00b7 cascade sessions 43 (42% of errors) \u00b7 net holds 39 \u00b7 retries 563 \u00b7 no-frame timeouts 242\n\u2022 Returning devices on current build: 54% (target ~90% after PR #12) \u00b7 on fast-zap build 98%\n\u2022 Warm zaps: 29.4% of starts \u00b7 warm 491 ms vs cold-on-fast-link 1.82 s\n\u2022 Pre-buffer data: 108 sessions \u00b7 p90 42537 KB/session \u00b7 on 2g/3g 45702 KB (must stay ~0)\n\u2022 Volume: 1440 human sessions \u00b7 15342 loads\nHub: https://shivanksood-prog.github.io/wiom-tv-hub/zap.html \u00b7 baseline = 7 full days before the deploy on 2026-09-01"
+"slack_text": "*Wiom TV \u2014 PR #12 (sw.js) + PR #13 (fast zap) daily readout \u00b7 2026-10-09 IST*\nDeploy: *Not live yet* \u2014 server still serves sw.js `wiom-tv-v9-homead`. Numbers below are pre-deploy baseline.\n\u26a0\ufe0f Action still pending on Satyam's side: `git pull` in /home/ubuntu/wiom-tv (or copy public/sw.js + public/wiom-tv.html from main). Nothing above will move until then.\n\u2022 Channel start (cold TTFF): median 1.44 s \u00b7 p90 4.3 s \u00b7 >5 s 7.1%\n\u2022 New vs returning devices: 1.44 s vs 1.43 s median\n\u2022 Errors: 5.9 per 100 loads \u00b7 cascade sessions 43 (42% of errors) \u00b7 net holds 39 \u00b7 retries 563 \u00b7 no-frame timeouts 242\n\u2022 Returning devices on current build: 54% (target ~90% after PR #12) \u00b7 on fast-zap build 98%\n\u2022 Warm zaps: 29.4% of starts \u00b7 warm 491 ms vs cold-on-fast-link 1.82 s\n\u2022 Pre-buffer data: 109 sessions \u00b7 p90 42537 KB/session \u00b7 on 2g/3g 87212 KB (must stay ~0)\n\u2022 Volume: 1440 human sessions \u00b7 15342 loads\nHub: https://shivanksood-prog.github.io/wiom-tv-hub/zap.html \u00b7 baseline = 7 full days before the deploy on 2026-09-01"
 }
